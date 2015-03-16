@@ -1,0 +1,19 @@
+{
+    "project_type": "javascript",
+    "debugMode": 0,
+    "showFPS": false,
+    "frameRate": 60,
+    "id": "canvas",
+    "renderMode": 0,
+    "engineDir": "../cocos2d/frameworks/cocos2d-html5/",
+
+    "modules": ["core", "actions", "audio", "gui", "transitions", "spine", "pluginx", "plugin-facebook"],
+
+    "plugin": {
+        "facebook": {
+            "appId": "",
+            "xfbml": true,
+            "version": "v2.0"
+        }
+    }
+}
