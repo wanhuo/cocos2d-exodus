@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "/9ec49mBZlpUbYLu3g+HmHCo9jw", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
+"skeleton": { "hash": "t//y0Q77IoAHMOEdyveBN1GHghQ", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "bone", "parent": "root" },
@@ -25,6 +25,32 @@
 	}
 },
 "animations": {
+	"people": {
+		"slots": {
+			"1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"bone2": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 0.1, "x": 0, "y": 12 }
+				],
+				"scale": [
+					{ "time": 0, "x": 1, "y": 1 },
+					{ "time": 0.1, "x": 1.069, "y": 1.05 }
+				]
+			}
+		}
+	},
 	"scale": {
 		"slots": {
 			"1": {
