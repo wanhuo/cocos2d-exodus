@@ -1,0 +1,41 @@
+
+people.png
+size: 96,38
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/man1
+  rotate: false
+  xy: 2, 2
+  size: 20, 34
+  orig: 20, 34
+  offset: 0, 0
+  index: -1
+skins/1/shadow
+  rotate: true
+  xy: 90, 20
+  size: 16, 4
+  orig: 16, 4
+  offset: 0, 0
+  index: -1
+skins/2/man2
+  rotate: false
+  xy: 24, 2
+  size: 20, 34
+  orig: 20, 34
+  offset: 0, 0
+  index: -1
+skins/3/man3
+  rotate: false
+  xy: 46, 2
+  size: 20, 34
+  orig: 20, 34
+  offset: 0, 0
+  index: -1
+skins/4/man4
+  rotate: false
+  xy: 68, 2
+  size: 20, 34
+  orig: 20, 34
+  offset: 0, 0
+  index: -1
