@@ -21,7 +21,7 @@
  *
  */
 
-Name = Spine.extend({
+Name = Entity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Name = Spine.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.name.json, resources.main.name.atlas, 1.0, Game.backgrounds.menu);
+    this._super(resources.main.name, Game.backgrounds.menu);
 
     /**
      *

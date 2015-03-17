@@ -159,6 +159,18 @@ Character = Spine.extend({
      * 
      *
      */
+    this.runAction(
+      cc.MoveTo.create(0.45, {
+        x: this.x,
+        y: 450
+      })
+    );
+
+    /**
+     *
+     * 
+     *
+     */
     this.setAnimation(this.parameters.animations.scale.index, this.parameters.animations.scale.name, false);
   },
 

@@ -25,6 +25,7 @@ var resources = {
   main: {
     font: 'resource/Fonts/Impact.ttf',
     background: 'resource/Graphics/background.png',
+    name: 'resource/Graphics/name.png',
     character: {
       texture: 'resource/Graphics/character.png',
       atlas: 'resource/Graphics/character.atlas',

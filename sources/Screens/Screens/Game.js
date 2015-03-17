@@ -136,6 +136,7 @@ Game = Screen.extend({
           }
         )
       ),
+      name: new Name,
       character: new Character,
       counter: new Counter
     };
@@ -186,19 +187,19 @@ Game = Screen.extend({
     });
     this.buttons.like.create().attr({
       x: Camera.center.x - 111,
-      y: Camera.height - 250
+      y: Camera.center.y - 160
     });
     this.buttons.sound.create().attr({
       x: Camera.center.x - 37,
-      y: Camera.height - 250
+      y: Camera.center.y - 160
     });
     this.buttons.leaderboard.create().attr({
       x: Camera.center.x + 37,
-      y: Camera.height - 250
+      y: Camera.center.y - 160
     });
     this.buttons.achievements.create().attr({
       x: Camera.center.x + 111,
-      y: Camera.height - 250
+      y: Camera.center.y - 160
     });
 
     /**
@@ -624,68 +625,50 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.prepare);return;
+    this.elements.character.changeState(this.elements.character.parameters.states.prepare);
 
     /**
-     *
-     *
-     *
-     */
-    this.backgrounds.game.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(5.0, {
-            x: -this.elements.boxes.last().x + 100,
-            y: 0
-          })
-        ),
-        cc.CallFunc.create(function() {
+    *
+    *
+    *
+    */
+    this.buttons.like.register();
+    this.buttons.sound.register();
+    this.buttons.leaderboard.register();
+    this.buttons.achievements.register();
 
-          /**
-           *
-           *
-           *
-           */
-          this.buttons.like.register();
-          this.buttons.sound.register();
-          this.buttons.leaderboard.register();
-          this.buttons.achievements.register();
+    /**
+    *
+    *
+    *
+    */
+    this.elements.counter.create();
 
-          /**
-           *
-           *
-           *
-           */
-          this.elements.counter.create();
+    /**
+    *
+    *
+    *
+    */
+    this.changeState(this.parameters.states.game);
 
-          /**
-           *
-           *
-           *
-           */
-          this.changeState(this.parameters.states.game);
+    /**
+    *
+    *
+    *
+    */
+    this.backgrounds.menu.removeFromParent();
 
-          /**
-           *
-           *
-           *
-           */
-          this.backgrounds.menu.removeFromParent();
-
-          /**
-           *
-           *
-           *
-           */
-          Ad.Admob.show(cc.Ad.Banner, {
-            success: function() {
-            }.bind(this),
-            error: function() {
-            }
-          });
-        }.bind(this))
-      )
-    );
+    /**
+    *
+    *
+    *
+    */
+    Ad.Admob.show(cc.Ad.Banner, {
+    success: function() {
+    }.bind(this),
+    error: function() {
+    }
+    });
   },
   onGame: function() {
 
