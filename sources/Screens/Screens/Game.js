@@ -865,6 +865,13 @@ Game = Screen.extend({
      *
      *
      */
+    this.elements.points.clear();
+
+    /**
+     *
+     *
+     *
+     */
     for(var i = 0; i < this.elements.people.count().capacity; i++) {
       this.elements.people.create();
     }

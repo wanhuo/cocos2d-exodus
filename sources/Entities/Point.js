@@ -63,6 +63,13 @@ Point = Spine.extend({
      * 
      *
      */
+    this.setTimeScale(0.1);
+
+    /**
+     *
+     * 
+     *
+     */
     this.setLocalZOrder(5);
   },
 
