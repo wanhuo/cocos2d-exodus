@@ -1,0 +1,27 @@
+
+character.png
+size: 1825,1508
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: true
+  xy: 2, 505
+  size: 1001, 1821
+  orig: 1001, 1821
+  offset: 0, 0
+  index: -1
+2
+  rotate: true
+  xy: 2, 2
+  size: 501, 911
+  orig: 501, 911
+  offset: 0, 0
+  index: -1
+3
+  rotate: false
+  xy: 915, 47
+  size: 251, 456
+  orig: 251, 456
+  offset: 0, 0
+  index: -1
