@@ -92,7 +92,8 @@ Character = Spine.extend({
      *
      */
     this.x = Camera.center.x;
-    this.y = Camera.center.y + 90;
+    this.y = 450;
+    this.setScale(0.25);
   },
 
   /**
@@ -159,19 +160,16 @@ Character = Spine.extend({
      * 
      *
      */
-    this.runAction(
-      cc.MoveTo.create(0.45, {
-        x: this.x,
-        y: 450
-      })
-    );
+    this.setAnimation(this.parameters.animations.scale.index, this.parameters.animations.scale.name, false);
 
     /**
      *
      * 
      *
      */
-    this.setAnimation(this.parameters.animations.scale.index, this.parameters.animations.scale.name, false);
+    this.runAction(
+      cc.ScaleTo.create(0.5, 1.0)
+    );
   },
 
   /**

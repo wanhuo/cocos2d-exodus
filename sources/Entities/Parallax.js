@@ -110,7 +110,23 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
    *
    *
    */
+  disabled: function() {
+    return !Game.parameters.state || Game.parameters.state === Game.parameters.states.menu || Game.backgrounds.game.getNumberOfRunningActions() > 0;
+  },
+
+  /**
+   *
+   *
+   *
+   */
   update: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.disabled()) return false;
 
     /**
      *

@@ -38,7 +38,7 @@ Name = Entity.extend({
      */
     this.create().attr({
       x: Camera.center.x,
-      y: Camera.height - 160
+      y: Camera.height - 200
     });
   }
 });

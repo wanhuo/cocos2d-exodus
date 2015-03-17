@@ -76,7 +76,7 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.game = new Background(this.backgrounds.d);
-    this.backgrounds.menu = new Background(this.backgrounds.game);
+    this.backgrounds.menu = new Background(this.backgrounds.d);
 
     /**
      *
@@ -149,7 +149,6 @@ Game = Screen.extend({
     this.buttons = {
       play: new Button(resources.main.buttons.play, this.backgrounds.menu, 1, 1, 1, 1, this.onPlay.bind(this)),
       like: new Button(resources.main.buttons.like, this.backgrounds.b, 1, 1, 1, 1, this.onLike.bind(this)),
-      //settings: new Button(resources.main.buttons.settings, this.backgrounds.b, 1, 1, 1, 1, this.onSettings.bind(this)),
       leaderboard: new Button(resources.main.buttons.leaderboard, this.backgrounds.b, 1, 1, 1, 1, this.onLeaderboard.bind(this)),
       achievements: new Button(resources.main.buttons.achievements, this.backgrounds.b, 1, 1, 1, 1, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, this.backgrounds.b, 1, 1, 2, 1, this.onSound.bind(this))
@@ -160,7 +159,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.menu.setLocalZOrder(100);
+    this.backgrounds.menu.setLocalZOrder(300);
     this.backgrounds.game.setLocalZOrder(200);
 
     /**
@@ -311,11 +310,17 @@ Game = Screen.extend({
 
     /**
      *
-     *
+     * 
      *
      */
-    this.backgrounds.game.y = -160;
-    this.backgrounds.menu.y = 160;
+    this.backgrounds.game.setScale(4.0);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.backgrounds.game.y = 690;
 
     /**
      *
@@ -688,6 +693,21 @@ Game = Screen.extend({
      *
      */
     this.elements.character.changeState(this.elements.character.parameters.states.prepare);
+
+   /**
+    *
+    *
+    *
+    */
+  this.backgrounds.game.runAction(
+    cc.ScaleTo.create(0.5, 1.0)
+  );
+  this.backgrounds.game.runAction(
+    cc.MoveTo.create(0.5, {
+      x: 0,
+      y: 0
+    })
+  );
 
     /**
     *
