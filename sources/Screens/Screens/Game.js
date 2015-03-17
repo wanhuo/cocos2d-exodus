@@ -187,19 +187,19 @@ Game = Screen.extend({
     });
     this.buttons.like.create().attr({
       x: Camera.center.x - 111,
-      y: Camera.center.y - 160
+      y: Camera.center.y - 150
     });
     this.buttons.sound.create().attr({
       x: Camera.center.x - 37,
-      y: Camera.center.y - 160
+      y: Camera.center.y - 150
     });
     this.buttons.leaderboard.create().attr({
       x: Camera.center.x + 37,
-      y: Camera.center.y - 160
+      y: Camera.center.y - 150
     });
     this.buttons.achievements.create().attr({
       x: Camera.center.x + 111,
-      y: Camera.center.y - 160
+      y: Camera.center.y - 150
     });
 
     /**
@@ -436,35 +436,97 @@ Game = Screen.extend({
      *
      */
     this.buttons.like.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.0, {
-          x: this.buttons.like.x,
-          y: Camera.height - 50
-        })
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.2, 0.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.y = Camera.height - 50;
+        }.bind(this.buttons.like)),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.sound.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.0, {
-          x: this.buttons.sound.x,
-          y: Camera.height - 50
-        })
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.2, 0.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.y = Camera.height - 50;
+        }.bind(this.buttons.sound)),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.leaderboard.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.0, {
-          x: this.buttons.leaderboard.x,
-          y: Camera.height - 50
-        })
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.2, 0.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.y = Camera.height - 50;
+        }.bind(this.buttons.leaderboard)),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.achievements.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.0, {
-          x: this.buttons.achievements.x,
-          y: Camera.height - 50
-        })
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.2, 0.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.y = Camera.height - 50;
+        }.bind(this.buttons.achievements)),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        )
       )
     );
 

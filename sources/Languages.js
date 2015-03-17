@@ -23,24 +23,24 @@
 
 var languages = {
   'counter': [
-    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [255, 255, 255]},
-    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [255, 255, 255]}
+    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]},
+    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]}
   ],
   'best': [
-    {title: 'BEST SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [255, 255, 255]},
-    {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [255, 255, 255]}
+    {title: 'BEST SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
+    {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}
   ],
   'jumps': [
-    {title: 'JUMPS: $1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Прыжков: $1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'JUMPS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Прыжков: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'deaths': [
-    {title: 'DEATHS: $1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Проигрышей: $1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'DEATHS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Проигрышей: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'share': [
-    {title: 'Tap counter to share your result', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Нажмите на счетчик чтобы\nподелиться результатами', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Tap counter to share your result', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Нажмите на счетчик чтобы\nподелиться результатами', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
