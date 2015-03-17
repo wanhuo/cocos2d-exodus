@@ -48,8 +48,14 @@ Game = Screen.extend({
       states: {
         menu: 1,
         animation: 2,
-        game: 3,
-        loss: 4
+        prepare: 3,
+        start: 4,
+        game: 5,
+        loss: 6
+      },
+      water: {
+        speed: 30.0,
+        y: 180
       },
       ad: {
         interstitial: {
@@ -83,6 +89,13 @@ Game = Screen.extend({
      * 
      *
      */
+    this.backgrounds.w = new Background(this.backgrounds.game);
+
+    /**
+     *
+     * 
+     *
+     */
     this.splash = new BackgroundColor(this, cc.color.WHITE);
 
     /**
@@ -101,7 +114,7 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
       ],
       ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
-      water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.game).addEntity(
+      water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
         new Parallax(
           resources.main.water[2], 1, 1,
           {
@@ -110,11 +123,11 @@ Game = Screen.extend({
           },
           {
             x: 0,
-            y: 250
+            y: 180
           }
         )
       ),
-      water2: new ParallaxEntity.Infinity(resources.main.water[1], this.backgrounds.game).addEntity(
+      water2: new ParallaxEntity.Infinity(resources.main.water[1], this.backgrounds.w).addEntity(
         new Parallax(
           resources.main.water[1], 1, 1,
           {
@@ -123,16 +136,20 @@ Game = Screen.extend({
           },
           {
             x: 0,
-            y: 200
+            y: 140
           }
         )
       ),
-      water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.game).addEntity(
+      water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.w).addEntity(
         new Parallax(
           resources.main.water[0], 1, 1,
           {
             x: 100,
             y: 0
+          },
+          {
+            x: 0,
+            y: -50
           }
         )
       ),
@@ -170,6 +187,7 @@ Game = Screen.extend({
     this.backgrounds.s.setLocalZOrder(100);
     this.backgrounds.d.setLocalZOrder(200);
     this.backgrounds.b.setLocalZOrder(300);
+    this.backgrounds.w.setLocalZOrder(400);
 
     /**
      *
@@ -361,7 +379,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.parameters.state === this.parameters.states.game) {
+    if(this.parameters.state === this.parameters.states.start || this.parameters.state === this.parameters.states.game) {
 
       /**
        *
@@ -392,7 +410,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.parameters.state === this.parameters.states.game) {
+    if(this.parameters.state === this.parameters.states.start || this.parameters.state === this.parameters.states.game) {
 
       /**
        *
@@ -542,15 +560,6 @@ Game = Screen.extend({
      */
     this.changeState(this.parameters.states.animation);
   },
-  onSettings: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    // TODO:
-  },
   onLeaderboard: function() {
 
     /**
@@ -692,53 +701,94 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.prepare);
-
-   /**
-    *
-    *
-    *
-    */
-  this.backgrounds.game.runAction(
-    cc.ScaleTo.create(0.5, 1.0)
-  );
-  this.backgrounds.game.runAction(
-    cc.MoveTo.create(0.5, {
-      x: 0,
-      y: 0
-    })
-  );
+    this.backgrounds.menu.removeFromParent();
 
     /**
-    *
-    *
-    *
-    */
+     *
+     *
+     *
+     */
+    this.elements.character.changeState(this.elements.character.parameters.states.animation);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.counter.create();
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.game.runAction(
+      cc.ScaleTo.create(0.5, 1.0)
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.game.runAction(
+      cc.Sequence.create(
+        cc.MoveTo.create(0.5, {
+          x: 0,
+          y: 0
+        }),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.changeState(this.parameters.states.prepare);
+        }.bind(this))
+      )
+    );
+  },
+  onPrepare: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.character.changeState(this.elements.character.parameters.states.prepare);
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.like.register();
     this.buttons.sound.register();
     this.buttons.leaderboard.register();
     this.buttons.achievements.register();
 
     /**
-    *
-    *
-    *
-    */
-    this.elements.counter.create();
+     *
+     *
+     *
+     */
+    this.elements.counter.clear();
 
     /**
-    *
-    *
-    *
-    */
-    this.changeState(this.parameters.states.game);
+     *
+     *
+     *
+     */
+    this.backgrounds.w.y = 0;
 
     /**
-    *
-    *
-    *
-    */
-    this.backgrounds.menu.removeFromParent();
+     *
+     *
+     *
+     */
+    this.backgrounds.game.x = 0;
+    this.backgrounds.game.y = 0;
 
     /**
     *
@@ -751,6 +801,16 @@ Game = Screen.extend({
     error: function() {
     }
     });
+
+    /**
+     *
+     *
+     *
+     */
+    // TODO: Remove this.
+    this.changeState(this.parameters.states.start);
+  },
+  onStart: function() {
   },
   onGame: function() {
 
@@ -759,7 +819,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.counter.clear();
+    this.elements.character.changeState(this.elements.character.parameters.states.game);
 
     /**
      *
@@ -778,7 +838,7 @@ Game = Screen.extend({
     this.splash.runAction(
       cc.Sequence.create(
         cc.FadeIn.create(0.2),
-        cc.DelayTime.create(0.1),
+        cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
 
           /**
@@ -786,30 +846,9 @@ Game = Screen.extend({
            *
            *
            */
-          this.elements.character.create().setElement(this.elements.boxes.last(), true);
-
-          /**
-           *
-           *
-           *
-           */
-          this.backgrounds.game.runAction(
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(0.2 * this.elements.counter.values.scores.current, {
-                x: -this.elements.character.x + 100,
-                y: 0
-              })
-            )
-          );
-
-          /**
-           *
-           *
-           *
-           */
-          this.changeState(this.parameters.states.game);
+          this.changeState(this.parameters.states.prepare);
         }.bind(this)),
-        cc.DelayTime.create(0.1),
+        cc.DelayTime.create(0.5),
         cc.FadeOut.create(0.5)
       )
     );
@@ -871,6 +910,12 @@ Game = Screen.extend({
       case this.parameters.states.animation:
       this.onAnimation();
       break;
+      case this.parameters.states.prepare:
+      this.onPrepare();
+      break;
+      case this.parameters.states.start:
+      this.onStart();
+      break;
       case this.parameters.states.game:
       this.onGame();
       break;
@@ -889,9 +934,45 @@ Game = Screen.extend({
   },
   updateAnimation: function(time) {
   },
+  updatePrepare: function(time) {
+  },
+  updateStart: function(time) {
+  },
   updateLoss: function(time) {
   },
   updateGame: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
+    this.backgrounds.game.y = min(0, -this.elements.character.y + 450);
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  updateWater: function(time) {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.backgrounds.w.y += this.parameters.water.speed * time;
+
+    /**
+     *
+     * 
+     *
+     */
+    if(this.backgrounds.w.y >= this.parameters.water.y) {
+      this.changeState(this.parameters.states.loss);
+    }
   },
 
   /**
@@ -913,11 +994,29 @@ Game = Screen.extend({
       case this.parameters.states.animation:
       this.updateAnimation(time);
       break;
+      case this.parameters.states.prepare:
+      this.updatePrepare(time);
+      break;
+      case this.parameters.states.start:
+      this.updateStart(time);
+      break;
       case this.parameters.states.loss:
       this.updateLoss(time);
       break;
       case this.parameters.states.game:
       this.updateGame(time);
+      break;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    switch(this.parameters.state) {
+      case this.parameters.states.prepare:
+      case this.parameters.states.start:
+      this.updateWater(time);
       break;
     }
   },

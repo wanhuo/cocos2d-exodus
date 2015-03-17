@@ -48,6 +48,7 @@ Counter = Button.extend({
       best: new Text('best', Game.backgrounds.b),
       jumps: new Text('jumps', Game.backgrounds.b),
       deaths: new Text('deaths', Game.backgrounds.b),
+      start: new Text('start', Game.backgrounds.b),
       share: new Text('share', Game.backgrounds.b)
     };
 
@@ -490,6 +491,21 @@ Counter = Button.extend({
           cc.DelayTime.create(5.0),
           cc.FadeOut.create(1.0),
           cc.CallFunc.create(this.textes.share.destroy, this.textes.share)
+        )
+      );
+    } else {
+      if(this.textes.start.getNumberOfRunningActions() > 0) return false;
+
+      this.textes.start.create().attr({
+        x: Camera.center.x,
+        y: this.y - 180
+      });
+      this.textes.start.runAction(
+        cc.Sequence.create(
+          cc.FadeIn.create(1.0),
+          cc.DelayTime.create(1.0),
+          cc.FadeOut.create(1.0),
+          cc.CallFunc.create(this.textes.start.destroy, this.textes.start)
         )
       );
     }

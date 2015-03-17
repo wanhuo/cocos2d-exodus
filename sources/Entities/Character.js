@@ -41,7 +41,9 @@ Character = Spine.extend({
       state: 0,
       states: {
         menu: 1,
-        prepare: 2
+        animation: 2,
+        prepare: 3,
+        game: 4
       },
       animations: {
         scale: {
@@ -56,7 +58,11 @@ Character = Spine.extend({
       ],
       vector: {
         x: 0,
-        y: 0
+        y: 0,
+        setup: {
+          x: 1,
+          y: 1
+        }
       },
       speed: {
         x: 0,
@@ -81,19 +87,10 @@ Character = Spine.extend({
 
     /**
      *
-     * 
+     *
      *
      */
-    this.create();
-
-    /**
-     *
-     * 
-     *
-     */
-    this.x = Camera.center.x;
-    this.y = 450;
-    this.setScale(0.25);
+    this.changeState(this.parameters.states.menu);
   },
 
   /**
@@ -103,13 +100,6 @@ Character = Spine.extend({
    */
   onCreate: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.changeState(this.parameters.states.menu);
   },
   onDestroy: function() {
     this._super();
@@ -152,8 +142,30 @@ Character = Spine.extend({
    *
    */
   onMenu: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.create();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.x = Camera.center.x;
+    this.y = 450;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setScale(0.25);
   },
-  onPrepare: function() {
+  onAnimation: function() {
 
     /**
      *
@@ -171,6 +183,50 @@ Character = Spine.extend({
       cc.ScaleTo.create(0.5, 1.0)
     );
   },
+  onPrepare: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    if(!this.created) {
+      this.create();
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    this.rotation = 0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.x = Camera.center.x;
+    this.y = 450;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.speed.x = this.parameters.speed.setup.x;
+    this.parameters.speed.y = this.parameters.speed.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.vector.x = this.parameters.vector.setup.x;
+    this.parameters.vector.y = this.parameters.vector.setup.y;
+  },
+  onGame: function() {
+  },
 
   /**
    *
@@ -178,8 +234,54 @@ Character = Spine.extend({
    *
    */
   onTouchBegan: function(touch, e) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.state === this.parameters.states.prepare) {
+      if(this.getNumberOfRunningActions() > 0) return false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.runAction(
+        cc.Sequence.create(
+          cc.DelayTime.create(1.0),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            Game.changeState(Game.parameters.states.game);
+          })
+        )
+      );
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    else if(this.parameters.state === this.parameters.states.game) {
+      // TODO: Check points.
+    }
   },
   onTouchEnded: function(touch, e) {
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  setSlotsToSetupPose: function() {
   },
 
   /**
@@ -206,8 +308,14 @@ Character = Spine.extend({
       case this.parameters.states.menu:
       this.onMenu();
       break;
+      case this.parameters.states.animation:
+      this.onAnimation();
+      break;
       case this.parameters.states.prepare:
       this.onPrepare();
+      break;
+      case this.parameters.states.game:
+      this.onGame();
       break;
     }
   },
@@ -219,7 +327,43 @@ Character = Spine.extend({
    */
   updateMenu: function(time) {
   },
+  updateAnimation: function(time) {
+  },
   updatePrepare: function(time) {
+  },
+  updateGame: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.vector.y -= 0.01;
+
+    /**
+     *
+     *
+     *
+     */
+    this.x += this.parameters.vector.x * this.parameters.speed.x * time;
+    this.y += this.parameters.vector.y * this.parameters.speed.y * time;
+
+    /**
+     *
+     *
+     *
+     *
+     */
+    this.rotation = atan2(this.parameters.vector.x, this.parameters.vector.y) * 180 / Math.PI;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.y < 0) {
+      this.destroy();
+    }
   },
 
   /**
@@ -238,18 +382,15 @@ Character = Spine.extend({
       case this.parameters.states.menu:
       this.updateMenu(time);
       break;
+      case this.parameters.states.animation:
+      this.updateAnimation(time);
+      break;
       case this.parameters.states.prepare:
       this.updatePrepare(time);
       break;
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.y < -this.height / 2) {
-      this.destroy();
+      case this.parameters.states.game:
+      this.updateGame(time);
+      break;
     }
   },
 
