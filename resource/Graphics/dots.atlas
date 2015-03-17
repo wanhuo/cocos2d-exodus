@@ -1,0 +1,27 @@
+
+dots.png
+size: 157,58
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/blue
+  rotate: false
+  xy: 2, 2
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+skins/1/wh
+  rotate: false
+  xy: 114, 14
+  size: 41, 42
+  orig: 41, 42
+  offset: 0, 0
+  index: -1
+skins/2/red
+  rotate: false
+  xy: 58, 2
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
