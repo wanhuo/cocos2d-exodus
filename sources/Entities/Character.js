@@ -442,52 +442,15 @@ Character = Spine.extend({
      * 
      *
      */
-    if(this.parameters.speed.x < this.parameters.speed.max.x) {
-      this.parameters.speed.x += this.parameters.speed.increase.x;
-      this.parameters.speed.increase.x += this.parameters.speed.increase.increase.x;
-    }
+    var position = this.updatePosition(this.parameters);
 
     /**
      *
-     * 
+     *
      *
      */
-    if(this.parameters.speed.state) {
-
-      /**
-       *
-       * 
-       *
-       */
-      if(this.parameters.speed.y < this.parameters.speed.max.y) {
-        this.parameters.speed.y += this.parameters.speed.increase.y;
-      } else {
-        this.parameters.speed.state = false;
-      }
-    } else {
-
-      /**
-       *
-       * 
-       *
-       */
-      if(this.parameters.speed.x > this.parameters.speed.min.x) {
-        this.parameters.speed.x -= this.parameters.speed.decrease.x;
-      } else {
-        this.parameters.speed.state = false;
-      }
-
-      /**
-       *
-       * 
-       *
-       */
-      if(this.parameters.speed.y > this.parameters.speed.min.y) {
-        this.parameters.speed.y -= this.parameters.speed.decrease.y;
-      } else {
-        this.parameters.speed.state = false;
-      }
-    }
+    this.x += position.x;
+    this.y += position.y;
 
     /**
      *
@@ -495,14 +458,6 @@ Character = Spine.extend({
      *
      */
     this.rotation = Math.atan2(this.parameters.speed.x, this.parameters.speed.y) * 180 / Math.PI;
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += this.parameters.vector.x * this.parameters.speed.x * (1.0 / 60.0);
-    this.y += this.parameters.vector.y * this.parameters.speed.y * (1.0 / 60.0);
 
     /**
      *
@@ -519,8 +474,189 @@ Character = Spine.extend({
    *
    *
    */
+  updatePosition: function(parameters) {
+
+    /**
+     *
+     * 
+     *
+     */
+    var time = 1.0 / 60.0;
+
+    /**
+     *
+     * 
+     *
+     */
+    if(parameters.speed.x < parameters.speed.max.x) {
+      parameters.speed.x += parameters.speed.increase.x;
+
+      /**
+       *
+       * 
+       *
+       */
+      parameters.speed.increase.x += parameters.speed.increase.increase.x;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    if(parameters.speed.state) {
+
+      /**
+       *
+       * 
+       *
+       */
+      if(parameters.speed.y < parameters.speed.max.y) {
+        parameters.speed.y += parameters.speed.increase.y;
+      } else {
+        parameters.speed.state = false;
+      }
+    } else {
+
+      /**
+       *
+       * 
+       *
+       */
+      if(parameters.speed.x > parameters.speed.min.x) {
+        parameters.speed.x -= parameters.speed.decrease.x;
+      } else {
+        parameters.speed.state = false;
+      }
+
+      /**
+       *
+       * 
+       *
+       */
+      if(parameters.speed.y > parameters.speed.min.y) {
+        parameters.speed.y -= parameters.speed.decrease.y;
+      } else {
+        parameters.speed.state = false;
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    var x = parameters.vector.x * parameters.speed.x * time;
+    var y = parameters.vector.y * parameters.speed.y * time;
+
+    /**
+     *
+     *
+     *
+     */
+    return {
+      x: x,
+      y: y
+    };
+  },
+
+  /**
+   *
+   *
+   *
+   */
   updateTraectory: function() {
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters.speed.state = true;
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.points.clear();
+
+    /**
+     *
+     * 
+     *
+     */
+    var probably = 100;
+
+    /**
+     *
+     * 
+     *
+     */
+    var count = probably;
+
+    /**
+     *
+     * 
+     *
+     */
+    var x = this.x;
+    var y = this.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    var parameters = cc.clone(this.parameters);
+
+    /**
+     *
+     *
+     *
+     */
+    while(y > 0) {
+
+      /**
+       *
+       * 
+       *
+       */
+      var position = this.updatePosition(parameters);
+
+      /**
+       *
+       *
+       *
+       */
+      x += position.x;
+      y += position.y;
+
+      /**
+       *
+       *
+       *
+       */
+      if(count % probably === 0) {
+
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.points.create().attr({
+          x: x,
+          y: y
+        });
+      }
+
+      /**
+       *
+       *
+       *
+       */
+      count++;
+    }
   },
 
   /**

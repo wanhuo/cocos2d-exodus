@@ -34,6 +34,7 @@ sources = sources.concat([
   'sources/Entities/Name.js',
   'sources/Entities/Character.js',
   'sources/Entities/People.js',
+  'sources/Entities/Point.js',
   'sources/Entities/Counter.js',
   'sources/Managers/ScreensManager.js',
   'sources/Screens/Screen.js',

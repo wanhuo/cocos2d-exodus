@@ -154,6 +154,7 @@ Game = Screen.extend({
         )
       ),
       people: new Manager(10, new People, this.backgrounds.b),
+      points: new Manager(10, new Point, this.backgrounds.game),
       name: new Name,
       character: new Character,
       counter: new Counter
@@ -854,6 +855,16 @@ Game = Screen.extend({
      *
      *
      */
+    Game.backgrounds.d.setAnchorPoint({
+      x: 0.5,
+      y: 0.0
+    });
+
+    /**
+     *
+     *
+     *
+     */
     for(var i = 0; i < this.elements.people.count().capacity; i++) {
       this.elements.people.create();
     }
@@ -1121,7 +1132,7 @@ Game = Screen.extend({
        *
        */
       this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
-      this.backgrounds.game.y = min(0, -this.elements.character.y + 450);
+      this.backgrounds.game.y = min(0, -(this.elements.character.y * Game.backgrounds.d.getScale()) + 450);
 
       /**
        *
@@ -1129,9 +1140,9 @@ Game = Screen.extend({
        *
        */
       if(this.elements.character.y >= 450) {
-        this.backgrounds.game.setScale(max(1.0 - 1.0 / (1000 / (this.elements.character.y - 450)), 0.25));
+        this.backgrounds.d.setScale(max(1.0 - 1.0 / (2000 / (this.elements.character.y - 450)), 0.25));
       } else {
-        this.backgrounds.game.setScale(1);
+        this.backgrounds.d.setScale(1);
       }
       break;
     }
@@ -1160,7 +1171,7 @@ Game = Screen.extend({
    */
   parallax: {
     scale: function() {
-      return this.backgrounds.game.getScale();
+      return 1.0 + (1.0 - Game.backgrounds.d.getScale());
     }
   }
 });
