@@ -26,6 +26,8 @@ sources = sources.concat([
   'sources/Entities/Text.js',
   'sources/Entities/Button.js',
   'sources/Entities/Parallax.js',
+  'sources/Entities/Ground.js',
+  'sources/Entities/Tree.js',
   'sources/Entities/Mountain.js',
   'sources/Entities/Cloud.js',
   'sources/Entities/Name.js',

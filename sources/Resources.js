@@ -25,15 +25,19 @@ var resources = {
   main: {
     font: 'resource/Fonts/Impact.ttf',
     background: 'resource/Graphics/background.png',
+    ground: 'resource/Graphics/ground.png',
     clouds: [
       'resource/Graphics/cloud-1.png'
     ],
     mountains: [
-      'resource/Graphics/mountains-1.png',
-      'resource/Graphics/mountains-2.png',
-      'resource/Graphics/mountains-3.png',
+      'resource/Graphics/mountain-1.png',
+      'resource/Graphics/mountain-1.png'
     ],
-    box: 'resource/Graphics/box.png',
+    trees: [
+      'resource/Graphics/tree-1.png',
+      'resource/Graphics/tree-2.png',
+      'resource/Graphics/tree-3.png'
+    ],
     buttons: {
       play: 'resource/Graphics/play-button.png',
       settings: 'resource/Graphics/settings-button.png',
@@ -44,7 +48,8 @@ var resources = {
     },
     water: [
       'resource/Graphics/water-1.png',
-      'resource/Graphics/water-2.png'
+      'resource/Graphics/water-2.png',
+      'resource/Graphics/water-3.png'
     ],
     counter: 'resource/Graphics/counter.png',
     music: {

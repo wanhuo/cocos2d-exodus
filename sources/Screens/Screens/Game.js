@@ -94,52 +94,23 @@ Game = Screen.extend({
       background: new Entity(resources.main.background, this.backgrounds.s, true),
       parallaxes: [
         new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud),
-        new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud),
-        new ParallaxEntity.Infinity(resources.main.mountains[2], this.backgrounds.game).addEntity(
-          new Parallax(
-            resources.main.mountains[2], 1, 1,
-            {
-              x: -100,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 230
-            },
-            {
-              x: 0.5,
-              y: 0
-            },
-            true
-          )
-        ),
-        new ParallaxEntity.Infinity(resources.main.mountains[1], this.backgrounds.game).addEntity(
-          new Parallax(
-            resources.main.mountains[1], 1, 1,
-            {
-              x: -200,
-              y: 0
-            },
-            {
-              x: 0,
-              y: 230
-            },
-            {
-              x: 0.5,
-              y: 0
-            },
-            true
-          )
-        ),
         new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
+        new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
+        new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
+        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
       ],
-      water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.game).addEntity(
+      ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
+      water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.game).addEntity(
         new Parallax(
-          resources.main.water[0], 1, 1,
+          resources.main.water[2], 1, 1,
           {
             x: 100,
             y: 0
+          },
+          {
+            x: 0,
+            y: 250
           }
         )
       ),
@@ -148,6 +119,19 @@ Game = Screen.extend({
           resources.main.water[1], 1, 1,
           {
             x: -100,
+            y: 0
+          },
+          {
+            x: 0,
+            y: 200
+          }
+        )
+      ),
+      water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.game).addEntity(
+        new Parallax(
+          resources.main.water[0], 1, 1,
+          {
+            x: 100,
             y: 0
           }
         )
@@ -166,7 +150,7 @@ Game = Screen.extend({
       settings: new Button(resources.main.buttons.settings, this.backgrounds.b, 1, 1, 1, 1, this.onSettings.bind(this)),
       leaderboard: new Button(resources.main.buttons.leaderboard, this.backgrounds.b, 1, 1, 1, 1, this.onLeaderboard.bind(this)),
       achievements: new Button(resources.main.buttons.achievements, this.backgrounds.b, 1, 1, 1, 1, this.onAchievements.bind(this)),
-      sound: new Button(resources.main.buttons.sound, this.backgrounds.b, 1, 1, 1, 2, this.onSound.bind(this))
+      sound: new Button(resources.main.buttons.sound, this.backgrounds.b, 1, 1, 2, 1, this.onSound.bind(this))
     };
 
     /**
@@ -257,13 +241,24 @@ Game = Screen.extend({
         )
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.water2.setLocalZOrder(11);
+    this.elements.water3.runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: 0,
+              y: 10
+            })
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: 0,
+              y: 0
+            })
+          )
+        )
+      )
+    );
 
     /**
      *
@@ -867,6 +862,6 @@ Game = Screen.extend({
      * 
      *
      */
-    this.updateStates(time);
+    this.updateStates(time);this.backgrounds.game.x -= 500 * time;
   }
 });

@@ -21,7 +21,7 @@
  *
  */
 
-Cloud = Parallax.extend({
+Ground = Parallax.extend({
 
   /**
    *
@@ -30,19 +30,20 @@ Cloud = Parallax.extend({
    */
   ctor: function() {
     this._super(
-      resources.main.clouds[0], 1, 1,
+      resources.main.ground, 1, 1,
       {
         x: -30,
         y: 0
       },
       {
         x: random(0, Camera.width),
-        y: Camera.height - 180
+        y: 160
       },
       {
         x: 0.5,
-        y: 0
-      }
+        y: 0.0
+      },
+      true
     );
 
     /**
@@ -69,31 +70,9 @@ Cloud = Parallax.extend({
    */
   onCreate: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.setScale(random(0.1, 1.0));
   },
   onDestroy: function() {
     this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  parallaxCorrectPosition: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.y = random(0, Camera.height);
   },
 
   /**
@@ -118,6 +97,6 @@ Cloud = Parallax.extend({
    *
    */
   deepCopy: function() {
-    return new Cloud;
+    return new Ground;
   }
 });

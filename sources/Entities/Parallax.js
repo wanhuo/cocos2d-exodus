@@ -81,6 +81,27 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
      *
      *
      */
+    if(!this.parameters) {
+      this.parameters = {
+        size: {
+          width: false,
+          height: false
+        }
+      };
+    } else {
+      if(!this.parameters.size) {
+        this.parameters.size = {
+          width: false,
+          height: false
+        };
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.bind = bind;
   },
 

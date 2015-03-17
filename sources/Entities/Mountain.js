@@ -37,7 +37,7 @@ Mountain = Parallax.extend({
       },
       {
         x: random(0, Camera.width),
-        y: 200
+        y: 340
       },
       {
         x: 0.5,
@@ -45,6 +45,18 @@ Mountain = Parallax.extend({
       },
       true
     );
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters = {
+      size: {
+        width: false,
+        height: false
+      }
+    };
   },
 
   /**
@@ -60,7 +72,7 @@ Mountain = Parallax.extend({
      *
      *
      */
-    this.setScale(random(0.1, 2.0));
+    this.setScaleY(random(0.5, 1.3));
   },
   onDestroy: function() {
     this._super();

@@ -21,28 +21,29 @@
  *
  */
 
-Cloud = Parallax.extend({
+Tree = Parallax.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function() {
+  ctor: function(file) {
     this._super(
-      resources.main.clouds[0], 1, 1,
+      file, 1, 1,
       {
         x: -30,
         y: 0
       },
       {
         x: random(0, Camera.width),
-        y: Camera.height - 180
+        y: 340
       },
       {
         x: 0.5,
-        y: 0
-      }
+        y: 0.0
+      },
+      true
     );
 
     /**
@@ -56,7 +57,7 @@ Cloud = Parallax.extend({
         y: 0
       },
       size: {
-        width: false,
+        width: random(this.width * 2, Camera.width),
         height: false
       }
     };
@@ -69,31 +70,16 @@ Cloud = Parallax.extend({
    */
   onCreate: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.setScale(random(0.1, 1.0));
   },
   onDestroy: function() {
     this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  parallaxCorrectPosition: function() {
 
     /**
      *
      *
      *
      */
-    this.y = random(0, Camera.height);
+    //this.parameters.size.width = random(this.width * 2, Camera.width);
   },
 
   /**
@@ -118,6 +104,6 @@ Cloud = Parallax.extend({
    *
    */
   deepCopy: function() {
-    return new Cloud;
+    return new Tree(this.textureFileName);
   }
 });
