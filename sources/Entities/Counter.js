@@ -422,7 +422,7 @@ Counter = Button.extend({
      *
      */
     if(achievement !== false) {
-      Services.achievements.update(App.config.info.achievements.jumps[achievement]);
+      Services.achievements.update(App.config.info.achievements.scores[achievement]);
     }
   },
 
@@ -483,7 +483,8 @@ Counter = Button.extend({
 
       this.textes.share.create().attr({
         x: Camera.center.x,
-        y: this.y - 180
+        y: this.y - 180,
+        opacity: 0
       });
       this.textes.share.runAction(
         cc.Sequence.create(
@@ -498,7 +499,8 @@ Counter = Button.extend({
 
       this.textes.start.create().attr({
         x: Camera.center.x,
-        y: this.y - 180
+        y: this.y - 180,
+        opacity: 0
       });
       this.textes.start.runAction(
         cc.Sequence.create(

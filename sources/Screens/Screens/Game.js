@@ -153,6 +153,7 @@ Game = Screen.extend({
           }
         )
       ),
+      people: new Manager(10, new People, this.backgrounds.b),
       name: new Name,
       character: new Character,
       counter: new Counter
@@ -362,6 +363,18 @@ Game = Screen.extend({
      *
      */
     this.changeState(this.parameters.states.menu);
+
+    /**
+     *
+     *
+     *
+     */
+    Ad.Admob.show(cc.Ad.Banner, {
+      success: function() {
+      }.bind(this),
+      error: function() {
+      }
+    });
   },
   onHide: function() {
     this._super();
@@ -387,6 +400,23 @@ Game = Screen.extend({
        *
        */
       this.elements.character.onTouchBegan(touch, e);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    else if(this.parameters.state === this.parameters.states.prepare) {
+
+      /**
+       *
+       *
+       *
+       */
+      for(var i = 0; i < this.elements.people.count().count; i++) {
+        this.elements.people.get(i).parameters.up++;
+      }
     }
 
     /**
@@ -678,6 +708,43 @@ Game = Screen.extend({
    * 
    *
    */
+  onSave: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.character.onSave();
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.elements.people.count().count === 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.counter.clear();
+
+      /**
+       *
+       *
+       *
+       */
+      this.changeState(this.parameters.states.start);
+    }
+  },
+
+  /**
+   *
+   * 
+   *
+   */
   onMenu: function() {
 
     /**
@@ -773,13 +840,6 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.counter.clear();
-
-    /**
-     *
-     *
-     *
-     */
     this.backgrounds.w.y = 0;
 
     /**
@@ -787,30 +847,33 @@ Game = Screen.extend({
      *
      *
      */
-    this.backgrounds.game.x = 0;
-    this.backgrounds.game.y = 0;
-
-    /**
-    *
-    *
-    *
-    */
-    Ad.Admob.show(cc.Ad.Banner, {
-    success: function() {
-    }.bind(this),
-    error: function() {
-    }
-    });
+    this.backgrounds.b.y = 0;
 
     /**
      *
      *
      *
      */
-    // TODO: Remove this.
-    this.changeState(this.parameters.states.start);
+    for(var i = 0; i < this.elements.people.count().capacity; i++) {
+      this.elements.people.create();
+    }
   },
   onStart: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.b.runAction(
+      cc.EaseBounceOut.create(
+        cc.MoveTo.create(1.0, {
+            x: 0,
+            y: 270
+          }
+        )
+      )
+    );
   },
   onGame: function() {
 
@@ -826,6 +889,20 @@ Game = Screen.extend({
      *
      *
      */
+    this.backgrounds.w.runAction(
+      cc.EaseSineInOut.create(
+        cc.MoveTo.create(1.5, {
+          x: 0,
+          y: 0
+        })
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
     Analytics.sendEvent('System events', 'Game start', '', '');
   },
   onLoss: function() {
@@ -835,8 +912,25 @@ Game = Screen.extend({
      *
      *
      */
+    this.elements.people.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.elements.character.y <= 0) {
+      this.setShake(0.5, 0.01);
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.splash.runAction(
       cc.Sequence.create(
+        cc.DelayTime.create(this.elements.character.y <= 0 ? 0.5 : 0.0),
         cc.FadeIn.create(0.2),
         cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
@@ -941,14 +1035,6 @@ Game = Screen.extend({
   updateLoss: function(time) {
   },
   updateGame: function(time) {
-
-    /**
-     *
-     *
-     *
-     */
-    this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
-    this.backgrounds.game.y = min(0, -this.elements.character.y + 450);
   },
 
   /**
@@ -1014,9 +1100,39 @@ Game = Screen.extend({
      *
      */
     switch(this.parameters.state) {
-      case this.parameters.states.prepare:
       case this.parameters.states.start:
       this.updateWater(time);
+      break;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    switch(this.parameters.state) {
+      case this.parameters.states.prepare:
+      case this.parameters.states.start:
+      case this.parameters.states.game:
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
+      this.backgrounds.game.y = min(0, -this.elements.character.y + 450);
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.elements.character.y >= 450) {
+        this.backgrounds.game.setScale(max(1.0 - 1.0 / (1000 / (this.elements.character.y - 450)), 0.25));
+      } else {
+        this.backgrounds.game.setScale(1);
+      }
       break;
     }
   },
@@ -1035,5 +1151,16 @@ Game = Screen.extend({
      *
      */
     this.updateStates(time);
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  parallax: {
+    scale: function() {
+      return this.backgrounds.game.getScale();
+    }
   }
 });

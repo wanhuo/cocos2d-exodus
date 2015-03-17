@@ -37,7 +37,6 @@ Character = Spine.extend({
      *
      */
     this.parameters = {
-      element: false,
       state: 0,
       states: {
         menu: 1,
@@ -51,30 +50,53 @@ Character = Spine.extend({
           name: 'scale',
           time: 1.0,
           loop: false
+        },
+        people: {
+          index: 2,
+          name: 'people',
+          time: 1.0,
+          loop: false
         }
       },
       skins: [
         '1'
       ],
       vector: {
-        x: 0,
-        y: 0,
+        x: 1,
+        y: 1,
         setup: {
           x: 1,
           y: 1
         }
       },
       speed: {
+        state: true,
         x: 0,
         y: 0,
+        max: {
+          x: 1500,
+          y: 500
+        },
+        min: {
+          x: 0,
+          y: -2000
+        },
+        increase: {
+          x: 0.0,
+          y: 5.0,
+          increase: {
+            x: 0.1,
+            y: 0.0
+          }
+        },
+        decrease: {
+          x: 0.0,
+          y: 4.5
+        },
         setup: {
-          x: 1600,
-          y: 2000
+          x: 0,
+          y: 0
         }
-      },
-      gravity: {
-        x: 0,
-        y: 5.0
       }
     };
 
@@ -83,7 +105,15 @@ Character = Spine.extend({
      * 
      *
      */
+    this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
+
+    /**
+     *
+     * 
+     *
+     */
     this.setLocalZOrder(10);
+    this.shadow.setLocalZOrder(9);
 
     /**
      *
@@ -100,9 +130,26 @@ Character = Spine.extend({
    */
   onCreate: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.create().attr({
+      x: this.x,
+      y: 340
+    });
   },
   onDestroy: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.destroy();
 
     /**
      *
@@ -131,6 +178,21 @@ Character = Spine.extend({
    * 
    *
    */
+  onSave: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setAnimation(this.parameters.animations.people.index, this.parameters.animations.people.name, false);
+  },
+
+  /**
+   *
+   * 
+   *
+   */
   onAnimationFinish: function(index) {
     if(this._super(index)) {
     }
@@ -148,13 +210,6 @@ Character = Spine.extend({
      * 
      *
      */
-    this.create();
-
-    /**
-     *
-     * 
-     *
-     */
     this.x = Camera.center.x;
     this.y = 450;
 
@@ -164,6 +219,13 @@ Character = Spine.extend({
      *
      */
     this.setScale(0.25);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.create();
   },
   onAnimation: function() {
 
@@ -190,6 +252,20 @@ Character = Spine.extend({
      * 
      *
      */
+    this.rotation = 0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.y = 450;
+
+    /**
+     *
+     * 
+     *
+     */
     if(!this.created) {
       this.create();
     }
@@ -199,15 +275,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.rotation = 0;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.x = Camera.center.x;
-    this.y = 450;
+    this.parameters.speed.state = true;
 
     /**
      *
@@ -224,8 +292,22 @@ Character = Spine.extend({
      */
     this.parameters.vector.x = this.parameters.vector.setup.x;
     this.parameters.vector.y = this.parameters.vector.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.speed.increase.x = 0;
   },
   onGame: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateTraectory();
   },
 
   /**
@@ -270,7 +352,29 @@ Character = Spine.extend({
      *
      */
     else if(this.parameters.state === this.parameters.states.game) {
-      // TODO: Check points.
+      if(true) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.updateTraectory();
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.onJump();
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.count();
+      }
     }
   },
   onTouchEnded: function(touch, e) {
@@ -335,26 +439,70 @@ Character = Spine.extend({
 
     /**
      *
-     *
+     * 
      *
      */
-    this.parameters.vector.y -= 0.01;
+    if(this.parameters.speed.x < this.parameters.speed.max.x) {
+      this.parameters.speed.x += this.parameters.speed.increase.x;
+      this.parameters.speed.increase.x += this.parameters.speed.increase.increase.x;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    if(this.parameters.speed.state) {
+
+      /**
+       *
+       * 
+       *
+       */
+      if(this.parameters.speed.y < this.parameters.speed.max.y) {
+        this.parameters.speed.y += this.parameters.speed.increase.y;
+      } else {
+        this.parameters.speed.state = false;
+      }
+    } else {
+
+      /**
+       *
+       * 
+       *
+       */
+      if(this.parameters.speed.x > this.parameters.speed.min.x) {
+        this.parameters.speed.x -= this.parameters.speed.decrease.x;
+      } else {
+        this.parameters.speed.state = false;
+      }
+
+      /**
+       *
+       * 
+       *
+       */
+      if(this.parameters.speed.y > this.parameters.speed.min.y) {
+        this.parameters.speed.y -= this.parameters.speed.decrease.y;
+      } else {
+        this.parameters.speed.state = false;
+      }
+    }
 
     /**
      *
      *
      *
      */
-    this.x += this.parameters.vector.x * this.parameters.speed.x * time;
-    this.y += this.parameters.vector.y * this.parameters.speed.y * time;
+    this.rotation = Math.atan2(this.parameters.speed.x, this.parameters.speed.y) * 180 / Math.PI;
 
     /**
      *
      *
      *
-     *
      */
-    this.rotation = atan2(this.parameters.vector.x, this.parameters.vector.y) * 180 / Math.PI;
+    this.x += this.parameters.vector.x * this.parameters.speed.x * (1.0 / 60.0);
+    this.y += this.parameters.vector.y * this.parameters.speed.y * (1.0 / 60.0);
 
     /**
      *
@@ -364,6 +512,15 @@ Character = Spine.extend({
     if(this.y < 0) {
       this.destroy();
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateTraectory: function() {
+    this.parameters.speed.state = true;
   },
 
   /**
@@ -391,6 +548,39 @@ Character = Spine.extend({
       case this.parameters.states.game:
       this.updateGame(time);
       break;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.visible = this.y >= 450;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.shadow.visible) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.shadow.x = this.x;
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.y <= 650 && this.y >= 450) {
+        this.shadow.setScaleX(1.0 - 1.0 / (200 / (this.y - 450)));
+      } else {
+        this.shadow.setScaleX(0);
+      }
     }
   },
 

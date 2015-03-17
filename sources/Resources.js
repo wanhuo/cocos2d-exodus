@@ -29,7 +29,18 @@ var resources = {
     character: {
       texture: 'resource/Graphics/character.png',
       atlas: 'resource/Graphics/character.atlas',
-      json: 'resource/Graphics/character.json'
+      json: 'resource/Graphics/character.json',
+      shadow: 'resource/Graphics/character-shadow.png'
+    },
+    people: {
+      texture: 'resource/Graphics/people.png',
+      atlas: 'resource/Graphics/people.atlas',
+      json: 'resource/Graphics/people.json'
+    },
+    point: {
+      texture: 'resource/Graphics/dots.png',
+      atlas: 'resource/Graphics/dots.atlas',
+      json: 'resource/Graphics/dots.json'
     },
     ground: 'resource/Graphics/ground.png',
     clouds: [
