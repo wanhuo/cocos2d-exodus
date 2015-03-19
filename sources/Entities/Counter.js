@@ -49,6 +49,7 @@ Counter = Button.extend({
       jumps: new Text('jumps', Game.backgrounds.b),
       deaths: new Text('deaths', Game.backgrounds.b),
       start: new Text('start', Game.backgrounds.b),
+      status: new Text('fail', Game.backgrounds.b),
       decoration: new Text('decoration-0', Game.backgrounds.b),
       share: new Text('share', Game.backgrounds.b)
     };
@@ -337,7 +338,7 @@ Counter = Button.extend({
      *
      *
      */
-    if(true) {
+    if(Game.elements.character.y >= 1000 && probably(30)) {
       if(this.textes.decoration.getNumberOfRunningActions() > 0) return false;
 
       this.textes.decoration.setText('decoration-' + random(0, 2, true));
@@ -388,6 +389,62 @@ Counter = Button.extend({
      *
      */
     this.updateTextData();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onMistake: function() {
+    this.textes.status.stopAllActions();
+
+    this.textes.status.setText('mistake');
+
+    this.textes.status.create().attr({
+      x: Camera.center.x,
+      y: this.y - 250,
+      scale: 0,
+      opacity: 255
+    });
+    this.textes.status.runAction(
+      cc.Sequence.create(
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        ),
+        cc.DelayTime.create(0.5),
+        cc.FadeOut.create(0.2),
+        cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
+      )
+    );
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onFail: function() {
+    this.textes.status.stopAllActions();
+
+    this.textes.status.setText('fail');
+
+    this.textes.status.create().attr({
+      x: Camera.center.x,
+      y: this.y - 250,
+      scale: 0,
+      opacity: 255
+    });
+    this.textes.status.runAction(
+      cc.Sequence.create(
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        ),
+        cc.DelayTime.create(0.5),
+        cc.FadeOut.create(0.2),
+        cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
+      )
+    );
   },
 
   /**

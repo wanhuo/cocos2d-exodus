@@ -42,7 +42,8 @@ Character = Spine.extend({
         menu: 1,
         animation: 2,
         prepare: 3,
-        game: 4
+        game: 4,
+        loss: 5
       },
       animations: {
         animation: {
@@ -122,7 +123,11 @@ Character = Spine.extend({
         },
         decrease: {
           x: 0.0,
-          y: 4.5
+          y: 4.5,
+          max: {
+            x: 0.0,
+            y: 10.0,
+          }
         },
         setup: {
           x: 0,
@@ -131,9 +136,9 @@ Character = Spine.extend({
       },
       active: true,
       launches: 0,
-      collision: {
-        x: 125,
-        y: 125
+      collision: { // TODO: Correct this to the point size.
+        x: 75,
+        y: 75
       },
       skins: [
         '1',
@@ -466,6 +471,8 @@ Character = Spine.extend({
       }
     });
   },
+  onLoss: function() {
+  },
 
   /**
    *
@@ -503,9 +510,32 @@ Character = Spine.extend({
      *
      *
      */
-    else if(this.parameters.state === this.parameters.states.game && this.parameters.active) {
+    else if(this.parameters.state === this.parameters.states.game) {
       switch(this.detectPoint()) {
+        default:
+
+        /**
+         *
+         *
+         *
+         */
+        this.changeState(this.parameters.states.loss);
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.onFail();
+        break;
         case '1':
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.active = this.parameters.speed.state = true;
 
         /**
          *
@@ -528,14 +558,6 @@ Character = Spine.extend({
          */
         Counter.count();
         break;
-        default:
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.active = false;
         case '2':
 
         /**
@@ -543,14 +565,28 @@ Character = Spine.extend({
          *
          *
          */
-        this.parameters.speed.state = false;
+        this.parameters.active = this.parameters.speed.state = false;
 
         /**
          *
          *
          *
          */
-        this.parameters.speed.y = this.parameters.speed.min.y;
+        this.updateTraectory();
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.onJump();
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.onMistake();
         break;
       }
     }
@@ -613,6 +649,9 @@ Character = Spine.extend({
       case this.parameters.states.game:
       this.onGame();
       break;
+      case this.parameters.states.loss:
+      this.onLoss();
+      break;
     }
   },
 
@@ -627,7 +666,7 @@ Character = Spine.extend({
   },
   updatePrepare: function(time) {
   },
-  updateGame: function(time) {
+  updateGame: function(time, scale) {
 
     /**
      *
@@ -641,7 +680,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var position = this.updatePosition(this.parameters);
+    var position = this.updatePosition(this.parameters, scale);
 
     /**
      *
@@ -667,13 +706,16 @@ Character = Spine.extend({
       this.destroy();
     }
   },
+  updateLoss: function(time) {
+    this.updateGame(time, 2);
+  },
 
   /**
    *
    *
    *
    */
-  updatePosition: function(parameters) {
+  updatePosition: function(parameters, scale) {
 
     /**
      *
@@ -734,7 +776,21 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.y > parameters.speed.min.y) {
-        parameters.speed.y -= parameters.speed.decrease.y;
+
+        /**
+         *
+         *
+         *
+         */
+        if(scale) {
+            parameters.speed.y -= parameters.speed.decrease.max.y * scale;
+        } else {
+          if(this.parameters.active) {
+            parameters.speed.y -= parameters.speed.decrease.y;
+          } else {
+            parameters.speed.y -= parameters.speed.decrease.max.y;
+          }
+        }
       } else {
         parameters.speed.state = false;
       }
@@ -785,7 +841,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = 100;
+    var probably = 10;
 
     /**
      *
@@ -915,6 +971,9 @@ Character = Spine.extend({
       break;
       case this.parameters.states.game:
       this.updateGame(time);
+      break;
+      case this.parameters.states.loss:
+      this.updateLoss(time);
       break;
     }
 

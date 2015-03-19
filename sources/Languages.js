@@ -47,12 +47,20 @@ var languages = {
     {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'decoration-0': [
-    {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false},
-    {title: 'Направляюсь к луне!', font: 'Impact', size: 32, dimensions: false}
+    {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Направляюсь к луне!', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'decoration-1': [
-    {title: 'I CAN SEE MY HOUSE FROM HERE', font: 'Impact', size: 32, dimensions: false},
-    {title: 'Я вижу свой дом отсюда!', font: 'Impact', size: 32, dimensions: false}
+    {title: 'I CAN SEE MY HOUSE FROM HERE', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Я вижу свой дом отсюда!', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
+  ],
+  'mistake': [
+    {title: 'Ouch.', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 0]},
+    {title: 'Ой.', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 0]}
+  ],
+  'fail': [
+    {title: 'Fail.', font: 'Impact', size: 42, dimensions: false, color: [255, 0, 0]},
+    {title: 'Долетался.', font: 'Impact', size: 42, dimensions: false, color: [255, 0, 0]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false},
