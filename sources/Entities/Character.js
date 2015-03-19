@@ -141,12 +141,13 @@ Character = Spine.extend({
         }
       },
       active: true,
-      launches: 0,
+      locked: true,
       collision: { // TODO: Correct this to the point size.
         x: 75,
         y: 75
       },
       time: 1.0,
+      launches: 0,
       skins: [
         '1',
         '2'
@@ -412,12 +413,7 @@ Character = Spine.extend({
      *
      */
     this.parameters.active = true;
-
-    /**
-     *
-     * 
-     *
-     */
+    this.parameters.locked = true;
     this.parameters.speed.state = true;
 
     /**
@@ -464,7 +460,22 @@ Character = Spine.extend({
      *
      *
      */
-    this.updateTraectory();
+    setTimeout(function() {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.locked = false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateTraectory();
+   }.bind(this), 1500);
 
     /**
      *
@@ -536,7 +547,7 @@ Character = Spine.extend({
           }.bind(this))
         )
       );
-    }.bind(this), 150);
+    }.bind(this), 100);
   },
 
   /**
@@ -628,6 +639,13 @@ Character = Spine.extend({
      *
      */
     else if(this.parameters.state === this.parameters.states.game) {
+      if(this.parameters.locked) return false;
+
+      /**
+       *
+       *
+       *
+       */
       switch(this.detectPoint()) {
         default:
 
@@ -706,6 +724,21 @@ Character = Spine.extend({
         Counter.onMistake();
         break;
       }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    else if(this.parameters.state === this.parameters.states.loss) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.time = 2;
     }
   },
   onTouchEnded: function(touch, e) {

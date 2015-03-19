@@ -338,7 +338,7 @@ Counter = Button.extend({
      *
      *
      */
-    if(Game.elements.character.y >= 1000 && probably(30)) {
+    if(Game.elements.character.y >= 2000 && probably(30)) {
       if(this.textes.decoration.getNumberOfRunningActions() > 0) return false;
 
       this.textes.decoration.setText('decoration-' + random(0, 2, true));
@@ -366,13 +366,6 @@ Counter = Button.extend({
      *
      */
     this.values.info.jumps++;
-
-    /**
-     *
-     *
-     *
-     */
-    this.updateTextData();
   },
   onDeath: function() {
 
@@ -382,13 +375,6 @@ Counter = Button.extend({
      *
      */
     this.values.info.deaths++;
-
-    /**
-     *
-     *
-     *
-     */
-    this.updateTextData();
   },
 
   /**
@@ -473,7 +459,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.updateTextData();
+    this.updateTextData(true);
 
     /**
      *
@@ -487,7 +473,7 @@ Counter = Button.extend({
      *
      *
      */
-    if(this.values.scores.current >= 50) {
+    /*if(this.values.scores.current >= 50) {
       achievement = 4;
     } else if(this.values.scores.current >= 15) {
       achievement = 3;
@@ -497,16 +483,16 @@ Counter = Button.extend({
       achievement = 1;
     } else if(this.values.scores.current >= 1) {
       achievement = 0;
-    }
+    }*/
 
     /**
      *
      *
      *
      */
-    if(achievement !== false) {
+    /*if(achievement !== false) {
       Services.achievements.update(App.config.info.achievements.scores[achievement]);
-    }
+    }*/
   },
 
   /**
@@ -601,7 +587,7 @@ Counter = Button.extend({
    *
    *
    */
-  updateTextData: function() {
+  updateTextData: function(simple) {
 
     /**
      *
@@ -609,8 +595,16 @@ Counter = Button.extend({
      *
      */
     this.textes.value.format([this.values.scores.current]);
-    this.textes.best.format([max(this.values.scores.current, this.values.scores.best)]);
-    this.textes.jumps.format([this.values.info.jumps]);
-    this.textes.deaths.format([this.values.info.deaths]);
+
+    /**
+     *
+     *
+     *
+     */
+    if(!simple) {
+      this.textes.best.format([max(this.values.scores.current, this.values.scores.best)]);
+      this.textes.jumps.format([this.values.info.jumps]);
+      this.textes.deaths.format([this.values.info.deaths]);
+    }
   }
 });
