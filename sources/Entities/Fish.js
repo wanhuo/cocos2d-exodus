@@ -42,8 +42,31 @@ Fish = Spine.extend({
       skins: [
         '1',
         '2'
-      ]
+      ],
+      speed :{
+        x: 0,
+        y: 0
+      },
+      vector :{
+        x: 0,
+        y: 0,
+        setup: {
+          x: 1,
+          y: 1
+        },
+        descrease: {
+          x: 0,
+          y: 0.05
+        }
+      }
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.setNeedScheduleUpdate(true);
 
     /**
      *
@@ -51,6 +74,19 @@ Fish = Spine.extend({
      *
      */
     this.setSkin(this.parameters.skins.random());
+
+    /**
+     *
+     * 
+     *
+     */
+    this.destroy = function(param) {
+      if(param === Entity.destroy.visible || param === true) {
+        return Entity.prototype.destroy.call(this, param);
+      }
+
+      return false;
+    }.bind(this);
   },
 
   /**
@@ -66,8 +102,46 @@ Fish = Spine.extend({
      *
      *
      */
-    this.x = abs(this.parent.x) + Camera.width + Camera.width * Game.parallax.scale();
-    this.y = 150;
+    var position = abs(Game.backgrounds.game.x);
+    var camera = Camera.width * Game.parallax.scale();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.position = probably(50);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.speed.x = random(200, 800);
+    this.parameters.speed.y = random(200, 800);
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = (this.parameters.position ? random(position, position + camera / 2) : random(position + camera / 2, position + camera));
+    this.y = 130;
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.vector.x = this.parameters.vector.setup.x;
+    this.parameters.vector.y = this.parameters.vector.setup.y;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setScaleX(-1);
 
     /**
      *
@@ -87,6 +161,37 @@ Fish = Spine.extend({
    */
   update: function(time) {
     this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    this.x += (this.parameters.vector.x * this.parameters.speed.x * time) * (this.parameters.position ? 1 : -1);
+    this.y += this.parameters.vector.y * this.parameters.speed.y * time;
+
+    /**
+     *
+     *
+     *
+     */
+    this.rotation = Math.atan2(this.parameters.vector.x * (this.parameters.position ? 1 : -1), this.parameters.vector.y) * 180 / Math.PI - 90;
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.vector.y -= this.parameters.vector.descrease.y;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.y < 0) {
+      this.destroy(true);
+    }
   },
 
   /**

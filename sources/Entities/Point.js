@@ -86,6 +86,13 @@ Point = Spine.extend({
      * 
      *
      */
+    this.setSkin(this.parameters.skins.random());
+
+    /**
+     *
+     * 
+     *
+     */
     this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);
   },
   onDestroy: function() {
@@ -100,6 +107,22 @@ Point = Spine.extend({
   onAnimationFinish: function(index) {
     if(this._super(index)) {
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  setSkin: function(skin) {
+    this._super(skin);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.skin = skin;
   },
 
   /**

@@ -208,6 +208,13 @@ Game = Screen.extend({
      *
      * 
      *
+     */
+    this.backgrounds.w.retain();
+
+    /**
+     *
+     * 
+     *
      *
      *
      *
@@ -384,18 +391,6 @@ Game = Screen.extend({
      *
      */
     this.changeState(this.parameters.states.menu);
-
-    /**
-     *
-     *
-     *
-     */
-    Ad.Admob.show(cc.Ad.Banner, {
-      success: function() {
-      }.bind(this),
-      error: function() {
-      }
-    });
   },
   onHide: function() {
     this._super();
@@ -908,6 +903,7 @@ Game = Screen.extend({
      *
      */
     this.elements.points.clear();
+    this.elements.fishes.clear();
 
     /**
      *
@@ -917,6 +913,18 @@ Game = Screen.extend({
     for(var i = 0; i < this.elements.people.count().capacity; i++) {
       this.elements.people.create();
     }
+
+    /**
+     *
+     *
+     *
+     */
+    Ad.Admob.show(cc.Ad.Banner, {
+      success: function() {
+      }.bind(this),
+      error: function() {
+      }
+    });
   },
   onStart: function() {
 
@@ -1018,7 +1026,7 @@ Game = Screen.extend({
      *
      *
      *
-     */
+     */return;
     this.parameters.ad.interstitial.current++;
     if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
       this.parameters.ad.interstitial.current = 0;
@@ -1157,20 +1165,8 @@ Game = Screen.extend({
      *
      *
      */
-    switch(this.parameters.state) {
-      case this.parameters.states.menu:
-      case this.parameters.states.animation:
-      case this.parameters.states.prepare:
-
-      /**
-       *
-       *
-       *
-       */
-      if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
-        this.elements.fishes.create();
-      }
-      break;
+    if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
+      this.elements.fishes.create();
     }
   },
 
@@ -1287,7 +1283,7 @@ Game = Screen.extend({
    */
   parallax: {
     scale: function() {
-      return 1.0 + (1.0 - Game.backgrounds.d.getScale());
+      return (Game.parameters.state === Game.parameters.states.game ? (1.0 + (1.0 - Game.backgrounds.d.getScale())) : 1);
     }
   }
 });

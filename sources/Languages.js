@@ -46,8 +46,16 @@ var languages = {
     {title: 'Tap screen to launch a rocket', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
     {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
+  'decoration-0': [
+    {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false},
+    {title: 'Направляюсь к луне!', font: 'Impact', size: 32, dimensions: false}
+  ],
+  'decoration-1': [
+    {title: 'I CAN SEE MY HOUSE FROM HERE', font: 'Impact', size: 32, dimensions: false},
+    {title: 'Я вижу свой дом отсюда!', font: 'Impact', size: 32, dimensions: false}
+  ],
   'share-message': [
-    {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'Ого! Я достиг$1очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}
+    {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Ого! Я достиг$1очков в игре Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false}
   ]
 };

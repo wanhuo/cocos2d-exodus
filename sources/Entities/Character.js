@@ -75,6 +75,12 @@ Character = Spine.extend({
             name: 'engine-repeat',
             time: 1.0,
             loop: false
+          },
+          complete: {
+            index: 5,
+            name: 'engine-start-complete',
+            time: 1.0,
+            loop: false
           }
         }
       },
@@ -122,6 +128,11 @@ Character = Spine.extend({
           x: 0,
           y: 0
         }
+      },
+      launches: 0,
+      collision: {
+        x: 125,
+        y: 125
       },
       skins: [
         '1',
@@ -265,6 +276,13 @@ Character = Spine.extend({
 
           /**
            *
+           * 
+           *
+           */
+          this.setAnimation(this.parameters.animations.engine.complete.index, this.parameters.animations.engine.complete.name, false);
+
+          /**
+           *
            *
            *
            */
@@ -348,14 +366,9 @@ Character = Spine.extend({
      * 
      *
      */
-    this.rotation = 0;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.y = Game.parameters.camera.center;
+    if(this.parameters.launches > 0) {
+      this.setSlotsToSetupPose();
+    }
 
     /**
      *
@@ -365,6 +378,20 @@ Character = Spine.extend({
     if(!this.created) {
       this.create();
     }
+
+    /**
+     *
+     * 
+     *
+     */
+    this.rotation = 0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.y = Game.parameters.camera.center;
 
     /**
      *
@@ -403,6 +430,13 @@ Character = Spine.extend({
      * 
      *
      */
+    this.parameters.launches++;
+
+    /**
+     *
+     * 
+     *
+     */
     this.stopAllActions();
 
     /**
@@ -411,6 +445,18 @@ Character = Spine.extend({
      *
      */
     this.updateTraectory();
+
+    /**
+     *
+     *
+     *
+     */
+    Ad.Admob.hide(cc.Ad.Banner, {
+      success: function() {
+      }.bind(this),
+      error: function() {
+      }
+    });
   },
 
   /**
@@ -450,7 +496,8 @@ Character = Spine.extend({
      *
      */
     else if(this.parameters.state === this.parameters.states.game) {
-      if(true) {
+      switch(this.detectPoint()) {
+        case '1':
 
         /**
          *
@@ -472,6 +519,9 @@ Character = Spine.extend({
          *
          */
         Counter.count();
+        break;
+        case '2':
+        break;
       }
     }
   },
@@ -484,6 +534,13 @@ Character = Spine.extend({
    *
    */
   setSlotsToSetupPose: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.clearTracks();
 
     /**
      *
@@ -769,6 +826,39 @@ Character = Spine.extend({
        */
       count++;
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  detectPoint: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < Game.elements.points.count().count; i++) {
+      var point = Game.elements.points.get(i);
+
+      /**
+       *
+       *
+       *
+       */
+      if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
+        return point.parameters.skin;
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    return false;
   },
 
   /**
