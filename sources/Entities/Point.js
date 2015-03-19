@@ -46,8 +46,8 @@ Point = Spine.extend({
         }
       },
       skins: [
-        'blue',
-        'red'
+        '1',
+        '2'
       ]
     };
 

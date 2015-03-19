@@ -38,9 +38,9 @@ People = Spine.extend({
      */
     this.parameters = {
       animations: {
-        run: {
+        animation: {
           index: 1,
-          name: 'run',
+          name: 'animation',
           time: 1.0,
           loop: true
         }
@@ -89,8 +89,15 @@ People = Spine.extend({
        * 
        *
        */
-      this.setAnimation(this.parameters.animations.run.index, this.parameters.animations.run.name, true);
+      this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);
     }.bind(this), random(0, 500));
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
 
     /**
      *

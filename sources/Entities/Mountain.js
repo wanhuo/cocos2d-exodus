@@ -32,7 +32,7 @@ Mountain = Parallax.extend({
     this._super(
       resources.main.mountains[0], 1, 1,
       {
-        x: -300,
+        x: -30,
         y: 0
       },
       {
@@ -42,8 +42,7 @@ Mountain = Parallax.extend({
       {
         x: 0.5,
         y: 0
-      },
-      true
+      }
     );
 
     /**
@@ -51,12 +50,14 @@ Mountain = Parallax.extend({
      *
      *
      */
-    this.parameters = {
-      size: {
-        width: false,
-        height: false
-      }
-    };
+    this.setNeedScheduleUpdate(true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.vector.x = this.vector.base.x;
   },
 
   /**
@@ -66,6 +67,13 @@ Mountain = Parallax.extend({
    */
   onCreate: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.size.width = random(0, Camera.width);
 
     /**
      *
@@ -83,7 +91,16 @@ Mountain = Parallax.extend({
    *
    *
    */
+  disabled: function() {
+    return !(Game.parameters.state === Game.parameters.states.game);
+  },
+
+  /**
+   *
+   *
+   *
+   */
   deepCopy: function() {
-    return new Mountain();
+    return new Mountain;
   }
 });

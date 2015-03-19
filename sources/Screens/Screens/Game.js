@@ -57,6 +57,17 @@ Game = Screen.extend({
         speed: 30.0,
         y: 180
       },
+      scale: {
+        min: 0.25,
+        max: 1.0,
+        position: {
+          min: 450,
+          max: 2000
+        }
+      },
+      camera: {
+        center: 450
+      },
       ad: {
         interstitial: {
           current: 0,
@@ -89,7 +100,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.w = new Background(this.backgrounds.game);
+    this.backgrounds.w = new Background(this.backgrounds.d);
 
     /**
      *
@@ -115,8 +126,8 @@ Game = Screen.extend({
       ],
       ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
       water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
-        new Parallax(
-          resources.main.water[2], 1, 1,
+        new Water(
+          resources.main.water[2],
           {
             x: 100,
             y: 0
@@ -128,8 +139,8 @@ Game = Screen.extend({
         )
       ),
       water2: new ParallaxEntity.Infinity(resources.main.water[1], this.backgrounds.w).addEntity(
-        new Parallax(
-          resources.main.water[1], 1, 1,
+        new Water(
+          resources.main.water[1],
           {
             x: -100,
             y: 0
@@ -140,9 +151,10 @@ Game = Screen.extend({
           }
         )
       ),
+      fishes: new Manager(2, new Fish, this.backgrounds.w),
       water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.w).addEntity(
-        new Parallax(
-          resources.main.water[0], 1, 1,
+        new Water(
+          resources.main.water[0],
           {
             x: 100,
             y: 0
@@ -153,6 +165,7 @@ Game = Screen.extend({
           }
         )
       ),
+      baloons: new Manager(1, new Baloon, this.backgrounds.game),
       people: new Manager(10, new People, this.backgrounds.b),
       points: new Manager(10, new Point, this.backgrounds.game),
       name: new Name,
@@ -286,7 +299,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.background.setBlendFunc(gl.ONE, gl.ZERO);
+    this.elements.water1.setLocalZOrder(10);
 
     /**
      *
@@ -319,6 +332,13 @@ Game = Screen.extend({
         }.bind(this.elements.background)
       }
     }));
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.background.setBlendFunc(gl.ONE, gl.ZERO);
 
     /**
      *
@@ -841,6 +861,21 @@ Game = Screen.extend({
      *
      *
      */
+    this.backgrounds.w.removeFromParent();
+    this.backgrounds.game.addChild(this.backgrounds.w);
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.w.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds.w.y = 0;
 
     /**
@@ -849,6 +884,13 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.b.y = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.register();
 
     /**
      *
@@ -892,6 +934,13 @@ Game = Screen.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.unregister();
   },
   onGame: function() {
 
@@ -1084,6 +1133,52 @@ Game = Screen.extend({
    * 
    *
    */
+  updateBaloons: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.elements.baloons.count().count < this.elements.baloons.count().capacity) {
+      this.elements.baloons.create();
+    }
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  updateFishes: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.parameters.state) {
+      case this.parameters.states.menu:
+      case this.parameters.states.animation:
+      case this.parameters.states.prepare:
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
+        this.elements.fishes.create();
+      }
+      break;
+    }
+  },
+
+  /**
+   *
+   * 
+   *
+   */
   updateStates: function(time) {
 
     /**
@@ -1139,20 +1234,34 @@ Game = Screen.extend({
        *
        */
       this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
-      this.backgrounds.game.y = min(0, -(this.elements.character.y * Game.backgrounds.d.getScale()) + 450);
+      this.backgrounds.game.y = min(0, -(this.elements.character.y * Game.backgrounds.d.getScale()) + this.parameters.camera.center);
 
       /**
        *
        *
        *
        */
-      if(this.elements.character.y >= 450) {
-        this.backgrounds.d.setScale(max(1.0 - 1.0 / (2000 / (this.elements.character.y - 450)), 0.25));
+      if(this.elements.character.y >= this.parameters.scale.position.min) {
+        this.backgrounds.d.setScale(max(1.0 - 1.0 / (this.parameters.scale.position.max / (this.elements.character.y - this.parameters.scale.position.min)), this.parameters.scale.min));
       } else {
-        this.backgrounds.d.setScale(1);
+        this.backgrounds.d.setScale(this.parameters.scale.max);
       }
       break;
     }
+
+    /**
+     *
+     * 
+     *
+     */
+    this.updateBaloons(time);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.updateFishes(time);
   },
 
   /**

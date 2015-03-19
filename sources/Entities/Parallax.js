@@ -28,15 +28,8 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
    *
    *
    */
-  ctor: function(file, horizontal, vertical, vector, position, anchor, bind) {
+  ctor: function(file, horizontal, vertical, vector, position, anchor) {
     this._super(file, horizontal, vertical);
-
-    /**
-     *
-     *
-     *
-     */
-    this.setNeedScheduleUpdate(true);
 
     /**
      *
@@ -96,13 +89,6 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
         };
       }
     }
-
-    /**
-     *
-     *
-     *
-     */
-    this.bind = bind;
   },
 
   /**
@@ -120,35 +106,7 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
    *
    */
   update: function(time) {
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.disabled()) return false;
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.bind) {
-      if(Game.parameters.state === Game.parameters.states.game && Game.backgrounds.game.getNumberOfRunningActions() > 0) {
-        this.vector.x = this.vector.base.x;
-      } else {
-        this.vector.x = 0;
-      }
-    } else {
-      this.vector.x = this.vector.base.x;
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.vector.x != 0) {
+    if(!this.disabled()) {
       this._super(time);
     }
   },

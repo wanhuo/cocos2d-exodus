@@ -1,7 +1,7 @@
 {
     "project_type": "javascript",
     "debugMode": 0,
-    "showFPS": true,
+    "showFPS": false,
     "frameRate": 60,
     "id": "canvas",
     "renderMode": 0,

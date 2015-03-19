@@ -1,0 +1,48 @@
+
+baloon.png
+size: 253,107
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/bottom
+  rotate: true
+  xy: 212, 64
+  size: 41, 26
+  orig: 41, 26
+  offset: 0, 0
+  index: -1
+skins/1/pouch
+  rotate: true
+  xy: 244, 97
+  size: 8, 7
+  orig: 8, 7
+  offset: 0, 0
+  index: -1
+skins/1/root
+  rotate: false
+  xy: 2, 2
+  size: 103, 103
+  orig: 103, 103
+  offset: 0, 0
+  index: -1
+skins/1/strap
+  rotate: false
+  xy: 240, 91
+  size: 2, 14
+  orig: 2, 14
+  offset: 0, 0
+  index: -1
+skins/1/top
+  rotate: true
+  xy: 212, 21
+  size: 41, 8
+  orig: 41, 8
+  offset: 0, 0
+  index: -1
+skins/2/root
+  rotate: false
+  xy: 107, 2
+  size: 103, 103
+  orig: 103, 103
+  offset: 0, 0
+  index: -1

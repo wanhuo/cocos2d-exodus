@@ -45,22 +45,47 @@ Character = Spine.extend({
         game: 4
       },
       animations: {
-        scale: {
+        animation: {
           index: 1,
-          name: 'scale',
+          name: 'animation',
           time: 1.0,
           loop: false
         },
-        people: {
+        save: {
           index: 2,
-          name: 'people',
+          name: 'save',
           time: 1.0,
           loop: false
+        },
+        engine: {
+          start: {
+            index: 3,
+            name: 'engine-start',
+            time: 1.0,
+            loop: false
+          },
+          finish: {
+            index: 4,
+            name: 'engine-finish',
+            time: 1.0,
+            loop: false
+          },
+          repeat: {
+            index: 5,
+            name: 'engine-repeat',
+            time: 1.0,
+            loop: false
+          }
         }
       },
-      skins: [
-        '1'
-      ],
+      shadow: {
+        scale: {
+          position: {
+            min: 200,
+            max: 450
+          }
+        }
+      },
       vector: {
         x: 1,
         y: 1,
@@ -97,7 +122,11 @@ Character = Spine.extend({
           x: 0,
           y: 0
         }
-      }
+      },
+      skins: [
+        '1',
+        '2'
+      ]
     };
 
     /**
@@ -105,7 +134,21 @@ Character = Spine.extend({
      * 
      *
      */
+    this.smokes = new Manager(100, new Smoke, Game.backgrounds.game);
+
+    /**
+     *
+     * 
+     *
+     */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
 
     /**
      *
@@ -136,10 +179,24 @@ Character = Spine.extend({
      *
      *
      */
+    this.smokes.clear();
+
+    /**
+     *
+     *
+     *
+     */
     this.shadow.create().attr({
       x: this.x,
       y: 340
     });
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
   },
   onDestroy: function() {
     this._super();
@@ -185,7 +242,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.setAnimation(this.parameters.animations.people.index, this.parameters.animations.people.name, false);
+    this.setAnimation(this.parameters.animations.save.index, this.parameters.animations.save.name, false);
   },
 
   /**
@@ -195,6 +252,45 @@ Character = Spine.extend({
    */
   onAnimationFinish: function(index) {
     if(this._super(index)) {
+      switch(this.parameters.state) {
+        case this.parameters.states.prepare:
+
+        /**
+         *
+         *
+         *
+         */
+        switch(index) {
+          case this.parameters.animations.engine.start.index:
+
+          /**
+           *
+           *
+           *
+           */
+          Game.changeState(Game.parameters.states.game);
+          break;
+        }
+        case this.parameters.states.game:
+
+        /**
+         *
+         *
+         *
+         */
+        switch(index) {
+          case this.parameters.animations.engine.repeat.index:
+
+          /**
+           *
+           * 
+           *
+           */
+          this.setAnimation(this.parameters.animations.engine.repeat.index, this.parameters.animations.engine.repeat.name, false);
+          break;
+        }
+        break;
+      }
     }
   },
 
@@ -211,7 +307,7 @@ Character = Spine.extend({
      *
      */
     this.x = Camera.center.x;
-    this.y = 450;
+    this.y = Game.parameters.camera.center;
 
     /**
      *
@@ -234,7 +330,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.setAnimation(this.parameters.animations.scale.index, this.parameters.animations.scale.name, false);
+    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, false);
 
     /**
      *
@@ -259,7 +355,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.y = 450;
+    this.y = Game.parameters.camera.center;
 
     /**
      *
@@ -304,6 +400,13 @@ Character = Spine.extend({
 
     /**
      *
+     * 
+     *
+     */
+    this.stopAllActions();
+
+    /**
+     *
      *
      *
      */
@@ -327,23 +430,18 @@ Character = Spine.extend({
 
       /**
        *
-       *
+       * 
        *
        */
-      this.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(1.0),
-          cc.CallFunc.create(function() {
+      this.setAnimation(this.parameters.animations.engine.start.index, this.parameters.animations.engine.start.name, false);
+      this.setAnimation(this.parameters.animations.engine.repeat.index, this.parameters.animations.engine.repeat.name, false);
 
-            /**
-             *
-             *
-             *
-             */
-            Game.changeState(Game.parameters.states.game);
-          })
-        )
-      );
+      /**
+       *
+       * 
+       *
+       */
+      this.runAction(cc.DelayTime.create(Number.MAX_VALUE));
     }
 
     /**
@@ -386,6 +484,13 @@ Character = Spine.extend({
    *
    */
   setSlotsToSetupPose: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setAnimation(this.parameters.animations.engine.finish.index, this.parameters.animations.engine.finish.name, false);
   },
 
   /**
@@ -436,6 +541,13 @@ Character = Spine.extend({
   updatePrepare: function(time) {
   },
   updateGame: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.smokes.create(this);
 
     /**
      *
@@ -691,7 +803,7 @@ Character = Spine.extend({
      *
      *
      */
-    this.shadow.visible = this.y >= 450;
+    this.shadow.visible = this.y >= Game.parameters.camera.center;
 
     /**
      *
@@ -712,8 +824,8 @@ Character = Spine.extend({
        *
        *
        */
-      if(this.y <= 650 && this.y >= 450) {
-        this.shadow.setScaleX(1.0 - 1.0 / (200 / (this.y - 450)));
+      if(this.y <= (this.parameters.shadow.scale.position.min + this.parameters.shadow.scale.position.max) && this.y >= Game.parameters.camera.center) {
+        this.shadow.setScaleX(1.0 - 1.0 / (this.parameters.shadow.scale.position.min / (this.y - this.parameters.shadow.scale.position.max)));
       } else {
         this.shadow.setScaleX(0);
       }

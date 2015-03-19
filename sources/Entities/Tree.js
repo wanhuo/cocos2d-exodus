@@ -32,7 +32,7 @@ Tree = Parallax.extend({
     this._super(
       file, 1, 1,
       {
-        x: -30,
+        x: 0,
         y: 0
       },
       {
@@ -42,25 +42,8 @@ Tree = Parallax.extend({
       {
         x: 0.5,
         y: 0.0
-      },
-      true
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters = {
-      speed: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        width: random(this.width * 2, Camera.width),
-        height: false
       }
-    };
+    );
   },
 
   /**
@@ -70,32 +53,23 @@ Tree = Parallax.extend({
    */
   onCreate: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.size.width = random(this.width * 2, Camera.width);
+
+    /**
+     *
+     *
+     *
+     */
+    this.scale = random(1.0, 1.5);
   },
   onDestroy: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    //this.parameters.size.width = random(this.width * 2, Camera.width);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += this.parameters.speed.x * time;
   },
 
   /**

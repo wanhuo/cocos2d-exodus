@@ -32,7 +32,7 @@ Cloud = Parallax.extend({
     this._super(
       resources.main.clouds[0], 1, 1,
       {
-        x: -30,
+        x: random(-300, 0),
         y: 0
       },
       {
@@ -50,16 +50,14 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.parameters = {
-      speed: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        width: false,
-        height: false
-      }
-    };
+    this.setNeedScheduleUpdate(true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.vector.x = this.vector.base.x;
   },
 
   /**
@@ -75,7 +73,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.setScale(random(0.1, 1.0));
+    this.scale = random(0.1, 2.0);
   },
   onDestroy: function() {
     this._super();
@@ -93,7 +91,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.y = random(0, Camera.height);
+    this.y = random(0, Camera.height / Game.parameters.scale.min);
   },
 
   /**
@@ -101,15 +99,8 @@ Cloud = Parallax.extend({
    *
    *
    */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += this.parameters.speed.x * time;
+  disabled: function() {
+    return Game.parameters.state === Game.parameters.states.menu;
   },
 
   /**

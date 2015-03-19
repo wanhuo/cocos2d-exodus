@@ -30,17 +30,28 @@ var resources = {
       texture: 'resource/Graphics/character.png',
       atlas: 'resource/Graphics/character.atlas',
       json: 'resource/Graphics/character.json',
-      shadow: 'resource/Graphics/character-shadow.png'
+      shadow: 'resource/Graphics/character-shadow.png',
+      smoke: 'resource/Graphics/character-smoke.png'
     },
     people: {
       texture: 'resource/Graphics/people.png',
       atlas: 'resource/Graphics/people.atlas',
       json: 'resource/Graphics/people.json'
     },
+    baloon: {
+      texture: 'resource/Graphics/baloon.png',
+      atlas: 'resource/Graphics/baloon.atlas',
+      json: 'resource/Graphics/baloon.json'
+    },
+    fish: {
+      texture: 'resource/Graphics/fish.png',
+      atlas: 'resource/Graphics/fish.atlas',
+      json: 'resource/Graphics/fish.json'
+    },
     point: {
-      texture: 'resource/Graphics/dots.png',
-      atlas: 'resource/Graphics/dots.atlas',
-      json: 'resource/Graphics/dots.json'
+      texture: 'resource/Graphics/point.png',
+      atlas: 'resource/Graphics/point.atlas',
+      json: 'resource/Graphics/point.json'
     },
     ground: 'resource/Graphics/ground.png',
     clouds: [
@@ -57,7 +68,6 @@ var resources = {
     ],
     buttons: {
       play: 'resource/Graphics/play-button.png',
-      settings: 'resource/Graphics/settings-button.png',
       leaderboard: 'resource/Graphics/leaderboard-button.png',
       achievements: 'resource/Graphics/achievements-button.png',
       like: 'resource/Graphics/like-button.png',
