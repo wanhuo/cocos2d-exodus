@@ -1,12 +1,12 @@
 {
-"skeleton": { "hash": "GTWsU3gwJS0KfNLHoIIeHKTRbo4", "spine": "2.1.18", "width": 804.32, "height": 456, "images": "" },
+"skeleton": { "hash": "dWTF8Mkie+1rx5k7jEw824WmOCg", "spine": "2.1.18", "width": 804.32, "height": 456, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "1", "parent": "root" },
 	{ "name": "2", "parent": "root" },
 	{ "name": "3", "parent": "root" },
 	{ "name": "engine", "parent": "root" },
-	{ "name": "flame", "parent": "root" },
+	{ "name": "flame", "parent": "3" },
 	{ "name": "flame-1", "parent": "flame", "y": -96.94 },
 	{ "name": "flame-2", "parent": "flame", "y": -104.73 },
 	{ "name": "flame-3", "parent": "flame", "y": -112.45 }
@@ -173,6 +173,18 @@
 		}
 	},
 	"engine-repeat": {
+		"slots": {
+			"1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			}
+		},
 		"bones": {
 			"flame": {
 				"translate": [
@@ -180,11 +192,26 @@
 					{ "time": 0.1666, "x": 0, "y": 10 },
 					{ "time": 0.3666, "x": 0, "y": 0 }
 				]
+			},
+			"3": {
+				"scale": [
+					{ "time": 0, "x": 0.5, "y": 0.5 }
+				]
 			}
 		}
 	},
 	"engine-start": {
 		"slots": {
+			"1": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
+			"2": {
+				"color": [
+					{ "time": 0, "color": "ffffff00" }
+				]
+			},
 			"10": {
 				"color": [
 					{ "time": 0, "color": "ffffff00" },
@@ -225,6 +252,32 @@
 				"color": [
 					{ "time": 0, "color": "ffffff00" },
 					{ "time": 0.0333, "color": "ffffffff" }
+				]
+			}
+		},
+		"bones": {
+			"engine": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": -44 },
+					{ "time": 0.3333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.659, "y": 0.61 },
+					{ "time": 0.3333, "x": 1, "y": 1 }
+				]
+			},
+			"3": {
+				"translate": [
+					{ "time": 0, "x": 0, "y": 0 },
+					{ "time": 1, "x": 0, "y": -12 },
+					{ "time": 1.1666, "x": 0, "y": 11 },
+					{ "time": 1.3333, "x": 0, "y": 0 }
+				],
+				"scale": [
+					{ "time": 0, "x": 0.5, "y": 0.5 },
+					{ "time": 1, "x": 0.605, "y": 0.445 },
+					{ "time": 1.1666, "x": 0.459, "y": 0.55 },
+					{ "time": 1.3333, "x": 0.5, "y": 0.5 }
 				]
 			}
 		}
