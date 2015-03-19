@@ -398,6 +398,13 @@ Character = Spine.extend({
      * 
      *
      */
+    this.parameters.time = 1;
+
+    /**
+     *
+     * 
+     *
+     */
     this.rotation = 0;
 
     /**
