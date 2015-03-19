@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "dWTF8Mkie+1rx5k7jEw824WmOCg", "spine": "2.1.18", "width": 804.32, "height": 456, "images": "" },
+"skeleton": { "hash": "UI4f0sLLsqSU4vp2chsgWzTZcEs", "spine": "2.1.18", "width": 804.32, "height": 456, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "1", "parent": "root" },
@@ -192,11 +192,6 @@
 					{ "time": 0.1666, "x": 0, "y": 10 },
 					{ "time": 0.3666, "x": 0, "y": 0 }
 				]
-			},
-			"3": {
-				"scale": [
-					{ "time": 0, "x": 0.5, "y": 0.5 }
-				]
 			}
 		}
 	},
@@ -270,14 +265,14 @@
 				"translate": [
 					{ "time": 0, "x": 0, "y": 0 },
 					{ "time": 1, "x": 0, "y": -12 },
-					{ "time": 1.1666, "x": 0, "y": 11 },
-					{ "time": 1.3333, "x": 0, "y": 0 }
+					{ "time": 1.3333, "x": 0, "y": 11 },
+					{ "time": 1.5, "x": 0, "y": 0 }
 				],
 				"scale": [
 					{ "time": 0, "x": 0.5, "y": 0.5 },
 					{ "time": 1, "x": 0.605, "y": 0.445 },
-					{ "time": 1.1666, "x": 0.459, "y": 0.55 },
-					{ "time": 1.3333, "x": 0.5, "y": 0.5 }
+					{ "time": 1.3333, "x": 0.459, "y": 0.55 },
+					{ "time": 1.5, "x": 0.5, "y": 0.5 }
 				]
 			}
 		}
