@@ -129,6 +129,7 @@ Character = Spine.extend({
           y: 0
         }
       },
+      active: true,
       launches: 0,
       collision: {
         x: 125,
@@ -395,6 +396,13 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.parameters.active = true;
+
+    /**
+     *
      * 
      *
      */
@@ -495,7 +503,7 @@ Character = Spine.extend({
      *
      *
      */
-    else if(this.parameters.state === this.parameters.states.game) {
+    else if(this.parameters.state === this.parameters.states.game && this.parameters.active) {
       switch(this.detectPoint()) {
         case '1':
 
@@ -520,7 +528,29 @@ Character = Spine.extend({
          */
         Counter.count();
         break;
+        default:
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.active = false;
         case '2':
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.speed.state = false;
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.speed.y = this.parameters.speed.min.y;
         break;
       }
     }

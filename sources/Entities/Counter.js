@@ -49,6 +49,7 @@ Counter = Button.extend({
       jumps: new Text('jumps', Game.backgrounds.b),
       deaths: new Text('deaths', Game.backgrounds.b),
       start: new Text('start', Game.backgrounds.b),
+      decoration: new Text('decoration-0', Game.backgrounds.b),
       share: new Text('share', Game.backgrounds.b)
     };
 
@@ -330,6 +331,31 @@ Counter = Button.extend({
         cc.CallFunc.create(element.destroy, element)
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    if(true) {
+      if(this.textes.decoration.getNumberOfRunningActions() > 0) return false;
+
+      this.textes.decoration.setText('decoration-' + random(0, 2, true));
+
+      this.textes.decoration.create().attr({
+        x: Camera.center.x,
+        y: this.y - 180,
+        opacity: 0
+      });
+      this.textes.decoration.runAction(
+        cc.Sequence.create(
+          cc.FadeIn.create(1.0),
+          cc.DelayTime.create(1.0),
+          cc.FadeOut.create(1.0),
+          cc.CallFunc.create(this.textes.decoration.destroy, this.textes.decoration)
+        )
+      );
+    }
   },
   onJump: function() {
 
