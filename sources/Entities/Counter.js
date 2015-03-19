@@ -412,7 +412,7 @@ Counter = Button.extend({
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
-        cc.DelayTime.create(0.5),
+        cc.DelayTime.create(1.5),
         cc.FadeOut.create(0.2),
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )
@@ -440,7 +440,7 @@ Counter = Button.extend({
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
-        cc.DelayTime.create(0.5),
+        cc.DelayTime.create(1.5),
         cc.FadeOut.create(0.2),
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )

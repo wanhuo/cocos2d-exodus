@@ -1237,10 +1237,12 @@ Game = Screen.extend({
        *
        *
        */
-      if(this.elements.character.y >= this.parameters.scale.position.min) {
-        this.backgrounds.d.setScale(max(1.0 - 1.0 / (this.parameters.scale.position.max / (this.elements.character.y - this.parameters.scale.position.min)), this.parameters.scale.min));
-      } else {
-        this.backgrounds.d.setScale(this.parameters.scale.max);
+      if(this.backgrounds.d.getNumberOfRunningActions() == 0) {
+        if(this.elements.character.y >= this.parameters.scale.position.min) {
+          this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (this.elements.character.y - this.parameters.scale.position.min)), this.parameters.scale.min);
+        } else {
+          this.backgrounds.d.scale = this.parameters.scale.max;
+        }
       }
       break;
     }
@@ -1266,14 +1268,14 @@ Game = Screen.extend({
    *
    */
   update: function(time) {
-    this._super(time);
+    this._super(time * this.elements.character.parameters.time);
 
     /**
      *
      * 
      *
      */
-    this.updateStates(time);
+    this.updateStates(time * this.elements.character.parameters.time);
   },
 
   /**

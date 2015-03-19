@@ -108,6 +108,15 @@ Cloud = Parallax.extend({
    *
    *
    */
+  update: function(time) {
+    this._super(time * Game.elements.character.parameters.time);
+  },
+
+  /**
+   *
+   *
+   *
+   */
   deepCopy: function() {
     return new Cloud;
   }

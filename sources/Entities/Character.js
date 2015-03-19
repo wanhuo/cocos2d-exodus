@@ -134,12 +134,19 @@ Character = Spine.extend({
           y: 0
         }
       },
+      smokes: {
+        time: {
+          current: 0.015,
+          elapsed: 0
+        }
+      },
       active: true,
       launches: 0,
       collision: { // TODO: Correct this to the point size.
         x: 75,
         y: 75
       },
+      time: 1.0,
       skins: [
         '1',
         '2'
@@ -472,6 +479,64 @@ Character = Spine.extend({
     });
   },
   onLoss: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.deceleration = setTimeout(function() {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.d.prescale = Game.backgrounds.d.scale;
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.time = 0.02;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.d.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.5, 1.0)
+          ),
+          cc.CallFunc.create(function() {
+            //
+          }),
+          cc.DelayTime.create(2.0),
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+          ),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.parameters.time = 1.0;
+
+            /**
+             *
+             *
+             *
+             */
+            this.parameters.deceleration = false;
+          }.bind(this))
+        )
+      );
+    }.bind(this), 150);
   },
 
   /**
@@ -480,6 +545,58 @@ Character = Spine.extend({
    *
    */
   onTouchBegan: function(touch, e) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.deceleration) {
+      this.parameters.deceleration = false;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.d.stopAllActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.d.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+          ),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.parameters.time = 1.0;
+
+            /**
+             *
+             *
+             *
+             */
+            this.parameters.deceleration = false;
+          }.bind(this))
+        )
+      );
+
+      /**
+       *
+       *
+       *
+       */
+      return;
+    }
 
     /**
      *
@@ -673,7 +790,23 @@ Character = Spine.extend({
      *
      *
      */
-    this.smokes.create(this);
+    this.parameters.smokes.time.elapsed += time;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.smokes.time.elapsed >= this.parameters.smokes.time.current) {
+      this.parameters.smokes.time.elapsed = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.smokes.create(this);
+    }
 
     /**
      *
@@ -722,7 +855,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var time = 1.0 / 60.0;
+    var time = (1.0 / 60.0) * this.parameters.time;
 
     /**
      *
@@ -730,14 +863,14 @@ Character = Spine.extend({
      *
      */
     if(parameters.speed.x < parameters.speed.max.x) {
-      parameters.speed.x += parameters.speed.increase.x;
+      parameters.speed.x += parameters.speed.increase.x * this.parameters.time;
 
       /**
        *
        * 
        *
        */
-      parameters.speed.increase.x += parameters.speed.increase.increase.x;
+      parameters.speed.increase.x += parameters.speed.increase.increase.x * this.parameters.time;
     }
 
     /**
@@ -753,7 +886,7 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.y < parameters.speed.max.y) {
-        parameters.speed.y += parameters.speed.increase.y;
+        parameters.speed.y += parameters.speed.increase.y * this.parameters.time;
       } else {
         parameters.speed.state = false;
       }
@@ -765,7 +898,7 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.x > parameters.speed.min.x) {
-        parameters.speed.x -= parameters.speed.decrease.x;
+        parameters.speed.x -= parameters.speed.decrease.x * this.parameters.time;
       } else {
         parameters.speed.state = false;
       }
@@ -783,12 +916,12 @@ Character = Spine.extend({
          *
          */
         if(scale) {
-            parameters.speed.y -= parameters.speed.decrease.max.y * scale;
+            parameters.speed.y -= parameters.speed.decrease.max.y * scale * this.parameters.time;
         } else {
           if(this.parameters.active) {
-            parameters.speed.y -= parameters.speed.decrease.y;
+            parameters.speed.y -= parameters.speed.decrease.y * this.parameters.time;
           } else {
-            parameters.speed.y -= parameters.speed.decrease.max.y;
+            parameters.speed.y -= parameters.speed.decrease.max.y * this.parameters.time;
           }
         }
       } else {
@@ -821,13 +954,6 @@ Character = Spine.extend({
    *
    */
   updateTraectory: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.speed.state = true;
 
     /**
      *
@@ -1017,13 +1143,13 @@ Character = Spine.extend({
    *
    */
   update: function(time) {
-    this._super(time);
+    this._super(time * this.parameters.time);
 
     /**
      *
      *
      *
      */
-    this.updateStates(time);
+    this.updateStates(time * this.parameters.time);
   }
 });
