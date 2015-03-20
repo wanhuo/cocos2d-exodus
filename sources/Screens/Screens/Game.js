@@ -167,7 +167,7 @@ Game = Screen.extend({
       ),
       baloons: new Manager(1, new Baloon, this.backgrounds.game),
       people: new Manager(10, new People, this.backgrounds.b),
-      points: new Manager(10, new Point, this.backgrounds.game),
+      points: new Points(),
       name: new Name,
       character: new Character,
       counter: new Counter

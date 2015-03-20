@@ -54,8 +54,13 @@ var resources = {
       json: 'resource/Graphics/point.json'
     },
     ground: 'resource/Graphics/ground.png',
+    stars: [
+      'resource/Graphics/star-1.png',
+      'resource/Graphics/star-2.png'
+    ],
     clouds: [
-      'resource/Graphics/cloud-1.png'
+      'resource/Graphics/cloud-1.png',
+      'resource/Graphics/cloud-2.png'
     ],
     mountains: [
       'resource/Graphics/mountain-1.png',
@@ -79,6 +84,7 @@ var resources = {
       'resource/Graphics/water-3.png'
     ],
     counter: 'resource/Graphics/counter.png',
+    moon: 'resource/Graphics/moon.png',
     music: {
       background: 'resource/Music/music-1.mp3'
     },

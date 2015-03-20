@@ -231,6 +231,15 @@ Character = Spine.extend({
      *
      *
      */
+    if(this.parameters.creation) {
+      clearTimeout(this.parameters.creation);
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.shadow.destroy();
 
     /**
@@ -467,7 +476,7 @@ Character = Spine.extend({
      *
      *
      */
-    setTimeout(function() {
+    this.parameters.creation = setTimeout(function() {
 
       /**
        *
@@ -475,6 +484,7 @@ Character = Spine.extend({
        *
        */
       this.parameters.locked = false;
+      this.parameters.creation = false;
 
       /**
        *
@@ -745,7 +755,7 @@ Character = Spine.extend({
        *
        *
        */
-      this.parameters.time = 2;
+      this.parameters.time = max(2, this.parameters.time + 1);
     }
   },
   onTouchEnded: function(touch, e) {
@@ -1000,14 +1010,21 @@ Character = Spine.extend({
      *
      *
      */
-    Game.elements.points.clear();
+    Game.elements.points.clear(true);
+
+    /**
+     *
+     *
+     *
+     */
+    var position = abs(Game.backgrounds.game.x) + Camera.width * Game.parallax.scale();
 
     /**
      *
      * 
      *
      */
-    var probably = 10;
+    var probably = random(10, 50, true);
 
     /**
      *
@@ -1015,6 +1032,13 @@ Character = Spine.extend({
      *
      */
     var count = probably;
+
+    /**
+     *
+     * 
+     *
+     */
+    var time = 0.1;
 
     /**
      *
@@ -1065,10 +1089,46 @@ Character = Spine.extend({
          *
          *
          */
-        Game.elements.points.create().attr({
-          x: x,
-          y: y
-        });
+        var element = Game.elements.points.create();
+
+        /**
+         *
+         *
+         *
+         */
+        element.x = x;
+        element.y = y;
+
+        /**
+         *
+         *
+         *
+         */
+        if(true) { // x < position
+
+          /**
+           *
+           *
+           *
+           */
+          element.runAction(
+            cc.Sequence.create(
+              cc.DelayTime.create(time),
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.2, 1.0)
+              )
+            )
+          );
+        } else {
+          element.scale = 1;
+        }
+
+        /**
+         *
+         *
+         *
+         */
+        time += 0.05;
       }
 
       /**
@@ -1183,7 +1243,7 @@ Character = Spine.extend({
    *
    */
   update: function(time) {
-    this._super(time * this.parameters.time);
+    this._super(time);
 
     /**
      *

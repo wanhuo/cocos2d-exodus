@@ -86,6 +86,13 @@ Point = Spine.extend({
      * 
      *
      */
+    this.scale = 0;
+
+    /**
+     *
+     * 
+     *
+     */
     this.setSkin(this.parameters.skins.random());
 
     /**
@@ -130,8 +137,25 @@ Point = Spine.extend({
    *
    *
    */
-  update: function(time) {
-    this._super(time);
+  deepCopy: function() {
+    return new Point;
+  }
+});
+
+/**
+ *
+ *
+ *
+ */
+Points = Manager.extend({
+
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super(10, new Point, Game.backgrounds.game);
   },
 
   /**
@@ -139,7 +163,55 @@ Point = Spine.extend({
    *
    *
    */
-  deepCopy: function() {
-    return new Point;
+  clear: function(animated) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(animated) {
+
+      /**
+       *
+       *
+       *
+       */
+      var time = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.each(function(element) {
+
+        /**
+         *
+         *
+         *
+         */
+        if(element.created) {
+          element.runAction(
+            cc.Sequence.create(
+              cc.DelayTime.create(time),
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.2, 0.0)
+              ),
+              cc.CallFunc.create(element.destroy, element)
+            )
+          );
+
+          /**
+           *
+           *
+           *
+           */
+          time += 0.01;
+        }
+      }.bind(this));
+    } else {
+      this._super();
+    }
   }
 });

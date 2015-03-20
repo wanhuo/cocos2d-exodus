@@ -38,6 +38,13 @@ Smoke = Entity.extend({
      */
     this.parameters = {
     };
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(6);
   },
 
   /**
