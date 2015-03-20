@@ -40,6 +40,7 @@ sources = sources.concat([
   'sources/Entities/Point.js',
   'sources/Entities/Smoke.js',
   'sources/Entities/Counter.js',
+  'sources/Entities/Explanation.js',
   'sources/Managers/ScreensManager.js',
   'sources/Screens/Screen.js',
   'sources/Screens/Screens/Game.js',

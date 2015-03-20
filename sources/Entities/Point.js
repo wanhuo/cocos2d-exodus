@@ -37,12 +37,19 @@ Point = Spine.extend({
      *
      */
     this.parameters = {
+      active: true,
       animations: {
         animation: {
           index: 1,
           name: 'animation',
           time: 1.0,
           loop: true
+        },
+        destroy: {
+          index: 2,
+          name: 'destroy',
+          time: 1.0,
+          loop: false
         }
       },
       skins: [
@@ -50,6 +57,13 @@ Point = Spine.extend({
         '2'
       ]
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.setNeedScheduleUpdate(true);
 
     /**
      *
@@ -63,14 +77,45 @@ Point = Spine.extend({
      * 
      *
      */
-    this.setTimeScale(0.1);
+    this.setLocalZOrder(5);
 
     /**
      *
      * 
      *
      */
-    this.setLocalZOrder(5);
+    this.destroy = function(params) {
+      if(params === true) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.active = false;
+
+        /**
+         *
+         *
+         *
+         */
+        this.setAnimation(this.parameters.animations.destroy.index, this.parameters.animations.destroy.name, false);
+
+        /**
+         *
+         *
+         *
+         */
+        return this;
+      }
+
+      /**
+       *
+       * 
+       *
+       */
+      return Entity.prototype.destroy.call(this, params);
+    }.bind(this);
   },
 
   /**
@@ -80,6 +125,13 @@ Point = Spine.extend({
    */
   onCreate: function() {
     this._super();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.active = true;
 
     /**
      *
@@ -113,6 +165,11 @@ Point = Spine.extend({
    */
   onAnimationFinish: function(index) {
     if(this._super(index)) {
+      switch(index) {
+        case this.parameters.animations.destroy.index:
+        this.destroy();
+        break;
+      }
     }
   },
 
@@ -130,6 +187,40 @@ Point = Spine.extend({
      *
      */
     this.parameters.skin = skin;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    var position = abs(Game.backgrounds.game.x);
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.getNumberOfRunningActions() < 1) {
+      if(this.x < position) {
+          this.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.2, 0.0)
+              ),
+              cc.CallFunc.create(this.destroy, this)
+            )
+          );
+      }
+    }
   },
 
   /**

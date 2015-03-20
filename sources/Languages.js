@@ -55,12 +55,12 @@ var languages = {
     {title: 'Я вижу свой дом отсюда!', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'mistake': [
-    {title: 'Ouch', font: 'Impact', size: 46, dimensions: false, color: [255, 255, 0]},
-    {title: 'Ой', font: 'Impact', size: 46, dimensions: false, color: [255, 255, 0]}
+    {title: 'Ouch', font: 'Impact', size: 46, dimensions: false, color: [255, 221, 96]},
+    {title: 'Ой', font: 'Impact', size: 46, dimensions: false, color: [255, 221, 96]}
   ],
   'fail': [
-    {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [255, 0, 0]},
-    {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [255, 0, 0]}
+    {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
+    {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false},

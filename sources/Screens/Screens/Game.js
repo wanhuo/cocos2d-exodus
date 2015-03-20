@@ -165,9 +165,10 @@ Game = Screen.extend({
           }
         )
       ),
+      explanation: new Explanation,
       baloons: new Manager(1, new Baloon, this.backgrounds.game),
       people: new Manager(10, new People, this.backgrounds.b),
-      points: new Points(),
+      points: new Points,
       name: new Name,
       character: new Character,
       counter: new Counter
@@ -1007,8 +1008,29 @@ Game = Screen.extend({
       cc.Sequence.create(
         cc.DelayTime.create(this.elements.character.y <= 0 ? 0.5 : 0.0),
         cc.FadeIn.create(0.2),
-        cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.parameters.ad.interstitial.current++;
+          if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
+            this.parameters.ad.interstitial.current = 0;
+
+              /**
+               *
+               *
+               *
+               */
+              Ad.Admob.show(cc.Ad.Interstitial, {
+                success: function() {
+                }.bind(this),
+                error: function() {
+                }
+              });
+          }
 
           /**
            *
@@ -1021,28 +1043,6 @@ Game = Screen.extend({
         cc.FadeOut.create(0.5)
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.ad.interstitial.current++;
-    if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
-      this.parameters.ad.interstitial.current = 0;
-
-        /**
-         *
-         *
-         *
-         */
-        Ad.Admob.show(cc.Ad.Interstitial, {
-          success: function() {
-          }.bind(this),
-          error: function() {
-          }
-        });
-    }
 
     /**
      *

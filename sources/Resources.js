@@ -83,6 +83,7 @@ var resources = {
       'resource/Graphics/water-2.png',
       'resource/Graphics/water-3.png'
     ],
+    explanation: 'resource/Graphics/explanation.png',
     counter: 'resource/Graphics/counter.png',
     moon: 'resource/Graphics/moon.png',
     music: {

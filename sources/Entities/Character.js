@@ -231,15 +231,6 @@ Character = Spine.extend({
      *
      *
      */
-    if(this.parameters.creation) {
-      clearTimeout(this.parameters.creation);
-    }
-
-    /**
-     *
-     *
-     *
-     */
     this.shadow.destroy();
 
     /**
@@ -404,6 +395,15 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    if(this.parameters.creation) {
+      clearTimeout(this.parameters.creation);
+    }
+
+    /**
+     *
      * 
      *
      */
@@ -561,10 +561,39 @@ Character = Spine.extend({
              *
              */
             this.parameters.deceleration = false;
+
+            /**
+             *
+             *
+             *
+             */
+            Game.elements.explanation.runAction(
+              cc.Sequence.create(
+                cc.EaseSineInOut.create(
+                  cc.FadeOut.create(0.5)
+                ),
+                cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+              )
+            );
           }.bind(this))
         )
       );
     }.bind(this), 100);
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.explanation.create();
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.explanation.x = this.x;
+    Game.elements.explanation.y = this.y;
   },
 
   /**
@@ -615,6 +644,20 @@ Character = Spine.extend({
              */
             this.parameters.deceleration = false;
           }.bind(this))
+        )
+      );
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.explanation.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.FadeOut.create(0.5)
+          ),
+          cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
         )
       );
 
@@ -1024,7 +1067,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = random(10, 50, true);
+    var probably = random(10, 20, true);
 
     /**
      *
@@ -1160,8 +1203,16 @@ Character = Spine.extend({
        *
        *
        */
-      if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
-        return point.parameters.skin;
+      if(point.parameters.active) {
+
+        /**
+         *
+         *
+         *
+         */
+        if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
+          return point.destroy(true).parameters.skin;
+        }
       }
     }
 

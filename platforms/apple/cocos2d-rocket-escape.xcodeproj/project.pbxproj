@@ -33,8 +33,6 @@
 		7828A0451A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A0461A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A0601A1F86C80079492B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0491A1F86C80079492B /* Info.plist */; };
-		7828A0611A1F86C80079492B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0491A1F86C80079492B /* Info.plist */; };
-		7828A0621A1F86C80079492B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828A04C1A1F86C80079492B /* Info.plist */; };
 		7828A0631A1F86C80079492B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828A04C1A1F86C80079492B /* Info.plist */; };
 		7828A0641A1F86C80079492B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7828A04F1A1F86C80079492B /* Default-568h@2x.png */; };
 		7828A0651A1F86C80079492B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7828A04F1A1F86C80079492B /* Default-568h@2x.png */; };
@@ -867,7 +865,6 @@
 			files = (
 				7828A0691A1F86C80079492B /* Default@2x.png in Resources */,
 				7828A06B1A1F86C80079492B /* Icon-100.png in Resources */,
-				7828A0611A1F86C80079492B /* Info.plist in Resources */,
 				7828A07F1A1F86C80079492B /* Icon-72.png in Resources */,
 				7828A0731A1F86C80079492B /* Icon-152.png in Resources */,
 				7828A0851A1F86C80079492B /* Icon.icns in Resources */,
@@ -905,7 +902,6 @@
 				7828A0721A1F86C80079492B /* Icon-152.png in Resources */,
 				7828A0841A1F86C80079492B /* Icon.icns in Resources */,
 				7828A0411A1F75D90079492B /* script in Resources */,
-				7828A0621A1F86C80079492B /* Info.plist in Resources */,
 				7828A0641A1F86C80079492B /* Default-568h@2x.png in Resources */,
 				7828A07C1A1F86C80079492B /* Icon-58.png in Resources */,
 				784222DA1A0A5D6800CDC2F5 /* project.json in Resources */,
