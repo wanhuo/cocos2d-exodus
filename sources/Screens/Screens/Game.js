@@ -1246,6 +1246,18 @@ Game = Screen.extend({
           this.backgrounds.d.scale = this.parameters.scale.max;
         }
       }
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.elements.character.y > this.parameters.scale.position.max) {
+        this.backgrounds.game.y = -(this.elements.character.y - this.parameters.scale.position.max);
+        this.backgrounds.g.y = -(this.elements.character.y - this.parameters.scale.position.max);
+      } else {
+        this.backgrounds.g.y = 0;
+      }
       break;
     }
 
