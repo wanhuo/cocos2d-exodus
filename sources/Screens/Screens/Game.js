@@ -101,6 +101,7 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.w = new Background(this.backgrounds.d);
+    this.backgrounds.g = new Background(this.backgrounds.s);
 
     /**
      *
@@ -115,7 +116,10 @@ Game = Screen.extend({
      *
      */
     this.elements = {
-      background: new Entity(resources.main.background, this.backgrounds.s, true),
+      backgrounds: [
+        new Entity(resources.main.backgrounds[0], this.backgrounds.g),
+        new Entity(resources.main.backgrounds[1], this.backgrounds.g)
+      ],
       parallaxes: [
         new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud),
         new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
@@ -314,39 +318,37 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.background.setOrientationConfig(new OrientationConfig({
-      portrait: {
-        on: function() {
-
-          /**
-           *
-           *
-           *
-           */
-          this.setScaleX(Camera.width / this.width);
-          this.setScaleY(Camera.height / this.height);
-        }.bind(this.elements.background)
-      },
-      landscape: {
-        on: function() {
-
-          /**
-           *
-           *
-           *
-           */
-          this.setScaleX(Camera.width / this.width);
-          this.setScaleY(Camera.height / this.height);
-        }.bind(this.elements.background)
-      }
-    }));
+    this.elements.backgrounds[0].create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y
+    });
+    this.elements.backgrounds[1].create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y + Camera.height
+    });
 
     /**
      *
      *
      *
      */
-    this.elements.background.setBlendFunc(gl.ONE, gl.ZERO);
+    for(var i = 0; i < this.elements.backgrounds.length; i++) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.backgrounds[i].setScaleX(Camera.width / this.elements.backgrounds[i].width);
+      this.elements.backgrounds[i].setScaleY(Camera.height / this.elements.backgrounds[i].height);
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.backgrounds[i].setBlendFunc(gl.ONE, gl.ZERO);
+    }
 
     /**
      *

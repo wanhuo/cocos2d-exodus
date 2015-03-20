@@ -106,8 +106,16 @@ Character = Spine.extend({
         x: 0,
         y: 0,
         max: {
-          x: 1500,
-          y: 500
+          x: 0,
+          y: 0,
+          increase: {
+            x: 100,
+            y: 0.0
+          },
+          setup: {
+            x: 1500,
+            y: 500
+          }
         },
         min: {
           x: 0,
@@ -445,6 +453,14 @@ Character = Spine.extend({
      * 
      *
      */
+    this.parameters.speed.max.x = this.parameters.speed.max.setup.x;
+    this.parameters.speed.max.y = this.parameters.speed.max.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
     this.parameters.vector.x = this.parameters.vector.setup.x;
     this.parameters.vector.y = this.parameters.vector.setup.y;
 
@@ -492,7 +508,7 @@ Character = Spine.extend({
        *
        */
       this.updateTraectory();
-   }.bind(this), 1500);
+   }.bind(this), 2500);
 
     /**
      *
@@ -731,6 +747,14 @@ Character = Spine.extend({
          *
          */
         this.parameters.active = this.parameters.speed.state = true;
+
+        /**
+         *
+         * 
+         *
+         */
+        this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
+        this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
 
         /**
          *

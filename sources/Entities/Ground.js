@@ -61,6 +61,13 @@ Ground = Parallax.extend({
         height: false
       }
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.setBlendFunc(gl.ONE, gl.ZERO);
   },
 
   /**
