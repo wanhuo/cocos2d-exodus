@@ -94,10 +94,10 @@ App = {
       plugins: {
         batch: {
           apple: {
-            id: 'DEV550C4647A1E2360EA1ED1E72CB5'
+            id: '550C4647A1E2360EA1ED1E72CB5'
           },
           android: {
-
+            id: '550DA9DB3DF541F3E1C61B1ABC7'
           }
         }
       },

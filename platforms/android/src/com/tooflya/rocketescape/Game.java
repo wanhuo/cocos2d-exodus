@@ -101,6 +101,26 @@ public class Game extends Application {
    *
    */
   @Override
+  public String getGoogleServicesID() {
+    return Application.sharedInstance().getResources().getString(R.string.google);
+  }
+
+  /**
+   *
+   *
+   *
+   */
+  @Override
+  public int getGoogleServicesIconID() {
+    return R.drawable.icon;
+  }
+
+  /**
+   *
+   *
+   *
+   */
+  @Override
   public void nativeCall(final String instructions) {
 
     /**
