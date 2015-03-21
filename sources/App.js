@@ -91,6 +91,16 @@ App = {
         android: 'UA-48406912-18',
         apple: 'UA-48406912-19'
       },
+      plugins: {
+        batch: {
+          apple: {
+            id: 'DEV550C4647A1E2360EA1ED1E72CB5'
+          },
+          android: {
+
+          }
+        }
+      },
       links: {
         apple: 'https://t.co/jyzwTUtR9X',
         android: 'https://t.co/tHslobAt8u'

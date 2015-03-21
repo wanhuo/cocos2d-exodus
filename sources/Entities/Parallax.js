@@ -117,6 +117,6 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
    *
    */
   deepCopy: function() {
-    return new Parallax(this.textureFileName, this.frames.horizontal, this.frames.vertical, this.vector.base, this.getPosition(), this.getAnchorPoint(), this.bind);
+    return new Parallax(this.textureFileName, this.frames.horizontal, this.frames.vertical, this.vector.base, this.getPosition(), this.getAnchorPoint());
   }
 });
