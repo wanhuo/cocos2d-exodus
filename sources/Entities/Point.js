@@ -124,6 +124,19 @@ Point = Spine.extend({
    *
    */
   onCreate: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
+
+    /**
+     *
+     * 
+     *
+     */
     this._super();
 
     /**
@@ -139,13 +152,6 @@ Point = Spine.extend({
      *
      */
     this.scale = 0;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.setSkin(this.parameters.skins.random());
 
     /**
      *

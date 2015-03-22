@@ -534,47 +534,60 @@ Character = Spine.extend({
        *
        */
       Game.backgrounds.d.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(0.5, 1.0)
-          ),
-          cc.CallFunc.create(function() {
-            //
-          }),
-          cc.DelayTime.create(2.0),
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
-          ),
-          cc.CallFunc.create(function() {
-
-            /**
-             *
-             *
-             *
-             */
-            this.parameters.time = 1.0;
-
-            /**
-             *
-             *
-             *
-             */
-            this.parameters.deceleration = false;
-
-            /**
-             *
-             *
-             *
-             */
-            Game.elements.explanation.runAction(
-              cc.Sequence.create(
-                cc.EaseSineInOut.create(
-                  cc.FadeOut.create(0.5)
-                ),
-                cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+        cc.Spawn.create(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.ScaleTo.create(0.5, 1.0)
+            ),
+            cc.DelayTime.create(2.0),
+            cc.Spawn.create(
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+              ),
+              cc.EaseSineInOut.create(
+                cc.MoveTo.create(0.5, {
+                  x: 0,
+                  y: 0
+                })
               )
-            );
-          }.bind(this))
+            ),
+            cc.CallFunc.create(function() {
+
+              /**
+               *
+               *
+               *
+               */
+              this.parameters.time = 1.0;
+
+              /**
+               *
+               *
+               *
+               */
+              this.parameters.deceleration = false;
+
+              /**
+               *
+               *
+               *
+               */
+              Game.elements.explanation.runAction(
+                cc.Sequence.create(
+                  cc.EaseSineInOut.create(
+                    cc.FadeOut.create(0.5)
+                  ),
+                  cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+                )
+              );
+            }.bind(this))
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.5, {
+              x: 0,
+              y: (this.y > Game.parameters.scale.position.max ? (-this.y - Game.backgrounds.game.y + Game.parameters.scale.position.min) : 0)
+            })
+          )
         )
       );
     }.bind(this), 100);
@@ -624,8 +637,16 @@ Character = Spine.extend({
        */
       Game.backgrounds.d.runAction(
         cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+          cc.Spawn.create(
+            cc.EaseSineInOut.create(
+              cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+            ),
+            cc.EaseSineInOut.create(
+              cc.MoveTo.create(0.5, {
+                x: 0,
+                y: 0
+              })
+            )
           ),
           cc.CallFunc.create(function() {
 

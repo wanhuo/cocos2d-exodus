@@ -77,14 +77,14 @@ Star = Parallax.extend({
    *
    *
    */
-  parallaxCorrectPosition: function() {if(!Game.elements) return;
+  parallaxCorrectPosition: function() {
 
     /**
      *
      *
      *
      */
-    this.y = random(Camera.height * (Game.parameters.backgrounds.position.ratio + 1), max(Camera.height * 2 * (Game.parameters.backgrounds.position.ratio + 1), Game.elements.character.y + Camera.height * 2));
+    this.y = random(Camera.height * (Game.parameters.backgrounds.position.ratio + 1), max(Camera.height * 2 * (Game.parameters.backgrounds.position.ratio + 1), (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
   },
 
   /**

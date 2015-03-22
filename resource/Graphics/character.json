@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "3Cz+ljTJRFassDT6ich3JKRUslU", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
+"skeleton": { "hash": "cWNWOhJJBBjbQGMfJ1FPX2UJfiE", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "1", "parent": "root" },
@@ -12,9 +12,9 @@
 	{ "name": "flame-3", "parent": "flame", "y": -112.45 }
 ],
 "slots": [
-	{ "name": "10", "bone": "engine", "attachment": "skins/1/engine.start.particles.1" },
-	{ "name": "11", "bone": "engine", "attachment": "skins/1/engine.start.particles.2" },
-	{ "name": "12", "bone": "engine", "attachment": "skins/1/engine.start.particles.2" },
+	{ "name": "10", "bone": "engine", "color": "ffffff00", "attachment": "skins/1/engine.start.particles.1" },
+	{ "name": "11", "bone": "engine", "color": "ffffff00", "attachment": "skins/1/engine.start.particles.2" },
+	{ "name": "12", "bone": "engine", "color": "ffffff00", "attachment": "skins/1/engine.start.particles.2" },
 	{ "name": "flame-3", "bone": "flame-3", "attachment": "flame-3" },
 	{ "name": "flame-2", "bone": "flame-2", "attachment": "flame-2" },
 	{ "name": "flame-1", "bone": "flame-1", "attachment": "flame-1" },
@@ -28,13 +28,13 @@
 			"skins/1/root.1": { "width": 1001, "height": 1821 }
 		},
 		"10": {
-			"skins/1/engine.start.particles.1": { "y": 41.89, "width": 802, "height": 312 }
+			"skins/1/engine.start.particles.1": { "color": "ffffff00", "y": 41.89, "width": 802, "height": 312 }
 		},
 		"11": {
-			"skins/1/engine.start.particles.2": { "x": -201.66, "y": 8.46, "scaleX": -1, "width": 401, "height": 245 }
+			"skins/1/engine.start.particles.2": { "color": "ffffff00", "x": -201.66, "y": 8.46, "scaleX": -1, "width": 401, "height": 245 }
 		},
 		"12": {
-			"skins/1/engine.start.particles.2": { "x": 201.66, "y": 8.29, "width": 401, "height": 245 }
+			"skins/1/engine.start.particles.2": { "color": "ffffff00", "x": 201.66, "y": 8.29, "width": 401, "height": 245 }
 		},
 		"2": {
 			"skins/1/root.2": { "width": 501, "height": 911 }
