@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "cWNWOhJJBBjbQGMfJ1FPX2UJfiE", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
+"skeleton": { "hash": "K9WKNq5ecM7Byeq7mGniiAo2Ly8", "spine": "2.1.18", "width": 1001, "height": 1821, "images": "" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "1", "parent": "root" },
@@ -28,13 +28,13 @@
 			"skins/1/root.1": { "width": 1001, "height": 1821 }
 		},
 		"10": {
-			"skins/1/engine.start.particles.1": { "color": "ffffff00", "y": 41.89, "width": 802, "height": 312 }
+			"skins/1/engine.start.particles.1": { "y": 41.89, "width": 802, "height": 312 }
 		},
 		"11": {
-			"skins/1/engine.start.particles.2": { "color": "ffffff00", "x": -201.66, "y": 8.46, "scaleX": -1, "width": 401, "height": 245 }
+			"skins/1/engine.start.particles.2": { "x": -201.66, "y": 8.46, "scaleX": -1, "width": 401, "height": 245 }
 		},
 		"12": {
-			"skins/1/engine.start.particles.2": { "color": "ffffff00", "x": 201.66, "y": 8.29, "width": 401, "height": 245 }
+			"skins/1/engine.start.particles.2": { "x": 201.66, "y": 8.29, "width": 401, "height": 245 }
 		},
 		"2": {
 			"skins/1/root.2": { "width": 501, "height": 911 }
