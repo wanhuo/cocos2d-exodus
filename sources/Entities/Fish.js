@@ -41,6 +41,7 @@ Fish = Spine.extend({
       },
       skins: [
         '1',
+        '2',
         '2'
       ],
       speed :{

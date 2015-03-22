@@ -43,10 +43,24 @@ Explanation = Entity.extend({
      * 
      *
      */
+    this.circle = new Entity(resources.main.explanation.circle, this);
+
+    /**
+     *
+     * 
+     *
+     */
     this.elements = [
-      new Manager(10, new Entity(resources.main.explanation), this, true),
-      new Manager(10, new Entity(resources.main.explanation), this, true)
+      new Manager(10, new Entity(resources.main.explanation.texture), this, true),
+      new Manager(10, new Entity(resources.main.explanation.texture), this, true)
     ];
+
+    /**
+     *
+     * 
+     *
+     */
+    this.circle.create();
 
     /**
      *
@@ -76,14 +90,14 @@ Explanation = Entity.extend({
        *
        */
       x = 0;
-      y = 0;
+      y = this.circle.height * 1.4;
 
       /**
        *
        * 
        *
        */
-      while(y < Camera.height) {
+      while(y < Camera.height * 2) {
         var element = this.elements[i].create();
 
         /**
@@ -108,14 +122,14 @@ Explanation = Entity.extend({
        *
        */
       x = 0;
-      y = 0;
+      y = -this.circle.height * 1.4;
 
       /**
        *
        * 
        *
        */
-      while(y > -Camera.height) {
+      while(y > -Camera.height * 2) {
         var element = this.elements[i].create();
 
         /**
@@ -134,6 +148,13 @@ Explanation = Entity.extend({
         y -= element.height * 1.5;
       }
     }
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements[1].rotation = 90;
   },
 
   /**
@@ -146,19 +167,52 @@ Explanation = Entity.extend({
 
     /**
      *
-     * 
+     *
+     *
+     */
+    this.stopAllActions();
+
+    /**
+     *
+     *
      *
      */
     this.opacity = 255;
 
     /**
      *
-     * 
+     *
      *
      */
     for(var i = 0; i < 2; i++) {
-      this.elements[i].rotation = random(-360, 360)
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements[i].stopAllActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements[i].opacity = 255;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.RepeatForever.create(
+        cc.EaseSineInOut.create(
+          cc.RotateTo.create(10.0, 720)
+        )
+      )
+    );
   },
   onDestroy: function() {
     this._super();

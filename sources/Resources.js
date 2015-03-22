@@ -30,7 +30,9 @@ var resources = {
     ],
     name: 'resource/Graphics/name.png',
     character: {
-      texture: 'resource/Graphics/character.png',
+      texture1: 'resource/Graphics/character.png',
+      texture2: 'resource/Graphics/character2.png',
+      texture3: 'resource/Graphics/character3.png',
       atlas: 'resource/Graphics/character.atlas',
       json: 'resource/Graphics/character.json',
       shadow: 'resource/Graphics/character-shadow.png',
@@ -74,6 +76,10 @@ var resources = {
       'resource/Graphics/tree-2.png',
       'resource/Graphics/tree-3.png'
     ],
+    explanation: {
+      texture: 'resource/Graphics/explanation.png',
+      circle: 'resource/Graphics/explanation-circle.png'
+    },
     buttons: {
       play: 'resource/Graphics/play-button.png',
       leaderboard: 'resource/Graphics/leaderboard-button.png',
@@ -86,7 +92,6 @@ var resources = {
       'resource/Graphics/water-2.png',
       'resource/Graphics/water-3.png'
     ],
-    explanation: 'resource/Graphics/explanation.png',
     counter: 'resource/Graphics/counter.png',
     moon: 'resource/Graphics/moon.png',
     music: {

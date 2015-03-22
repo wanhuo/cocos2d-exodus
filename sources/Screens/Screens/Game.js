@@ -1017,21 +1017,28 @@ Game = Screen.extend({
            *
            *
            */
+          this.elements.character.setSlotsToSetupPoseCustom();
+
+          /**
+           *
+           *
+           *
+           */
           this.parameters.ad.interstitial.current++;
           if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
             this.parameters.ad.interstitial.current = 0;
 
-              /**
-               *
-               *
-               *
-               */
-              Ad.Admob.show(cc.Ad.Interstitial, {
-                success: function() {
-                }.bind(this),
-                error: function() {
-                }
-              });
+            /**
+             *
+             *
+             *
+             */
+            Ad.Admob.show(cc.Ad.Interstitial, {
+              success: function() {
+              }.bind(this),
+              error: function() {
+              }
+            });
           }
 
           /**
@@ -1168,7 +1175,9 @@ Game = Screen.extend({
      *
      */
     if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
-      this.elements.fishes.create();
+      if(probably(50)) {
+        this.elements.fishes.create();
+      }
     }
   },
 

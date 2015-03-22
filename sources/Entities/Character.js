@@ -78,13 +78,18 @@ Character = Spine.extend({
             loop: false
           },
           complete: {
-            index: 5,
+            index: 6,
             name: 'engine-start-complete',
             time: 1.0,
             loop: false
           }
         }
       },
+      skins: [
+        '1',
+        '2',
+        '3'
+      ],
       shadow: {
         scale: {
           position: {
@@ -154,13 +159,22 @@ Character = Spine.extend({
         x: 75,
         y: 75
       },
-      time: 1.0,
-      launches: 0,
-      skins: [
-        '1',
-        '2'
-      ]
+      time: 1.0
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.setNeedScheduleUpdate(true);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
 
     /**
      *
@@ -175,13 +189,6 @@ Character = Spine.extend({
      *
      */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.setSkin(this.parameters.skins.random());
 
     /**
      *
@@ -312,6 +319,7 @@ Character = Spine.extend({
           break;
         }
         case this.parameters.states.game:
+        case this.parameters.states.loss:
 
         /**
          *
@@ -385,24 +393,6 @@ Character = Spine.extend({
 
     /**
      *
-     * 
-     *
-     */
-    if(this.parameters.launches > 0) {
-      this.setSlotsToSetupPose();
-    }
-
-    /**
-     *
-     * 
-     *
-     */
-    if(!this.created) {
-      this.create();
-    }
-
-    /**
-     *
      *
      *
      */
@@ -472,13 +462,6 @@ Character = Spine.extend({
     this.parameters.speed.increase.x = 0;
   },
   onGame: function() {
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.launches++;
 
     /**
      *
@@ -833,7 +816,16 @@ Character = Spine.extend({
    *
    *
    */
-  setSlotsToSetupPose: function() {
+  setSlotsToSetupPoseCustom: function() {
+
+    /**
+     *
+     * 
+     *
+     */
+    if(!this.created) {
+      this.create();
+    }
 
     /**
      *
@@ -844,7 +836,7 @@ Character = Spine.extend({
 
     /**
      *
-     * 
+     *
      *
      */
     this.setAnimation(this.parameters.animations.engine.finish.index, this.parameters.animations.engine.finish.name, false);
