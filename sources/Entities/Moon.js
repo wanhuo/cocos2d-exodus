@@ -21,30 +21,48 @@
  *
  */
 
-sources = sources.concat([
-  'sources/Support/Events.js',
-  'sources/Entities/Text.js',
-  'sources/Entities/Button.js',
-  'sources/Entities/Name.js',
-  'sources/Entities/Parallax.js',
-  'sources/Entities/Ground.js',
-  'sources/Entities/Tree.js',
-  'sources/Entities/Mountain.js',
-  'sources/Entities/Water.js',
-  'sources/Entities/Star.js',
-  'sources/Entities/Cloud.js',
-  'sources/Entities/Name.js',
-  'sources/Entities/Character.js',
-  'sources/Entities/People.js',
-  'sources/Entities/Baloon.js',
-  'sources/Entities/Fish.js',
-  'sources/Entities/Point.js',
-  'sources/Entities/Smoke.js',
-  'sources/Entities/Counter.js',
-  'sources/Entities/Moon.js',
-  'sources/Entities/Explanation.js',
-  'sources/Managers/ScreensManager.js',
-  'sources/Screens/Screen.js',
-  'sources/Screens/Screens/Game.js',
-  'sources/Screens/Popup.js'
-]);
+Moon = Entity.extend({
+
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super(resources.main.moon, Game.backgrounds.g);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.create();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(12);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCreate: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = Camera.width - Camera.center.x / 2;
+    this.y = Camera.height * 2 - Camera.center.y / 1.5;
+  },
+  onDestroy: function() {
+    this._super();
+  }
+});

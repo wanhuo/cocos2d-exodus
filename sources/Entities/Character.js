@@ -181,7 +181,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.smokes = new Manager(100, new Smoke, Game.backgrounds.game);
+    this.smokes = new Manager(100, new Smoke, Game.backgrounds.game, true);
 
     /**
      *
@@ -1066,10 +1066,10 @@ Character = Spine.extend({
 
     /**
      *
-     *
+     * TODO: Whe have a performance issue here.
      *
      */
-    Game.elements.points.clear(true);
+    Game.elements.points.clear(/*true*/false);
 
     /**
      *
@@ -1160,10 +1160,10 @@ Character = Spine.extend({
 
         /**
          *
-         *
+         * TODO: Check if animation is need here with x < position.
          *
          */
-        if(true) { // x < position
+        if(true) {
 
           /**
            *
@@ -1302,6 +1302,32 @@ Character = Spine.extend({
         this.shadow.setScaleX(0);
       }
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  resumeSchedulerAndActions: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.smokes.resumeSchedulerAndActions();
+  },
+  pauseSchedulerAndActions: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.smokes.pauseSchedulerAndActions();
   },
 
   /**

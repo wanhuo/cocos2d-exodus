@@ -56,6 +56,12 @@ public class Game extends Application {
      */
     PluginWrapper.init(this);
     PluginWrapper.setGLSurfaceView(glSurfaceView);
+
+    /**
+     *
+     *
+     *
+     */
     FacebookWrapper.onCreate(this);
 
     return glSurfaceView;

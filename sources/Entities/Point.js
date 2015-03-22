@@ -209,7 +209,7 @@ Point = Spine.extend({
      *
      *
      */
-    if(this.getNumberOfRunningActions() < 1) {
+    if(this.parameters.active && this.getNumberOfRunningActions() < 1) {
       if(this.x < position) {
           this.runAction(
             cc.Sequence.create(

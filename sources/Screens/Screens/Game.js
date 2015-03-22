@@ -51,7 +51,8 @@ Game = Screen.extend({
         prepare: 3,
         start: 4,
         game: 5,
-        loss: 6
+        loss: 6,
+        tutorial: 7
       },
       water: {
         speed: 30.0,
@@ -63,6 +64,13 @@ Game = Screen.extend({
         position: {
           min: 450,
           max: 2000
+        }
+      },
+      backgrounds: {
+        position: {
+          min: -1280,
+          max: 0,
+          ratio: 5
         }
       },
       camera: {
@@ -121,7 +129,10 @@ Game = Screen.extend({
         new Entity(resources.main.backgrounds[1], this.backgrounds.g)
       ],
       parallaxes: [
-        new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud),
+        new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
+        new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
+        new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
+        new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
         new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
@@ -175,6 +186,7 @@ Game = Screen.extend({
       points: new Points,
       name: new Name,
       character: new Character,
+      moon: new Moon,
       counter: new Counter
     };
 
@@ -1060,6 +1072,11 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
+  onTutorial: function() {
+    this.elements.people.pauseSchedulerAndActions();
+    this.elements.character.pauseSchedulerAndActions();
+    this.unscheduleUpdate();
+  },
 
   /**
    *
@@ -1100,6 +1117,9 @@ Game = Screen.extend({
       case this.parameters.states.loss:
       this.onLoss();
       break;
+      case this.parameters.states.tutorial:
+      this.onTutorial();
+      break;
     }
   },
 
@@ -1119,6 +1139,8 @@ Game = Screen.extend({
   updateLoss: function(time) {
   },
   updateGame: function(time) {
+  },
+  updateTutorial: function(time) {
   },
 
   /**
@@ -1158,7 +1180,9 @@ Game = Screen.extend({
      *
      */
     if(this.elements.baloons.count().count < this.elements.baloons.count().capacity) {
-      this.elements.baloons.create();
+      if(probably(1)) {
+        this.elements.baloons.create();
+      }
     }
   },
 
@@ -1212,6 +1236,9 @@ Game = Screen.extend({
       case this.parameters.states.game:
       this.updateGame(time);
       break;
+      case this.parameters.states.tutorial:
+      this.updateTutorial(time);
+      break;
     }
 
     /**
@@ -1263,7 +1290,7 @@ Game = Screen.extend({
        */
       if(this.elements.character.y > this.parameters.scale.position.max) {
         this.backgrounds.game.y = -(this.elements.character.y - this.parameters.scale.position.max);
-        this.backgrounds.g.y = -(this.elements.character.y - this.parameters.scale.position.max);
+        this.backgrounds.g.y = max(-(this.elements.character.y - this.parameters.scale.position.max) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
       } else {
         this.backgrounds.g.y = 0;
       }
