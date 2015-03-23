@@ -92,6 +92,14 @@ Counter = Button.extend({
 
     /**
      *
+     * This feathure to take care about big texture creating "on the fly".
+     *
+     */
+    this.textes.value.format(['1234567890']);
+    this.textes.value.format(['0']);
+
+    /**
+     *
      *
      *
      */
@@ -494,9 +502,9 @@ Counter = Button.extend({
      *
      *
      */
-    /*if(this.values.scores.current >= 50) {
+    if(this.values.scores.current >= 100) {
       achievement = 4;
-    } else if(this.values.scores.current >= 15) {
+    } else if(this.values.scores.current >= 20) {
       achievement = 3;
     } else if(this.values.scores.current >= 10) {
       achievement = 2;
@@ -504,16 +512,16 @@ Counter = Button.extend({
       achievement = 1;
     } else if(this.values.scores.current >= 1) {
       achievement = 0;
-    }*/
+    }
 
     /**
      *
      *
      *
      */
-    /*if(achievement !== false) {
+    if(achievement !== false) {
       Services.achievements.update(App.config.info.achievements.scores[achievement]);
-    }*/
+    }
   },
 
   /**

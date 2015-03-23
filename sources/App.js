@@ -53,15 +53,15 @@ App = {
     ],
     info: {
       leaderboards: {
-        best: ''
+        best: 'CgkI88CN0aIVEAIQBg'
       },
       achievements: {
         scores: [
-          '',
-          '',
-          '',
-          '',
-          ''
+          'CgkI88CN0aIVEAIQAA',
+          'CgkI88CN0aIVEAIQAg',
+          'CgkI88CN0aIVEAIQAw',
+          'CgkI88CN0aIVEAIQBA',
+          'CgkI88CN0aIVEAIQBQ'
         ]
       },
       ad: {
