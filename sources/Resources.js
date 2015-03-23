@@ -95,14 +95,25 @@ var resources = {
     counter: 'resource/Graphics/counter.png',
     moon: 'resource/Graphics/moon.png',
     music: {
-      background: 'resource/Music/music-1.mp3'
+      background: 'resource/Music/music-1.music'
     },
     sound: {
       touch: 'resource/Sound/touch.sound',
+      save: 'resource/Sound/save.sound',
       character: {
-        destroy: 'resource/Sound/destroy.mp3',
-        jump: 'resource/Sound/jump.mp3',
-        landing: 'resource/Sound/landing.mp3'
+        destroy: 'resource/Sound/destroy.sound',
+        engine :{
+          start: 'resource/Sound/engine-start.sound',
+          repeat: 'resource/Sound/engine-repeat.sound'
+        }
+      },
+      counter: {
+        count: [
+          'resource/Sound/count-1.sound',
+          'resource/Sound/count-2.sound',
+          'resource/Sound/count-3.sound'
+        ],
+        fail: 'resource/Sound/fail.sound'
       }
     }
   }

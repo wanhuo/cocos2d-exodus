@@ -159,7 +159,12 @@ Character = Spine.extend({
         x: 75,
         y: 75
       },
-      time: 1.0
+      time: 1.0,
+      sound: {
+        id: false,
+        handler: false,
+        time: 5300
+      }
     };
 
     /**
@@ -246,6 +251,37 @@ Character = Spine.extend({
      *
      *
      */
+    if(this.parameters.sound.handler) {
+      clearInterval(this.parameters.sound.handler);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.sound.id) {
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.stop(this.parameters.sound.id);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.sound.id = false
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.shadow.destroy();
 
     /**
@@ -283,6 +319,13 @@ Character = Spine.extend({
      *
      */
     this.setAnimation(this.parameters.animations.save.index, this.parameters.animations.save.name, false);
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.save);
   },
 
   /**
@@ -498,6 +541,52 @@ Character = Spine.extend({
      *
      *
      */
+    this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.sound.f = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.parameters.state === this.parameters.states.game || this.parameters.state === this.parameters.states.loss) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        clearInterval(this.parameters.sound.handler);
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.sound.handler = false;
+      }
+    }.bind(this);
+    this.parameters.sound.handler = setInterval(this.parameters.sound.f, this.parameters.sound.time);
+
+    /**
+     *
+     *
+     *
+     */
     Ad.Admob.hide(cc.Ad.Banner, {
       success: function() {
       }.bind(this),
@@ -696,6 +785,13 @@ Character = Spine.extend({
      */
     if(this.parameters.state === this.parameters.states.prepare) {
       if(this.getNumberOfRunningActions() > 0) return false;
+
+      /**
+       *
+       * 
+       *
+       */
+      Sound.play(resources.main.sound.character.engine.start);
 
       /**
        *

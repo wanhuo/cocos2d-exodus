@@ -357,6 +357,13 @@ Counter = Button.extend({
         )
       );
     }
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.count.random());
   },
   onJump: function() {
 
@@ -403,6 +410,13 @@ Counter = Button.extend({
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )
     );
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.fail);
   },
 
   /**
@@ -431,6 +445,13 @@ Counter = Button.extend({
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )
     );
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.fail);
   },
 
   /**
