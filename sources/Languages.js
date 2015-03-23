@@ -31,8 +31,8 @@ var languages = {
     {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}
   ],
   'jumps': [
-    {title: 'JUMPS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: 'Прыжков: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
+    {title: 'TAPS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: 'Нажатий: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'deaths': [
     {title: 'DEATHS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
