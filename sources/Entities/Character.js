@@ -169,13 +169,6 @@ Character = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    this.setNeedScheduleUpdate(true);
-
-    /**
-     *
      * 
      *
      */

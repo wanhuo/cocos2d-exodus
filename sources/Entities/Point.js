@@ -60,13 +60,6 @@ Point = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    this.setNeedScheduleUpdate(true);
-
-    /**
-     *
      * 
      *
      */
