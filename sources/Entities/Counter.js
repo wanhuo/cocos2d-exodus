@@ -269,10 +269,10 @@ Counter = Button.extend({
         if(cc.sys.isNative) {
           switch(cc.sys.os) {
             case cc.sys.OS_ANDROID:
-            return App.config.info.links.android;
+            return Config.links.android;
             break;
             case cc.sys.OS_IOS:
-            return App.config.info.links.apple;
+            return Config.links.apple;
             break;
           }
         } else {
@@ -520,7 +520,7 @@ Counter = Button.extend({
      *
      */
     if(achievement !== false) {
-      Services.achievements.update(App.config.info.achievements.scores[achievement]);
+      Services.achievements.update(Config.services.achievements.scores[achievement]);
     }
   },
 
@@ -562,7 +562,7 @@ Counter = Button.extend({
      *
      *
      */
-    Services.scores.update(App.config.info.leaderboards.best, this.values.scores.best);
+    Services.scores.update(Config.services.leaderboards.best, this.values.scores.best);
 
     /**
      *

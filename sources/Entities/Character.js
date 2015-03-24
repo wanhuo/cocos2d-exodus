@@ -580,12 +580,7 @@ Character = Spine.extend({
      *
      *
      */
-    Ad.Admob.hide(cc.Ad.Banner, {
-      success: function() {
-      }.bind(this),
-      error: function() {
-      }
-    });
+    Plugins.admob.hide(Plugins.ad.types.banner);
   },
   onLoss: function() {
 

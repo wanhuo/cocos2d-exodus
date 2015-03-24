@@ -32,8 +32,6 @@ tooflya = {};
 App = {
   release: false,
   config: {
-    debug: false,
-    autostart: true,
     application: {
       tooflya: 41,
       android: 42,
@@ -51,7 +49,12 @@ App = {
       {iso: 'en', id: 0},
       {iso: 'ru', id: 1}
     ],
-    info: {
+    analytics: {
+      tooflya: 'UA-48406912-20',
+      android: 'UA-48406912-18',
+      apple: 'UA-48406912-19'
+    },
+    services: {
       leaderboards: {
         best: 'CgkI88CN0aIVEAIQBg'
       },
@@ -63,48 +66,41 @@ App = {
           'CgkI88CN0aIVEAIQBA',
           'CgkI88CN0aIVEAIQBQ'
         ]
-      },
-      ad: {
-        admob: {
-          apple: {
-            banner: 'ca-app-pub-9938626987469103/7532322677',
-            interstitial: 'ca-app-pub-9938626987469103/9009055870'
-          },
-          android: {
-            banner: 'ca-app-pub-9938626987469103/3102123072',
-            interstitial: 'ca-app-pub-9938626987469103/4578856279'
-          }
-        },
-        chartboost: {
-          apple: {
-            id: '',
-            signature: ''
-          },
-          android: {
-            id: '',
-            signature: ''
-          }
-        }
-      },
-      analytics: {
-        tooflya: 'UA-48406912-20',
-        android: 'UA-48406912-18',
-        apple: 'UA-48406912-19'
-      },
-      plugins: {
-        batch: {
-          apple: {
-            id: '550C4647A0FEA0E80D57237599349D'
-          },
-          android: {
-            id: '550DA9DB3D4DE2A31807D6F9BE3CA2'
-          }
-        }
-      },
-      links: {
-        apple: 'https://t.co/jyzwTUtR9X',
-        android: 'https://t.co/tHslobAt8u'
       }
+    },
+    plugins: {
+      admob: {
+        apple: {
+          banner: 'ca-app-pub-9938626987469103/7532322677',
+          interstitial: 'ca-app-pub-9938626987469103/9009055870'
+        },
+        android: {
+          banner: 'ca-app-pub-9938626987469103/3102123072',
+          interstitial: 'ca-app-pub-9938626987469103/4578856279'
+        }
+      },
+      chartboost: {
+        apple: {
+          id: '',
+          signature: ''
+        },
+        android: {
+          id: '',
+          signature: ''
+        }
+      },
+      batch: {
+        apple: {
+          id: '550C4647A0FEA0E80D57237599349D'
+        },
+        android: {
+          id: '550DA9DB3D4DE2A31807D6F9BE3CA2'
+        }
+      }
+    },
+    links: {
+      apple: 'https://t.co/jyzwTUtR9X',
+      android: 'https://t.co/tHslobAt8u'
     }
   }
 };

@@ -4,3 +4,6 @@ gen
 assets
 src/org
 libs/armeabi
+
+local.properties
+project.properties

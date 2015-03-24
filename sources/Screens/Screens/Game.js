@@ -924,12 +924,7 @@ Game = Screen.extend({
      *
      *
      */
-    Ad.Admob.show(cc.Ad.Banner, {
-      success: function() {
-      }.bind(this),
-      error: function() {
-      }
-    });
+    Plugins.admob.show(Plugins.ad.types.banner);
   },
   onStart: function() {
 
@@ -1035,12 +1030,7 @@ Game = Screen.extend({
              *
              *
              */
-            Ad.Admob.show(cc.Ad.Interstitial, {
-              success: function() {
-              }.bind(this),
-              error: function() {
-              }
-            });
+            Plugins.admob.show(Plugins.ad.types.interstitial);
           }
 
           /**
