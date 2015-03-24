@@ -75,34 +75,6 @@ Ground = Parallax.extend({
    *
    *
    */
-  onCreate: function() {
-    this._super();
-  },
-  onDestroy: function() {
-    this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += this.parameters.speed.x * time;
-  },
-
-  /**
-   *
-   *
-   *
-   */
   deepCopy: function() {
     return new Ground;
   }
