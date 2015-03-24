@@ -29,6 +29,8 @@ var resources = {
       'resource/Graphics/background-2.png'
     ],
     name: 'resource/Graphics/name.png',
+    ground: 'resource/Graphics/ground.png',
+    mountain: 'resource/Graphics/mountain.png',
     character: {
       texture1: 'resource/Graphics/character.png',
       texture2: 'resource/Graphics/character2.png',
@@ -58,7 +60,6 @@ var resources = {
       atlas: 'resource/Graphics/point.atlas',
       json: 'resource/Graphics/point.json'
     },
-    ground: 'resource/Graphics/ground.png',
     stars: [
       'resource/Graphics/star-1.png',
       'resource/Graphics/star-2.png'
@@ -66,10 +67,6 @@ var resources = {
     clouds: [
       'resource/Graphics/cloud-1.png',
       'resource/Graphics/cloud-2.png'
-    ],
-    mountains: [
-      'resource/Graphics/mountain-1.png',
-      'resource/Graphics/mountain-1.png'
     ],
     trees: [
       'resource/Graphics/tree-1.png',

@@ -29,7 +29,7 @@ People = Spine.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.people.json, resources.main.people.atlas, 1.0, Game.backgrounds.game);
+    this._super(resources.main.people.json, resources.main.people.atlas, 1.0);
 
     /**
      *
@@ -51,7 +51,7 @@ People = Spine.extend({
         '3',
         '4'
       ],
-      up: 1
+      time: 1
     };
 
     /**
@@ -104,7 +104,7 @@ People = Spine.extend({
      * 
      *
      */
-    this.parameters.up = 1;
+    this.parameters.time = 1;
 
     /**
      *
@@ -172,7 +172,7 @@ People = Spine.extend({
      *
      *
      */
-    this.x += (this.parameters.speed.x * time * (this.parameters.position ? 1 : -1)) * this.parameters.up;
+    this.x += (this.parameters.speed.x * time * (this.parameters.position ? 1 : -1)) * this.parameters.time;
 
     /**
      *
@@ -180,11 +180,11 @@ People = Spine.extend({
      *
      */
     if(this.parameters.position) {
-      if(this.x > Camera.center.x) {
+      if(this.x >= Camera.center.x) {
         this.destroy();
       }
     } else {
-      if(this.x < Camera.center.x) {
+      if(this.x <= Camera.center.x) {
         this.destroy();
       }
     }

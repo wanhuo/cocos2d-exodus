@@ -28,8 +28,8 @@ Water = Parallax.extend({
    *
    *
    */
-  ctor: function(file, vector, position) {
-    this._super(file, 1, 1, vector, position);
+  ctor: function(textureFileName, vector, position) {
+    this._super(textureFileName, 1, 1, vector, position);
 
     /**
      *
@@ -37,13 +37,6 @@ Water = Parallax.extend({
      *
      */
     this.setNeedScheduleUpdate(true);
-
-    /**
-     *
-     *
-     *
-     */
-    this.vector.x = this.vector.base.x;
   },
 
   /**

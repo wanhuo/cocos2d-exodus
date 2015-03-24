@@ -137,8 +137,8 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
         new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
         new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
-        new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
-        new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
+        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
         new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
         new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
@@ -450,7 +450,7 @@ Game = Screen.extend({
        *
        */
       for(var i = 0; i < this.elements.people.count().count; i++) {
-        this.elements.people.get(i).parameters.up++;
+        this.elements.people.get(i).parameters.time++;
       }
     }
 
@@ -781,20 +781,6 @@ Game = Screen.extend({
    *
    */
   onMenu: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Services.signin();
-
-    /**
-     *
-     *
-     *
-     */
-    Music.play(resources.main.music.background, true);
   },
   onAnimation: function() {
 

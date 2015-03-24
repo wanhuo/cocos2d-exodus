@@ -79,6 +79,11 @@ Fish = Spine.extend({
         return Entity.prototype.destroy.call(this, param);
       }
 
+      /**
+       *
+       * 
+       *
+       */
       return false;
     }.bind(this);
   },

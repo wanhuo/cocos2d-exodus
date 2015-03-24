@@ -32,7 +32,7 @@ Ground = Parallax.extend({
     this._super(
       resources.main.ground, 1, 1,
       {
-        x: -30,
+        x: 0,
         y: 0
       },
       {
@@ -42,25 +42,8 @@ Ground = Parallax.extend({
       {
         x: 0.5,
         y: 0.0
-      },
-      true
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters = {
-      speed: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        width: false,
-        height: false
       }
-    };
+    );
 
     /**
      *

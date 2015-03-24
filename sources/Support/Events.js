@@ -50,6 +50,20 @@ Events.onStart = function() {
            *
            *
            */
+          Services.signin();
+
+          /**
+           *
+           *
+           *
+           */
+          Music.play(resources.main.music.background, true);
+
+          /**
+           *
+           *
+           *
+           */
           Analytics.sendEvent('System events', 'Application launch', '', '');
 
           /**

@@ -28,15 +28,15 @@ Cloud = Parallax.extend({
    *
    *
    */
-  ctor: function(file) {
+  ctor: function(textureFileName) {
     this._super(
-      file, 1, 1,
+      textureFileName, 1, 1,
       {
-        x: random(-300, 0),
+        x: -30,
         y: 0
       },
       {
-        x: random(0, Camera.width),
+        x: 0,
         y: Camera.height - 180
       },
       {
@@ -51,13 +51,6 @@ Cloud = Parallax.extend({
      *
      */
     this.setNeedScheduleUpdate(true);
-
-    /**
-     *
-     *
-     *
-     */
-    this.vector.x = this.vector.base.x;
   },
 
   /**
@@ -73,7 +66,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.scale = random(0.1, 2.0);
+    this.scale = random(0.3, 2.0);
   },
   onDestroy: function() {
     this._super();
@@ -91,24 +84,19 @@ Cloud = Parallax.extend({
      *
      *
      */
+    var r = Game.parameters.backgrounds.position.ratio + 1;
+
+    /**
+     *
+     *
+     *
+     */
     switch(resources.main.clouds.indexOf(this.textureFileName)) {
       case 0:
-
-      /**
-       *
-       *
-       *
-       */
-      this.y = random(0, Camera.height * (Game.parameters.backgrounds.position.ratio + 1));
+      this.y = random(0, Camera.height * r);
       break;
       case 1:
-
-      /**
-       *
-       *
-       *
-       */
-      this.y = random(Camera.height * (Game.parameters.backgrounds.position.ratio + 1), max(Camera.height * 2 * (Game.parameters.backgrounds.position.ratio + 1), (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
+      this.y = random(Camera.height * r, max(Camera.height * 2 * r, (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
       break;
     }
   },
@@ -119,7 +107,7 @@ Cloud = Parallax.extend({
    *
    */
   disabled: function() {
-    return !(Game.parameters.state === Game.parameters.states.game);
+    return false;
   },
 
   /**

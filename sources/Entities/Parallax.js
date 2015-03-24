@@ -38,8 +38,8 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
      */
     if(vector) {
       this.vector = {
-        x: 0,
-        y: 0,
+        x: vector.x,
+        y: vector.y,
         base: {
           x: vector.x,
           y: vector.y
@@ -68,6 +68,33 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
       this.x = position.x;
       this.y = position.y;
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCreate: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.checks();
+  },
+  onDestroy: function() {
+    this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  checks: function() {
 
     /**
      *
@@ -79,13 +106,35 @@ Parallax = ParallaxEntity.Infinity.Entity.extend({
         size: {
           width: false,
           height: false
+        },
+        blocks: {
+          min: false,
+          max: false
         }
       };
     } else {
+
+      /**
+       *
+       *
+       *
+       */
       if(!this.parameters.size) {
         this.parameters.size = {
           width: false,
           height: false
+        };
+      }
+
+      /**
+       *
+       *
+       *
+       */
+      if(!this.parameters.blocks) {
+        this.parameters.blocks = {
+          min: false,
+          max: false
         };
       }
     }
