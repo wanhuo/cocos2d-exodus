@@ -1325,7 +1325,7 @@ Character = Spine.extend({
          *
          *
          */
-        if(x < Game.parameters.camera.x + Game.parameters.camera.width) {console.log(1);
+        if(x < Game.parameters.camera.x + Game.parameters.camera.width) {
 
           /**
            *
