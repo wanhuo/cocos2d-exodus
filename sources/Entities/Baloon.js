@@ -89,7 +89,7 @@ Baloon = Spine.extend({
      *
      *
      */
-    this.x = abs(this.parent.x) + Camera.width + Camera.width * Game.parallax.scale();
+    this.x = Game.parameters.camera.x + Game.parameters.camera.width;
     this.y = random(Camera.center.y, Camera.height / Game.parameters.scale.min);
 
     /**

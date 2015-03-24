@@ -74,7 +74,11 @@ Game = Screen.extend({
         }
       },
       camera: {
-        center: 450
+        center: 450,
+        x: 0,
+        y: 0,
+        width: Camera.width,
+        height: Camera.height
       },
       ad: {
         interstitial: {
@@ -1294,6 +1298,21 @@ Game = Screen.extend({
       } else {
         this.backgrounds.g.y = 0;
       }
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.camera.x = abs(this.backgrounds.game.x);
+      this.parameters.camera.y = abs(this.backgrounds.game.y);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
       break;
     }
 

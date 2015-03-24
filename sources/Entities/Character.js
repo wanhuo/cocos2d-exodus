@@ -124,7 +124,7 @@ Character = Spine.extend({
         },
         min: {
           x: 0,
-          y: -2000
+          y: -5000
         },
         increase: {
           x: 0.0,
@@ -1242,13 +1242,6 @@ Character = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    var position = abs(Game.backgrounds.game.x) + Camera.width * Game.parallax.scale();
-
-    /**
-     *
      * 
      *
      */
@@ -1329,10 +1322,10 @@ Character = Spine.extend({
 
         /**
          *
-         * TODO: Check if animation is need here with x < position.
+         *
          *
          */
-        if(true) {
+        if(x < Game.parameters.camera.x + Game.parameters.camera.width) {console.log(1);
 
           /**
            *
