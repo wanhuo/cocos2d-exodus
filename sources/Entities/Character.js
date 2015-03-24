@@ -1025,6 +1025,65 @@ Character = Spine.extend({
        *
        */
       this.smokes.create(this);
+
+      /**
+       *
+       * 
+       *
+       */
+      if(this.parameters.time > 1) {
+
+      /**
+       *
+       * 
+       *
+       */
+      var parameters = cc.clone(this.parameters);
+
+        /**
+         *
+         *
+         *
+         */
+        var i = this.parameters.time;
+
+        /**
+         *
+         *
+         *
+         */
+        while(i >= 0) {
+
+          /**
+           *
+           *
+           *
+           */
+          var position = this.updatePosition(parameters);
+
+          /**
+           *
+           *
+           *
+           */
+          i -= 1 / this.parameters.time;
+
+          /**
+           *
+           *
+           *
+           */
+          this.smokes.create(this);
+
+          /**
+           *
+           *
+           *
+           */
+          this.smokes.last().x += position.x / this.parameters.time;
+          this.smokes.last().y += position.y / this.parameters.time;
+        }
+      }
     }
 
     /**
