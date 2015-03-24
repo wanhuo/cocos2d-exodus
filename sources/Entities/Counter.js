@@ -562,7 +562,7 @@ Counter = Button.extend({
      *
      *
      */
-    Services.scores.update(App.config.info.leaderboards.best, properties.scores.best);
+    Services.scores.update(App.config.info.leaderboards.best, this.values.scores.best);
 
     /**
      *
