@@ -632,7 +632,7 @@ Game = Screen.extend({
      *
      *
      */
-    Services.scores.show();
+    Services.scores.show(Config.services.leaderboards.best);
 
     /**
      *
