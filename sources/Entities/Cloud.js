@@ -107,7 +107,7 @@ Cloud = Parallax.extend({
    *
    */
   disabled: function() {
-    return false;
+    return Game.parameters.state === Game.parameters.states.menu;
   },
 
   /**

@@ -53,6 +53,15 @@ Water = Parallax.extend({
    *
    *
    */
+  fixed: function() {
+    return false;
+  },
+
+  /**
+   *
+   *
+   *
+   */
   deepCopy: function() {
     return new Water(this.textureFileName, this.vector.base, {
       x: this.x,
