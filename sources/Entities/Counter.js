@@ -29,7 +29,7 @@ Counter = Button.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.counter, Game.backgrounds.b, 1, 1, 1, 1, this.onTouch.bind(this));
+    this._super(resources.main.counter, 1, 1, Game.backgrounds.b, this.onTouch.bind(this));
 
     /**
      *

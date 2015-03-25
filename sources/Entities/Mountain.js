@@ -36,7 +36,7 @@ Mountain = Parallax.extend({
         y: 0
       },
       {
-        x: 0,
+        x: random(0, Camera.width),
         y: 340
       },
       {
