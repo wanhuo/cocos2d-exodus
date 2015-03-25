@@ -74,7 +74,11 @@ Game = Screen.extend({
         }
       },
       camera: {
-        center: 450
+        center: 450,
+        x: 0,
+        y: 0,
+        width: Camera.width,
+        height: Camera.height
       },
       ad: {
         interstitial: {
@@ -133,8 +137,8 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
         new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
         new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
-        new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
-        new ParallaxEntity.Infinity(resources.main.mountains[0], this.backgrounds.game).addEntity(new Mountain),
+        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
         new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
         new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
@@ -196,11 +200,11 @@ Game = Screen.extend({
      *
      */
     this.buttons = {
-      play: new Button(resources.main.buttons.play, this.backgrounds.menu, 1, 1, 1, 1, this.onPlay.bind(this)),
-      like: new Button(resources.main.buttons.like, this.backgrounds.b, 1, 1, 1, 1, this.onLike.bind(this)),
-      leaderboard: new Button(resources.main.buttons.leaderboard, this.backgrounds.b, 1, 1, 1, 1, this.onLeaderboard.bind(this)),
-      achievements: new Button(resources.main.buttons.achievements, this.backgrounds.b, 1, 1, 1, 1, this.onAchievements.bind(this)),
-      sound: new Button(resources.main.buttons.sound, this.backgrounds.b, 1, 1, 2, 1, this.onSound.bind(this))
+      play: new Button(resources.main.buttons.play, 1, 1, this.backgrounds.menu, this.onPlay.bind(this)),
+      like: new Button(resources.main.buttons.like, 1, 1, this.backgrounds.b, this.onLike.bind(this)),
+      leaderboard: new Button(resources.main.buttons.leaderboard, 1, 1, this.backgrounds.b, this.onLeaderboard.bind(this)),
+      achievements: new Button(resources.main.buttons.achievements, 1, 1, this.backgrounds.b, this.onAchievements.bind(this)),
+      sound: new Button(resources.main.buttons.sound, 2, 1, this.backgrounds.b, this.onSound.bind(this))
     };
 
     /**
@@ -446,7 +450,7 @@ Game = Screen.extend({
        *
        */
       for(var i = 0; i < this.elements.people.count().count; i++) {
-        this.elements.people.get(i).parameters.up++;
+        this.elements.people.get(i).parameters.time++;
       }
     }
 
@@ -628,7 +632,7 @@ Game = Screen.extend({
      *
      *
      */
-    Services.scores.show();
+    Services.scores.show(Config.services.leaderboards.best);
 
     /**
      *
@@ -777,20 +781,6 @@ Game = Screen.extend({
    *
    */
   onMenu: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Services.signin();
-
-    /**
-     *
-     *
-     *
-     */
-    Music.play(resources.main.music.background, true);
   },
   onAnimation: function() {
 
@@ -934,12 +924,7 @@ Game = Screen.extend({
      *
      *
      */
-    Ad.Admob.show(cc.Ad.Banner, {
-      success: function() {
-      }.bind(this),
-      error: function() {
-      }
-    });
+    Plugins.admob.show(Plugins.ad.types.banner);
   },
   onStart: function() {
 
@@ -1045,12 +1030,7 @@ Game = Screen.extend({
              *
              *
              */
-            Ad.Admob.show(cc.Ad.Interstitial, {
-              success: function() {
-              }.bind(this),
-              error: function() {
-              }
-            });
+            Plugins.admob.show(Plugins.ad.types.interstitial);
           }
 
           /**
@@ -1294,6 +1274,21 @@ Game = Screen.extend({
       } else {
         this.backgrounds.g.y = 0;
       }
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.camera.x = abs(this.backgrounds.game.x);
+      this.parameters.camera.y = abs(this.backgrounds.game.y);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
       break;
     }
 

@@ -32,7 +32,7 @@ Ground = Parallax.extend({
     this._super(
       resources.main.ground, 1, 1,
       {
-        x: -30,
+        x: 0,
         y: 0
       },
       {
@@ -42,8 +42,7 @@ Ground = Parallax.extend({
       {
         x: 0.5,
         y: 0.0
-      },
-      true
+      }
     );
 
     /**
@@ -51,51 +50,7 @@ Ground = Parallax.extend({
      *
      *
      */
-    this.parameters = {
-      speed: {
-        x: 0,
-        y: 0
-      },
-      size: {
-        width: false,
-        height: false
-      }
-    };
-
-    /**
-     *
-     *
-     *
-     */
     this.setBlendFunc(gl.ONE, gl.ZERO);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onCreate: function() {
-    this._super();
-  },
-  onDestroy: function() {
-    this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += this.parameters.speed.x * time;
   },
 
   /**

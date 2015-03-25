@@ -28,11 +28,11 @@ Star = Parallax.extend({
    *
    *
    */
-  ctor: function(file) {
+  ctor: function(textureFileName) {
     this._super(
-      file, 1, 1,
+      textureFileName, 1, 1,
       {
-        x: random(-300, 0),
+        x: -30,
         y: 0
       },
       {
@@ -44,13 +44,6 @@ Star = Parallax.extend({
         y: 0
       }
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.vector.x = this.vector.base.x;
   },
 
   /**
@@ -84,7 +77,14 @@ Star = Parallax.extend({
      *
      *
      */
-    this.y = random(Camera.height * (Game.parameters.backgrounds.position.ratio + 1), max(Camera.height * 2 * (Game.parameters.backgrounds.position.ratio + 1), (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
+    var r = Game.parameters.backgrounds.position.ratio + 1;
+
+    /**
+     *
+     *
+     *
+     */
+    this.y = random(Camera.height * r, max(Camera.height * 2 * r, (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
   },
 
   /**

@@ -29,7 +29,7 @@ Counter = Button.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.counter, Game.backgrounds.b, 1, 1, 1, 1, this.onTouch.bind(this));
+    this._super(resources.main.counter, 1, 1, Game.backgrounds.b, this.onTouch.bind(this));
 
     /**
      *
@@ -89,6 +89,14 @@ Counter = Button.extend({
      *
      */
     this.disableOrientationsChangesForChildren();
+
+    /**
+     *
+     * This feathure to take care about big texture creating "on the fly".
+     *
+     */
+    this.textes.value.format(['1234567890']);
+    this.textes.value.format(['0']);
 
     /**
      *
@@ -261,10 +269,10 @@ Counter = Button.extend({
         if(cc.sys.isNative) {
           switch(cc.sys.os) {
             case cc.sys.OS_ANDROID:
-            return App.config.info.links.android;
+            return Config.links.android;
             break;
             case cc.sys.OS_IOS:
-            return App.config.info.links.apple;
+            return Config.links.apple;
             break;
           }
         } else {
@@ -357,6 +365,13 @@ Counter = Button.extend({
         )
       );
     }
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.count.random());
   },
   onJump: function() {
 
@@ -403,6 +418,13 @@ Counter = Button.extend({
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )
     );
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.fail);
   },
 
   /**
@@ -431,6 +453,13 @@ Counter = Button.extend({
         cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
       )
     );
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.fail);
   },
 
   /**
@@ -473,9 +502,9 @@ Counter = Button.extend({
      *
      *
      */
-    /*if(this.values.scores.current >= 50) {
+    if(this.values.scores.current >= 100) {
       achievement = 4;
-    } else if(this.values.scores.current >= 15) {
+    } else if(this.values.scores.current >= 20) {
       achievement = 3;
     } else if(this.values.scores.current >= 10) {
       achievement = 2;
@@ -483,16 +512,16 @@ Counter = Button.extend({
       achievement = 1;
     } else if(this.values.scores.current >= 1) {
       achievement = 0;
-    }*/
+    }
 
     /**
      *
      *
      *
      */
-    /*if(achievement !== false) {
-      Services.achievements.update(App.config.info.achievements.scores[achievement]);
-    }*/
+    if(achievement !== false) {
+      Services.achievements.update(Config.services.achievements.scores[achievement]);
+    }
   },
 
   /**
@@ -533,7 +562,7 @@ Counter = Button.extend({
      *
      *
      */
-    Services.scores.update(App.config.info.leaderboards.best, properties.scores.best);
+    Services.scores.update(Config.services.leaderboards.best, this.values.scores.best);
 
     /**
      *

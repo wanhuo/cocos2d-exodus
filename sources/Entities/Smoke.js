@@ -105,18 +105,8 @@ Smoke = Entity.extend({
      *
      *
      */
-    this.scale = 0;
-
-    /**
-     *
-     *
-     *
-     */
     this.runAction(
       cc.Sequence.create(
-        cc.EaseSineIn.create(
-          cc.ScaleTo.create(0.02, 1.0)
-        ),
         cc.EaseSineInOut.create(
           cc.FadeOut.create(1.0)
         ),

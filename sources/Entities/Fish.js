@@ -64,13 +64,6 @@ Fish = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    this.setNeedScheduleUpdate(true);
-
-    /**
-     *
      * 
      *
      */
@@ -86,6 +79,11 @@ Fish = Spine.extend({
         return Entity.prototype.destroy.call(this, param);
       }
 
+      /**
+       *
+       * 
+       *
+       */
       return false;
     }.bind(this);
   },
@@ -97,14 +95,6 @@ Fish = Spine.extend({
    */
   onCreate: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    var position = abs(Game.backgrounds.game.x);
-    var camera = Camera.width * Game.parallax.scale();
 
     /**
      *
@@ -126,7 +116,7 @@ Fish = Spine.extend({
      *
      *
      */
-    this.x = (this.parameters.position ? random(position, position + camera / 2) : random(position + camera / 2, position + camera));
+    this.x = (this.parameters.position ? random(Game.parameters.camera.x, Game.parameters.camera.x + Game.parameters.camera.width / 2) : random(Game.parameters.camera.x + Game.parameters.camera.width / 2, Game.parameters.camera.x + Game.parameters.camera.width));
     this.y = 130;
 
     /**

@@ -28,9 +28,9 @@ Tree = Parallax.extend({
    *
    *
    */
-  ctor: function(file) {
+  ctor: function(textureFileName) {
     this._super(
-      file, 1, 1,
+      textureFileName, 1, 1,
       {
         x: 0,
         y: 0

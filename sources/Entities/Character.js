@@ -124,7 +124,7 @@ Character = Spine.extend({
         },
         min: {
           x: 0,
-          y: -2000
+          y: -5000
         },
         increase: {
           x: 0.0,
@@ -159,15 +159,13 @@ Character = Spine.extend({
         x: 75,
         y: 75
       },
-      time: 1.0
+      time: 1.0,
+      sound: {
+        id: false,
+        handler: false,
+        time: 5300
+      }
     };
-
-    /**
-     *
-     *
-     *
-     */
-    this.setNeedScheduleUpdate(true);
 
     /**
      *
@@ -246,6 +244,37 @@ Character = Spine.extend({
      *
      *
      */
+    if(this.parameters.sound.handler) {
+      clearInterval(this.parameters.sound.handler);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.sound.id) {
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.stop(this.parameters.sound.id);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.sound.id = false
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.shadow.destroy();
 
     /**
@@ -283,6 +312,13 @@ Character = Spine.extend({
      *
      */
     this.setAnimation(this.parameters.animations.save.index, this.parameters.animations.save.name, false);
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.save);
   },
 
   /**
@@ -498,12 +534,53 @@ Character = Spine.extend({
      *
      *
      */
-    Ad.Admob.hide(cc.Ad.Banner, {
-      success: function() {
-      }.bind(this),
-      error: function() {
+    this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.sound.f = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.parameters.state === this.parameters.states.game || this.parameters.state === this.parameters.states.loss) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        clearInterval(this.parameters.sound.handler);
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.sound.handler = false;
       }
-    });
+    }.bind(this);
+    this.parameters.sound.handler = setInterval(this.parameters.sound.f, this.parameters.sound.time);
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.admob.hide(Plugins.ad.types.banner);
   },
   onLoss: function() {
 
@@ -696,6 +773,13 @@ Character = Spine.extend({
      */
     if(this.parameters.state === this.parameters.states.prepare) {
       if(this.getNumberOfRunningActions() > 0) return false;
+
+      /**
+       *
+       * 
+       *
+       */
+      Sound.play(resources.main.sound.character.engine.start);
 
       /**
        *
@@ -936,6 +1020,65 @@ Character = Spine.extend({
        *
        */
       this.smokes.create(this);
+
+      /**
+       *
+       * 
+       *
+       */
+      if(this.parameters.time > 1) {
+
+      /**
+       *
+       * 
+       *
+       */
+      var parameters = cc.clone(this.parameters);
+
+        /**
+         *
+         *
+         *
+         */
+        var i = this.parameters.time;
+
+        /**
+         *
+         *
+         *
+         */
+        while(i >= 0) {
+
+          /**
+           *
+           *
+           *
+           */
+          var position = this.updatePosition(parameters);
+
+          /**
+           *
+           *
+           *
+           */
+          i -= 1 / this.parameters.time;
+
+          /**
+           *
+           *
+           *
+           */
+          this.smokes.create(this);
+
+          /**
+           *
+           *
+           *
+           */
+          this.smokes.last().x += position.x / this.parameters.time;
+          this.smokes.last().y += position.y / this.parameters.time;
+        }
+      }
     }
 
     /**
@@ -1094,13 +1237,6 @@ Character = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    var position = abs(Game.backgrounds.game.x) + Camera.width * Game.parallax.scale();
-
-    /**
-     *
      * 
      *
      */
@@ -1181,10 +1317,10 @@ Character = Spine.extend({
 
         /**
          *
-         * TODO: Check if animation is need here with x < position.
+         *
          *
          */
-        if(true) {
+        if(x < Game.parameters.camera.x + Game.parameters.camera.width) {
 
           /**
            *

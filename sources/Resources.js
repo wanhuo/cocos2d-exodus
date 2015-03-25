@@ -29,6 +29,8 @@ var resources = {
       'resource/Graphics/background-2.png'
     ],
     name: 'resource/Graphics/name.png',
+    ground: 'resource/Graphics/ground.png',
+    mountain: 'resource/Graphics/mountain.png',
     character: {
       texture1: 'resource/Graphics/character.png',
       texture2: 'resource/Graphics/character2.png',
@@ -58,7 +60,6 @@ var resources = {
       atlas: 'resource/Graphics/point.atlas',
       json: 'resource/Graphics/point.json'
     },
-    ground: 'resource/Graphics/ground.png',
     stars: [
       'resource/Graphics/star-1.png',
       'resource/Graphics/star-2.png'
@@ -66,10 +67,6 @@ var resources = {
     clouds: [
       'resource/Graphics/cloud-1.png',
       'resource/Graphics/cloud-2.png'
-    ],
-    mountains: [
-      'resource/Graphics/mountain-1.png',
-      'resource/Graphics/mountain-1.png'
     ],
     trees: [
       'resource/Graphics/tree-1.png',
@@ -95,14 +92,25 @@ var resources = {
     counter: 'resource/Graphics/counter.png',
     moon: 'resource/Graphics/moon.png',
     music: {
-      background: 'resource/Music/music-1.mp3'
+      background: 'resource/Music/music-1.music'
     },
     sound: {
       touch: 'resource/Sound/touch.sound',
+      save: 'resource/Sound/save.sound',
       character: {
-        destroy: 'resource/Sound/destroy.mp3',
-        jump: 'resource/Sound/jump.mp3',
-        landing: 'resource/Sound/landing.mp3'
+        destroy: 'resource/Sound/destroy.sound',
+        engine :{
+          start: 'resource/Sound/engine-start.sound',
+          repeat: 'resource/Sound/engine-repeat.sound'
+        }
+      },
+      counter: {
+        count: [
+          'resource/Sound/count-1.sound',
+          'resource/Sound/count-2.sound',
+          'resource/Sound/count-3.sound'
+        ],
+        fail: 'resource/Sound/fail.sound'
       }
     }
   }
