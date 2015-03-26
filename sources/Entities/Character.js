@@ -1403,8 +1403,16 @@ Character = Spine.extend({
          *
          *
          */
-        if(abs(this.x - point.x) <= (x || this.parameters.collision.x) && abs(this.y - point.y) <= (y || this.parameters.collision.y)) {
-          return parameters === true ? point : point.destroy(true).parameters.skin;
+        if(true) {
+
+          /**
+           *
+           *
+           *
+           */
+          if(abs(this.x - point.x) <= (x || this.parameters.collision.x) && abs(this.y - point.y) <= (y || this.parameters.collision.y)) {
+            return parameters === true ? point : point.destroy(true).parameters.skin;
+          }
         }
       }
     }
@@ -1423,48 +1431,6 @@ Character = Spine.extend({
    *
    */
   updateStatus: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.status.getNumberOfRunningActions() > 0) return false;
-
-    /**
-     *
-     *
-     *
-     */
-    var time = this.parameters.collision.x / (this.parameters.vector.x * this.parameters.speed.x * (1.0 / 60.0) * this.parameters.time);
-time /= 10;
-    /**
-     *
-     *
-     *
-     */
-    var element = this.updatePoint(true, this.parameters.collision.x * 0.5, this.parameters.collision.y * 0.5);
-
-    /**
-     *
-     *
-     *
-     */
-    if(element)
-    if(!element.asd)
-    switch(element.parameters.skin) {
-      case '1':
-      this.status.stopAllActions();
-      this.status.runAction(
-        cc.Sequence.create(
-          cc.FadeTo.create(time, 255),
-          cc.FadeTo.create(time / 2, 0)
-        )
-      );
-      element.asd=true;
-      element.setAnimation(element.parameters.animations.event.index, element.parameters.animations.event.name, false);
-      break;
-    }
   },
 
   /**

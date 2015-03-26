@@ -63,7 +63,7 @@ Game = Screen.extend({
         max: 1.0,
         position: {
           min: 450,
-          max: 500 / 0.5
+          max: 450 / 0.5
         }
       },
       backgrounds: {
