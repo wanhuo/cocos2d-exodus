@@ -118,7 +118,7 @@ Character = Spine.extend({
             y: 0.0
           },
           setup: {
-            x: 1500,
+            x: 1250,
             y: 500
           }
         },
@@ -187,6 +187,7 @@ Character = Spine.extend({
      *
      */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
+    this.status = new Entity(resources.main.character.status, this);this.status.setColor(cc.color.GREEN);
 
     /**
      *
@@ -276,6 +277,7 @@ Character = Spine.extend({
      *
      */
     this.shadow.destroy();
+    this.status.destroy();
 
     /**
      *
@@ -527,6 +529,17 @@ Character = Spine.extend({
        *
        */
       this.updateTraectory();
+
+      /**
+       *
+       *
+       *
+       */
+      this.status.create().attr({
+        x: 0,
+        y: 21,
+        opacity: 0
+      });
    }.bind(this), 2500);
 
     /**
@@ -810,7 +823,7 @@ Character = Spine.extend({
        *
        *
        */
-      switch(this.detectPoint()) {
+      switch(this.updatePoint()) {
         default:
 
         /**
@@ -1083,6 +1096,13 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.updateStatus();
+
+    /**
+     *
      * 
      *
      */
@@ -1240,7 +1260,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = random(10, 20, true);
+    var probably = random(30, 30, true);
 
     /**
      *
@@ -1331,12 +1351,12 @@ Character = Spine.extend({
             cc.Sequence.create(
               cc.DelayTime.create(time),
               cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 1.0)
+                cc.ScaleTo.create(0.2, 2.0)
               )
             )
           );
         } else {
-          element.scale = 1;
+          element.scale = 2;
         }
 
         /**
@@ -1361,7 +1381,7 @@ Character = Spine.extend({
    *
    *
    */
-  detectPoint: function() {
+  updatePoint: function(parameters, x, y) {
 
     /**
      *
@@ -1383,8 +1403,8 @@ Character = Spine.extend({
          *
          *
          */
-        if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
-          return point.destroy(true).parameters.skin;
+        if(abs(this.x - point.x) <= (x || this.parameters.collision.x) && abs(this.y - point.y) <= (y || this.parameters.collision.y)) {
+          return parameters === true ? point : point.destroy(true).parameters.skin;
         }
       }
     }
@@ -1395,6 +1415,56 @@ Character = Spine.extend({
      *
      */
     return false;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.status.getNumberOfRunningActions() > 0) return false;
+
+    /**
+     *
+     *
+     *
+     */
+    var time = this.parameters.collision.x / (this.parameters.vector.x * this.parameters.speed.x * (1.0 / 60.0) * this.parameters.time);
+time /= 10;
+    /**
+     *
+     *
+     *
+     */
+    var element = this.updatePoint(true, this.parameters.collision.x * 0.5, this.parameters.collision.y * 0.5);
+
+    /**
+     *
+     *
+     *
+     */
+    if(element)
+    if(!element.asd)
+    switch(element.parameters.skin) {
+      case '1':
+      this.status.stopAllActions();
+      this.status.runAction(
+        cc.Sequence.create(
+          cc.FadeTo.create(time, 255),
+          cc.FadeTo.create(time / 2, 0)
+        )
+      );
+      element.asd=true;
+      element.setAnimation(element.parameters.animations.event.index, element.parameters.animations.event.name, false);
+      break;
+    }
   },
 
   /**

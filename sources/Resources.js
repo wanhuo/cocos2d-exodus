@@ -38,7 +38,8 @@ var resources = {
       atlas: 'resource/Graphics/character.atlas',
       json: 'resource/Graphics/character.json',
       shadow: 'resource/Graphics/character-shadow.png',
-      smoke: 'resource/Graphics/character-smoke.png'
+      smoke: 'resource/Graphics/character-smoke.png',
+      status: 'resource/Graphics/character-status.png'
     },
     people: {
       texture: 'resource/Graphics/people.png',

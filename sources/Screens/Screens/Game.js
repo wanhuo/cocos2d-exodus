@@ -59,18 +59,18 @@ Game = Screen.extend({
         y: 180
       },
       scale: {
-        min: 0.25,
+        min: 0.5,
         max: 1.0,
         position: {
           min: 450,
-          max: 2000
+          max: 500 / 0.5
         }
       },
       backgrounds: {
         position: {
           min: -1280,
           max: 0,
-          ratio: 5
+          ratio: 10
         }
       },
       camera: {

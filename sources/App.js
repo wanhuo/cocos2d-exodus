@@ -31,6 +31,7 @@ tooflya = {};
  */
 App = {
   release: false,
+  splash: true,
   config: {
     application: {
       tooflya: 41,

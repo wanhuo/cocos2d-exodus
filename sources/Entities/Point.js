@@ -45,8 +45,14 @@ Point = Spine.extend({
           time: 1.0,
           loop: true
         },
-        destroy: {
+        event: {
           index: 2,
+          name: 'event',
+          time: 1.0,
+          loop: false
+        },
+        destroy: {
+          index: 3,
           name: 'destroy',
           time: 1.0,
           loop: false
@@ -151,7 +157,7 @@ Point = Spine.extend({
      * 
      *
      */
-    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);
+    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);this.asd=false;
   },
   onDestroy: function() {
     this._super();
