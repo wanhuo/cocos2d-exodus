@@ -21,43 +21,28 @@
  *
  */
 
-Tutorial = cc.Node.extend({
+Tutorial = {
 
   /**
    *
    *
    *
    */
-  ctor: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters = {
-      time: [
-        1000,
-        100,
-        0,
-        0,
-        0
-      ],
-      passed: [
-        Data.get(false, properties.tutorial.chapters.chapter1),
-        Data.get(false, properties.tutorial.chapters.chapter2),
-        Data.get(false, properties.tutorial.chapters.chapter3),
-        Data.get(false, properties.tutorial.chapters.chapter4),
-        Data.get(false, properties.tutorial.chapters.chapter5)
-      ]
-    };
-
-    /**
-     *
-     *
-     *
-     */
-    this.retain();
+  parameters: {
+    time: [
+      1000,
+      100,
+      0,
+      0,
+      0
+    ],
+    passed: [
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter1),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter2),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter3),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter4),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter5)
+    ]
   },
 
   /**
@@ -137,4 +122,4 @@ Tutorial = cc.Node.extend({
       return new Chapter5;
     }
   }
-});
+};

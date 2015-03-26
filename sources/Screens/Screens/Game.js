@@ -43,13 +43,6 @@ Game = Screen.extend({
      * 
      *
      */
-    Tutorial = new Tutorial;
-
-    /**
-     *
-     * 
-     *
-     */
     this.parameters = {
       state: 0,
       states: {
@@ -1139,7 +1132,7 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
-  onTutorial: function(reverse) {
+  onTutorial: function(reverse) {console.log(1);
 
     /**
      *

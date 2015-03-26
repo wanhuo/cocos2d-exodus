@@ -69,12 +69,6 @@ Chapter = Spine.extend({
           name: 'animation-2',
           time: 1.0,
           loop: true
-        },
-        animation3: {
-          index: 5,
-          name: 'animation-3',
-          time: 1.0,
-          loop: true
         }
       }
     };
@@ -99,6 +93,7 @@ Chapter = Spine.extend({
      *
      */
     this.template = new Text('tutorial-chapter-' + this.parameters.index);
+    this.template.retain();
 
     /**
      *
@@ -173,7 +168,6 @@ Chapter = Spine.extend({
      */
     this.setAnimation(this.parameters.animations.animation1);
     this.setAnimation(this.parameters.animations.animation2);
-    this.setAnimation(this.parameters.animations.animation3);
 
     /**
      *
@@ -406,7 +400,7 @@ Chapter = Spine.extend({
          *
          *
          */
-        this.destroy(Entity.destroy.complete);
+        this.destroy();
         break;
       }
     }
