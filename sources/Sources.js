@@ -28,6 +28,7 @@ sources = sources.concat([
   'sources/Entities/Name.js',
   'sources/Entities/Parallax.js',
   'sources/Entities/Ground.js',
+  'sources/Entities/Slide.js',
   'sources/Entities/Tree.js',
   'sources/Entities/Mountain.js',
   'sources/Entities/Water.js',
@@ -46,5 +47,12 @@ sources = sources.concat([
   'sources/Managers/ScreensManager.js',
   'sources/Screens/Screen.js',
   'sources/Screens/Screens/Game.js',
-  'sources/Screens/Popup.js'
+  'sources/Screens/Popup.js',
+  'sources/Tutorial/Tutorial.js',
+  'sources/Tutorial/Chapter.js',
+  'sources/Tutorial/Chapter1.js',
+  'sources/Tutorial/Chapter2.js',
+  'sources/Tutorial/Chapter3.js',
+  'sources/Tutorial/Chapter4.js',
+  'sources/Tutorial/Chapter5.js'
 ]);

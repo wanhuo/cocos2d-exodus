@@ -21,34 +21,14 @@
  *
  */
 
-var properties = {
-  purchases: {
+Chapter4 = Chapter.extend({
 
-  },
-
-  music: 1,
-  sound: 2,
-  vibrate: 3,
-  language: 4,
-  ad: 5,
-  info: {
-    uid: 6,
-    name: 7,
-    surname: 8,
-    photo: 9
-  },
-  scores: {
-    best: 10,
-    jumps: 11,
-    deaths: 12
-  },
-  tutorial: {
-    chapters: {
-      chapter1: 101,
-      chapter2: 102,
-      chapter3: 103,
-      chapter4: 104,
-      chapter5: 105
-    }
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super(4);
   }
-};
+});

@@ -36,6 +36,13 @@ Character = Spine.extend({
      * 
      *
      */
+    Character = this;
+
+    /**
+     *
+     * 
+     *
+     */
     this.parameters = {
       state: 0,
       states: {
@@ -114,7 +121,7 @@ Character = Spine.extend({
           x: 0,
           y: 0,
           increase: {
-            x: 100,
+            x: 25,
             y: 0.0
           },
           setup: {
@@ -155,7 +162,7 @@ Character = Spine.extend({
       },
       active: true,
       locked: true,
-      collision: { // TODO: Correct this to the point size.
+      collision: {
         x: 75,
         y: 75
       },
@@ -520,6 +527,13 @@ Character = Spine.extend({
        *
        *
        */
+      Tutorial.show(3);
+
+      /**
+       *
+       *
+       *
+       */
       this.parameters.locked = false;
       this.parameters.creation = false;
 
@@ -630,6 +644,15 @@ Character = Spine.extend({
               cc.ScaleTo.create(0.5, 1.0)
             ),
             cc.DelayTime.create(2.0),
+            cc.CallFunc.create(function() {
+
+              /**
+               *
+               *
+               *
+               */
+              Tutorial.show(5);
+            }),
             cc.Spawn.create(
               cc.EaseSineInOut.create(
                 cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
@@ -711,6 +734,19 @@ Character = Spine.extend({
      *
      */
     if(this.parameters.deceleration) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(Tutorial.show(5)) return;
+
+      /**
+       *
+       *
+       *
+       */
       this.parameters.deceleration = false;
 
       /**
@@ -840,7 +876,7 @@ Character = Spine.extend({
          */
         Counter.onFail();
         break;
-        case '1':
+        case 0:
 
         /**
          *
@@ -878,7 +914,14 @@ Character = Spine.extend({
          */
         Counter.count();
         break;
-        case '2':
+        case 1:
+
+        /**
+         *
+         *
+         *
+         */
+        Tutorial.show(4);
 
         /**
          *
@@ -923,7 +966,39 @@ Character = Spine.extend({
        *
        *
        */
-      this.parameters.time = max(2, this.parameters.time + 1);
+      if(this.parameters.time > 1) {
+        if(Game.splash.getNumberOfRunningActions() > 0) return false;
+
+        /**
+         *
+         *
+         *
+         */
+        Game.splash.runAction(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.FadeIn.create(0.2)
+            ),
+            cc.CallFunc.create(function() {
+
+              /**
+               *
+               *
+               *
+               */
+              this.destroy();
+            }.bind(this))
+          )
+        );
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.time++;
+      }
     }
   },
   onTouchEnded: function(touch, e) {
@@ -1267,7 +1342,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var count = probably;
+    var count = -probably / 2;
 
     /**
      *
@@ -1318,7 +1393,7 @@ Character = Spine.extend({
        *
        *
        */
-      if(count % probably === 0) {
+      if(count > 0 && count % probably === 0) {
 
         /**
          *
@@ -1381,7 +1456,7 @@ Character = Spine.extend({
    *
    *
    */
-  updatePoint: function(parameters, x, y) {
+  updatePoint: function() {
 
     /**
      *
@@ -1403,16 +1478,8 @@ Character = Spine.extend({
          *
          *
          */
-        if(true) {
-
-          /**
-           *
-           *
-           *
-           */
-          if(abs(this.x - point.x) <= (x || this.parameters.collision.x) && abs(this.y - point.y) <= (y || this.parameters.collision.y)) {
-            return parameters === true ? point : point.destroy(true).parameters.skin;
-          }
+        if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
+          return point.getCurrentFrameIndex();
         }
       }
     }
@@ -1431,6 +1498,20 @@ Character = Spine.extend({
    *
    */
   updateStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.updatePoint()) {
+      default:
+      this.status.opacity = 0;
+      break;
+      case 0:
+      this.status.opacity = 255;
+      break;
+    }
   },
 
   /**

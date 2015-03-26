@@ -62,6 +62,30 @@ var languages = {
     {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
+  'tutorial': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false}
+  ],
+  'tutorial-chapter-1': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
+    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть ракета!\nТапай по экрану чтобы мы\nбежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
+  ],
+  'tutorial-chapter-2': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
+    {title: 'Отлично. Все готово к старту!\n\nПросто нажми еще раз.\nМы готовы!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
+  ],
+  'tutorial-chapter-3': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]},
+    {title: 'Управлять кораблем очень\nлегко: нажимай на экран\nкогда ракета достигнет\nзеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
+  ],
+  'tutorial-chapter-4': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]},
+    {title: 'Мы забыли предупредить о красных точках! Они утянут\nкорабль вниз!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]}
+  ],
+  'tutorial-chapter-5': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]},
+    {title: 'Похоже ты совершил\nошибку.\n\nНе расстраивайся, не всем суждено быть пилотами!', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг$1очков в игре Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false}

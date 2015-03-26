@@ -21,18 +21,18 @@
  *
  */
 
-Cloud = Parallax.extend({
+Slide = Parallax.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function(textureFileName) {
+  ctor: function() {
     this._super(
-      textureFileName, 1, 1,
+      resources.main.slide, 1, 1,
       {
-        x: -30,
+        x: random(-10000, -3000),
         y: 0
       },
       {
@@ -66,10 +66,26 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.scale = random(0.3, 2.0);
+    this.opacity = 50;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setScaleX(random(this.width, Camera.width / this.width));
   },
   onDestroy: function() {
     this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  disabled: function() {
+    return !(Game.parameters.state === Game.parameters.states.game);
   },
 
   /**
@@ -91,23 +107,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    switch(resources.main.clouds.indexOf(this.textureFileName)) {
-      case 0:
-      this.y = random(0, Camera.height * r);
-      break;
-      case 1:
-      this.y = random(Camera.height * r, max(Camera.height * 2 * r, (Game.elements ? Game.elements.character.y : 0) + Camera.height * 2));
-      break;
-    }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  disabled: function() {
-    return Game.parameters.state === Game.parameters.states.menu || Game.parameters.state === Game.parameters.states.tutorial;
+    this.y = random(Camera.center.y, Camera.height * r);
   },
 
   /**
@@ -116,7 +116,7 @@ Cloud = Parallax.extend({
    *
    */
   update: function(time) {
-    this._super(time * Game.elements.character.parameters.time);
+    this._super(time * Game.elements.character.parameters.time * (Game.elements.character.parameters.speed.x / Game.elements.character.parameters.speed.max.x));
   },
 
   /**
@@ -125,6 +125,6 @@ Cloud = Parallax.extend({
    *
    */
   deepCopy: function() {
-    return new Cloud(this.textureFileName);
+    return new Slide;
   }
 });

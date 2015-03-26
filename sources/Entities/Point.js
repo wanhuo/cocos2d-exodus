@@ -21,7 +21,7 @@
  *
  */
 
-Point = Spine.extend({
+Point = TiledEntity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Point = Spine.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.point.json, resources.main.point.atlas, 1.0);
+    this._super(resources.main.point, 1, 2);
 
     /**
      *
@@ -38,30 +38,7 @@ Point = Spine.extend({
      */
     this.parameters = {
       active: true,
-      animations: {
-        animation: {
-          index: 1,
-          name: 'animation',
-          time: 1.0,
-          loop: true
-        },
-        event: {
-          index: 2,
-          name: 'event',
-          time: 1.0,
-          loop: false
-        },
-        destroy: {
-          index: 3,
-          name: 'destroy',
-          time: 1.0,
-          loop: false
-        }
-      },
-      skins: [
-        '1',
-        '2'
-      ]
+      rebose: true
     };
 
     /**
@@ -69,52 +46,7 @@ Point = Spine.extend({
      * 
      *
      */
-    this.setSkin(this.parameters.skins.random());
-
-    /**
-     *
-     * 
-     *
-     */
     this.setLocalZOrder(5);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.destroy = function(params) {
-      if(params === true) {
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.active = false;
-
-        /**
-         *
-         *
-         *
-         */
-        this.setAnimation(this.parameters.animations.destroy.index, this.parameters.animations.destroy.name, false);
-
-        /**
-         *
-         *
-         *
-         */
-        return this;
-      }
-
-      /**
-       *
-       * 
-       *
-       */
-      return Entity.prototype.destroy.call(this, params);
-    }.bind(this);
   },
 
   /**
@@ -123,19 +55,6 @@ Point = Spine.extend({
    *
    */
   onCreate: function() {
-
-    /**
-     *
-     * 
-     *
-     */
-    this.setSkin(this.parameters.skins.random());
-
-    /**
-     *
-     * 
-     *
-     */
     this._super();
 
     /**
@@ -144,6 +63,7 @@ Point = Spine.extend({
      *
      */
     this.parameters.active = true;
+    this.parameters.rebose = true;
 
     /**
      *
@@ -157,41 +77,10 @@ Point = Spine.extend({
      * 
      *
      */
-    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);this.asd=false;
+    this.setRandomFrameIndex();
   },
   onDestroy: function() {
     this._super();
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onAnimationFinish: function(index) {
-    if(this._super(index)) {
-      switch(index) {
-        case this.parameters.animations.destroy.index:
-        this.destroy();
-        break;
-      }
-    }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  setSkin: function(skin) {
-    this._super(skin);
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.skin = skin;
   },
 
   /**
@@ -207,24 +96,8 @@ Point = Spine.extend({
      *
      *
      */
-    var position = abs(Game.backgrounds.game.x);
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.parameters.active && this.getNumberOfRunningActions() < 1) {
-      if(this.x < position) {
-          this.runAction(
-            cc.Sequence.create(
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 0.0)
-              ),
-              cc.CallFunc.create(this.destroy, this)
-            )
-          );
-      }
+    if(this.x < Game.parameters.camera.x - this.width / 2) {
+      this.destroy();
     }
   },
 
@@ -251,7 +124,7 @@ Points = Manager.extend({
    *
    */
   ctor: function() {
-    this._super(10, new Point, Game.backgrounds.game);
+    this._super(10, new Point, Game.backgrounds.game, true);
   },
 
   /**

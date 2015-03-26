@@ -30,7 +30,9 @@ var resources = {
     ],
     name: 'resource/Graphics/name.png',
     ground: 'resource/Graphics/ground.png',
+    slide: 'resource/Graphics/slide.png',
     mountain: 'resource/Graphics/mountain.png',
+    point: 'resource/Graphics/point.png',
     character: {
       texture1: 'resource/Graphics/character.png',
       texture2: 'resource/Graphics/character2.png',
@@ -55,11 +57,6 @@ var resources = {
       texture: 'resource/Graphics/fish.png',
       atlas: 'resource/Graphics/fish.atlas',
       json: 'resource/Graphics/fish.json'
-    },
-    point: {
-      texture: 'resource/Graphics/point.png',
-      atlas: 'resource/Graphics/point.atlas',
-      json: 'resource/Graphics/point.json'
     },
     stars: [
       'resource/Graphics/star-1.png',
@@ -90,6 +87,11 @@ var resources = {
       'resource/Graphics/water-2.png',
       'resource/Graphics/water-3.png'
     ],
+    tutorial: {
+      texture: 'resource/Graphics/tutorial.png',
+      atlas: 'resource/Graphics/tutorial.atlas',
+      json: 'resource/Graphics/tutorial.json'
+    },
     counter: 'resource/Graphics/counter.png',
     moon: 'resource/Graphics/moon.png',
     music: {

@@ -43,6 +43,13 @@ Game = Screen.extend({
      * 
      *
      */
+    Tutorial = new Tutorial;
+
+    /**
+     *
+     * 
+     *
+     */
     this.parameters = {
       state: 0,
       states: {
@@ -79,6 +86,10 @@ Game = Screen.extend({
         y: 0,
         width: Camera.width,
         height: Camera.height
+      },
+      tutorial: {
+        state: false,
+        current: false
       },
       ad: {
         interstitial: {
@@ -141,7 +152,10 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
         new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
-        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
+        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
+        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide),
+        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide),
+        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
       ],
       ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
       water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
@@ -186,7 +200,7 @@ Game = Screen.extend({
       ),
       explanation: new Explanation,
       baloons: new Manager(1, new Baloon, this.backgrounds.game),
-      people: new Manager(10, new People, this.backgrounds.b),
+      people: new Manager(10, new People, this.backgrounds.game),
       points: new Points,
       name: new Name,
       character: new Character,
@@ -459,14 +473,22 @@ Game = Screen.extend({
      *
      *
      */
-    this.touch.touched = true;
+    else if(this.parameters.state === this.parameters.states.tutorial) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.tutorial.current.onAction();
+    }
 
     /**
      *
      *
      *
      */
-    return true;
+    return Entity.prototype.onTouchBegan.call(this, touch, e);
   },
   onTouchEnded: function(touch, e) {
 
@@ -497,7 +519,55 @@ Game = Screen.extend({
      *
      *
      */
-    this.touch.touched = false;
+    return Entity.prototype.onTouchEnded.call(this, touch, e);
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  onSwipe: function() {
+    return true;
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  onSwipeRight: function() {
+  },
+  onSwipeLeft: function() {
+  },
+  onSwipeUp: function() {
+  },
+  onSwipeDown: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.backgrounds.b.y > 0 && this.backgrounds.b.getNumberOfRunningActions() < 1) {
+      this.backgrounds.b.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.25, {
+              x: 0,
+              y: 0
+            })
+          ),
+          cc.DelayTime.create(2.0),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.25, {
+              x: 0,
+              y: 270
+            })
+          )
+        )
+      );
+    }
   },
 
   /**
@@ -883,6 +953,7 @@ Game = Screen.extend({
      *
      *
      */
+    this.backgrounds.b.stopAllActions();
     this.backgrounds.b.y = 0;
 
     /**
@@ -909,6 +980,7 @@ Game = Screen.extend({
      */
     this.elements.points.clear();
     this.elements.fishes.clear();
+    this.elements.baloons.clear();
 
     /**
      *
@@ -924,7 +996,15 @@ Game = Screen.extend({
      *
      *
      */
-    Plugins.admob.show(Plugins.ad.types.banner);
+    if(!Tutorial.show(1)) {
+
+      /**
+       *
+       *
+       *
+       */
+      Plugins.admob.show(Plugins.ad.types.banner);
+    }
   },
   onStart: function() {
 
@@ -942,6 +1022,13 @@ Game = Screen.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Tutorial.show(2);
 
     /**
      *
@@ -1052,10 +1139,74 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
-  onTutorial: function() {
-    this.elements.people.pauseSchedulerAndActions();
-    this.elements.character.pauseSchedulerAndActions();
-    this.unscheduleUpdate();
+  onTutorial: function(reverse) {
+
+    /**
+     *
+     * 
+     *
+     */
+    if(reverse) {
+
+      /**
+       *
+       * 
+       *
+       */
+     this.parameters.state = this.parameters.tutorial.state;
+
+      /**
+       *
+       * 
+       *
+       */
+     this.parameters.tutorial.state = false;
+
+      /**
+       *
+       * 
+       *
+       */
+      this.elements.people.resumeSchedulerAndActions();
+      this.elements.character.resumeSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.backgrounds.d.resumeSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.scheduleUpdate();
+    } else {
+
+      /**
+       *
+       * 
+       *
+       */
+      this.elements.people.pauseSchedulerAndActions();
+      this.elements.character.pauseSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.backgrounds.d.pauseSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.unscheduleUpdate();
+    }
   },
 
   /**
@@ -1227,6 +1378,7 @@ Game = Screen.extend({
      *
      */
     switch(this.parameters.state) {
+      case this.parameters.states.prepare:
       case this.parameters.states.start:
       this.updateWater(time);
       break;

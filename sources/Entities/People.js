@@ -118,7 +118,7 @@ People = Spine.extend({
      * 
      *
      */
-    this.x = this.parameters.position ? random(0, Camera.center.x / 2) : random(Camera.width - Camera.center.x / 2, Camera.width);
+    this.x = this.parameters.position ? random(Game.parameters.camera.x, Game.parameters.camera.x + Game.parameters.camera.width / 4) : random(Game.parameters.camera.x + Game.parameters.camera.width - Game.parameters.camera.width / 4, Game.parameters.camera.x + Game.parameters.camera.width);
     this.y = 340;
 
     /**
@@ -180,11 +180,11 @@ People = Spine.extend({
      *
      */
     if(this.parameters.position) {
-      if(this.x >= Camera.center.x) {
+      if(this.x >= Game.parameters.camera.x + Game.parameters.camera.width / 2) {
         this.destroy();
       }
     } else {
-      if(this.x <= Camera.center.x) {
+      if(this.x <= Game.parameters.camera.x + Game.parameters.camera.width / 2) {
         this.destroy();
       }
     }
