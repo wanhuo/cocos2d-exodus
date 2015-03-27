@@ -100,14 +100,7 @@ Slide = Parallax.extend({
      *
      *
      */
-    var r = Game.parameters.backgrounds.position.ratio;
-
-    /**
-     *
-     *
-     *
-     */
-    this.y = random(Camera.center.y, Camera.height * r);
+    this.y = random(Camera.height, Camera.height * Game.parameters.backgrounds.position.ratio);
   },
 
   /**

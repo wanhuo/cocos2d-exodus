@@ -40,13 +40,6 @@ Button.prototype.export = function() {
     this.runAction(
       cc.ScaleTo.create(0.1, 0.9)
     );
-
-    /**
-     *
-     *
-     *
-     */
-    Sound.play(resources.main.sound.touch);
   };
   this.onTouchFinish = function(touch, e) {
     this.stopAllActions();
@@ -77,6 +70,13 @@ Button.prototype.export = function() {
   this.onTouch = function() {
     if(this.action) {
       this.action();
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.play(resources.main.sound.touch);
     }
   };
 };

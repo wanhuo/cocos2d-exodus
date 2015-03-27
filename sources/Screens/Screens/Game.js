@@ -886,14 +886,6 @@ Game = Screen.extend({
      *
      *
      */
-    Counter.unregister();
-    Counter.register();
-
-    /**
-     *
-     *
-     *
-     */
     this.buttons.like.register();
     this.buttons.sound.register();
     this.buttons.leaderboard.register();
@@ -1275,15 +1267,6 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.w.y += this.parameters.water.speed * time;
-
-    /**
-     *
-     * 
-     *
-     */
-    if(this.backgrounds.w.y + this.parameters.water.y >= Character.y) {
-      Character.destroy();
-    }
   },
 
   /**
@@ -1368,6 +1351,7 @@ Game = Screen.extend({
     switch(this.parameters.state) {
       case this.parameters.states.prepare:
       case this.parameters.states.start:
+      case this.parameters.states.loss:
       case this.parameters.states.game:
 
       /**
@@ -1383,19 +1367,17 @@ Game = Screen.extend({
        *
        */
       this.backgrounds.game.x = -Character.x + Camera.center.x;
-      this.backgrounds.game.y = min(-this.backgrounds.w.y, -(Character.y * Game.backgrounds.d.getScale()) + this.parameters.camera.center);
+      this.backgrounds.game.y = min(-this.backgrounds.w.y, -(Character.y * Game.backgrounds.d.scale) + this.parameters.camera.center);
 
       /**
        *
        *
        *
        */
-      if(this.backgrounds.d.getNumberOfRunningActions() == 0) {
-        if(Character.y >= this.parameters.scale.position.min) {
-          this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.parameters.scale.position.min)), this.parameters.scale.min);
-        } else {
-          this.backgrounds.d.scale = this.parameters.scale.max;
-        }
+      if(Character.y >= this.parameters.scale.position.min) {
+        this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
+      } else {
+        this.backgrounds.d.scale = this.parameters.scale.max;
       }
 
       /**
@@ -1403,9 +1385,9 @@ Game = Screen.extend({
        *
        *
        */
-      if(Character.y > Camera.center.y / this.parameters.scale.min) {
-        this.backgrounds.game.y -= (Character.y - Camera.center.y / this.parameters.scale.min) * this.backgrounds.d.scale;
-        this.backgrounds.g.y = max(-(Character.y - Camera.center.y / this.parameters.scale.min) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
+      if(Character.y > (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) {
+        this.backgrounds.game.y -= (Character.y - (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) * this.backgrounds.d.scale;
+        this.backgrounds.g.y = max(-(Character.y - (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
       } else {
         this.backgrounds.g.y = 0;
       }

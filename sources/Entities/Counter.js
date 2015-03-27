@@ -224,15 +224,26 @@ Counter = Button.extend({
   onSwipeLeft: function() {
   },
   onSwipeUp: function() {
-  },
-  onSwipeDown: function() {
 
     /**
      *
      *
      *
      */
-    if(Game.backgrounds.b.y > 0 && Game.backgrounds.b.getNumberOfRunningActions() < 1) {
+    if(Game.backgrounds.b.y <= 0 && (Game.backgrounds.b.getNumberOfRunningActions() < 1 || Game.backgrounds.b.swipeAction)) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.stopAllActions();
+
+      /**
+       *
+       *
+       *
+       */
       Game.backgrounds.b.runAction(
         cc.Sequence.create(
           cc.CallFunc.create(function() {
@@ -242,6 +253,55 @@ Counter = Button.extend({
              *
              *
              */
+            Game.buttons.like.unregister();
+            Game.buttons.sound.unregister();
+            Game.buttons.leaderboard.unregister();
+            Game.buttons.achievements.unregister();
+          }),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.25, {
+              x: 0,
+              y: 270
+            })
+          )
+        )
+      );
+    }
+  },
+  onSwipeDown: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.backgrounds.b.y > 0 && Game.backgrounds.b.getNumberOfRunningActions() < 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.swipeAction = true;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.runAction(
+        cc.Sequence.create(
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            Game.buttons.like.register();
+            Game.buttons.sound.register();
+            Game.buttons.leaderboard.register();
+            Game.buttons.achievements.register();
           }),
           cc.EaseSineInOut.create(
             cc.MoveTo.create(0.25, {
@@ -263,6 +323,17 @@ Counter = Button.extend({
              *
              *
              */
+            Game.backgrounds.b.swipeAction = false;
+
+            /**
+             *
+             *
+             *
+             */
+            Game.buttons.like.unregister();
+            Game.buttons.sound.unregister();
+            Game.buttons.leaderboard.unregister();
+            Game.buttons.achievements.unregister();
           })
         )
       );
