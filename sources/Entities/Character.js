@@ -131,7 +131,7 @@ Character = Spine.extend({
         },
         min: {
           x: 0,
-          y: -1000
+          y: -2000
         },
         increase: {
           x: 0.0,
@@ -633,7 +633,7 @@ Character = Spine.extend({
       Game.h.runAction(
         cc.Sequence.create(
           cc.EaseSineInOut.create(
-            cc.ScaleTo.create(0.5, 2.0)
+            cc.ScaleTo.create(0.5, 1.0 / Game.backgrounds.d.scale)
           ),
           cc.DelayTime.create(2.0),
           cc.CallFunc.create(function() {
@@ -1155,6 +1155,15 @@ Character = Spine.extend({
   },
   updateLoss: function(time) {
     this.updateGame(time, 2);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.h.getNumberOfRunningActions() < 1) {
+      Game.backgrounds.w.y += Game.parameters.water.speed * 50 * time;
+    }
   },
 
   /**
@@ -1488,6 +1497,15 @@ Character = Spine.extend({
       case this.parameters.states.loss:
       this.updateLoss(time);
       break;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    if(Game.backgrounds.w.y + Game.parameters.water.y >= this.y) {
+      this.destroy();
     }
 
     /**

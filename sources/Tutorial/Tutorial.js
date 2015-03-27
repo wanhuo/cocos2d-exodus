@@ -37,11 +37,11 @@ Tutorial = {
       0
     ],
     passed: [
-      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter1),
-      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter2),
-      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter3),
-      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter4),
-      false//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter5)
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter1),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter2),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter3),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter4),
+      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter5)
     ]
   },
 
