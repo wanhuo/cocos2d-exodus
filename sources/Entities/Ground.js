@@ -44,13 +44,6 @@ Ground = Parallax.extend({
         y: 0.0
       }
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.setBlendFunc(gl.ONE, gl.ZERO);
   },
 
   /**

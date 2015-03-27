@@ -974,6 +974,13 @@ Character = Spine.extend({
          *
          *
          */
+        Game.addChild(Game.splash);
+
+        /**
+         *
+         *
+         *
+         */
         Game.splash.runAction(
           cc.Sequence.create(
             cc.EaseSineInOut.create(
@@ -987,6 +994,13 @@ Character = Spine.extend({
                *
                */
               this.destroy();
+
+              /**
+               *
+               *
+               *
+               */
+              Game.splash.removeFromParent();
             }.bind(this))
           )
         );
@@ -1026,6 +1040,13 @@ Character = Spine.extend({
      *
      */
     this.clearTracks();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.stopAllActions();
 
     /**
      *

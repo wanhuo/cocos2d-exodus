@@ -97,7 +97,7 @@ Explanation = Entity.extend({
        * 
        *
        */
-      while(y < Camera.height * 2) {
+      while(y < Camera.height * 0.5) {
         var element = this.elements[i].create();
 
         /**
@@ -129,7 +129,7 @@ Explanation = Entity.extend({
        * 
        *
        */
-      while(y > -Camera.height * 2) {
+      while(y > -Camera.height * 0.5) {
         var element = this.elements[i].create();
 
         /**

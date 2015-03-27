@@ -70,7 +70,7 @@ Game = Screen.extend({
         position: {
           min: -1280,
           max: 0,
-          ratio: 10
+          ratio: 3
         }
       },
       camera: {
@@ -124,7 +124,8 @@ Game = Screen.extend({
      * 
      *
      */
-    this.splash = new BackgroundColor(this, cc.color.WHITE);
+    this.splash = new BackgroundColor(false, cc.color.WHITE);
+    this.splash.retain();
 
     /**
      *
@@ -213,6 +214,13 @@ Game = Screen.extend({
       achievements: new Button(resources.main.buttons.achievements, 1, 1, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 1, this.backgrounds.b, this.onSound.bind(this))
     };
+
+    /**
+     *
+     * 
+     *
+     */
+    this.elements.ground.setBlendFunc(gl.ONE, gl.ZERO);
 
     /**
      *
@@ -1083,6 +1091,13 @@ Game = Screen.extend({
      *
      *
      */
+    this.addChild(this.splash);
+
+    /**
+     *
+     *
+     *
+     */
     this.splash.runAction(
       cc.Sequence.create(
         cc.DelayTime.create(this.elements.character.y <= 0 ? 0.5 : 0.0),
@@ -1121,7 +1136,8 @@ Game = Screen.extend({
           this.changeState(this.parameters.states.prepare);
         }.bind(this)),
         cc.DelayTime.create(0.5),
-        cc.FadeOut.create(0.5)
+        cc.FadeOut.create(0.5),
+        cc.CallFunc.create(this.splash.removeFromParent, this.splash)
       )
     );
 
@@ -1132,7 +1148,7 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
-  onTutorial: function(reverse) {console.log(1);
+  onTutorial: function(reverse) {
 
     /**
      *

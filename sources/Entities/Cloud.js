@@ -84,7 +84,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    var r = Game.parameters.backgrounds.position.ratio + 1;
+    var r = Game.parameters.backgrounds.position.ratio;
 
     /**
      *
