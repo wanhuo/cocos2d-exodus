@@ -55,7 +55,7 @@ Game = Screen.extend({
         tutorial: 7
       },
       water: {
-        speed: 30.0,
+        speed: 20.0,
         y: 180
       },
       scale: {
@@ -63,14 +63,14 @@ Game = Screen.extend({
         max: 1.0,
         position: {
           min: 450,
-          max: 450 / 0.5
+          max: 2560
         }
       },
       backgrounds: {
         position: {
           min: -1280,
           max: 0,
-          ratio: 3
+          ratio: 5
         }
       },
       camera: {
@@ -97,8 +97,15 @@ Game = Screen.extend({
      * 
      *
      */
+    this.h = new Background(this);
+
+    /**
+     *
+     * 
+     *
+     */
     this.backgrounds = {
-      d: new Background(this),
+      d: new Background(this.h),
       s: new Background(this),
       b: new Background(this)
     };
@@ -147,8 +154,6 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
         new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
         new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
-        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide),
-        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide),
         new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
       ],
       ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
@@ -229,6 +234,13 @@ Game = Screen.extend({
      */
     this.backgrounds.menu.setLocalZOrder(300);
     this.backgrounds.game.setLocalZOrder(200);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.h.setLocalZOrder(200);
 
     /**
      *
@@ -424,6 +436,13 @@ Game = Screen.extend({
      *
      *
      */
+    Music.play(resources.main.music.background, true);
+
+    /**
+     *
+     *
+     *
+     */
     this.changeState(this.parameters.states.menu);
   },
   onHide: function() {
@@ -449,7 +468,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.character.onTouchBegan(touch, e);
+      Character.onTouchBegan(touch, e);
     }
 
     /**
@@ -505,14 +524,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.character.onTouchEnded(touch, e);
-
-      /**
-       *
-       *
-       *
-       */
-      Analytics.sendEvent('Game events', 'Click', '', '');
+      Character.onTouchEnded(touch, e);
     }
 
     /**
@@ -521,54 +533,6 @@ Game = Screen.extend({
      *
      */
     return Entity.prototype.onTouchEnded.call(this, touch, e);
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onSwipe: function() {
-    return true;
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onSwipeRight: function() {
-  },
-  onSwipeLeft: function() {
-  },
-  onSwipeUp: function() {
-  },
-  onSwipeDown: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.backgrounds.b.y > 0 && this.backgrounds.b.getNumberOfRunningActions() < 1) {
-      this.backgrounds.b.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.25, {
-              x: 0,
-              y: 0
-            })
-          ),
-          cc.DelayTime.create(2.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.25, {
-              x: 0,
-              y: 270
-            })
-          )
-        )
-      );
-    }
   },
 
   /**
@@ -821,7 +785,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.onSave();
+    Character.onSave();
 
     /**
      *
@@ -867,7 +831,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.animation);
+    Character.changeState(Character.parameters.states.animation);
 
     /**
      *
@@ -915,7 +879,15 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.prepare);
+    Character.changeState(Character.parameters.states.prepare);
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.unregister();
+    Counter.register();
 
     /**
      *
@@ -956,13 +928,6 @@ Game = Screen.extend({
      */
     this.backgrounds.b.stopAllActions();
     this.backgrounds.b.y = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.register();
 
     /**
      *
@@ -1015,12 +980,42 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.b.runAction(
-      cc.EaseBounceOut.create(
-        cc.MoveTo.create(1.0, {
-            x: 0,
-            y: 270
-          }
-        )
+      cc.Sequence.create(
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Game.buttons.like.unregister();
+          Game.buttons.sound.unregister();
+          Game.buttons.leaderboard.unregister();
+          Game.buttons.achievements.unregister();
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.unregister();
+        }),
+        cc.EaseBounceOut.create(
+          cc.MoveTo.create(1.0, {
+              x: 0,
+              y: 270
+            }
+          )
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.register();
+        })
       )
     );
 
@@ -1030,13 +1025,6 @@ Game = Screen.extend({
      *
      */
     Tutorial.show(2);
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.unregister();
   },
   onGame: function() {
 
@@ -1045,21 +1033,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.game);
-
-    /**
-     *
-     *
-     *
-     */
-    this.backgrounds.w.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.5, {
-          x: 0,
-          y: 0
-        })
-      )
-    );
+    Character.changeState(Character.parameters.states.game);
 
     /**
      *
@@ -1082,16 +1056,21 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.elements.character.y <= 0) {
-      this.setShake(0.5, 0.01);
-    }
+    this.setShake(0.5, 0.01);
 
     /**
      *
      *
      *
      */
-    this.addChild(this.splash);
+    if(!this.splash.parent) this.addChild(this.splash);
+
+    /**
+     *
+     *
+     *
+     */
+    this.splash.stopAllActions();
 
     /**
      *
@@ -1100,8 +1079,8 @@ Game = Screen.extend({
      */
     this.splash.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(this.elements.character.y <= 0 ? 0.5 : 0.0),
-        cc.FadeIn.create(0.2),
+        cc.DelayTime.create(0.5),
+        cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(function() {
 
           /**
@@ -1109,7 +1088,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.elements.character.setSlotsToSetupPoseCustom();
+          Character.setSlotsToSetupPoseCustom();
 
           /**
            *
@@ -1177,7 +1156,7 @@ Game = Screen.extend({
        *
        */
       this.elements.people.resumeSchedulerAndActions();
-      this.elements.character.resumeSchedulerAndActions();
+      Character.resumeSchedulerAndActions();
 
       /**
        *
@@ -1200,7 +1179,7 @@ Game = Screen.extend({
        *
        */
       this.elements.people.pauseSchedulerAndActions();
-      this.elements.character.pauseSchedulerAndActions();
+      Character.pauseSchedulerAndActions();
 
       /**
        *
@@ -1302,8 +1281,8 @@ Game = Screen.extend({
      * 
      *
      */
-    if(this.backgrounds.w.y >= this.parameters.water.y) {
-      this.changeState(this.parameters.states.loss);
+    if(this.backgrounds.w.y + this.parameters.water.y >= Character.y) {
+      Character.destroy();
     }
   },
 
@@ -1389,18 +1368,6 @@ Game = Screen.extend({
     switch(this.parameters.state) {
       case this.parameters.states.prepare:
       case this.parameters.states.start:
-      this.updateWater(time);
-      break;
-    }
-
-    /**
-     *
-     * 
-     *
-     */
-    switch(this.parameters.state) {
-      case this.parameters.states.prepare:
-      case this.parameters.states.start:
       case this.parameters.states.game:
 
       /**
@@ -1408,8 +1375,15 @@ Game = Screen.extend({
        *
        *
        */
-      this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
-      this.backgrounds.game.y = min(0, -(this.elements.character.y * Game.backgrounds.d.getScale()) + this.parameters.camera.center);
+      this.updateWater(time);
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.game.x = -Character.x + Camera.center.x;
+      this.backgrounds.game.y = min(-this.backgrounds.w.y, -(Character.y * Game.backgrounds.d.getScale()) + this.parameters.camera.center);
 
       /**
        *
@@ -1417,8 +1391,8 @@ Game = Screen.extend({
        *
        */
       if(this.backgrounds.d.getNumberOfRunningActions() == 0) {
-        if(this.elements.character.y >= this.parameters.scale.position.min) {
-          this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (this.elements.character.y - this.parameters.scale.position.min)), this.parameters.scale.min);
+        if(Character.y >= this.parameters.scale.position.min) {
+          this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.parameters.scale.position.min)), this.parameters.scale.min);
         } else {
           this.backgrounds.d.scale = this.parameters.scale.max;
         }
@@ -1429,9 +1403,9 @@ Game = Screen.extend({
        *
        *
        */
-      if(this.elements.character.y > this.parameters.scale.position.max) {
-        this.backgrounds.game.y = -(this.elements.character.y - this.parameters.scale.position.max);
-        this.backgrounds.g.y = max(-(this.elements.character.y - this.parameters.scale.position.max) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
+      if(Character.y > Camera.center.y / this.parameters.scale.min) {
+        this.backgrounds.game.y -= (Character.y - Camera.center.y / this.parameters.scale.min) * this.backgrounds.d.scale;
+        this.backgrounds.g.y = max(-(Character.y - Camera.center.y / this.parameters.scale.min) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
       } else {
         this.backgrounds.g.y = 0;
       }
@@ -1474,14 +1448,14 @@ Game = Screen.extend({
    *
    */
   update: function(time) {
-    this._super(time * this.elements.character.parameters.time);
+    this._super(time * Character.parameters.time);
 
     /**
      *
      * 
      *
      */
-    this.updateStates(time * this.elements.character.parameters.time);
+    this.updateStates(time * Character.parameters.time);
   },
 
   /**

@@ -33,15 +33,15 @@ Tutorial = {
       1000,
       100,
       0,
-      0,
+      200,
       0
     ],
     passed: [
-      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter1),
-      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter2),
-      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter3),
-      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter4),
-      cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter5)
+      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter1),
+      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter2),
+      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter3),
+      false,//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter4),
+      false//cc.sys.localStorage.getItem(properties.tutorial.chapters.chapter5)
     ]
   },
 
@@ -87,7 +87,7 @@ Tutorial = {
        *
        */
       Game.changeState(Game.parameters.states.tutorial);
-    }, this.parameters.time[index]);
+    }, this.parameters.time[index - 1]);
 
     /**
      *

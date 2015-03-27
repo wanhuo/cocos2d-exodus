@@ -67,24 +67,24 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false}
   ],
   'tutorial-chapter-1': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
-    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть ракета!\nТапай по экрану чтобы мы\nбежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
+    {title: 'Please help me!\n\nOur world is flooded, and yet you have a rocket! Tap on the screen that we run faster!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
+    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть ракета! Тапай по экрану чтобы мы бежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
   ],
   'tutorial-chapter-2': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
-    {title: 'Отлично. Все готово к старту!\n\nПросто нажми еще раз.\nМы готовы!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
+    {title: 'That\'S Perfect. Everything is ready to start!\n\nJust click again. We are ready!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
+    {title: 'Отлично. Все готово к старту!\n\nПросто нажми еще раз. Мы готовы!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
   ],
   'tutorial-chapter-3': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]},
-    {title: 'Управлять кораблем очень\nлегко: нажимай на экран\nкогда ракета достигнет\nзеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
+    {title: 'Steer the ship is very easy: press the screen when the rocket reaches the green point!\n\nOn the right?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]},
+    {title: 'Управлять кораблем очень легко: нажимай на экран когда ракета достигнет зеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
   ],
   'tutorial-chapter-4': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]},
-    {title: 'Мы забыли предупредить о красных точках! Они утянут\nкорабль вниз!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]}
+    {title: 'We forgot to warn about the red points! They pull the ship down!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]},
+    {title: 'Мы забыли предупредить о красных точках! Они утянут корабль вниз!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]}
   ],
   'tutorial-chapter-5': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]},
-    {title: 'Похоже ты совершил\nошибку.\n\nНе расстраивайся, не всем суждено быть пилотами!', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]}
+    {title: 'It looks like you made a mistake.\n\nDo not worry, not everyone is destined to be a pilot!', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]},
+    {title: 'Похоже ты совершил ошибку.\n\nНе расстраивайся, не всем суждено быть пилотами!', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got$1points playing Rocket Escape! #RocketEscape @tooflya', font: 'Impact', size: 0, dimensions: false},
