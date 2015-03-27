@@ -245,25 +245,11 @@ Counter = Button.extend({
        *
        */
       Game.backgrounds.b.runAction(
-        cc.Sequence.create(
-          cc.CallFunc.create(function() {
-
-            /**
-             *
-             *
-             *
-             */
-            Game.buttons.like.unregister();
-            Game.buttons.sound.unregister();
-            Game.buttons.leaderboard.unregister();
-            Game.buttons.achievements.unregister();
-          }),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.25, {
-              x: 0,
-              y: 270
-            })
-          )
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.25, {
+            x: 0,
+            y: 270
+          })
         )
       );
     }
@@ -291,18 +277,6 @@ Counter = Button.extend({
        */
       Game.backgrounds.b.runAction(
         cc.Sequence.create(
-          cc.CallFunc.create(function() {
-
-            /**
-             *
-             *
-             *
-             */
-            Game.buttons.like.register();
-            Game.buttons.sound.register();
-            Game.buttons.leaderboard.register();
-            Game.buttons.achievements.register();
-          }),
           cc.EaseSineInOut.create(
             cc.MoveTo.create(0.25, {
               x: 0,
@@ -315,26 +289,7 @@ Counter = Button.extend({
               x: 0,
               y: 270
             })
-          ),
-          cc.CallFunc.create(function() {
-
-            /**
-             *
-             *
-             *
-             */
-            Game.backgrounds.b.swipeAction = false;
-
-            /**
-             *
-             *
-             *
-             */
-            Game.buttons.like.unregister();
-            Game.buttons.sound.unregister();
-            Game.buttons.leaderboard.unregister();
-            Game.buttons.achievements.unregister();
-          })
+          )
         )
       );
     }

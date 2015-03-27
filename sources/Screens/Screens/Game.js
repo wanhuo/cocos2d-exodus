@@ -973,41 +973,13 @@ Game = Screen.extend({
      */
     this.backgrounds.b.runAction(
       cc.Sequence.create(
-        cc.CallFunc.create(function() {
-
-          /**
-           *
-           *
-           *
-           */
-          Game.buttons.like.unregister();
-          Game.buttons.sound.unregister();
-          Game.buttons.leaderboard.unregister();
-          Game.buttons.achievements.unregister();
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.unregister();
-        }),
         cc.EaseBounceOut.create(
           cc.MoveTo.create(1.0, {
               x: 0,
               y: 270
             }
           )
-        ),
-        cc.CallFunc.create(function() {
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.register();
-        })
+        )
       )
     );
 
