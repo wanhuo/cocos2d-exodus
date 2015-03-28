@@ -61,11 +61,20 @@ Game = Screen.extend({
           0,
           0,
           20,
-          20,
-          20,
+          30,
+          100,
           0
         ],
-        y: 180
+        y: [
+          0,
+
+          0,
+          0,
+          240,
+          240,
+          100,
+          0
+        ]
       },
       scale: {
         min: 0.5,
@@ -1044,13 +1053,6 @@ Game = Screen.extend({
      *
      *
      */
-    this.setShake(0.5, 0.01);
-
-    /**
-     *
-     *
-     *
-     */
     if(!this.splash.parent) this.addChild(this.splash);
 
     /**
@@ -1067,7 +1069,7 @@ Game = Screen.extend({
      */
     this.splash.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.5),
+        cc.DelayTime.create(Character.created ? 0.0 : 0.5),
         cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(function() {
 

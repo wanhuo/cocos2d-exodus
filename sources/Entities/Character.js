@@ -1524,8 +1524,29 @@ Character = Spine.extend({
      * 
      *
      */
-    if(Game.backgrounds.w.y + Game.parameters.water.y - 50 >= this.y) {
-      this.destroy();
+    if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] >= this.y) {
+      switch(Game.parameters.state) {
+        case Game.parameters.states.prepare:
+        case Game.parameters.states.start:
+        Game.changeState(Game.parameters.states.loss);
+        break;
+        case Game.parameters.states.game:
+
+        /**
+         *
+         *
+         *
+         */
+        Game.setShake(0.5, 0.01);
+
+        /**
+         *
+         *
+         *
+         */
+        this.destroy();
+        break;
+      }
     }
 
     /**
