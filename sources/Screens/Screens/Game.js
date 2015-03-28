@@ -55,7 +55,16 @@ Game = Screen.extend({
         tutorial: 7
       },
       water: {
-        speed: 20.0,
+        speed: [
+          0,
+
+          0,
+          0,
+          20,
+          20,
+          20,
+          0
+        ],
         y: 180
       },
       scale: {
@@ -971,17 +980,25 @@ Game = Screen.extend({
      *
      *
      */
-    this.backgrounds.b.runAction(
-      cc.Sequence.create(
-        cc.EaseBounceOut.create(
-          cc.MoveTo.create(1.0, {
-              x: 0,
-              y: 270
-            }
+    if(this.backgrounds.b.getNumberOfRunningActions() < 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.b.runAction(
+        cc.Sequence.create(
+          cc.EaseBounceOut.create(
+            cc.MoveTo.create(1.0, {
+                x: 0,
+                y: 270
+              }
+            )
           )
         )
-      )
-    );
+      );
+    }
 
     /**
      *
@@ -1014,6 +1031,13 @@ Game = Screen.extend({
      *
      */
     this.elements.people.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.w.stopAllActions();
 
     /**
      *
@@ -1238,7 +1262,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.w.y += this.parameters.water.speed * time;
+    this.backgrounds.w.y += this.parameters.water.speed[this.parameters.state] * time;
   },
 
   /**
@@ -1323,7 +1347,6 @@ Game = Screen.extend({
     switch(this.parameters.state) {
       case this.parameters.states.prepare:
       case this.parameters.states.start:
-      case this.parameters.states.loss:
       case this.parameters.states.game:
 
       /**
@@ -1339,30 +1362,21 @@ Game = Screen.extend({
        *
        */
       this.backgrounds.game.x = -Character.x + Camera.center.x;
-      this.backgrounds.game.y = min(-this.backgrounds.w.y, -(Character.y * Game.backgrounds.d.scale) + this.parameters.camera.center);
+      this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
 
       /**
        *
        *
        *
        */
-      if(Character.y >= this.parameters.scale.position.min) {
-        this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
-      } else {
-        this.backgrounds.d.scale = this.parameters.scale.max;
-      }
+      this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
 
       /**
        *
        *
        *
        */
-      if(Character.y > (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) {
-        this.backgrounds.game.y -= (Character.y - (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) * this.backgrounds.d.scale;
-        this.backgrounds.g.y = max(-(Character.y - (this.backgrounds.w.y + Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
-      } else {
-        this.backgrounds.g.y = 0;
-      }
+      this.backgrounds.g.y = min(0, -(Character.y - (Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio);
 
       /**
        *
