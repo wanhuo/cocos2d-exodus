@@ -89,25 +89,6 @@ Counter = Button.extend({
      *
      */
     this.disableOrientationsChangesForChildren();
-
-    /**
-     *
-     * This feathure to take care about big texture creating "on the fly".
-     *
-     */
-    this.textes.value.format(['1234567890']);
-    this.textes.value.format(['0']);
-
-    /**
-     *
-     *
-     *
-     */
-    if(cc.sys.isNative) {
-      if(cc.sys.os == cc.sys.OS_IOS || cc.sys.os == cc.sys.OS_OSX) {
-        this.textes.value.x -= 10;
-      }
-    }
   },
 
   /**
@@ -222,6 +203,96 @@ Counter = Button.extend({
      *
      */
     this.manager.clear();
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  onSwipe: function() {
+    return true;
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  onSwipeRight: function() {
+  },
+  onSwipeLeft: function() {
+  },
+  onSwipeUp: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.backgrounds.b.y <= 0 && (Game.backgrounds.b.getNumberOfRunningActions() < 1 || Game.backgrounds.b.swipeAction)) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.stopAllActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.runAction(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.25, {
+            x: 0,
+            y: 270
+          })
+        )
+      );
+    }
+  },
+  onSwipeDown: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.backgrounds.b.y > 0 && Game.backgrounds.b.getNumberOfRunningActions() < 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.swipeAction = true;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.b.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.25, {
+              x: 0,
+              y: 0
+            })
+          ),
+          cc.DelayTime.create(2.0),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(0.25, {
+              x: 0,
+              y: 270
+            })
+          )
+        )
+      );
+    }
   },
 
   /**

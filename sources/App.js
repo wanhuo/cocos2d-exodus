@@ -32,6 +32,7 @@ tooflya = {};
 App = {
   release: false,
   config: {
+    splash: true,
     application: {
       tooflya: 41,
       android: 42,

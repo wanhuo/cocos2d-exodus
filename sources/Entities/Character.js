@@ -36,6 +36,13 @@ Character = Spine.extend({
      * 
      *
      */
+    Character = this;
+
+    /**
+     *
+     * 
+     *
+     */
     this.parameters = {
       state: 0,
       states: {
@@ -118,13 +125,13 @@ Character = Spine.extend({
             y: 0.0
           },
           setup: {
-            x: 1500,
+            x: 1250,
             y: 500
           }
         },
         min: {
           x: 0,
-          y: -5000
+          y: -2000
         },
         increase: {
           x: 0.0,
@@ -155,7 +162,7 @@ Character = Spine.extend({
       },
       active: true,
       locked: true,
-      collision: { // TODO: Correct this to the point size.
+      collision: {
         x: 75,
         y: 75
       },
@@ -187,6 +194,7 @@ Character = Spine.extend({
      *
      */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
+    this.status = new Entity(resources.main.character.status, this);this.status.setColor(cc.color.GREEN);
 
     /**
      *
@@ -276,6 +284,7 @@ Character = Spine.extend({
      *
      */
     this.shadow.destroy();
+    this.status.destroy();
 
     /**
      *
@@ -518,6 +527,13 @@ Character = Spine.extend({
        *
        *
        */
+      Tutorial.show(3);
+
+      /**
+       *
+       *
+       *
+       */
       this.parameters.locked = false;
       this.parameters.creation = false;
 
@@ -527,6 +543,17 @@ Character = Spine.extend({
        *
        */
       this.updateTraectory();
+
+      /**
+       *
+       *
+       *
+       */
+      this.status.create().attr({
+        x: 0,
+        y: 21,
+        opacity: 0
+      });
    }.bind(this), 2500);
 
     /**
@@ -589,85 +616,77 @@ Character = Spine.extend({
      *
      *
      */
-    this.parameters.deceleration = setTimeout(function() {
+    this.smokes.pauseSchedulerAndActions();
 
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.d.prescale = Game.backgrounds.d.scale;
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.speed.state = false;
 
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.time = 0.02;
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.time = 0;
 
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.d.runAction(
-        cc.Spawn.create(
-          cc.Sequence.create(
-            cc.EaseSineInOut.create(
-              cc.ScaleTo.create(0.5, 1.0)
-            ),
-            cc.DelayTime.create(2.0),
-            cc.Spawn.create(
+    /**
+     *
+     *
+     *
+     */
+    Game.h.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0 / Game.backgrounds.d.scale)
+        ),
+        cc.DelayTime.create(2.0),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Tutorial.show(5);
+        }),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.parameters.time = 1.0;
+
+          /**
+           *
+           *
+           *
+           */
+          this.smokes.resumeSchedulerAndActions();
+
+          /**
+           *
+           *
+           *
+           */
+          Game.elements.explanation.runAction(
+            cc.Sequence.create(
               cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
+                cc.FadeOut.create(0.5)
               ),
-              cc.EaseSineInOut.create(
-                cc.MoveTo.create(0.5, {
-                  x: 0,
-                  y: 0
-                })
-              )
-            ),
-            cc.CallFunc.create(function() {
-
-              /**
-               *
-               *
-               *
-               */
-              this.parameters.time = 1.0;
-
-              /**
-               *
-               *
-               *
-               */
-              this.parameters.deceleration = false;
-
-              /**
-               *
-               *
-               *
-               */
-              Game.elements.explanation.runAction(
-                cc.Sequence.create(
-                  cc.EaseSineInOut.create(
-                    cc.FadeOut.create(0.5)
-                  ),
-                  cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
-                )
-              );
-            }.bind(this))
-          ),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.5, {
-              x: 0,
-              y: (this.y > Game.parameters.scale.position.max ? (-this.y - Game.backgrounds.game.y + Game.parameters.scale.position.min) : 0)
-            })
-          )
-        )
-      );
-    }.bind(this), 100);
+              cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+            )
+          );
+        }.bind(this))
+      )
+    );
 
     /**
      *
@@ -697,33 +716,31 @@ Character = Spine.extend({
      *
      *
      */
-    if(this.parameters.deceleration) {
-      this.parameters.deceleration = false;
+    if(Game.h.getNumberOfRunningActions() > 0) {
 
       /**
        *
        *
        *
        */
-      Game.backgrounds.d.stopAllActions();
+      if(Tutorial.show(5)) return;
 
       /**
        *
        *
        *
        */
-      Game.backgrounds.d.runAction(
+      Game.h.stopAllActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Game.h.runAction(
         cc.Sequence.create(
-          cc.Spawn.create(
-            cc.EaseSineInOut.create(
-              cc.ScaleTo.create(0.5, Game.backgrounds.d.prescale)
-            ),
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(0.5, {
-                x: 0,
-                y: 0
-              })
-            )
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.5, 1.0)
           ),
           cc.CallFunc.create(function() {
 
@@ -739,7 +756,7 @@ Character = Spine.extend({
              *
              *
              */
-            this.parameters.deceleration = false;
+            this.smokes.resumeSchedulerAndActions();
           }.bind(this))
         )
       );
@@ -810,7 +827,7 @@ Character = Spine.extend({
        *
        *
        */
-      switch(this.detectPoint()) {
+      switch(this.updatePoint()) {
         default:
 
         /**
@@ -827,7 +844,7 @@ Character = Spine.extend({
          */
         Counter.onFail();
         break;
-        case '1':
+        case 0:
 
         /**
          *
@@ -865,7 +882,14 @@ Character = Spine.extend({
          */
         Counter.count();
         break;
-        case '2':
+        case 1:
+
+        /**
+         *
+         *
+         *
+         */
+        Tutorial.show(4);
 
         /**
          *
@@ -910,7 +934,53 @@ Character = Spine.extend({
        *
        *
        */
-      this.parameters.time = max(2, this.parameters.time + 1);
+      if(Game.backgrounds.w.getNumberOfRunningActions() > 0) {
+        if(Game.splash.getNumberOfRunningActions() > 0) return false;
+
+        /**
+         *
+         *
+         *
+         */
+        if(!Game.splash.parent) Game.addChild(Game.splash);
+
+        /**
+         *
+         *
+         *
+         */
+        Game.splash.runAction(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.FadeIn.create(0.2)
+            ),
+            cc.CallFunc.create(function() {
+
+              /**
+               *
+               *
+               *
+               */
+              this.destroy();
+            }.bind(this))
+          )
+        );
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        Game.backgrounds.w.runAction(
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(1.0, {
+              x: 0,
+              y: this.y
+            })
+          )
+        );
+      }
     }
   },
   onTouchEnded: function(touch, e) {
@@ -922,6 +992,37 @@ Character = Spine.extend({
    *
    */
   setSlotsToSetupPoseCustom: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.sound.handler) {
+      clearInterval(this.parameters.sound.handler);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.sound.id) {
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.stop(this.parameters.sound.id);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.sound.id = false
+    }
 
     /**
      *
@@ -938,6 +1039,13 @@ Character = Spine.extend({
      *
      */
     this.clearTracks();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.stopAllActions();
 
     /**
      *
@@ -1020,66 +1128,14 @@ Character = Spine.extend({
        *
        */
       this.smokes.create(this);
-
-      /**
-       *
-       * 
-       *
-       */
-      if(this.parameters.time > 1) {
-
-      /**
-       *
-       * 
-       *
-       */
-      var parameters = cc.clone(this.parameters);
-
-        /**
-         *
-         *
-         *
-         */
-        var i = this.parameters.time;
-
-        /**
-         *
-         *
-         *
-         */
-        while(i >= 0) {
-
-          /**
-           *
-           *
-           *
-           */
-          var position = this.updatePosition(parameters);
-
-          /**
-           *
-           *
-           *
-           */
-          i -= 1 / this.parameters.time;
-
-          /**
-           *
-           *
-           *
-           */
-          this.smokes.create(this);
-
-          /**
-           *
-           *
-           *
-           */
-          this.smokes.last().x += position.x / this.parameters.time;
-          this.smokes.last().y += position.y / this.parameters.time;
-        }
-      }
     }
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateStatus();
 
     /**
      *
@@ -1102,17 +1158,14 @@ Character = Spine.extend({
      *
      */
     this.rotation = Math.atan2(this.parameters.speed.x, this.parameters.speed.y) * 180 / Math.PI;
+  },
+  updateLoss: function(time) {
 
     /**
      *
      *
      *
      */
-    if(this.y < 0) {
-      this.destroy();
-    }
-  },
-  updateLoss: function(time) {
     this.updateGame(time, 2);
   },
 
@@ -1135,15 +1188,23 @@ Character = Spine.extend({
      * 
      *
      */
-    if(parameters.speed.x < parameters.speed.max.x) {
-      parameters.speed.x += parameters.speed.increase.x * this.parameters.time;
+    if(this.parameters.state === this.parameters.states.game) {
 
       /**
        *
        * 
        *
        */
-      parameters.speed.increase.x += parameters.speed.increase.increase.x * this.parameters.time;
+      if(parameters.speed.x < parameters.speed.max.x) {
+        parameters.speed.x += parameters.speed.increase.x * this.parameters.time;
+
+        /**
+         *
+         * 
+         *
+         */
+        parameters.speed.increase.x += parameters.speed.increase.increase.x * this.parameters.time;
+      }
     }
 
     /**
@@ -1200,6 +1261,15 @@ Character = Spine.extend({
       } else {
         parameters.speed.state = false;
       }
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.parameters.state === this.parameters.states.loss) {
+        if(parameters.speed.x > 0) parameters.speed.x -= 5 * scale * this.parameters.time;
+      }
     }
 
     /**
@@ -1240,14 +1310,14 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = random(10, 20, true);
+    var probably = 30;//random(30, 30, true);
 
     /**
      *
      * 
      *
      */
-    var count = probably;
+    var count = -probably / 2;
 
     /**
      *
@@ -1298,7 +1368,7 @@ Character = Spine.extend({
        *
        *
        */
-      if(count % probably === 0) {
+      if(count > 0 && count % probably === 0) {
 
         /**
          *
@@ -1331,12 +1401,12 @@ Character = Spine.extend({
             cc.Sequence.create(
               cc.DelayTime.create(time),
               cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 1.0)
+                cc.ScaleTo.create(0.2, 2.0)
               )
             )
           );
         } else {
-          element.scale = 1;
+          element.scale = 2;
         }
 
         /**
@@ -1361,7 +1431,7 @@ Character = Spine.extend({
    *
    *
    */
-  detectPoint: function() {
+  updatePoint: function() {
 
     /**
      *
@@ -1384,7 +1454,7 @@ Character = Spine.extend({
          *
          */
         if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
-          return point.destroy(true).parameters.skin;
+          return point.getCurrentFrameIndex();
         }
       }
     }
@@ -1395,6 +1465,28 @@ Character = Spine.extend({
      *
      */
     return false;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.updatePoint()) {
+      default:
+      this.status.opacity = 0;
+      break;
+      case 0:
+      this.status.opacity = 255;
+      break;
+    }
   },
 
   /**
@@ -1425,6 +1517,36 @@ Character = Spine.extend({
       case this.parameters.states.loss:
       this.updateLoss(time);
       break;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] >= this.y) {
+      switch(Game.parameters.state) {
+        case Game.parameters.states.prepare:
+        case Game.parameters.states.start:
+        Game.changeState(Game.parameters.states.loss);
+        break;
+        case Game.parameters.states.game:
+
+        /**
+         *
+         *
+         *
+         */
+        Game.setShake(0.5, 0.01);
+
+        /**
+         *
+         *
+         *
+         */
+        this.destroy();
+        break;
+      }
     }
 
     /**

@@ -21,61 +21,14 @@
  *
  */
 
-Events.onStart = function() {
+Chapter5 = Chapter.extend({
 
   /**
    *
    *
    *
    */
-  Resources.load(resources.main, {
-    complete: function() {
-
-      /**
-       *
-       *
-       *
-       */
-      User.setup({
-
-        /**
-         *
-         *
-         *
-         */
-        finish: function() {
-
-          /**
-           *
-           *
-           *
-           */
-          Services.signin();
-
-          /**
-           *
-           *
-           *
-           */
-          Analytics.sendEvent('System events', 'Application launch', '', '');
-
-          /**
-           *
-           *
-           *
-           */
-          Screens.replace('Game');
-        }
-      });
-    }
-  });
-};
-
-Events.onStop = function() {
-};
-
-Events.onPause = function() {
-};
-
-Events.onResume = function() {
-};
+  ctor: function() {
+    this._super(5);
+  }
+});

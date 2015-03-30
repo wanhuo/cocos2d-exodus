@@ -41,5 +41,14 @@ var properties = {
     best: 10,
     jumps: 11,
     deaths: 12
+  },
+  tutorial: {
+    chapters: {
+      chapter1: 101,
+      chapter2: 102,
+      chapter3: 103,
+      chapter4: 104,
+      chapter5: 105
+    }
   }
 };

@@ -21,62 +21,38 @@
  *
  */
 
-Button.prototype.export = function() {
-  this.onHover = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.2, 1.05)
-    );
-  };
-  this.onUnHover = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.2, 1.0)
-    );
-  };
+Chapter2 = Chapter.extend({
 
-  this.onTouchStart = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.1, 0.9)
-    );
-  };
-  this.onTouchFinish = function(touch, e) {
-    this.stopAllActions();
-    this.runAction(
-      cc.Sequence.create(
-        cc.ScaleTo.create(0.1, 1.0),
-        cc.CallFunc.create(function() {
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super(2);
+  },
 
-          /**
-           *
-           *
-           *
-           */
-          if(touch) {
+  /**
+   *
+   *
+   *
+   */
+  onAction: function() {
+    this._super();
 
-            /**
-             *
-             *
-             *
-             */
-            this.onTouch();
-          }
-        }.bind(this))
-      )
-    );
-  };
-
-  this.onTouch = function() {
-    if(this.action) {
-      this.action();
-
+    /**
+     *
+     * 
+     *
+     */
+    if(this.parameters.state === this.parameters.states.down) {
+        
       /**
        *
        *
        *
        */
-      Sound.play(resources.main.sound.touch);
+      Game.onTouchBegan();
     }
-  };
-};
+  }
+});

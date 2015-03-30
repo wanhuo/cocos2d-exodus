@@ -55,15 +55,33 @@ Game = Screen.extend({
         tutorial: 7
       },
       water: {
-        speed: 30.0,
-        y: 180
+        speed: [
+          0,
+
+          0,
+          0,
+          20,
+          30,
+          100,
+          0
+        ],
+        y: [
+          0,
+
+          0,
+          0,
+          240,
+          240,
+          100,
+          0
+        ]
       },
       scale: {
-        min: 0.25,
+        min: 0.5,
         max: 1.0,
         position: {
           min: 450,
-          max: 2000
+          max: 2560
         }
       },
       backgrounds: {
@@ -80,6 +98,10 @@ Game = Screen.extend({
         width: Camera.width,
         height: Camera.height
       },
+      tutorial: {
+        state: false,
+        current: false
+      },
       ad: {
         interstitial: {
           current: 0,
@@ -93,8 +115,15 @@ Game = Screen.extend({
      * 
      *
      */
+    this.h = new Background(this);
+
+    /**
+     *
+     * 
+     *
+     */
     this.backgrounds = {
-      d: new Background(this),
+      d: new Background(this.h),
       s: new Background(this),
       b: new Background(this)
     };
@@ -120,7 +149,8 @@ Game = Screen.extend({
      * 
      *
      */
-    this.splash = new BackgroundColor(this, cc.color.WHITE);
+    this.splash = new BackgroundColor(false, cc.color.WHITE);
+    this.splash.retain();
 
     /**
      *
@@ -141,7 +171,8 @@ Game = Screen.extend({
         new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
         new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
         new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
-        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2]))
+        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
+        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
       ],
       ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
       water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
@@ -186,7 +217,7 @@ Game = Screen.extend({
       ),
       explanation: new Explanation,
       baloons: new Manager(1, new Baloon, this.backgrounds.game),
-      people: new Manager(10, new People, this.backgrounds.b),
+      people: new Manager(10, new People, this.backgrounds.game),
       points: new Points,
       name: new Name,
       character: new Character,
@@ -212,8 +243,22 @@ Game = Screen.extend({
      * 
      *
      */
+    this.elements.ground.setBlendFunc(gl.ONE, gl.ZERO);
+
+    /**
+     *
+     * 
+     *
+     */
     this.backgrounds.menu.setLocalZOrder(300);
     this.backgrounds.game.setLocalZOrder(200);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.h.setLocalZOrder(200);
 
     /**
      *
@@ -409,6 +454,13 @@ Game = Screen.extend({
      *
      *
      */
+    Music.play(resources.main.music.background, true);
+
+    /**
+     *
+     *
+     *
+     */
     this.changeState(this.parameters.states.menu);
   },
   onHide: function() {
@@ -434,7 +486,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.character.onTouchBegan(touch, e);
+      Character.onTouchBegan(touch, e);
     }
 
     /**
@@ -459,14 +511,22 @@ Game = Screen.extend({
      *
      *
      */
-    this.touch.touched = true;
+    else if(this.parameters.state === this.parameters.states.tutorial) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.tutorial.current.onAction();
+    }
 
     /**
      *
      *
      *
      */
-    return true;
+    return Entity.prototype.onTouchBegan.call(this, touch, e);
   },
   onTouchEnded: function(touch, e) {
 
@@ -482,14 +542,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.character.onTouchEnded(touch, e);
-
-      /**
-       *
-       *
-       *
-       */
-      Analytics.sendEvent('Game events', 'Click', '', '');
+      Character.onTouchEnded(touch, e);
     }
 
     /**
@@ -497,7 +550,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.touch.touched = false;
+    return Entity.prototype.onTouchEnded.call(this, touch, e);
   },
 
   /**
@@ -750,7 +803,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.onSave();
+    Character.onSave();
 
     /**
      *
@@ -796,7 +849,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.animation);
+    Character.changeState(Character.parameters.states.animation);
 
     /**
      *
@@ -844,7 +897,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.prepare);
+    Character.changeState(Character.parameters.states.prepare);
 
     /**
      *
@@ -883,14 +936,8 @@ Game = Screen.extend({
      *
      *
      */
+    this.backgrounds.b.stopAllActions();
     this.backgrounds.b.y = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.register();
 
     /**
      *
@@ -909,6 +956,7 @@ Game = Screen.extend({
      */
     this.elements.points.clear();
     this.elements.fishes.clear();
+    this.elements.baloons.clear();
 
     /**
      *
@@ -924,7 +972,15 @@ Game = Screen.extend({
      *
      *
      */
-    Plugins.admob.show(Plugins.ad.types.banner);
+    if(!Tutorial.show(1)) {
+
+      /**
+       *
+       *
+       *
+       */
+      Plugins.admob.show(Plugins.ad.types.banner);
+    }
   },
   onStart: function() {
 
@@ -933,22 +989,32 @@ Game = Screen.extend({
      *
      *
      */
-    this.backgrounds.b.runAction(
-      cc.EaseBounceOut.create(
-        cc.MoveTo.create(1.0, {
-            x: 0,
-            y: 270
-          }
+    if(this.backgrounds.b.getNumberOfRunningActions() < 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.b.runAction(
+        cc.Sequence.create(
+          cc.EaseBounceOut.create(
+            cc.MoveTo.create(1.0, {
+                x: 0,
+                y: 270
+              }
+            )
+          )
         )
-      )
-    );
+      );
+    }
 
     /**
      *
      *
      *
      */
-    Counter.unregister();
+    Tutorial.show(2);
   },
   onGame: function() {
 
@@ -957,21 +1023,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.character.changeState(this.elements.character.parameters.states.game);
-
-    /**
-     *
-     *
-     *
-     */
-    this.backgrounds.w.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(1.5, {
-          x: 0,
-          y: 0
-        })
-      )
-    );
+    Character.changeState(Character.parameters.states.game);
 
     /**
      *
@@ -994,9 +1046,21 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.elements.character.y <= 0) {
-      this.setShake(0.5, 0.01);
-    }
+    this.backgrounds.w.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
+    if(!this.splash.parent) this.addChild(this.splash);
+
+    /**
+     *
+     *
+     *
+     */
+    this.splash.stopAllActions();
 
     /**
      *
@@ -1005,8 +1069,8 @@ Game = Screen.extend({
      */
     this.splash.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(this.elements.character.y <= 0 ? 0.5 : 0.0),
-        cc.FadeIn.create(0.2),
+        cc.DelayTime.create(Character.created ? 0.0 : 0.5),
+        cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(function() {
 
           /**
@@ -1014,7 +1078,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.elements.character.setSlotsToSetupPoseCustom();
+          Character.setSlotsToSetupPoseCustom();
 
           /**
            *
@@ -1041,7 +1105,8 @@ Game = Screen.extend({
           this.changeState(this.parameters.states.prepare);
         }.bind(this)),
         cc.DelayTime.create(0.5),
-        cc.FadeOut.create(0.5)
+        cc.FadeOut.create(0.5),
+        cc.CallFunc.create(this.splash.removeFromParent, this.splash)
       )
     );
 
@@ -1052,10 +1117,74 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
-  onTutorial: function() {
-    this.elements.people.pauseSchedulerAndActions();
-    this.elements.character.pauseSchedulerAndActions();
-    this.unscheduleUpdate();
+  onTutorial: function(reverse) {
+
+    /**
+     *
+     * 
+     *
+     */
+    if(reverse) {
+
+      /**
+       *
+       * 
+       *
+       */
+     this.parameters.state = this.parameters.tutorial.state;
+
+      /**
+       *
+       * 
+       *
+       */
+     this.parameters.tutorial.state = false;
+
+      /**
+       *
+       * 
+       *
+       */
+      this.elements.people.resumeSchedulerAndActions();
+      Character.resumeSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.backgrounds.d.resumeSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.scheduleUpdate();
+    } else {
+
+      /**
+       *
+       * 
+       *
+       */
+      this.elements.people.pauseSchedulerAndActions();
+      Character.pauseSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.backgrounds.d.pauseSchedulerAndActions();
+
+      /**
+       *
+       * 
+       *
+       */
+      this.unscheduleUpdate();
+    }
   },
 
   /**
@@ -1135,16 +1264,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.w.y += this.parameters.water.speed * time;
-
-    /**
-     *
-     * 
-     *
-     */
-    if(this.backgrounds.w.y >= this.parameters.water.y) {
-      this.changeState(this.parameters.states.loss);
-    }
+    this.backgrounds.w.y += this.parameters.water.speed[this.parameters.state] * time;
   },
 
   /**
@@ -1227,17 +1347,6 @@ Game = Screen.extend({
      *
      */
     switch(this.parameters.state) {
-      case this.parameters.states.start:
-      this.updateWater(time);
-      break;
-    }
-
-    /**
-     *
-     * 
-     *
-     */
-    switch(this.parameters.state) {
       case this.parameters.states.prepare:
       case this.parameters.states.start:
       case this.parameters.states.game:
@@ -1247,33 +1356,29 @@ Game = Screen.extend({
        *
        *
        */
-      this.backgrounds.game.x = -this.elements.character.x + Camera.center.x;
-      this.backgrounds.game.y = min(0, -(this.elements.character.y * Game.backgrounds.d.getScale()) + this.parameters.camera.center);
+      this.updateWater(time);
 
       /**
        *
        *
        *
        */
-      if(this.backgrounds.d.getNumberOfRunningActions() == 0) {
-        if(this.elements.character.y >= this.parameters.scale.position.min) {
-          this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (this.elements.character.y - this.parameters.scale.position.min)), this.parameters.scale.min);
-        } else {
-          this.backgrounds.d.scale = this.parameters.scale.max;
-        }
-      }
+      this.backgrounds.game.x = -Character.x + Camera.center.x;
+      this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
 
       /**
        *
        *
        *
        */
-      if(this.elements.character.y > this.parameters.scale.position.max) {
-        this.backgrounds.game.y = -(this.elements.character.y - this.parameters.scale.position.max);
-        this.backgrounds.g.y = max(-(this.elements.character.y - this.parameters.scale.position.max) / this.parameters.backgrounds.position.ratio, this.parameters.backgrounds.position.min);
-      } else {
-        this.backgrounds.g.y = 0;
-      }
+      this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.g.y = min(0, -(Character.y - (Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio);
 
       /**
        *
@@ -1313,14 +1418,14 @@ Game = Screen.extend({
    *
    */
   update: function(time) {
-    this._super(time * this.elements.character.parameters.time);
+    this._super(time * Character.parameters.time);
 
     /**
      *
      * 
      *
      */
-    this.updateStates(time * this.elements.character.parameters.time);
+    this.updateStates(time * Character.parameters.time);
   },
 
   /**
