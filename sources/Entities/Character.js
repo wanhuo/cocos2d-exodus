@@ -723,7 +723,14 @@ Character = Spine.extend({
        *
        *
        */
-      if(Tutorial.show(5)) return;
+      if(Tutorial.show(5)) return false;
+
+      /**
+       *
+       *
+       *
+       */
+      if(Game.elements.explanation.getNumberOfRunningActions() > 1) return false;
 
       /**
        *

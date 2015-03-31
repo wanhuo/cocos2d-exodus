@@ -560,39 +560,6 @@ Counter = Button.extend({
      *
      */
     this.updateTextData(true);
-
-    /**
-     *
-     * Manage achievements.
-     *
-     */
-    var achievement = false;
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.values.scores.current >= 100) {
-      achievement = 4;
-    } else if(this.values.scores.current >= 20) {
-      achievement = 3;
-    } else if(this.values.scores.current >= 10) {
-      achievement = 2;
-    } else if(this.values.scores.current >= 5) {
-      achievement = 1;
-    } else if(this.values.scores.current >= 1) {
-      achievement = 0;
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    if(achievement !== false) {
-      Services.achievements.update(Config.services.achievements.scores[achievement]);
-    }
   },
 
   /**
@@ -615,6 +582,40 @@ Counter = Button.extend({
      *
      */
     this.values.scores.best = max(this.values.scores.best, this.values.scores.current);
+
+    /**
+     *
+     * Manage achievements.
+     *
+     */
+    if(this.values.scores.current >= 100) {
+      Services.achievements.update(Config.services.achievements.scores[4]);
+    }
+    if(this.values.scores.current >= 20) {
+      Services.achievements.update(Config.services.achievements.scores[3]);
+    }
+    if(this.values.scores.current >= 10) {
+      Services.achievements.update(Config.services.achievements.scores[2]);
+    }
+    if(this.values.scores.current >= 5) {
+      Services.achievements.update(Config.services.achievements.scores[1]);
+    }
+    if(this.values.scores.current >= 1) {
+      Services.achievements.update(Config.services.achievements.scores[0]);
+    }
+
+    /**
+     *
+     * Manage scores.
+     *
+     */
+    Services.scores.update(Config.services.leaderboards.best, this.values.scores.best);
+
+    /**
+     *
+     *
+     *
+     */
     this.values.scores.current = 0;
 
     /**
@@ -622,18 +623,11 @@ Counter = Button.extend({
      *
      *
      */
-    Data.set(true, [properties.scores.best, properties.scores.jumps, properties.scores.deaths], [
+    Data.set(false, [properties.scores.best, properties.scores.jumps, properties.scores.deaths], [
       this.values.scores.best,
       this.values.info.jumps,
       this.values.info.deaths
     ]);
-
-    /**
-     *
-     *
-     *
-     */
-    Services.scores.update(Config.services.leaderboards.best, this.values.scores.best);
 
     /**
      *

@@ -232,13 +232,6 @@ Chapter = Spine.extend({
        *
        *
        */
-      Game.onTutorial(true);
-
-      /**
-       *
-       *
-       *
-       */
       this.destroy(true);
       break;
     }
@@ -394,6 +387,13 @@ Chapter = Spine.extend({
         this.changeState(this.parameters.states.animation);
         break;
         case this.parameters.animations.destroy.index:
+
+        /**
+         *
+         *
+         *
+         */
+        Game.onTutorial(true);
 
         /**
          *
