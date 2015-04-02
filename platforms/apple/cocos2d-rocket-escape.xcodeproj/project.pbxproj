@@ -20,6 +20,7 @@
 		509D4AE717EBB81800697056 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D4AE617EBB81800697056 /* OpenGL.framework */; };
 		509D4AE917EBB82000697056 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D4AE817EBB82000697056 /* AppKit.framework */; };
 		509D4AEB17EBB82600697056 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D4AEA17EBB82600697056 /* IOKit.framework */; };
+		7812F33D1ACD416100995DCA /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7812F33C1ACD416100995DCA /* FacebookSDK.framework */; };
 		7822CCFD1AB6D54600FBE746 /* Chartboosts.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7822CCFC1AB6D54600FBE746 /* Chartboosts.mm */; };
 		7823FBB51ABDB57400447F0A /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7823FBB31ABDB57400447F0A /* Batch.bundle */; };
 		7823FBBD1ABDBF0B00447F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7823FBBC1ABDBF0B00447F0A /* UIKit.framework */; };
@@ -34,7 +35,6 @@
 		7828A0341A1F6E920079492B /* jsb_pluginx.js in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0321A1F6E920079492B /* jsb_pluginx.js */; };
 		7828A0411A1F75D90079492B /* script in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0401A1F75D90079492B /* script */; };
 		7828A0421A1F75D90079492B /* script in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0401A1F75D90079492B /* script */; };
-		7828A0431A1F77960079492B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7828A0301A1F6E710079492B /* FacebookSDK.framework */; };
 		7828A0451A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A0461A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A0601A1F86C80079492B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0491A1F86C80079492B /* Info.plist */; };
@@ -218,6 +218,7 @@
 		509D4AE617EBB81800697056 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		509D4AE817EBB82000697056 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		509D4AEA17EBB82600697056 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		7812F33C1ACD416100995DCA /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/plugins/facebook/proj.ios/FacebookSDK.framework"; sourceTree = "<group>"; };
 		7822CCFC1AB6D54600FBE746 /* Chartboosts.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Chartboosts.mm; sourceTree = "<group>"; };
 		7823FBB31ABDB57400447F0A /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
 		7823FBB41ABDB57400447F0A /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
@@ -338,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7812F33D1ACD416100995DCA /* FacebookSDK.framework in Frameworks */,
 				7823FBC71ABDC10F00447F0A /* Batch.framework in Frameworks */,
 				7823FBC41ABDBF9500447F0A /* libsqlite3.dylib in Frameworks */,
 				7823FBBD1ABDBF0B00447F0A /* UIKit.framework in Frameworks */,
@@ -354,7 +356,6 @@
 				78C3989E1A8A6D4000604331 /* libz.dylib in Frameworks */,
 				78B0CFF41A9289E200E72640 /* libGoogleAnalyticsServices.a in Frameworks */,
 				78C3989A1A8A6D2300604331 /* CoreData.framework in Frameworks */,
-				7828A0431A1F77960079492B /* FacebookSDK.framework in Frameworks */,
 				7828A02C1A1F6E520079492B /* libcocos2d iOS.a in Frameworks */,
 				7828A02D1A1F6E520079492B /* libjsbindings iOS.a in Frameworks */,
 				7828A02E1A1F6E520079492B /* libPluginFacebook.a in Frameworks */,
@@ -715,6 +716,7 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7812F33C1ACD416100995DCA /* FacebookSDK.framework */,
 				7823FBC31ABDBF9500447F0A /* libsqlite3.dylib */,
 				78B0CFDD1A924EF800E72640 /* StoreKit.framework */,
 				78B0CFDB1A924EED00E72640 /* MessageUI.framework */,
@@ -1167,6 +1169,7 @@
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/GoogleAdmob",
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/ChartBoost",
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/Batch",
+					"/Users/igor/Development/cocos2d/frameworks/js-bindings/cocos2d-x/plugin/plugins/facebook/proj.ios",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -1216,6 +1219,7 @@
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/GoogleAdmob",
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/ChartBoost",
 					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/Batch",
+					"/Users/igor/Development/cocos2d/frameworks/js-bindings/cocos2d-x/plugin/plugins/facebook/proj.ios",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
