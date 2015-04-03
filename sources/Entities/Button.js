@@ -21,62 +21,60 @@
  *
  */
 
-Button.prototype.export = function() {
-  this.onHover = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.2, 1.05)
-    );
-  };
-  this.onUnHover = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.2, 1.0)
-    );
-  };
+Button.prototype.onHover = function() {
+  this.stopAllActions();
+  this.runAction(
+    cc.ScaleTo.create(0.2, 1.05)
+  );
+};
+Button.prototype.onUnHover = function() {
+  this.stopAllActions();
+  this.runAction(
+    cc.ScaleTo.create(0.2, 1.0)
+  );
+};
 
-  this.onTouchStart = function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.1, 0.9)
-    );
-  };
-  this.onTouchFinish = function(touch, e) {
-    this.stopAllActions();
-    this.runAction(
-      cc.Sequence.create(
-        cc.ScaleTo.create(0.1, 1.0),
-        cc.CallFunc.create(function() {
+Button.prototype.onTouchStart = function() {
+  this.stopAllActions();
+  this.runAction(
+    cc.ScaleTo.create(0.1, 0.9)
+  );
+};
+Button.prototype.onTouchFinish = function(touch, e) {
+  this.stopAllActions();
+  this.runAction(
+    cc.Sequence.create(
+      cc.ScaleTo.create(0.1, 1.0),
+      cc.CallFunc.create(function() {
+
+        /**
+         *
+         *
+         *
+         */
+        if(touch) {
 
           /**
            *
            *
            *
            */
-          if(touch) {
+          this.onTouch();
+        }
+      }.bind(this))
+    )
+  );
+};
 
-            /**
-             *
-             *
-             *
-             */
-            this.onTouch();
-          }
-        }.bind(this))
-      )
-    );
-  };
+Button.prototype.onTouch = function() {
+  if(this.action) {
+    this.action();
 
-  this.onTouch = function() {
-    if(this.action) {
-      this.action();
-
-      /**
-       *
-       *
-       *
-       */
-      Sound.play(resources.main.sound.touch);
-    }
-  };
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.touch);
+  }
 };

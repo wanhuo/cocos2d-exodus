@@ -36,7 +36,7 @@ Water = Parallax.extend({
      *
      *
      */
-    this.setNeedScheduleUpdate(true);
+    this.needScheduleUpdate = true;
   },
 
   /**

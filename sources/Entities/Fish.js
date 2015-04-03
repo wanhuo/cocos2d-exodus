@@ -75,7 +75,7 @@ Fish = Spine.extend({
      *
      */
     this.destroy = function(param) {
-      if(param === Entity.destroy.visible || param === true) {
+      if(param === Node.destroy.visible || param === true) {
         return Entity.prototype.destroy.call(this, param);
       }
 
