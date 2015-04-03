@@ -121,7 +121,7 @@ Character = Spine.extend({
           x: 0,
           y: 0,
           increase: {
-            x: 200.0,
+            x: 100.0,
             y: 0.0
           },
           setup: {
@@ -242,10 +242,15 @@ Character = Spine.extend({
      *
      *
      */
-    this.shadow.create().attr({
-      x: this.x,
-      y: 340
-    });
+    this.shadow.create();
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.x = this.x;
+    this.shadow.y = 340;
 
     /**
      *
@@ -474,6 +479,7 @@ Character = Spine.extend({
      * 
      *
      */
+    this.x = Camera.center.x;
     this.y = Game.parameters.camera.center;
 
     /**

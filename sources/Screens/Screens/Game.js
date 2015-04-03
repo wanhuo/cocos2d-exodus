@@ -76,11 +76,21 @@ Game = Screen.extend({
           0
         ]
       },
+      offset: {
+        x: {
+          min: 0,
+          max: Camera.center.x / 4
+        },
+        y: {
+          min: 0,
+          max: Camera.center.y / 4
+        }
+      },
       scale: {
-        min: 0.5,
+        min: 0.35,
         max: 1.0,
         position: {
-          min: 150,
+          min: 450,
           max: 2560
         }
       },
@@ -88,7 +98,7 @@ Game = Screen.extend({
         position: {
           min: -1280,
           max: 0,
-          ratio: 5
+          ratio: 7
         }
       },
       camera: {
@@ -929,6 +939,13 @@ Game = Screen.extend({
      *
      *
      */
+    this.updateCamera();
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds.w.y = 0;
 
     /**
@@ -1310,6 +1327,59 @@ Game = Screen.extend({
    * 
    *
    */
+  updateCamera: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.game.x = -Character.x + Camera.center.x;
+    this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.g.y = min(0, max(this.parameters.backgrounds.position.min, -(Character.y - (Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio));
+
+    /**
+     *
+     *
+     *
+     */
+    this.h.x = max(-this.parameters.offset.x.max, this.parameters.offset.x.max / max(1000 / this.backgrounds.game.x)) * this.parallax.scale();
+    this.h.y = max(-this.parameters.offset.y.max, this.parameters.offset.y.max / max(1000 / this.backgrounds.game.y)) * this.parallax.scale();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.camera.x = abs(this.backgrounds.game.x);
+    this.parameters.camera.y = abs(this.backgrounds.game.y);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
+  },
+
+  /**
+   *
+   * 
+   *
+   */
   updateStates: function(time) {
 
     /**
@@ -1360,40 +1430,10 @@ Game = Screen.extend({
 
       /**
        *
-       *
-       *
-       */
-      this.backgrounds.game.x = -Character.x + Camera.center.x + max(-Camera.center.x / 2, Camera.center.x / 2 / max(1000 / this.backgrounds.game.x)) * this.parallax.scale();
-      this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
-
-      /**
-       *
-       *
+       * 
        *
        */
-      this.backgrounds.d.scale = max(1.0 - 1.0 / (this.parameters.scale.position.max / (Character.y - this.backgrounds.w.y - this.parameters.scale.position.min)), this.parameters.scale.min);
-
-      /**
-       *
-       *
-       *
-       */
-      this.backgrounds.g.y = min(0, max(this.parameters.backgrounds.position.min, -(Character.y - (Camera.center.y / this.parameters.scale.min)) / this.parameters.backgrounds.position.ratio));
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.camera.x = abs(this.backgrounds.game.x);
-      this.parameters.camera.y = abs(this.backgrounds.game.y);
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
+      this.updateCamera(time);
       break;
     }
 
