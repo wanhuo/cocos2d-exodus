@@ -64,6 +64,13 @@ Fish = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
      * 
      *
      */

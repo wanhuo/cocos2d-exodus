@@ -186,6 +186,13 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
      * 
      *
      */

@@ -56,6 +56,13 @@ People = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
      * 
      *
      */
