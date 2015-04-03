@@ -60,7 +60,7 @@ Moon = Entity.extend({
      *
      */
     this.x = Camera.width - Camera.center.x / 2;
-    this.y = Camera.height * 2 - Camera.center.y / 1.5;
+    this.y = Camera.height * 2 - Camera.center.y / 2;
   },
   onDestroy: function() {
     this._super();

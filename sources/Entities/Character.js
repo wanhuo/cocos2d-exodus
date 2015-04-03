@@ -121,7 +121,7 @@ Character = Spine.extend({
           x: 0,
           y: 0,
           increase: {
-            x: 50.0,
+            x: 200.0,
             y: 0.0
           },
           setup: {
@@ -1432,7 +1432,7 @@ Character = Spine.extend({
             cc.Sequence.create(
               cc.DelayTime.create(time),
               cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 2.0)
+                cc.ScaleTo.create(0.5, 2.0)
               )
             )
           );

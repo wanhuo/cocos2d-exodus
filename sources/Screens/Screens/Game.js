@@ -80,7 +80,7 @@ Game = Screen.extend({
         min: 0.5,
         max: 1.0,
         position: {
-          min: 450,
+          min: 150,
           max: 2560
         }
       },
