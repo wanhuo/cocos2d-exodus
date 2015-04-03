@@ -78,6 +78,13 @@ Chapter = Spine.extend({
      *
      *
      */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
     this.create().setLocalZOrder(1000);
 
     /**
@@ -233,6 +240,13 @@ Chapter = Spine.extend({
        *
        */
       this.destroy(true);
+
+      /**
+       *
+       *
+       *
+       */
+      Game.onTutorial(true);
       break;
     }
   },
@@ -387,13 +401,6 @@ Chapter = Spine.extend({
         this.changeState(this.parameters.states.animation);
         break;
         case this.parameters.animations.destroy.index:
-
-        /**
-         *
-         *
-         *
-         */
-        Game.onTutorial(true);
 
         /**
          *
