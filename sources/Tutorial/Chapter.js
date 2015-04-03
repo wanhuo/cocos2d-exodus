@@ -270,7 +270,7 @@ Chapter = Spine.extend({
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
-        cc.CallFunc.create(this.text.destroy, this.text, Entity.destroy.complete)
+        cc.CallFunc.create(this.text.destroy, this.text, Node.destroy.complete)
       )
     );
   },

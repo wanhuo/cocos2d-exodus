@@ -121,12 +121,12 @@ Character = Spine.extend({
           x: 0,
           y: 0,
           increase: {
-            x: 100,
+            x: 50.0,
             y: 0.0
           },
           setup: {
-            x: 1250,
-            y: 500
+            x: 850,
+            y: 750
           }
         },
         min: {
@@ -135,7 +135,7 @@ Character = Spine.extend({
         },
         increase: {
           x: 0.0,
-          y: 5.0,
+          y: 25.0,
           increase: {
             x: 0.1,
             y: 0.0
@@ -143,7 +143,7 @@ Character = Spine.extend({
         },
         decrease: {
           x: 0.0,
-          y: 4.5,
+          y: 5.0,
           max: {
             x: 0.0,
             y: 10.0,
@@ -153,6 +153,16 @@ Character = Spine.extend({
           x: 0,
           y: 0
         }
+      },
+      points: {
+        distance: [
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ]
       },
       smokes: {
         time: {
@@ -1317,7 +1327,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = 30;//random(30, 30, true);
+    var probably = this.parameters.points.distance.random();
 
     /**
      *
@@ -1376,6 +1386,20 @@ Character = Spine.extend({
        *
        */
       if(count > 0 && count % probably === 0) {
+
+    /**
+     *
+     * 
+     *
+     */
+    probably = this.parameters.points.distance.random();
+
+    /**
+     *
+     * 
+     *
+     */
+    count = -probably / 2;
 
         /**
          *

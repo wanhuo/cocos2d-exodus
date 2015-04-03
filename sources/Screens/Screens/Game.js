@@ -77,7 +77,7 @@ Game = Screen.extend({
         ]
       },
       scale: {
-        min: 0.35,
+        min: 0.5,
         max: 1.0,
         position: {
           min: 450,
@@ -1363,7 +1363,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.backgrounds.game.x = -Character.x + Camera.center.x;
+      this.backgrounds.game.x = -Character.x + Camera.center.x + max(-Camera.center.x / 2, Camera.center.x / 2 / max(1000 / this.backgrounds.game.x)) * this.parallax.scale();
       this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
 
       /**
