@@ -125,7 +125,7 @@ People = Spine.extend({
      * 
      *
      */
-    this.x = this.parameters.position ? random(Game.parameters.camera.x, Game.parameters.camera.x + Game.parameters.camera.width / 4) : random(Game.parameters.camera.x + Game.parameters.camera.width - Game.parameters.camera.width / 4, Game.parameters.camera.x + Game.parameters.camera.width);
+    this.x = this.parameters.position ? random(0, Camera.center.x / 2) : random(Camera.center.x + Camera.center.x / 2, Camera.width)
     this.y = 340;
 
     /**

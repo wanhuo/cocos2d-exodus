@@ -121,12 +121,12 @@ Character = Spine.extend({
           x: 0,
           y: 0,
           increase: {
-            x: 100.0,
+            x: 100,
             y: 0.0
           },
           setup: {
-            x: 850,
-            y: 750
+            x: 1250 / 1.5,
+            y: 750 / 1.5
           }
         },
         min: {
@@ -135,7 +135,7 @@ Character = Spine.extend({
         },
         increase: {
           x: 0.0,
-          y: 25.0,
+          y: 5.0,
           increase: {
             x: 0.1,
             y: 0.0
@@ -143,7 +143,7 @@ Character = Spine.extend({
         },
         decrease: {
           x: 0.0,
-          y: 5.0,
+          y: 4.5 / 1.5,
           max: {
             x: 0.0,
             y: 10.0,
@@ -153,16 +153,6 @@ Character = Spine.extend({
           x: 0,
           y: 0
         }
-      },
-      points: {
-        distance: [
-          10,
-          12,
-          14,
-          16,
-          18,
-          20
-        ]
       },
       smokes: {
         time: {
@@ -1234,6 +1224,7 @@ Character = Spine.extend({
          *
          */
         parameters.speed.increase.x += parameters.speed.increase.increase.x * this.parameters.time;
+        parameters.speed.increase.y += parameters.speed.increase.increase.y * this.parameters.time;
       }
     }
 
@@ -1340,7 +1331,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = this.parameters.points.distance.random();
+    var probably = 16;
 
     /**
      *
@@ -1400,20 +1391,6 @@ Character = Spine.extend({
        */
       if(count > 0 && count % probably === 0) {
 
-    /**
-     *
-     * 
-     *
-     */
-    probably = this.parameters.points.distance.random();
-
-    /**
-     *
-     * 
-     *
-     */
-    count = -probably / 2;
-
         /**
          *
          *
@@ -1434,7 +1411,7 @@ Character = Spine.extend({
          *
          *
          */
-        if(x < Game.parameters.camera.x + Game.parameters.camera.width) {
+        if(x < Game.parameters.camera.x + Game.parameters.camera.width * 2) {
 
           /**
            *

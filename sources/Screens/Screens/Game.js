@@ -98,7 +98,7 @@ Game = Screen.extend({
         position: {
           min: -1280,
           max: 0,
-          ratio: 7
+          ratio: 3
         }
       },
       camera: {
@@ -167,73 +167,72 @@ Game = Screen.extend({
      * 
      *
      */
-    this.elements = {
-      backgrounds: [
-        new Entity(resources.main.backgrounds[0], this.backgrounds.g),
-        new Entity(resources.main.backgrounds[1], this.backgrounds.g)
-      ],
-      parallaxes: [
-        new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
-        new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
-        new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
-        new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
-        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
-        new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
-        new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
-        new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
-        new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
-        new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
-      ],
-      ground: new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground),
-      water3: new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
-        new Water(
-          resources.main.water[2],
-          {
-            x: 100,
-            y: 0
-          },
-          {
-            x: 0,
-            y: 180
-          }
-        )
-      ),
-      water2: new ParallaxEntity.Infinity(resources.main.water[1], this.backgrounds.w).addEntity(
-        new Water(
-          resources.main.water[1],
-          {
-            x: -100,
-            y: 0
-          },
-          {
-            x: 0,
-            y: 140
-          }
-        )
-      ),
-      fishes: new Manager(2, new Fish, this.backgrounds.w),
-      water1: new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.w).addEntity(
-        new Water(
-          resources.main.water[0],
-          {
-            x: 100,
-            y: 0
-          },
-          {
-            x: 0,
-            y: -50
-          }
-        )
-      ),
-      explanation: new Explanation,
-      baloons: new Manager(1, new Baloon, this.backgrounds.game),
-      people: new Manager(10, new People, this.backgrounds.game),
-      points: new Points,
-      name: new Name,
-      character: new Character,
-      moon: new Moon,
-      counter: new Counter
-    };
+    this.elements = {};
+    this.elements.backgrounds = [
+      new Entity(resources.main.backgrounds[0], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[1], this.backgrounds.g)
+    ];
+    this.elements.parallaxes = [
+      new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
+      new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
+      new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
+      new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
+      new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+      new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+      new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
+      new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
+      new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
+      new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
+    ];
+    this.elements.ground = new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground);
+    this.elements.water3 = new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
+      new Water(
+        resources.main.water[2],
+        {
+          x: 100,
+          y: 0
+        },
+        {
+          x: 0,
+          y: 180
+        }
+      )
+    );
+    this.elements.water2 = new ParallaxEntity.Infinity(resources.main.water[1], this.backgrounds.w).addEntity(
+      new Water(
+        resources.main.water[1],
+        {
+          x: -100,
+          y: 0
+        },
+        {
+          x: 0,
+          y: 140
+        }
+      )
+    );
+    this.elements.fishes = new Manager(2, new Fish, this.backgrounds.w);
+    this.elements.water1 = new ParallaxEntity.Infinity(resources.main.water[0], this.backgrounds.w).addEntity(
+      new Water(
+        resources.main.water[0],
+        {
+          x: 100,
+          y: 0
+        },
+        {
+          x: 0,
+          y: -50
+        }
+      )
+    );
+    this.elements.explanation = new Explanation;
+    this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
+    this.elements.people = new Manager(10, new People, this.backgrounds.game);
+    this.elements.points = new Points;
+    this.elements.name = new Name;
+    this.elements.character = new Character;
+    this.elements.moon = new Moon;
+    this.elements.counter = new Counter;
 
     /**
      *
@@ -1086,7 +1085,7 @@ Game = Screen.extend({
      */
     this.splash.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(Character.created ? 0.0 : 0.5),
+        cc.DelayTime.create(Character.state.create ? 0.0 : 0.5),
         cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(function() {
 
@@ -1096,6 +1095,20 @@ Game = Screen.extend({
            *
            */
           Character.setSlotsToSetupPoseCustom();
+
+          /**
+           *
+           *
+           *
+           */
+          this.changeState(this.parameters.states.prepare);
+
+          /**
+           *
+           *
+           *
+           */
+          this.resetParallaxes();
 
           /**
            *
@@ -1113,13 +1126,6 @@ Game = Screen.extend({
              */
             Plugins.admob.show(Plugins.ad.types.interstitial);
           }
-
-          /**
-           *
-           *
-           *
-           */
-          this.changeState(this.parameters.states.prepare);
         }.bind(this)),
         cc.DelayTime.create(0.5),
         cc.FadeOut.create(0.5),
@@ -1202,6 +1208,34 @@ Game = Screen.extend({
        */
       this.unscheduleUpdate();
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  resetParallaxes: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.game.children.each(function(element) {
+      if(element.reset) {
+        element.reset();
+      }
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.water1.reset();
+    this.elements.water2.reset();
+    this.elements.water3.reset();
   },
 
   /**
@@ -1450,6 +1484,13 @@ Game = Screen.extend({
      *
      */
     this.updateFishes(time);
+
+    /**
+     *
+     * 
+     *
+     */
+    Visiblities.update(this);
   },
 
   /**
