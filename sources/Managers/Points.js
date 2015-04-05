@@ -21,7 +21,7 @@
  *
  */
 
-Chapter3 = Chapter.extend({
+Points = Manager.extend({
 
   /**
    *
@@ -29,6 +29,63 @@ Chapter3 = Chapter.extend({
    *
    */
   ctor: function() {
-    this._super(3);
+    this._super(100, new Point, Game.backgrounds.game, true);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  clear: function(animated) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(animated) {
+
+      /**
+       *
+       *
+       *
+       */
+      var time = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.each(function(element) {
+
+        /**
+         *
+         *
+         *
+         */
+        if(element.created) {
+          element.runAction(
+            cc.Sequence.create(
+              cc.DelayTime.create(time),
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.2, 0.0)
+              ),
+              cc.CallFunc.create(element.destroy, element)
+            )
+          );
+
+          /**
+           *
+           *
+           *
+           */
+          time += 0.01;
+        }
+      }.bind(this));
+    } else {
+      this._super();
+    }
   }
 });

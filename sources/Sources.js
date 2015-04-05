@@ -46,14 +46,10 @@ sources = sources.concat([
   'sources/Entities/Moon.js',
   'sources/Entities/Explanation.js',
   'sources/Managers/ScreensManager.js',
+  'sources/Managers/Points.js',
   'sources/Screens/Screen.js',
   'sources/Screens/Screens/Game.js',
   'sources/Screens/Popup.js',
   'sources/Tutorial/Tutorial.js',
-  'sources/Tutorial/Chapter.js',
-  'sources/Tutorial/Chapter1.js',
-  'sources/Tutorial/Chapter2.js',
-  'sources/Tutorial/Chapter3.js',
-  'sources/Tutorial/Chapter4.js',
-  'sources/Tutorial/Chapter5.js'
+  'sources/Tutorial/Chapter.js'
 ]);

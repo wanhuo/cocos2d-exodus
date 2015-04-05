@@ -79,7 +79,7 @@ Tutorial = {
        *
        *
        */
-      Game.parameters.tutorial.current = Tutorial.chapter(index);
+      Game.parameters.tutorial.current = new Chapter(index);
 
       /**
        *
@@ -95,31 +95,5 @@ Tutorial = {
      *
      */
     return true;
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  chapter: function(id) {
-
-    /**
-     *
-     *
-     *
-     */
-    switch(id) {
-      case 1:
-      return new Chapter1;
-      case 2:
-      return new Chapter2;
-      case 3:
-      return new Chapter3;
-      case 4:
-      return new Chapter4;
-      case 5:
-      return new Chapter5;
-    }
   }
 };

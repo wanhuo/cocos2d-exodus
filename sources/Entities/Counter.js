@@ -418,23 +418,24 @@ Counter = Button.extend({
      *
      */
     if(Game.elements.character.y >= 2000 && probably(30)) {
-      if(this.textes.decoration.getNumberOfRunningActions() > 0) return false;
+      if(this.textes.decoration.getNumberOfRunningActions() < 1) {
 
-      this.textes.decoration.setText('decoration-' + random(0, 2, true));
+        this.textes.decoration.setText('decoration-' + random(0, 2, true));
 
-      this.textes.decoration.create().attr({
-        x: Camera.center.x,
-        y: this.y - 180,
-        opacity: 0
-      });
-      this.textes.decoration.runAction(
-        cc.Sequence.create(
-          cc.FadeIn.create(1.0),
-          cc.DelayTime.create(1.0),
-          cc.FadeOut.create(1.0),
-          cc.CallFunc.create(this.textes.decoration.destroy, this.textes.decoration)
-        )
-      );
+        this.textes.decoration.create().attr({
+          x: Camera.center.x,
+          y: this.y - 180,
+          opacity: 0
+        });
+        this.textes.decoration.runAction(
+          cc.Sequence.create(
+            cc.FadeIn.create(1.0),
+            cc.DelayTime.create(1.0),
+            cc.FadeOut.create(1.0),
+            cc.CallFunc.create(this.textes.decoration.destroy, this.textes.decoration)
+          )
+        );
+      }
     }
 
     /**

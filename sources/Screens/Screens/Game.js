@@ -172,18 +172,18 @@ Game = Screen.extend({
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
       new Entity(resources.main.backgrounds[1], this.backgrounds.g)
     ];
-    this.elements.parallaxes = [
-      new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
-      new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
-      new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
-      new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
-      new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
-      new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
-      new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
-      new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
-      new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
-      new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
-    ];
+    this.elements.parallaxes = {
+      clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
+      clouds2: new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
+      stars1: new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
+      stars2: new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
+      mountains1: new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+      mountains2: new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
+      trees1: new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
+      trees2: new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
+      trees3: new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
+      slides: new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
+    };
     this.elements.ground = new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground);
     this.elements.water3 = new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
       new Water(
@@ -417,6 +417,13 @@ Game = Screen.extend({
        *
        *
        */
+      this.elements.backgrounds[i].setLocalZOrder(i);
+
+      /**
+       *
+       *
+       *
+       */
       this.elements.backgrounds[i].setBlendFunc(gl.ONE, gl.ZERO);
     }
 
@@ -447,6 +454,13 @@ Game = Screen.extend({
      * 
      *
      */
+    Visiblities.setup();
+
+    /**
+     *
+     * 
+     *
+     */
     this.updateSoundState();
   },
 
@@ -455,7 +469,7 @@ Game = Screen.extend({
    * 
    *
    */
-  onShow: function() {
+  onEnter: function() {
     this._super();
 
     /**
@@ -472,7 +486,7 @@ Game = Screen.extend({
      */
     this.changeState(this.parameters.states.menu);
   },
-  onHide: function() {
+  onExit: function() {
     this._super();
   },
 
@@ -1349,6 +1363,13 @@ Game = Screen.extend({
      *
      *
      */
+    if(!this.elements.water1.parent) return false;
+
+    /**
+     *
+     *
+     *
+     */
     if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
       if(probably(50)) {
         this.elements.fishes.create();
@@ -1490,7 +1511,7 @@ Game = Screen.extend({
      * 
      *
      */
-    Visiblities.update(this);
+    Visiblities.update();
   },
 
   /**
@@ -1515,8 +1536,32 @@ Game = Screen.extend({
    *
    */
   parallax: {
+
+    /**
+     *
+     * 
+     *
+     */
     scale: function() {
       return (Game.parameters.state === Game.parameters.states.game ? (1.0 + (1.0 - Game.backgrounds.d.getScale())) : 1);
+    },
+
+    /**
+     *
+     * 
+     *
+     */
+    convertation: function() {
+      return Game.backgrounds.game.x - Camera.width * Game.parallax.scale();
+    },
+
+    /**
+     *
+     * 
+     *
+     */
+    reset: function() {
+      return abs(Game.backgrounds.game.x);
     }
   }
 });

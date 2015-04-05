@@ -28,7 +28,234 @@ Visiblities = {
    *
    *
    */
-  update: function(element) {return;
+  elements: [],
+
+  /**
+   *
+   *
+   *
+   */
+  setup: function() {
+
+    /** Generate elements visiblity rules. */
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.backgrounds[0].visiblities = 'Game.backgrounds.g.y <= -Camera.height';
+    Game.elements.backgrounds[1].visiblities = 'Game.backgrounds.g.y >= 0 || Game.backgrounds.g.y <= -Camera.height * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.buttons.like.visiblities = 'Game.backgrounds.b.y >= 270';
+    Game.buttons.sound.visiblities = 'Game.backgrounds.b.y >= 270';
+    Game.buttons.leaderboard.visiblities = 'Game.backgrounds.b.y >= 270';
+    Game.buttons.achievements.visiblities = 'Game.backgrounds.b.y >= 270';
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.textes.best.visiblities = 'Game.backgrounds.b.y >= 270';
+    Counter.textes.jumps.visiblities = 'Game.backgrounds.b.y >= 270';
+    Counter.textes.deaths.visiblities = 'Game.backgrounds.b.y >= 270';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.water1.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
+    Game.elements.water2.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
+    Game.elements.water3.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.fishes.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.people.visiblities = 'Game.elements.people.count().count < 1';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.ground.visiblities = 'y < -130 / s';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.moon.visiblities = 'y > -Camera.height * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.parallaxes.clouds1.visiblities = 'y < -c';
+    Game.elements.parallaxes.clouds2.visiblities = 'y >= 0 || y < -c * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.parallaxes.stars1.visiblities = 'y >= 0 || y < -c * 2';
+    Game.elements.parallaxes.stars2.visiblities = 'y >= 0 || y < -c * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.parallaxes.mountains1.visiblities = 'y < -600 / s';
+    Game.elements.parallaxes.mountains2.visiblities = 'y < -600 / s';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.parallaxes.trees1.visiblities = 'y < -300 / s';
+    Game.elements.parallaxes.trees2.visiblities = 'y < -300 / s';
+    Game.elements.parallaxes.trees3.visiblities = 'y < -300 / s';
+
+    /** Push elements. */
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.backgrounds[0]);
+    this.elements.push(Game.elements.backgrounds[1]);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.buttons.like);
+    this.elements.push(Game.buttons.sound);
+    this.elements.push(Game.buttons.leaderboard);
+    this.elements.push(Game.buttons.achievements);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Counter.textes.best);
+    this.elements.push(Counter.textes.jumps);
+    this.elements.push(Counter.textes.deaths);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.water3);
+    this.elements.push(Game.elements.water2);
+    this.elements.push(Game.elements.water1);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.fishes);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.people);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.moon);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.clouds1);
+    this.elements.push(Game.elements.parallaxes.clouds2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.stars1);
+    this.elements.push(Game.elements.parallaxes.stars2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.mountains1);
+    this.elements.push(Game.elements.parallaxes.mountains2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.trees1);
+    this.elements.push(Game.elements.parallaxes.trees2);
+    this.elements.push(Game.elements.parallaxes.trees3);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.ground);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  eval: function(element) {
+
+    /**
+     *
+     *
+     *
+     */
+    var c = Camera.height * Game.parameters.backgrounds.position.ratio;
+
+    /**
+     *
+     *
+     *
+     */
+    var s = Game.parallax.scale();
 
     /**
      *
@@ -36,94 +263,89 @@ Visiblities = {
      *
      */
     var y = Game.backgrounds.game.y;
+    var x = Game.backgrounds.game.x;
 
     /**
      *
      *
      *
      */
-    var condition;
+    return eval(element.visiblities);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function() {
 
     /**
      *
      *
      *
      */
-    condition = y < -150 / element.parallax.scale();
+    this.elements.each(function(element) {
 
-    /**
-     *
-     *
-     *
-     */
-    if(element.elements.ground.parent) {
-      if(condition) {
-        element.elements.ground.removeFromParent();
+      /**
+       *
+       *
+       *
+       */
+      if(element.parent) {
+
+        /**
+         *
+         *
+         *
+         */
+        if(Visiblities.eval(element)) {
+
+          /**
+           *
+           *
+           *
+           */
+          element.link = element.parent;
+
+          /**
+           *
+           *
+           *
+           */
+          element.retain();
+
+          /**
+           *
+           *
+           *
+           */
+          element.removeFromParent();
+        }
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        if(!Visiblities.eval(element) && element.link) {
+
+          /**
+           *
+           *
+           *
+           */
+          element.link.addChild(element);
+
+          /**
+           *
+           *
+           *
+           */
+          element.release();
+        }
       }
-    } else {
-      if(!condition) {
-        element.backgrounds.game.addChild(element.elements.ground);
-      }
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    condition = y < -element.backgrounds.w.y - 150 / element.parallax.scale();
-
-    /**
-     *
-     *
-     *
-     */
-    if(element.elements.water1.parent) {
-      if(condition) {
-        element.elements.water1.removeFromParent();
-        element.elements.water2.removeFromParent();
-        element.elements.water3.removeFromParent();
-
-        element.elements.fishes.removeFromParent();
-      }
-    } else {
-      if(!condition) {
-        element.backgrounds.w.addChild(element.elements.water3);
-        element.backgrounds.w.addChild(element.elements.water2);
-        element.backgrounds.w.addChild(element.elements.water1);
-
-        element.backgrounds.w.addChild(element.elements.fishes);
-      }
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    condition = y < -300 / element.parallax.scale();
-
-    /**
-     *
-     *
-     *
-     */
-    if(element.elements.parallaxes[4].parent) {
-      if(condition) {
-        element.elements.parallaxes[4].removeFromParent();
-        element.elements.parallaxes[5].removeFromParent();
-        element.elements.parallaxes[6].removeFromParent();
-        element.elements.parallaxes[7].removeFromParent();
-        element.elements.parallaxes[8].removeFromParent();
-      }
-    } else {
-      if(!condition) {
-        element.backgrounds.game.addChild(element.elements.parallaxes[4]);
-        element.backgrounds.game.addChild(element.elements.parallaxes[5]);
-        element.backgrounds.game.addChild(element.elements.parallaxes[6]);
-        element.backgrounds.game.addChild(element.elements.parallaxes[7]);
-        element.backgrounds.game.addChild(element.elements.parallaxes[8]);
-      }
-    }
+    })
   }
 };

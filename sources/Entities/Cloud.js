@@ -84,7 +84,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    var r = Game.parameters.backgrounds.position.ratio;
+    var camera = Camera.height * Game.parameters.backgrounds.position.ratio;
 
     /**
      *
@@ -93,10 +93,10 @@ Cloud = Parallax.extend({
      */
     switch(resources.main.clouds.indexOf(this.textureFileName)) {
       case 0:
-      this.y = random(0, Game.parameters.camera.center * r + Camera.height * r);
+      this.y = random(0, camera);
       break;
       case 1:
-      this.y = random(Game.parameters.camera.center * r + Camera.height * r, Game.parameters.camera.center * r + max(Camera.height * 2 * r, (Game.elements.character ? Game.elements.character.y : 0) + Camera.height * 2));
+      this.y = random(camera, camera * 2);
       break;
     }
   },

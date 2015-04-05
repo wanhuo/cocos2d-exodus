@@ -115,36 +115,6 @@ Chapter = Spine.extend({
      *
      */
     Game.parameters.tutorial.state = Game.parameters.state;
-
-    /**
-     *
-     *
-     *
-     */
-    this.destroy = function(parameter) {
-
-      /**
-       *
-       *
-       *
-       */
-      if(parameter === true) {
-
-        /**
-         *
-         *
-         *
-         */
-        return this.changeState(this.parameters.states.down);
-      }
-
-      /**
-       *
-       *
-       *
-       */
-      return Entity.prototype.destroy.call(this, parameter);
-    }.bind(this);
   },
 
   /**
@@ -153,6 +123,7 @@ Chapter = Spine.extend({
    *
    */
   onCreate: function() {
+    this._super();
 
     /**
      *
@@ -160,13 +131,6 @@ Chapter = Spine.extend({
      *
      */
     this.setSkin(this.parameters.index);
-
-    /**
-     *
-     * 
-     *
-     */
-    this._super();
 
     /**
      *
@@ -239,7 +203,7 @@ Chapter = Spine.extend({
        *
        *
        */
-      this.destroy(true);
+      this.changeState(this.parameters.states.down);
 
       /**
        *
@@ -401,6 +365,21 @@ Chapter = Spine.extend({
         this.changeState(this.parameters.states.animation);
         break;
         case this.parameters.animations.destroy.index:
+
+        /**
+         *
+         *
+         *
+         */
+        this.template.release();
+
+        /**
+         *
+         *
+         *
+         */
+        this.unscheduleUpdate();
+        this.clearTracks();
 
         /**
          *
