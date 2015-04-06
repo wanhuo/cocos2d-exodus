@@ -1049,7 +1049,7 @@ Character = Spine.extend({
      * 
      *
      */
-    if(!this.created) {
+    if(!this.state.create) {
       this.create();
     }
 

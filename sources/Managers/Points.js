@@ -65,7 +65,7 @@ Points = Manager.extend({
          *
          *
          */
-        if(element.created) {
+        if(element.state.create) {
           element.runAction(
             cc.Sequence.create(
               cc.DelayTime.create(time),
