@@ -1129,6 +1129,13 @@ Game = Screen.extend({
            *
            *
            */
+          cc.sys.garbageCollect();
+
+          /**
+           *
+           *
+           *
+           */
           this.parameters.ad.interstitial.current++;
           if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
             this.parameters.ad.interstitial.current = 0;

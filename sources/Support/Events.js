@@ -28,6 +28,13 @@ Events.onStart = function() {
    *
    *
    */
+  cc.sys.garbageCollect();
+
+  /**
+   *
+   *
+   *
+   */
   Resources.load(resources.main, {
     complete: function() {
 
