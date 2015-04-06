@@ -57,7 +57,7 @@ Fish = Spine.extend({
         },
         descrease: {
           x: 0,
-          y: 0.05
+          y: 2.0
         }
       }
     };
@@ -180,7 +180,7 @@ Fish = Spine.extend({
      *
      *
      */
-    this.parameters.vector.y -= this.parameters.vector.descrease.y;
+    this.parameters.vector.y -= this.parameters.vector.descrease.y * time;
 
     /**
      *
