@@ -86,6 +86,10 @@ var languages = {
     {title: 'It looks like you made a mistake.\n\nDo not worry, next time be carefully.', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]},
     {title: 'Похоже ты совершил ошибку.\n\nНе расстраивайся, в следующий раз будь внимательнее.', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]}
   ],
+  'reward-coins': [
+    {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
+    {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}

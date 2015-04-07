@@ -105,6 +105,7 @@ Counter = Button.extend({
      *
      */
     this.values = {
+      coins: 0,
       scores: {
         current: 0,
         best: Data.get(false, properties.scores.best)
@@ -462,6 +463,15 @@ Counter = Button.extend({
      *
      */
     this.values.info.deaths++;
+  },
+  onCoin: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.values.coins++;
   },
 
   /**

@@ -29,7 +29,7 @@ Point = TiledEntity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.point, 1, 2);
+    this._super(resources.main.point, 1, 3);
 
     /**
      *
@@ -77,7 +77,7 @@ Point = TiledEntity.extend({
      * 
      *
      */
-    this.setRandomFrameIndex();
+    this.setCurrentFrameIndex(random(0, 2, true));
   },
   onDestroy: function() {
     this._super();

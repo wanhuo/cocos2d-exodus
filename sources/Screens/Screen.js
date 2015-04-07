@@ -20,6 +20,3 @@
  * @version of cocos2d is 3.5
  *
  */
-
-Screen.prototype.export = function() {
-};

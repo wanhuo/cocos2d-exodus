@@ -871,6 +871,13 @@ Character = Spine.extend({
          *
          *
          */
+        Game.parameters.coins.current++;
+
+        /**
+         *
+         *
+         *
+         */
         this.parameters.active = this.parameters.speed.state = true;
 
         /**
@@ -939,6 +946,15 @@ Character = Spine.extend({
          */
         Counter.onMistake();
         break;
+        case 2:
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.onCoin();
+        break;
       }
     }
 
@@ -955,36 +971,14 @@ Character = Spine.extend({
        *
        */
       if(Game.backgrounds.w.getNumberOfRunningActions() > 0) {
-        if(Game.splash.getNumberOfRunningActions() > 0) return false;
+        if(Splurge.getNumberOfRunningActions() > 0) return false;
 
         /**
          *
          *
          *
          */
-        if(!Game.splash.parent) Game.addChild(Game.splash);
-
-        /**
-         *
-         *
-         *
-         */
-        Game.splash.runAction(
-          cc.Sequence.create(
-            cc.EaseSineInOut.create(
-              cc.FadeIn.create(0.2)
-            ),
-            cc.CallFunc.create(function() {
-
-              /**
-               *
-               *
-               *
-               */
-              this.destroy();
-            }.bind(this))
-          )
-        );
+        Splurge.animation2();
       } else {
 
         /**
@@ -1360,6 +1354,13 @@ Character = Spine.extend({
      * 
      *
      */
+    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;
+
+    /**
+     *
+     * 
+     *
+     */
     var parameters = cc.clone(this.parameters);
 
     /**
@@ -1405,6 +1406,29 @@ Character = Spine.extend({
          */
         element.x = x;
         element.y = y;
+
+        /**
+         *
+         *
+         *
+         */
+        if(coins) {
+          Game.parameters.coins.current--;
+
+          /**
+           *
+           *
+           *
+           */
+          element.setCurrentFrameIndex(2);
+
+          /**
+           *
+           *
+           *
+           */
+          coins = Game.parameters.coins.current > 0;
+        }
 
         /**
          *

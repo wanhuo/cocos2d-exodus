@@ -44,12 +44,14 @@ sources = sources.concat([
   'sources/Entities/Smoke.js',
   'sources/Entities/Counter.js',
   'sources/Entities/Moon.js',
-  'sources/Entities/Explanation.js',
-  'sources/Managers/ScreensManager.js',
-  'sources/Managers/Points.js',
   'sources/Screens/Screen.js',
   'sources/Screens/Screens/Game.js',
   'sources/Screens/Popup.js',
+  'sources/Backgrounds/Splurge.js',
+  'sources/Backgrounds/Reward.js',
+  'sources/Entities/Explanation.js',
+  'sources/Managers/ScreensManager.js',
+  'sources/Managers/Points.js',
   'sources/Tutorial/Tutorial.js',
   'sources/Tutorial/Chapter.js'
 ]);

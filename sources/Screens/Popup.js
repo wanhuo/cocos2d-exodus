@@ -21,23 +21,75 @@
  *
  */
 
-Popup.prototype.export = function() {
+Popup = BackgroundColor.extend({
 
   /**
    *
-   * 
+   *
    *
    */
-  this.onShowStart = function() {
-    Popup.prototype.onShowStart.call(this);
-  };
+  ctor: function(color) {
+    this._super(false, color);
+
+    /**
+     *
+     *
+     *
+     */
+    this.opacity = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
+
+    /**
+     *
+     *
+     *
+     */
+    this.setLocalZOrder(1000);
+    this.setCascadeOpacityEnabled(true);
+  },
 
   /**
    *
-   * 
+   *
    *
    */
-  this.onHideStart = function() {
-    Popup.prototype.onHideStart.call(this);
-  };
-};
+  show: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(!this.parent) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.addChild(this);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    this.stopAllActions();
+  },
+  hide: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.removeFromParent();
+  }
+});

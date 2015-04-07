@@ -108,6 +108,10 @@ Game = Screen.extend({
         width: Camera.width,
         height: Camera.height
       },
+      coins: {
+        current: 0,
+        repeat: 5
+      },
       tutorial: {
         state: false,
         current: false
@@ -159,8 +163,8 @@ Game = Screen.extend({
      * 
      *
      */
-    this.splash = new BackgroundColor(false, cc.color.WHITE);
-    this.splash.retain();
+    new Splurge();
+    new Reward();
 
     /**
      *
@@ -425,14 +429,6 @@ Game = Screen.extend({
        */
       this.elements.backgrounds[i].setBlendFunc(gl.ONE, gl.ZERO);
     }
-
-    /**
-     *
-     *
-     *
-     */
-    this.splash.setLocalZOrder(1000);
-    this.splash.setOpacity(0);
 
     /**
      *
@@ -1075,6 +1071,13 @@ Game = Screen.extend({
      *
      *
      */
+    this.parameters.coins.current = 0;
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds.w.stopAllActions();
 
     /**
@@ -1082,76 +1085,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(!this.splash.parent) this.addChild(this.splash);
-
-    /**
-     *
-     *
-     *
-     */
-    this.splash.stopAllActions();
-
-    /**
-     *
-     *
-     *
-     */
-    this.splash.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(Character.state.create ? 0.0 : 0.5),
-        cc.FadeTo.create(0.2, 255),
-        cc.CallFunc.create(function() {
-
-          /**
-           *
-           *
-           *
-           */
-          Character.setSlotsToSetupPoseCustom();
-
-          /**
-           *
-           *
-           *
-           */
-          this.changeState(this.parameters.states.prepare);
-
-          /**
-           *
-           *
-           *
-           */
-          this.resetParallaxes();
-
-          /**
-           *
-           *
-           *
-           */
-          cc.sys.garbageCollect();
-
-          /**
-           *
-           *
-           *
-           */
-          this.parameters.ad.interstitial.current++;
-          if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
-            this.parameters.ad.interstitial.current = 0;
-
-            /**
-             *
-             *
-             *
-             */
-            Plugins.admob.show(Plugins.ad.types.interstitial);
-          }
-        }.bind(this)),
-        cc.DelayTime.create(0.5),
-        cc.FadeOut.create(0.5),
-        cc.CallFunc.create(this.splash.removeFromParent, this.splash)
-      )
-    );
+    Splurge.animation1();
 
     /**
      *
@@ -1534,6 +1468,37 @@ Game = Screen.extend({
      *
      */
     this.updateStates(time * Character.parameters.time);
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  visit: function() {
+    
+    /**
+     *
+     *
+     *
+     */
+    if(Reward.parent) {
+    
+      /**
+       *
+       *
+       *
+       */
+      Reward.visit();
+    } else {
+    
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+    }
   },
 
   /**

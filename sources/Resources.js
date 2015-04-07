@@ -87,6 +87,17 @@ var resources = {
       'resource/Graphics/water-2.png',
       'resource/Graphics/water-3.png'
     ],
+    reward: {
+      coin: 'resource/Graphics/reward-coin.png',
+      decorations: [
+        'resource/Graphics/reward-decoration-1.png'
+      ],
+      pig: {
+        texture: 'resource/Graphics/reward-pig.png',
+        hide: 'resource/Graphics/reward-hide.png',
+      },
+      hand: 'resource/Graphics/reward-hand.png'
+    },
     tutorial: {
       texture: 'resource/Graphics/tutorial.png',
       atlas: 'resource/Graphics/tutorial.atlas',
