@@ -96,7 +96,7 @@ Game = Screen.extend({
       },
       backgrounds: {
         position: {
-          min: -1280,
+          min: -1280 * (5 - 1),
           max: 0,
           ratio: 3
         }
@@ -170,7 +170,10 @@ Game = Screen.extend({
     this.elements = {};
     this.elements.backgrounds = [
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[1], this.backgrounds.g)
+      new Entity(resources.main.backgrounds[1], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[0], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[1], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[0], this.backgrounds.g)
     ];
     this.elements.parallaxes = {
       clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
@@ -388,21 +391,17 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.backgrounds[0].create().attr({
-      x: Camera.center.x,
-      y: Camera.center.y
-    });
-    this.elements.backgrounds[1].create().attr({
-      x: Camera.center.x,
-      y: Camera.center.y + Camera.height
-    });
-
-    /**
-     *
-     *
-     *
-     */
     for(var i = 0; i < this.elements.backgrounds.length; i++) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.backgrounds[i].create().attr({
+        x: Camera.center.x,
+        y: Camera.center.y + Camera.height * i
+      });
 
       /**
        *

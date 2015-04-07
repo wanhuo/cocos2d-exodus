@@ -45,7 +45,10 @@ Visiblities = {
      *
      */
     Game.elements.backgrounds[0].visiblities = 'Game.backgrounds.g.y <= -Camera.height';
-    Game.elements.backgrounds[1].visiblities = 'Game.backgrounds.g.y >= 0 || Game.backgrounds.g.y <= -Camera.height * 2';
+    Game.elements.backgrounds[1].visiblities = 'Game.backgrounds.g.y >= -Camera.height * 0 || Game.backgrounds.g.y <= -Camera.height * 2';
+    Game.elements.backgrounds[2].visiblities = 'Game.backgrounds.g.y >= -Camera.height * 1 || Game.backgrounds.g.y <= -Camera.height * 3';
+    Game.elements.backgrounds[3].visiblities = 'Game.backgrounds.g.y >= -Camera.height * 2 || Game.backgrounds.g.y <= -Camera.height * 4';
+    Game.elements.backgrounds[4].visiblities = 'Game.backgrounds.g.y >= -Camera.height * 3 || Game.backgrounds.g.y <= -Camera.height * 5';
 
     /**
      *
@@ -145,6 +148,9 @@ Visiblities = {
      */
     this.elements.push(Game.elements.backgrounds[0]);
     this.elements.push(Game.elements.backgrounds[1]);
+    this.elements.push(Game.elements.backgrounds[2]);
+    this.elements.push(Game.elements.backgrounds[3]);
+    this.elements.push(Game.elements.backgrounds[4]);
 
     /**
      *
