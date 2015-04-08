@@ -36,6 +36,14 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.parameters = {
+    };
+
+    /**
+     *
+     *
+     *
+     */
     this.opacity = 0;
 
     /**

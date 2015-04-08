@@ -103,7 +103,14 @@ var resources = {
       atlas: 'resource/Graphics/tutorial.atlas',
       json: 'resource/Graphics/tutorial.json'
     },
-    counter: 'resource/Graphics/counter.png',
+    counter: {
+      texture: 'resource/Graphics/counter.png',
+      coins:  'resource/Graphics/counter-coins.png'
+    },
+    coin: {
+      texture: 'resource/Graphics/coin.png',
+      particle: 'resource/Graphics/coin-particle.png'
+    },
     moon: 'resource/Graphics/moon.png',
     music: {
       background: 'resource/Music/music-1.music'

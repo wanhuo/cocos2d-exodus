@@ -157,6 +157,7 @@ Game = Screen.extend({
      */
     this.backgrounds.w = new Background(this.backgrounds.d);
     this.backgrounds.g = new Background(this.backgrounds.s);
+    this.backgrounds.c = new Background(this.backgrounds.s);
 
     /**
      *
@@ -236,6 +237,7 @@ Game = Screen.extend({
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.people = new Manager(10, new People, this.backgrounds.game);
     this.elements.points = new Points;
+    this.elements.coins = new Manager(10, new Coin, this.backgrounds.c, true);
     this.elements.name = new Name;
     this.elements.character = new Character;
     this.elements.moon = new Moon;
@@ -979,6 +981,7 @@ Game = Screen.extend({
      *
      *
      */
+    this.elements.coins.clear();
     this.elements.points.clear();
     this.elements.fishes.clear();
     this.elements.baloons.clear();
@@ -1460,7 +1463,7 @@ Game = Screen.extend({
    *
    */
   update: function(time) {
-    this._super(time * Character.parameters.time);
+    this._super(time);
 
     /**
      *

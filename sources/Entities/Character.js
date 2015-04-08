@@ -847,7 +847,14 @@ Character = Spine.extend({
        *
        *
        */
-      switch(this.updatePoint()) {
+      var element = this.updatePoint();
+
+      /**
+       *
+       *
+       *
+       */
+      switch(element ? element.getCurrentFrameIndex() : false) {
         default:
 
         /**
@@ -947,6 +954,20 @@ Character = Spine.extend({
         Counter.onMistake();
         break;
         case 2:
+
+        /**
+         *
+         *
+         *
+         */
+        element.destroy();
+
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.coins.create();
 
         /**
          *
@@ -1499,7 +1520,7 @@ Character = Spine.extend({
          *
          */
         if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
-          return point.getCurrentFrameIndex();
+          return point;
         }
       }
     }
@@ -1524,7 +1545,14 @@ Character = Spine.extend({
      *
      *
      */
-    switch(this.updatePoint()) {
+    var element = this.updatePoint();
+
+    /**
+     *
+     *
+     *
+     */
+    switch(element ? element.getCurrentFrameIndex() : false) {
       default:
       this.status.opacity = 0;
       break;

@@ -29,7 +29,7 @@ Counter = Button.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.counter, 1, 1, Game.backgrounds.b, this.onTouch.bind(this));
+    this._super(resources.main.counter.texture, 1, 1, Game.backgrounds.b, this.onTouch.bind(this));
 
     /**
      *
@@ -43,6 +43,13 @@ Counter = Button.extend({
      *
      *
      */
+    this.coins = new Entity(resources.main.counter.coins, this);
+
+    /**
+     *
+     *
+     *
+     */
     this.textes = {
       value: new Text('counter', this),
       best: new Text('best', Game.backgrounds.b),
@@ -50,6 +57,7 @@ Counter = Button.extend({
       deaths: new Text('deaths', Game.backgrounds.b),
       start: new Text('start', Game.backgrounds.b),
       status: new Text('fail', Game.backgrounds.b),
+      coins: new Text('coins', this.coins),
       decoration: new Text('decoration-0', Game.backgrounds.b),
       share: new Text('share', Game.backgrounds.b)
     };
@@ -59,7 +67,17 @@ Counter = Button.extend({
      *
      *
      */
-    this.manager = new Manager(1, new Entity(resources.main.counter), this, false, -1);
+    this.manager = new Manager(1, new Entity(resources.main.counter.texture), this, false, -1);
+
+    /**
+     *
+     *
+     *
+     */
+    this.coins.create().attr({
+      x: this.width / 2,
+      y: 15
+    });
 
     /**
      *
@@ -81,6 +99,10 @@ Counter = Button.extend({
     this.textes.deaths.attr({
       x: Camera.center.x,
       y: Camera.height - 220 + 300
+    });
+    this.textes.coins.create().attr({
+      x: this.coins.width / 2,
+      y: this.coins.height / 2
     });
 
     /**
@@ -105,7 +127,10 @@ Counter = Button.extend({
      *
      */
     this.values = {
-      coins: 0,
+      coins: {
+        current: 0,
+        total: Data.get(false, properties.coins)
+      },
       scores: {
         current: 0,
         best: Data.get(false, properties.scores.best)
@@ -441,10 +466,10 @@ Counter = Button.extend({
 
     /**
      *
-     * 
+     *
      *
      */
-    Sound.play(resources.main.sound.counter.count.random());
+    this.updateTextData(true);
   },
   onJump: function() {
 
@@ -471,7 +496,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.values.coins++;
+    this.values.coins.current++;
   },
 
   /**
@@ -556,13 +581,6 @@ Counter = Button.extend({
      *
      *
      */
-    this.onCount();
-
-    /**
-     *
-     *
-     *
-     */
     this.values.scores.current++;
 
     /**
@@ -570,7 +588,14 @@ Counter = Button.extend({
      *
      *
      */
-    this.updateTextData(true);
+    this.onCount();
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.count.random());
   },
 
   /**
@@ -706,7 +731,20 @@ Counter = Button.extend({
      *
      *
      */
+    this.textes.coins.format([this.values.coins.current + this.values.coins.total]);
+
+    /**
+     *
+     *
+     *
+     */
     if(!simple) {
+
+      /**
+       *
+       *
+       *
+       */
       this.textes.best.format([max(this.values.scores.current, this.values.scores.best)]);
       this.textes.jumps.format([this.values.info.jumps]);
       this.textes.deaths.format([this.values.info.deaths]);

@@ -44,6 +44,7 @@ Reward = Popup.extend({
      *
      */
     this.parameters = {
+      animation: true,
       coins: {
         time: {
           current: 0,
@@ -156,22 +157,7 @@ Reward = Popup.extend({
      *
      *
      */
-    this.updateTextData();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.hand.y = Camera.height + this.elements.hand.height / 2;
-    this.elements.hand.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(0.2, {
-          x: this.elements.hand.x,
-          y: Camera.height - this.elements.hand.height / 2
-        })
-      )
-    );
+    this.startAnimation();
   },
   onExit: function() {
     this._super();
@@ -191,6 +177,72 @@ Reward = Popup.extend({
     Splurge.resumeSchedulerAndActions();
   },
 
+  /**
+   *
+   *
+   *
+   */
+  onAnimationStart: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateTextData();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.animation = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.hand.y = Camera.height + this.elements.hand.height / 2;
+    this.elements.hand.runAction(
+      cc.EaseSineInOut.create(
+        cc.MoveTo.create(0.2, {
+          x: this.elements.hand.x,
+          y: Camera.height - this.elements.hand.height / 2
+        })
+      )
+    );
+  },
+  onAnimationFinish: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.animation = false;
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.hand.runAction(
+      cc.EaseSineInOut.create(
+        cc.MoveTo.create(0.2, {
+          x: this.elements.hand.x,
+          y: Camera.height + this.elements.hand.height / 2
+        })
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    Data.set(false, properties.coins, Counter.values.coins.total);
+  },
 
   /**
    *
@@ -225,11 +277,34 @@ Reward = Popup.extend({
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
-        cc.CallFunc.create(this.hide, this)
+        cc.CallFunc.create(this.removeFromParent, this)
       )
     );
   },
 
+  /**
+   *
+   *
+   *
+   */
+  startAnimation: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.onAnimationStart();
+  },
+  finishAnimation: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.onAnimationFinish();
+  },
 
   /**
    *
@@ -237,14 +312,13 @@ Reward = Popup.extend({
    *
    */
   updateTextData: function() {
-    this._super();
 
     /**
      *
      *
      *
      */
-    this.textes.coins.format(['10 000']);
+    this.textes.coins.format([Counter.values.coins.total]);
   },
 
   /**
@@ -260,78 +334,123 @@ Reward = Popup.extend({
      *
      *
      */
-    if(this.elements.hand.getNumberOfRunningActions() > 0) return;
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.coins.time.elapsed += time;
-    if(this.parameters.coins.time.elapsed >= this.parameters.coins.time.current) {
-      this.parameters.coins.time.current = random(0.0, 0.5);
-      this.parameters.coins.time.elapsed = 0;
+    if(this.parameters.animation) {
 
       /**
        *
        *
        *
        */
-      var element = this.coins.create();
+      if(this.elements.hand.getNumberOfRunningActions() > 0) return;
 
       /**
        *
        *
        *
        */
-      element.x = Camera.center.x;
-      element.y = Camera.height - 310;
+      if(Counter.values.coins.current > 0) {
 
-      /**
-       *
-       *
-       *
-       */
-      element.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(random(0.5, 1.0), {
-              x: element.x - 10,
-              y: this.elements.pig.y + this.elements.pig.height / 2
-            })
-          ),
-          cc.CallFunc.create(element.destroy, element),
-          cc.CallFunc.create(function() {
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.coins.time.elapsed += time;
+        if(this.parameters.coins.time.elapsed >= this.parameters.coins.time.current) {
+          this.parameters.coins.time.current = random(0.0, 0.5);
+          this.parameters.coins.time.elapsed = 0;
 
-            /**
-             *
-             *
-             *
-             */
-            this.stopAllActions();
+          /**
+           *
+           *
+           *
+           */
+          Counter.values.coins.current--;
 
-            /**
-             *
-             *
-             *
-             */
-            this.scale = 0.95;
+          /**
+           *
+           *
+           *
+           */
+          Counter.values.coins.total++;
 
-            /**
-             *
-             *
-             *
-             */
-            this.runAction(
-              cc.Sequence.create(
-                cc.EaseSineInOut.create(
-                  cc.ScaleTo.create(0.2, 1.0)
-                )
-              )
-            );
-          }.bind(this.elements.pig))
-        )
-      );
+          /**
+           *
+           *
+           *
+           */
+          var element = this.coins.create();
+
+          /**
+           *
+           *
+           *
+           */
+          element.x = Camera.center.x;
+          element.y = Camera.height - 310;
+
+          /**
+           *
+           *
+           *
+           */
+          element.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.MoveTo.create(random(0.5, 1.0), {
+                  x: element.x - 10,
+                  y: this.elements.pig.y + this.elements.pig.height / 2
+                })
+              ),
+              cc.CallFunc.create(element.destroy, element),
+              cc.CallFunc.create(function() {
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                Reward.updateTextData();
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                this.stopAllActions();
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                this.scale = 0.95;
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                this.runAction(
+                  cc.Sequence.create(
+                    cc.EaseSineInOut.create(
+                      cc.ScaleTo.create(0.2, 1.0)
+                    )
+                  )
+                );
+              }.bind(this.elements.pig))
+            )
+          );
+        }
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.finishAnimation();
+      }
     }
 
     /**

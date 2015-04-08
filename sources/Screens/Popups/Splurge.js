@@ -95,7 +95,7 @@ Splurge = Popup.extend({
            *
            *
            */
-          if(Counter.values.coins > 0) {
+          if(Counter.values.coins.current > 0) {
 
             /**
              *

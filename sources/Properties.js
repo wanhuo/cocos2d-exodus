@@ -42,6 +42,7 @@ var properties = {
     jumps: 11,
     deaths: 12
   },
+  coins: 1000,
   tutorial: {
     chapters: {
       chapter1: 101,
