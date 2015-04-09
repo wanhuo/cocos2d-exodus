@@ -21,7 +21,7 @@
  *
  */
 
-Coin = Entity.extend({
+Credits = Popup.extend({
 
   /**
    *
@@ -29,21 +29,14 @@ Coin = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.coin.texture);
+    this._super(cc.color.WHITE);
 
     /**
      *
      *
      *
      */
-    this.needScheduleUpdate = true;
-
-    /**
-     *
-     *
-     *
-     */
-    this.motion = new Motion(resources.main.coin.particle, Game.backgrounds.c, this.width);
+    Credits = this;
   },
 
   /**
@@ -51,49 +44,64 @@ Coin = Entity.extend({
    *
    *
    */
-  onCreate: function() {
+  onEnter: function() {
     this._super();
+  },
+  onExit: function() {
+    this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  show: function() {
 
     /**
      *
      *
      *
      */
-    var position = Character.convertToWorldSpace(cc.zero);
+    if(!this.parent) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.menu.holder.addChild(this);
+    }
 
     /**
      *
      *
      *
      */
-    this.x = position.x;
-    this.y = position.y;
+    this.stopAllActions();
 
     /**
      *
      *
      *
      */
-    this.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.BezierTo.create(1.0, [
-            {
-              x: this.x,
-              y: this.y
-            },
-            {
-              x: random(0, Camera.width),
-              y: Camera.center.y
-            },
-            {
-              x: Camera.center.x,
-              y: Counter.y + Game.backgrounds.b.y
-            }
-          ])
-        ),
-        cc.CallFunc.create(this.destroy, this),
-        cc.CallFunc.create(Counter.onCount, Counter)
+    this.opacity = 255;
+
+    /**
+     *
+     *
+     *
+     */
+    this.y = -Camera.height;
+
+    /**
+     *
+     *
+     *
+     */
+    Game.backgrounds.menu.background.runAction(
+      cc.EaseSineInOut.create(
+        cc.FadeTo.create(0.5, 200)
       )
     );
 
@@ -102,48 +110,44 @@ Coin = Entity.extend({
      *
      *
      */
-    this.motion.create();
+    Game.backgrounds.menu.holder.runAction(
+      cc.EaseSineInOut.create(
+        cc.MoveTo.create(0.5, {
+          x: 0,
+          y: 800
+        })
+      )
+    );
   },
-  onDestroy: function() {
-    this._super();
+  hide: function() {
 
     /**
      *
      *
      *
      */
-    this.motion.destroy();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
+    Game.backgrounds.menu.background.runAction(
+      cc.EaseSineInOut.create(
+        cc.FadeTo.create(0.5, 0)
+      )
+    );
 
     /**
      *
      *
      *
      */
-    this.scale = (2.0 * Game.backgrounds.d.scale) * Game.h.scale;
-
-    /**
-     *
-     *
-     *
-     */
-    this.motion.setStroke(this.width * this.scale);
-
-    /**
-     *
-     *
-     *
-     */
-    this.motion.x = this.x;
-    this.motion.y = this.y;
+    Game.backgrounds.menu.holder.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.5, {
+            x: 0,
+            y: 0
+          })
+        ),
+        cc.CallFunc.create(this.removeFromParent, this)
+      )
+    );
   },
 
   /**
@@ -151,7 +155,29 @@ Coin = Entity.extend({
    *
    *
    */
-  deepCopy: function() {
-    return new Coin;
+  toogle: function() {
+    
+    /**
+     *
+     *
+     *
+     */
+    if(this.state.create) {
+    
+      /**
+       *
+       *
+       *
+       */
+      this.hide();
+    } else {
+    
+      /**
+       *
+       *
+       *
+       */
+      this.show();
+    }
   }
 });

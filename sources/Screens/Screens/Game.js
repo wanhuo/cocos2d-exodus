@@ -164,8 +164,18 @@ Game = Screen.extend({
      * 
      *
      */
+    this.backgrounds.menu.background = new BackgroundColor(this.backgrounds.b, cc.color.BLACK);
+    this.backgrounds.menu.holder = new Background(this.backgrounds.menu.background);
+
+    /**
+     *
+     * 
+     *
+     */
     new Splurge();
     new Reward();
+    new Continue();
+    new Credits();
 
     /**
      *
@@ -249,11 +259,13 @@ Game = Screen.extend({
      *
      */
     this.buttons = {
-      play: new Button(resources.main.buttons.play, 1, 1, this.backgrounds.menu, this.onPlay.bind(this)),
-      like: new Button(resources.main.buttons.like, 1, 1, this.backgrounds.b, this.onLike.bind(this)),
-      leaderboard: new Button(resources.main.buttons.leaderboard, 1, 1, this.backgrounds.b, this.onLeaderboard.bind(this)),
-      achievements: new Button(resources.main.buttons.achievements, 1, 1, this.backgrounds.b, this.onAchievements.bind(this)),
-      sound: new Button(resources.main.buttons.sound, 2, 1, this.backgrounds.b, this.onSound.bind(this))
+      play: new Button(resources.main.buttons.play, 1, 2, this.backgrounds.menu, this.onPlay.bind(this)),
+      like: new Button(resources.main.buttons.like, 1, 2, this.backgrounds.b, this.onLike.bind(this)),
+      leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this.backgrounds.b, this.onLeaderboard.bind(this)),
+      achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
+      sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
+      store: new Button(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
+      credits: new Button(resources.main.buttons.credits, 1, 2, this.backgrounds.menu.holder, this.onCredits.bind(this))
     };
 
     /**
@@ -268,7 +280,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.menu.setLocalZOrder(300);
+    this.backgrounds.menu.setLocalZOrder(500);
     this.backgrounds.game.setLocalZOrder(200);
 
     /**
@@ -276,7 +288,8 @@ Game = Screen.extend({
      * 
      *
      */
-    this.h.setLocalZOrder(200);
+    this.backgrounds.menu.background.setLocalZOrder(500);
+    this.backgrounds.menu.holder.setLocalZOrder(500);
 
     /**
      *
@@ -293,7 +306,28 @@ Game = Screen.extend({
      * 
      *
      */
+    this.h.setLocalZOrder(200);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.buttons.credits.setLocalZOrder(2000);
+
+    /**
+     *
+     * 
+     *
+     */
     this.backgrounds.w.retain();
+
+    /**
+     *
+     * 
+     *
+     */
+    Game.backgrounds.menu.background.opacity = 0;
 
     /**
      *
@@ -308,20 +342,34 @@ Game = Screen.extend({
       x: Camera.center.x,
       y: Camera.center.y + 110
     });
+    this.buttons.credits.create().attr({
+      x: Camera.center.x,
+      y: 70
+    });
+
+    /**
+     *
+     * 
+     *
+     */
     this.buttons.like.create().attr({
-      x: Camera.center.x - 111,
+      x: Camera.center.x - 148,
       y: Camera.center.y - 150
     });
     this.buttons.sound.create().attr({
-      x: Camera.center.x - 37,
+      x: Camera.center.x - 74,
       y: Camera.center.y - 150
     });
     this.buttons.leaderboard.create().attr({
-      x: Camera.center.x + 37,
+      x: Camera.center.x,
       y: Camera.center.y - 150
     });
     this.buttons.achievements.create().attr({
-      x: Camera.center.x + 111,
+      x: Camera.center.x + 74,
+      y: Camera.center.y - 150
+    });
+    this.buttons.store.create().attr({
+      x: Camera.center.x + 148,
       y: Camera.center.y - 150
     });
 
@@ -590,6 +638,7 @@ Game = Screen.extend({
     this.buttons.sound.unregister();
     this.buttons.leaderboard.unregister();
     this.buttons.achievements.unregister();
+    this.buttons.store.unregister();
 
     /**
      *
@@ -696,7 +745,43 @@ Game = Screen.extend({
      *
      *
      */
+    this.buttons.store.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.2, 0.0)
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.y = Camera.height - 50;
+        }.bind(this.buttons.store)),
+        cc.EaseSineInOut.create(
+          cc.ScaleTo.create(0.5, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
     this.changeState(this.parameters.states.animation);
+  },
+  onStore: function() {
+  },
+  onCredits: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Credits.toogle();
   },
   onLeaderboard: function() {
 
@@ -797,7 +882,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.buttons.sound.setCurrentFrameIndex(1);
+      this.buttons.sound.setCurrentFrameIndex(0);
     } else {
       Music.changeState(true);
       Sound.changeState(true);
@@ -807,7 +892,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.buttons.sound.setCurrentFrameIndex(0);
+      this.buttons.sound.setCurrentFrameIndex(2);
     }
   },
 
@@ -862,7 +947,15 @@ Game = Screen.extend({
      *
      *
      */
+    this.backgrounds.menu.background.removeFromParent();
     this.backgrounds.menu.removeFromParent();
+
+    /**
+     *
+     *
+     *
+     */
+    Credits.release();
 
     /**
      *
@@ -928,6 +1021,7 @@ Game = Screen.extend({
     this.buttons.sound.register();
     this.buttons.leaderboard.register();
     this.buttons.achievements.register();
+    this.buttons.store.register();
 
     /**
      *
@@ -1081,6 +1175,13 @@ Game = Screen.extend({
      *
      *
      */
+    Continue.reset();
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds.w.stopAllActions();
 
     /**
@@ -1111,36 +1212,21 @@ Game = Screen.extend({
        * 
        *
        */
-     this.parameters.state = this.parameters.tutorial.state;
+      this.parameters.state = this.parameters.tutorial.state;
 
       /**
        *
        * 
        *
        */
-     this.parameters.tutorial.state = false;
+      this.parameters.tutorial.state = false;
 
       /**
        *
        * 
        *
        */
-      this.elements.people.resumeSchedulerAndActions();
-      Character.resumeSchedulerAndActions();
-
-      /**
-       *
-       * 
-       *
-       */
-      this.backgrounds.d.resumeSchedulerAndActions();
-
-      /**
-       *
-       * 
-       *
-       */
-      this.scheduleUpdate();
+      this.resumeSchedulerAndActions();
     } else {
 
       /**
@@ -1148,22 +1234,7 @@ Game = Screen.extend({
        * 
        *
        */
-      this.elements.people.pauseSchedulerAndActions();
-      Character.pauseSchedulerAndActions();
-
-      /**
-       *
-       * 
-       *
-       */
-      this.backgrounds.d.pauseSchedulerAndActions();
-
-      /**
-       *
-       * 
-       *
-       */
-      this.unscheduleUpdate();
+      this.pauseSchedulerAndActions();
     }
   },
 
@@ -1193,6 +1264,76 @@ Game = Screen.extend({
     this.elements.water1.reset();
     this.elements.water2.reset();
     this.elements.water3.reset();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  pauseSchedulerAndActions: function() {
+    this.unscheduleUpdate();
+
+    /**
+     *
+     *
+     *
+     */
+    Character.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.people.pauseSchedulerAndActions();
+    this.elements.explanation.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.d.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.h.pauseSchedulerAndActions();
+  },
+  resumeSchedulerAndActions: function() {
+    this.scheduleUpdate();
+
+    /**
+     *
+     *
+     *
+     */
+    Character.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.people.resumeSchedulerAndActions();
+    this.elements.explanation.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.d.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.h.resumeSchedulerAndActions();
   },
 
   /**

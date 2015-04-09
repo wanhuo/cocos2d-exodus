@@ -110,6 +110,14 @@ Counter = Button.extend({
      *
      *
      */
+    this.textes.status.setLocalZOrder(-2);
+    this.textes.decoration.setLocalZOrder(-2);
+
+    /**
+     *
+     *
+     *
+     */
     this.disableOrientationsChangesForChildren();
   },
 
@@ -319,6 +327,50 @@ Counter = Button.extend({
         )
       );
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onTouchStart: function() {
+    this.stopAllActions();
+    this.runAction(
+      cc.ScaleTo.create(0.1, 0.9)
+    );
+  },
+  onTouchFinish: function(touch, e) {
+    this.stopAllActions();
+    this.runAction(
+      cc.Sequence.create(
+        cc.ScaleTo.create(0.1, 1.0),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          if(touch) {
+
+            /**
+             *
+             *
+             *
+             */
+            this.onTouch();
+
+            /**
+             *
+             *
+             *
+             */
+            Sound.play(resources.main.sound.touch);
+          }
+        }.bind(this))
+      )
+    );
   },
 
   /**

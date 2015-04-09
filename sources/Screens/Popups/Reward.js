@@ -66,7 +66,8 @@ Reward = Popup.extend({
      *
      */
     this.textes = {
-      coins: new Text('reward-coins', this)
+      coins: new Text('reward-coins', this),
+      never: new Text('never-show-me', this)
     };
 
     /**
@@ -128,6 +129,10 @@ Reward = Popup.extend({
       x: Camera.center.x,
       y: Camera.center.y
     });
+    this.textes.never.create().attr({
+      x: Camera.center.x,
+      y: 40
+    });
   },
 
   /**
@@ -157,6 +162,13 @@ Reward = Popup.extend({
      *
      *
      */
+    Game.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
     this.startAnimation();
   },
   onExit: function() {
@@ -175,6 +187,13 @@ Reward = Popup.extend({
      *
      */
     Splurge.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Game.resumeSchedulerAndActions();
   },
 
   /**
@@ -459,5 +478,5 @@ Reward = Popup.extend({
      *
      */
     this.elements.hide.scale = this.elements.pig.scale;
-  },
+  }
 });

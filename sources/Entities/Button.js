@@ -22,48 +22,30 @@
  */
 
 Button.prototype.onHover = function() {
-  this.stopAllActions();
-  this.runAction(
-    cc.ScaleTo.create(0.2, 1.05)
-  );
 };
 Button.prototype.onUnHover = function() {
-  this.stopAllActions();
-  this.runAction(
-    cc.ScaleTo.create(0.2, 1.0)
-  );
 };
 
 Button.prototype.onTouchStart = function() {
-  this.stopAllActions();
-  this.runAction(
-    cc.ScaleTo.create(0.1, 0.9)
-  );
+  this.setCurrentFrameIndex(this.getCurrentFrameIndex() + 1);
 };
 Button.prototype.onTouchFinish = function(touch, e) {
-  this.stopAllActions();
-  this.runAction(
-    cc.Sequence.create(
-      cc.ScaleTo.create(0.1, 1.0),
-      cc.CallFunc.create(function() {
+  this.setCurrentFrameIndex(this.getCurrentFrameIndex() - 1);
 
-        /**
-         *
-         *
-         *
-         */
-        if(touch) {
+  /**
+   *
+   *
+   *
+   */
+  if(touch) {
 
-          /**
-           *
-           *
-           *
-           */
-          this.onTouch();
-        }
-      }.bind(this))
-    )
-  );
+    /**
+     *
+     *
+     *
+     */
+    this.onTouch();
+  }
 };
 
 Button.prototype.onTouch = function() {

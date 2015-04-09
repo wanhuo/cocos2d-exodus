@@ -94,6 +94,26 @@ var languages = {
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]}
   ],
+  'continue-time': [
+    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]},
+    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]}
+  ],
+  'continue-action': [
+    {title: 'Would you like to\nget an extra life?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Хотите получить\nдополнительную жизнь?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'never-show-me': [
+    {title: 'Never show me this window', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
+    {title: 'Больше не показывать мне это', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
+  ],
+  'button-text-coins': [
+    {title: '$1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
+  'button-text-nope': [
+    {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}

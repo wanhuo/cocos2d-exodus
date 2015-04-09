@@ -655,7 +655,6 @@ Character = Spine.extend({
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0 / Game.backgrounds.d.scale)
         ),
-        cc.DelayTime.create(2.0),
         cc.CallFunc.create(function() {
 
           /**
@@ -663,8 +662,27 @@ Character = Spine.extend({
            *
            *
            */
-          Tutorial.show(5);
+          if(!Tutorial.show(5)) {
+            if(!Continue.parameters.action) {
+
+              /**
+               *
+               *
+               *
+               */
+              if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                Continue.show();
+              }
+            }
+          }
         }),
+        cc.DelayTime.create(2.0),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
         ),
@@ -736,7 +754,46 @@ Character = Spine.extend({
        *
        *
        */
-      if(Tutorial.show(5)) return false;
+      if(Tutorial.show(5)) {
+
+        /**
+         *
+         *
+         *
+         */
+        return false;
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        if(!Continue.parameters.action) {
+
+          /**
+           *
+           *
+           *
+           */
+          if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
+
+            /**
+             *
+             *
+             *
+             */
+            Continue.show();
+
+            /**
+             *
+             *
+             *
+             */
+            return false;
+          }
+        }
+      }
 
       /**
        *

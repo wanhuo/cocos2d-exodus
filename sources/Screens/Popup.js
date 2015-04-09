@@ -36,6 +36,13 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.install();
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters = {
     };
 
@@ -60,6 +67,55 @@ Popup = BackgroundColor.extend({
      */
     this.setLocalZOrder(1000);
     this.setCascadeOpacityEnabled(true);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onTouchStart: function() {
+    this.onTouch();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.state.create = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.register();
+  },
+  onExit: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.state.create = false;
+
+    /**
+     *
+     *
+     *
+     */
+    this.unregister();
   },
 
   /**
@@ -99,5 +155,14 @@ Popup = BackgroundColor.extend({
      *
      */
     this.removeFromParent();
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  containsTouchLocation: function() {
+    return true;
   }
 });

@@ -80,7 +80,11 @@ var resources = {
       leaderboard: 'resource/Graphics/leaderboard-button.png',
       achievements: 'resource/Graphics/achievements-button.png',
       like: 'resource/Graphics/like-button.png',
-      sound: 'resource/Graphics/sound-button.png'
+      sound: 'resource/Graphics/sound-button.png',
+      store: 'resource/Graphics/store-button.png',
+      credits: 'resource/Graphics/credits-button.png',
+      coins: 'resource/Graphics/coins-button.png',
+      empty: 'resource/Graphics/empty-button.png'
     },
     water: [
       'resource/Graphics/water-1.png',
@@ -97,6 +101,10 @@ var resources = {
         hide: 'resource/Graphics/reward-hide.png',
       },
       hand: 'resource/Graphics/reward-hand.png'
+    },
+    continue: {
+      background: 'resource/Graphics/continue-background.png',
+      element: 'resource/Graphics/continue-element.png'
     },
     tutorial: {
       texture: 'resource/Graphics/tutorial.png',
