@@ -102,15 +102,6 @@ var resources = {
       },
       hand: 'resource/Graphics/reward-hand.png'
     },
-    continue: {
-      background: 'resource/Graphics/continue-background.png',
-      element: 'resource/Graphics/continue-element.png'
-    },
-    tutorial: {
-      texture: 'resource/Graphics/tutorial.png',
-      atlas: 'resource/Graphics/tutorial.atlas',
-      json: 'resource/Graphics/tutorial.json'
-    },
     counter: {
       texture: 'resource/Graphics/counter.png',
       coins:  'resource/Graphics/counter-coins.png'
@@ -120,6 +111,26 @@ var resources = {
       particle: 'resource/Graphics/coin-particle.png'
     },
     moon: 'resource/Graphics/moon.png',
+    continue: {
+      background: 'resource/Graphics/continue-background.png',
+      element: 'resource/Graphics/continue-element.png'
+    },
+    credits: {
+      decorations: [
+        'resource/Graphics/credits-decoration-1.png',
+        'resource/Graphics/credits-decoration-2.png',
+        'resource/Graphics/credits-decoration-3.png'
+      ],
+      powered: [
+        'resource/Graphics/cocos2dx.png',
+        'resource/Graphics/freepick.png'
+      ]
+    },
+    tutorial: {
+      texture: 'resource/Graphics/tutorial.png',
+      atlas: 'resource/Graphics/tutorial.atlas',
+      json: 'resource/Graphics/tutorial.json'
+    },
     music: {
       background: 'resource/Music/music-1.music'
     },

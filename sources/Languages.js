@@ -114,6 +114,78 @@ var languages = {
     {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
+  'credits-title-1': [
+    {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-2': [
+    {title: 'Product Name:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-3': [
+    {title: 'Version:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-4': [
+    {title: 'Build:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-5': [
+    {title: 'Support', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-6': [
+    {title: 'You can get support in social\nnetworks, or send us an email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-7': [
+    {title: 'Support code:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-8': [
+    {title: 'Developed by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-9': [
+    {title: 'Developers', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-10': [
+    {title: 'Igor Mats', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-11': [
+    {title: 'Artists', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-12': [
+    {title: 'Dmitry Shane', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-13': [
+    {title: 'PR', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-14': [
+    {title: 'Alexandr Lysenko', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-15': [
+    {title: 'Special Thanks', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-16': [
+    {title: 'Tooflya Inc. Director', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-17': [
+    {title: 'Yaroslav Markevich', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Ярослав Маркевич', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'credits-title-18': [
+    {title: 'Powered by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}

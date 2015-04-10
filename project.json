@@ -7,7 +7,7 @@
     "renderMode": 0,
     "engineDir": "../cocos2d/frameworks/cocos2d-html5/",
 
-    "modules": ["cocos2d", "core", "actions", "audio", "gui", "transitions", "spine", "pluginx", "plugin-facebook"],
+    "modules": ["cocos2d", "core", "actions", "audio", "gui", "transitions", "extensions", "spine", "pluginx", "plugin-facebook"],
 
     "plugin": {
         "facebook": {
