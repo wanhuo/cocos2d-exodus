@@ -80,17 +80,25 @@ Splurge = Popup.extend({
            *
            *
            */
-          if(Counter.values.coins.current > 0) {
+          if(Counter.values.scores.current > 0) {
 
             /**
              *
              *
              *
              */
-            //Reward.show();
+            Reward.show();
           }
         }),
+        cc.DelayTime.create(0.1),
         cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.clear();
 
           /**
            *

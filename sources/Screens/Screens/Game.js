@@ -243,6 +243,11 @@ Game = Screen.extend({
     this.elements.character = new Character;
     this.elements.moon = new Moon;
     this.elements.counter = new Counter;
+    this.elements.rockets = new Manager(1, new Rocket, this, true);
+    this.elements.rockets.particles = [
+      new Manager(10, new Entity(resources.main.decorations.rocket.particles[0]), this, true),
+      new Manager(1, new Entity(resources.main.decorations.rocket.particles[1]), this, true)
+    ];
 
     /**
      *
@@ -311,6 +316,16 @@ Game = Screen.extend({
      * 
      *
      */
+    this.elements.rockets.setLocalZOrder(2000);
+    this.elements.rockets.particles[0].setLocalZOrder(2000);
+    this.elements.rockets.particles[1].setLocalZOrder(2000);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.backgrounds.b.retain();
     this.backgrounds.w.retain();
 
     /**
@@ -319,6 +334,13 @@ Game = Screen.extend({
      *
      */
     Game.backgrounds.menu.background.opacity = 0;
+
+    /**
+     *
+     * 
+     *
+     */
+    Game.backgrounds.b.setCascadeOpacityEnabled(true);
 
     /**
      *
@@ -935,13 +957,6 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.counter.clear();
-
-      /**
-       *
-       *
-       *
-       */
       this.changeState(this.parameters.states.start);
     }
   },
@@ -1298,7 +1313,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.parameters.scheduler === 1) {console.log('pause');
+    if(this.parameters.scheduler === 1) {
 
       /**
        *
@@ -1351,7 +1366,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.parameters.scheduler === 0) {console.log('resume');
+    if(this.parameters.scheduler === 0) {
 
       /**
        *
@@ -1469,6 +1484,23 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.w.y += this.parameters.water.speed[this.parameters.state] * time;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateRockets: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(probably(1.0) && this.elements.rockets.count().count < this.elements.rockets.count().capacity) {
+      this.elements.rockets.create();
+    }
   },
 
   /**

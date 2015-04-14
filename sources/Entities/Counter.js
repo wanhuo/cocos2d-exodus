@@ -244,6 +244,27 @@ Counter = Button.extend({
    * 
    *
    */
+  onEnter: function() {
+    this._super();
+  },
+  onExit: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.textes.status.destroy();
+    this.textes.decoration.destroy();
+    this.textes.share.destroy();
+  },
+
+  /**
+   *
+   * 
+   *
+   */
   onSwipe: function() {
     return true;
   },

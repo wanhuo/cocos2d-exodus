@@ -68,9 +68,12 @@ Reward = Popup.extend({
      *
      *
      */
-    this.textes = {
-      coins: new Text('reward-coins', this),
-      never: new Text('never-show-me', this)
+    this.elements = {
+      rocket: new Spine(resources.main.character.json, resources.main.character.atlas, 1.0, this),
+      hide: new Entity(resources.main.reward.pig.hide, this),
+      hand: new Entity(resources.main.reward.hand, this),
+      decoration: new Entity(resources.main.reward.decorations[0], this),
+      pig: new Entity(resources.main.reward.pig.texture, this)
     };
 
     /**
@@ -78,11 +81,25 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements = {
-      hide: new Entity(resources.main.reward.pig.hide, this),
-      hand: new Entity(resources.main.reward.hand, this),
-      decoration: new Entity(resources.main.reward.decorations[0], this),
-      pig: new Entity(resources.main.reward.pig.texture, this)
+    this.buttons = {
+      continue: new Button(resources.main.reward.buttons.continue, 1, 2, this, this.hide.bind(this)),
+      like: new Button(resources.main.reward.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
+      share: new Button(resources.main.reward.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
+      leaderboard: new Button(resources.main.reward.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
+      achievements: new Button(resources.main.reward.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
+      store: new Button(resources.main.reward.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
+      coins: new Button(resources.main.buttons.coins, 1, 2, this, this.onCoins.bind(this)),
+      never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.textes = {
+      coins: new Text('button-text-coins', this.buttons.coins),
+      never: new Text('never-show-me', this)
     };
 
     /**
@@ -98,8 +115,31 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.pig.setLocalZOrder(1);
-    this.elements.hand.setLocalZOrder(1);
+    this.coins.setLocalZOrder(2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.hide.setLocalZOrder(1);
+    this.elements.pig.setLocalZOrder(2);
+    this.elements.hand.setLocalZOrder(2);
+    this.elements.decoration.setLocalZOrder(2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.never.setLocalZOrder(1);
+
+    /**
+     *
+     *
+     *
+     */
+    this.textes.never.setLocalZOrder(1);
 
     /**
      *
@@ -112,15 +152,53 @@ Reward = Popup.extend({
     });
     this.elements.decoration.create().attr({
       x: Camera.center.x + 10,
-      y: 60
+      y: 100
     });
     this.elements.pig.create().attr({
       x: Camera.center.x,
-      y: 140 - this.elements.pig.height / 2
+      y: 190 - this.elements.pig.height / 2
     });
     this.elements.hide.create().attr({
       x: Camera.center.x,
-      y: 140 - this.elements.pig.height / 2
+      y: 190 - this.elements.pig.height / 2
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.coins.create().attr({
+      x: Camera.center.x,
+      y: 370
+    });
+    this.buttons.never.create().attr({
+      x: Camera.center.x,
+      y: 40
+    });
+    this.buttons.continue.attr({
+      x: Camera.center.x,
+      y: Camera.center.y - 30
+    });
+    this.buttons.like.attr({
+      x: Camera.center.x - 148,
+      y: Camera.center.y - 270
+    });
+    this.buttons.share.attr({
+      x: Camera.center.x - 74,
+      y: Camera.center.y - 270
+    });
+    this.buttons.leaderboard.attr({
+      x: Camera.center.x,
+      y: Camera.center.y - 270
+    });
+    this.buttons.achievements.attr({
+      x: Camera.center.x + 74,
+      y: Camera.center.y - 270
+    });
+    this.buttons.store.attr({
+      x: Camera.center.x + 148,
+      y: Camera.center.y - 270
     });
 
     /**
@@ -129,13 +207,20 @@ Reward = Popup.extend({
      *
      */
     this.textes.coins.create().attr({
-      x: Camera.center.x,
-      y: Camera.center.y
+      x: this.buttons.coins.width / 2,
+      y: this.buttons.coins.height / 2
     });
     this.textes.never.create().attr({
       x: Camera.center.x,
       y: 40
     });
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.needScheduleUpdate = true;
   },
 
   /**
@@ -145,27 +230,6 @@ Reward = Popup.extend({
    */
   onEnter: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.scheduleUpdate();
-
-    /**
-     *
-     *
-     *
-     */
-    Splurge.pauseSchedulerAndActions();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.pauseSchedulerAndActions();
 
     /**
      *
@@ -182,21 +246,22 @@ Reward = Popup.extend({
      *
      *
      */
-    this.unscheduleUpdate();
+    this.hideButtons();
 
     /**
      *
      *
      *
      */
-    Splurge.resumeSchedulerAndActions();
+    this.hideCounter();
+  },
 
-    /**
-     *
-     *
-     *
-     */
-    Game.resumeSchedulerAndActions();
+  /**
+   *
+   *
+   *
+   */
+  onCoins: function() {
   },
 
   /**
@@ -226,14 +291,36 @@ Reward = Popup.extend({
      *
      */
     this.elements.hand.y = Camera.height + this.elements.hand.height / 2;
-    this.elements.hand.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(0.2, {
-          x: this.elements.hand.x,
-          y: Camera.height - this.elements.hand.height / 2
-        })
-      )
-    );
+
+    /**
+     *
+     *
+     *
+     */
+    if(Counter.values.coins.current > 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.hand.runAction(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.elements.hand.x,
+            y: Camera.height - this.elements.hand.height / 2
+          })
+        )
+      );
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      this.finishAnimation();
+    }
   },
   onAnimationFinish: function() {
 
@@ -263,7 +350,45 @@ Reward = Popup.extend({
      *
      *
      */
+    this.showButtons();
+
+    /**
+     *
+     *
+     *
+     */
+    this.showCounter();
+
+    /**
+     *
+     *
+     *
+     */
     Data.set(false, properties.coins, Counter.values.coins.total);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  startAnimation: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.onAnimationStart();
+  },
+  finishAnimation: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.onAnimationFinish();
   },
 
   /**
@@ -294,6 +419,23 @@ Reward = Popup.extend({
      *
      *
      */
+    this.elements.rocket.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.elements.rocket.x + 500,
+            y: this.elements.rocket.y + 500
+          })
+        ),
+        cc.CallFunc.create(this.elements.rocket.destroy, this.elements.rocket)
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
@@ -309,23 +451,216 @@ Reward = Popup.extend({
    *
    *
    */
-  startAnimation: function() {
+  showCounter: function() {
 
     /**
      *
      *
      *
      */
-    this.onAnimationStart();
+    Game.backgrounds.b.y = 600;
+
+    /**
+     *
+     *
+     *
+     */
+    Game.backgrounds.b.removeFromParent();
+
+    /**
+     *
+     *
+     *
+     */
+    this.addChild(Game.backgrounds.b);
+
+    /**
+     *
+     *
+     *
+     */
+    Game.backgrounds.b.runAction(
+      cc.EaseBounceOut.create(
+        cc.MoveTo.create(1.0, {
+          x: 0,
+          y: 90
+        })
+      )
+    );
   },
-  finishAnimation: function() {
+  hideCounter: function() {
 
     /**
      *
      *
      *
      */
-    this.onAnimationFinish();
+    Game.backgrounds.b.removeFromParent();
+
+    /**
+     *
+     *
+     *
+     */
+    Game.addChild(Game.backgrounds.b);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  showButtons: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.setSkin(Character.parameters.skins.random());
+    this.elements.rocket.create();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.x = Camera.center.x - 125 - 500;
+    this.elements.rocket.y = Camera.center.y - 160 - 500;
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.rotation = 45;
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.elements.rocket.x + 500,
+            y: this.elements.rocket.y + 500
+          })
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.like.create().scale = 0;
+    this.buttons.like.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.1),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.share.create().scale = 0;
+    this.buttons.share.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.2),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.leaderboard.create().scale = 0;
+    this.buttons.leaderboard.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.3),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.achievements.create().scale = 0;
+    this.buttons.achievements.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.4),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.store.create().scale = 0;
+    this.buttons.store.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.5),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.continue.create().scale = 0;
+    this.buttons.continue.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.6),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+  },
+  hideButtons: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.continue.destroy();
+    this.buttons.like.destroy();
+    this.buttons.share.destroy();
+    this.buttons.leaderboard.destroy();
+    this.buttons.achievements.destroy();
+    this.buttons.store.destroy();
   },
 
   /**
@@ -481,5 +816,12 @@ Reward = Popup.extend({
      *
      */
     this.elements.hide.scale = this.elements.pig.scale;
+
+    /**
+     *
+     *
+     *
+     */
+    Visiblities.update();
   }
 });

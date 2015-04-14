@@ -33,6 +33,15 @@ var resources = {
     slide: 'resource/Graphics/slide.png',
     mountain: 'resource/Graphics/mountain.png',
     point: 'resource/Graphics/point.png',
+    decorations: {
+      rocket: {
+        texture: 'resource/Graphics/rocket.png',
+        particles: [
+          'resource/Graphics/rocket-decoration-1.png',
+          'resource/Graphics/rocket-decoration-2.png'
+        ]
+      }
+    },
     character: {
       texture1: 'resource/Graphics/character.png',
       texture2: 'resource/Graphics/character2.png',
@@ -101,7 +110,15 @@ var resources = {
         texture: 'resource/Graphics/reward-pig.png',
         hide: 'resource/Graphics/reward-hide.png',
       },
-      hand: 'resource/Graphics/reward-hand.png'
+      hand: 'resource/Graphics/reward-hand.png',
+      buttons: {
+        continue: 'resource/Graphics/reward-continue-button.png',
+        like: 'resource/Graphics/reward-like-button.png',
+        share: 'resource/Graphics/reward-share-button.png',
+        leaderboard: 'resource/Graphics/reward-leaderboard-button.png',
+        achievements: 'resource/Graphics/reward-achievements-button.png',
+        store: 'resource/Graphics/reward-store-button.png'
+      }
     },
     counter: {
       texture: 'resource/Graphics/counter.png',

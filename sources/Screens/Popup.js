@@ -214,6 +214,13 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    Game.elements.rockets.clear();
+
+    /**
+     *
+     *
+     *
+     */
     Game.popups.remove(this);
   },
 
@@ -239,6 +246,22 @@ Popup = BackgroundColor.extend({
      *
      */
     this.removeFromParent();
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    Game.updateRockets(time);
   },
 
   /**
