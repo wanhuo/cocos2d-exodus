@@ -106,6 +106,10 @@ var languages = {
     {title: 'Never show me this window', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
     {title: 'Больше не показывать мне это', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],
+  'close': [
+    {title: 'Close', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
+    {title: 'Закрыть', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
+  ],
   'cancel': [
     {title: 'Cancel', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
     {title: 'Отмена', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}

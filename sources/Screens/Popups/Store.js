@@ -48,6 +48,44 @@ Store = Popup.extend({
         scheduler: true
       }
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons = {
+      close: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.textes = {
+      close: new Text('close', this)
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.close.create().attr({
+      x: Camera.center.x,
+      y: 40
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.textes.close.create().attr({
+      x: Camera.center.x,
+      y: 40
+    });
   },
 
   /**
@@ -56,6 +94,18 @@ Store = Popup.extend({
    *
    */
   onEnter: function() {
+    this._super();
+  },
+  onExit: function() {
+    this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  show: function() {
     this._super();
 
     /**
@@ -66,13 +116,26 @@ Store = Popup.extend({
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
-          cc.FadeTo.create(0.2, 255)
+          cc.FadeIn.create(0.2)
         )
       )
     );
   },
-  onExit: function() {
-    this._super();
+  hide: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.2)
+        ),
+        cc.CallFunc.create(this.removeFromParent, this)
+      )
+    );
   },
 
   /**
