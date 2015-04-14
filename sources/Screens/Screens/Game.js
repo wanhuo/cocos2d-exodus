@@ -54,6 +54,7 @@ Game = Screen.extend({
         loss: 6,
         tutorial: 7
       },
+      scheduler: 0,
       water: {
         speed: [
           0,
@@ -172,16 +173,6 @@ Game = Screen.extend({
      * 
      *
      */
-    new Splurge();
-    new Reward();
-    new Continue();
-    new Credits();
-
-    /**
-     *
-     * 
-     *
-     */
     this.elements = {};
     this.elements.backgrounds = [
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
@@ -239,7 +230,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: -50
+          y: 50
         }
       )
     );
@@ -482,17 +473,38 @@ Game = Screen.extend({
 
     /**
      *
-     * 
+     *
      *
      */
     this.backgrounds.game.setScale(4.0);
 
     /**
      *
-     * 
+     *
      *
      */
     this.backgrounds.game.y = 690;
+
+    /**
+     *
+     *
+     *
+     *
+     *
+     */
+    new Splurge();
+    new Reward();
+    new Continue();
+    new Coins();
+    new Credits();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.popups = [
+    ];
 
     /**
      *
@@ -1272,68 +1284,110 @@ Game = Screen.extend({
    *
    */
   pauseSchedulerAndActions: function() {
-    this.unscheduleUpdate();
 
     /**
      *
      *
      *
      */
-    Character.pauseSchedulerAndActions();
+    this.parameters.scheduler++;
 
     /**
      *
      *
      *
      */
-    this.elements.people.pauseSchedulerAndActions();
-    this.elements.explanation.pauseSchedulerAndActions();
+    if(this.parameters.scheduler === 1) {console.log('pause');
 
-    /**
-     *
-     *
-     *
-     */
-    this.backgrounds.d.pauseSchedulerAndActions();
+      /**
+       *
+       *
+       *
+       */
+      this.unscheduleUpdate();
 
-    /**
-     *
-     *
-     *
-     */
-    this.h.pauseSchedulerAndActions();
+      /**
+       *
+       *
+       *
+       */
+      Character.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.people.pauseSchedulerAndActions();
+      this.elements.explanation.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.d.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.h.pauseSchedulerAndActions();
+    }
   },
   resumeSchedulerAndActions: function() {
-    this.scheduleUpdate();
 
     /**
      *
      *
      *
      */
-    Character.resumeSchedulerAndActions();
+    this.parameters.scheduler--;
 
     /**
      *
      *
      *
      */
-    this.elements.people.resumeSchedulerAndActions();
-    this.elements.explanation.resumeSchedulerAndActions();
+    if(this.parameters.scheduler === 0) {console.log('resume');
 
-    /**
-     *
-     *
-     *
-     */
-    this.backgrounds.d.resumeSchedulerAndActions();
+      /**
+       *
+       *
+       *
+       */
+      this.scheduleUpdate();
 
-    /**
-     *
-     *
-     *
-     */
-    this.h.resumeSchedulerAndActions();
+      /**
+       *
+       *
+       *
+       */
+      Character.resumeSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.people.resumeSchedulerAndActions();
+      this.elements.explanation.resumeSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.backgrounds.d.resumeSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      this.h.resumeSchedulerAndActions();
+    }
   },
 
   /**
@@ -1612,37 +1666,6 @@ Game = Screen.extend({
      *
      */
     this.updateStates(time * Character.parameters.time);
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  visit: function() {
-    
-    /**
-     *
-     *
-     *
-     */
-    if(Reward.parent) {
-    
-      /**
-       *
-       *
-       *
-       */
-      Reward.visit();
-    } else {
-    
-      /**
-       *
-       *
-       *
-       */
-      this._super();
-    }
   },
 
   /**

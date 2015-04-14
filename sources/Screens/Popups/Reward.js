@@ -44,6 +44,9 @@ Reward = Popup.extend({
      *
      */
     this.parameters = {
+      popup: {
+        scheduler: true
+      },
       animation: true,
       coins: {
         time: {

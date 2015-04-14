@@ -106,6 +106,10 @@ var languages = {
     {title: 'Never show me this window', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
     {title: 'Больше не показывать мне это', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],
+  'cancel': [
+    {title: 'Cancel', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
+    {title: 'Отмена', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
+  ],
   'button-text-coins': [
     {title: '$1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: '$1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
@@ -116,63 +120,63 @@ var languages = {
   ],
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Спасибо за игру!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-2': [
     {title: 'Product Name:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Название:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-3': [
     {title: 'Version:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Версия:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-4': [
     {title: 'Build:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Сборка:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-5': [
     {title: 'Support', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Поддержка', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-6': [
-    {title: 'You can get support in social\nnetworks, or send us an email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'You can get support in social\nnetworks or send us an email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Вы можете получить поддержку в социальных\nсетях или написав нам письмо.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-7': [
     {title: 'Support code:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Код поддержки:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-8': [
     {title: 'Developed by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Разработка', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-9': [
-    {title: 'Developers', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+    {title: 'Programmers', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Программисты', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
   'credits-title-10': [
     {title: 'Igor Mats', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Игорь Мац', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-11': [
-    {title: 'Artists', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+    {title: 'Designers', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Дизайнеры', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
   'credits-title-12': [
     {title: 'Dmitry Shane', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дмитрий Шейн', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-13': [
     {title: 'PR', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+    {title: 'Маркетинг', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
   'credits-title-14': [
-    {title: 'Alexandr Lysenko', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Aleksandr Lysenko', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Александр Лысенко', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-15': [
     {title: 'Special Thanks', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Огромное спасибо', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-16': [
     {title: 'Tooflya Inc. Director', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
@@ -184,7 +188,7 @@ var languages = {
   ],
   'credits-title-18': [
     {title: 'Powered by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Разработано с помощью', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},

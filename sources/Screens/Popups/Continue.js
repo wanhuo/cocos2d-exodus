@@ -44,6 +44,9 @@ Continue = Popup.extend({
      *
      */
     this.parameters = {
+      popup: {
+        scheduler: true
+      },
       action: false,
       price: {
         setup: 10,
@@ -217,7 +220,7 @@ Continue = Popup.extend({
        *
        *
        */
-      // TODO: Open coins store window.
+      Coins.show();
     }
   },
   onStop: function() {
@@ -315,27 +318,6 @@ Continue = Popup.extend({
    */
   onEnter: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.scheduleUpdate();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.pauseSchedulerAndActions();
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.unregister();
 
     /**
      *
@@ -451,27 +433,6 @@ Continue = Popup.extend({
   },
   onExit: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.unscheduleUpdate();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.resumeSchedulerAndActions();
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.register();
 
     /**
      *
@@ -626,13 +587,6 @@ Continue = Popup.extend({
      *
      *
      */
-    this.stopAllActions();
-
-    /**
-     *
-     *
-     *
-     */
     this.elements.background.runAction(
       cc.Sequence.create(
         cc.EaseSineIn.create(
@@ -656,6 +610,32 @@ Continue = Popup.extend({
         }.bind(this))
       )
     );
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  pauseSchedulerAndActions: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.element.pauseSchedulerAndActions();
+  },
+  resumeSchedulerAndActions: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.element.resumeSchedulerAndActions();
   },
 
   /**

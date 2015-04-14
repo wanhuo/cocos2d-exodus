@@ -37,32 +37,17 @@ Splurge = Popup.extend({
      *
      */
     Splurge = this;
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  pauseSchedulerAndActions: function() {
-    this._super();
 
     /**
      *
      *
      *
      */
-    Game.pauseSchedulerAndActions();
-  },
-  resumeSchedulerAndActions: function() {
-    this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.resumeSchedulerAndActions();
+    this.parameters = {
+      popup: {
+        scheduler: false
+      }
+    };
   },
 
   /**
@@ -102,7 +87,7 @@ Splurge = Popup.extend({
              *
              *
              */
-            Reward.show();
+            //Reward.show();
           }
         }),
         cc.CallFunc.create(function() {

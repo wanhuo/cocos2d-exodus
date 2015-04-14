@@ -98,7 +98,53 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.scheduleUpdate();
     this.register();
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.popup.scheduler) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.unregister();
+
+      /**
+       *
+       * Check whether else popups were presented.
+       * We should pause their schedulers and actions.
+       *
+       */
+      Game.popups.each(function(element) {
+
+        /**
+         *
+         *
+         *
+         */
+        element.pauseSchedulerAndActions();
+      }.bind(this));
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    Game.popups.push(this);
   },
   onExit: function() {
     this._super();
@@ -115,7 +161,60 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.unscheduleUpdate();
     this.unregister();
+
+    /**
+     *
+     *
+     *
+     */
+    this.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.popup.scheduler) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.resumeSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.register();
+
+      /**
+       *
+       * Check whether else popups were presented.
+       * We should resume their schedulers and actions.
+       *
+       */
+      Game.popups.each(function(element) {
+
+        /**
+         *
+         *
+         *
+         */
+        element.resumeSchedulerAndActions();
+      }.bind(this));
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    Game.popups.remove(this);
   },
 
   /**
@@ -130,22 +229,7 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    if(!this.parent) {
-
-      /**
-       *
-       *
-       *
-       */
-      Game.addChild(this);
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    this.stopAllActions();
+    Game.addChild(this);
   },
   hide: function() {
 

@@ -44,6 +44,9 @@ Credits = Popup.extend({
      *
      */
     this.parameters = {
+      popup: {
+        scheduler: true
+      },
       height: 800,
       scroll: {
         padding: 50
@@ -55,8 +58,15 @@ Credits = Popup.extend({
      *
      *
      */
+    this.opacity = 255;
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds = {
-      scroll: new ccui.ScrollView(),
+      scroll: new ccui.ScrollView,
       decorations: new Background(this)
     };
 
@@ -287,33 +297,16 @@ Credits = Popup.extend({
      *
      *
      */
-    this.backgrounds.scroll.default = Credits.backgrounds.scroll.getInnerContainer().y;
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onEnter: function() {
-    this._super();
+    this.backgrounds.scroll.d = Credits.backgrounds.scroll.getInnerContainer().y;
 
     /**
      *
      *
      *
-     */
-    this.scheduleUpdate();
-  },
-  onExit: function() {
-    this._super();
-
-    /**
-     *
      *
      *
      */
-    this.unscheduleUpdate();
+    // TODO: Make credits button allow dragging.
   },
 
   /**
@@ -328,29 +321,7 @@ Credits = Popup.extend({
      *
      *
      */
-    if(!this.parent) {
-
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.menu.holder.addChild(this);
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    this.stopAllActions();
-
-    /**
-     *
-     *
-     *
-     */
-    this.opacity = 255;
+    Game.backgrounds.menu.holder.addChild(this);
 
     /**
      *
@@ -421,7 +392,7 @@ Credits = Popup.extend({
    *
    */
   toogle: function() {
-    
+
     /**
      *
      *
@@ -436,7 +407,7 @@ Credits = Popup.extend({
        */
       this.hide();
     } else {
-    
+
       /**
        *
        *
@@ -459,6 +430,6 @@ Credits = Popup.extend({
      *
      *
      */
-    this.backgrounds.decorations.y = -(this.backgrounds.scroll.default - Credits.backgrounds.scroll.getInnerContainer().y) / 10;
+    this.backgrounds.decorations.y = -(this.backgrounds.scroll.d - Credits.backgrounds.scroll.getInnerContainer().y) / 10;
   }
 });

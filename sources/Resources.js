@@ -84,7 +84,8 @@ var resources = {
       store: 'resource/Graphics/store-button.png',
       credits: 'resource/Graphics/credits-button.png',
       coins: 'resource/Graphics/coins-button.png',
-      empty: 'resource/Graphics/empty-button.png'
+      empty: 'resource/Graphics/empty-button.png',
+      bottom: 'resource/Graphics/bottom-button.png'
     },
     water: [
       'resource/Graphics/water-1.png',
@@ -114,6 +115,13 @@ var resources = {
     continue: {
       background: 'resource/Graphics/continue-background.png',
       element: 'resource/Graphics/continue-element.png'
+    },
+    coins: {
+      holders: [
+        'resource/Graphics/coins-holder-1.png',
+        'resource/Graphics/coins-holder-2.png',
+        'resource/Graphics/coins-holder-3.png'
+      ]
     },
     credits: {
       decorations: [
