@@ -497,6 +497,7 @@ Game = Screen.extend({
     new Continue();
     new Coins();
     new Credits();
+    new Store();
 
     /**
      *
