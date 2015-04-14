@@ -337,27 +337,31 @@ Reward = Popup.extend({
      *
      */
     this.elements.hand.runAction(
-      cc.EaseSineInOut.create(
-        cc.MoveTo.create(0.2, {
-          x: this.elements.hand.x,
-          y: Camera.height + this.elements.hand.height / 2
-        })
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.elements.hand.x,
+            y: Camera.height + this.elements.hand.height / 2
+          })
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.showButtons();
+
+          /**
+           *
+           *
+           *
+           */
+          this.showCounter();
+        }.bind(this))
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.showButtons();
-
-    /**
-     *
-     *
-     *
-     */
-    this.showCounter();
 
     /**
      *
@@ -525,8 +529,8 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.rocket.x = Camera.center.x - 125 - 500;
-    this.elements.rocket.y = Camera.center.y - 160 - 500;
+    this.elements.rocket.x = Camera.center.x - 128 - 500;
+    this.elements.rocket.y = Camera.center.y - 158 - 500;
 
     /**
      *
