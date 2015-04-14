@@ -808,6 +808,13 @@ Game = Screen.extend({
     this.changeState(this.parameters.states.animation);
   },
   onStore: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Store.show();
   },
   onCredits: function() {
 

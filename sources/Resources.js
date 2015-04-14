@@ -94,7 +94,10 @@ var resources = {
       credits: 'resource/Graphics/credits-button.png',
       coins: 'resource/Graphics/coins-button.png',
       empty: 'resource/Graphics/empty-button.png',
-      bottom: 'resource/Graphics/bottom-button.png'
+      bottom: 'resource/Graphics/bottom-button.png',
+      twitter: 'resource/Graphics/twitter-button.png',
+      facebook: 'resource/Graphics/facebook-button.png',
+      mail: 'resource/Graphics/mail-button.png'
     },
     water: [
       'resource/Graphics/water-1.png',

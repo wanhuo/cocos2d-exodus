@@ -57,6 +57,19 @@ Store = Popup.extend({
    */
   onEnter: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeTo.create(0.2, 255)
+        )
+      )
+    );
   },
   onExit: function() {
     this._super();

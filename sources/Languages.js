@@ -190,6 +190,22 @@ var languages = {
     {title: 'Powered by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Разработано с помощью', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
+  'credits-title-19': [
+    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-20': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-21': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
+  'credits-title-22': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}
