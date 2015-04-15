@@ -311,7 +311,7 @@ var languages = {
     {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-1': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Large team is always good!\n Rocket will steer from heavy peak.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Большая команда всегда хорошо!\n Рокета вырулит из тяжелых пике.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-2': [
@@ -319,11 +319,11 @@ var languages = {
     {title: 'Стегозавр может спасти рокету от крушения\n с вероятностью 25%.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-3': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Apatosaurus so huge!! It slows down the rocket.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Апатозавр настолько тяжелый, что\n замедляет рокету.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-4': [
-    {title: '.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Triceratops absorbs rocket\'s vibrations\n in areas of turbulence', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Трицераптор поглощает колебания рокеты\n в зонах турбулентности.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-3-1': [
