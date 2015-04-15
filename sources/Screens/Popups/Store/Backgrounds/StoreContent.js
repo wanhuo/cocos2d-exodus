@@ -36,8 +36,11 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
+    this.choisable = Items.items[index - 1][id - 1].choisable;
+    this.choosen = Items.items[index - 1][id - 1].choosen;
     this.unlock = Items.items[index - 1][id - 1].unlock;
     this.price = Items.items[index - 1][id - 1].price;
+    this.owned = Items.items[index - 1][id - 1].owned;
     this.type = Items.items[index - 1][id - 1].type;
     this.item = Items.items[index - 1][id - 1].item;
 
@@ -73,6 +76,7 @@ StoreContent = StoreBackground.extend({
      */
     this.buttons = {
       buy: new Button(resources.main.buttons.coins, 1, 2, this, this.onBuy.bind(this)),
+      choose: new Button(resources.main.buttons.empty, 1, 2, this, this.onBuy.bind(this))
     };
 
     /**
@@ -86,7 +90,8 @@ StoreContent = StoreBackground.extend({
       unlock: new Text('store-unlock', this),
       price: new Text('store-price', this.elements.price),
       count: new Text('store-count', this.elements.count),
-      buy: new Text('store-buy', this.buttons.buy)
+      buy: new Text('store-buy', this.buttons.buy),
+      choose: new Text('store-choose', this.buttons.choose)
     };
 
     /**
@@ -105,6 +110,10 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.buttons.buy.create().attr({
+      x: Camera.center.x,
+      y: 150
+    });
+    this.buttons.choose.create().attr({
       x: Camera.center.x,
       y: 150
     });
@@ -129,6 +138,10 @@ StoreContent = StoreBackground.extend({
     this.text.buy.create().attr({
       x: this.buttons.buy.width / 2,
       y: this.buttons.buy.height / 2
+    });
+    this.text.choose.create().attr({
+      x: this.buttons.choose.width / 2,
+      y: this.buttons.choose.height / 2
     });
 
     /**
@@ -231,6 +244,84 @@ StoreContent = StoreBackground.extend({
        *
        */
       this.buttons.buy.create();
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.type) {
+      case Items.types.consumable:
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.choose.destroy();
+      break;
+      case Items.types.permanent:
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.owned) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.elements.price.destroy();
+
+        /**
+         *
+         *
+         *
+         */
+        this.buttons.buy.destroy();
+
+        /**
+         *
+         *
+         *
+         */
+        if(this.choisable) {
+
+          /**
+           *
+           *
+           *
+           */
+          if(this.choosen) {
+
+            /**
+             *
+             *
+             *
+             */
+          } else {
+
+            /**
+             *
+             *
+             *
+             */
+          }
+        }
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.buttons.choose.destroy();
+      }
+      break;
     }
 
     /**

@@ -234,25 +234,37 @@ var languages = {
     {title: 'Buy', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: 'Купить', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
+  'store-choose': [
+    {title: 'Choose', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: 'Выбрать', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
   'store-coins': [
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
   ],
   'store-unlock': [
-    {title: 'You should get $1 points\nto unlock this item', font: 'Impact', size: 32, dimensions: false, color: [126, 219, 255]},
-    {title: 'Вы должны набрать $1 очков\nдля разблокировки', font: 'Impact', size: 32, dimensions: false, color: [126, 219, 255]}
+    {title: 'You should get $1 points\nto unlock this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Вы должны набрать $1 очков\nдля разблокировки', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-1': [
-    {title: 'Rocket Title 1', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple Orange Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-2': [
-    {title: 'Rocket Title 2', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple White Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-3': [
-    {title: 'Rocket Title 3', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple Red Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-4': [
+    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-5': [
+    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-3-1': [
     {title: 'Coins Magnet', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
@@ -263,16 +275,24 @@ var languages = {
     {title: 'Счастливая подкова', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-1': [
-    {title: 'Rocket Description 1', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple orange rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-2': [
-    {title: 'Rocket Description 2', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple white rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-3': [
-    {title: 'Rocket Description 3', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+    {title: 'Simple red rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-4': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-5': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-3-1': [
     {title: 'Coins Magnet collect all coins automatically.\n No need to tap on each coin.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},

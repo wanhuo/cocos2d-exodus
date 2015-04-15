@@ -21,76 +21,136 @@
  *
  */
 
-Items = {
+Items = cc.Class.extend({
 
   /**
    *
    *
    *
    */
-  types: {
-    consumable: 1,
-    permanent: 2,
-    upgrade: 3
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  items: [
+  ctor: function() {
 
     /**
      *
-     * Rockets
+     *
      *
      */
-    [
-    ],
+    Items = this;
 
     /**
      *
-     * Creatures
+     *
      *
      */
-    [
-    ],
+    this.types = {
+      consumable: 1,
+      permanent: 2,
+      upgrade: 3
+    };
 
     /**
      *
-     * Bonuses
+     *
      *
      */
-    [
-      {
-        price: 25,
-        type: 1,
-        unlock: 5,
-        item: new StoreItem31
-      },
-      {
-        price: 250,
-        type: 1,
-        unlock: 25,
-        item: new StoreItem32
-      }
-    ],
+    this.items = [
 
-    /**
-     *
-     * Points
-     *
-     */
-    [
-    ],
+      /**
+       *
+       * Rockets
+       *
+       */
+      [
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: true,
+          choisable: true,
+          choosen: false,
+          item: new StoreItem11
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: true,
+          choisable: true,
+          choosen: false,
+          item: new StoreItem12
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: true,
+          choisable: true,
+          choosen: false,
+          item: new StoreItem13
+        },
+        {
+          price: 500,
+          type: this.types.permanent,
+          unlock: 5,
+          owned: false,
+          choisable: true,
+          choosen: false,
+          item: new StoreItem14
+        },
+        {
+          price: 1500,
+          type: this.types.permanent,
+          unlock: 50,
+          owned: false,
+          choisable: true,
+          choosen: false,
+          item: new StoreItem15
+        }
+      ],
 
-    /**
-     *
-     * Coins
-     *
-     */
-    [
+      /**
+       *
+       * Creatures
+       *
+       */
+      [
+      ],
+
+      /**
+       *
+       * Bonuses
+       *
+       */
+      [
+        {
+          price: 25,
+          type: this.types.consumable,
+          unlock: 5,
+          item: new StoreItem31
+        },
+        {
+          price: 250,
+          type: this.types.consumable,
+          unlock: 25,
+          item: new StoreItem32
+        }
+      ],
+
+      /**
+       *
+       * Points
+       *
+       */
+      [
+      ],
+
+      /**
+       *
+       * Coins
+       *
+       */
+      [
+      ]
     ]
-  ]
-};
+  }
+});

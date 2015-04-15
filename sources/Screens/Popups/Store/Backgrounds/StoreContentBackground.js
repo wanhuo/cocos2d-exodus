@@ -65,11 +65,11 @@ StoreContentBackground = StoreBackground.extend({
      *
      */
     this.buttons.navigation.left.create().attr({
-      x: 50,
+      x: 75,
       y: Camera.center.y - 200
     });
     this.buttons.navigation.right.create().attr({
-      x: Camera.width - 50,
+      x: Camera.width - 75,
       y: Camera.center.y - 200
     });
 
