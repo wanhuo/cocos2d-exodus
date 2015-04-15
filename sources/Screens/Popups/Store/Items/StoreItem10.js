@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem13 = StoreItem10.extend({
+StoreItem10 = Spine.extend({
 
   /**
    *
@@ -29,6 +29,36 @@ StoreItem13 = StoreItem10.extend({
    *
    */
   ctor: function() {
+    this._super(resources.main.character.json, resources.main.character.atlas, 1.0);
+
+    /**
+     *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.scale = 2;
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
     this._super();
 
     /**
@@ -36,6 +66,51 @@ StoreItem13 = StoreItem10.extend({
      *
      *
      */
-    this.setSkin('3');
+    this.x = Camera.center.x + 50;
+    this.y = Camera.center.y - 150;
+
+    /**
+     *
+     *
+     *
+     */
+    this.rotation = 45;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setTimeScale(10000);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(0, 'animation');
+    this.setAnimation(1, 'engine-start');
+
+    /**
+     *
+     *
+     *
+     */
+    setTimeout(function() {
+
+      /**
+       *
+       *
+       *
+       */
+      this.setTimeScale(1);
+
+      /**
+       *
+       *
+       *
+       */
+      this.setAnimation(0, 'engine-repeat', true);
+    }.bind(this), 200);
   }
 });

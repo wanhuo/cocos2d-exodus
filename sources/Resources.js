@@ -67,6 +67,11 @@ var resources = {
       atlas: 'resource/Graphics/fish.atlas',
       json: 'resource/Graphics/fish.json'
     },
+    creature: {
+      texture: 'resource/Graphics/creature.png',
+      atlas: 'resource/Graphics/creature.atlas',
+      json: 'resource/Graphics/creature.json'
+    },
     stars: [
       'resource/Graphics/star-1.png',
       'resource/Graphics/star-2.png'

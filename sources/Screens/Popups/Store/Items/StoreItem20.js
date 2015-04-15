@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem13 = StoreItem10.extend({
+StoreItem20 = Spine.extend({
 
   /**
    *
@@ -29,6 +29,29 @@ StoreItem13 = StoreItem10.extend({
    *
    */
   ctor: function() {
+    this._super(resources.main.creature.json, resources.main.creature.atlas, 1.0);
+
+    /**
+     *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
     this._super();
 
     /**
@@ -36,6 +59,14 @@ StoreItem13 = StoreItem10.extend({
      *
      *
      */
-    this.setSkin('3');
+    this.x = Camera.center.x;
+    this.y = Camera.center.y - 400;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(0, 'animation', true);
   }
 });

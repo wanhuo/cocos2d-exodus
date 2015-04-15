@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem13 = StoreItem10.extend({
+StoreItem23 = StoreItem20.extend({
 
   /**
    *

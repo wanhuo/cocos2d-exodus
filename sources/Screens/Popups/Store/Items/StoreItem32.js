@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem32 = Entity.extend({
+StoreItem32 = StoreItem30.extend({
 
   /**
    *
@@ -30,129 +30,5 @@ StoreItem32 = Entity.extend({
    */
   ctor: function() {
     this._super(resources.main.store.items[2][1].texture);
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements = {
-      shadow: new Entity(resources.main.store.items[2][1].shadow, this)
-    };
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.shadow.create().setLocalZOrder(-1);
-
-    /**
-     *
-     *
-     *
-     */
-    this.retain();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onEnter: function() {
-    this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.x = Camera.center.x;
-    this.y = Camera.center.y - 200;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.shadow.x = this.width / 2;
-    this.elements.shadow.y = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.shadow.scale = 1.0;
-
-    /**
-     *
-     *
-     *
-     */
-    this.runAction(
-      cc.RepeatForever.create(
-        cc.Sequence.create(
-          cc.DelayTime.create(1.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
-              x: this.x,
-              y: this.y + 50
-            })
-          ),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
-              x: this.x,
-              y: this.y
-            })
-          )
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.shadow.runAction(
-      cc.RepeatForever.create(
-        cc.Sequence.create(
-          cc.DelayTime.create(1.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
-              x: this.elements.shadow.x,
-              y: this.elements.shadow.y - 50
-            })
-          ),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
-              x: this.elements.shadow.x,
-              y: this.elements.shadow.y
-            })
-          )
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.shadow.runAction(
-      cc.RepeatForever.create(
-        cc.Sequence.create(
-          cc.DelayTime.create(1.0),
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(3.0, 0.5)
-          ),
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(3.0, 1.0)
-          )
-        )
-      )
-    );
   }
 });

@@ -114,6 +114,30 @@ Items = cc.Class.extend({
        *
        */
       [
+        {
+          price: 20,
+          type: this.types.consumable,
+          unlock: 10,
+          item: new StoreItem21
+        },
+        {
+          price: 100,
+          type: this.types.consumable,
+          unlock: 15,
+          item: new StoreItem22
+        },
+        {
+          price: 200,
+          type: this.types.consumable,
+          unlock: 20,
+          item: new StoreItem23
+        },
+        {
+          price: 500,
+          type: this.types.consumable,
+          unlock: 30,
+          item: new StoreItem24
+        }
       ],
 
       /**

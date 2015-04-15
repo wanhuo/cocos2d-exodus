@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem13 = StoreItem10.extend({
+StoreItem24 = StoreItem20.extend({
 
   /**
    *
@@ -36,6 +36,6 @@ StoreItem13 = StoreItem10.extend({
      *
      *
      */
-    this.setSkin('3');
+    this.setSkin('4');
   }
 });

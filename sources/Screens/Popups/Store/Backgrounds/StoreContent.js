@@ -65,7 +65,7 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.elements = {
-      count: new Entity(resources.main.store.count, this.item),
+      count: new Entity(resources.main.store.count, this),
       price: new Entity(resources.main.store.price, this)
     };
 
@@ -158,8 +158,8 @@ StoreContent = StoreBackground.extend({
        *
        */
       this.elements.count.create().attr({
-        x: this.item.width,
-        y: 0
+        x: Camera.center.x + 180,
+        y: Camera.center.y - 380
       });
 
       /**
