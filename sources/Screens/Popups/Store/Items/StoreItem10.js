@@ -88,8 +88,8 @@ StoreItem10 = Spine.extend({
      *
      *
      */
-    this.setAnimation(0, 'animation');
-    this.setAnimation(1, 'engine-start');
+    this.setAnimation(0, 'animation', false);
+    this.setAnimation(1, 'engine-start', false);
 
     /**
      *
