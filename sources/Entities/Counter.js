@@ -50,7 +50,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes = {
+    this.text = {
       value: new Text('counter', this),
       best: new Text('best', Game.backgrounds.b),
       jumps: new Text('jumps', Game.backgrounds.b),
@@ -84,23 +84,23 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes.value.create().attr({
+    this.text.value.create().attr({
       x: this.width / 2,
       y: this.height / 2
     });
-    this.textes.best.attr({
+    this.text.best.attr({
       x: Camera.center.x,
       y: Camera.height - 140 + 300
     });
-    this.textes.jumps.attr({
+    this.text.jumps.attr({
       x: Camera.center.x,
       y: Camera.height - 180 + 300
     });
-    this.textes.deaths.attr({
+    this.text.deaths.attr({
       x: Camera.center.x,
       y: Camera.height - 220 + 300
     });
-    this.textes.coins.create().attr({
+    this.text.coins.create().attr({
       x: this.coins.width / 2,
       y: this.coins.height / 2
     });
@@ -110,8 +110,28 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes.status.setLocalZOrder(-2);
-    this.textes.decoration.setLocalZOrder(-2);
+    this.text.status.setLocalZOrder(-2);
+    this.text.decoration.setLocalZOrder(-2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.values = {
+      coins: {
+        current: 0,
+        total: Data.get(false, properties.coins)
+      },
+      scores: {
+        current: 0,
+        best: Data.get(false, properties.scores.best)
+      },
+      info: {
+        jumps: Data.get(false, properties.scores.jumps),
+        deaths: Data.get(false, properties.scores.deaths)
+      }
+    };
 
     /**
      *
@@ -187,35 +207,35 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes.best.create().runAction(
+    this.text.best.create().runAction(
       cc.Sequence.create(
         cc.DelayTime.create(0),
         cc.EaseSineInOut.create(
           cc.MoveTo.create(0.2, {
-            x: this.textes.best.x,
-            y: this.textes.best.y - 300
+            x: this.text.best.x,
+            y: this.text.best.y - 300
           })
         )
       )
     );
-    this.textes.jumps.create().runAction(
+    this.text.jumps.create().runAction(
       cc.Sequence.create(
         cc.DelayTime.create(0.2),
         cc.EaseSineInOut.create(
           cc.MoveTo.create(0.2, {
-            x: this.textes.jumps.x,
-            y: this.textes.jumps.y - 300
+            x: this.text.jumps.x,
+            y: this.text.jumps.y - 300
           })
         )
       )
     );
-    this.textes.deaths.create().runAction(
+    this.text.deaths.create().runAction(
       cc.Sequence.create(
         cc.DelayTime.create(0.4),
         cc.EaseSineInOut.create(
           cc.MoveTo.create(0.2, {
-            x: this.textes.deaths.x,
-            y: this.textes.deaths.y - 300
+            x: this.text.deaths.x,
+            y: this.text.deaths.y - 300
           })
         )
       )
@@ -255,9 +275,9 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes.status.destroy();
-    this.textes.decoration.destroy();
-    this.textes.share.destroy();
+    this.text.status.destroy();
+    this.text.decoration.destroy();
+    this.text.share.destroy();
   },
 
   /**
@@ -517,21 +537,21 @@ Counter = Button.extend({
      *
      */
     if(Game.elements.character.y >= 2000 && probably(30)) {
-      if(this.textes.decoration.getNumberOfRunningActions() < 1) {
+      if(this.text.decoration.getNumberOfRunningActions() < 1) {
 
-        this.textes.decoration.setText('decoration-' + random(0, 2, true));
+        this.text.decoration.setText('decoration-' + random(0, 2, true));
 
-        this.textes.decoration.create().attr({
+        this.text.decoration.create().attr({
           x: Camera.center.x,
           y: this.y - 180,
           opacity: 0
         });
-        this.textes.decoration.runAction(
+        this.text.decoration.runAction(
           cc.Sequence.create(
             cc.FadeIn.create(1.0),
             cc.DelayTime.create(1.0),
             cc.FadeOut.create(1.0),
-            cc.CallFunc.create(this.textes.decoration.destroy, this.textes.decoration)
+            cc.CallFunc.create(this.text.decoration.destroy, this.text.decoration)
           )
         );
       }
@@ -578,24 +598,24 @@ Counter = Button.extend({
    *
    */
   onMistake: function() {
-    this.textes.status.stopAllActions();
+    this.text.status.stopAllActions();
 
-    this.textes.status.setText('mistake');
+    this.text.status.setText('mistake');
 
-    this.textes.status.create().attr({
+    this.text.status.create().attr({
       x: Camera.center.x,
       y: this.y - 250,
       scale: 0,
       opacity: 255
     });
-    this.textes.status.runAction(
+    this.text.status.runAction(
       cc.Sequence.create(
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
         cc.DelayTime.create(1.5),
         cc.FadeOut.create(0.2),
-        cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
+        cc.CallFunc.create(this.text.status.destroy, this.text.status)
       )
     );
 
@@ -613,24 +633,24 @@ Counter = Button.extend({
    *
    */
   onFail: function() {
-    this.textes.status.stopAllActions();
+    this.text.status.stopAllActions();
 
-    this.textes.status.setText('fail');
+    this.text.status.setText('fail');
 
-    this.textes.status.create().attr({
+    this.text.status.create().attr({
       x: Camera.center.x,
       y: this.y - 250,
       scale: 0,
       opacity: 255
     });
-    this.textes.status.runAction(
+    this.text.status.runAction(
       cc.Sequence.create(
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
         cc.DelayTime.create(1.5),
         cc.FadeOut.create(0.2),
-        cc.CallFunc.create(this.textes.status.destroy, this.textes.status)
+        cc.CallFunc.create(this.text.status.destroy, this.text.status)
       )
     );
 
@@ -751,35 +771,35 @@ Counter = Button.extend({
      *
      */
     if(probably(20)) {
-      if(this.textes.share.getNumberOfRunningActions() > 0) return false;
+      if(this.text.share.getNumberOfRunningActions() > 0) return false;
 
-      this.textes.share.create().attr({
+      this.text.share.create().attr({
         x: Camera.center.x,
         y: this.y - 180,
         opacity: 0
       });
-      this.textes.share.runAction(
+      this.text.share.runAction(
         cc.Sequence.create(
           cc.FadeIn.create(1.0),
           cc.DelayTime.create(5.0),
           cc.FadeOut.create(1.0),
-          cc.CallFunc.create(this.textes.share.destroy, this.textes.share)
+          cc.CallFunc.create(this.text.share.destroy, this.text.share)
         )
       );
     } else {
-      if(this.textes.start.getNumberOfRunningActions() > 0) return false;
+      if(this.text.start.getNumberOfRunningActions() > 0) return false;
 
-      this.textes.start.create().attr({
+      this.text.start.create().attr({
         x: Camera.center.x,
         y: this.y - 180,
         opacity: 0
       });
-      this.textes.start.runAction(
+      this.text.start.runAction(
         cc.Sequence.create(
           cc.FadeIn.create(1.0),
           cc.DelayTime.create(1.0),
           cc.FadeOut.create(1.0),
-          cc.CallFunc.create(this.textes.start.destroy, this.textes.start)
+          cc.CallFunc.create(this.text.start.destroy, this.text.start)
         )
       );
     }
@@ -797,14 +817,14 @@ Counter = Button.extend({
      *
      *
      */
-    this.textes.value.format([this.values.scores.current]);
+    this.text.value.format([this.values.scores.current]);
 
     /**
      *
      *
      *
      */
-    this.textes.coins.format([this.values.coins.current + this.values.coins.total]);
+    this.text.coins.format([this.values.coins.current + this.values.coins.total]);
 
     /**
      *
@@ -818,9 +838,9 @@ Counter = Button.extend({
        *
        *
        */
-      this.textes.best.format([max(this.values.scores.current, this.values.scores.best)]);
-      this.textes.jumps.format([this.values.info.jumps]);
-      this.textes.deaths.format([this.values.info.deaths]);
+      this.text.best.format([max(this.values.scores.current, this.values.scores.best)]);
+      this.text.jumps.format([this.values.info.jumps]);
+      this.text.deaths.format([this.values.info.deaths]);
     }
   }
 });

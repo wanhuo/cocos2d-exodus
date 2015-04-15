@@ -123,6 +123,39 @@ var resources = {
         store: 'resource/Graphics/reward-store-button.png'
       }
     },
+    store: {
+      coins: 'resource/Graphics/store-coins-background.png',
+      price: 'resource/Graphics/store-price-background.png',
+      count: 'resource/Graphics/store-items-count-background.png',
+      decorations: [
+        'resource/Graphics/store-decoration-1.png'
+      ],
+      buttons: {
+        rockets: 'resource/Graphics/store-rockets-button.png',
+        creatures: 'resource/Graphics/store-creatures-button.png',
+        bonuses: 'resource/Graphics/store-bonuses-button.png',
+        points: 'resource/Graphics/store-points-button.png',
+        coins: 'resource/Graphics/store-coins-button.png',
+        refresh: 'resource/Graphics/store-refresh-button.png',
+        navigation: 'resource/Graphics/store-navigation-button.png'
+      },
+      items: [
+        [],
+        [],
+        [
+          {
+            texture: 'resource/Graphics/store-item-3-1.png',
+            shadow: 'resource/Graphics/store-item-3-1-shadow.png',
+          },
+          {
+            texture: 'resource/Graphics/store-item-3-2.png',
+            shadow: 'resource/Graphics/store-item-3-2-shadow.png',
+          }
+        ],
+        [],
+        []
+      ]
+    },
     counter: {
       texture: 'resource/Graphics/counter.png',
       coins:  'resource/Graphics/counter-coins.png'

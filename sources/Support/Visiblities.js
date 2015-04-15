@@ -66,9 +66,9 @@ Visiblities = {
      *
      *
      */
-    Counter.textes.best.visiblities = 'Game.backgrounds.b.y >= 270';
-    Counter.textes.jumps.visiblities = 'Game.backgrounds.b.y >= 270';
-    Counter.textes.deaths.visiblities = 'Game.backgrounds.b.y >= 270';
+    Counter.text.best.visiblities = 'Game.backgrounds.b.y >= 270';
+    Counter.text.jumps.visiblities = 'Game.backgrounds.b.y >= 270';
+    Counter.text.deaths.visiblities = 'Game.backgrounds.b.y >= 270';
 
     /**
      *
@@ -169,9 +169,9 @@ Visiblities = {
      *
      *
      */
-    this.elements.push(Counter.textes.best);
-    this.elements.push(Counter.textes.jumps);
-    this.elements.push(Counter.textes.deaths);
+    this.elements.push(Counter.text.best);
+    this.elements.push(Counter.text.jumps);
+    this.elements.push(Counter.text.deaths);
 
     /**
      *

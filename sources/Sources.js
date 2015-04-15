@@ -56,8 +56,15 @@ sources = sources.concat([
   'sources/Screens/Popups/Credits.js',
   'sources/Screens/Popups/Coins.js',
   'sources/Screens/Popups/Store.js',
+  'sources/Screens/Popups/Store/Backgrounds/StoreBackground.js',
+  'sources/Screens/Popups/Store/Backgrounds/StoreBlankBackground.js',
+  'sources/Screens/Popups/Store/Backgrounds/StoreContentBackground.js',
+  'sources/Screens/Popups/Store/Backgrounds/StoreContent.js',
+  'sources/Screens/Popups/Store/Items/StoreItem31.js',
+  'sources/Screens/Popups/Store/Items/StoreItem32.js',
   'sources/Managers/ScreensManager.js',
   'sources/Managers/Points.js',
   'sources/Tutorial/Tutorial.js',
-  'sources/Tutorial/Chapter.js'
+  'sources/Tutorial/Chapter.js',
+  'sources/Items.js'
 ]);

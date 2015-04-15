@@ -210,6 +210,78 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
+  'store-no-items-title': [
+    {title: 'No Items', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]},
+    {title: 'Нет позиций', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-no-items-description': [
+    {title: 'There is no items.\nWe are working hard to add\nmore content for you.', font: 'Impact', size: 36, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 36, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-refresh': [
+    {title: 'Refresh to see is content were added.', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-price': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]}
+  ],
+  'store-count': [
+    {title: '0', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]},
+    {title: '0', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]}
+  ],
+  'store-buy': [
+    {title: 'Buy', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: 'Купить', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
+  'store-coins': [
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
+  ],
+  'store-unlock': [
+    {title: 'You should get $1 points\nto unlock this item', font: 'Impact', size: 32, dimensions: false, color: [126, 219, 255]},
+    {title: 'Вы должны набрать $1 очков\nдля разблокировки', font: 'Impact', size: 32, dimensions: false, color: [126, 219, 255]}
+  ],
+  'store-item-title-1-1': [
+    {title: 'Rocket Title 1', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-2': [
+    {title: 'Rocket Title 2', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-3': [
+    {title: 'Rocket Title 3', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-3-1': [
+    {title: 'Coins Magnet', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Магнит монеток', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-3-2': [
+    {title: 'Lucky Horseshoe', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Счастливая подкова', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-1': [
+    {title: 'Rocket Description 1', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-2': [
+    {title: 'Rocket Description 2', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-3': [
+    {title: 'Rocket Description 3', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 24, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-3-1': [
+    {title: 'Coins Magnet collect all coins automatically.\n No need to tap on each coin.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Магнит собирает монетки автоматически.\n Вам не нужно жать на каждую монетку.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-3-2': [
+    {title: 'Increases the probability of a\n coin for 2 times.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Увеличивает вероятность появления\n монетки в 2 раза.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}
