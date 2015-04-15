@@ -557,14 +557,22 @@ Game = Screen.extend({
      *
      *
      */
-    Music.play(resources.main.music.background, true);
+    this.changeState(this.parameters.states.menu);
 
     /**
      *
      *
      *
      */
-    this.changeState(this.parameters.states.menu);
+    setTimeout(function() {
+
+      /**
+       *
+       *
+       *
+       */
+      Music.play(resources.main.music.background, true);
+    }, 1000);
   },
   onExit: function() {
     this._super();
