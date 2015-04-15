@@ -101,6 +101,7 @@
 		784CA6A91A1A49FF001145DC /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6A81A1A49FF001145DC /* GameController.framework */; };
 		784CA6C11A1A5117001145DC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6C01A1A5117001145DC /* OpenGLES.framework */; };
 		784CA6C31A1A5120001145DC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6C21A1A5120001145DC /* CoreMotion.framework */; };
+		7878F97B1ADDB01500A0F1D6 /* Internal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7878F97A1ADDB01500A0F1D6 /* Internal.mm */; };
 		78B0CFCC1A92247000E72640 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFCB1A92247000E72640 /* GameKit.framework */; };
 		78B0CFD21A924EAD00E72640 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFD11A924EAD00E72640 /* AdSupport.framework */; };
 		78B0CFD41A924EBB00E72640 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFD31A924EBB00E72640 /* AudioToolbox.framework */; };
@@ -278,6 +279,7 @@
 		784CA6A81A1A49FF001145DC /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		784CA6C01A1A5117001145DC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		784CA6C21A1A5120001145DC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		7878F97A1ADDB01500A0F1D6 /* Internal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Internal.mm; sourceTree = "<group>"; };
 		78B0CFCB1A92247000E72640 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		78B0CFCD1A9224CB00E72640 /* application.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = application.entitlements; sourceTree = "<group>"; };
 		78B0CFD11A924EAD00E72640 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
@@ -549,6 +551,7 @@
 		7847CDDF1AB184820014E3F3 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				7878F9791ADDB01500A0F1D6 /* internal */,
 				7823FBB71ABDBBC500447F0A /* plugins */,
 				7847CDE01AB184820014E3F3 /* ad */,
 				7847CDE31AB184820014E3F3 /* analytics */,
@@ -637,6 +640,14 @@
 				7828A0321A1F6E920079492B /* jsb_pluginx.js */,
 			);
 			name = Support;
+			sourceTree = "<group>";
+		};
+		7878F9791ADDB01500A0F1D6 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				7878F97A1ADDB01500A0F1D6 /* Internal.mm */,
+			);
+			path = internal;
 			sourceTree = "<group>";
 		};
 		78B0CFE41A9289E200E72640 /* Libraries */ = {
@@ -1002,6 +1013,7 @@
 				7828A09D1A1F870D0079492B /* AppDelegate.cpp in Sources */,
 				7847CDF81AB184820014E3F3 /* Media.mm in Sources */,
 				7847CDF61AB184820014E3F3 /* AppController.mm in Sources */,
+				7878F97B1ADDB01500A0F1D6 /* Internal.mm in Sources */,
 				7847CDFC1AB184820014E3F3 /* Screenshot.mm in Sources */,
 				7847CDF51AB184820014E3F3 /* Analytics.mm in Sources */,
 				7847CDF41AB184820014E3F3 /* Admob.mm in Sources */,

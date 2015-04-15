@@ -92,22 +92,20 @@ StoreItem32 = Entity.extend({
      *
      */
     this.runAction(
-      cc.Sequence.create(
-        cc.RepeatForever.create(
-          cc.Sequence.create(
-            cc.DelayTime.create(1.0),
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(3.0, {
-                x: this.x,
-                y: this.y + 50
-              })
-            ),
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(3.0, {
-                x: this.x,
-                y: this.y
-              })
-            )
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.DelayTime.create(1.0),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.x,
+              y: this.y + 50
+            })
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.x,
+              y: this.y
+            })
           )
         )
       )
@@ -119,22 +117,20 @@ StoreItem32 = Entity.extend({
      *
      */
     this.elements.shadow.runAction(
-      cc.Sequence.create(
-        cc.RepeatForever.create(
-          cc.Sequence.create(
-            cc.DelayTime.create(1.0),
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(3.0, {
-                x: this.elements.shadow.x,
-                y: this.elements.shadow.y - 50
-              })
-            ),
-            cc.EaseSineInOut.create(
-              cc.MoveTo.create(3.0, {
-                x: this.elements.shadow.x,
-                y: this.elements.shadow.y
-              })
-            )
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.DelayTime.create(1.0),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.elements.shadow.x,
+              y: this.elements.shadow.y - 50
+            })
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.elements.shadow.x,
+              y: this.elements.shadow.y
+            })
           )
         )
       )
@@ -146,16 +142,14 @@ StoreItem32 = Entity.extend({
      *
      */
     this.elements.shadow.runAction(
-      cc.Sequence.create(
-        cc.RepeatForever.create(
-          cc.Sequence.create(
-            cc.DelayTime.create(1.0),
-            cc.EaseSineInOut.create(
-              cc.ScaleTo.create(3.0, 0.5)
-            ),
-            cc.EaseSineInOut.create(
-              cc.ScaleTo.create(3.0, 1.0)
-            )
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.DelayTime.create(1.0),
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(3.0, 0.5)
+          ),
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(3.0, 1.0)
           )
         )
       )
