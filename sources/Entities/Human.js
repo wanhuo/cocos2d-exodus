@@ -42,6 +42,13 @@ Human = Creature.extend({
       '3',
       '4'
     ];
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(20);
   },
 
   /**

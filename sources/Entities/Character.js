@@ -186,13 +186,6 @@ Character = Spine.extend({
      * 
      *
      */
-    this.setSkin(this.parameters.skins.random());
-
-    /**
-     *
-     * 
-     *
-     */
     this.smokes = new Manager(100, new Smoke, Game.backgrounds.game, true);
 
     /**
@@ -201,7 +194,14 @@ Character = Spine.extend({
      *
      */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
-    this.status = new Entity(resources.main.character.status, this);this.status.setColor(cc.color.GREEN);
+    this.status = new Entity(resources.main.character.status, this);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.status.setColor(cc.color.GREEN);
 
     /**
      *
@@ -251,10 +251,33 @@ Character = Spine.extend({
 
     /**
      *
-     * 
+     * Check is some rocket was selected by user.
      *
      */
-    this.setSkin(this.parameters.skins.random());
+    var skin = Data.get(false, properties.rocket);
+
+    /**
+     *
+     *
+     *
+     */
+    if(skin === false) {
+
+      /**
+       *
+       * 
+       *
+       */
+      this.setSkin(this.parameters.skins.random());
+    } else {
+
+      /**
+       *
+       * 
+       *
+       */
+      this.setSkin(this.parameters.skins[skin]);
+    }
   },
   onDestroy: function() {
     this._super();

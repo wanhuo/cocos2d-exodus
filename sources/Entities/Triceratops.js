@@ -38,6 +38,13 @@ Triceratops = Creature.extend({
      */
     this.parameters.speed.min = 100.0;
     this.parameters.speed.max = 200.0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(19);
   },
 
   /**

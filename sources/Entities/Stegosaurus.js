@@ -38,6 +38,13 @@ Stegosaurus = Creature.extend({
      */
     this.parameters.speed.min = 20.0;
     this.parameters.speed.max = 80.0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(18);
   },
 
   /**

@@ -36,13 +36,15 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    this.choisable = Items.items[index - 1][id - 1].choisable;
-    this.choosen = Items.items[index - 1][id - 1].choosen;
-    this.unlock = Items.items[index - 1][id - 1].unlock;
-    this.price = Items.items[index - 1][id - 1].price;
-    this.owned = Items.items[index - 1][id - 1].owned;
-    this.type = Items.items[index - 1][id - 1].type;
-    this.item = Items.items[index - 1][id - 1].item;
+    this.index = index - 1;
+    this.id = id - 1;
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateData();
 
     /**
      *
@@ -75,8 +77,8 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.buttons = {
-      buy: new Button(resources.main.buttons.coins, 1, 2, this, this.onBuy.bind(this)),
-      choose: new Button(resources.main.buttons.empty, 1, 2, this, this.onBuy.bind(this))
+      purchase: new Button(resources.main.buttons.coins, 1, 2, this, this.onPurchase.bind(this)),
+      choose: new Button(resources.main.buttons.empty, 1, 2, this, this.onChoose.bind(this))
     };
 
     /**
@@ -90,8 +92,9 @@ StoreContent = StoreBackground.extend({
       unlock: new Text('store-unlock', this),
       price: new Text('store-price', this.elements.price),
       count: new Text('store-count', this.elements.count),
-      buy: new Text('store-buy', this.buttons.buy),
-      choose: new Text('store-choose', this.buttons.choose)
+      purchase: new Text('store-purchase', this.buttons.purchase),
+      choose: new Text('store-choose', this.buttons.choose),
+      choosen: new Text('store-choosen', this)
     };
 
     /**
@@ -109,7 +112,7 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    this.buttons.buy.create().attr({
+    this.buttons.purchase.create().attr({
       x: Camera.center.x,
       y: 150
     });
@@ -135,46 +138,18 @@ StoreContent = StoreBackground.extend({
       x: this.elements.price.width / 2,
       y: this.elements.price.height / 2
     });
-    this.text.buy.create().attr({
-      x: this.buttons.buy.width / 2,
-      y: this.buttons.buy.height / 2
+    this.text.purchase.create().attr({
+      x: this.buttons.purchase.width / 2,
+      y: this.buttons.purchase.height / 2
     });
     this.text.choose.create().attr({
       x: this.buttons.choose.width / 2,
       y: this.buttons.choose.height / 2
     });
-
-    /**
-     *
-     *
-     *
-     */
-    switch(this.type) {
-      case Items.types.consumable:
-
-      /**
-       *
-       *
-       *
-       */
-      this.elements.count.create().attr({
-        x: Camera.center.x + 180,
-        y: Camera.center.y - 380
-      });
-
-      /**
-       *
-       *
-       *
-       */
-      this.text.count.create().attr({
-        x: this.elements.count.width / 2,
-        y: this.elements.count.height / 2
-      });
-      break;
-      case Items.types.permanent:
-      break;
-    }
+    this.text.choosen.create().attr({
+      x: Camera.center.x,
+      y: 175
+    });
 
     /**
      *
@@ -196,7 +171,70 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    if(Counter.values.scores.best < this.unlock) {
+    this.updateInfo();
+
+    /**
+     *
+     *
+     *
+     */
+    this._super();
+  },
+  onExit: function() {
+    this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateData: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    var item = Items.items[this.index][this.id];
+
+    /**
+     *
+     *
+     *
+     */
+    this.choisable = item.choisable;
+    this.choosen = item.choosen;
+    this.unlock = item.unlock;
+    this.price = item.price;
+    this.owned = item.owned;
+    this.type = item.type;
+    this.item = item.item;
+    this.chooseCode = item.chooseCode;
+    this.purchaseCode = item.purchaseCode;
+  },
+  updateInfo: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateData();
+
+    /**
+     *
+     *
+     *
+     */
+    var unlocked = Counter.values.scores.best >= this.unlock;
+
+    /**
+     *
+     *
+     *
+     */
+    if(!unlocked) {
 
       /**
        *
@@ -221,7 +259,7 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      this.buttons.buy.destroy();
+      this.buttons.purchase.destroy();
     } else {
 
       /**
@@ -243,7 +281,7 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      this.buttons.buy.create();
+      this.buttons.purchase.create();
     }
 
     /**
@@ -253,6 +291,42 @@ StoreContent = StoreBackground.extend({
      */
     switch(this.type) {
       case Items.types.consumable:
+
+      /**
+       *
+       *
+       *
+       */
+      if(unlocked) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.elements.count.create().attr({
+          x: Camera.center.x + 180,
+          y: Camera.center.y - 380
+        });
+
+        /**
+         *
+         *
+         *
+         */
+        this.text.count.create().attr({
+          x: this.elements.count.width / 2,
+          y: this.elements.count.height / 2
+        });
+        this.text.count.format([Data.get(false, this.purchaseCode) || 0]);
+      }
+
+      /**
+       *
+       *
+       *
+       */
+      this.text.choosen.destroy();
 
       /**
        *
@@ -282,7 +356,7 @@ StoreContent = StoreBackground.extend({
          *
          *
          */
-        this.buttons.buy.destroy();
+        this.buttons.purchase.destroy();
 
         /**
          *
@@ -303,6 +377,14 @@ StoreContent = StoreBackground.extend({
              *
              *
              */
+            this.text.choosen.create();
+
+            /**
+             *
+             *
+             *
+             */
+            this.buttons.choose.destroy();
           } else {
 
             /**
@@ -310,9 +392,24 @@ StoreContent = StoreBackground.extend({
              *
              *
              */
+            this.text.choosen.destroy();
+
+            /**
+             *
+             *
+             *
+             */
+            this.buttons.choose.create();
           }
         }
       } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.text.choosen.destroy();
 
         /**
          *
@@ -323,16 +420,6 @@ StoreContent = StoreBackground.extend({
       }
       break;
     }
-
-    /**
-     *
-     *
-     *
-     */
-    this._super();
-  },
-  onExit: function() {
-    this._super();
   },
 
   /**
@@ -340,6 +427,117 @@ StoreContent = StoreBackground.extend({
    *
    *
    */
-  onBuy: function() {
+  onPurchase: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(Counter.values.coins.total >= this.price) {
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.values.coins.total -= this.price;
+
+      /**
+       *
+       *
+       *
+       */
+      Items.items[this.index][this.id].owned = true;
+
+      /**
+       *
+       *
+       *
+       */
+      switch(this.type) {
+        case Items.types.consumable:
+
+        /**
+         *
+         *
+         *
+         */
+        Data.update(false, this.purchaseCode, 1);
+        break;
+        case Items.types.permanent:
+
+        /**
+         *
+         *
+         *
+         */
+        Data.set(false, this.purchaseCode, true);
+        break;
+      }
+    } else {
+      // TODO: Opem coins.
+      alert('Not enought coins.');
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.updateTextData();
+    Store.updateTextData();
+
+    /**
+     *
+     *
+     *
+     */
+    Data.set(false, properties.coins, Counter.values.coins.total);
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateInfo();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onChoose: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < Items.items[this.index].length; i++) {
+      Items.items[this.index][i].choosen = false;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    Items.items[this.index][this.id].choosen = true;
+
+    /**
+     *
+     *
+     *
+     */
+    Data.set(false, this.chooseCode, this.id);
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateInfo();
   }
 });

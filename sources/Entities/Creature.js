@@ -70,7 +70,7 @@ Creature = Spine.extend({
      * 
      *
      */
-    this.setLocalZOrder(10);
+    this.setLocalZOrder(20);
   },
 
   /**

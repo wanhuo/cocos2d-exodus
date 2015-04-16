@@ -259,8 +259,8 @@ Game = Screen.extend({
      */
     this.elements.creatures = new Creatures([
       this.elements.people,
-      this.elements.apatosauruses,
       this.elements.stegosauruses,
+      this.elements.apatosauruses,
       this.elements.triceratopses
     ]);
 

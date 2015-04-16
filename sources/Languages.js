@@ -227,16 +227,20 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]}
   ],
   'store-count': [
-    {title: '0', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]},
-    {title: '0', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]}
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [228, 149, 81]}
   ],
-  'store-buy': [
-    {title: 'Buy', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+  'store-purchase': [
+    {title: '     Purchase', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]},
     {title: '  Купить', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]}
   ],
   'store-choose': [
     {title: 'Choose', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]},
     {title: 'Выбрать', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]}
+  ],
+  'store-choosen': [
+    {title: 'You have select this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Вы выбрали эту позицию', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-coins': [
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
