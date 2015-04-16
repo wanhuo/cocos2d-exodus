@@ -1,40 +1,40 @@
 
-people.png
-size: 96,38
+human.png
+size: 90,44
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 skins/1/holder
   rotate: false
-  xy: 2, 2
+  xy: 2, 8
   size: 20, 34
   orig: 20, 34
   offset: 0, 0
   index: -1
 skins/1/shadow
-  rotate: true
-  xy: 90, 20
+  rotate: false
+  xy: 2, 2
   size: 16, 4
   orig: 16, 4
   offset: 0, 0
   index: -1
 skins/2/holder
   rotate: false
-  xy: 24, 2
+  xy: 24, 8
   size: 20, 34
   orig: 20, 34
   offset: 0, 0
   index: -1
 skins/3/holder
   rotate: false
-  xy: 46, 2
+  xy: 46, 8
   size: 20, 34
   orig: 20, 34
   offset: 0, 0
   index: -1
 skins/4/holder
   rotate: false
-  xy: 68, 2
+  xy: 68, 8
   size: 20, 34
   orig: 20, 34
   offset: 0, 0

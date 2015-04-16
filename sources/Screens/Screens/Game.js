@@ -236,7 +236,10 @@ Game = Screen.extend({
     );
     this.elements.explanation = new Explanation;
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
-    this.elements.people = new Manager(10, new People, this.backgrounds.game);
+    this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
+    this.elements.stegosauruses = new Manager(10, new Stegosaurus, this.backgrounds.game);
+    this.elements.triceratopses = new Manager(10, new Triceratops, this.backgrounds.game);
+    this.elements.people = new Manager(10, new Human, this.backgrounds.game);
     this.elements.points = new Points;
     this.elements.coins = new Manager(10, new Coin, this.backgrounds.c, true);
     this.elements.name = new Name;
@@ -248,6 +251,18 @@ Game = Screen.extend({
       new Manager(10, new Entity(resources.main.decorations.rocket.particles[0]), this, true),
       new Manager(1, new Entity(resources.main.decorations.rocket.particles[1]), this, true)
     ];
+
+    /**
+     *
+     * 
+     *
+     */
+    this.elements.creatures = new Creatures([
+      this.elements.people,
+      this.elements.apatosauruses,
+      this.elements.stegosauruses,
+      this.elements.triceratopses
+    ]);
 
     /**
      *
@@ -621,9 +636,7 @@ Game = Screen.extend({
        *
        *
        */
-      for(var i = 0; i < this.elements.people.count().count; i++) {
-        this.elements.people.get(i).parameters.time++;
-      }
+      this.elements.creatures.time();
     }
 
     /**
@@ -974,7 +987,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.elements.people.count().count === 0) {
+    if(this.elements.creatures.count() <= 0) {
 
       /**
        *
@@ -1137,9 +1150,7 @@ Game = Screen.extend({
      *
      *
      */
-    for(var i = 0; i < this.elements.people.count().capacity; i++) {
-      this.elements.people.create();
-    }
+    this.elements.creatures.create();
 
     /**
      *
@@ -1213,7 +1224,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.people.clear();
+    this.elements.creatures.clear();
 
     /**
      *
@@ -1358,7 +1369,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.people.pauseSchedulerAndActions();
+      this.elements.creatures.pauseSchedulerAndActions();
       this.elements.explanation.pauseSchedulerAndActions();
 
       /**
@@ -1411,7 +1422,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.elements.people.resumeSchedulerAndActions();
+      this.elements.creatures.resumeSchedulerAndActions();
       this.elements.explanation.resumeSchedulerAndActions();
 
       /**

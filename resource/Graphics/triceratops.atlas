@@ -1,0 +1,20 @@
+
+triceratops.png
+size: 75,62
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/holder
+  rotate: false
+  xy: 2, 17
+  size: 71, 43
+  orig: 71, 43
+  offset: 0, 0
+  index: -1
+skins/1/shadow
+  rotate: false
+  xy: 2, 2
+  size: 71, 13
+  orig: 71, 13
+  offset: 0, 0
+  index: -1

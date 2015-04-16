@@ -1,0 +1,20 @@
+
+stegosaurus.png
+size: 115,77
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/holder
+  rotate: false
+  xy: 2, 24
+  size: 107, 51
+  orig: 107, 51
+  offset: 0, 0
+  index: -1
+skins/1/shadow
+  rotate: false
+  xy: 2, 2
+  size: 111, 20
+  orig: 111, 20
+  offset: 0, 0
+  index: -1

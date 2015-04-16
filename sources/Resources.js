@@ -52,10 +52,25 @@ var resources = {
       smoke: 'resource/Graphics/character-smoke.png',
       status: 'resource/Graphics/character-status.png'
     },
-    people: {
-      texture: 'resource/Graphics/people.png',
-      atlas: 'resource/Graphics/people.atlas',
-      json: 'resource/Graphics/people.json'
+    human: {
+      texture: 'resource/Graphics/human.png',
+      atlas: 'resource/Graphics/human.atlas',
+      json: 'resource/Graphics/human.json'
+    },
+    apatosaurus: {
+      texture: 'resource/Graphics/apatosaurus.png',
+      atlas: 'resource/Graphics/apatosaurus.atlas',
+      json: 'resource/Graphics/apatosaurus.json'
+    },
+    stegosaurus: {
+      texture: 'resource/Graphics/stegosaurus.png',
+      atlas: 'resource/Graphics/stegosaurus.atlas',
+      json: 'resource/Graphics/stegosaurus.json'
+    },
+    triceratops: {
+      texture: 'resource/Graphics/triceratops.png',
+      atlas: 'resource/Graphics/triceratops.atlas',
+      json: 'resource/Graphics/triceratops.json'
     },
     baloon: {
       texture: 'resource/Graphics/baloon.png',

@@ -21,15 +21,15 @@
  *
  */
 
-People = Spine.extend({
+Creature = Spine.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function() {
-    this._super(resources.main.people.json, resources.main.people.atlas, 1.0);
+  ctor: function(json, atlas) {
+    this._super(json, atlas, 1.0);
 
     /**
      *
@@ -46,12 +46,16 @@ People = Spine.extend({
         }
       },
       skins: [
-        '1',
-        '2',
-        '3',
-        '4'
+        '1'
       ],
-      time: 1
+      speed: {
+        x: 0,
+        y: 0,
+        min: 50.0,
+        max: 100.0
+      },
+      position: true,
+      time: 1.0
     };
 
     /**
@@ -60,13 +64,6 @@ People = Spine.extend({
      *
      */
     this.needScheduleUpdate = true;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.setSkin(this.parameters.skins.random());
 
     /**
      *
@@ -89,6 +86,27 @@ People = Spine.extend({
      * 
      *
      */
+    this.setSkin(this.parameters.skins.random());
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.time = 1.0;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.position = probably(50);
+
+    /**
+     *
+     * 
+     *
+     */
     setTimeout(function() {
 
       /**
@@ -104,27 +122,6 @@ People = Spine.extend({
      * 
      *
      */
-    this.setSkin(this.parameters.skins.random());
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.time = 1;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.position = probably(50);
-
-    /**
-     *
-     * 
-     *
-     */
     this.x = this.parameters.position ? random(0, Camera.center.x / 2) : random(Camera.center.x + Camera.center.x / 2, Camera.width)
     this.y = 340;
 
@@ -133,17 +130,15 @@ People = Spine.extend({
      * 
      *
      */
-    this.parameters.speed = {
-      x: random(50, 100),
-      y: 0
-    };
+    this.parameters.speed.x = random(this.parameters.speed.min, this.parameters.speed.max);
+    this.parameters.speed.y = 0;
 
     /**
      *
      * 
      *
      */
-    this.setScaleX(this.parameters.position ? 1 : -1);
+    this.scaleX = this.parameters.position ? 1 : -1;
   },
   onDestroy: function() {
     this._super();
@@ -154,16 +149,6 @@ People = Spine.extend({
      *
      */
     Game.onSave();
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onAnimationFinish: function(index) {
-    if(this._super(index)) {
-    }
   },
 
   /**
@@ -195,14 +180,5 @@ People = Spine.extend({
         this.destroy();
       }
     }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  deepCopy: function() {
-    return new People;
   }
 });
