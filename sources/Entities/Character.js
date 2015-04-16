@@ -927,136 +927,7 @@ Character = Spine.extend({
        *
        *
        */
-      var element = this.updatePoint();
-
-      /**
-       *
-       *
-       *
-       */
-      switch(element ? element.getCurrentFrameIndex() : false) {
-        default:
-
-        /**
-         *
-         *
-         *
-         */
-        this.changeState(this.parameters.states.loss);
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.onFail();
-        break;
-        case 0:
-
-        /**
-         *
-         *
-         *
-         */
-        Game.parameters.coins.current++;
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.active = this.parameters.speed.state = true;
-
-        /**
-         *
-         * 
-         *
-         */
-        this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
-        this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
-
-        /**
-         *
-         *
-         *
-         */
-        this.updateTraectory();
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.onJump();
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.count();
-        break;
-        case 1:
-
-        /**
-         *
-         *
-         *
-         */
-        Tutorial.show(4);
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.active = this.parameters.speed.state = false;
-
-        /**
-         *
-         *
-         *
-         */
-        this.updateTraectory();
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.onJump();
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.onMistake();
-        break;
-        case 2:
-
-        /**
-         *
-         *
-         *
-         */
-        element.destroy();
-
-        /**
-         *
-         *
-         *
-         */
-        Game.elements.coins.create();
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.onCoin();
-        break;
-      }
+      this.proceedPoint();
     }
 
     /**
@@ -1455,7 +1326,23 @@ Character = Spine.extend({
      * 
      *
      */
-    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;
+    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat / (Bonuses.states[1] ? 2 : 1);
+    var coinses = 0;
+
+    /**
+     *
+     * 
+     *
+     */
+    if(coins) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.parameters.coins.current = 0;
+    }
 
     /**
      *
@@ -1514,7 +1401,13 @@ Character = Spine.extend({
          *
          */
         if(coins) {
-          Game.parameters.coins.current--;
+
+          /**
+           *
+           *
+           *
+           */
+          coinses++;
 
           /**
            *
@@ -1528,7 +1421,7 @@ Character = Spine.extend({
            *
            *
            */
-          coins = Game.parameters.coins.current > 0;
+          coins = coinses < Game.parameters.coins.count;
         }
 
         /**
@@ -1612,6 +1505,144 @@ Character = Spine.extend({
      */
     return false;
   },
+  proceedPoint: function(index) {
+
+    /**
+     *
+     *
+     *
+     */
+    var element = index || this.updatePoint();
+
+    /**
+     *
+     *
+     *
+     */
+    switch(element ? element.getCurrentFrameIndex() : false) {
+      default:
+
+      /**
+       *
+       *
+       *
+       */
+      this.changeState(this.parameters.states.loss);
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onFail();
+      break;
+      case 0:
+
+      /**
+       *
+       *
+       *
+       */
+      Game.parameters.coins.current++;
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.active = this.parameters.speed.state = true;
+
+      /**
+       *
+       * 
+       *
+       */
+      this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
+      this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateTraectory();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onJump();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.count();
+      break;
+      case 1:
+
+      /**
+       *
+       *
+       *
+       */
+      Tutorial.show(4);
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.active = this.parameters.speed.state = false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateTraectory();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onJump();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onMistake();
+      break;
+      case 2:
+
+      /**
+       *
+       *
+       *
+       */
+      element.destroy();
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.coins.create();
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onCoin();
+      break;
+    }
+  },
 
   /**
    *
@@ -1638,6 +1669,25 @@ Character = Spine.extend({
       break;
       case 0:
       this.status.opacity = 255;
+      break;
+      case 1:
+      break;
+      case 2:
+
+      /**
+       *
+       *
+       *
+       */
+      if(Bonuses.states[0]) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.proceedPoint(element);
+      }
       break;
     }
   },

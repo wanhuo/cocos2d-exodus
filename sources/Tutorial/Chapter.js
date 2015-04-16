@@ -146,9 +146,23 @@ Chapter = Spine.extend({
      *
      */
     this.changeState(this.parameters.states.up);
+
+    /**
+     *
+     * 
+     *
+     */
+    Counter.unregister();
   },
   onDestroy: function() {
     this._super();
+
+    /**
+     *
+     * 
+     *
+     */
+    Counter.register();
   },
 
   /**

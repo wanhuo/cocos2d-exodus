@@ -121,15 +121,15 @@ Counter = Button.extend({
     this.values = {
       coins: {
         current: 0,
-        total: Data.get(false, properties.coins)
+        total: round(Data.get(false, properties.coins))
       },
       scores: {
         current: 0,
-        best: Data.get(false, properties.scores.best)
+        best: round(Data.get(false, properties.scores.best))
       },
       info: {
-        jumps: Data.get(false, properties.scores.jumps),
-        deaths: Data.get(false, properties.scores.deaths)
+        jumps: round(Data.get(false, properties.scores.jumps)),
+        deaths: round(Data.get(false, properties.scores.deaths))
       }
     };
 
@@ -157,15 +157,15 @@ Counter = Button.extend({
     this.values = {
       coins: {
         current: 0,
-        total: Data.get(false, properties.coins)
+        total: round(Data.get(false, properties.coins))
       },
       scores: {
         current: 0,
-        best: Data.get(false, properties.scores.best)
+        best: round(Data.get(false, properties.scores.best))
       },
       info: {
-        jumps: Data.get(false, properties.scores.jumps),
-        deaths: Data.get(false, properties.scores.deaths)
+        jumps: round(Data.get(false, properties.scores.jumps)),
+        deaths: round(Data.get(false, properties.scores.deaths))
       }
     };
 
@@ -181,7 +181,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.setScale(0);
+    this.scale = 0;
 
     /**
      *

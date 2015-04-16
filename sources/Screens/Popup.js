@@ -65,7 +65,7 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    this.setLocalZOrder(1000);
+    this.setLocalZOrder(1100);
     this.setCascadeOpacityEnabled(true);
   },
 

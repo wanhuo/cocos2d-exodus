@@ -111,7 +111,8 @@ Game = Screen.extend({
       },
       coins: {
         current: 0,
-        repeat: 5
+        repeat: 4,
+        count: 8
       },
       tutorial: {
         state: false,
@@ -234,6 +235,7 @@ Game = Screen.extend({
         }
       )
     );
+    this.elements.bonuses = new Bonuses;
     this.elements.explanation = new Explanation;
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
@@ -1157,6 +1159,13 @@ Game = Screen.extend({
      *
      *
      */
+    this.elements.bonuses.create();
+
+    /**
+     *
+     *
+     *
+     */
     if(!Tutorial.show(1)) {
 
       /**
@@ -1168,6 +1177,13 @@ Game = Screen.extend({
     }
   },
   onStart: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.bonuses.destroy();
 
     /**
      *
@@ -1225,6 +1241,13 @@ Game = Screen.extend({
      *
      */
     this.elements.creatures.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.bonuses.clear();
 
     /**
      *

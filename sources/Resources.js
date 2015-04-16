@@ -124,6 +124,10 @@ var resources = {
       'resource/Graphics/water-2.png',
       'resource/Graphics/water-3.png'
     ],
+    bonuses: [
+      'resource/Graphics/bonus-1.png',
+      'resource/Graphics/bonus-2.png'
+    ],
     reward: {
       coin: 'resource/Graphics/reward-coin.png',
       decorations: [
@@ -183,6 +187,9 @@ var resources = {
     coin: {
       texture: 'resource/Graphics/coin.png',
       particle: 'resource/Graphics/coin-particle.png'
+    },
+    bonus: {
+      particle: 'resource/Graphics/bonus-particle.png'
     },
     moon: 'resource/Graphics/moon.png',
     continue: {

@@ -213,6 +213,20 @@ Continue = Popup.extend({
           )
         )
       );
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.explanation.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.FadeOut.create(0.5)
+          ),
+          cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+        )
+      );
     } else {
 
       /**
