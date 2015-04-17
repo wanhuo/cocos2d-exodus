@@ -44,6 +44,7 @@ Popup = BackgroundColor.extend({
      *
      */
     this.parameters = {
+      scheduler: 0
     };
 
     /**
@@ -246,6 +247,60 @@ Popup = BackgroundColor.extend({
      *
      */
     this.removeFromParent();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  pauseSchedulerAndActions: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.scheduler++;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.scheduler === 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+    }
+  },
+  resumeSchedulerAndActions: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.scheduler--;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.scheduler === 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+    }
   },
 
   /**
