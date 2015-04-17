@@ -95,7 +95,13 @@ Character = Spine.extend({
       skins: [
         '1',
         '2',
-        '3'
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9'
       ],
       shadow: {
         scale: {
@@ -268,7 +274,7 @@ Character = Spine.extend({
        * 
        *
        */
-      this.setSkin(this.parameters.skins.random());
+      this.setSkin(this.parameters.skins[random(0, 3, true)]);
     } else {
 
       /**

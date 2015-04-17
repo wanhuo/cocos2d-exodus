@@ -36,6 +36,6 @@ StoreItem14 = StoreItem10.extend({
      *
      *
      */
-    this.setSkin('3');
+    this.setSkin('4');
   }
 });

@@ -108,13 +108,57 @@ Items = cc.Class.extend({
         {
           price: 1500,
           type: this.types.permanent,
-          unlock: 50,
+          unlock: 0,
           owned: Data.get(false, properties.rockets[4]),
           choisable: true,
           choosen: Data.get(false, properties.rocket) === 4,
           chooseCode: properties.rocket,
           purchaseCode: properties.rockets[4],
           item: new StoreItem15
+        },
+        {
+          price: 1500,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: Data.get(false, properties.rockets[5]),
+          choisable: true,
+          choosen: Data.get(false, properties.rocket) === 5,
+          chooseCode: properties.rocket,
+          purchaseCode: properties.rockets[5],
+          item: new StoreItem16
+        },
+        {
+          price: 1500,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: Data.get(false, properties.rockets[6]),
+          choisable: true,
+          choosen: Data.get(false, properties.rocket) === 6,
+          chooseCode: properties.rocket,
+          purchaseCode: properties.rockets[6],
+          item: new StoreItem17
+        },
+        {
+          price: 1500,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: Data.get(false, properties.rockets[7]),
+          choisable: true,
+          choosen: Data.get(false, properties.rocket) === 7,
+          chooseCode: properties.rocket,
+          purchaseCode: properties.rockets[7],
+          item: new StoreItem18
+        },
+        {
+          price: 1500,
+          type: this.types.permanent,
+          unlock: 0,
+          owned: Data.get(false, properties.rockets[8]),
+          choisable: true,
+          choosen: Data.get(false, properties.rocket) === 8,
+          chooseCode: properties.rocket,
+          purchaseCode: properties.rockets[8],
+          item: new StoreItem19
         }
       ],
 
