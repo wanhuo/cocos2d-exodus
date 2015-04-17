@@ -521,7 +521,13 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.rocket.setSkin(Character.parameters.skins.random());
+    this.elements.rocket.setSkin(Character.getSkin());
+
+    /**
+     *
+     *
+     *
+     */
     this.elements.rocket.create();
 
     /**
