@@ -95,9 +95,9 @@ Items = cc.Class.extend({
           item: new StoreItem13
         },
         {
-          price: 500,
+          price: 1,
           type: this.types.permanent,
-          unlock: 5,
+          unlock: 0,
           owned: Data.get(false, properties.rockets[3]),
           selectable: true,
           selected: Data.get(false, properties.rocket) === 3,
@@ -106,7 +106,7 @@ Items = cc.Class.extend({
           item: new StoreItem14
         },
         {
-          price: 1500,
+          price: 1,
           type: this.types.permanent,
           unlock: 0,
           owned: Data.get(false, properties.rockets[4]),
@@ -117,7 +117,7 @@ Items = cc.Class.extend({
           item: new StoreItem15
         },
         {
-          price: 1500,
+          price: 1,
           type: this.types.permanent,
           unlock: 0,
           owned: Data.get(false, properties.rockets[5]),
@@ -139,7 +139,7 @@ Items = cc.Class.extend({
           item: new StoreItem17
         },
         {
-          price: 1500,
+          price: 1,
           type: this.types.permanent,
           unlock: 0,
           owned: Data.get(false, properties.rockets[7]),
@@ -150,7 +150,7 @@ Items = cc.Class.extend({
           item: new StoreItem18
         },
         {
-          price: 1500,
+          price: 1,
           type: this.types.permanent,
           unlock: 0,
           owned: Data.get(false, properties.rockets[8]),
@@ -169,23 +169,23 @@ Items = cc.Class.extend({
        */
       [
         {
-          price: 20,
+          price: 1,
           type: this.types.consumable,
-          unlock: 10,
+          unlock: 0,
           purchaseCode: properties.creatures[0],
           item: new StoreItem21
         },
         {
-          price: 100,
+          price: 1,
           type: this.types.consumable,
-          unlock: 15,
+          unlock: 0,
           purchaseCode: properties.creatures[1],
           item: new StoreItem22
         },
         {
-          price: 200,
+          price: 1,
           type: this.types.consumable,
-          unlock: 20,
+          unlock: 0,
           purchaseCode: properties.creatures[2],
           item: new StoreItem23
         },
@@ -205,16 +205,16 @@ Items = cc.Class.extend({
        */
       [
         {
-          price: 25,
+          price: 1,
           type: this.types.consumable,
-          unlock: 5,
+          unlock: 0,
           purchaseCode: properties.bonuses[0],
           item: new StoreItem31
         },
         {
-          price: 250,
+          price: 1,
           type: this.types.consumable,
-          unlock: 25,
+          unlock: 0,
           purchaseCode: properties.bonuses[1],
           item: new StoreItem32
         }

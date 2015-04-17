@@ -92,6 +92,7 @@ Character = Spine.extend({
           }
         }
       },
+      skin: false,
       skins: [
         '1',
         '2',
@@ -123,6 +124,9 @@ Character = Spine.extend({
         state: true,
         x: 0,
         y: 0,
+        maximum: {
+          x: 1500
+        },
         max: {
           x: 0,
           y: 0,
@@ -131,8 +135,8 @@ Character = Spine.extend({
             y: 0.0
           },
           setup: {
-            x: 1250 / 1.5,
-            y: 750 / 1.5
+            x: 850,
+            y: 500
           }
         },
         min: {
@@ -149,7 +153,7 @@ Character = Spine.extend({
         },
         decrease: {
           x: 0.0,
-          y: 4.5 / 1.5,
+          y: 3.0,
           max: {
             x: 0.0,
             y: 10.0,
@@ -159,6 +163,10 @@ Character = Spine.extend({
           x: 0,
           y: 0
         }
+      },
+      shake: {
+        current: 0.0,
+        increase: 0.001
       },
       smokes: {
         time: {
@@ -326,6 +334,13 @@ Character = Spine.extend({
      */
     this.shadow.destroy();
     this.status.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    this.onShakeFinish();
 
     /**
      *
@@ -519,6 +534,13 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.onShakeFinish();
+
+    /**
+     *
      * 
      *
      */
@@ -673,6 +695,13 @@ Character = Spine.extend({
      *
      */
     this.parameters.time = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    this.onShakeFinish();
 
     /**
      *
@@ -983,6 +1012,86 @@ Character = Spine.extend({
    *
    *
    */
+  onShakeFinish: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.shake.current = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.shake) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.shake.lx = false;
+      this.shake.ly = false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.shake.enabled = false;
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  setSkin: function(skin) {
+    this._super(skin);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.skin = skin;
+  },
+  getSkin: function() {
+    return this.parameters.skin;
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  setShake: function(duration, strength) {
+    if(!this.shake) {
+      this.shake = {
+        duration: 0,
+        strength: 0,
+        x: 0,
+        y: 0
+      };
+    }
+
+    this.shake.duration = duration;
+    this.shake.strength = strength;
+    this.shake.x = this.x;
+    this.shake.y = this.y;
+
+    this.onShakeStart();
+  },
+
+  /**
+   *
+   *
+   *
+   */
   setSlotsToSetupPoseCustom: function() {
 
     /**
@@ -1119,7 +1228,10 @@ Character = Spine.extend({
        *
        *
        */
-      this.smokes.create(this);
+      if(this.shake && this.shake.enabled) {
+      } else {
+        this.smokes.create(this);
+      }
     }
 
     /**
@@ -1563,8 +1675,25 @@ Character = Spine.extend({
        * 
        *
        */
-      this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
-      this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
+      if(this.parameters.speed.x < this.parameters.speed.maximum.x) {
+        this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
+        this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.shake.current += this.parameters.shake.increase / (Data.get(false, properties.creatures[3]) + 1);
+
+        /**
+         *
+         *
+         *
+         */
+        this.setShake(Number.MAX_VALUE, this.parameters.shake.current);
+      }
 
       /**
        *
@@ -1703,6 +1832,64 @@ Character = Spine.extend({
    *
    *
    */
+  updateShake: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.shake && this.shake.enabled) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.shake.lx || this.shake.ly) {
+        this.x -= this.shake.lx;
+        this.y -= this.shake.ly;
+      }
+
+      /**
+       *
+       *
+       *
+       */
+      this.shake.lx = random(-Camera.width, Camera.width) * this.shake.strength;
+      this.shake.ly = random(-Camera.height, Camera.height) * this.shake.strength;
+
+      /**
+       *
+       *
+       *
+       */
+      this.x += this.shake.lx;
+      this.y += this.shake.ly;
+
+      /**
+       *
+       *
+       *
+       */
+      this.shake.duration -= time;
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.shake.duration <= 0) {
+        this.onShakeFinish();
+      }
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
   updateStates: function(time) {
 
     /**
@@ -1740,6 +1927,13 @@ Character = Spine.extend({
         Game.changeState(Game.parameters.states.loss);
         break;
         case Game.parameters.states.game:
+
+        /**
+         *
+         *
+         *
+         */
+        // todo: dino
 
         /**
          *
