@@ -97,7 +97,7 @@ Game = Screen.extend({
       },
       backgrounds: {
         position: {
-          min: -1280 * (5 - 1),
+          min: -1280 * (4 - 1),
           max: 0,
           ratio: 3
         }
@@ -179,8 +179,7 @@ Game = Screen.extend({
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
       new Entity(resources.main.backgrounds[1], this.backgrounds.g),
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[1], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[0], this.backgrounds.g)
+      new Entity(resources.main.backgrounds[1], this.backgrounds.g)
     ];
     this.elements.parallaxes = {
       clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
