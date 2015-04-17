@@ -198,13 +198,6 @@ var resources = {
       background: 'resource/Graphics/continue-background.png',
       element: 'resource/Graphics/continue-element.png'
     },
-    coins: {
-      holders: [
-        'resource/Graphics/coins-holder-1.png',
-        'resource/Graphics/coins-holder-2.png',
-        'resource/Graphics/coins-holder-3.png'
-      ]
-    },
     credits: {
       decorations: [
         'resource/Graphics/credits-decoration-1.png',

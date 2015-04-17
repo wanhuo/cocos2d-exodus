@@ -542,7 +542,6 @@ Game = Screen.extend({
     new Splurge;
     new Reward;
     new Continue;
-    new Coins;
     new Credits;
     new Store;
 

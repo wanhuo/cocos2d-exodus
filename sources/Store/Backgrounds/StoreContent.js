@@ -227,7 +227,7 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    var unlocked = Counter.values.scores.best >= this.unlock;
+    var unlocked = max(Counter.values.scores.current, Counter.values.scores.best) >= this.unlock;
 
     /**
      *
@@ -370,21 +370,44 @@ StoreContent = StoreBackground.extend({
            *
            *
            */
-          if(this.selected) {
+          if(unlocked) {
 
             /**
              *
              *
              *
              */
-            this.text.selected.create();
+            if(this.selected) {
 
-            /**
-             *
-             *
-             *
-             */
-            this.buttons.select.destroy();
+              /**
+               *
+               *
+               *
+               */
+              this.text.selected.create();
+
+              /**
+               *
+               *
+               *
+               */
+              this.buttons.select.destroy();
+            } else {
+
+              /**
+               *
+               *
+               *
+               */
+              this.text.selected.destroy();
+
+              /**
+               *
+               *
+               *
+               */
+              this.buttons.select.create();
+            }
           } else {
 
             /**
@@ -399,7 +422,7 @@ StoreContent = StoreBackground.extend({
              *
              *
              */
-            this.buttons.select.create();
+            this.buttons.select.destroy();
           }
         }
       } else {
@@ -489,7 +512,7 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      Sound.play(resources.main.sound.store.purchase);
+      Store.openCoins();
     }
 
     /**

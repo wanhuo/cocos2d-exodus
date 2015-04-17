@@ -379,7 +379,29 @@ Store = Popup.extend({
    *
    *
    */
-  show: function() {
+  openCoins: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.store.more);
+
+    /**
+     *
+     *
+     *
+     */
+    // TODO: Open coins.
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  show: function(coins) {
     this._super();
 
     /**
@@ -394,6 +416,21 @@ Store = Popup.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    if(coins === true) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.openCoins();
+    }
   },
   hide: function() {
 

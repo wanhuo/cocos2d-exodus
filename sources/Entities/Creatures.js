@@ -35,6 +35,13 @@ Creatures = cc.Class.extend({
      *
      *
      */
+    Creatures = this;
+
+    /**
+     *
+     *
+     *
+     */
     this.elements = elements;
   },
 
@@ -145,6 +152,18 @@ Creatures = cc.Class.extend({
    *
    */
   create: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.current = [
+      round(Data.get(false, properties.creatures[0])) + 1,
+      round(Data.get(false, properties.creatures[1])),
+      round(Data.get(false, properties.creatures[2])) + 1,
+      round(Data.get(false, properties.creatures[3])) + 1
+    ];
 
     /**
      *

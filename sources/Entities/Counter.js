@@ -118,20 +118,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.values = {
-      coins: {
-        current: 0,
-        total: round(Data.get(false, properties.coins))
-      },
-      scores: {
-        current: 0,
-        best: round(Data.get(false, properties.scores.best))
-      },
-      info: {
-        jumps: round(Data.get(false, properties.scores.jumps)),
-        deaths: round(Data.get(false, properties.scores.deaths))
-      }
-    };
+    this.createValues();
 
     /**
      *
@@ -154,20 +141,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.values = {
-      coins: {
-        current: 0,
-        total: round(Data.get(false, properties.coins))
-      },
-      scores: {
-        current: 0,
-        best: round(Data.get(false, properties.scores.best))
-      },
-      info: {
-        jumps: round(Data.get(false, properties.scores.jumps)),
-        deaths: round(Data.get(false, properties.scores.deaths))
-      }
-    };
+    this.createValues();
 
     /**
      *
@@ -816,6 +790,34 @@ Counter = Button.extend({
         )
       );
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  createValues: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.values = {
+      coins: {
+        current: 0,
+        total: round(Data.get(false, properties.coins))
+      },
+      scores: {
+        current: 0,
+        best: round(Data.get(false, properties.scores.best))
+      },
+      info: {
+        jumps: round(Data.get(false, properties.scores.jumps)),
+        deaths: round(Data.get(false, properties.scores.deaths))
+      }
+    };
   },
 
   /**

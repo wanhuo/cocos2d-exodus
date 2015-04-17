@@ -131,7 +131,8 @@ Character = Spine.extend({
         x: 0,
         y: 0,
         maximum: {
-          x: 1500
+          x: 2500,
+          y: 0
         },
         max: {
           x: 0,
@@ -263,33 +264,10 @@ Character = Spine.extend({
 
     /**
      *
-     * Check is some rocket was selected by user.
-     *
-     */
-    var skin = Data.get(false, properties.rocket);
-
-    /**
-     *
      *
      *
      */
-    if(skin === false) {
-
-      /**
-       *
-       * 
-       *
-       */
-      this.setSkin(this.parameters.skins[random(0, 3, true)]);
-    } else {
-
-      /**
-       *
-       * 
-       *
-       */
-      this.setSkin(this.parameters.skins[skin]);
-    }
+    this.setSkin(this.parameters.skins[round(Data.get(false, properties.rocket))]);
   },
   onDestroy: function() {
     this._super();
@@ -1311,7 +1289,7 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.y < parameters.speed.max.y) {
-        parameters.speed.y += parameters.speed.increase.y * this.parameters.time;
+        parameters.speed.y += this.parameters.time * parameters.speed.increase.y * max(1, Creatures.current[0] / 10);
       } else {
         parameters.speed.state = false;
       }
@@ -1662,7 +1640,7 @@ Character = Spine.extend({
        *
        */
       if(this.parameters.speed.x < this.parameters.speed.maximum.x) {
-        this.parameters.speed.max.x += this.parameters.speed.max.increase.x;
+        this.parameters.speed.max.x += this.parameters.speed.max.increase.x / Creatures.current[2];
         this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
       } else {
 
@@ -1671,7 +1649,7 @@ Character = Spine.extend({
          *
          *
          */
-        this.parameters.shake.current += this.parameters.shake.increase / (Data.get(false, properties.creatures[3]) + 1);
+        this.parameters.shake.current += this.parameters.shake.increase / Creatures.current[3];
 
         /**
          *
@@ -1917,21 +1895,24 @@ Character = Spine.extend({
          *
          *
          */
-        // todo: dino
+        if(this.saveFromWater()) {
 
-        /**
-         *
-         *
-         *
-         */
-        Game.setShake(0.5, 0.01);
+        } else {
 
-        /**
-         *
-         *
-         *
-         */
-        this.destroy();
+          /**
+           *
+           *
+           *
+           */
+          Game.setShake(0.5, 0.01);
+
+          /**
+           *
+           *
+           *
+           */
+          this.destroy();
+        }
         break;
       }
     }
@@ -1968,6 +1949,15 @@ Character = Spine.extend({
         this.shadow.setScaleX(0);
       }
     }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  saveFromWater: function() {
+    return false;
   },
 
   /**

@@ -235,7 +235,7 @@ Continue = Popup.extend({
        *
        *
        */
-      Coins.show();
+      Store.show(true);
     }
   },
   onStop: function() {

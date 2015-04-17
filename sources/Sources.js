@@ -60,7 +60,6 @@ sources = sources.concat([
   'sources/Screens/Popups/Reward.js',
   'sources/Screens/Popups/Continue.js',
   'sources/Screens/Popups/Credits.js',
-  'sources/Screens/Popups/Coins.js',
   'sources/Screens/Popups/Store.js',
   'sources/Store/Backgrounds/StoreBackground.js',
   'sources/Store/Backgrounds/StoreBlankBackground.js',
