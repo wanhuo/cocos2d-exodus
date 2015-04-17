@@ -228,6 +228,44 @@ Reward = Popup.extend({
    *
    *
    */
+  onTouch: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.animation) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.elements.hand.getNumberOfRunningActions() > 0 ) return false;
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.values.coins.total += Counter.values.coins.current;
+      Counter.values.coins.current = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.finishAnimation();
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
   onEnter: function() {
     this._super();
 
