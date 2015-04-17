@@ -90,6 +90,12 @@ Character = Spine.extend({
             time: 1.0,
             loop: false
           }
+        },
+        status: {
+          index: 7,
+          name: 'status',
+          time: 1.0,
+          loop: false
         }
       },
       skin: false,
@@ -208,14 +214,6 @@ Character = Spine.extend({
      *
      */
     this.shadow = new Entity(resources.main.character.shadow, Game.backgrounds.game);
-    this.status = new Entity(resources.main.character.status, this);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.status.setColor(cc.color.GREEN);
 
     /**
      *
@@ -333,7 +331,6 @@ Character = Spine.extend({
      *
      */
     this.shadow.destroy();
-    this.status.destroy();
 
     /**
      *
@@ -607,17 +604,6 @@ Character = Spine.extend({
        *
        */
       this.updateTraectory();
-
-      /**
-       *
-       *
-       *
-       */
-      this.status.create().attr({
-        x: 0,
-        y: 21,
-        opacity: 0
-      });
    }.bind(this), 2500);
 
     /**
@@ -1800,10 +1786,8 @@ Character = Spine.extend({
      */
     switch(element ? element.getCurrentFrameIndex() : false) {
       default:
-      this.status.opacity = 0;
       break;
       case 0:
-      this.status.opacity = 255;
       break;
       case 1:
       break;

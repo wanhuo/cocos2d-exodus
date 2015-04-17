@@ -43,8 +43,14 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.schedulers = 0;
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters = {
-      scheduler: 0
     };
 
     /**
@@ -177,6 +183,13 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    Game.popups.remove(this);
+
+    /**
+     *
+     *
+     *
+     */
     if(this.parameters.popup.scheduler) {
 
       /**
@@ -216,13 +229,6 @@ Popup = BackgroundColor.extend({
      *
      */
     Game.elements.rockets.clear();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.popups.remove(this);
   },
 
   /**
@@ -261,14 +267,14 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    this.parameters.scheduler++;
+    this.schedulers++;
 
     /**
      *
      *
      *
      */
-    if(this.parameters.scheduler === 1) {
+    if(this.schedulers === 1) {
 
       /**
        *
@@ -285,14 +291,14 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    this.parameters.scheduler--;
+    this.schedulers--;
 
     /**
      *
      *
      *
      */
-    if(this.parameters.scheduler === 0) {
+    if(this.schedulers === 0) {
 
       /**
        *

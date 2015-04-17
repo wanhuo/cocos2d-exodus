@@ -1423,7 +1423,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(this.parameters.scheduler === 0) {console.log('resumed');
+    if(this.parameters.scheduler === 0) {
 
       /**
        *
