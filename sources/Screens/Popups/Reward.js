@@ -799,6 +799,13 @@ Reward = Popup.extend({
                     )
                   )
                 );
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                Sound.play(resources.main.sound.coins.animation.finish);
               }.bind(this.elements.pig))
             )
           );

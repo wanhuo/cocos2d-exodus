@@ -81,7 +81,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.swithers = [
+    this.switchers = [
       this.buttons.rockets,
       this.buttons.creatures,
       this.buttons.bonuses,
@@ -214,7 +214,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.swithers[this.parameters.index].setCurrentFrameIndex(2);
+    this.switchers[this.parameters.index].setCurrentFrameIndex(2);
 
     /**
      *
@@ -246,7 +246,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.swithers.each(function(element) {
+    this.switchers.each(function(element) {
 
       /**
        *
@@ -298,7 +298,7 @@ Store = Popup.extend({
        *
        *
        */
-      this.swithers.each(function(element) {
+      this.switchers.each(function(element) {
 
         /**
          *
@@ -313,7 +313,7 @@ Store = Popup.extend({
        *
        *
        */
-      this.swithers[this.parameters.index].setCurrentFrameIndex(2);
+      this.switchers[this.parameters.index].setCurrentFrameIndex(2);
 
       /**
        *
@@ -341,6 +341,12 @@ Store = Popup.extend({
    *
    */
   onSwipe: function() {
+
+    /**
+     *
+     *
+     *
+     */
     return true;
   },
 

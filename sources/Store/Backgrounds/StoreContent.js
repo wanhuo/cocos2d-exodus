@@ -78,7 +78,7 @@ StoreContent = StoreBackground.extend({
      */
     this.buttons = {
       purchase: new Button(resources.main.buttons.coins, 1, 2, this, this.onPurchase.bind(this)),
-      choose: new Button(resources.main.buttons.empty, 1, 2, this, this.onChoose.bind(this))
+      select: new Button(resources.main.buttons.empty, 1, 2, this, this.onSelect.bind(this))
     };
 
     /**
@@ -93,8 +93,8 @@ StoreContent = StoreBackground.extend({
       price: new Text('store-price', this.elements.price),
       count: new Text('store-count', this.elements.count),
       purchase: new Text('store-purchase', this.buttons.purchase),
-      choose: new Text('store-choose', this.buttons.choose),
-      choosen: new Text('store-choosen', this)
+      select: new Text('store-select', this.buttons.select),
+      selected: new Text('store-selected', this)
     };
 
     /**
@@ -116,7 +116,7 @@ StoreContent = StoreBackground.extend({
       x: Camera.center.x,
       y: 150
     });
-    this.buttons.choose.create().attr({
+    this.buttons.select.create().attr({
       x: Camera.center.x,
       y: 150
     });
@@ -142,11 +142,11 @@ StoreContent = StoreBackground.extend({
       x: this.buttons.purchase.width / 2,
       y: this.buttons.purchase.height / 2
     });
-    this.text.choose.create().attr({
-      x: this.buttons.choose.width / 2,
-      y: this.buttons.choose.height / 2
+    this.text.select.create().attr({
+      x: this.buttons.select.width / 2,
+      y: this.buttons.select.height / 2
     });
-    this.text.choosen.create().attr({
+    this.text.selected.create().attr({
       x: Camera.center.x,
       y: 175
     });
@@ -203,14 +203,14 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    this.choisable = item.choisable;
-    this.choosen = item.choosen;
+    this.selectable = item.selectable;
+    this.selected = item.selected;
     this.unlock = item.unlock;
     this.price = item.price;
     this.owned = item.owned;
     this.type = item.type;
     this.item = item.item;
-    this.chooseCode = item.chooseCode;
+    this.selectCode = item.selectCode;
     this.purchaseCode = item.purchaseCode;
   },
   updateInfo: function() {
@@ -326,14 +326,14 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      this.text.choosen.destroy();
+      this.text.selected.destroy();
 
       /**
        *
        *
        *
        */
-      this.buttons.choose.destroy();
+      this.buttons.select.destroy();
       break;
       case Items.types.permanent:
 
@@ -363,28 +363,28 @@ StoreContent = StoreBackground.extend({
          *
          *
          */
-        if(this.choisable) {
+        if(this.selectable) {
 
           /**
            *
            *
            *
            */
-          if(this.choosen) {
+          if(this.selected) {
 
             /**
              *
              *
              *
              */
-            this.text.choosen.create();
+            this.text.selected.create();
 
             /**
              *
              *
              *
              */
-            this.buttons.choose.destroy();
+            this.buttons.select.destroy();
           } else {
 
             /**
@@ -392,14 +392,14 @@ StoreContent = StoreBackground.extend({
              *
              *
              */
-            this.text.choosen.destroy();
+            this.text.selected.destroy();
 
             /**
              *
              *
              *
              */
-            this.buttons.choose.create();
+            this.buttons.select.create();
           }
         }
       } else {
@@ -409,14 +409,14 @@ StoreContent = StoreBackground.extend({
          *
          *
          */
-        this.text.choosen.destroy();
+        this.text.selected.destroy();
 
         /**
          *
          *
          *
          */
-        this.buttons.choose.destroy();
+        this.buttons.select.destroy();
       }
       break;
     }
@@ -475,9 +475,21 @@ StoreContent = StoreBackground.extend({
         Data.set(false, this.purchaseCode, true);
         break;
       }
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.play(resources.main.sound.store.purchase);
     } else {
-      // TODO: Opem coins.
-      alert('Not enought coins.');
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.play(resources.main.sound.store.purchase);
     }
 
     /**
@@ -508,7 +520,7 @@ StoreContent = StoreBackground.extend({
    *
    *
    */
-  onChoose: function() {
+  onSelect: function() {
 
     /**
      *
@@ -516,7 +528,7 @@ StoreContent = StoreBackground.extend({
      *
      */
     for(var i = 0; i < Items.items[this.index].length; i++) {
-      Items.items[this.index][i].choosen = false;
+      Items.items[this.index][i].selected = false;
     }
 
     /**
@@ -524,14 +536,14 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    Items.items[this.index][this.id].choosen = true;
+    Items.items[this.index][this.id].selected = true;
 
     /**
      *
      *
      *
      */
-    Data.set(false, this.chooseCode, this.id);
+    Data.set(false, this.selectCode, this.id);
 
     /**
      *
@@ -539,5 +551,12 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.updateInfo();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.store.select);
   }
 });

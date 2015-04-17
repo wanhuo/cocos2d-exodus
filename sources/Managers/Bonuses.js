@@ -399,5 +399,12 @@ Bonuses = cc.Class.extend({
         }
       }
     }
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.bonuses.use.random());
   }
 });

@@ -56,7 +56,8 @@ Continue = Popup.extend({
       time: {
         current: 7,
         elapsed: 0
-      }
+      },
+      sound: false
     };
 
     /**
@@ -383,6 +384,13 @@ Continue = Popup.extend({
            *
            *
            */
+          this.parameters.sound = Sound.play(resources.main.sound.continue);
+
+          /**
+           *
+           *
+           *
+           */
           this.elements.element.runAction(
             cc.ProgressFromTo.create(this.parameters.time.current, 100, 0)
           );
@@ -469,6 +477,13 @@ Continue = Popup.extend({
      *
      */
     this.textes.action.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.stop(this.parameters.sound);
   },
 
   /**

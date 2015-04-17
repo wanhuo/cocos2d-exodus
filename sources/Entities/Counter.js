@@ -582,15 +582,6 @@ Counter = Button.extend({
      */
     this.values.info.deaths++;
   },
-  onCoin: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.values.coins.current++;
-  },
 
   /**
    *
@@ -660,6 +651,28 @@ Counter = Button.extend({
      *
      */
     Sound.play(resources.main.sound.counter.fail);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCoin: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.values.coins.current++;
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.coins);
   },
 
   /**

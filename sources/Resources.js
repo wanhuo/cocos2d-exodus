@@ -228,9 +228,13 @@ var resources = {
     sound: {
       touch: 'resource/Sound/touch.sound',
       save: 'resource/Sound/save.sound',
+      swipe: 'resource/Sound/swipe.sound',
+      awesome: 'resource/Sound/awesome.sound',
+      unlock: 'resource/Sound/unlock.sound',
+      continue: 'resource/Sound/continue.sound',
       character: {
         destroy: 'resource/Sound/destroy.sound',
-        engine :{
+        engine : {
           start: 'resource/Sound/engine-start.sound',
           repeat: 'resource/Sound/engine-repeat.sound'
         }
@@ -241,7 +245,30 @@ var resources = {
           'resource/Sound/count-2.sound',
           'resource/Sound/count-3.sound'
         ],
-        fail: 'resource/Sound/fail.sound'
+        fail: 'resource/Sound/fail.sound',
+        coins: 'resource/Sound/coins.sound'
+      },
+      store: {
+        select: 'resource/Sound/store-select.sound',
+        purchase: 'resource/Sound/store-purchase.sound',
+        more: 'resource/Sound/store-more.sound'
+      },
+      coins: {
+        collect: 'resource/Sound/coins-collect.sound',
+        animation: {
+          finish: 'resource/Sound/coins-animation-finish.sound'
+        }
+      },
+      bonuses: {
+        actions: [
+          '',
+          'resources/Sound/bonus-2.sound'
+        ],
+        use: [
+          'resource/Sound/bonus-use-1.sound',
+          'resource/Sound/bonus-use-2.sound',
+          'resource/Sound/bonus-use-3.sound'
+        ]
       }
     }
   }

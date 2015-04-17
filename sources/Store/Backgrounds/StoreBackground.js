@@ -117,6 +117,13 @@ StoreBackground = Background.extend({
     this.runAction(
       cc.DelayTime.create(time + 0.2)
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.swipe);
   },
   onExit: function() {
     this._super();
