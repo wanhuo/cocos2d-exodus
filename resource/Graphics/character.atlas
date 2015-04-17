@@ -55,76 +55,220 @@ skins/3/flame.3
   index: -1
 
 character2.png
-size: 2011,1985
+size: 2007,1825
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-skins/1/engine.start.particles.1
-  rotate: false
-  xy: 1005, 255
-  size: 802, 312
-  orig: 802, 312
-  offset: 0, 0
-  index: -1
-skins/1/root.2
-  rotate: false
-  xy: 1005, 1072
-  size: 501, 911
-  orig: 501, 911
-  offset: 0, 0
-  index: -1
-skins/1/root.3
-  rotate: true
-  xy: 1005, 2
-  size: 251, 456
-  orig: 251, 456
-  offset: 0, 0
-  index: -1
-skins/2/root.2
-  rotate: false
-  xy: 1508, 1072
-  size: 501, 911
-  orig: 501, 911
-  offset: 0, 0
-  index: -1
-skins/2/root.3
-  rotate: true
-  xy: 1463, 2
-  size: 251, 456
-  orig: 251, 456
-  offset: 0, 0
-  index: -1
 skins/3/root.1
   rotate: false
-  xy: 2, 162
+  xy: 2, 2
   size: 1001, 1821
   orig: 1001, 1821
   offset: 0, 0
   index: -1
-skins/3/root.2
-  rotate: true
-  xy: 1005, 569
-  size: 501, 911
-  orig: 501, 911
+skins/4/root.1
+  rotate: false
+  xy: 1005, 3
+  size: 1000, 1820
+  orig: 1000, 1820
   offset: 0, 0
   index: -1
 
 character3.png
-size: 863,255
+size: 2006,1824
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-skins/1/engine.start.particles.2
+skins/5/root.1
   rotate: false
-  xy: 460, 8
+  xy: 2, 2
+  size: 1000, 1820
+  orig: 1000, 1820
+  offset: 0, 0
+  index: -1
+skins/6/root.1
+  rotate: false
+  xy: 1004, 2
+  size: 1000, 1820
+  orig: 1000, 1820
+  offset: 0, 0
+  index: -1
+
+character4.png
+size: 2006,1824
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/7/root.1
+  rotate: false
+  xy: 2, 2
+  size: 1000, 1820
+  orig: 1000, 1820
+  offset: 0, 0
+  index: -1
+skins/8/root.1
+  rotate: false
+  xy: 1004, 2
+  size: 1000, 1820
+  orig: 1000, 1820
+  offset: 0, 0
+  index: -1
+
+character5.png
+size: 2010,1920
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/root.2
+  rotate: false
+  xy: 1004, 1007
+  size: 501, 911
+  orig: 501, 911
+  offset: 0, 0
+  index: -1
+skins/2/root.2
+  rotate: false
+  xy: 1507, 1007
+  size: 501, 911
+  orig: 501, 911
+  offset: 0, 0
+  index: -1
+skins/3/root.2
+  rotate: true
+  xy: 1004, 504
+  size: 501, 911
+  orig: 501, 911
+  offset: 0, 0
+  index: -1
+skins/4/root.2
+  rotate: true
+  xy: 1004, 2
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/9/root.1
+  rotate: false
+  xy: 2, 98
+  size: 1000, 1820
+  orig: 1000, 1820
+  offset: 0, 0
+  index: -1
+
+character6.png
+size: 1986,2027
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/engine.start.particles.1
+  rotate: true
+  xy: 504, 58
+  size: 802, 312
+  orig: 802, 312
+  offset: 0, 0
+  index: -1
+skins/1/engine.start.particles.2
+  rotate: true
+  xy: 1732, 2
   size: 401, 245
   orig: 401, 245
   offset: 0, 0
   index: -1
-skins/3/root.3
+skins/1/root.3
   rotate: true
-  xy: 2, 2
+  xy: 1416, 862
   size: 251, 456
   orig: 251, 456
+  offset: 0, 0
+  index: -1
+skins/2/root.3
+  rotate: true
+  xy: 818, 770
+  size: 251, 456
+  orig: 251, 456
+  offset: 0, 0
+  index: -1
+skins/3/root.3
+  rotate: true
+  xy: 1276, 609
+  size: 251, 456
+  orig: 251, 456
+  offset: 0, 0
+  index: -1
+skins/4/root.3
+  rotate: true
+  xy: 818, 518
+  size: 250, 455
+  orig: 250, 455
+  offset: 0, 0
+  index: -1
+skins/5/root.2
+  rotate: false
+  xy: 2, 1115
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/5/root.3
+  rotate: false
+  xy: 1734, 405
+  size: 250, 455
+  orig: 250, 455
+  offset: 0, 0
+  index: -1
+skins/6/root.2
+  rotate: false
+  xy: 2, 203
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/6/root.3
+  rotate: true
+  xy: 1275, 357
+  size: 250, 455
+  orig: 250, 455
+  offset: 0, 0
+  index: -1
+skins/7/root.2
+  rotate: true
+  xy: 504, 1525
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/7/root.3
+  rotate: true
+  xy: 818, 266
+  size: 250, 455
+  orig: 250, 455
+  offset: 0, 0
+  index: -1
+skins/8/root.2
+  rotate: false
+  xy: 1416, 1115
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/8/root.3
+  rotate: true
+  xy: 1275, 105
+  size: 250, 455
+  orig: 250, 455
+  offset: 0, 0
+  index: -1
+skins/9/root.2
+  rotate: true
+  xy: 504, 1023
+  size: 500, 910
+  orig: 500, 910
+  offset: 0, 0
+  index: -1
+skins/9/root.3
+  rotate: true
+  xy: 818, 14
+  size: 250, 455
+  orig: 250, 455
   offset: 0, 0
   index: -1
