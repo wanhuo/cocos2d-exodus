@@ -123,8 +123,8 @@ var languages = {
     {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
   'awesome': [
-    {title: '$1 meters', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '$1 метров', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: '$1 meters', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]},
+    {title: '$1 метров', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},

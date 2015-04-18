@@ -52,7 +52,7 @@ Awesome = Entity.extend({
      */
     this.text.create().attr({
       x: -40,
-      y: -30
+      y: -40
     });
 
     /**

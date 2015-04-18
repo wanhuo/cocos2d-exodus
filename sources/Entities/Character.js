@@ -1875,15 +1875,25 @@ Character = Spine.extend({
      *
      */
     if(!this.parameters.high) {
-      if(this.y > Counter.values.position) {
-        this.parameters.high = true;
+      if(Counter.values.position > 0) {
+        if(this.y > Counter.values.position) {
+          this.parameters.high = true;
+
+          /**
+           *
+           *
+           *
+           */
+          Sound.play(resources.main.sound.awesome);
+        }
+      } else {
 
         /**
          *
          *
          *
          */
-        Sound.play(resources.main.sound.awesome);
+        this.parameters.high = true;
       }
     }
 
