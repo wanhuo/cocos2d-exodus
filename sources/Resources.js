@@ -106,6 +106,9 @@ var resources = {
       texture: 'resource/Graphics/explanation.png',
       circle: 'resource/Graphics/explanation-circle.png'
     },
+    awesome: {
+      texture: 'resource/Graphics/awesome.png',
+    },
     buttons: {
       play: 'resource/Graphics/play-button.png',
       leaderboard: 'resource/Graphics/leaderboard-button.png',

@@ -424,6 +424,21 @@ StoreContent = StoreBackground.extend({
              */
             this.buttons.select.destroy();
           }
+        } else {
+
+          /**
+           *
+           *
+           *
+           */
+          this.text.selected.destroy();
+
+          /**
+           *
+           *
+           *
+           */
+          this.buttons.select.destroy();
         }
       } else {
 

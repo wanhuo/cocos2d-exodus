@@ -21,58 +21,39 @@
  *
  */
 
-var properties = {
-  purchases: {
+StoreItem51 = Background.extend({
 
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
   },
 
-  music: 1,
-  sound: 2,
-  vibrate: 3,
-  language: 4,
-  ad: 5,
-  info: {
-    uid: 6,
-    name: 7,
-    surname: 8,
-    photo: 9
+  /**
+   *
+   *
+   *
+   */
+  create: function() {
+    return this;
   },
-  scores: {
-    best: 10,
-    jumps: 11,
-    deaths: 12
-  },
-  awesome: 13,
-  coins: 1000,
-  tutorial: {
-    chapters: {
-      chapter1: 101,
-      chapter2: 102,
-      chapter3: 103,
-      chapter4: 104,
-      chapter5: 105
-    }
-  },
-  rocket: 200,
-  rockets: [
-    201,
-    202,
-    203,
-    204,
-    205,
-    206,
-    207,
-    208,
-    209
-  ],
-  creatures: [
-    301,
-    302,
-    303,
-    304
-  ],
-  bonuses: [
-    401,
-    402
-  ]
-};
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
+    this._super();
+  }
+});

@@ -122,6 +122,10 @@ var languages = {
     {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
+  'awesome': [
+    {title: '$1 meters', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '$1 метров', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Спасибо за игру!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
@@ -334,6 +338,10 @@ var languages = {
     {title: 'Lucky Horseshoe', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Счастливая подкова', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
+  'store-item-title-5-1': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-item-description-1-1': [
     {title: 'Simple orange rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Простая оранжевая рокета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
@@ -397,6 +405,10 @@ var languages = {
   'store-item-description-3-2': [
     {title: 'Increases the probability of a\n coin for 2 times.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Увеличивает вероятность появления\n монетки в 2 раза.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-1': [
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},

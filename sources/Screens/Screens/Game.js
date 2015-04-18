@@ -235,6 +235,7 @@ Game = Screen.extend({
       )
     );
     this.elements.bonuses = new Bonuses;
+    this.elements.awesome = new Awesome;
     this.elements.explanation = new Explanation;
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
@@ -1229,6 +1230,28 @@ Game = Screen.extend({
      *
      *
      */
+    var high = round(Data.get(false, properties.awesome));
+
+    /**
+     *
+     *
+     *
+     */
+    if(high > 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.awesome.create(high);
+    }
+
+    /**
+     *
+     *
+     *
+     */
     Analytics.sendEvent('System events', 'Game start', '', '');
   },
   onLoss: function() {
@@ -1246,6 +1269,13 @@ Game = Screen.extend({
      *
      */
     this.elements.bonuses.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.awesome.destroy();
 
     /**
      *
