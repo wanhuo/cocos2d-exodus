@@ -153,6 +153,7 @@ var resources = {
       coins: 'resource/Graphics/store-coins-background.png',
       price: 'resource/Graphics/store-price-background.png',
       count: 'resource/Graphics/store-items-count-background.png',
+      baloon: 'resource/Graphics/store-baloon.png',
       decorations: [
         'resource/Graphics/store-decoration-1.png'
       ],
@@ -254,7 +255,7 @@ var resources = {
       bonuses: {
         actions: [
           '',
-          'resources/Sound/bonus-2.sound'
+          'resource/Sound/bonus-2.sound'
         ],
         use: [
           'resource/Sound/bonus-use-1.sound',

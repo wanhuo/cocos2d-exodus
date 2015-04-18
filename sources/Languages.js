@@ -210,6 +210,26 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
+  'store-title-0': [
+    {title: 'Rockets', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Рокеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-1': [
+    {title: 'Creatures', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Существа', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-2': [
+    {title: 'Bonuses', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Бонусы', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-3': [
+    {title: 'Points', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Точки', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-4': [
+    {title: 'Coins', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Монеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
   'store-no-items-title': [
     {title: 'No Items', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]},
     {title: 'Нет позиций', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]}

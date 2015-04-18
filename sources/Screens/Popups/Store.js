@@ -56,6 +56,7 @@ Store = Popup.extend({
      *
      */
     this.elements = {
+      baloon: new Entity(resources.main.store.baloon, this),
       coins: new Entity(resources.main.store.coins, this),
       decorations: [
         new Entity(resources.main.store.decorations[0], this)
@@ -96,7 +97,8 @@ Store = Popup.extend({
      */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
-      close: new Text('close', this)
+      close: new Text('close', this),
+      baloon: new Text('store-title-0', this.elements.baloon)
     };
 
     /**
@@ -104,6 +106,10 @@ Store = Popup.extend({
      *
      *
      */
+    this.elements.baloon.create().setAnchorPoint({
+      x: 0.9,
+      y: 0.0
+    });
     this.elements.decorations[0].create().attr({
       x: Camera.center.x,
       y: Camera.height - 300
@@ -155,6 +161,10 @@ Store = Popup.extend({
     this.text.close.create().attr({
       x: Camera.center.x,
       y: 40
+    });
+    this.text.baloon.create().attr({
+      x: this.elements.baloon.width / 2,
+      y: this.elements.baloon.height / 2
     });
 
     /**
@@ -215,6 +225,21 @@ Store = Popup.extend({
      *
      */
     this.switchers[this.parameters.index].setCurrentFrameIndex(2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.baloon.x = this.switchers[this.parameters.index].x,
+    this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.baloon.setText('store-title-' + this.parameters.index);
 
     /**
      *
@@ -314,6 +339,39 @@ Store = Popup.extend({
        *
        */
       this.switchers[this.parameters.index].setCurrentFrameIndex(2);
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.baloon.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.2, 1.0, 0.0)
+          ),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.elements.baloon.x = this.switchers[this.parameters.index].x,
+            this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.baloon.setText('store-title-' + this.parameters.index);
+          }.bind(this)),
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.2, 1.0, 1.0)
+          )
+        )
+      );
 
       /**
        *
