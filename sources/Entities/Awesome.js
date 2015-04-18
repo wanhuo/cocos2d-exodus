@@ -106,7 +106,7 @@ Awesome = Entity.extend({
      *
      *
      */
-    while(x > -(Camera.width / Game.parameters.scale.min) / 2) {
+    while(x > -(Camera.width / Game.parameters.scale.min) / 1.5) {
 
       /**
        *
