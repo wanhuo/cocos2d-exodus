@@ -438,8 +438,15 @@ Character = Spine.extend({
      * 
      *
      */
+    this.create();
+
+    /**
+     *
+     * 
+     *
+     */
     this.x = Camera.center.x;
-    this.y = Game.parameters.camera.center;
+    this.y = Game.parameters.camera.positions[this.parameters.skins.indexOf(this.parameters.skin)];
 
     /**
      *
@@ -447,13 +454,6 @@ Character = Spine.extend({
      *
      */
     this.setScale(0.25);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.create();
   },
   onAnimation: function() {
 
@@ -1200,9 +1200,17 @@ Character = Spine.extend({
        *
        *
        */
+      var element = this.smokes.create(this);
+
+      /**
+       *
+       *
+       *
+       */
       if(this.shake && this.shake.enabled) {
+        element.setCurrentFrameIndex(1);
       } else {
-        this.smokes.create(this);
+        element.setCurrentFrameIndex(0);
       }
     }
 

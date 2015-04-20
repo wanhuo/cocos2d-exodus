@@ -242,6 +242,24 @@ Items = cc.Class.extend({
           owned: true,
           selectable: false,
           item: new StoreItem51
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          purchaseCode: 0,
+          owned: true,
+          selectable: false,
+          item: new StoreItem52
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          purchaseCode: 0,
+          owned: true,
+          selectable: false,
+          item: new StoreItem53
         }
       ]
     ]

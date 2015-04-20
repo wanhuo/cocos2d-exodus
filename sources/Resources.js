@@ -26,7 +26,9 @@ var resources = {
     font: 'resource/Fonts/Impact.ttf',
     backgrounds: [
       'resource/Graphics/background-1.png',
-      'resource/Graphics/background-2.png'
+      'resource/Graphics/background-2.png',
+      'resource/Graphics/background-3.png',
+      'resource/Graphics/background-4.png'
     ],
     name: 'resource/Graphics/name.png',
     ground: 'resource/Graphics/ground.png',
@@ -183,7 +185,23 @@ var resources = {
           }
         ],
         [],
-        []
+        [
+          {
+            background: 'resource/Graphics/store-item-51-background.png',
+            decoration: 'resource/Graphics/store-item-51-decoration.png',
+            button: 'resource/Graphics/store-item-51-button.png'
+          },
+          {
+            background: 'resource/Graphics/store-item-52-background.png',
+            decoration: 'resource/Graphics/store-item-52-decoration.png',
+            button: 'resource/Graphics/store-item-52-button.png'
+          },
+          {
+            background: 'resource/Graphics/store-item-53-background.png',
+            decoration: 'resource/Graphics/store-item-53-decoration.png',
+            button: 'resource/Graphics/store-item-53-button.png'
+          }
+        ]
       ]
     },
     counter: {

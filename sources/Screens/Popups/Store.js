@@ -55,11 +55,18 @@ Store = Popup.extend({
      *
      *
      */
+    this.holder = new Background(this);
+
+    /**
+     *
+     *
+     *
+     */
     this.elements = {
-      baloon: new Entity(resources.main.store.baloon, this),
-      coins: new Entity(resources.main.store.coins, this),
+      baloon: new Entity(resources.main.store.baloon, this.holder),
+      coins: new Entity(resources.main.store.coins, this.holder),
       decorations: [
-        new Entity(resources.main.store.decorations[0], this)
+        new Entity(resources.main.store.decorations[0], this.holder)
       ]
     };
 
@@ -69,12 +76,12 @@ Store = Popup.extend({
      *
      */
     this.buttons = {
-      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this, this.onBackground1.bind(this)),
-      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this, this.onBackground2.bind(this)),
-      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this, this.onBackground3.bind(this)),
-      points: new Button(resources.main.store.buttons.points, 1, 3, this, this.onBackground4.bind(this)),
-      coins: new Button(resources.main.store.buttons.coins, 1, 3, this, this.onBackground5.bind(this)),
-      close: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
+      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this.holder, this.onBackground1.bind(this)),
+      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this.holder, this.onBackground2.bind(this)),
+      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder, this.onBackground3.bind(this)),
+      points: new Button(resources.main.store.buttons.points, 1, 3, this.holder, this.onBackground4.bind(this)),
+      coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder, this.onBackground5.bind(this)),
+      close: new Button(resources.main.buttons.bottom, 1, 1, this.holder, this.hide.bind(this))
     };
 
     /**
@@ -97,7 +104,7 @@ Store = Popup.extend({
      */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
-      close: new Text('close', this),
+      close: new Text('close', this.holder),
       baloon: new Text('store-title-0', this.elements.baloon)
     };
 
@@ -166,6 +173,20 @@ Store = Popup.extend({
       x: this.elements.baloon.width / 2,
       y: this.elements.baloon.height / 2
     });
+
+    /**
+     *
+     *
+     *
+     */
+    this.holder.setCascadeOpacityEnabled(true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.holder.setLocalZOrder(1);
 
     /**
      *

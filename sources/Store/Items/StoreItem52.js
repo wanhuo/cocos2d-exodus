@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem51 = StoreItem50.extend({
+StoreItem52 = StoreItem50.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ StoreItem51 = StoreItem50.extend({
    *
    */
   ctor: function() {
-    this._super(1);
+    this._super(2);
   },
 
   /**
@@ -38,7 +38,7 @@ StoreItem51 = StoreItem50.extend({
    *
    */
   onTouch: function() {
-    Counter.values.coins.total += 200;
+    Counter.values.coins.total += 500;
 
     /**
      *

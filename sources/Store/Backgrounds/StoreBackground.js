@@ -43,6 +43,13 @@ StoreBackground = Background.extend({
      *
      *
      */
+    this.setLocalZOrder(10);
+
+    /**
+     *
+     *
+     *
+     */
     this.retain();
   },
 

@@ -53,7 +53,19 @@ Reward = Popup.extend({
           current: 0,
           elapsed: 0
         }
-      }
+      },
+      positions: [
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 140, y: 170},
+        {x: -10, y: 10},
+        {x: -200, y: -158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158}
+      ]
     };
 
     /**
@@ -573,8 +585,8 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.rocket.x = Camera.center.x - 128 - 500;
-    this.elements.rocket.y = Camera.center.y - 158 - 500;
+    this.elements.rocket.x = Camera.center.x - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
+    this.elements.rocket.y = Camera.center.y - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
 
     /**
      *

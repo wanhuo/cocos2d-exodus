@@ -339,8 +339,16 @@ var languages = {
     {title: 'Счастливая подкова', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-5-1': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: '200 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '200 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-5-2': [
+    {title: '500 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '500 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-5-3': [
+    {title: '1000 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '1000 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-1': [
     {title: 'Simple orange rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
@@ -407,8 +415,16 @@ var languages = {
     {title: 'Увеличивает вероятность появления\n монетки в 2 раза.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-1': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Get 200 coins only for $1.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 200 монет всего за $1.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-2': [
+    {title: 'Get 500 coins only for $2.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 500 монет всего за $2.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-3': [
+    {title: 'Get 1000 coins only for $4.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 1000 монет всего за $4.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},

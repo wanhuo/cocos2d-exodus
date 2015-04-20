@@ -103,6 +103,17 @@ Game = Screen.extend({
         }
       },
       camera: {
+        positions: [
+          450,
+          450,
+          450,
+          450,
+          445,
+          500,
+          550,
+          450,
+          420
+        ],
         center: 450,
         x: 0,
         y: 0,
@@ -178,8 +189,8 @@ Game = Screen.extend({
     this.elements.backgrounds = [
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
       new Entity(resources.main.backgrounds[1], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[0], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[1], this.backgrounds.g)
+      new Entity(resources.main.backgrounds[2], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[3], this.backgrounds.g)
     ];
     this.elements.parallaxes = {
       clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),

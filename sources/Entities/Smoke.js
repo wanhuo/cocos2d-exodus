@@ -21,7 +21,7 @@
  *
  */
 
-Smoke = Entity.extend({
+Smoke = TiledEntity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Smoke = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.character.smoke);
+    this._super(resources.main.character.smoke, 2, 1);
 
     /**
      *
