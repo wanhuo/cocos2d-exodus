@@ -1392,6 +1392,20 @@ Character = Spine.extend({
 
     /**
      *
+     *
+     *
+     */
+    Game.elements.points.bonus = [];
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.points.draw.clear();
+
+    /**
+     *
      * TODO: Whe have a performance issue here.
      *
      */
@@ -1402,14 +1416,21 @@ Character = Spine.extend({
      * 
      *
      */
-    var probably = 16;
+    var bonus = probably(100) ? 4 : 0;
 
     /**
      *
      * 
      *
      */
-    var count = -probably / 2;
+    var capacity = 16;
+
+    /**
+     *
+     * 
+     *
+     */
+    var count = -capacity / 2;
 
     /**
      *
@@ -1483,7 +1504,7 @@ Character = Spine.extend({
        *
        *
        */
-      if(count > 0 && count % probably === 0) {
+      if(count > 0 && count % capacity === 0) {
 
         /**
          *
@@ -1527,6 +1548,31 @@ Character = Spine.extend({
            *
            */
           coins = coinses < Game.parameters.coins.count;
+        } else if(bonus > 0) {
+
+          /**
+           *
+           *
+           *
+           */
+          bonus--;
+
+          /**
+           *
+           *
+           *
+           */
+          element.setCurrentFrameIndex(0);
+
+          /**
+           *
+           *
+           *
+           */
+          Game.elements.points.bonus.push({
+            x: element.x,
+            y: element.y
+          });
         }
 
         /**
@@ -1567,6 +1613,32 @@ Character = Spine.extend({
        *
        */
       count++;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.elements.points.bonus.length) {
+      if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
+        Game.elements.points.bonus = [];
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.elements.points.bonus.length) {
+      Game.elements.points.draw.drawCubicBezier(
+        Game.elements.points.bonus[0],
+        Game.elements.points.bonus[1],
+        Game.elements.points.bonus[2],
+        Game.elements.points.bonus[3],
+        100, Game.elements.points.last().width, cc.color(42, 214, 60, 255)
+      );
     }
   },
 
@@ -1617,15 +1689,32 @@ Character = Spine.extend({
      *
      *
      */
-    var element = index || this.updatePoint();
+    var element = (index || index === 0) ? index : this.updatePoint();
 
     /**
      *
      *
      *
      */
-    switch(element ? element.getCurrentFrameIndex() : false) {
+    switch(element ? element.getCurrentFrameIndex() : element) {
       default:
+
+      /**
+       *
+       *
+       *
+       */
+      if(Game.elements.points.bonus.length) {
+
+        /**
+         *
+         *
+         *
+         */
+        if(this.x > Game.elements.points.bonus[0].x && this.x < Game.elements.points.bonus[3].x) {
+          return this.proceedPoint(0);
+        }
+      }
 
       /**
        *
@@ -1648,38 +1737,23 @@ Character = Spine.extend({
        *
        *
        */
-      Game.parameters.coins.current++;
+      var bonus = false;
 
       /**
        *
        *
        *
        */
-      this.parameters.active = this.parameters.speed.state = true;
-
-      /**
-       *
-       * 
-       *
-       */
-      if(this.parameters.speed.x < this.parameters.speed.maximum.x) {
-        this.parameters.speed.max.x += this.parameters.speed.max.increase.x / Creatures.current[2];
-        this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
-      } else {
+      if(Game.elements.points.bonus.length) {
 
         /**
          *
          *
          *
          */
-        this.parameters.shake.current += this.parameters.shake.increase / Creatures.current[3];
-
-        /**
-         *
-         *
-         *
-         */
-        this.setShake(Number.MAX_VALUE, this.parameters.shake.current);
+        if(this.x > Game.elements.points.bonus[0].x && this.x < Game.elements.points.bonus[3].x) {
+          bonus = true;
+        }
       }
 
       /**
@@ -1687,7 +1761,54 @@ Character = Spine.extend({
        *
        *
        */
-      this.updateTraectory();
+      if(!bonus) {
+
+        /**
+         *
+         *
+         *
+         */
+        Game.parameters.coins.current++;
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.active = this.parameters.speed.state = true;
+
+        /**
+         *
+         * 
+         *
+         */
+        if(this.parameters.speed.x < this.parameters.speed.maximum.x) {
+          this.parameters.speed.max.x += this.parameters.speed.max.increase.x / Creatures.current[2];
+          this.parameters.speed.max.y += this.parameters.speed.max.increase.y;
+        } else {
+
+          /**
+           *
+           *
+           *
+           */
+          this.parameters.shake.current += this.parameters.shake.increase / Creatures.current[3];
+
+          /**
+           *
+           *
+           *
+           */
+          this.setShake(Number.MAX_VALUE, this.parameters.shake.current);
+        }
+
+        /**
+         *
+         *
+         *
+         */
+        this.updateTraectory();
+      }
 
       /**
        *

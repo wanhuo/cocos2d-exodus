@@ -30,6 +30,20 @@ Points = Manager.extend({
    */
   ctor: function() {
     this._super(100, new Point, Game.backgrounds.game, true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.draw = new cc.DrawNode;
+
+    /**
+     *
+     *
+     *
+     */
+    Game.backgrounds.game.addChild(this.draw);
   },
 
   /**
