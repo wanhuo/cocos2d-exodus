@@ -336,6 +336,13 @@ Continue = Popup.extend({
      *
      *
      */
+    Character.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
     Character.parameters.time = 1;
     Character.parameters.speed.state = true;
 
