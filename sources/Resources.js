@@ -118,6 +118,7 @@ var resources = {
       like: 'resource/Graphics/like-button.png',
       sound: 'resource/Graphics/sound-button.png',
       store: 'resource/Graphics/store-button.png',
+      share: 'resource/Graphics/share-button.png',
       credits: 'resource/Graphics/credits-button.png',
       coins: 'resource/Graphics/coins-button.png',
       empty: 'resource/Graphics/empty-button.png',
@@ -146,12 +147,7 @@ var resources = {
       },
       hand: 'resource/Graphics/reward-hand.png',
       buttons: {
-        continue: 'resource/Graphics/reward-continue-button.png',
-        like: 'resource/Graphics/reward-like-button.png',
-        share: 'resource/Graphics/reward-share-button.png',
-        leaderboard: 'resource/Graphics/reward-leaderboard-button.png',
-        achievements: 'resource/Graphics/reward-achievements-button.png',
-        store: 'resource/Graphics/reward-store-button.png'
+        continue: 'resource/Graphics/reward-continue-button.png'
       }
     },
     store: {
