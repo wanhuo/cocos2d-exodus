@@ -504,7 +504,6 @@ Game = Screen.extend({
        *
        */
       this.elements.backgrounds[i].setScaleX((Camera.width + 100) / this.elements.backgrounds[i].width);
-      this.elements.backgrounds[i].setScaleY((Camera.height + 100) / this.elements.backgrounds[i].height);
 
       /**
        *

@@ -164,6 +164,51 @@ Continue = Popup.extend({
      */
     this.setLocalZOrder(-1);
     this.elements.background.setLocalZOrder(10);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.onTouch = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(Counter.values.coins.total >= this.parameters.price.current) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.onPlay();
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.purchase);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        Store.show(true);
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.more);
+      }
+    }.bind(this);
   },
 
   /**
@@ -178,76 +223,60 @@ Continue = Popup.extend({
      *
      *
      */
-    if(Counter.values.coins.total >= this.parameters.price.current) {
+    this.text.action.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.2),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
+        ),
+        cc.CallFunc.create(this.onPlayProceed, this)
+      )
+    );
 
-      /**
-       *
-       *
-       *
-       */
-      this.text.action.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.2),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.play.x,
-              y: this.buttons.play.y - 500
-            })
-          ),
-          cc.CallFunc.create(this.onPlayProceed, this)
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.1),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
         )
-      );
+      )
+    );
+    this.buttons.stop.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.0),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.stop.x,
+            y: this.buttons.stop.y - 500
+          })
+        )
+      )
+    );
 
-      /**
-       *
-       *
-       *
-       */
-      this.buttons.play.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.1),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.play.x,
-              y: this.buttons.play.y - 500
-            })
-          )
-        )
-      );
-      this.buttons.stop.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.stop.x,
-              y: this.buttons.stop.y - 500
-            })
-          )
-        )
-      );
-
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.explanation.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.FadeOut.create(0.5)
-          ),
-          cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
-        )
-      );
-    } else {
-
-      /**
-       *
-       *
-       *
-       */
-      Store.show(true);
-    }
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.explanation.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.5)
+        ),
+        cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+      )
+    );
   },
   onStop: function() {
 
@@ -666,6 +695,13 @@ Continue = Popup.extend({
      *
      */
     this.elements.element.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.pause(this.parameters.sound);
   },
   resumeSchedulerAndActions: function() {
     this._super();
@@ -676,6 +712,13 @@ Continue = Popup.extend({
      *
      */
     this.elements.element.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.resume(this.parameters.sound);
   },
 
   /**

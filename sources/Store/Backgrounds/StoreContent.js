@@ -157,6 +157,66 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.text.price.format([this.price]);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.purchase.onTouch = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(Counter.values.coins.total >= this.price) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.onPurchase();
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.purchase);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        Store.onBackground(4);
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.more);
+      }
+    }.bind(this);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.select.onTouch = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      this.onSelect();
+    }.bind(this);
   },
 
   /**
@@ -472,47 +532,40 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    if(Counter.values.coins.total >= this.price) {
+    Counter.values.coins.total -= this.price;
+
+    /**
+     *
+     *
+     *
+     */
+    Items.items[this.index][this.id].owned = true;
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.type) {
+      case Items.types.consumable:
 
       /**
        *
        *
        *
        */
-      Counter.values.coins.total -= this.price;
+      Data.update(false, this.purchaseCode, 1);
+      break;
+      case Items.types.permanent:
 
       /**
        *
        *
        *
        */
-      Items.items[this.index][this.id].owned = true;
-
-      /**
-       *
-       *
-       *
-       */
-      switch(this.type) {
-        case Items.types.consumable:
-
-        /**
-         *
-         *
-         *
-         */
-        Data.update(false, this.purchaseCode, 1);
-        break;
-        case Items.types.permanent:
-
-        /**
-         *
-         *
-         *
-         */
-        Data.set(false, this.purchaseCode, true);
-        break;
-      }
+      Data.set(false, this.purchaseCode, true);
+      break;
+    }
 
       /**
        *
@@ -520,15 +573,6 @@ StoreContent = StoreBackground.extend({
        *
        */
       Sound.play(resources.main.sound.store.purchase);
-    } else {
-
-      /**
-       *
-       *
-       *
-       */
-      Store.openCoins();
-    }
 
     /**
      *

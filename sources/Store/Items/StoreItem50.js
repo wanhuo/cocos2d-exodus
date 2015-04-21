@@ -46,7 +46,7 @@ StoreItem50 = Entity.extend({
      *
      */
     this.elements = {
-      background: new Entity(resources.main.store.items[4][index - 1].background)
+      background: new Entity(resources.main.store.items[4][index - 1].background, this)
     };
 
     /**
@@ -117,7 +117,8 @@ StoreItem50 = Entity.extend({
      *
      *
      */
-    this.retain();
+    this.elements.background.x = Camera.center.x;
+    this.elements.background.y = Camera.center.y;
 
     /**
      *
@@ -125,6 +126,13 @@ StoreItem50 = Entity.extend({
      *
      */
     this.elements.background.retain();
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
   },
 
   /**
@@ -148,7 +156,7 @@ StoreItem50 = Entity.extend({
      *
      *
      */
-    Store.addChild(this.elements.background);
+    this.elements.background.pool.parent = Store.holder1;
 
     /**
      *
@@ -156,31 +164,9 @@ StoreItem50 = Entity.extend({
      *
      */
     this.elements.background.create();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.background.x = Camera.center.x;
-    this.elements.background.y = Camera.center.y;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.background.setLocalZOrder(0);
   },
   onExit: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.background.removeFromParent();
 
     /**
      *

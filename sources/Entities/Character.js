@@ -52,6 +52,7 @@ Character = Spine.extend({
         game: 4,
         loss: 5
       },
+      scheduler: 0,
       animations: {
         animation: {
           index: 1,
@@ -132,7 +133,7 @@ Character = Spine.extend({
         x: 0,
         y: 0,
         maximum: {
-          x: 2500,
+          x: 1500,
           y: 0
         },
         max: {
@@ -190,7 +191,10 @@ Character = Spine.extend({
       },
       time: 1.0,
       sound: {
-        id: false,
+        id: {
+          start: false,
+          repeat: false
+        },
         handler: false,
         time: 5300
       }
@@ -285,31 +289,15 @@ Character = Spine.extend({
      *
      *
      */
-    if(this.parameters.sound.handler) {
-      clearInterval(this.parameters.sound.handler);
-    }
+    clearInterval(this.parameters.sound.handler);
 
     /**
      *
      *
      *
      */
-    if(this.parameters.sound.id) {
-
-      /**
-       *
-       *
-       *
-       */
-      Sound.stop(this.parameters.sound.id);
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.sound.id = false
-    }
+    Sound.stop(this.parameters.sound.id.start);
+    Sound.stop(this.parameters.sound.id.repeat);
 
     /**
      *
@@ -480,9 +468,7 @@ Character = Spine.extend({
      *
      *
      */
-    if(this.parameters.creation) {
-      clearTimeout(this.parameters.creation);
-    }
+    clearTimeout(this.parameters.creation);
 
     /**
      *
@@ -597,46 +583,7 @@ Character = Spine.extend({
      *
      *
      */
-    this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.sound.f = function() {
-
-      /**
-       *
-       *
-       *
-       */
-      if(this.parameters.state === this.parameters.states.game || this.parameters.state === this.parameters.states.loss) {
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.sound.id = Sound.play(resources.main.sound.character.engine.repeat);
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        clearInterval(this.parameters.sound.handler);
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.sound.handler = false;
-      }
-    }.bind(this);
-    this.parameters.sound.handler = setInterval(this.parameters.sound.f, this.parameters.sound.time);
+    this.updateSound();
 
     /**
      *
@@ -652,7 +599,7 @@ Character = Spine.extend({
      *
      *
      */
-    this.smokes.pauseSchedulerAndActions();
+    this.pauseSchedulerAndActions();
 
     /**
      *
@@ -660,13 +607,6 @@ Character = Spine.extend({
      *
      */
     this.parameters.speed.state = false;
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.time = 0;
 
     /**
      *
@@ -723,14 +663,7 @@ Character = Spine.extend({
            *
            *
            */
-          this.parameters.time = 1.0;
-
-          /**
-           *
-           *
-           *
-           */
-          this.smokes.resumeSchedulerAndActions();
+          this.resumeSchedulerAndActions();
 
           /**
            *
@@ -856,14 +789,7 @@ Character = Spine.extend({
              *
              *
              */
-            this.parameters.time = 1.0;
-
-            /**
-             *
-             *
-             *
-             */
-            this.smokes.resumeSchedulerAndActions();
+            this.resumeSchedulerAndActions();
           }.bind(this))
         )
       );
@@ -903,7 +829,7 @@ Character = Spine.extend({
        * 
        *
        */
-      Sound.play(resources.main.sound.character.engine.start);
+      this.parameters.sound.id.start = Sound.play(resources.main.sound.character.engine.start);
 
       /**
        *
@@ -1071,31 +997,16 @@ Character = Spine.extend({
      *
      *
      */
-    if(this.parameters.sound.handler) {
-      clearInterval(this.parameters.sound.handler);
-    }
+    clearInterval(this.parameters.sound.handler);
+    clearTimeout(this.parameters.creation);
 
     /**
      *
      *
      *
      */
-    if(this.parameters.sound.id) {
-
-      /**
-       *
-       *
-       *
-       */
-      Sound.stop(this.parameters.sound.id);
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.sound.id = false
-    }
+    Sound.stop(this.parameters.sound.id.start);
+    Sound.stop(this.parameters.sound.id.repeat);
 
     /**
      *
@@ -1416,7 +1327,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var bonus = probably(100) ? 4 : 0;
+    var bonus = probably(10) ? 4 : 0;
 
     /**
      *
@@ -1711,7 +1622,7 @@ Character = Spine.extend({
          *
          *
          */
-        if(this.x > Game.elements.points.bonus[0].x && this.x < Game.elements.points.bonus[3].x) {
+        if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
           return this.proceedPoint(0);
         }
       }
@@ -1751,7 +1662,7 @@ Character = Spine.extend({
          *
          *
          */
-        if(this.x > Game.elements.points.bonus[0].x && this.x < Game.elements.points.bonus[3].x) {
+        if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
           bonus = true;
         }
       }
@@ -2143,6 +2054,53 @@ Character = Spine.extend({
    *
    *
    */
+  updateSound: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.sound.id.repeat = Sound.play(resources.main.sound.character.engine.repeat);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.sound.f = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.parameters.state === this.parameters.states.game || this.parameters.state === this.parameters.states.loss) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.sound.id.repeat = Sound.play(resources.main.sound.character.engine.repeat);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        clearInterval(this.parameters.sound.handler);
+      }
+    }.bind(this);
+    this.parameters.sound.handler = setInterval(this.parameters.sound.f, this.parameters.sound.time);
+  },
+
+  /**
+   *
+   *
+   *
+   */
   saveFromWater: function() {
     return false;
   },
@@ -2152,25 +2110,90 @@ Character = Spine.extend({
    *
    *
    */
-  resumeSchedulerAndActions: function() {
-    this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.smokes.resumeSchedulerAndActions();
-  },
   pauseSchedulerAndActions: function() {
-    this._super();
 
     /**
      *
      *
      *
      */
-    this.smokes.pauseSchedulerAndActions();
+    this.parameters.scheduler++;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.scheduler === 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+
+      /**
+       *
+       *
+       *
+       */
+      this.smokes.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      clearInterval(this.parameters.sound.handler);
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.stop(this.parameters.sound.id.repeat);
+    }
+  },
+  resumeSchedulerAndActions: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.scheduler--;
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.parameters.scheduler === 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+
+      /**
+       *
+       *
+       *
+       */
+      this.smokes.resumeSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.state.create && (this.parameters.state == this.parameters.states.game || this.parameters.state == this.parameters.states.loss)) {
+        this.updateSound();
+      }
+    }
   },
 
   /**

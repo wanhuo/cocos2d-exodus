@@ -44,7 +44,7 @@ var languages = {
   ],
   'start': [
     {title: 'Tap screen to launch a rocket', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
+    {title: 'Нажмите на экран\nдля запуска рокеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'coins': [
     {title: '$1', font: 'Impact', size: 24, dimensions: false, color: [228, 149, 81]},
@@ -72,7 +72,7 @@ var languages = {
   ],
   'tutorial-chapter-1': [
     {title: 'Please help me!\n\nOur world is flooded, and you have a rocket! Tap the screen to help us escape!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
-    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть ракета! Тапай по экрану чтобы мы бежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
+    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть рокета! Тапай по экрану чтобы мы бежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
   ],
   'tutorial-chapter-2': [
     {title: 'Perfect. Everything is ready to start!\n\nJust click again. We are ready!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
@@ -80,7 +80,7 @@ var languages = {
   ],
   'tutorial-chapter-3': [
     {title: 'It is very easy to control the ship: tap the screen when the rocket will fly through the green point!\n\nOn the right?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]},
-    {title: 'Управлять кораблем очень легко: нажимай на экран когда ракета достигнет зеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
+    {title: 'Управлять кораблем очень легко: нажимай на экран когда рокета достигнет зеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
   ],
   'tutorial-chapter-4': [
     {title: 'We forgot to warn you about the red points! They pull the ship down!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]},

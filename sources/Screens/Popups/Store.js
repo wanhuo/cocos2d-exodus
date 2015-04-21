@@ -55,7 +55,8 @@ Store = Popup.extend({
      *
      *
      */
-    this.holder = new Background(this);
+    this.holder1 = new Background(this);
+    this.holder2 = new Background(this);
 
     /**
      *
@@ -63,10 +64,10 @@ Store = Popup.extend({
      *
      */
     this.elements = {
-      baloon: new Entity(resources.main.store.baloon, this.holder),
-      coins: new Entity(resources.main.store.coins, this.holder),
+      baloon: new Entity(resources.main.store.baloon, this.holder2),
+      coins: new Entity(resources.main.store.coins, this.holder2),
       decorations: [
-        new Entity(resources.main.store.decorations[0], this.holder)
+        new Entity(resources.main.store.decorations[0], this.holder2)
       ]
     };
 
@@ -76,12 +77,12 @@ Store = Popup.extend({
      *
      */
     this.buttons = {
-      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this.holder, this.onBackground1.bind(this)),
-      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this.holder, this.onBackground2.bind(this)),
-      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder, this.onBackground3.bind(this)),
-      points: new Button(resources.main.store.buttons.points, 1, 3, this.holder, this.onBackground4.bind(this)),
-      coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder, this.onBackground5.bind(this)),
-      close: new Button(resources.main.buttons.bottom, 1, 1, this.holder, this.hide.bind(this))
+      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this.holder2, this.onBackground1.bind(this)),
+      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this.holder2, this.onBackground2.bind(this)),
+      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder2, this.onBackground3.bind(this)),
+      points: new Button(resources.main.store.buttons.points, 1, 3, this.holder2, this.onBackground4.bind(this)),
+      coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder2, this.onBackground5.bind(this)),
+      close: new Button(resources.main.buttons.bottom, 1, 1, this.holder2, this.hide.bind(this))
     };
 
     /**
@@ -104,7 +105,7 @@ Store = Popup.extend({
      */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
-      close: new Text('close', this.holder),
+      close: new Text('close', this.holder2),
       baloon: new Text('store-title-0', this.elements.baloon)
     };
 
@@ -179,14 +180,16 @@ Store = Popup.extend({
      *
      *
      */
-    this.holder.setCascadeOpacityEnabled(true);
+    this.holder1.setCascadeOpacityEnabled(true);
+    this.holder2.setCascadeOpacityEnabled(true);
 
     /**
      *
      *
      *
      */
-    this.holder.setLocalZOrder(1);
+    this.holder1.setLocalZOrder(0);
+    this.holder2.setLocalZOrder(1);
 
     /**
      *
@@ -238,36 +241,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.parameters.index = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    this.switchers[this.parameters.index].setCurrentFrameIndex(2);
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.baloon.x = this.switchers[this.parameters.index].x,
-    this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
-
-    /**
-     *
-     *
-     *
-     */
-    this.text.baloon.setText('store-title-' + this.parameters.index);
-
-    /**
-     *
-     *
-     *
-     */
-    this.addChild(this.backgrounds[this.parameters.index]);
+    this.elements.baloon.scaleY = 0;
   },
   onExit: function() {
     this._super();
@@ -458,28 +432,6 @@ Store = Popup.extend({
    *
    *
    */
-  openCoins: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Sound.play(resources.main.sound.store.more);
-
-    /**
-     *
-     *
-     *
-     */
-    // TODO: Open coins.
-  },
-
-  /**
-   *
-   *
-   *
-   */
   show: function(coins) {
     this._super();
 
@@ -492,24 +444,18 @@ Store = Popup.extend({
       cc.Sequence.create(
         cc.EaseSineInOut.create(
           cc.FadeIn.create(0.2)
-        )
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.onBackground(coins === true ? 4 : 0);
+        }.bind(this))
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    if(coins === true) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.openCoins();
-    }
   },
   hide: function() {
 
@@ -541,14 +487,5 @@ Store = Popup.extend({
      *
      */
     this.text.coins.format([Counter.values.coins.total + 0]);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
   }
 });
