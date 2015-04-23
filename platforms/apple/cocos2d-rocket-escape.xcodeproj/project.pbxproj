@@ -84,6 +84,7 @@
 		784222D91A0A5D6800CDC2F5 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = 784222D21A0A5D6800CDC2F5 /* main.js */; };
 		784222DA1A0A5D6800CDC2F5 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 784222D31A0A5D6800CDC2F5 /* project.json */; };
 		784222DB1A0A5D6800CDC2F5 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 784222D31A0A5D6800CDC2F5 /* project.json */; };
+		78454D261AE9B22100C9E0FB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78454D251AE9B22100C9E0FB /* Security.framework */; };
 		784552161AB1CB5100C11E71 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784552151AB1CB5100C11E71 /* Chartboost.framework */; };
 		78471E0C1A8A2AAF00B4FD1B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7828A0151A1F6E1B0079492B /* libcocos2d Mac.a */; };
 		78471E0D1A8A2AAF00B4FD1B /* libjsbindings Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7828A00C1A1F6E110079492B /* libjsbindings Mac.a */; };
@@ -262,6 +263,7 @@
 		784222D11A0A5D6800CDC2F5 /* sources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sources; path = ../../sources; sourceTree = "<group>"; };
 		784222D21A0A5D6800CDC2F5 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = ../../main.js; sourceTree = "<group>"; };
 		784222D31A0A5D6800CDC2F5 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = project.json; path = ../../project.json; sourceTree = "<group>"; };
+		78454D251AE9B22100C9E0FB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		784552151AB1CB5100C11E71 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
 		7847CDE21AB184820014E3F3 /* Admob.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Admob.mm; sourceTree = "<group>"; };
 		7847CDE41AB184820014E3F3 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Analytics.mm; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				502380DC17EBB88200990C9B /* libcurl.dylib in Frameworks */,
 				509D4A8817EBB24E00697056 /* libsqlite3.dylib in Frameworks */,
 				509D4A8917EBB24E00697056 /* libz.dylib in Frameworks */,
+				78454D261AE9B22100C9E0FB /* Security.framework in Frameworks */,
 				509D4AEB17EBB82600697056 /* IOKit.framework in Frameworks */,
 				509D4AE917EBB82000697056 /* AppKit.framework in Frameworks */,
 				509D4AE717EBB81800697056 /* OpenGL.framework in Frameworks */,
@@ -727,6 +730,7 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78454D251AE9B22100C9E0FB /* Security.framework */,
 				7812F33C1ACD416100995DCA /* FacebookSDK.framework */,
 				7823FBC31ABDBF9500447F0A /* libsqlite3.dylib */,
 				78B0CFDD1A924EF800E72640 /* StoreKit.framework */,
@@ -1074,10 +1078,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/mac/Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/Google",
-					Analytics,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
@@ -1101,10 +1102,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/mac/Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/Google",
-					Analytics,
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
