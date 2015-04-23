@@ -271,7 +271,7 @@ var resources = {
       },
       bonuses: {
         actions: [
-          '',
+          'resource/Sound/bonus-2.sound',
           'resource/Sound/bonus-2.sound'
         ],
         use: [
