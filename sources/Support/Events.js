@@ -30,52 +30,42 @@ Events.onStart = function() {
    */
   cc.sys.garbageCollect();
 
-  /**
-   *
-   *
-   *
-   */
-  Resources.load(resources.main, {
-    complete: function() {
+    /**
+     *
+     *
+     *
+     */
+    User.setup({
 
       /**
        *
        *
        *
        */
-      User.setup({
+      finish: function() {
 
         /**
          *
          *
          *
          */
-        finish: function() {
+        Services.signin();
 
-          /**
-           *
-           *
-           *
-           */
-          Services.signin();
+        /**
+         *
+         *
+         *
+         */
+        Analytics.sendEvent('System events', 'Application launch', '', '');
 
-          /**
-           *
-           *
-           *
-           */
-          Analytics.sendEvent('System events', 'Application launch', '', '');
-
-          /**
-           *
-           *
-           *
-           */
-          Screens.replace('Game');
-        }
-      });
-    }
-  });
+        /**
+         *
+         *
+         *
+         */
+        Screens.replace('Game');
+      }
+    });
 };
 
 Events.onStop = function() {

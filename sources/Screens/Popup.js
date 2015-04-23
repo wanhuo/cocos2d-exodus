@@ -243,7 +243,15 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    Game.addChild(this);
+    if(!this.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.addChild(this);
+    }
   },
   hide: function() {
 
@@ -252,7 +260,15 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    this.removeFromParent();
+    if(this.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.removeFromParent();
+    }
   },
 
   /**

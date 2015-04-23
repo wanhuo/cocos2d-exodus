@@ -173,11 +173,11 @@ var resources = {
         [
           {
             texture: 'resource/Graphics/store-item-3-1.png',
-            shadow: 'resource/Graphics/store-item-3-1-shadow.png',
+            shadow: 'resource/Graphics/store-item-3-1-shadow.png'
           },
           {
             texture: 'resource/Graphics/store-item-3-2.png',
-            shadow: 'resource/Graphics/store-item-3-2-shadow.png',
+            shadow: 'resource/Graphics/store-item-3-2-shadow.png'
           }
         ],
         [],
