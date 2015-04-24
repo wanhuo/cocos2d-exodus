@@ -82,7 +82,7 @@ Store = Popup.extend({
       bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder2, this.onBackground3.bind(this)),
       points: new Button(resources.main.store.buttons.points, 1, 3, this.holder2, this.onBackground4.bind(this)),
       coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder2, this.onBackground5.bind(this)),
-      close: new Button(resources.main.buttons.bottom, 1, 1, this.holder2, this.hide.bind(this))
+      back: new Button(resources.main.store.buttons.back, 1, 2, this.holder2, this.hide.bind(this))
     };
 
     /**
@@ -105,7 +105,6 @@ Store = Popup.extend({
      */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
-      close: new Text('close', this.holder2),
       baloon: new Text('store-title-0', this.elements.baloon)
     };
 
@@ -152,9 +151,9 @@ Store = Popup.extend({
       x: Camera.center.x + 230,
       y: Camera.height - 300
     });
-    this.buttons.close.create().attr({
-      x: Camera.center.x,
-      y: 40
+    this.buttons.back.create().attr({
+      x: 65,
+      y: Camera.height - 65
     });
 
     /**
@@ -166,13 +165,9 @@ Store = Popup.extend({
       x: this.elements.coins.width / 2,
       y: this.elements.coins.height / 2
     });
-    this.text.close.create().attr({
-      x: Camera.center.x,
-      y: 40
-    });
     this.text.baloon.create().attr({
       x: this.elements.baloon.width / 2,
-      y: this.elements.baloon.height / 2
+      y: this.elements.baloon.height / 2 + 10
     });
 
     /**
@@ -352,7 +347,7 @@ Store = Popup.extend({
              *
              *
              */
-            this.elements.baloon.setFlippedX(this.parameters.index == 0);
+            this.elements.baloon.setFlippedX(this.parameters.index != 4);
 
             /**
              *
@@ -360,7 +355,7 @@ Store = Popup.extend({
              *
              */
             this.elements.baloon.x = this.switchers[this.parameters.index].x + (this.elements.baloon.isFlippedX() ? this.elements.baloon.width * 0.8 : 0);
-            this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
+            this.elements.baloon.y = this.switchers[this.parameters.index].y + 60;
 
             /**
              *

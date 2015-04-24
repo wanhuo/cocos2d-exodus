@@ -263,7 +263,7 @@ var languages = {
     {title: 'Выбрать', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]}
   ],
   'store-selected': [
-    {title: 'You have select this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'You have selected this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Вы выбрали эту позицию', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-coins': [

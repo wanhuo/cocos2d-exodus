@@ -100,7 +100,7 @@ Reward = Popup.extend({
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Button(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
-      coins: new Button(resources.main.buttons.coins, 1, 2, this, this.onCoins.bind(this)),
+      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
       never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
     };
 

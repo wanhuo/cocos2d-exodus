@@ -87,14 +87,43 @@ Coin = Entity.extend({
               y: Camera.center.y
             },
             {
-              x: Camera.center.x,
-              y: Counter.y + Game.backgrounds.b.y
+              x: Counter.coins.x - Counter.coins.width / 4,
+              y: Camera.height - 40
             }
           ])
         ),
         cc.CallFunc.create(this.destroy, this),
-        cc.CallFunc.create(Counter.onCount, Counter),
         cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.coins.stopAllActions();
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.coins.scale = 1.0;
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.coins.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.06, 1.1)
+              ),
+              cc.EaseSineInOut.create(
+                cc.ScaleTo.create(0.06, 1.0)
+              )
+            )
+          );
 
           /**
            *

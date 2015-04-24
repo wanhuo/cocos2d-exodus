@@ -125,7 +125,8 @@ var resources = {
       bottom: 'resource/Graphics/bottom-button.png',
       twitter: 'resource/Graphics/twitter-button.png',
       facebook: 'resource/Graphics/facebook-button.png',
-      mail: 'resource/Graphics/mail-button.png'
+      mail: 'resource/Graphics/mail-button.png',
+      back: 'resource/Graphics/back-button.png'
     },
     water: [
       'resource/Graphics/water-1.png',
@@ -165,7 +166,8 @@ var resources = {
         points: 'resource/Graphics/store-points-button.png',
         coins: 'resource/Graphics/store-coins-button.png',
         refresh: 'resource/Graphics/store-refresh-button.png',
-        navigation: 'resource/Graphics/store-navigation-button.png'
+        navigation: 'resource/Graphics/store-navigation-button.png',
+        back: 'resource/Graphics/back-button.png'
       },
       items: [
         [],

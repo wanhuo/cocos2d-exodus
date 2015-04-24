@@ -114,11 +114,11 @@ StoreContent = StoreBackground.extend({
      */
     this.buttons.purchase.create().attr({
       x: Camera.center.x,
-      y: 150
+      y: 100
     });
     this.buttons.select.create().attr({
       x: Camera.center.x,
-      y: 150
+      y: 100
     });
 
     /**
@@ -148,7 +148,7 @@ StoreContent = StoreBackground.extend({
     });
     this.text.selected.create().attr({
       x: Camera.center.x,
-      y: 175
+      y: 100
     });
 
     /**
@@ -310,7 +310,7 @@ StoreContent = StoreBackground.extend({
        */
       this.text.unlock.create().attr({
         x: Camera.center.x,
-        y: 175
+        y: 100
       });
       this.text.unlock.format([this.unlock]);
 
