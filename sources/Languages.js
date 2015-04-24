@@ -279,40 +279,40 @@ var languages = {
     {title: 'Оранжевая ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-2': [
-    {title: 'Simple White Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Белая ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-3': [
-    {title: 'Simple Red Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Красная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-4': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-5': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-6': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-7': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-8': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-9': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-10': [
-    {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-2-1': [
     {title: 'Human', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
