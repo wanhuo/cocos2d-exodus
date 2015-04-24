@@ -7,7 +7,7 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C9486172-14CA-4FAB-8B86-4427A686BA7F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>cocos2d-rocket-escape</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>1A7703F26CA0DEB459D4A2F1A40445CDFC9DFD9F</key>
@@ -24,7 +24,7 @@
 		<string>git://github.com/cocos2d-html5/cocos2d-x.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/apple/cocos2d-rocket-escape.xcodeproj/project.xcworkspace</string>
+	<string>platforms/apple/cocos2d-rocket-escape.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1A7703F26CA0DEB459D4A2F1A40445CDFC9DFD9F</key>
