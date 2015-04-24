@@ -47,8 +47,8 @@ var languages = {
     {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'coins': [
-    {title: '$1', font: 'Impact', size: 24, dimensions: false, color: [228, 149, 81]},
-    {title: '$1', font: 'Impact', size: 24, dimensions: false, color: [228, 149, 81]}
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
   ],
   'decoration-0': [
     {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},

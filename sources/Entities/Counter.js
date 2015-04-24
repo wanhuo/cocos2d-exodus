@@ -43,7 +43,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.coins = new Entity(resources.main.counter.coins, this);
+    this.coins = new Entity(resources.main.counter.coins, Game.backgrounds.e);
 
     /**
      *
@@ -75,8 +75,8 @@ Counter = Button.extend({
      *
      */
     this.coins.create().attr({
-      x: this.width / 2,
-      y: 15
+      x: -this.coins.width / 2,
+      y: Camera.height - 50
     });
 
     /**
@@ -112,6 +112,13 @@ Counter = Button.extend({
      */
     this.text.status.setLocalZOrder(-2);
     this.text.decoration.setLocalZOrder(-2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
 
     /**
      *
@@ -858,6 +865,52 @@ Counter = Button.extend({
       this.text.best.format([max(this.values.scores.current, this.values.scores.best)]);
       this.text.jumps.format([this.values.info.jumps]);
       this.text.deaths.format([this.values.info.deaths]);
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Reward.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.e.y = -90;
+
+      /**
+       *
+       *
+       *
+       */
+      this.coins.x = 120;
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.e.y = -Game.backgrounds.b.y;
+
+      /**
+       *
+       *
+       *
+       */
+      this.coins.x = Game.backgrounds.b.y - this.coins.width / 2 - 30;
     }
   }
 });

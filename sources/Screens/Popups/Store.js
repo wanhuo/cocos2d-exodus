@@ -123,7 +123,7 @@ Store = Popup.extend({
       y: Camera.height - 300
     });
     this.elements.coins.create().attr({
-      x: 150,
+      x: 120,
       y: Camera.height - 50
     });
 

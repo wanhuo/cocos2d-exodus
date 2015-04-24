@@ -633,23 +633,11 @@ Character = Spine.extend({
            *
            */
           if(!Tutorial.show(5)) {
-            if(!Continue.parameters.action) {
-
-              /**
-               *
-               *
-               *
-               */
+            /**if(!Continue.parameters.action) {
               if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
-
-                /**
-                 *
-                 *
-                 *
-                 */
                 Continue.show();
               }
-            }
+            }*/
           }
         }),
         cc.DelayTime.create(2.0),

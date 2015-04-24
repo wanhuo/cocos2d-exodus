@@ -171,6 +171,7 @@ Game = Screen.extend({
     this.backgrounds.w = new Background(this.backgrounds.d);
     this.backgrounds.g = new Background(this.backgrounds.s);
     this.backgrounds.c = new Background(this.backgrounds.s);
+    this.backgrounds.e = new Background(this.backgrounds.b);
 
     /**
      *
