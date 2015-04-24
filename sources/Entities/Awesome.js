@@ -21,7 +21,7 @@
  *
  */
 
-Smoke = TiledEntity.extend({
+Awesome = Entity.extend({
 
   /**
    *
@@ -29,22 +29,45 @@ Smoke = TiledEntity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.character.smoke, 2, 1);
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters = {
-    };
+    this._super(false, Game.backgrounds.game);
 
     /**
      *
      * 
      *
      */
-    this.setLocalZOrder(6);
+    this.elements = new Manager(10, new Entity(resources.main.awesome.texture), this, true);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.text = new Text('awesome', this, Text.position.left);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.text.create().attr({
+      x: -40,
+      y: -40
+    });
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(9);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.needScheduleUpdate = true;
   },
 
   /**
@@ -52,7 +75,7 @@ Smoke = TiledEntity.extend({
    *
    *
    */
-  onCreate: function(element) {
+  onCreate: function(position) {
     this._super();
 
     /**
@@ -60,62 +83,63 @@ Smoke = TiledEntity.extend({
      *
      *
      */
-    var angle = -element.rotation * Math.PI / 180.0;
+    this.text.format([position]);
 
     /**
      *
      *
      *
      */
-    var dx = element.x;
-    var dy = element.y - 100;
+    this.x = 0;
+    this.y = position;
 
     /**
      *
      *
      *
      */
-    var x = cos(angle) * (dx - element.x) - sin(angle) * (dy - element.y) + element.x;
-    var y = sin(angle) * (dx - element.x) + cos(angle) * (dy - element.y) + element.y;
+    var x = (Camera.width / Game.parameters.scale.min) / 2;
+    var y = 0;
 
     /**
      *
      *
      *
      */
-    this.x = x + random(-10, 10);
-    this.y = y + random(-10, 10);
+    while(x > -(Camera.width / Game.parameters.scale.min) / 1.5) {
 
-    /**
-     *
-     *
-     *
-     */
-    this.rotation = random(0, 720);
+      /**
+       *
+       *
+       *
+       */
+      var element = this.elements.create();
 
-    /**
-     *
-     *
-     *
-     */
-    this.opacity = 255;
+      /**
+       *
+       *
+       *
+       */
+      element.x = x;
+      element.y = y;
 
-    /**
-     *
-     *
-     *
-     */
-    this.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.FadeOut.create(1.0)
-        ),
-        cc.CallFunc.create(this.destroy, this)
-      )
-    );
+      /**
+       *
+       *
+       *
+       */
+      x -= 75;
+    }
   },
   onDestroy: function() {
     this._super();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.elements.clear();
   },
 
   /**
@@ -123,7 +147,14 @@ Smoke = TiledEntity.extend({
    *
    *
    */
-  deepCopy: function() {
-    return new Smoke;
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = Game.parameters.camera.x + Game.parameters.camera.width / 2;
   }
 });

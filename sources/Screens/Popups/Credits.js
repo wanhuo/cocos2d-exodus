@@ -503,6 +503,13 @@ Credits = Popup.extend({
        *
        */
       this.hide();
+    
+      /**
+       *
+       *
+       *
+       */
+      return false;
     } else {
 
       /**
@@ -511,6 +518,13 @@ Credits = Popup.extend({
        *
        */
       this.show();
+    
+      /**
+       *
+       *
+       *
+       */
+      return true;
     }
   },
 

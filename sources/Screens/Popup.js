@@ -43,6 +43,13 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    this.schedulers = 0;
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters = {
     };
 
@@ -176,6 +183,13 @@ Popup = BackgroundColor.extend({
      *
      *
      */
+    Game.popups.remove(this);
+
+    /**
+     *
+     *
+     *
+     */
     if(this.parameters.popup.scheduler) {
 
       /**
@@ -215,13 +229,6 @@ Popup = BackgroundColor.extend({
      *
      */
     Game.elements.rockets.clear();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.popups.remove(this);
   },
 
   /**
@@ -236,7 +243,15 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    Game.addChild(this);
+    if(!this.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.addChild(this);
+    }
   },
   hide: function() {
 
@@ -245,7 +260,69 @@ Popup = BackgroundColor.extend({
      *
      *
      */
-    this.removeFromParent();
+    if(this.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.removeFromParent();
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  pauseSchedulerAndActions: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.schedulers++;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.schedulers === 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+    }
+  },
+  resumeSchedulerAndActions: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.schedulers--;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.schedulers === 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this._super();
+    }
   },
 
   /**

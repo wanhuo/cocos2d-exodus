@@ -13,9 +13,9 @@
 		<key>1A7703F26CA0DEB459D4A2F1A40445CDFC9DFD9F</key>
 		<string>https://github.com/cocos2d-x/plugin-x.git</string>
 		<key>1BBA9D5B07DFE06B55383FF7E11710171EEB5A8D</key>
-		<string>github.com:IgorMats/cocos2d-tooflya-sdk.git</string>
+		<string>https://github.com/IgorMats/cocos2d-tooflya-sdk.git</string>
 		<key>203D49C27E851C0F8A68099C7815E8B954A8CE47</key>
-		<string>github.com:IgorMats/cocos2d-js.git</string>
+		<string>https://github.com/IgorMats/cocos2d-js.git</string>
 		<key>4ED8BB3D12A803EAEA7D347C6F0A1EAC517748B3</key>
 		<string>https://github.com/IgorMats/cocos2d-apple-library.git</string>
 		<key>63EFABB16084E472C13CA690E231759EC5A4C3F3</key>

@@ -26,7 +26,9 @@ var resources = {
     font: 'resource/Fonts/Impact.ttf',
     backgrounds: [
       'resource/Graphics/background-1.png',
-      'resource/Graphics/background-2.png'
+      'resource/Graphics/background-2.png',
+      'resource/Graphics/background-3.png',
+      'resource/Graphics/background-4.png'
     ],
     name: 'resource/Graphics/name.png',
     ground: 'resource/Graphics/ground.png',
@@ -52,8 +54,7 @@ var resources = {
       atlas: 'resource/Graphics/character.atlas',
       json: 'resource/Graphics/character.json',
       shadow: 'resource/Graphics/character-shadow.png',
-      smoke: 'resource/Graphics/character-smoke.png',
-      status: 'resource/Graphics/character-status.png'
+      smoke: 'resource/Graphics/character-smoke.png'
     },
     human: {
       texture: 'resource/Graphics/human.png',
@@ -107,6 +108,9 @@ var resources = {
       texture: 'resource/Graphics/explanation.png',
       circle: 'resource/Graphics/explanation-circle.png'
     },
+    awesome: {
+      texture: 'resource/Graphics/awesome.png',
+    },
     buttons: {
       play: 'resource/Graphics/play-button.png',
       leaderboard: 'resource/Graphics/leaderboard-button.png',
@@ -114,6 +118,7 @@ var resources = {
       like: 'resource/Graphics/like-button.png',
       sound: 'resource/Graphics/sound-button.png',
       store: 'resource/Graphics/store-button.png',
+      share: 'resource/Graphics/share-button.png',
       credits: 'resource/Graphics/credits-button.png',
       coins: 'resource/Graphics/coins-button.png',
       empty: 'resource/Graphics/empty-button.png',
@@ -142,18 +147,14 @@ var resources = {
       },
       hand: 'resource/Graphics/reward-hand.png',
       buttons: {
-        continue: 'resource/Graphics/reward-continue-button.png',
-        like: 'resource/Graphics/reward-like-button.png',
-        share: 'resource/Graphics/reward-share-button.png',
-        leaderboard: 'resource/Graphics/reward-leaderboard-button.png',
-        achievements: 'resource/Graphics/reward-achievements-button.png',
-        store: 'resource/Graphics/reward-store-button.png'
+        continue: 'resource/Graphics/reward-continue-button.png'
       }
     },
     store: {
       coins: 'resource/Graphics/store-coins-background.png',
       price: 'resource/Graphics/store-price-background.png',
       count: 'resource/Graphics/store-items-count-background.png',
+      baloon: 'resource/Graphics/store-baloon.png',
       decorations: [
         'resource/Graphics/store-decoration-1.png'
       ],
@@ -172,15 +173,31 @@ var resources = {
         [
           {
             texture: 'resource/Graphics/store-item-3-1.png',
-            shadow: 'resource/Graphics/store-item-3-1-shadow.png',
+            shadow: 'resource/Graphics/store-item-3-1-shadow.png'
           },
           {
             texture: 'resource/Graphics/store-item-3-2.png',
-            shadow: 'resource/Graphics/store-item-3-2-shadow.png',
+            shadow: 'resource/Graphics/store-item-3-2-shadow.png'
           }
         ],
         [],
-        []
+        [
+          {
+            background: 'resource/Graphics/store-item-51-background.png',
+            decoration: 'resource/Graphics/store-item-51-decoration.png',
+            button: 'resource/Graphics/store-item-51-button.png'
+          },
+          {
+            background: 'resource/Graphics/store-item-52-background.png',
+            decoration: 'resource/Graphics/store-item-52-decoration.png',
+            button: 'resource/Graphics/store-item-52-button.png'
+          },
+          {
+            background: 'resource/Graphics/store-item-53-background.png',
+            decoration: 'resource/Graphics/store-item-53-decoration.png',
+            button: 'resource/Graphics/store-item-53-button.png'
+          }
+        ]
       ]
     },
     counter: {
@@ -198,13 +215,6 @@ var resources = {
     continue: {
       background: 'resource/Graphics/continue-background.png',
       element: 'resource/Graphics/continue-element.png'
-    },
-    coins: {
-      holders: [
-        'resource/Graphics/coins-holder-1.png',
-        'resource/Graphics/coins-holder-2.png',
-        'resource/Graphics/coins-holder-3.png'
-      ]
     },
     credits: {
       decorations: [
@@ -228,9 +238,13 @@ var resources = {
     sound: {
       touch: 'resource/Sound/touch.sound',
       save: 'resource/Sound/save.sound',
+      swipe: 'resource/Sound/swipe.sound',
+      awesome: 'resource/Sound/awesome.sound',
+      unlock: 'resource/Sound/unlock.sound',
+      continue: 'resource/Sound/continue.sound',
       character: {
         destroy: 'resource/Sound/destroy.sound',
-        engine :{
+        engine : {
           start: 'resource/Sound/engine-start.sound',
           repeat: 'resource/Sound/engine-repeat.sound'
         }
@@ -241,7 +255,30 @@ var resources = {
           'resource/Sound/count-2.sound',
           'resource/Sound/count-3.sound'
         ],
-        fail: 'resource/Sound/fail.sound'
+        fail: 'resource/Sound/fail.sound',
+        coins: 'resource/Sound/coins.sound'
+      },
+      store: {
+        select: 'resource/Sound/store-select.sound',
+        purchase: 'resource/Sound/store-purchase.sound',
+        more: 'resource/Sound/store-more.sound'
+      },
+      coins: {
+        collect: 'resource/Sound/coins-collect.sound',
+        animation: {
+          finish: 'resource/Sound/coins-animation-finish.sound'
+        }
+      },
+      bonuses: {
+        actions: [
+          'resource/Sound/bonus-2.sound',
+          'resource/Sound/bonus-2.sound'
+        ],
+        use: [
+          'resource/Sound/bonus-use-1.sound',
+          'resource/Sound/bonus-use-2.sound',
+          'resource/Sound/bonus-use-3.sound'
+        ]
       }
     }
   }

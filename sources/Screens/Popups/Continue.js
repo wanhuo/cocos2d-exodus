@@ -56,7 +56,8 @@ Continue = Popup.extend({
       time: {
         current: 7,
         elapsed: 0
-      }
+      },
+      sound: false
     };
 
     /**
@@ -89,7 +90,8 @@ Continue = Popup.extend({
      */
     this.buttons = {
       play: new Button(resources.main.buttons.coins, 1, 2, this, this.onPlay.bind(this)),
-      stop: new Button(resources.main.buttons.empty, 1, 2, this, this.onStop.bind(this))
+      stop: new Button(resources.main.buttons.empty, 1, 2, this, this.onStop.bind(this)),
+      never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
     };
 
     /**
@@ -97,7 +99,7 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes = {
+    this.text = {
       action: new Text('continue-action', this),
       time: new Text('continue-time', this.elements.background),
       play: new Text('button-text-coins', this.buttons.play),
@@ -121,19 +123,19 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.time.create().attr({
+    this.text.time.create().attr({
       x: this.elements.background.width / 2,
       y: this.elements.background.height / 2
     });
-    this.textes.play.create().attr({
+    this.text.play.create().attr({
       x: this.buttons.play.width / 2,
       y: this.buttons.play.height / 2
     });
-    this.textes.stop.create().attr({
+    this.text.stop.create().attr({
       x: this.buttons.stop.width / 2,
       y: this.buttons.stop.height / 2
     });
-    this.textes.never.create().attr({
+    this.text.never.create().attr({
       x: Camera.center.x,
       y: 40
     });
@@ -143,7 +145,17 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.time.setLocalZOrder(10);
+    this.buttons.never.create().attr({
+      x: Camera.center.x,
+      y: 40
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.time.setLocalZOrder(10);
 
     /**
      *
@@ -152,6 +164,51 @@ Continue = Popup.extend({
      */
     this.setLocalZOrder(-1);
     this.elements.background.setLocalZOrder(10);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.onTouch = function() {
+
+      /**
+       *
+       *
+       *
+       */
+      if(Counter.values.coins.total >= this.parameters.price.current) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.onPlay();
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.purchase);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        Store.show(true);
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.store.more);
+      }
+    }.bind(this);
   },
 
   /**
@@ -166,76 +223,60 @@ Continue = Popup.extend({
      *
      *
      */
-    if(Counter.values.coins.total >= this.parameters.price.current) {
+    this.text.action.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.2),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
+        ),
+        cc.CallFunc.create(this.onPlayProceed, this)
+      )
+    );
 
-      /**
-       *
-       *
-       *
-       */
-      this.textes.action.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.2),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.play.x,
-              y: this.buttons.play.y - 500
-            })
-          ),
-          cc.CallFunc.create(this.onPlayProceed, this)
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.1),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
         )
-      );
+      )
+    );
+    this.buttons.stop.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.0),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.stop.x,
+            y: this.buttons.stop.y - 500
+          })
+        )
+      )
+    );
 
-      /**
-       *
-       *
-       *
-       */
-      this.buttons.play.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.1),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.play.x,
-              y: this.buttons.play.y - 500
-            })
-          )
-        )
-      );
-      this.buttons.stop.runAction(
-        cc.Sequence.create(
-          cc.DelayTime.create(0.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.2, {
-              x: this.buttons.stop.x,
-              y: this.buttons.stop.y - 500
-            })
-          )
-        )
-      );
-
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.explanation.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.FadeOut.create(0.5)
-          ),
-          cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
-        )
-      );
-    } else {
-
-      /**
-       *
-       *
-       *
-       */
-      Coins.show();
-    }
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.explanation.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.5)
+        ),
+        cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+      )
+    );
   },
   onStop: function() {
 
@@ -289,6 +330,13 @@ Continue = Popup.extend({
      *
      */
     this.hide();
+
+    /**
+     *
+     *
+     *
+     */
+    Character.resumeSchedulerAndActions();
 
     /**
      *
@@ -360,7 +408,7 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.action.create().attr({
+    this.text.action.create().attr({
       x: Camera.center.x,
       y: Camera.center.y - 300
     });
@@ -377,6 +425,13 @@ Continue = Popup.extend({
           cc.ScaleTo.create(1.0, 1.0)
         ),
         cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.parameters.sound = Sound.play(resources.main.sound.continue);
 
           /**
            *
@@ -442,8 +497,8 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.time.format([round(this.parameters.time.current)]);
-    this.textes.play.format([this.parameters.price.current]);
+    this.text.time.format([round(this.parameters.time.current)]);
+    this.text.play.format([this.parameters.price.current]);
   },
   onExit: function() {
     this._super();
@@ -468,7 +523,14 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.action.destroy();
+    this.text.action.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.stop(this.parameters.sound);
   },
 
   /**
@@ -535,7 +597,7 @@ Continue = Popup.extend({
      *
      *
      */
-    this.textes.time.format([this.parameters.time.current - this.parameters.time.elapsed]);
+    this.text.time.format([this.parameters.time.current - this.parameters.time.elapsed]);
   },
 
   /**
@@ -640,6 +702,13 @@ Continue = Popup.extend({
      *
      */
     this.elements.element.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.pause(this.parameters.sound);
   },
   resumeSchedulerAndActions: function() {
     this._super();
@@ -650,6 +719,13 @@ Continue = Popup.extend({
      *
      */
     this.elements.element.resumeSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.resume(this.parameters.sound);
   },
 
   /**

@@ -55,10 +55,19 @@ Store = Popup.extend({
      *
      *
      */
+    this.holder1 = new Background(this);
+    this.holder2 = new Background(this);
+
+    /**
+     *
+     *
+     *
+     */
     this.elements = {
-      coins: new Entity(resources.main.store.coins, this),
+      baloon: new Entity(resources.main.store.baloon, this.holder2),
+      coins: new Entity(resources.main.store.coins, this.holder2),
       decorations: [
-        new Entity(resources.main.store.decorations[0], this)
+        new Entity(resources.main.store.decorations[0], this.holder2)
       ]
     };
 
@@ -68,12 +77,12 @@ Store = Popup.extend({
      *
      */
     this.buttons = {
-      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this, this.onBackground1.bind(this)),
-      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this, this.onBackground2.bind(this)),
-      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this, this.onBackground3.bind(this)),
-      points: new Button(resources.main.store.buttons.points, 1, 3, this, this.onBackground4.bind(this)),
-      coins: new Button(resources.main.store.buttons.coins, 1, 3, this, this.onBackground5.bind(this)),
-      close: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
+      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this.holder2, this.onBackground1.bind(this)),
+      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this.holder2, this.onBackground2.bind(this)),
+      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder2, this.onBackground3.bind(this)),
+      points: new Button(resources.main.store.buttons.points, 1, 3, this.holder2, this.onBackground4.bind(this)),
+      coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder2, this.onBackground5.bind(this)),
+      close: new Button(resources.main.buttons.bottom, 1, 1, this.holder2, this.hide.bind(this))
     };
 
     /**
@@ -81,7 +90,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.swithers = [
+    this.switchers = [
       this.buttons.rockets,
       this.buttons.creatures,
       this.buttons.bonuses,
@@ -96,7 +105,8 @@ Store = Popup.extend({
      */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
-      close: new Text('close', this)
+      close: new Text('close', this.holder2),
+      baloon: new Text('store-title-0', this.elements.baloon)
     };
 
     /**
@@ -104,12 +114,16 @@ Store = Popup.extend({
      *
      *
      */
+    this.elements.baloon.create().setAnchorPoint({
+      x: 0.9,
+      y: 0.0
+    });
     this.elements.decorations[0].create().attr({
       x: Camera.center.x,
       y: Camera.height - 300
     });
     this.elements.coins.create().attr({
-      x: 150,
+      x: 120,
       y: Camera.height - 50
     });
 
@@ -156,6 +170,26 @@ Store = Popup.extend({
       x: Camera.center.x,
       y: 40
     });
+    this.text.baloon.create().attr({
+      x: this.elements.baloon.width / 2,
+      y: this.elements.baloon.height / 2
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.holder1.setCascadeOpacityEnabled(true);
+    this.holder2.setCascadeOpacityEnabled(true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.holder1.setLocalZOrder(0);
+    this.holder2.setLocalZOrder(1);
 
     /**
      *
@@ -207,21 +241,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.parameters.index = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    this.swithers[this.parameters.index].setCurrentFrameIndex(2);
-
-    /**
-     *
-     *
-     *
-     */
-    this.addChild(this.backgrounds[this.parameters.index]);
+    this.elements.baloon.scaleY = 0;
   },
   onExit: function() {
     this._super();
@@ -246,7 +266,7 @@ Store = Popup.extend({
      *
      *
      */
-    this.swithers.each(function(element) {
+    this.switchers.each(function(element) {
 
       /**
        *
@@ -298,7 +318,7 @@ Store = Popup.extend({
        *
        *
        */
-      this.swithers.each(function(element) {
+      this.switchers.each(function(element) {
 
         /**
          *
@@ -313,7 +333,40 @@ Store = Popup.extend({
        *
        *
        */
-      this.swithers[this.parameters.index].setCurrentFrameIndex(2);
+      this.switchers[this.parameters.index].setCurrentFrameIndex(2);
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.baloon.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.2, 1.0, 0.0)
+          ),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.elements.baloon.x = this.switchers[this.parameters.index].x,
+            this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.baloon.setText('store-title-' + this.parameters.index);
+          }.bind(this)),
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.2, 1.0, 1.0)
+          )
+        )
+      );
 
       /**
        *
@@ -341,6 +394,12 @@ Store = Popup.extend({
    *
    */
   onSwipe: function() {
+
+    /**
+     *
+     *
+     *
+     */
     return true;
   },
 
@@ -373,7 +432,7 @@ Store = Popup.extend({
    *
    *
    */
-  show: function() {
+  show: function(coins) {
     this._super();
 
     /**
@@ -385,7 +444,16 @@ Store = Popup.extend({
       cc.Sequence.create(
         cc.EaseSineInOut.create(
           cc.FadeIn.create(0.2)
-        )
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.onBackground(coins === true ? 4 : 0);
+        }.bind(this))
       )
     );
   },
@@ -419,14 +487,5 @@ Store = Popup.extend({
      *
      */
     this.text.coins.format([Counter.values.coins.total + 0]);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
   }
 });

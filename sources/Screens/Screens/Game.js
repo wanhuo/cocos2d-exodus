@@ -97,12 +97,23 @@ Game = Screen.extend({
       },
       backgrounds: {
         position: {
-          min: -1280 * (5 - 1),
+          min: -1280 * (4 - 1),
           max: 0,
           ratio: 3
         }
       },
       camera: {
+        positions: [
+          450,
+          450,
+          450,
+          450,
+          445,
+          500,
+          550,
+          450,
+          420
+        ],
         center: 450,
         x: 0,
         y: 0,
@@ -160,6 +171,7 @@ Game = Screen.extend({
     this.backgrounds.w = new Background(this.backgrounds.d);
     this.backgrounds.g = new Background(this.backgrounds.s);
     this.backgrounds.c = new Background(this.backgrounds.s);
+    this.backgrounds.e = new Background(this.backgrounds.b);
 
     /**
      *
@@ -178,9 +190,8 @@ Game = Screen.extend({
     this.elements.backgrounds = [
       new Entity(resources.main.backgrounds[0], this.backgrounds.g),
       new Entity(resources.main.backgrounds[1], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[0], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[1], this.backgrounds.g),
-      new Entity(resources.main.backgrounds[0], this.backgrounds.g)
+      new Entity(resources.main.backgrounds[2], this.backgrounds.g),
+      new Entity(resources.main.backgrounds[3], this.backgrounds.g)
     ];
     this.elements.parallaxes = {
       clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
@@ -236,6 +247,7 @@ Game = Screen.extend({
       )
     );
     this.elements.bonuses = new Bonuses;
+    this.elements.awesome = new Awesome;
     this.elements.explanation = new Explanation;
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
@@ -278,7 +290,7 @@ Game = Screen.extend({
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
       store: new Button(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
-      credits: new Button(resources.main.buttons.credits, 1, 2, this.backgrounds.menu.holder, this.onCredits.bind(this))
+      credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.menu.holder, this.onCredits.bind(this))
     };
 
     /**
@@ -493,7 +505,6 @@ Game = Screen.extend({
        *
        */
       this.elements.backgrounds[i].setScaleX((Camera.width + 100) / this.elements.backgrounds[i].width);
-      this.elements.backgrounds[i].setScaleY((Camera.height + 100) / this.elements.backgrounds[i].height);
 
       /**
        *
@@ -543,7 +554,6 @@ Game = Screen.extend({
     new Splurge;
     new Reward;
     new Continue;
-    new Coins;
     new Credits;
     new Store;
 
@@ -855,7 +865,7 @@ Game = Screen.extend({
      *
      *
      */
-    Credits.toogle();
+    this.buttons.credits.setCurrentFrameIndex(Credits.toogle() ? 2 : 0);
   },
   onLeaderboard: function() {
 
@@ -1231,6 +1241,28 @@ Game = Screen.extend({
      *
      *
      */
+    var high = round(Data.get(false, properties.awesome));
+
+    /**
+     *
+     *
+     *
+     */
+    if(high > 0) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.awesome.create(high);
+    }
+
+    /**
+     *
+     *
+     *
+     */
     Analytics.sendEvent('System events', 'Game start', '', '');
   },
   onLoss: function() {
@@ -1248,6 +1280,13 @@ Game = Screen.extend({
      *
      */
     this.elements.bonuses.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.awesome.destroy();
 
     /**
      *

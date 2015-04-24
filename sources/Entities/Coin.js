@@ -93,7 +93,16 @@ Coin = Entity.extend({
           ])
         ),
         cc.CallFunc.create(this.destroy, this),
-        cc.CallFunc.create(Counter.onCount, Counter)
+        cc.CallFunc.create(Counter.onCount, Counter),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Sound.play(resources.main.sound.coins.collect);
+        })
       )
     );
 

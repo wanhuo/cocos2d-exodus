@@ -66,97 +66,97 @@ Items = cc.Class.extend({
           type: this.types.permanent,
           unlock: 0,
           owned: true,
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 0,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: round(Data.get(false, properties.rocket)) == 0,
+          selectCode: properties.rocket,
           purchaseCode: 0,
           item: new StoreItem11
         },
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 3,
           owned: true,
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 1,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 1,
+          selectCode: properties.rocket,
           purchaseCode: 0,
           item: new StoreItem12
         },
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 5,
           owned: true,
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 2,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 2,
+          selectCode: properties.rocket,
           purchaseCode: 0,
           item: new StoreItem13
         },
         {
-          price: 500,
+          price: 250,
           type: this.types.permanent,
-          unlock: 5,
+          unlock: 10,
           owned: Data.get(false, properties.rockets[3]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 3,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 3,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[3],
           item: new StoreItem14
         },
         {
-          price: 1500,
+          price: 750,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 20,
           owned: Data.get(false, properties.rockets[4]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 4,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 4,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[4],
           item: new StoreItem15
         },
         {
           price: 1500,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 30,
           owned: Data.get(false, properties.rockets[5]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 5,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 5,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[5],
           item: new StoreItem16
         },
         {
-          price: 1500,
+          price: 2500,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 40,
           owned: Data.get(false, properties.rockets[6]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 6,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 6,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[6],
           item: new StoreItem17
         },
         {
-          price: 1500,
+          price: 3250,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 50,
           owned: Data.get(false, properties.rockets[7]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 7,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 7,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[7],
           item: new StoreItem18
         },
         {
-          price: 1500,
+          price: 4500,
           type: this.types.permanent,
-          unlock: 0,
+          unlock: 60,
           owned: Data.get(false, properties.rockets[8]),
-          choisable: true,
-          choosen: Data.get(false, properties.rocket) === 8,
-          chooseCode: properties.rocket,
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 8,
+          selectCode: properties.rocket,
           purchaseCode: properties.rockets[8],
           item: new StoreItem19
         }
@@ -169,23 +169,23 @@ Items = cc.Class.extend({
        */
       [
         {
-          price: 20,
+          price: 50,
           type: this.types.consumable,
           unlock: 10,
           purchaseCode: properties.creatures[0],
           item: new StoreItem21
         },
         {
-          price: 100,
+          price: 350,
           type: this.types.consumable,
-          unlock: 15,
+          unlock: 20,
           purchaseCode: properties.creatures[1],
           item: new StoreItem22
         },
         {
-          price: 200,
+          price: 250,
           type: this.types.consumable,
-          unlock: 20,
+          unlock: 10,
           purchaseCode: properties.creatures[2],
           item: new StoreItem23
         },
@@ -205,16 +205,16 @@ Items = cc.Class.extend({
        */
       [
         {
-          price: 25,
+          price: 50,
           type: this.types.consumable,
-          unlock: 5,
+          unlock: 10,
           purchaseCode: properties.bonuses[0],
           item: new StoreItem31
         },
         {
-          price: 250,
+          price: 400,
           type: this.types.consumable,
-          unlock: 25,
+          unlock: 30,
           purchaseCode: properties.bonuses[1],
           item: new StoreItem32
         }
@@ -234,6 +234,33 @@ Items = cc.Class.extend({
        *
        */
       [
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          purchaseCode: 0,
+          owned: true,
+          selectable: false,
+          item: new StoreItem51
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          purchaseCode: 0,
+          owned: true,
+          selectable: false,
+          item: new StoreItem52
+        },
+        {
+          price: 0,
+          type: this.types.permanent,
+          unlock: 0,
+          purchaseCode: 0,
+          owned: true,
+          selectable: false,
+          item: new StoreItem53
+        }
       ]
     ]
   }

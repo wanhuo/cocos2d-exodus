@@ -53,7 +53,19 @@ Reward = Popup.extend({
           current: 0,
           elapsed: 0
         }
-      }
+      },
+      positions: [
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 140, y: 170},
+        {x: -10, y: 10},
+        {x: -200, y: -158},
+        {x: 128, y: 158},
+        {x: 128, y: 158},
+        {x: 128, y: 158}
+      ]
     };
 
     /**
@@ -83,11 +95,11 @@ Reward = Popup.extend({
      */
     this.buttons = {
       continue: new Button(resources.main.reward.buttons.continue, 1, 2, this, this.hide.bind(this)),
-      like: new Button(resources.main.reward.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
-      share: new Button(resources.main.reward.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
-      leaderboard: new Button(resources.main.reward.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
-      achievements: new Button(resources.main.reward.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
-      store: new Button(resources.main.reward.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
+      like: new Button(resources.main.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
+      share: new Button(resources.main.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
+      leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
+      achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
+      store: new Button(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
       coins: new Button(resources.main.buttons.coins, 1, 2, this, this.onCoins.bind(this)),
       never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
     };
@@ -221,6 +233,44 @@ Reward = Popup.extend({
      *
      */
     this.elements.rocket.needScheduleUpdate = true;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onTouch: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.animation) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.elements.hand.getNumberOfRunningActions() > 0 ) return false;
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.values.coins.total += Counter.values.coins.current;
+      Counter.values.coins.current = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.finishAnimation();
+    }
   },
 
   /**
@@ -521,7 +571,13 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.rocket.setSkin(Character.parameters.skins.random());
+    this.elements.rocket.setSkin(Character.getSkin());
+
+    /**
+     *
+     *
+     *
+     */
     this.elements.rocket.create();
 
     /**
@@ -529,8 +585,8 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.rocket.x = Camera.center.x - 128 - 500;
-    this.elements.rocket.y = Camera.center.y - 158 - 500;
+    this.elements.rocket.x = Camera.center.x - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
+    this.elements.rocket.y = Camera.center.y - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
 
     /**
      *
@@ -799,6 +855,13 @@ Reward = Popup.extend({
                     )
                   )
                 );
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                Sound.play(resources.main.sound.coins.animation.finish);
               }.bind(this.elements.pig))
             )
           );

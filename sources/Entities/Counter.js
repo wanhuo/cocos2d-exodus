@@ -43,7 +43,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.coins = new Entity(resources.main.counter.coins, this);
+    this.coins = new Entity(resources.main.counter.coins, Game.backgrounds.e);
 
     /**
      *
@@ -75,8 +75,8 @@ Counter = Button.extend({
      *
      */
     this.coins.create().attr({
-      x: this.width / 2,
-      y: 15
+      x: -this.coins.width / 2,
+      y: Camera.height - 50
     });
 
     /**
@@ -118,20 +118,14 @@ Counter = Button.extend({
      *
      *
      */
-    this.values = {
-      coins: {
-        current: 0,
-        total: round(Data.get(false, properties.coins))
-      },
-      scores: {
-        current: 0,
-        best: round(Data.get(false, properties.scores.best))
-      },
-      info: {
-        jumps: round(Data.get(false, properties.scores.jumps)),
-        deaths: round(Data.get(false, properties.scores.deaths))
-      }
-    };
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.createValues();
 
     /**
      *
@@ -154,20 +148,7 @@ Counter = Button.extend({
      *
      *
      */
-    this.values = {
-      coins: {
-        current: 0,
-        total: round(Data.get(false, properties.coins))
-      },
-      scores: {
-        current: 0,
-        best: round(Data.get(false, properties.scores.best))
-      },
-      info: {
-        jumps: round(Data.get(false, properties.scores.jumps)),
-        deaths: round(Data.get(false, properties.scores.deaths))
-      }
-    };
+    this.createValues();
 
     /**
      *
@@ -582,15 +563,6 @@ Counter = Button.extend({
      */
     this.values.info.deaths++;
   },
-  onCoin: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.values.coins.current++;
-  },
 
   /**
    *
@@ -660,6 +632,28 @@ Counter = Button.extend({
      *
      */
     Sound.play(resources.main.sound.counter.fail);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCoin: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.values.coins.current++;
+
+    /**
+     *
+     * 
+     *
+     */
+    Sound.play(resources.main.sound.counter.coins);
   },
 
   /**
@@ -752,10 +746,11 @@ Counter = Button.extend({
      *
      *
      */
-    Data.set(false, [properties.scores.best, properties.scores.jumps, properties.scores.deaths], [
+    Data.set(false, [properties.scores.best, properties.scores.jumps, properties.scores.deaths, properties.awesome], [
       this.values.scores.best,
       this.values.info.jumps,
-      this.values.info.deaths
+      this.values.info.deaths,
+      this.values.position
     ]);
 
     /**
@@ -810,6 +805,35 @@ Counter = Button.extend({
    *
    *
    */
+  createValues: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.values = {
+      coins: {
+        current: 0,
+        total: round(Data.get(false, properties.coins))
+      },
+      scores: {
+        current: 0,
+        best: round(Data.get(false, properties.scores.best))
+      },
+      info: {
+        jumps: round(Data.get(false, properties.scores.jumps)),
+        deaths: round(Data.get(false, properties.scores.deaths))
+      },
+      position: round(Data.get(false, properties.awesome))
+    };
+  },
+
+  /**
+   *
+   *
+   *
+   */
   updateTextData: function(simple) {
 
     /**
@@ -841,6 +865,52 @@ Counter = Button.extend({
       this.text.best.format([max(this.values.scores.current, this.values.scores.best)]);
       this.text.jumps.format([this.values.info.jumps]);
       this.text.deaths.format([this.values.info.deaths]);
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Reward.state.create) {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.e.y = -90;
+
+      /**
+       *
+       *
+       *
+       */
+      this.coins.x = 120;
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.backgrounds.e.y = -Game.backgrounds.b.y;
+
+      /**
+       *
+       *
+       *
+       */
+      this.coins.x = Game.backgrounds.b.y - this.coins.width / 2 - 30;
     }
   }
 });

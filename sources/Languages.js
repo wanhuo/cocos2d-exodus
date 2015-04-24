@@ -47,8 +47,8 @@ var languages = {
     {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'coins': [
-    {title: '$1', font: 'Impact', size: 24, dimensions: false, color: [228, 149, 81]},
-    {title: '$1', font: 'Impact', size: 24, dimensions: false, color: [228, 149, 81]}
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
   ],
   'decoration-0': [
     {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
@@ -121,6 +121,10 @@ var languages = {
   'button-text-nope': [
     {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
+  'awesome': [
+    {title: '$1 meters', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]},
+    {title: '$1 метров', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
@@ -210,6 +214,26 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
+  'store-title-0': [
+    {title: 'Rockets', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Ракеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-1': [
+    {title: 'Creatures', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Существа', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-2': [
+    {title: 'Bonuses', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Бонусы', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-3': [
+    {title: 'Points', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Точки', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
+  'store-title-4': [
+    {title: 'Coins', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
+    {title: 'Монеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
+  ],
   'store-no-items-title': [
     {title: 'No Items', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]},
     {title: 'Нет позиций', font: 'Impact', size: 48, dimensions: false, color: [255, 255, 255]}
@@ -234,11 +258,11 @@ var languages = {
     {title: '     Purchase', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]},
     {title: '  Купить', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]}
   ],
-  'store-choose': [
-    {title: 'Choose', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]},
+  'store-select': [
+    {title: 'Select', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]},
     {title: 'Выбрать', font: 'Impact', size: 28, dimensions: false, color: [228, 149, 81]}
   ],
-  'store-choosen': [
+  'store-selected': [
     {title: 'You have select this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Вы выбрали эту позицию', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
@@ -252,43 +276,43 @@ var languages = {
   ],
   'store-item-title-1-1': [
     {title: 'Simple Orange Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Оранжевая рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Оранжевая ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-2': [
     {title: 'Simple White Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Белая рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Белая ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-3': [
     {title: 'Simple Red Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Красная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Красная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-4': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-5': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-6': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-7': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-8': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-9': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-10': [
     {title: 'Some Additional Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-2-1': [
     {title: 'Human', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
@@ -314,61 +338,73 @@ var languages = {
     {title: 'Lucky Horseshoe', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Счастливая подкова', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
+  'store-item-title-5-1': [
+    {title: '200 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '200 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-5-2': [
+    {title: '500 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '500 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-5-3': [
+    {title: '1000 coins', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '1000 монет', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-item-description-1-1': [
     {title: 'Simple orange rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Простая оранжевая рокета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Простая оранжевая ракета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-2': [
     {title: 'Simple white rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Простая белая рокета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Простая белая ракета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-3': [
     {title: 'Simple red rocket available by default.\n You can change it.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Простая красная рокета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Простая красная ракета доспуна\n по-умолчанию. Вы можете сменить ее.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-4': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-5': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-6': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-7': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-8': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-9': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-10': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Дополнительная рокета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-1': [
     {title: 'Large team is always good!\n Rocket will steer from heavy peak.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Большая команда всегда хорошо!\n Рокета вырулит из тяжелых пике.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Большая команда всегда хорошо!\n Ракета вырулит из тяжелых пике.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-2': [
     {title: 'Stegosaurus can save the rocket from crash\n with 25% probability.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Стегозавр может спасти рокету от крушения\n с вероятностью 25%.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Стегозавр может спасти ракету от крушения\n с вероятностью 25%.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-3': [
     {title: 'Apatosaurus so huge!!\n It slows down the rocket.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Апатозавр настолько тяжелый, что\n замедляет рокету.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Апатозавр настолько тяжелый, что\n замедляет ракету.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-4': [
     {title: 'Triceratops absorbs rocket\'s vibrations\n in areas of turbulence', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Трицераптор поглощает колебания рокеты\n в зонах турбулентности.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Трицераптор поглощает колебания ракеты\n в зонах турбулентности.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-3-1': [
     {title: 'Coins Magnet collect all coins automatically.\n No need to tap on each coin.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
@@ -377,6 +413,18 @@ var languages = {
   'store-item-description-3-2': [
     {title: 'Increases the probability of a\n coin for 2 times.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Увеличивает вероятность появления\n монетки в 2 раза.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-1': [
+    {title: 'Get 200 coins only for $1.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 200 монет всего за $1.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-2': [
+    {title: 'Get 500 coins only for $2.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 500 монет всего за $2.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-5-3': [
+    {title: 'Get 1000 coins only for $4.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Получите 1000 монет всего за $4.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},

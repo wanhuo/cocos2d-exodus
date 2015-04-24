@@ -21,7 +21,7 @@
  *
  */
 
-Points = Manager.extend({
+StoreItem52 = StoreItem50.extend({
 
   /**
    *
@@ -29,21 +29,7 @@ Points = Manager.extend({
    *
    */
   ctor: function() {
-    this._super(100, new Point, Game.backgrounds.game, true);
-
-    /**
-     *
-     *
-     *
-     */
-    this.draw = new cc.DrawNode;
-
-    /**
-     *
-     *
-     *
-     */
-    Game.backgrounds.game.addChild(this.draw);
+    this._super(2);
   },
 
   /**
@@ -51,55 +37,14 @@ Points = Manager.extend({
    *
    *
    */
-  clear: function(animated) {
+  onTouch: function() {
+    Counter.values.coins.total += 500;
 
     /**
      *
      *
      *
      */
-    if(animated) {
-
-      /**
-       *
-       *
-       *
-       */
-      var time = 0;
-
-      /**
-       *
-       *
-       *
-       */
-      this.elements.each(function(element) {
-
-        /**
-         *
-         *
-         *
-         */
-        if(element.state.create) {
-          element.runAction(
-            cc.Sequence.create(
-              cc.DelayTime.create(time),
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 0.0)
-              ),
-              cc.CallFunc.create(element.destroy, element)
-            )
-          );
-
-          /**
-           *
-           *
-           *
-           */
-          time += 0.01;
-        }
-      }.bind(this));
-    } else {
-      this._super();
-    }
+    this._super();
   }
 });
