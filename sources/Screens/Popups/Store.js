@@ -133,11 +133,11 @@ Store = Popup.extend({
      *
      */
     this.buttons.rockets.create().attr({
-      x: Camera.center.x - 180,
+      x: Camera.center.x - 230,
       y: Camera.height - 300
     });
     this.buttons.creatures.create().attr({
-      x: Camera.center.x - 90,
+      x: Camera.center.x - 115,
       y: Camera.height - 300
     });
     this.buttons.bonuses.create().attr({
@@ -145,11 +145,11 @@ Store = Popup.extend({
       y: Camera.height - 300
     });
     this.buttons.points.create().attr({
-      x: Camera.center.x + 90,
+      x: Camera.center.x + 115,
       y: Camera.height - 300
     });
     this.buttons.coins.create().attr({
-      x: Camera.center.x + 180,
+      x: Camera.center.x + 230,
       y: Camera.height - 300
     });
     this.buttons.close.create().attr({
@@ -352,7 +352,14 @@ Store = Popup.extend({
              *
              *
              */
-            this.elements.baloon.x = this.switchers[this.parameters.index].x,
+            this.elements.baloon.setFlippedX(this.parameters.index == 0);
+
+            /**
+             *
+             *
+             *
+             */
+            this.elements.baloon.x = this.switchers[this.parameters.index].x + (this.elements.baloon.isFlippedX() ? this.elements.baloon.width * 0.8 : 0);
             this.elements.baloon.y = this.switchers[this.parameters.index].y + 50;
 
             /**

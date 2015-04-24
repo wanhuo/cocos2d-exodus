@@ -193,24 +193,24 @@ Reward = Popup.extend({
       y: Camera.center.y - 30
     });
     this.buttons.like.attr({
-      x: Camera.center.x - 148,
-      y: Camera.center.y - 270
+      x: Camera.center.x - 210,
+      y: Camera.center.y - 255
     });
     this.buttons.share.attr({
-      x: Camera.center.x - 74,
-      y: Camera.center.y - 270
+      x: Camera.center.x - 105,
+      y: Camera.center.y - 265
     });
     this.buttons.leaderboard.attr({
       x: Camera.center.x,
       y: Camera.center.y - 270
     });
     this.buttons.achievements.attr({
-      x: Camera.center.x + 74,
-      y: Camera.center.y - 270
+      x: Camera.center.x + 105,
+      y: Camera.center.y - 265
     });
     this.buttons.store.attr({
-      x: Camera.center.x + 148,
-      y: Camera.center.y - 270
+      x: Camera.center.x + 210,
+      y: Camera.center.y - 255
     });
 
     /**
@@ -551,7 +551,7 @@ Reward = Popup.extend({
       cc.EaseBounceOut.create(
         cc.MoveTo.create(1.0, {
           x: 0,
-          y: 90
+          y: 110
         })
       )
     );

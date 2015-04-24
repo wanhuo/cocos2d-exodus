@@ -90,15 +90,15 @@ Counter = Button.extend({
     });
     this.text.best.attr({
       x: Camera.center.x,
-      y: Camera.height - 140 + 300
+      y: Camera.height - 150 + 300
     });
     this.text.jumps.attr({
       x: Camera.center.x,
-      y: Camera.height - 180 + 300
+      y: Camera.height - 190 + 300
     });
     this.text.deaths.attr({
       x: Camera.center.x,
-      y: Camera.height - 220 + 300
+      y: Camera.height - 230 + 300
     });
     this.text.coins.create().attr({
       x: this.coins.width / 2,
@@ -170,7 +170,7 @@ Counter = Button.extend({
      *
      */
     this.x = Camera.center.x;
-    this.y = Camera.height - 400;
+    this.y = Camera.height - 410;
 
     /**
      *
@@ -524,7 +524,7 @@ Counter = Button.extend({
 
         this.text.decoration.create().attr({
           x: Camera.center.x,
-          y: this.y - 180,
+          y: this.y - 190,
           opacity: 0
         });
         this.text.decoration.runAction(
@@ -888,7 +888,7 @@ Counter = Button.extend({
        *
        *
        */
-      Game.backgrounds.e.y = -90;
+      Game.backgrounds.e.y = -110;
 
       /**
        *

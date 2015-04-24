@@ -395,24 +395,24 @@ Game = Screen.extend({
      *
      */
     this.buttons.like.create().attr({
-      x: Camera.center.x - 148,
-      y: Camera.center.y - 150
+      x: Camera.center.x - 210,
+      y: Camera.center.y - 135
     });
     this.buttons.sound.create().attr({
-      x: Camera.center.x - 74,
-      y: Camera.center.y - 150
+      x: Camera.center.x - 105,
+      y: Camera.center.y - 145
     });
     this.buttons.leaderboard.create().attr({
       x: Camera.center.x,
       y: Camera.center.y - 150
     });
     this.buttons.achievements.create().attr({
-      x: Camera.center.x + 74,
-      y: Camera.center.y - 150
+      x: Camera.center.x + 105,
+      y: Camera.center.y - 145
     });
     this.buttons.store.create().attr({
-      x: Camera.center.x + 148,
-      y: Camera.center.y - 150
+      x: Camera.center.x + 210,
+      y: Camera.center.y - 135
     });
 
     /**
@@ -734,7 +734,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.y = Camera.height - 50;
+          this.y = Camera.height - 60;
         }.bind(this.buttons.like)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
@@ -759,7 +759,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.y = Camera.height - 50;
+          this.y = Camera.height - 60;
         }.bind(this.buttons.sound)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
@@ -784,7 +784,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.y = Camera.height - 50;
+          this.y = Camera.height - 60;
         }.bind(this.buttons.leaderboard)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
@@ -809,7 +809,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.y = Camera.height - 50;
+          this.y = Camera.height - 60;
         }.bind(this.buttons.achievements)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
@@ -834,7 +834,7 @@ Game = Screen.extend({
            *
            *
            */
-          this.y = Camera.height - 50;
+          this.y = Camera.height - 60;
         }.bind(this.buttons.store)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
