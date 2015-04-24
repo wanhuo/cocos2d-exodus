@@ -232,6 +232,13 @@ Reward = Popup.extend({
      *
      *
      */
+    this.buttons.continue.unregister();
+
+    /**
+     *
+     *
+     *
+     */
     this.elements.rocket.needScheduleUpdate = true;
   },
 
@@ -304,6 +311,13 @@ Reward = Popup.extend({
      *
      */
     this.hideCounter();
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.continue.unregister();
   },
 
   /**
@@ -697,7 +711,8 @@ Reward = Popup.extend({
         cc.DelayTime.create(0.6),
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
-        )
+        ),
+        cc.CallFunc.create(this.buttons.continue.register, this.buttons.continue)
       )
     );
   },

@@ -75,7 +75,7 @@ Counter = Button.extend({
      *
      */
     this.coins.create().attr({
-      x: -this.coins.width / 2,
+      x: Camera.width + this.coins.width / 2,
       y: Camera.height - 50
     });
 
@@ -895,7 +895,7 @@ Counter = Button.extend({
        *
        *
        */
-      this.coins.x = 120;
+      this.coins.x = Camera.width - 120;
     } else {
 
       /**
@@ -910,7 +910,7 @@ Counter = Button.extend({
        *
        *
        */
-      this.coins.x = Game.backgrounds.b.y - this.coins.width / 2 - 30;
+      this.coins.x = Camera.width - (Game.backgrounds.b.y - this.coins.width / 2) + 30;
     }
   }
 });

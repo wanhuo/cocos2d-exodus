@@ -720,30 +720,12 @@ Character = Spine.extend({
          *
          *
          */
-        if(!Continue.parameters.action) {
-
-          /**
-           *
-           *
-           *
-           */
+        /*if(!Continue.parameters.action) {
           if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
-
-            /**
-             *
-             *
-             *
-             */
             Continue.show();
-
-            /**
-             *
-             *
-             *
-             */
             return false;
           }
-        }
+        }*/
       }
 
       /**
