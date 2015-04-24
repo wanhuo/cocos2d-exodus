@@ -472,6 +472,15 @@ Reward = Popup.extend({
      *
      *
      */
+    this.buttons.continue.create();
+    this.buttons.continue.setLocalZOrder(10);
+    this.buttons.continue.setScale(0);
+
+    /**
+     *
+     *
+     *
+     */
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
@@ -481,6 +490,13 @@ Reward = Popup.extend({
     );
   },
   hide: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.continue.destroy();
 
     /**
      *
