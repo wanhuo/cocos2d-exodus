@@ -139,6 +139,13 @@ Visiblities = {
     Game.elements.parallaxes.trees2.visiblities = 'y < -300 / s';
     Game.elements.parallaxes.trees3.visiblities = 'y < -300 / s';
 
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.parallaxes.slides.visiblities = 'y < -c';
+
     /** Push elements. */
 
     /**
@@ -233,6 +240,13 @@ Visiblities = {
     this.elements.push(Game.elements.parallaxes.trees1);
     this.elements.push(Game.elements.parallaxes.trees2);
     this.elements.push(Game.elements.parallaxes.trees3);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.slides);
 
     /**
      *
