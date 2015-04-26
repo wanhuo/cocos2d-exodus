@@ -298,7 +298,21 @@ Popup = BackgroundColor.extend({
        *
        */
       this._super();
+
+      /**
+       *
+       *
+       *
+       */
+      return true;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    return false;
   },
   resumeSchedulerAndActions: function() {
 
@@ -322,7 +336,21 @@ Popup = BackgroundColor.extend({
        *
        */
       this._super();
+
+      /**
+       *
+       *
+       *
+       */
+      return true;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    return false;
   },
 
   /**

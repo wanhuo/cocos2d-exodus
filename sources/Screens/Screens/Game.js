@@ -1500,6 +1500,14 @@ Game = Screen.extend({
        *
        */
       this.h.resumeSchedulerAndActions();
+
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.store.updateTextData();
     }
   },
 

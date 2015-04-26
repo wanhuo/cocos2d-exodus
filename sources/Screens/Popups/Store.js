@@ -77,11 +77,11 @@ Store = Popup.extend({
      *
      */
     this.buttons = {
-      rockets: new Button(resources.main.store.buttons.rockets, 1, 3, this.holder2, this.onBackground1.bind(this)),
-      creatures: new Button(resources.main.store.buttons.creatures, 1, 3, this.holder2, this.onBackground2.bind(this)),
-      bonuses: new Button(resources.main.store.buttons.bonuses, 1, 3, this.holder2, this.onBackground3.bind(this)),
-      points: new Button(resources.main.store.buttons.points, 1, 3, this.holder2, this.onBackground4.bind(this)),
-      coins: new Button(resources.main.store.buttons.coins, 1, 3, this.holder2, this.onBackground5.bind(this)),
+      rockets: new Switcher(resources.main.store.buttons.rockets, 1, 3, this.holder2, this.onBackground1.bind(this), 0),
+      creatures: new Switcher(resources.main.store.buttons.creatures, 1, 3, this.holder2, this.onBackground2.bind(this), 1),
+      bonuses: new Switcher(resources.main.store.buttons.bonuses, 1, 3, this.holder2, this.onBackground3.bind(this), 2),
+      points: new Switcher(resources.main.store.buttons.points, 1, 3, this.holder2, this.onBackground4.bind(this), 3),
+      coins: new Switcher(resources.main.store.buttons.coins, 1, 3, this.holder2, this.onBackground5.bind(this), 4),
       back: new Button(resources.main.store.buttons.back, 1, 2, this.holder2, this.hide.bind(this))
     };
 

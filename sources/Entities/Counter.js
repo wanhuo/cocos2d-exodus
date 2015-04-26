@@ -643,13 +643,6 @@ Counter = Button.extend({
 
     /**
      *
-     *
-     *
-     */
-    this.values.coins.current++;
-
-    /**
-     *
      * 
      *
      */

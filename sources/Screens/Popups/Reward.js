@@ -393,6 +393,13 @@ Reward = Popup.extend({
      *
      *
      */
+    Counter.updateTextData();
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters.animation = false;
 
     /**
@@ -767,6 +774,31 @@ Reward = Popup.extend({
      *
      */
     this.textes.coins.format(Counter.values.coins.total);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  pauseSchedulerAndActions: function() {
+    this._super();
+  },
+  resumeSchedulerAndActions: function() {
+    /**
+     *
+     *
+     *
+     */
+    if(this._super()) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.store.updateTextData();
+    }
   },
 
   /**

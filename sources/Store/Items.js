@@ -241,6 +241,7 @@ Items = cc.Class.extend({
           purchaseCode: 0,
           owned: true,
           selectable: false,
+          available: true,
           item: new StoreItem51
         },
         {
@@ -250,6 +251,7 @@ Items = cc.Class.extend({
           purchaseCode: 0,
           owned: true,
           selectable: false,
+          available: true,
           item: new StoreItem52
         },
         {
@@ -259,6 +261,7 @@ Items = cc.Class.extend({
           purchaseCode: 0,
           owned: true,
           selectable: false,
+          available: true,
           item: new StoreItem53
         }
       ]

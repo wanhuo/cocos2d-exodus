@@ -130,6 +130,20 @@ Coin = Entity.extend({
            *
            *
            */
+          Counter.values.coins.current++;
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.updateTextData();
+
+          /**
+           *
+           *
+           *
+           */
           Sound.play(resources.main.sound.coins.collect);
         })
       )

@@ -196,5 +196,27 @@ StoreItem50 = Entity.extend({
      *
      */
     Counter.updateTextData();
+
+    /**
+     *
+     *
+     *
+     */
+    Data.set(false, properties.coins, Counter.values.coins.total);
+
+    /**
+     *
+     *
+     *
+     */
+    Store.switchers.each(function(element) {
+
+      /**
+       *
+       *
+       *
+       */
+      element.updateTextData();
+    });
   }
 });

@@ -518,6 +518,21 @@ StoreContent = StoreBackground.extend({
       }
       break;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    Store.switchers.each(function(element) {
+
+      /**
+       *
+       *
+       *
+       */
+      element.updateTextData();
+    });
   },
 
   /**
@@ -533,13 +548,6 @@ StoreContent = StoreBackground.extend({
      *
      */
     Counter.values.coins.total -= this.price;
-
-    /**
-     *
-     *
-     *
-     */
-    Items.items[this.index][this.id].owned = true;
 
     /**
      *
@@ -563,16 +571,23 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      Data.set(false, this.purchaseCode, true);
-      break;
-    }
+      Items.items[this.index][this.id].owned = true;
 
       /**
        *
        *
        *
        */
-      Sound.play(resources.main.sound.store.purchase);
+      Data.set(false, this.purchaseCode, true);
+      break;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.store.purchase);
 
     /**
      *

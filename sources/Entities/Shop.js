@@ -36,6 +36,13 @@ Shop = Button.extend({
      *
      *
      */
+    this.count = 0;
+
+    /**
+     *
+     *
+     *
+     */
     this.holder = new Entity(false, this);
 
     /**
@@ -64,7 +71,6 @@ Shop = Button.extend({
       x: this.holder.width / 2,
       y: this.holder.height / 2
     });
-
   },
 
   /**
@@ -80,42 +86,7 @@ Shop = Button.extend({
      *
      *
      */
-    var count = this.getAvailableItemsCount();
-
-    /**
-     *
-     *
-     *
-     */
-    this.holder.scale = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    if(count) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.text.format(count);
-
-      /**
-       *
-       *
-       *
-       */
-      this.holder.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.ScaleTo.create(0.5, 1.0)
-          )
-        )
-      );
-    }
+    this.updateTextData();
   },
   onExit: function() {
     this._super();
@@ -126,7 +97,92 @@ Shop = Button.extend({
    *
    *
    */
+  updateTextData: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    var count = this.getAvailableItemsCount();
+
+    /**
+     *
+     *
+     *
+     */
+    if(count != this.count || !count) {
+      this.count = count;
+
+      /**
+       *
+       *
+       *
+       */
+      this.holder.scale = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      if(count) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.text.format(count);
+
+        /**
+         *
+         *
+         *
+         */
+        this.holder.runAction(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.ScaleTo.create(0.5, 1.0)
+            )
+          )
+        );
+      }
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
   getAvailableItemsCount: function() {
-    return 0;
+
+    /**
+     *
+     *
+     *
+     */
+    var count = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    Items.items.each(function(category) {
+      category.each(function(item) {
+        if(!item.owned && Counter.values.scores.best >= item.unlock && Counter.values.coins.total >= item.price) {
+          count++;
+        }
+      })
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    return count;
   }
 });
