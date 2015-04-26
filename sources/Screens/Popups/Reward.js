@@ -99,7 +99,7 @@ Reward = Popup.extend({
       share: new Button(resources.main.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
-      store: new Button(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
+      store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
       coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
       never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
     };
@@ -766,7 +766,7 @@ Reward = Popup.extend({
      *
      *
      */
-    this.textes.coins.format([Counter.values.coins.total]);
+    this.textes.coins.format(Counter.values.coins.total);
   },
 
   /**

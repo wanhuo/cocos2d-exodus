@@ -497,8 +497,8 @@ Continue = Popup.extend({
      *
      *
      */
-    this.text.time.format([round(this.parameters.time.current)]);
-    this.text.play.format([this.parameters.price.current]);
+    this.text.time.format(round(this.parameters.time.current));
+    this.text.play.format(this.parameters.price.current);
   },
   onExit: function() {
     this._super();
@@ -597,7 +597,7 @@ Continue = Popup.extend({
      *
      *
      */
-    this.text.time.format([this.parameters.time.current - this.parameters.time.elapsed]);
+    this.text.time.format(this.parameters.time.current - this.parameters.time.elapsed);
   },
 
   /**

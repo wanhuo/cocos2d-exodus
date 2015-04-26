@@ -165,18 +165,20 @@ Splurge = Popup.extend({
      *
      *
      */
-    Character.destroy();
-
-    /**
-     *
-     *
-     *
-     */
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
           cc.FadeIn.create(0.2)
-        )
+        ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Character.destroy();
+        })
       )
     );
   }

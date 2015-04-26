@@ -289,7 +289,7 @@ Game = Screen.extend({
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this.backgrounds.b, this.onLeaderboard.bind(this)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
-      store: new Button(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
+      store: new Shop(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
       credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.menu.holder, this.onCredits.bind(this))
     };
 

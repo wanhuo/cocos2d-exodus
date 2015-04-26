@@ -26,6 +26,10 @@ var languages = {
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]},
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]}
   ],
+  'items-count': [
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
   'best': [
     {title: 'BEST SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
     {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}

@@ -313,9 +313,9 @@ Credits = Popup.extend({
      *
      *
      */
-    this.text[19].format([' ' + Internal.getVersionCode()]);
-    this.text[20].format([' ' + Internal.getBuildNumber()]);
-    this.text[21].format([' ' + Internal.getSupportCode()]);
+    this.text[19].format(' ' + Internal.getVersionCode());
+    this.text[20].format(' ' + Internal.getBuildNumber());
+    this.text[21].format(' ' + Internal.getSupportCode());
 
     /**
      *

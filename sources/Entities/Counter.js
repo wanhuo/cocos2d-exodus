@@ -414,7 +414,7 @@ Counter = Button.extend({
      *
      *
      */
-    text.format([this.values.scores.best]);
+    text.format(this.values.scores.best);
 
     /**
      *
@@ -841,14 +841,14 @@ Counter = Button.extend({
      *
      *
      */
-    this.text.value.format([this.values.scores.current]);
+    this.text.value.format(this.values.scores.current);
 
     /**
      *
      *
      *
      */
-    this.text.coins.format([this.values.coins.current + this.values.coins.total]);
+    this.text.coins.format(this.values.coins.current + this.values.coins.total);
 
     /**
      *
@@ -862,9 +862,9 @@ Counter = Button.extend({
        *
        *
        */
-      this.text.best.format([max(this.values.scores.current, this.values.scores.best)]);
-      this.text.jumps.format([this.values.info.jumps]);
-      this.text.deaths.format([this.values.info.deaths]);
+      this.text.best.format(max(this.values.scores.current, this.values.scores.best));
+      this.text.jumps.format(this.values.info.jumps);
+      this.text.deaths.format(this.values.info.deaths);
     }
   },
 

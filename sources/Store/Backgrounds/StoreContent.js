@@ -156,7 +156,7 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    this.text.price.format([this.price]);
+    this.text.price.format(this.price);
 
     /**
      *
@@ -312,7 +312,7 @@ StoreContent = StoreBackground.extend({
         x: Camera.center.x,
         y: 100
       });
-      this.text.unlock.format([this.unlock]);
+      this.text.unlock.format(this.unlock);
 
       /**
        *
@@ -378,7 +378,7 @@ StoreContent = StoreBackground.extend({
           x: this.elements.count.width / 2,
           y: this.elements.count.height / 2
         });
-        this.text.count.format([Data.get(false, this.purchaseCode) || 0]);
+        this.text.count.format(Data.get(false, this.purchaseCode) || 0);
       }
 
       /**

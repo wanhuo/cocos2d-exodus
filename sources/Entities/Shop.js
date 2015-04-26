@@ -21,53 +21,50 @@
  *
  */
 
-Awesome = Entity.extend({
+Shop = Button.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function() {
-    this._super(false, Game.backgrounds.game);
+  ctor: function(textureFileName, horizontalFramesCount, verticalFramesCount, parent, action) {
+    this._super(textureFileName, horizontalFramesCount, verticalFramesCount, parent, action);
 
     /**
      *
-     * 
+     *
      *
      */
-    this.elements = new Manager(10, new Entity(resources.main.awesome.texture), this, true);
+    this.holder = new Entity(false, this);
 
     /**
      *
-     * 
+     *
      *
      */
-    this.text = new Text('awesome', this, Text.position.left);
+    this.text = new Text('items-count', this.holder);
 
     /**
      *
-     * 
+     *
      *
      */
-    this.text.create().attr({
-      x: -40,
-      y: -40
+    this.holder.create().attr({
+      x: this.width,
+      y: this.height
     });
 
     /**
      *
-     * 
+     *
      *
      */
-    this.setLocalZOrder(9);
+    this.text.create().attr({
+      x: this.holder.width / 2,
+      y: this.holder.height / 2
+    });
 
-    /**
-     *
-     * 
-     *
-     */
-    this.needScheduleUpdate = true;
   },
 
   /**
@@ -75,7 +72,7 @@ Awesome = Entity.extend({
    *
    *
    */
-  onCreate: function(position) {
+  onEnter: function() {
     this._super();
 
     /**
@@ -83,63 +80,45 @@ Awesome = Entity.extend({
      *
      *
      */
-    this.text.format(position);
+    var count = this.getAvailableItemsCount();
 
     /**
      *
      *
      *
      */
-    this.x = 0;
-    this.y = position;
+    this.holder.scale = 0;
 
     /**
      *
      *
      *
      */
-    var x = (Camera.width / Game.parameters.scale.min) / 2;
-    var y = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    while(x > -(Camera.width / Game.parameters.scale.min) / 1.5) {
+    if(count) {
 
       /**
        *
        *
        *
        */
-      var element = this.elements.create();
+      this.text.format(count);
 
       /**
        *
        *
        *
        */
-      element.x = x;
-      element.y = y;
-
-      /**
-       *
-       *
-       *
-       */
-      x -= 75;
+      this.holder.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.5, 1.0)
+          )
+        )
+      );
     }
   },
-  onDestroy: function() {
+  onExit: function() {
     this._super();
-
-    /**
-     *
-     * 
-     *
-     */
-    this.elements.clear();
   },
 
   /**
@@ -147,14 +126,7 @@ Awesome = Entity.extend({
    *
    *
    */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     *
-     *
-     */
-    this.x = Game.parameters.camera.x + Game.parameters.camera.width / 2;
+  getAvailableItemsCount: function() {
+    return 0;
   }
 });

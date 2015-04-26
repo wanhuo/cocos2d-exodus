@@ -488,6 +488,6 @@ Store = Popup.extend({
      *
      *
      */
-    this.text.coins.format([Counter.values.coins.total + 0]);
+    this.text.coins.format(Counter.values.coins.total + 0);
   }
 });

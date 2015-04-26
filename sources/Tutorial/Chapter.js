@@ -179,7 +179,7 @@ Chapter = Spine.extend({
        *
        *
        */
-      this.text.format([this.template.getString()]);
+      this.text.format(this.template.getString());
 
       /**
        *
@@ -291,7 +291,7 @@ Chapter = Spine.extend({
      * 
      *
      */
-    this.text.format(['']);
+    this.text.format('');
 
     /**
      *
@@ -319,7 +319,7 @@ Chapter = Spine.extend({
        * 
        *
        */
-      this.text.format([this.template.getString().substring(0, this.parameters.count)]);
+      this.text.format(this.template.getString().substring(0, this.parameters.count));
 
       /**
        *
