@@ -58,8 +58,8 @@ Shop = Button.extend({
      *
      */
     this.holder.create().attr({
-      x: this.width,
-      y: this.height
+      x: this.width - 16,
+      y: this.height - 16
     });
 
     /**
