@@ -556,6 +556,7 @@ Game = Screen.extend({
     new Continue;
     new Credits;
     new Store;
+    new Unlock;
 
     /**
      *

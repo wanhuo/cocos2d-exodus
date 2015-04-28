@@ -43,7 +43,7 @@ Shop = Button.extend({
      *
      *
      */
-    this.holder = new Entity(false, this);
+    this.holder = new Entity(resources.main.notification, this);
 
     /**
      *

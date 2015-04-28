@@ -128,6 +128,7 @@ var resources = {
       mail: 'resource/Graphics/mail-button.png',
       back: 'resource/Graphics/back-button.png'
     },
+    notification: 'resource/Graphics/notification.png',
     water: [
       'resource/Graphics/water-1.png',
       'resource/Graphics/water-2.png',

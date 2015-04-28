@@ -150,6 +150,13 @@ Splurge = Popup.extend({
         cc.CallFunc.create(this.hide, this)
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Unlock.show();
   },
   animation2: function() {
 
@@ -181,5 +188,12 @@ Splurge = Popup.extend({
         })
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Unlock.show();
   }
 });
