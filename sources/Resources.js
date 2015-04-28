@@ -252,6 +252,9 @@ var resources = {
           repeat: 'resource/Sound/engine-repeat.sound'
         }
       },
+      creatures: {
+        stegosaurus: 'resource/Sound/creature-stegosaurus.sound'
+      },
       counter: {
         count: [
           'resource/Sound/count-1.sound',
@@ -273,10 +276,6 @@ var resources = {
         }
       },
       bonuses: {
-        actions: [
-          'resource/Sound/bonus-2.sound',
-          'resource/Sound/bonus-2.sound'
-        ],
         use: [
           'resource/Sound/bonus-use-1.sound',
           'resource/Sound/bonus-use-2.sound',

@@ -50,7 +50,8 @@ Character = Spine.extend({
         animation: 2,
         prepare: 3,
         game: 4,
-        loss: 5
+        loss: 5,
+        restore: 6
       },
       scheduler: 0,
       animations: {
@@ -235,6 +236,15 @@ Character = Spine.extend({
      *
      */
     this.changeState(this.parameters.states.menu);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  reset: function() {
+
   },
 
   /**
@@ -685,6 +695,14 @@ Character = Spine.extend({
     Game.elements.explanation.x = this.x;
     Game.elements.explanation.y = this.y;
   },
+  onRestore: function() {
+
+    /**
+     *
+     *
+     *
+     */
+  },
 
   /**
    *
@@ -1045,6 +1063,9 @@ Character = Spine.extend({
       case this.parameters.states.loss:
       this.onLoss();
       break;
+      case this.parameters.states.restore:
+      this.onRestore();
+      break;
     }
   },
 
@@ -1139,6 +1160,15 @@ Character = Spine.extend({
      *
      */
     this.updateGame(time, 2);
+  },
+  updateRestore: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateGame(time);
   },
 
   /**
@@ -1943,46 +1973,69 @@ Character = Spine.extend({
       case this.parameters.states.loss:
       this.updateLoss(time);
       break;
+      case this.parameters.states.restore:
+      this.updateRestore(time);
+      break;
     }
 
     /**
      *
-     * 
+     *
      *
      */
-    if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] >= this.y) {
-      switch(Game.parameters.state) {
-        case Game.parameters.states.prepare:
-        case Game.parameters.states.start:
-        Game.changeState(Game.parameters.states.loss);
-        break;
-        case Game.parameters.states.game:
+    switch(this.parameters.state) {
+      case this.parameters.states.menu:
+      case this.parameters.states.animation:
+      case this.parameters.states.prepare:
+      case this.parameters.states.game:
+      case this.parameters.states.loss:
 
-        /**
-         *
-         *
-         *
-         */
-        if(this.saveFromWater()) {
-
-        } else {
-
-          /**
-           *
-           *
-           *
-           */
-          Game.setShake(0.5, 0.01);
+      /**
+       *
+       * 
+       *
+       */
+      if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] >= this.y) {
+        switch(Game.parameters.state) {
+          case Game.parameters.states.prepare:
+          case Game.parameters.states.start:
+          Game.changeState(Game.parameters.states.loss);
+          break;
+          case Game.parameters.states.game:
 
           /**
            *
            *
            *
            */
-          this.destroy();
+          if(this.saveFromWater()) {
+
+            /**
+             *
+             *
+             *
+             */
+            this.changeState(this.parameters.states.restore);
+          } else {
+
+            /**
+             *
+             *
+             *
+             */
+            Game.setShake(0.5, 0.01);
+
+            /**
+             *
+             *
+             *
+             */
+            this.destroy();
+          }
+          break;
         }
-        break;
       }
+      break;
     }
 
     /**
@@ -2072,6 +2125,42 @@ Character = Spine.extend({
    *
    */
   saveFromWater: function() {
+    /**
+     *
+     *
+     *
+     */
+    var count = Data.get(false, properties.creatures[1]);
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < count; i++) {
+      if(probably(25)) {
+
+        /**
+         *
+         *
+         *
+         */
+        Sound.play(resources.main.sound.creatures.stegosaurus);
+
+        /**
+         *
+         *
+         *
+         */
+        return true;
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
     return false;
   },
 
