@@ -170,8 +170,8 @@ Game = Screen.extend({
      */
     this.backgrounds.w = new Background(this.backgrounds.d);
     this.backgrounds.g = new Background(this.backgrounds.s);
-    this.backgrounds.c = new Background(this.backgrounds.s);
     this.backgrounds.e = new Background(this.backgrounds.b);
+    this.backgrounds.c = new Background(this.backgrounds.game);
 
     /**
      *
@@ -325,6 +325,7 @@ Game = Screen.extend({
     this.backgrounds.d.setLocalZOrder(200);
     this.backgrounds.b.setLocalZOrder(300);
     this.backgrounds.w.setLocalZOrder(400);
+    this.backgrounds.c.setLocalZOrder(5);
 
     /**
      *
@@ -339,6 +340,16 @@ Game = Screen.extend({
      *
      */
     this.buttons.credits.setLocalZOrder(2000);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.backgrounds.c.setAnchorPoint({
+      x: 0,
+      y: 0
+    });
 
     /**
      *
@@ -1705,6 +1716,21 @@ Game = Screen.extend({
      *
      */
     this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.c.x = Character.x - this.parameters.camera.width / 2 - this.h.x / this.backgrounds.d.scale;
+    this.backgrounds.c.y = this.parameters.camera.y - this.h.y / this.backgrounds.d.scale;
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.c.scale = 1.0 /  Game.backgrounds.d.scale;
   },
 
   /**

@@ -132,6 +132,7 @@ var resources = {
       back: 'resource/Graphics/back-button.png'
     },
     notification: 'resource/Graphics/notification.png',
+    confetti: 'resource/Graphics/confetti.png',
     water: [
       'resource/Graphics/water-1.png',
       'resource/Graphics/water-2.png',

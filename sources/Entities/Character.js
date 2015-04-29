@@ -1407,7 +1407,7 @@ Character = Spine.extend({
          *
          *
          */
-        bonus = x > Game.parameters.camera.x + Game.parameters.camera.width && probably(50) ? 4 : 0;
+        bonus = Game.parallax.scale() <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && probably(90) ? 4 : 0;
       }
 
       /**

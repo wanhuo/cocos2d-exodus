@@ -21,7 +21,7 @@
  *
  */
 
-Points = Manager.extend({
+Confetti = AnimatedEntity.extend({
 
   /**
    *
@@ -29,14 +29,7 @@ Points = Manager.extend({
    *
    */
   ctor: function() {
-    this._super(100, new Point, Game.backgrounds.game, true);
-
-    /**
-     *
-     *
-     *
-     */
-    this.animator = new Motion(resources.main.points.particle, Game.backgrounds.game, 54 * 1.5);
+    this._super(resources.main.confetti, 20, 4);
   },
 
   /**
@@ -44,55 +37,19 @@ Points = Manager.extend({
    *
    *
    */
-  clear: function(animated) {
+  onCreate: function() {
+    this._super();
+  },
+  onDestroy: function() {
+    this._super();
+  },
 
-    /**
-     *
-     *
-     *
-     */
-    if(animated) {
-
-      /**
-       *
-       *
-       *
-       */
-      var time = 0;
-
-      /**
-       *
-       *
-       *
-       */
-      this.elements.each(function(element) {
-
-        /**
-         *
-         *
-         *
-         */
-        if(element.state.create) {
-          element.runAction(
-            cc.Sequence.create(
-              cc.DelayTime.create(time),
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.2, 0.0)
-              ),
-              cc.CallFunc.create(element.destroy, element)
-            )
-          );
-
-          /**
-           *
-           *
-           *
-           */
-          time += 0.01;
-        }
-      }.bind(this));
-    } else {
-      this._super();
-    }
+  /**
+   *
+   *
+   *
+   */
+  deepCopy: function() {
+    return new Confetti;
   }
 });
