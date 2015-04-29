@@ -21,7 +21,7 @@
  *
  */
 
-Rocket = Entity.extend({
+Rocket = TiledEntity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Rocket = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.decorations.rocket.texture);
+    this._super(resources.main.decorations.rocket.texture, 4, 2);
 
     /**
      *
@@ -98,6 +98,13 @@ Rocket = Entity.extend({
      */
     this.parameters.speed.x = random(2.0, 5.0);
     this.parameters.speed.y = random(2.0, 5.0);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setRandomFrameIndex();
 
     /**
      *

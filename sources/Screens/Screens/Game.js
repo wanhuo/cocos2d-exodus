@@ -260,7 +260,7 @@ Game = Screen.extend({
     this.elements.character = new Character;
     this.elements.moon = new Moon;
     this.elements.counter = new Counter;
-    this.elements.rockets = new Manager(1, new Rocket, this, true);
+    this.elements.rockets = new Manager(2, new Rocket, this, true);
     this.elements.rockets.particles = [
       new Manager(10, new Entity(resources.main.decorations.rocket.particles[0]), this, true),
       new Manager(1, new Entity(resources.main.decorations.rocket.particles[1]), this, true)
