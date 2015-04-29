@@ -261,7 +261,7 @@ Reward = Popup.extend({
        *
        *
        */
-      if(this.elements.hand.getNumberOfRunningActions() > 0 ) return false;
+      if(this.elements.hand.getNumberOfRunningActions() > 0) return false;
 
       /**
        *

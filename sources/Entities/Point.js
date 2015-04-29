@@ -29,7 +29,7 @@ Point = TiledEntity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.point, 1, 3);
+    this._super(resources.main.points.texture, 1, 3);
 
     /**
      *

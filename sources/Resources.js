@@ -34,7 +34,10 @@ var resources = {
     ground: 'resource/Graphics/ground.png',
     slide: 'resource/Graphics/slide.png',
     mountain: 'resource/Graphics/mountain.png',
-    point: 'resource/Graphics/point.png',
+    points: {
+      texture: 'resource/Graphics/point.png',
+      particle: 'resource/Graphics/points-particle.png'
+    },
     decorations: {
       rocket: {
         texture: 'resource/Graphics/rocket.png',

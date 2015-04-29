@@ -1313,11 +1313,11 @@ Character = Spine.extend({
      *
      *
      */
-    Game.elements.points.draw.clear();
+    Game.elements.points.animator.destroy();
 
     /**
      *
-     * TODO: Whe have a performance issue here.
+     * TODO: We have a performance issue here.
      *
      */
     Game.elements.points.clear(/*true*/false);
@@ -1327,7 +1327,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var bonus = probably(10) ? 4 : 0;
+    var bonus = 0;
 
     /**
      *
@@ -1397,7 +1397,22 @@ Character = Spine.extend({
 
       /**
        *
-       * 
+       *
+       *
+       */
+      if(!bonus) {
+
+        /**
+         *
+         *
+         *
+         */
+        bonus = x > Game.parameters.camera.x + Game.parameters.camera.width && probably(50) ? 4 : 0;
+      }
+
+      /**
+       *
+       *
        *
        */
       var position = this.updatePosition(parameters);
@@ -1534,7 +1549,22 @@ Character = Spine.extend({
     if(Game.elements.points.bonus.length) {
       if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
         Game.elements.points.bonus = [];
+
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.points.animator.destroy();
       }
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.points.animator.destroy();
     }
 
     /**
@@ -1543,12 +1573,44 @@ Character = Spine.extend({
      *
      */
     if(Game.elements.points.bonus.length) {
-      Game.elements.points.draw.drawCubicBezier(
-        Game.elements.points.bonus[0],
-        Game.elements.points.bonus[1],
-        Game.elements.points.bonus[2],
-        Game.elements.points.bonus[3],
-        100, Game.elements.points.last().width, cc.color(42, 214, 60, 255)
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.points.animator.create().reset();
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.points.animator.x = Game.elements.points.bonus[0].x;
+      Game.elements.points.animator.y = Game.elements.points.bonus[0].y;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.elements.points.animator.runAction(
+        cc.RepeatForever.create(
+          cc.Sequence.create(
+            cc.BezierTo.create(0.2,
+            [
+              {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y},
+              {x: Game.elements.points.bonus[2].x, y: Game.elements.points.bonus[2].y},
+              {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y}
+            ]),
+            cc.BezierTo.create(0.2,
+            [
+              {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y},
+              {x: Game.elements.points.bonus[1].x, y: Game.elements.points.bonus[1].y},
+              {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y}
+            ])
+          )
+        )
       );
     }
   },
