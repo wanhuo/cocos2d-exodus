@@ -245,6 +245,59 @@ Character = Spine.extend({
    */
   reset: function() {
 
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.time = 1;
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.active = true;
+    this.parameters.locked = true;
+    this.parameters.speed.state = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.onShakeFinish();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.speed.x = this.parameters.speed.setup.x;
+    this.parameters.speed.y = this.parameters.speed.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.speed.max.x = this.parameters.speed.max.setup.x;
+    this.parameters.speed.max.y = this.parameters.speed.max.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.vector.x = this.parameters.vector.setup.x;
+    this.parameters.vector.y = this.parameters.vector.setup.y;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.speed.increase.x = 0;
   },
 
   /**
@@ -482,21 +535,14 @@ Character = Spine.extend({
 
     /**
      *
-     * 
      *
-     */
-    this.parameters.time = 1;
-
-    /**
-     *
-     * 
      *
      */
     this.rotation = 0;
 
     /**
      *
-     * 
+     *
      *
      */
     this.x = Camera.center.x;
@@ -507,49 +553,24 @@ Character = Spine.extend({
      *
      *
      */
-    this.parameters.active = true;
-    this.parameters.locked = true;
-    this.parameters.speed.state = true;
-
-    /**
-     *
-     *
-     *
-     */
-    this.onShakeFinish();
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.speed.x = this.parameters.speed.setup.x;
-    this.parameters.speed.y = this.parameters.speed.setup.y;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.speed.max.x = this.parameters.speed.max.setup.x;
-    this.parameters.speed.max.y = this.parameters.speed.max.setup.y;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.vector.x = this.parameters.vector.setup.x;
-    this.parameters.vector.y = this.parameters.vector.setup.y;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.speed.increase.x = 0;
+    this.reset();
   },
   onGame: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    clearInterval(this.parameters.sound.handler);
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.stop(this.parameters.sound.id.start);
+    Sound.stop(this.parameters.sound.id.repeat);
 
     /**
      *
@@ -702,6 +723,7 @@ Character = Spine.extend({
      *
      *
      */
+    this.reset();
   },
 
   /**
@@ -2051,19 +2073,35 @@ Character = Spine.extend({
       case this.parameters.states.prepare:
       case this.parameters.states.game:
       case this.parameters.states.loss:
+      case this.parameters.states.restore:
 
       /**
        *
        * 
        *
        */
-      if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] >= this.y) {
-        switch(Game.parameters.state) {
-          case Game.parameters.states.prepare:
-          case Game.parameters.states.start:
+      if(Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] > this.y) {
+        switch(this.parameters.state) {
+          case this.parameters.states.prepare:
+          case this.parameters.states.start:
           Game.changeState(Game.parameters.states.loss);
           break;
-          case Game.parameters.states.game:
+          case this.parameters.states.game:
+          case this.parameters.states.loss:
+
+          /**
+           *
+           * TODO: We have a performance issue here.
+           *
+           */
+          Game.elements.points.clear(/*true*/false);
+
+          /**
+           *
+           *
+           *
+           */
+          Game.backgrounds.w.stopAllActions();
 
           /**
            *
@@ -2094,6 +2132,24 @@ Character = Spine.extend({
              */
             this.destroy();
           }
+          break;
+        }
+      } else if(this.y > Game.backgrounds.w.y + Game.parameters.water.y[Game.parameters.state] + 50) {
+
+        /**
+         *
+         *
+         *
+         */
+        switch(this.parameters.state) {
+          case this.parameters.states.restore:
+
+          /**
+           *
+           *
+           *
+           */
+          this.changeState(this.parameters.states.game);
           break;
         }
       }
@@ -2201,6 +2257,38 @@ Character = Spine.extend({
      */
     for(var i = 0; i < count; i++) {
       if(probably(25)) {
+
+        /**
+         *
+         *
+         *
+         */
+        Game.stegosaurus.x = this.x - 200;
+        Game.stegosaurus.y = this.y;
+
+        /**
+         *
+         *
+         *
+         */
+        Game.stegosaurus.create().runAction(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.MoveBy.create(0.2, {
+                x: 0,
+                y: 180
+              })
+            ),
+            cc.DelayTime.create(0.5),
+            cc.EaseSineInOut.create(
+              cc.MoveBy.create(0.2, {
+                x: 0,
+                y: -180
+              })
+            ),
+            cc.CallFunc.create(Game.stegosaurus.destroy, Game.stegosaurus)
+          )
+        );
 
         /**
          *

@@ -21,36 +21,36 @@
  *
  */
 
-Star = Parallax.extend({
+Planet = Entity.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function(textureFileName, id) {
-    this._super(
-      textureFileName, 1, 1,
-      {
-        x: -30,
-        y: 0
-      },
-      {
-        x: random(0, Camera.width),
-        y: Camera.height - 180
-      },
-      {
-        x: 0.5,
-        y: 0
-      }
-    );
+  ctor: function(id) {
+    this._super(resources.main.planets[id], Game.backgrounds.g);
 
     /**
      *
-     *
+     * 
      *
      */
     this.id = id;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.create();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(13);
   },
 
   /**
@@ -66,7 +66,32 @@ Star = Parallax.extend({
      *
      *
      */
-    this.parameters.size.width = random(0, Camera.width / this.id);
+    var x;
+    var y;
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.id) {
+      case 0:
+      x = Camera.width - Camera.center.x / 2.5;
+      y = Camera.height * 3 - 200;
+      break;
+      case 1:
+      x = Camera.center.x / 2.5;
+      y = Camera.height * 4 - 200;
+      break;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = x;
+    this.y = y;
   },
   onDestroy: function() {
     this._super();
@@ -77,45 +102,35 @@ Star = Parallax.extend({
    *
    *
    */
-  parallaxCorrectPosition: function() {
+  onEnter: function() {
+    this._super();
     /**
      *
      *
      *
      */
-    var camera = Camera.height * Game.parameters.backgrounds.position.ratio;
-
-    /**
-     *
-     *
-     *
-     */
-    var y = this.id === 3 ? max(camera, Character.y || 0) : 0;
-
-
-    /**
-     *
-     *
-     *
-     */
-    this.y = random(y, y + camera * (this.id + 1));
+    this.runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.MoveBy.create(5.0, {
+                x: 0,
+                y: -200
+              }
+            )
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveBy.create(5.0, {
+                x: 0,
+                y: 200
+              }
+            )
+          )
+        )
+      )
+    );
   },
-
-  /**
-   *
-   *
-   *
-   */
-  disabled: function() {
-    return !(Game.parameters.state === Game.parameters.states.game);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  deepCopy: function() {
-    return new Star(this.textureFileName, this.id);
+  onExit: function() {
+    this._super();
   }
 });

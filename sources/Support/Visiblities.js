@@ -119,8 +119,35 @@ Visiblities = {
      *
      *
      */
-    Game.elements.parallaxes.stars1.visiblities = 'y >= 0 || y < -c * 2';
-    Game.elements.parallaxes.stars2.visiblities = 'y >= 0 || y < -c * 2';
+    Game.elements.parallaxes.stars11.visiblities = 'y >= 0 || y < -c * 2';
+    Game.elements.parallaxes.stars12.visiblities = 'y >= 0 || y < -c * 2';
+    Game.elements.parallaxes.stars21.visiblities = 'y >= -c || y < -c * 3';
+    Game.elements.parallaxes.stars22.visiblities = 'y >= -c || y < -c * 3';
+    Game.elements.parallaxes.stars31.visiblities = 'y >= -c * 2';
+    Game.elements.parallaxes.stars32.visiblities = 'y >= -c * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.brume1.visiblities = 'y >= -c || y < -c * 3';
+    Game.elements.brume2.visiblities = 'y >= -c * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.planet1.visiblities = 'y >= -c || y < -c * 3';
+    Game.elements.planet2.visiblities = 'y >= -c * 2';
+
+    /**
+     *
+     *
+     *
+     */
+    //Game.elements.parallax.meteorits.visiblities = '';
 
     /**
      *
@@ -221,8 +248,35 @@ Visiblities = {
      *
      *
      */
-    this.elements.push(Game.elements.parallaxes.stars1);
-    this.elements.push(Game.elements.parallaxes.stars2);
+    this.elements.push(Game.elements.parallaxes.stars11);
+    this.elements.push(Game.elements.parallaxes.stars12);
+    this.elements.push(Game.elements.parallaxes.stars21);
+    this.elements.push(Game.elements.parallaxes.stars22);
+    this.elements.push(Game.elements.parallaxes.stars31);
+    this.elements.push(Game.elements.parallaxes.stars32);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.brume1);
+    this.elements.push(Game.elements.brume2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.planet1);
+    this.elements.push(Game.elements.planet2);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.push(Game.elements.parallaxes.meteorits);
 
     /**
      *

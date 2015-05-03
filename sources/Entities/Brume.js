@@ -21,36 +21,36 @@
  *
  */
 
-Star = Parallax.extend({
+Brume = Entity.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function(textureFileName, id) {
-    this._super(
-      textureFileName, 1, 1,
-      {
-        x: -30,
-        y: 0
-      },
-      {
-        x: random(0, Camera.width),
-        y: Camera.height - 180
-      },
-      {
-        x: 0.5,
-        y: 0
-      }
-    );
+  ctor: function(id) {
+    this._super(resources.main.brumes[id], Game.backgrounds.g);
 
     /**
      *
-     *
+     * 
      *
      */
     this.id = id;
+
+    /**
+     *
+     * 
+     *
+     */
+    this.create();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(12);
   },
 
   /**
@@ -66,56 +66,34 @@ Star = Parallax.extend({
      *
      *
      */
-    this.parameters.size.width = random(0, Camera.width / this.id);
+    var x;
+    var y;
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.id) {
+      case 0:
+      x = Camera.center.x;
+      y = Camera.height * 2.5;
+      break;
+      case 1:
+      x = Camera.center.x;
+      y = Camera.height * 3.5;
+      break;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = x;
+    this.y = y;
   },
   onDestroy: function() {
     this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  parallaxCorrectPosition: function() {
-    /**
-     *
-     *
-     *
-     */
-    var camera = Camera.height * Game.parameters.backgrounds.position.ratio;
-
-    /**
-     *
-     *
-     *
-     */
-    var y = this.id === 3 ? max(camera, Character.y || 0) : 0;
-
-
-    /**
-     *
-     *
-     *
-     */
-    this.y = random(y, y + camera * (this.id + 1));
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  disabled: function() {
-    return !(Game.parameters.state === Game.parameters.states.game);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  deepCopy: function() {
-    return new Star(this.textureFileName, this.id);
   }
 });

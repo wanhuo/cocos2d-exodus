@@ -48,6 +48,93 @@ Unlock = Popup.extend({
         scheduler: true
       }
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements = {
+      confetti: new Manager(100, new Confetti, this, true)
+    };
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.confetti.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    var s = 64;
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < 5; i++) {
+      for(var j = 0; j < Camera.width / s; j++) {
+
+        /**
+         *
+         *
+         *
+         */
+        var x = random(-10, 10);
+        var y = random(-10, 10);
+
+        /**
+         *
+         *
+         *
+         */
+        var element = this.elements.confetti.create();
+
+        /**
+         *
+         *
+         *
+         */
+        element.x = j * s + s / 2 + x;
+        element.y = Camera.height - i * s - s / 2 + y + 100;
+
+        /**
+         *
+         *
+         *
+         */
+        element.runAction(
+          cc.Spawn.create(
+            cc.Sequence.create(
+              cc.DelayTime.create(2.0),
+              cc.FadeOut.create(1.5),
+              cc.CallFunc.create(element.destroy, element)
+            ),
+            cc.MoveBy.create(random(5.0, 8.0), {
+              x: 0,
+              y: -Camera.height
+            })
+          )
+        );
+      }
+    }
+  },
+  onExit: function() {
+    this._super();
   },
 
   /**

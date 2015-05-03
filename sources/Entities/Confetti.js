@@ -30,6 +30,13 @@ Confetti = AnimatedEntity.extend({
    */
   ctor: function() {
     this._super(resources.main.confetti, 20, 4);
+
+    /**
+     *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
   },
 
   /**
@@ -39,6 +46,37 @@ Confetti = AnimatedEntity.extend({
    */
   onCreate: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.opacity = 255;
+
+    /**
+     *
+     *
+     *
+     */
+    var id = random(0, 5, true);
+
+    /**
+     *
+     *
+     *
+     */
+    var frames = {
+      start: id * 20,
+      end: id * 20 + 19
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.animate(random(0.01, 0.06), false, frames);
   },
   onDestroy: function() {
     this._super();

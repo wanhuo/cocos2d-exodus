@@ -74,6 +74,7 @@ Game = Screen.extend({
           240,
           240,
           100,
+          0,
           0
         ]
       },
@@ -194,16 +195,21 @@ Game = Screen.extend({
       new Entity(resources.main.backgrounds[3], this.backgrounds.g)
     ];
     this.elements.parallaxes = {
+      stars11: new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0], 1)),
+      stars12: new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1], 1)),
+      stars21: new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0], 2)),
+      stars22: new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1], 2)),
+      stars31: new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0], 3)),
+      stars32: new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1], 3)),
       clouds1: new ParallaxEntity.Infinity(resources.main.clouds[0], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[0])),
       clouds2: new ParallaxEntity.Infinity(resources.main.clouds[1], this.backgrounds.game).addEntity(new Cloud(resources.main.clouds[1])),
-      stars1: new ParallaxEntity.Infinity(resources.main.stars[0], this.backgrounds.game).addEntity(new Star(resources.main.stars[0])),
-      stars2: new ParallaxEntity.Infinity(resources.main.stars[1], this.backgrounds.game).addEntity(new Star(resources.main.stars[1])),
       mountains1: new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
       mountains2: new ParallaxEntity.Infinity(resources.main.mountain, this.backgrounds.game).addEntity(new Mountain),
       trees1: new ParallaxEntity.Infinity(resources.main.trees[0], this.backgrounds.game).addEntity(new Tree(resources.main.trees[0])),
       trees2: new ParallaxEntity.Infinity(resources.main.trees[1], this.backgrounds.game).addEntity(new Tree(resources.main.trees[1])),
       trees3: new ParallaxEntity.Infinity(resources.main.trees[2], this.backgrounds.game).addEntity(new Tree(resources.main.trees[2])),
-      slides: new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide)
+      slides: new ParallaxEntity.Infinity(resources.main.slide, this.backgrounds.game).addEntity(new Slide),
+      meteorits: new ParallaxEntity.Infinity(resources.main.meteorit, this.backgrounds.game).addEntity(new Meteorit)
     };
     this.elements.ground = new ParallaxEntity.Infinity(resources.main.ground, this.backgrounds.game).addEntity(new Ground);
     this.elements.water3 = new ParallaxEntity.Infinity(resources.main.water[2], this.backgrounds.w).addEntity(
@@ -259,8 +265,12 @@ Game = Screen.extend({
     this.elements.name = new Name;
     this.elements.character = new Character;
     this.elements.moon = new Moon;
+    this.elements.brume1 = new Brume(0);
+    this.elements.brume2 = new Brume(1);
+    this.elements.planet1 = new Planet(0);
+    this.elements.planet2 = new Planet(1);
     this.elements.counter = new Counter;
-    this.elements.rockets = new Manager(2, new Rocket, this, true);
+    this.elements.rockets = new Manager(1, new Rocket, this, true);
     this.elements.rockets.particles = [
       new Manager(10, new Entity(resources.main.decorations.rocket.particles[0]), this, true),
       new Manager(1, new Entity(resources.main.decorations.rocket.particles[1]), this, true)
@@ -268,7 +278,14 @@ Game = Screen.extend({
 
     /**
      *
-     * 
+     *
+     *
+     */
+    this.stegosaurus = new Entity(resources.main.creatures.stegosaurus, this.backgrounds.game);
+
+    /**
+     *
+     *
      *
      */
     this.elements.creatures = new Creatures([
@@ -564,7 +581,7 @@ Game = Screen.extend({
      */
     new Splurge;
     new Reward;
-    new Continue;
+    //new Continue;
     new Credits;
     new Store;
     new Unlock;
@@ -1312,7 +1329,7 @@ Game = Screen.extend({
      *
      *
      */
-    Continue.reset();
+    //Continue.reset();
 
     /**
      *
@@ -1600,7 +1617,20 @@ Game = Screen.extend({
      * 
      *
      */
-    this.backgrounds.w.y += this.parameters.water.speed[this.parameters.state] * time;
+    switch(Character.parameters.state) {
+      default:
+
+      /**
+       *
+       * 
+       *
+       */
+      this.backgrounds.w.y += this.parameters.water.speed[this.parameters.state] * time;
+      break;
+      case Character.parameters.states.loss:
+      case Character.parameters.states.restore:
+      break;
+    }
   },
 
   /**
@@ -1716,6 +1746,7 @@ Game = Screen.extend({
      *
      */
     this.parameters.camera.width = Camera.width / this.backgrounds.d.scale;
+    this.parameters.camera.height = Camera.height / this.backgrounds.d.scale;
 
     /**
      *

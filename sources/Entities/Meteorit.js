@@ -21,19 +21,19 @@
  *
  */
 
-Star = Parallax.extend({
+Meteorit = Parallax.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function(textureFileName, id) {
+  ctor: function() {
     this._super(
-      textureFileName, 1, 1,
+      resources.main.meteorit, 1, 1,
       {
-        x: -30,
-        y: 0
+        x: -300,
+        y: -300
       },
       {
         x: random(0, Camera.width),
@@ -41,7 +41,7 @@ Star = Parallax.extend({
       },
       {
         x: 0.5,
-        y: 0
+        y: 0.5
       }
     );
 
@@ -50,7 +50,7 @@ Star = Parallax.extend({
      *
      *
      */
-    this.id = id;
+    this.needScheduleUpdate = true;
   },
 
   /**
@@ -66,7 +66,7 @@ Star = Parallax.extend({
      *
      *
      */
-    this.parameters.size.width = random(0, Camera.width / this.id);
+    this.scale = random(1.0, 3.0);
   },
   onDestroy: function() {
     this._super();
@@ -78,27 +78,27 @@ Star = Parallax.extend({
    *
    */
   parallaxCorrectPosition: function() {
-    /**
-     *
-     *
-     *
-     */
-    var camera = Camera.height * Game.parameters.backgrounds.position.ratio;
 
     /**
      *
      *
      *
      */
-    var y = this.id === 3 ? max(camera, Character.y || 0) : 0;
-
+    var camera = Camera.height * 3 * Game.parameters.backgrounds.position.ratio;
 
     /**
      *
      *
      *
      */
-    this.y = random(y, y + camera * (this.id + 1));
+    var y = max(camera, Character.y || 0);
+
+    /**
+     *
+     *
+     *
+     */
+    this.y = random(y, y + camera);
   },
 
   /**
@@ -107,7 +107,23 @@ Star = Parallax.extend({
    *
    */
   disabled: function() {
-    return !(Game.parameters.state === Game.parameters.states.game);
+    return Game.parameters.state === Game.parameters.states.menu || Game.parameters.state === Game.parameters.states.tutorial;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(time * Game.elements.character.parameters.time);
+
+    /**
+     *
+     *
+     *
+     */
+    this.rotation++;
   },
 
   /**
@@ -116,6 +132,6 @@ Star = Parallax.extend({
    *
    */
   deepCopy: function() {
-    return new Star(this.textureFileName, this.id);
+    return new Meteorit();
   }
 });

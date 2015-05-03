@@ -107,6 +107,14 @@ var resources = {
       'resource/Graphics/tree-2.png',
       'resource/Graphics/tree-3.png'
     ],
+    planets: [
+      'resource/Graphics/planet-1.png',
+      'resource/Graphics/planet-2.png'
+    ],
+    brumes: [
+      'resource/Graphics/brume-1.png',
+      'resource/Graphics/brume-2.png'
+    ],
     explanation: {
       texture: 'resource/Graphics/explanation.png',
       circle: 'resource/Graphics/explanation-circle.png'
@@ -114,6 +122,7 @@ var resources = {
     awesome: {
       texture: 'resource/Graphics/awesome.png',
     },
+    meteorit: 'resource/Graphics/meteorit.png',
     buttons: {
       play: 'resource/Graphics/play-button.png',
       leaderboard: 'resource/Graphics/leaderboard-button.png',
@@ -219,6 +228,9 @@ var resources = {
       particle: 'resource/Graphics/bonus-particle.png'
     },
     moon: 'resource/Graphics/moon.png',
+    creatures: {
+      stegosaurus: 'resource/Graphics/creature-stegosaurus.png'
+    },
     continue: {
       background: 'resource/Graphics/continue-background.png',
       element: 'resource/Graphics/continue-element.png'

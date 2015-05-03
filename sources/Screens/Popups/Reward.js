@@ -440,6 +440,13 @@ Reward = Popup.extend({
      *
      */
     Data.set(false, properties.coins, Counter.values.coins.total);
+
+    /**
+     *
+     *
+     *
+     */
+    Unlock.show();
   },
 
   /**
