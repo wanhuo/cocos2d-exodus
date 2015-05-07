@@ -36,6 +36,22 @@ Confetti = AnimatedEntity.extend({
      *
      *
      */
+    this.parameters = {
+      vector: {
+        x: 0,
+        y: 0
+      },
+      speed: {
+        x: 0,
+        y: 0
+      }
+    };
+
+    /**
+     *
+     *
+     *
+     */
     this.needScheduleUpdate = true;
   },
 
@@ -46,13 +62,6 @@ Confetti = AnimatedEntity.extend({
    */
   onCreate: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.opacity = 255;
 
     /**
      *
@@ -77,9 +86,50 @@ Confetti = AnimatedEntity.extend({
      *
      */
     this.animate(random(0.01, 0.06), false, frames);
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = Camera.center.x;
+    this.y = Camera.center.y;
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.vector.x = random(-1.0, 1.0);
+    this.parameters.vector.y = random(-1.0, 1.0);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.speed.x = random(10, 30);
+    this.parameters.speed.y = random(10, 30);
   },
   onDestroy: function() {
     this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(time);
+
+    /**
+     *
+     *
+     *
+     */
+    this.x += this.parameters.speed.x * this.parameters.vector.x;
+    this.y += this.parameters.speed.y * this.parameters.vector.y;
   },
 
   /**

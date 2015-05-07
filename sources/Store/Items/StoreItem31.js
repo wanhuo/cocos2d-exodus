@@ -30,5 +30,14 @@ StoreItem31 = StoreItem30.extend({
    */
   ctor: function() {
     this._super(resources.main.store.items[2][0].texture);
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  deepCopy: function() {
+    return new StoreItem31();
   }
 });

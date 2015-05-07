@@ -60,6 +60,55 @@ StoreItem30 = Entity.extend({
    *
    *
    */
+  correctPositionForUnlock: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = 256;
+    this.y = 256;
+
+    /**
+     *
+     *
+     *
+     */
+    this.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.DelayTime.create(1.0),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.x,
+              y: this.y + 50
+            })
+          ),
+          cc.EaseSineInOut.create(
+            cc.MoveTo.create(3.0, {
+              x: this.x,
+              y: this.y
+            })
+          )
+        )
+      )
+    );
+  },
+
+
+  /**
+   *
+   *
+   *
+   */
   onEnter: function() {
     this._super();
 

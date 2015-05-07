@@ -255,7 +255,7 @@ Game = Screen.extend({
     this.elements.bonuses = new Bonuses;
     this.elements.awesome = new Awesome;
     this.elements.explanation = new Explanation;
-    this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
+    //this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
     this.elements.stegosauruses = new Manager(10, new Stegosaurus, this.backgrounds.game);
     this.elements.triceratopses = new Manager(10, new Triceratops, this.backgrounds.game);
@@ -1184,7 +1184,7 @@ Game = Screen.extend({
     this.elements.coins.clear();
     this.elements.points.clear();
     this.elements.fishes.clear();
-    this.elements.baloons.clear();
+    //this.elements.baloons.clear();
 
     /**
      *
@@ -1831,7 +1831,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.updateBaloons(time);
+    //this.updateBaloons(time);
 
     /**
      *

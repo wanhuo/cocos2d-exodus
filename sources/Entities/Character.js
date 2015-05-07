@@ -227,8 +227,14 @@ Character = Spine.extend({
      * 
      *
      */
-    this.setLocalZOrder(10);
     this.shadow.setLocalZOrder(9);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setLocalZOrder(10);
 
     /**
      *
@@ -328,14 +334,6 @@ Character = Spine.extend({
      *
      */
     this.parameters.high = false;
-
-    /**
-     *
-     *
-     *
-     */
-    this.shadow.x = this.x;
-    this.shadow.y = 340;
 
     /**
      *
@@ -547,6 +545,14 @@ Character = Spine.extend({
      */
     this.x = Camera.center.x;
     this.y = Game.parameters.camera.center;
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.x = this.x;
+    this.shadow.y = 340;
 
     /**
      *
@@ -1143,14 +1149,21 @@ Character = Spine.extend({
      *
      *
      */
-    this.updateStatus();
+    //this.updateStatus(time);
 
     /**
      *
      *
      *
      */
-    this.updateHigh();
+    //this.updateShadow(time);
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateHigh(time);
 
     /**
      *
@@ -1429,7 +1442,7 @@ Character = Spine.extend({
          *
          *
          */
-        bonus = Game.parallax.scale() <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && probably(90) ? 4 : 0;
+        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && probably(1)) ? 4 : 0;
       }
 
       /**
@@ -1568,7 +1581,7 @@ Character = Spine.extend({
      *
      *
      */
-    if(Game.elements.points.bonus.length) {
+    if(Game.elements.points.bonus.length >= 4) {
       if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
         Game.elements.points.bonus = [];
 
@@ -1594,7 +1607,7 @@ Character = Spine.extend({
      *
      *
      */
-    if(Game.elements.points.bonus.length) {
+    if(Game.elements.points.bonus.length >= 4) {
 
       /**
        *
@@ -1933,6 +1946,47 @@ Character = Spine.extend({
    *
    *
    */
+  updateShadow: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.visible = this.y >= Game.parameters.camera.center;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.shadow.visible) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.shadow.x = this.x;
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.y <= (this.parameters.shadow.scale.position.min + this.parameters.shadow.scale.position.max) && this.y >= Game.parameters.camera.center) {
+        this.shadow.setScaleX(1.0 - 1.0 / (this.parameters.shadow.scale.position.min / (this.y - this.parameters.shadow.scale.position.max)));
+      } else {
+        this.shadow.setScaleX(0);
+      }
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
   updateShake: function(time) {
 
     /**
@@ -2154,39 +2208,6 @@ Character = Spine.extend({
         }
       }
       break;
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    this.shadow.visible = this.y >= Game.parameters.camera.center;
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.shadow.visible) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.shadow.x = this.x;
-
-      /**
-       *
-       *
-       *
-       */
-      if(this.y <= (this.parameters.shadow.scale.position.min + this.parameters.shadow.scale.position.max) && this.y >= Game.parameters.camera.center) {
-        this.shadow.setScaleX(1.0 - 1.0 / (this.parameters.shadow.scale.position.min / (this.y - this.parameters.shadow.scale.position.max)));
-      } else {
-        this.shadow.setScaleX(0);
-      }
     }
   },
 

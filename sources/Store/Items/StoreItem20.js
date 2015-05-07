@@ -51,6 +51,23 @@ StoreItem20 = Spine.extend({
    *
    *
    */
+  correctPositionForUnlock: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = 256;
+    this.y = 64;
+  },
+
+
+  /**
+   *
+   *
+   *
+   */
   onEnter: function() {
     this._super();
 

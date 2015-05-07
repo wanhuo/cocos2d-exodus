@@ -276,7 +276,7 @@ Visiblities = {
      *
      *
      */
-    this.elements.push(Game.elements.parallaxes.meteorits);
+    //this.elements.push(Game.elements.parallaxes.meteorits);
 
     /**
      *

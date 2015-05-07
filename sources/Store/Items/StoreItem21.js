@@ -37,5 +37,14 @@ StoreItem21 = StoreItem20.extend({
      *
      */
     this.setSkin('1');
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  deepCopy: function() {
+    return new StoreItem21();
   }
 });

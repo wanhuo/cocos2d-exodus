@@ -29,7 +29,7 @@ Unlock = Popup.extend({
    *
    */
   ctor: function() {
-    this._super(cc.color(132, 209, 200));
+    this._super(cc.color.BLACK);
 
     /**
      *
@@ -37,6 +37,13 @@ Unlock = Popup.extend({
      *
      */
     Unlock = this;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setCascadeOpacityEnabled(false);
 
     /**
      *
@@ -55,8 +62,64 @@ Unlock = Popup.extend({
      *
      */
     this.elements = {
-      confetti: new Manager(100, new Confetti, this, true)
+      confetti: new Manager(200, new Confetti, this, true)
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.background = new Entity(resources.main.unlock.background, this);
+
+    /**
+     *
+     *
+     *
+     */
+    this.background.motion = new Motion(resources.main.coin.particle, this, 82);
+
+    /**
+     *
+     *
+     *
+     */
+    this.text = {
+      strings: [
+        new Text('unlock-string-1', this),
+        new Text('unlock-string-2', this)
+      ]
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.strings[0].x = Camera.center.x;
+    this.text.strings[0].y = Camera.center.y - 380;
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.strings[1].x = Camera.center.x;
+    this.text.strings[1].y = Camera.center.y - 450;
+
+    /**
+     *
+     *
+     *
+     */
+    this.background.setLocalZOrder(10);
+
+    /**
+     *
+     *
+     *
+     */
+    this.needScheduleUpdate = true;
   },
 
   /**
@@ -79,62 +142,20 @@ Unlock = Popup.extend({
      *
      *
      */
-    var s = 64;
+    for(var i = 0; i < this.elements.confetti.count().capacity; i++) {
+      this.elements.confetti.create();
+    }
+  },
+  onExit: function() {
+    this._super();
 
     /**
      *
      *
      *
      */
-    for(var i = 0; i < 5; i++) {
-      for(var j = 0; j < Camera.width / s; j++) {
-
-        /**
-         *
-         *
-         *
-         */
-        var x = random(-10, 10);
-        var y = random(-10, 10);
-
-        /**
-         *
-         *
-         *
-         */
-        var element = this.elements.confetti.create();
-
-        /**
-         *
-         *
-         *
-         */
-        element.x = j * s + s / 2 + x;
-        element.y = Camera.height - i * s - s / 2 + y + 100;
-
-        /**
-         *
-         *
-         *
-         */
-        element.runAction(
-          cc.Spawn.create(
-            cc.Sequence.create(
-              cc.DelayTime.create(2.0),
-              cc.FadeOut.create(1.5),
-              cc.CallFunc.create(element.destroy, element)
-            ),
-            cc.MoveBy.create(random(5.0, 8.0), {
-              x: 0,
-              y: -Camera.height
-            })
-          )
-        );
-      }
-    }
-  },
-  onExit: function() {
-    this._super();
+    this.text.strings[0].destroy();
+    this.text.strings[1].destroy();
   },
 
   /**
@@ -149,8 +170,267 @@ Unlock = Popup.extend({
      *
      *
      */
-    if(false) {
+    var achievement = false;
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < Items.length; i++) {
+      for(var j = 0; j < Items[i].length; j++) {
+
+        /**
+         *
+         *
+         *
+         */
+        var element = Items[i][j];
+
+        /**
+         *
+         *
+         *
+         */
+        if(!element.achieved) {
+          if(Counter.values.scores.best >= element.unlock) {
+
+            /**
+             *
+             *
+             *
+             */
+            achievement = element;
+
+            /**
+             *
+             *
+             *
+             */
+            achievement.i = i;
+            achievement.j = j;
+
+            /**
+             *
+             *
+             *
+             */
+            Items[i][j].achieved = true;
+          }
+        }
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    if(achievement) {
       this._super();
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.item = achievement.item.deepCopy();
+
+      /**
+       *
+       *
+       *
+       */
+      this.background.addChild(this.elements.item.create());
+
+      /**
+       *
+       *
+       *
+       */
+      this.background.create();
+      this.background.motion.create();
+
+      /**
+       *
+       *
+       *
+       */
+      this.elements.item.correctPositionForUnlock();
+
+      /**
+       *
+       *
+       *
+       */
+      this.background.x = Camera.center.x;
+      this.background.y = Camera.center.y;
+
+      /**
+       *
+       *
+       *
+       */
+      this.background.scale = 0;
+
+      /**
+       *
+       *
+       *
+       */
+      this.background.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.ScaleTo.create(0.2, 1.0)
+          ),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.strings[0].opacity = 0;
+            this.text.strings[1].opacity = 0;
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.strings[0].create().runAction(
+              cc.Sequence.create(
+                cc.EaseSineInOut.create(
+                  cc.FadeIn.create(1.0)
+                ),
+                cc.EaseSineInOut.create(
+                  cc.FadeOut.create(1.0)
+                )
+              )
+            );
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.strings[1].create().runAction(
+              cc.Sequence.create(
+                cc.DelayTime.create(0.2),
+                cc.EaseSineInOut.create(
+                  cc.FadeIn.create(1.0)
+                ),
+                cc.EaseSineInOut.create(
+                  cc.FadeOut.create(1.0)
+                ),
+                cc.CallFunc.create(function() {
+
+                  /**
+                   *
+                   *
+                   *
+                   */
+                  this.runAction(
+                    cc.Sequence.create(
+                      cc.FadeOut.create(0.5)
+                    )
+                  );
+
+                  /**
+                   *
+                   *
+                   *
+                   */
+                  this.background.runAction(
+                    cc.Spawn.create(
+                      cc.Sequence.create(
+                        cc.EaseSineInOut.create(
+                          cc.ScaleTo.create(1.0, 0.15)
+                        )
+                      ),
+                      cc.Sequence.create(
+                        cc.EaseSineInOut.create(
+                          cc.BezierTo.create(1.0, [
+                            {x: this.background.x, y: this.background.y},
+                            {x: random(0, Camera.width), y: random(0, Camera.height)},
+                            {x: Reward.buttons.store.x, y: Reward.buttons.store.y}
+                          ])
+                        ),
+                        cc.CallFunc.create(function() {
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          this.background.destroy();
+                          this.background.motion.destroy();
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          var element = Game.elements.rockets.particles[1].create();
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          element.x = this.background.x;
+                          element.y = this.background.y;
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          element.scale = 0;
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          element.opacity = 255;
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          element.runAction(
+                            cc.Spawn.create(
+                              cc.Sequence.create(
+                                cc.EaseSineInOut.create(
+                                  cc.ScaleTo.create(0.2, 5.0)
+                                ),
+                                cc.CallFunc.create(element.destroy, element)
+                              ),
+                              cc.Sequence.create(
+                                cc.DelayTime.create(0.1),
+                                cc.FadeOut.create(0.1)
+                              )
+                            )
+                          );
+
+                          /**
+                           *
+                           *
+                           *
+                           */
+                          this.hide();
+                        }.bind(this))
+                      )
+                    )
+                  );
+                }.bind(this))
+              )
+            );
+          }.bind(this))
+        )
+      );
 
       /**
        *
@@ -161,7 +441,9 @@ Unlock = Popup.extend({
         cc.Sequence.create(
           cc.EaseSineInOut.create(
             cc.FadeIn.create(0.2)
-          )
+          ),
+          cc.DelayTime.create(15.0),
+          cc.CallFunc.create(this.hide, this)
         )
       );
     }
@@ -173,13 +455,45 @@ Unlock = Popup.extend({
      *
      *
      */
+    this.elements.item.removeFromParent();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.item.release();
+
+    /**
+     *
+     *
+     *
+     */
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
-        cc.CallFunc.create(this.removeFromParent, this)
+        cc.CallFunc.create(this.removeFromParent, this),
+        cc.CallFunc.create(this.show, this)
       )
     );
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  update: function(time) {
+    this._super(true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.background.motion.x = this.background.x;
+    this.background.motion.y = this.background.y;
   }
 });

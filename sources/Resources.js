@@ -235,6 +235,9 @@ var resources = {
       background: 'resource/Graphics/continue-background.png',
       element: 'resource/Graphics/continue-element.png'
     },
+    unlock: {
+      background: 'resource/Graphics/unlock-background.png'
+    },
     credits: {
       decorations: [
         'resource/Graphics/credits-decoration-1.png',

@@ -440,13 +440,6 @@ Reward = Popup.extend({
      *
      */
     Data.set(false, properties.coins, Counter.values.coins.total);
-
-    /**
-     *
-     *
-     *
-     */
-    Unlock.show();
   },
 
   /**
@@ -578,11 +571,14 @@ Reward = Popup.extend({
      *
      */
     Game.backgrounds.b.runAction(
-      cc.EaseBounceOut.create(
-        cc.MoveTo.create(1.0, {
-          x: 0,
-          y: 110
-        })
+      cc.Sequence.create(
+        cc.EaseBounceOut.create(
+          cc.MoveTo.create(1.0, {
+            x: 0,
+            y: 110
+          })
+        ),
+        cc.CallFunc.create(Unlock.show, Unlock)
       )
     );
   },

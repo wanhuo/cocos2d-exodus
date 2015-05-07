@@ -218,6 +218,14 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
+  'unlock-string-1': [
+    {title: 'You have unlocked', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]},
+    {title: 'Вы открыли', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]}
+  ],
+  'unlock-string-2': [
+    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]},
+    {title: '$2', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-title-0': [
     {title: 'Rockets', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
     {title: 'Ракеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
