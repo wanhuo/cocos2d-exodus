@@ -1,0 +1,104 @@
+
+tutorial.png
+size: 1553,551
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+step1/frame
+  rotate: true
+  xy: 2, 2
+  size: 547, 688
+  orig: 547, 688
+  offset: 0, 0
+  index: -1
+step1/man1
+  rotate: true
+  xy: 1382, 6
+  size: 29, 51
+  orig: 29, 51
+  offset: 0, 0
+  index: -1
+step1/man2
+  rotate: true
+  xy: 1489, 118
+  size: 29, 51
+  orig: 29, 51
+  offset: 0, 0
+  index: -1
+step1/man3
+  rotate: true
+  xy: 1489, 87
+  size: 29, 51
+  orig: 29, 51
+  offset: 0, 0
+  index: -1
+step1/man4
+  rotate: true
+  xy: 1481, 56
+  size: 29, 51
+  orig: 29, 51
+  offset: 0, 0
+  index: -1
+step1/rocket1
+  rotate: false
+  xy: 1382, 241
+  size: 169, 308
+  orig: 169, 308
+  offset: 0, 0
+  index: -1
+step2/flame
+  rotate: false
+  xy: 1438, 48
+  size: 41, 51
+  orig: 41, 51
+  offset: 0, 0
+  index: -1
+step2/frame2
+  rotate: true
+  xy: 692, 2
+  size: 547, 688
+  orig: 547, 688
+  offset: 0, 0
+  index: -1
+step2/green-dot
+  rotate: false
+  xy: 1382, 93
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+step2/green-ilumination
+  rotate: false
+  xy: 1438, 23
+  size: 23, 23
+  orig: 23, 23
+  offset: 0, 0
+  index: -1
+step2/red-dot
+  rotate: false
+  xy: 1382, 37
+  size: 54, 54
+  orig: 54, 54
+  offset: 0, 0
+  index: -1
+step2/rocket2
+  rotate: false
+  xy: 1382, 149
+  size: 162, 90
+  orig: 162, 90
+  offset: 0, 0
+  index: -1
+step2/score
+  rotate: false
+  xy: 1438, 101
+  size: 49, 46
+  orig: 49, 46
+  offset: 0, 0
+  index: -1
+step2/slide
+  rotate: false
+  xy: 1463, 36
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
