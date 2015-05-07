@@ -1547,6 +1547,15 @@ Game = Screen.extend({
          */
         Plugins.admob.show(Plugins.ad.types.banner);
         break;
+        case this.parameters.states.menu:
+
+        /**
+         *
+         *
+         *
+         */
+        Character.y = this.parameters.camera.positions[Character.parameters.skins.indexOf(Character.parameters.skin)];
+        break;
       }
     }
   },

@@ -655,5 +655,41 @@ StoreContent = StoreBackground.extend({
      *
      */
     Sound.play(resources.main.sound.store.select);
+
+    /**
+     *
+     * TODO: Remove it somewhere.
+     *
+     */
+    Character.setSkin(Character.parameters.skins[this.id]);
+    Reward.elements.rocket.setSkin(Character.parameters.skins[this.id]);
+
+    Character.retain();
+    Reward.elements.rocket.retain();
+
+    var a = Character.parent;
+    var b = Reward.elements.rocket.parent;
+
+    if(a) Character.removeFromParent();
+    if(b) Reward.elements.rocket.removeFromParent();
+
+    if(a) a.addChild(Character);
+    if(b) b.addChild(Reward.elements.rocket);
+
+    Character.release();
+    Reward.elements.rocket.release();
+
+    cc.Node.prototype.pauseSchedulerAndActions.call(Character);
+
+    if(b) {
+
+      /**
+       *
+       *
+       *
+       */
+      Reward.elements.rocket.x = Camera.center.x - Reward.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
+      Reward.elements.rocket.y = Camera.center.y - Reward.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+    }
   }
 });

@@ -145,6 +145,12 @@ Reward = Popup.extend({
      *
      */
     this.buttons.never.setLocalZOrder(1);
+    this.buttons.continue.setLocalZOrder(1);
+    this.buttons.like.setLocalZOrder(1);
+    this.buttons.share.setLocalZOrder(1);
+    this.buttons.leaderboard.setLocalZOrder(1);
+    this.buttons.achievements.setLocalZOrder(1);
+    this.buttons.store.setLocalZOrder(1);
 
     /**
      *
@@ -233,6 +239,13 @@ Reward = Popup.extend({
      *
      */
     this.buttons.continue.unregister();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.rocket.setLocalZOrder(0);
 
     /**
      *
