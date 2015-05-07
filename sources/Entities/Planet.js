@@ -95,42 +95,5 @@ Planet = Entity.extend({
   },
   onDestroy: function() {
     this._super();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onEnter: function() {
-    this._super();
-    /**
-     *
-     *
-     *
-     */
-    this.runAction(
-      cc.RepeatForever.create(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.MoveBy.create(5.0, {
-                x: 0,
-                y: -200
-              }
-            )
-          ),
-          cc.EaseSineInOut.create(
-            cc.MoveBy.create(5.0, {
-                x: 0,
-                y: 200
-              }
-            )
-          )
-        )
-      )
-    );
-  },
-  onExit: function() {
-    this._super();
   }
 });

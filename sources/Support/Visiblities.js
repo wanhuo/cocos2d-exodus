@@ -147,7 +147,7 @@ Visiblities = {
      *
      *
      */
-    //Game.elements.parallax.meteorits.visiblities = '';
+    Game.elements.parallaxes.meteorits.visiblities = 'y >= -c * 2';
 
     /**
      *
@@ -276,7 +276,7 @@ Visiblities = {
      *
      *
      */
-    //this.elements.push(Game.elements.parallaxes.meteorits);
+    this.elements.push(Game.elements.parallaxes.meteorits);
 
     /**
      *
@@ -359,7 +359,21 @@ Visiblities = {
      *
      *
      */
-    this.elements.each(function(element) {
+    var element;
+
+    /**
+     *
+     *
+     *
+     */
+    for(var i = 0; i < this.elements.length; i++) {
+
+      /**
+       *
+       *
+       *
+       */
+      element = this.elements[i];
 
       /**
        *
@@ -420,6 +434,6 @@ Visiblities = {
           element.release();
         }
       }
-    })
+    }
   }
 };

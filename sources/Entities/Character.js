@@ -502,7 +502,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.setScale(0.25);
+    this.scale = 0.25;
   },
   onAnimation: function() {
 
@@ -597,13 +597,6 @@ Character = Spine.extend({
        *
        *
        */
-      Tutorial.show(3);
-
-      /**
-       *
-       *
-       *
-       */
       this.parameters.locked = false;
       this.parameters.creation = false;
 
@@ -621,13 +614,6 @@ Character = Spine.extend({
      *
      */
     this.updateSound();
-
-    /**
-     *
-     *
-     *
-     */
-    Plugins.admob.hide(Plugins.ad.types.banner);
   },
   onLoss: function() {
 
@@ -669,13 +655,11 @@ Character = Spine.extend({
            *
            *
            */
-          if(!Tutorial.show(5)) {
-            /**if(!Continue.parameters.action) {
-              if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
-                Continue.show();
-              }
-            }*/
-          }
+          /**if(!Continue.parameters.action) {
+            if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
+              Continue.show();
+            }
+          }*/
         }),
         cc.DelayTime.create(2.0),
         cc.EaseSineInOut.create(
@@ -751,28 +735,12 @@ Character = Spine.extend({
        *
        *
        */
-      if(Tutorial.show(5)) {
-
-        /**
-         *
-         *
-         *
-         */
-        return false;
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        /*if(!Continue.parameters.action) {
-          if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
-            Continue.show();
-            return false;
-          }
-        }*/
-      }
+      /*if(!Continue.parameters.action) {
+        if(Game.backgrounds.d.scale <= Game.parameters.scale.min) {
+          Continue.show();
+          return false;
+        }
+      }*/
 
       /**
        *
@@ -1833,13 +1801,6 @@ Character = Spine.extend({
       Counter.count();
       break;
       case 1:
-
-      /**
-       *
-       *
-       *
-       */
-      Tutorial.show(4);
 
       /**
        *

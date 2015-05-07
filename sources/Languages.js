@@ -70,30 +70,6 @@ var languages = {
     {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
-  'tutorial': [
-    {title: '$1', font: 'Impact', size: 32, dimensions: false},
-    {title: '$1', font: 'Impact', size: 32, dimensions: false}
-  ],
-  'tutorial-chapter-1': [
-    {title: 'Please help me!\n\nOur world is flooded, and you have a rocket! Tap the screen to help us escape!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
-    {title: 'Пожалуйста помоги!\n\nНаш мир затапливает, а ведь у тебя есть ракета! Тапай по экрану чтобы мы бежали быстрей!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
-  ],
-  'tutorial-chapter-2': [
-    {title: 'Perfect. Everything is ready to start!\n\nJust click again. We are ready!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]},
-    {title: 'Отлично. Все готово к старту!\n\nПросто нажми еще раз. Мы готовы!', font: 'Impact', size: 32, dimensions: false, color: [232, 153, 255]}
-  ],
-  'tutorial-chapter-3': [
-    {title: 'It is very easy to control the ship: tap the screen when the rocket will fly through the green point!\n\nOn the right?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]},
-    {title: 'Управлять кораблем очень легко: нажимай на экран когда ракета достигнет зеленой точки!\n\nСправишься?', font: 'Impact', size: 32, dimensions: false, color: [40, 201, 0]}
-  ],
-  'tutorial-chapter-4': [
-    {title: 'We forgot to warn you about the red points! They pull the ship down!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]},
-    {title: 'Мы забыли предупредить о красных точках! Они утянут корабль вниз!!', font: 'Impact', size: 32, dimensions: false, color: [225, 21, 161]}
-  ],
-  'tutorial-chapter-5': [
-    {title: 'It looks like you made a mistake.\n\nDo not worry, next time be carefully.', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]},
-    {title: 'Похоже ты совершил ошибку.\n\nНе расстраивайся, в следующий раз будь внимательнее.', font: 'Impact', size: 32, dimensions: false, color: [255, 182, 42]}
-  ],
   'reward-coins': [
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]}

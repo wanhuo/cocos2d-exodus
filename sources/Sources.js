@@ -98,7 +98,5 @@ sources = sources.concat([
   'sources/Store/Items.js',
   'sources/Managers/ScreensManager.js',
   'sources/Managers/Points.js',
-  'sources/Managers/Bonuses.js',
-  'sources/Tutorial/Tutorial.js',
-  'sources/Tutorial/Chapter.js'
+  'sources/Managers/Bonuses.js'
 ]);

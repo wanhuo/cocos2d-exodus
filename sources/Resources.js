@@ -249,11 +249,6 @@ var resources = {
         'resource/Graphics/freepick.png'
       ]
     },
-    tutorial: {
-      texture: 'resource/Graphics/tutorial.png',
-      atlas: 'resource/Graphics/tutorial.atlas',
-      json: 'resource/Graphics/tutorial.json'
-    },
     music: {
       background: 'resource/Music/music-1.music'
     },

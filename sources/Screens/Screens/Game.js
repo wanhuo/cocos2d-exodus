@@ -1205,15 +1205,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(!Tutorial.show(1)) {
-
-      /**
-       *
-       *
-       *
-       */
-      Plugins.admob.show(Plugins.ad.types.banner);
-    }
+    Plugins.admob.show(Plugins.ad.types.banner);
   },
   onStart: function() {
 
@@ -1248,13 +1240,6 @@ Game = Screen.extend({
         )
       );
     }
-
-    /**
-     *
-     *
-     *
-     */
-    Tutorial.show(2);
   },
   onGame: function() {
 
@@ -1446,7 +1431,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.unscheduleUpdate();
+      this._super();
 
       /**
        *
@@ -1476,6 +1461,13 @@ Game = Screen.extend({
        *
        */
       this.h.pauseSchedulerAndActions();
+
+      /**
+       *
+       *
+       *
+       */
+      Plugins.admob.hide(Plugins.ad.types.banner);
     }
   },
   resumeSchedulerAndActions: function() {
@@ -1499,7 +1491,7 @@ Game = Screen.extend({
        *
        *
        */
-      this.scheduleUpdate();
+      this._super();
 
       /**
        *
@@ -1530,13 +1522,32 @@ Game = Screen.extend({
        */
       this.h.resumeSchedulerAndActions();
 
-
       /**
        *
        *
        *
        */
       this.buttons.store.updateTextData();
+
+      /**
+       *
+       *
+       *
+       */
+      switch(this.parameters.state) {
+        case this.parameters.states.prepare:
+        case this.parameters.states.start:
+        case this.parameters.states.game:
+        case this.parameters.states.loss:
+
+        /**
+         *
+         *
+         *
+         */
+        Plugins.admob.show(Plugins.ad.types.banner);
+        break;
+      }
     }
   },
 

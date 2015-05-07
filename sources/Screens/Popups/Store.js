@@ -222,13 +222,6 @@ Store = Popup.extend({
      *
      *
      */
-    Plugins.admob.hide(Plugins.ad.types.banner);
-
-    /**
-     *
-     *
-     *
-     */
     this.updateTextData();
 
     /**
