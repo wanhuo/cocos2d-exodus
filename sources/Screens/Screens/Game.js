@@ -131,9 +131,10 @@ Game = Screen.extend({
         current: false
       },
       ad: {
+        y: 0,
         interstitial: {
           current: 0,
-          times: 8
+          times: 1
         }
       }
     };
@@ -248,7 +249,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: 50
+          y: 0
         }
       )
     );
@@ -1205,7 +1206,17 @@ Game = Screen.extend({
      *
      *
      */
-    Plugins.admob.show(Plugins.ad.types.banner);
+    Plugins.admob.show(Plugins.ad.types.banner, {
+
+      /**
+       *
+       *
+       *
+       */
+      success: function() {
+        Game.parameters.ad.y = 75;
+      }
+    });
   },
   onStart: function() {
 
@@ -1467,7 +1478,17 @@ Game = Screen.extend({
        *
        *
        */
-      Plugins.admob.hide(Plugins.ad.types.banner);
+    Plugins.admob.hide(Plugins.ad.types.banner, {
+
+      /**
+       *
+       *
+       *
+       */
+      success: function() {
+        Game.parameters.ad.y = 0;
+      }
+    });
     }
   },
   resumeSchedulerAndActions: function() {
@@ -1545,7 +1566,17 @@ Game = Screen.extend({
          *
          *
          */
-        Plugins.admob.show(Plugins.ad.types.banner);
+        Plugins.admob.show(Plugins.ad.types.banner, {
+
+          /**
+           *
+           *
+           *
+           */
+          success: function() {
+            Game.parameters.ad.y = 75;
+          }
+        });
         break;
         case this.parameters.states.menu:
 
@@ -1728,7 +1759,7 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.game.x = -Character.x + Camera.center.x;
-    this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
+    this.backgrounds.game.y = min(-this.backgrounds.w.y + this.parameters.ad.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
 
     /**
      *

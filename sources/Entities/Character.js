@@ -2109,7 +2109,7 @@ Character = Spine.extend({
            * TODO: We have a performance issue here.
            *
            */
-          Game.elements.points.clear(/*true*/false);
+          Game.elements.points.clear(true);
 
           /**
            *
