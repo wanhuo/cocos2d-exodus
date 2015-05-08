@@ -201,7 +201,7 @@ Unlock = Popup.extend({
            *
            */
           if(!element.achieved) {
-            if(Counter.values.scores.best >= element.unlock) {
+            if(max(Counter.values.scores.current, Counter.values.scores.best) >= element.unlock) {
 
               /**
                *

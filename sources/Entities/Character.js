@@ -224,8 +224,8 @@ Character = Spine.extend({
       active: true,
       locked: true,
       collision: {
-        x: 60,
-        y: 60
+        x: 75,
+        y: 75
       },
       time: 1.0,
       sound: {

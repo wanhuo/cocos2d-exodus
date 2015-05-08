@@ -217,12 +217,12 @@ Game = Screen.extend({
       new Water(
         resources.main.water[2],
         {
-          x: 100,
+          x: 50,
           y: 0
         },
         {
           x: 0,
-          y: 180
+          y: 190
         }
       )
     );
@@ -249,7 +249,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: 0
+          y: 10
         }
       )
     );
@@ -452,15 +452,15 @@ Game = Screen.extend({
       cc.RepeatForever.create(
         cc.Sequence.create(
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
               y: 30
             })
           ),
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
-              y: 0
+              y: -30
             })
           )
         )
@@ -470,15 +470,15 @@ Game = Screen.extend({
       cc.RepeatForever.create(
         cc.Sequence.create(
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
               y: 20
             })
           ),
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
-              y: 0
+              y: -20
             })
           )
         )
@@ -488,15 +488,15 @@ Game = Screen.extend({
       cc.RepeatForever.create(
         cc.Sequence.create(
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
               y: 10
             })
           ),
           cc.EaseSineInOut.create(
-            cc.MoveTo.create(3.0, {
+            cc.MoveBy.create(3.0, {
               x: 0,
-              y: 0
+              y: -10
             })
           )
         )
