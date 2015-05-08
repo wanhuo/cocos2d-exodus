@@ -53,6 +53,7 @@ Character = Spine.extend({
         loss: 5,
         restore: 6
       },
+      status: false,
       scheduler: 0,
       animations: {
         animation: {
@@ -94,10 +95,18 @@ Character = Spine.extend({
           }
         },
         status: {
-          index: 7,
-          name: 'status',
-          time: 1.0,
-          loop: false
+          start: {
+            index: 7,
+            name: 'status-start',
+            time: 1.0,
+            loop: false
+          },
+          finish: {
+            index: 8,
+            name: 'status-finish',
+            time: 1.0,
+            loop: false
+          }
         }
       },
       skin: false,
@@ -1117,7 +1126,7 @@ Character = Spine.extend({
      *
      *
      */
-    //this.updateStatus(time);
+    this.updateStatus(time);
 
     /**
      *
@@ -1877,10 +1886,70 @@ Character = Spine.extend({
      */
     switch(element ? element.getCurrentFrameIndex() : false) {
       default:
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.status) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.status = false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
+    }
       break;
       case 0:
+      if(!this.parameters.status) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.status = true;
+
+        /**
+         *
+         *
+         *
+         */
+        this.setAnimation(this.parameters.animations.status.start.index, this.parameters.animations.status.start.name, false);
+      }
       break;
       case 1:
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.status) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.status = false;
+
+      /**
+       *
+       *
+       *
+       */
+      this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
+    }
       break;
       case 2:
 

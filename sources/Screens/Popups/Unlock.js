@@ -177,45 +177,53 @@ Unlock = Popup.extend({
      *
      *
      */
-    for(var i = 0; i < Items.length; i++) {
-      for(var j = 0; j < Items[i].length; j++) {
+    for(var i = 0; i < Items.items.length; i++) {
+      for(var j = 0; j < Items.items[i].length; j++) {
 
         /**
          *
          *
          *
          */
-        var element = Items[i][j];
+        if(!achievement) {
 
-        /**
-         *
-         *
-         *
-         */
-        if(!element.achieved) {
-          if(Counter.values.scores.best >= element.unlock) {
+          /**
+           *
+           *
+           *
+           */
+          var element = Items.items[i][j];
 
-            /**
-             *
-             *
-             *
-             */
-            achievement = element;
+          /**
+           *
+           *
+           *
+           */
+          if(!element.achieved) {
+            if(Counter.values.scores.best >= element.unlock) {
 
-            /**
-             *
-             *
-             *
-             */
-            achievement.i = i;
-            achievement.j = j;
+              /**
+               *
+               *
+               *
+               */
+              achievement = element;
 
-            /**
-             *
-             *
-             *
-             */
-            Items[i][j].achieved = true;
+              /**
+               *
+               *
+               *
+               */
+              achievement.i = i;
+              achievement.j = j;
+
+              /**
+               *
+               *
+               *
+               */
+              Items.items[i][j].achieved = true;
+            }
           }
         }
       }

@@ -414,6 +414,18 @@ var languages = {
     {title: 'Get 1000 coins only for $4.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 1000 монет всего за $4.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
+  'tutorial-text-1': [
+    {title: 'HOW TO PLAY', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]},
+    {title: 'КАК ИГРАТЬ', font: 'Impact', size: 122, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-text-2': [
+    {title: 'TAP FASTER TO FILL THE ROCKET', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Нажимайте быстрее чтобы заполнить ракету', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-text-3': [
+    {title: 'TAP WHEN THE ROCKET\nWILL FLY THROUGH THE GREEN POINT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Нажимайте когда ракета пролетает через зеленую точку', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
   'share-message': [
     {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
     {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}

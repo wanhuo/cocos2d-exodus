@@ -44,15 +44,7 @@ var properties = {
   },
   awesome: 13,
   coins: 1000,
-  tutorial: {
-    chapters: {
-      chapter1: 101,
-      chapter2: 102,
-      chapter3: 103,
-      chapter4: 104,
-      chapter5: 105
-    }
-  },
+  tutorial: 100,
   rocket: 200,
   rockets: [
     201,

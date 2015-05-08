@@ -586,6 +586,7 @@ Game = Screen.extend({
     new Credits;
     new Store;
     new Unlock;
+    new Tutorial;
 
     /**
      *
@@ -734,6 +735,15 @@ Game = Screen.extend({
    *
    */
   onPlay: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(!Data.get(false, properties.tutorial)) {
+      return Tutorial.show();
+    }
 
     /**
      *
@@ -1214,7 +1224,7 @@ Game = Screen.extend({
        *
        */
       success: function() {
-        Game.parameters.ad.y = 75;
+        Game.parameters.ad.y = 0;
       }
     });
   },
@@ -1574,7 +1584,7 @@ Game = Screen.extend({
            *
            */
           success: function() {
-            Game.parameters.ad.y = 75;
+            Game.parameters.ad.y = 0;
           }
         });
         break;

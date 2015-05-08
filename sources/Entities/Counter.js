@@ -672,7 +672,7 @@ Counter = Button.extend({
 
     /**
      *
-     * 
+     *
      *
      */
     Sound.play(resources.main.sound.counter.count.random());
