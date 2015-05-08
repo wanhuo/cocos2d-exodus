@@ -590,8 +590,7 @@ Reward = Popup.extend({
             x: 0,
             y: 110
           })
-        ),
-        cc.CallFunc.create(Unlock.show, Unlock)
+        )
       )
     );
   },
@@ -751,7 +750,7 @@ Reward = Popup.extend({
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
-        cc.CallFunc.create(this.buttons.continue.register, this.buttons.continue)
+        cc.CallFunc.create(Unlock.show, Unlock)
       )
     );
   },

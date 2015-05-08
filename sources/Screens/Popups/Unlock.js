@@ -88,7 +88,8 @@ Unlock = Popup.extend({
       strings: [
         new Text('unlock-string-1', this),
         new Text('unlock-string-2', this)
-      ]
+      ],
+      template: new Text('store-item-title-1-1', this)
     };
 
     /**
@@ -298,6 +299,20 @@ Unlock = Popup.extend({
              *
              *
              */
+            this.text.template.setText('store-item-title-' + (achievement.i + 1) + '-' + (achievement.j + 1));
+
+            /**
+             *
+             *
+             *
+             */
+            this.text.strings[1].format(this.text.template.getString());
+
+            /**
+             *
+             *
+             *
+             */
             this.text.strings[0].opacity = 0;
             this.text.strings[1].opacity = 0;
 
@@ -454,6 +469,14 @@ Unlock = Popup.extend({
           cc.CallFunc.create(this.hide, this)
         )
       );
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      Reward.buttons.continue.register();
     }
   },
   hide: function() {
