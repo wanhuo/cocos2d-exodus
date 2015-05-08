@@ -679,7 +679,7 @@ StoreContent = StoreBackground.extend({
     Character.release();
     Reward.elements.rocket.release();
 
-    cc.Node.prototype.pauseSchedulerAndActions.call(Character);
+    cc.Node.prototype.unscheduleUpdate.call(Character);
 
     if(b) {
 

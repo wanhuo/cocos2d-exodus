@@ -19,36 +19,8 @@
  *
  * @version of cocos2d is 3.5
  *
- *
- *
  */
-Screens.parameters.animations.replace.time = 0.5;
-Screens.parameters.animations.push.time = 0.2;
-Screens.parameters.animations.pop.time = 0.2;
 
-/**
- *
- *
- *
- */
 Screens.change.replace = function(screen) {
-  cc.director.runScene(cc.TransitionFade.create(Screens.parameters.animations.replace.time, screen, cc.color.BLACK));
-};
-
-/**
- *
- *
- *
- */
-Screens.change.push = function(screen) {
-  cc.director.runScene(cc.TransitionCrossFade.create(Screens.parameters.animations.push.time, screen));
-};
-
-/**
- *
- *
- *
- */
-Screens.change.pop = function(screen) {
-  cc.director.runScene(cc.TransitionCrossFade.create(Screens.parameters.animations.pop.time, screen));
+  cc.director.runScene(screen);
 };

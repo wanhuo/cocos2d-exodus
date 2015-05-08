@@ -55,6 +55,40 @@ Character = Spine.extend({
       },
       status: false,
       scheduler: 0,
+      center: [
+        {
+          x: 0,
+          y: 22
+        },
+        {
+          x: 0,
+          y: 22
+        },
+        {
+          x: 0,
+          y: 22
+        },
+        {
+          x: 0,
+          y: 22.5
+        },
+        {
+          x: 0,
+          y: 24
+        },
+        {
+          x: 0,
+          y: -3
+        },
+        {
+          x: 0,
+          y: 0
+        },
+        {
+          x: 0,
+          y: 0
+        }
+      ],
       animations: {
         animation: {
           index: 1,
@@ -86,23 +120,17 @@ Character = Spine.extend({
             name: 'engine-repeat',
             time: 1.0,
             loop: false
-          },
-          complete: {
-            index: 6,
-            name: 'engine-start-complete',
-            time: 1.0,
-            loop: false
           }
         },
         status: {
           start: {
-            index: 7,
+            index: 6,
             name: 'status-start',
             time: 1.0,
             loop: false
           },
           finish: {
-            index: 8,
+            index: 7,
             name: 'status-finish',
             time: 1.0,
             loop: false
@@ -196,8 +224,8 @@ Character = Spine.extend({
       active: true,
       locked: true,
       collision: {
-        x: 75,
-        y: 75
+        x: 60,
+        y: 60
       },
       time: 1.0,
       sound: {
@@ -447,13 +475,6 @@ Character = Spine.extend({
 
           /**
            *
-           * 
-           *
-           */
-          this.setAnimation(this.parameters.animations.engine.complete.index, this.parameters.animations.engine.complete.name, false);
-
-          /**
-           *
            *
            *
            */
@@ -631,7 +652,7 @@ Character = Spine.extend({
      *
      *
      */
-    this.pauseSchedulerAndActions();
+    this.smokes.pauseSchedulerAndActions();
 
     /**
      *
@@ -681,7 +702,7 @@ Character = Spine.extend({
            *
            *
            */
-          this.resumeSchedulerAndActions();
+          this.smokes.resumeSchedulerAndActions();
 
           /**
            *
@@ -712,8 +733,8 @@ Character = Spine.extend({
      *
      *
      */
-    Game.elements.explanation.x = this.x;
-    Game.elements.explanation.y = this.y;
+    Game.elements.explanation.x = this.parameters.center[this.parameters.skins.indexOf(this.parameters.skin)].x;
+    Game.elements.explanation.y = this.parameters.center[this.parameters.skins.indexOf(this.parameters.skin)].y;
   },
   onRestore: function() {
 
@@ -1037,6 +1058,46 @@ Character = Spine.extend({
    *
    *
    */
+  showStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    //this.clearTrack(this.parameters.animations.status.start.index);
+    //this.clearTrack(this.parameters.animations.status.finish.index);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(this.parameters.animations.status.start.index, this.parameters.animations.status.start.name, false);
+  },
+  hideStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    //this.clearTrack(this.parameters.animations.status.start.index);
+    //this.clearTrack(this.parameters.animations.status.finish.index);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
+  },
+
+  /**
+   *
+   *
+   *
+   */
   changeState: function(state) {
     if(this.parameters.state === state) return false;
 
@@ -1126,13 +1187,6 @@ Character = Spine.extend({
      *
      *
      */
-    this.updateStatus(time);
-
-    /**
-     *
-     *
-     *
-     */
     //this.updateShadow(time);
 
     /**
@@ -1171,7 +1225,15 @@ Character = Spine.extend({
      *
      *
      */
-    this.updateGame(time, 2);
+    if(Game.h.getNumberOfRunningActions() < 1) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateGame(time, 2);
+    }
   },
   updateRestore: function(time) {
 
@@ -1886,70 +1948,13 @@ Character = Spine.extend({
      */
     switch(element ? element.getCurrentFrameIndex() : false) {
       default:
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.parameters.status) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.status = false;
-
-      /**
-       *
-       *
-       *
-       */
-      this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
-    }
+      this.hideStatus();
       break;
       case 0:
-      if(!this.parameters.status) {
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.status = true;
-
-        /**
-         *
-         *
-         *
-         */
-        this.setAnimation(this.parameters.animations.status.start.index, this.parameters.animations.status.start.name, false);
-      }
+      this.showStatus();
       break;
       case 1:
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.parameters.status) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.status = false;
-
-      /**
-       *
-       *
-       *
-       */
-      this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
-    }
+      this.hideStatus();
       break;
       case 2:
 
@@ -1966,6 +1971,14 @@ Character = Spine.extend({
          *
          */
         this.proceedPoint(element);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.showStatus();
       }
       break;
     }
@@ -2239,6 +2252,13 @@ Character = Spine.extend({
       }
       break;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateStatus(time);
   },
 
   /**

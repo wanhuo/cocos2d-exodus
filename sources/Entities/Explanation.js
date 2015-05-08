@@ -29,14 +29,14 @@ Explanation = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(false, Game.backgrounds.game);
+    this._super(false, Character);
 
     /**
      *
      * 
      *
      */
-    this.setLocalZOrder(9);
+    this.setLocalZOrder(20);
 
     /**
      *
