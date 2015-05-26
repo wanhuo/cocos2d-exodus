@@ -36,6 +36,13 @@ Points = Manager.extend({
      *
      *
      */
+    this.bonus = [];
+
+    /**
+     *
+     *
+     *
+     */
     this.animator = new Motion(resources.main.points.particle, Game.backgrounds.game, 54 * 1.5);
   },
 

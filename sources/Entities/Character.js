@@ -1914,6 +1914,23 @@ Character = Spine.extend({
      *
      *
      */
+    if(Game.elements.points.bonus.length) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
+        return this.showStatus();
+      }
+    }
+
+    /**
+     *
+     *
+     *
+     */
     var element = this.updatePoint();
 
     /**
@@ -2233,7 +2250,26 @@ Character = Spine.extend({
      *
      *
      */
-    this.updateStatus(time);
+    switch(this.parameters.state) {
+      case this.parameters.states.game:
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateStatus(time);
+      break;
+      case this.parameters.states.loss:
+
+      /**
+       *
+       *
+       *
+       */
+      this.hideStatus();
+      break;
+    }
   },
 
   /**
