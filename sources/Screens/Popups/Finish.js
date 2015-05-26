@@ -309,6 +309,27 @@ Finish = Popup.extend({
     this.startAnimation();
   },
   onExit: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(Plugins.heyzap.available(Plugins.ad.types.video)) {
+
+      /**
+       *
+       *
+       *
+       */
+      Reward.show();
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this._super();
 
     /**
@@ -331,13 +352,6 @@ Finish = Popup.extend({
      *
      */
     this.buttons.continue.unregister();
-
-    /**
-     *
-     *
-     *
-     */
-    Reward.show();
   },
 
   /**

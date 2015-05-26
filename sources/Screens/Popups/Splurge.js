@@ -121,7 +121,7 @@ Splurge = Popup.extend({
             Finish.show();
           }
         }),
-        cc.DelayTime.create(0.1),
+        cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
 
           /**

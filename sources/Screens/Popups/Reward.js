@@ -59,7 +59,7 @@ Reward = Popup.extend({
      *
      *
      */
-    this.manager = new Manager(1, new Entity(resources.main.reward.background), this, true);
+    this.manager = new Manager(1, new Entity(resources.main.reward.backgrounds[0]), this, true);
 
     /**
      *
@@ -67,7 +67,8 @@ Reward = Popup.extend({
      *
      */
     this.elements = {
-      background: new Entity(resources.main.reward.background, this, true)
+      decoration: new Entity(resources.main.reward.backgrounds[1], this),
+      background: new Entity(resources.main.reward.backgrounds[0], this)
     };
 
     /**
@@ -96,10 +97,24 @@ Reward = Popup.extend({
     this.text = {
       action: new Text('reward-action', this),
       time: new Text('reward-time', this.elements.background),
-      play: new Text('button-text-coins', this.buttons.play),
-      stop: new Text('button-text-nope', this.buttons.stop),
+      play: new Text('reward-text-get', this.buttons.play),
+      stop: new Text('reward-text-nope', this.buttons.stop),
       never: new Text('never-show-me', this)
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.background.create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y + 150
+    });
+    this.elements.decoration.create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y + 250
+    });
 
     /**
      *
@@ -211,20 +226,6 @@ Reward = Popup.extend({
         )
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    Game.elements.explanation.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.FadeOut.create(0.5)
-        ),
-        cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
-      )
-    );
   },
   onStop: function() {
 
@@ -255,6 +256,20 @@ Reward = Popup.extend({
      *
      *
      */
+    this.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.hide();
+
+    /**
+     *
+     *
+     *
+     */
     Plugins.heyzap.show(Plugins.ad.types.video, {
 
       /**
@@ -263,6 +278,30 @@ Reward = Popup.extend({
        *
        */
       success: function() {
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.values.coins.total += 25;
+
+        /**
+         *
+         *
+         *
+         */
+        for(var i = 0; i < 25; i++) {
+          setTimeout(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            Sound.play(resources.main.sound.coins.animation.finish);
+          }, random(0, 1000));
+        }
       }
     });
   },
@@ -289,7 +328,7 @@ Reward = Popup.extend({
      */
     this.buttons.play.create().attr({
       x: Camera.center.x,
-      y: Camera.center.y - 420 - 500
+      y: Camera.center.y - 380 - 500
     });
     this.buttons.stop.create().attr({
       x: Camera.center.x,
@@ -303,7 +342,7 @@ Reward = Popup.extend({
      */
     this.text.action.create().attr({
       x: Camera.center.x,
-      y: Camera.center.y - 300
+      y: Camera.center.y - 220
     });
 
     /**
@@ -391,6 +430,29 @@ Reward = Popup.extend({
      *
      */
     this.text.time.format(round(this.parameters.time.current));
+    this.text.action.format(25);
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.decoration.runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.ScaleTo.create(5.0, 0.9),
+          cc.ScaleTo.create(5.0, 1.1)
+        )
+      )
+    );
+    this.elements.decoration.runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.RotateTo.create(5.0, -5.0),
+          cc.RotateTo.create(5.0,  5.0)
+        )
+      )
+    );
   },
   onExit: function() {
     this._super();
@@ -422,6 +484,13 @@ Reward = Popup.extend({
      *
      *
      */
+    this.elements.decoration.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
     Sound.stop(this.parameters.sound);
   },
 
@@ -445,7 +514,7 @@ Reward = Popup.extend({
      *
      */
     element.x = Camera.center.x;
-    element.y = Camera.center.y;
+    element.y = Camera.center.y + 150;
 
     /**
      *

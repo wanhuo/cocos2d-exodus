@@ -232,7 +232,10 @@ var resources = {
       stegosaurus: 'resource/Graphics/creature-stegosaurus.png'
     },
     reward: {
-      background: 'resource/Graphics/reward-background.png',
+      backgrounds: [
+        'resource/Graphics/reward-background-1.png',
+        'resource/Graphics/reward-background-2.png'
+      ],
       element: 'resource/Graphics/reward-element.png'
     },
     unlock: {

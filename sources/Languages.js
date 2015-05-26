@@ -79,8 +79,16 @@ var languages = {
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]}
   ],
   'reward-action': [
-    {title: 'Would you like to\nget an extra life?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: 'Хотите получить\nдополнительную жизнь?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+    {title: 'Would you like to watch a video\n and get $1 coins for free?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Хотите посмотреть видео и получить\n$1 монет бесплатно?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'reward-text-nope': [
+    {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
+  ],
+  'reward-text-get': [
+    {title: 'Get $1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
+    {title: 'Получить $1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
   'never-show-me': [
     {title: 'Never show me this window', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},

@@ -300,6 +300,13 @@ Character = Spine.extend({
      *
      *
      */
+    this.parameters.scheduler = 0;
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters.active = true;
     this.parameters.locked = true;
     this.parameters.speed.state = true;
