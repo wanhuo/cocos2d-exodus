@@ -874,7 +874,7 @@ Counter = Button.extend({
      *
      *
      */
-    if(Reward.state.create) {
+    if(Finish.state.create) {
 
       /**
        *

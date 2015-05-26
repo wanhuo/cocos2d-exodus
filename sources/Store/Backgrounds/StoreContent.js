@@ -662,22 +662,22 @@ StoreContent = StoreBackground.extend({
      *
      */
     Character.setSkin(Character.parameters.skins[this.id]);
-    Reward.elements.rocket.setSkin(Character.parameters.skins[this.id]);
+    Finish.elements.rocket.setSkin(Character.parameters.skins[this.id]);
 
     Character.retain();
-    Reward.elements.rocket.retain();
+    Finish.elements.rocket.retain();
 
     var a = Character.parent;
-    var b = Reward.elements.rocket.parent;
+    var b = Finish.elements.rocket.parent;
 
     if(a) Character.removeFromParent();
-    if(b) Reward.elements.rocket.removeFromParent();
+    if(b) Finish.elements.rocket.removeFromParent();
 
     if(a) a.addChild(Character);
-    if(b) b.addChild(Reward.elements.rocket);
+    if(b) b.addChild(Finish.elements.rocket);
 
     Character.release();
-    Reward.elements.rocket.release();
+    Finish.elements.rocket.release();
 
     cc.Node.prototype.unscheduleUpdate.call(Character);
 
@@ -688,8 +688,8 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      Reward.elements.rocket.x = Camera.center.x - Reward.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
-      Reward.elements.rocket.y = Camera.center.y - Reward.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+      Finish.elements.rocket.x = Camera.center.x - Finish.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
+      Finish.elements.rocket.y = Camera.center.y - Finish.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
     }
   }
 });

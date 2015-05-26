@@ -151,18 +151,18 @@ var resources = {
       'resource/Graphics/bonus-1.png',
       'resource/Graphics/bonus-2.png'
     ],
-    reward: {
-      coin: 'resource/Graphics/reward-coin.png',
+    finish: {
+      coin: 'resource/Graphics/finish-coin.png',
       decorations: [
-        'resource/Graphics/reward-decoration-1.png'
+        'resource/Graphics/finish-decoration-1.png'
       ],
       pig: {
-        texture: 'resource/Graphics/reward-pig.png',
-        hide: 'resource/Graphics/reward-hide.png',
+        texture: 'resource/Graphics/finish-pig.png',
+        hide: 'resource/Graphics/finish-hide.png',
       },
-      hand: 'resource/Graphics/reward-hand.png',
+      hand: 'resource/Graphics/finish-hand.png',
       buttons: {
-        continue: 'resource/Graphics/reward-continue-button.png'
+        continue: 'resource/Graphics/finish-continue-button.png'
       }
     },
     store: {
@@ -231,9 +231,9 @@ var resources = {
     creatures: {
       stegosaurus: 'resource/Graphics/creature-stegosaurus.png'
     },
-    continue: {
-      background: 'resource/Graphics/continue-background.png',
-      element: 'resource/Graphics/continue-element.png'
+    reward: {
+      background: 'resource/Graphics/reward-background.png',
+      element: 'resource/Graphics/reward-element.png'
     },
     unlock: {
       background: 'resource/Graphics/unlock-background.png'
@@ -270,7 +270,7 @@ var resources = {
       swipe: 'resource/Sound/swipe.sound',
       awesome: 'resource/Sound/awesome.sound',
       unlock: 'resource/Sound/unlock.sound',
-      continue: 'resource/Sound/continue.sound',
+      reward: 'resource/Sound/reward.sound',
       character: {
         destroy: 'resource/Sound/destroy.sound',
         engine : {

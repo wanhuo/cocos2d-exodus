@@ -319,6 +319,15 @@ Game = Screen.extend({
 
     /**
      *
+     *
+     *
+     */
+    this.elements.water1.parameters = {blocks: {reset: true}};
+    this.elements.water2.parameters = {blocks: {reset: true}};
+    this.elements.water3.parameters = {blocks: {reset: true}};
+
+    /**
+     *
      * 
      *
      */
@@ -580,8 +589,8 @@ Game = Screen.extend({
      *
      */
     new Splurge;
+    new Finish;
     new Reward;
-    //new Continue;
     new Credits;
     new Store;
     new Unlock;
@@ -1152,6 +1161,15 @@ Game = Screen.extend({
      *
      *
      */
+    this.elements.water1.parameters.blocks.reset = false;
+    this.elements.water2.parameters.blocks.reset = false;
+    this.elements.water3.parameters.blocks.reset = false;
+
+    /**
+     *
+     *
+     *
+     */
     this.backgrounds.w.stopAllActions();
 
     /**
@@ -1215,7 +1233,7 @@ Game = Screen.extend({
      *
      *
      */
-    Plugins.admob.show(Plugins.ad.types.banner, {
+    Plugins.heyzap.show(Plugins.ad.types.banner, {
 
       /**
        *
@@ -1328,13 +1346,6 @@ Game = Screen.extend({
      *
      */
     this.parameters.coins.current = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    //Continue.reset();
 
     /**
      *
@@ -1487,7 +1498,7 @@ Game = Screen.extend({
        *
        *
        */
-    Plugins.admob.hide(Plugins.ad.types.banner, {
+    Plugins.heyzap.hide(Plugins.ad.types.banner, {
 
       /**
        *
@@ -1575,7 +1586,7 @@ Game = Screen.extend({
          *
          *
          */
-        Plugins.admob.show(Plugins.ad.types.banner, {
+        Plugins.heyzap.show(Plugins.ad.types.banner, {
 
           /**
            *

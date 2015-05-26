@@ -70,15 +70,15 @@ var languages = {
     {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
-  'reward-coins': [
+  'finish-coins': [
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]}
   ],
-  'continue-time': [
+  'reward-time': [
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]},
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]}
   ],
-  'continue-action': [
+  'reward-action': [
     {title: 'Would you like to\nget an extra life?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Хотите получить\nдополнительную жизнь?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],

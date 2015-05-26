@@ -70,25 +70,9 @@ App = {
       }
     },
     plugins: {
-      admob: {
-        apple: {
-          banner: 'ca-app-pub-9938626987469103/7532322677',
-          interstitial: 'ca-app-pub-9938626987469103/9009055870'
-        },
-        android: {
-          banner: 'ca-app-pub-9938626987469103/3102123072',
-          interstitial: 'ca-app-pub-9938626987469103/4578856279'
-        }
-      },
-      chartboost: {
-        apple: {
-          id: '',
-          signature: ''
-        },
-        android: {
-          id: '',
-          signature: ''
-        }
+      heyzap: {
+        apple: 'ff4d63e68db9518cacc9a4b5d8e375d8',
+        android: ''
       },
       batch: {
         apple: {

@@ -376,7 +376,7 @@ Unlock = Popup.extend({
                           cc.BezierTo.create(1.0, [
                             {x: this.background.x, y: this.background.y},
                             {x: random(0, Camera.width), y: random(0, Camera.height)},
-                            {x: Reward.buttons.store.x, y: Reward.buttons.store.y}
+                            {x: Finish.buttons.store.x, y: Finish.buttons.store.y}
                           ])
                         ),
                         cc.CallFunc.create(function() {
@@ -476,7 +476,7 @@ Unlock = Popup.extend({
        *
        *
        */
-      Reward.buttons.continue.register();
+      Finish.buttons.continue.register();
     }
   },
   hide: function() {

@@ -48,6 +48,37 @@ Splurge = Popup.extend({
         scheduler: false
       }
     };
+
+
+    /**
+     *
+     *
+     *
+     */
+    this.opacity = 255;
+
+    /**
+     *
+     *
+     *
+     */
+    this.show();
+
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.5),
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.2)
+        ),
+        cc.CallFunc.create(this.hide, this)
+      )
+    );
   },
 
   /**
@@ -87,7 +118,7 @@ Splurge = Popup.extend({
              *
              *
              */
-            Reward.show();
+            Finish.show();
           }
         }),
         cc.DelayTime.create(0.1),
@@ -142,7 +173,7 @@ Splurge = Popup.extend({
              *
              *
              */
-            Plugins.admob.show(Plugins.ad.types.interstitial);
+            Plugins.heyzap.show(Plugins.ad.types.interstitial);
           }
         }.bind(Game)),
         cc.DelayTime.create(0.5),

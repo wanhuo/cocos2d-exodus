@@ -29,7 +29,7 @@ Reward = Popup.extend({
    *
    */
   ctor: function() {
-    this._super(cc.color(132, 209, 200));
+    this._super(cc.color(132, 209, 223));
 
     /**
      *
@@ -47,25 +47,11 @@ Reward = Popup.extend({
       popup: {
         scheduler: true
       },
-      animation: true,
-      coins: {
-        time: {
-          current: 0,
-          elapsed: 0
-        }
+      time: {
+        current: 7,
+        elapsed: 0
       },
-      positions: [
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 140, y: 170},
-        {x: -10, y: 10},
-        {x: -200, y: -158},
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 128, y: 158}
-      ]
+      sound: false
     };
 
     /**
@@ -73,7 +59,7 @@ Reward = Popup.extend({
      *
      *
      */
-    this.coins = new Manager(10, new Entity(resources.main.reward.coin), this, true);
+    this.manager = new Manager(1, new Entity(resources.main.reward.background), this, true);
 
     /**
      *
@@ -81,11 +67,7 @@ Reward = Popup.extend({
      *
      */
     this.elements = {
-      rocket: new Spine(resources.main.character.json, resources.main.character.atlas, 1.0, this),
-      hide: new Entity(resources.main.reward.pig.hide, this),
-      hand: new Entity(resources.main.reward.hand, this),
-      decoration: new Entity(resources.main.reward.decorations[0], this),
-      pig: new Entity(resources.main.reward.pig.texture, this)
+      background: new Entity(resources.main.reward.background, this, true)
     };
 
     /**
@@ -93,14 +75,16 @@ Reward = Popup.extend({
      *
      *
      */
+    this.elements.element = new cc.ProgressTimer(new cc.Sprite(resources.main.reward.element));
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons = {
-      continue: new Button(resources.main.reward.buttons.continue, 1, 2, this, this.hide.bind(this)),
-      like: new Button(resources.main.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
-      share: new Button(resources.main.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
-      leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
-      achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
-      store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
-      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
+      play: new Button(resources.main.buttons.coins, 1, 2, this, this.onPlay.bind(this)),
+      stop: new Button(resources.main.buttons.empty, 1, 2, this, this.onStop.bind(this)),
       never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
     };
 
@@ -109,8 +93,11 @@ Reward = Popup.extend({
      *
      *
      */
-    this.textes = {
-      coins: new Text('button-text-coins', this.buttons.coins),
+    this.text = {
+      action: new Text('reward-action', this),
+      time: new Text('reward-time', this.elements.background),
+      play: new Text('button-text-coins', this.buttons.play),
+      stop: new Text('button-text-nope', this.buttons.stop),
       never: new Text('never-show-me', this)
     };
 
@@ -119,66 +106,32 @@ Reward = Popup.extend({
      *
      *
      */
-    this.elements.pig.anchorY = 0;
-    this.elements.hide.anchorY = -this.elements.pig.height / this.elements.hide.height;
+    this.elements.element.type = cc.ProgressTimer.TYPE_RADIAL;
+    this.elements.background.addChild(this.elements.element);
+    this.elements.element.x = this.elements.background.width / 2;
+    this.elements.element.y = this.elements.background.height / 2;
+    this.elements.element.setReverseDirection(true);
 
     /**
      *
      *
      *
      */
-    this.coins.setLocalZOrder(2);
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.hide.setLocalZOrder(1);
-    this.elements.pig.setLocalZOrder(2);
-    this.elements.hand.setLocalZOrder(2);
-    this.elements.decoration.setLocalZOrder(2);
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.never.setLocalZOrder(1);
-    this.buttons.continue.setLocalZOrder(1);
-    this.buttons.like.setLocalZOrder(1);
-    this.buttons.share.setLocalZOrder(1);
-    this.buttons.leaderboard.setLocalZOrder(1);
-    this.buttons.achievements.setLocalZOrder(1);
-    this.buttons.store.setLocalZOrder(1);
-
-    /**
-     *
-     *
-     *
-     */
-    this.textes.never.setLocalZOrder(1);
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.hand.create().attr({
-      x: Camera.center.x + 20,
-      y: Camera.height - this.elements.hand.height / 2
+    this.text.time.create().attr({
+      x: this.elements.background.width / 2,
+      y: this.elements.background.height / 2
     });
-    this.elements.decoration.create().attr({
-      x: Camera.center.x + 10,
-      y: 100
+    this.text.play.create().attr({
+      x: this.buttons.play.width / 2,
+      y: this.buttons.play.height / 2
     });
-    this.elements.pig.create().attr({
+    this.text.stop.create().attr({
+      x: this.buttons.stop.width / 2,
+      y: this.buttons.stop.height / 2
+    });
+    this.text.never.create().attr({
       x: Camera.center.x,
-      y: 190 - this.elements.pig.height / 2
-    });
-    this.elements.hide.create().attr({
-      x: Camera.center.x,
-      y: 190 - this.elements.pig.height / 2
+      y: 40
     });
 
     /**
@@ -186,73 +139,24 @@ Reward = Popup.extend({
      *
      *
      */
-    this.buttons.coins.create().attr({
-      x: Camera.center.x,
-      y: 370
-    });
     this.buttons.never.create().attr({
       x: Camera.center.x,
       y: 40
     });
-    this.buttons.continue.attr({
-      x: Camera.center.x,
-      y: Camera.center.y - 30
-    });
-    this.buttons.like.attr({
-      x: Camera.center.x - 210,
-      y: Camera.center.y - 255
-    });
-    this.buttons.share.attr({
-      x: Camera.center.x - 105,
-      y: Camera.center.y - 265
-    });
-    this.buttons.leaderboard.attr({
-      x: Camera.center.x,
-      y: Camera.center.y - 270
-    });
-    this.buttons.achievements.attr({
-      x: Camera.center.x + 105,
-      y: Camera.center.y - 265
-    });
-    this.buttons.store.attr({
-      x: Camera.center.x + 210,
-      y: Camera.center.y - 255
-    });
 
     /**
      *
      *
      *
      */
-    this.textes.coins.create().attr({
-      x: this.buttons.coins.width / 2,
-      y: this.buttons.coins.height / 2
-    });
-    this.textes.never.create().attr({
-      x: Camera.center.x,
-      y: 40
-    });
+    this.text.time.setLocalZOrder(10);
 
     /**
      *
      *
      *
      */
-    this.buttons.continue.unregister();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.setLocalZOrder(0);
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.needScheduleUpdate = true;
+    this.elements.background.setLocalZOrder(10);
   },
 
   /**
@@ -260,37 +164,107 @@ Reward = Popup.extend({
    *
    *
    */
-  onTouch: function() {
+  onPlay: function() {
 
     /**
      *
      *
      *
      */
-    if(this.parameters.animation) {
+    this.text.action.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.2),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
+        ),
+        cc.CallFunc.create(this.onProceed, this)
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.1),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.play.x,
+            y: this.buttons.play.y - 500
+          })
+        )
+      )
+    );
+    this.buttons.stop.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.0),
+        cc.EaseSineInOut.create(
+          cc.MoveTo.create(0.2, {
+            x: this.buttons.stop.x,
+            y: this.buttons.stop.y - 500
+          })
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    Game.elements.explanation.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.5)
+        ),
+        cc.CallFunc.create(Game.elements.explanation.destroy, Game.elements.explanation)
+      )
+    );
+  },
+  onStop: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.stopAllActions();
+
+    /**
+     *
+     *
+     *
+     */
+    this.hide();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onProceed: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.heyzap.show(Plugins.ad.types.video, {
 
       /**
        *
        *
        *
        */
-      if(this.elements.hand.getNumberOfRunningActions() > 0) return false;
-
-      /**
-       *
-       *
-       *
-       */
-      Counter.values.coins.total += Counter.values.coins.current;
-      Counter.values.coins.current = 0;
-
-      /**
-       *
-       *
-       *
-       */
-      this.finishAnimation();
-    }
+      success: function() {
+      }
+    });
   },
 
   /**
@@ -306,127 +280,42 @@ Reward = Popup.extend({
      *
      *
      */
-    this.startAnimation();
-  },
-  onExit: function() {
-    this._super();
+    this.parameters.time.elapsed = 0;
 
     /**
      *
      *
      *
      */
-    this.hideButtons();
+    this.buttons.play.create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y - 420 - 500
+    });
+    this.buttons.stop.create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y - 480 - 500
+    });
 
     /**
      *
      *
      *
      */
-    this.hideCounter();
+    this.text.action.create().attr({
+      x: Camera.center.x,
+      y: Camera.center.y - 300
+    });
 
     /**
      *
      *
      *
      */
-    this.buttons.continue.unregister();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onCoins: function() {
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onAnimationStart: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.updateTextData();
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.animation = true;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.hand.y = Camera.height + this.elements.hand.height / 2;
-
-    /**
-     *
-     *
-     *
-     */
-    if(Counter.values.coins.current > 0) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.elements.hand.runAction(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(0.2, {
-            x: this.elements.hand.x,
-            y: Camera.height - this.elements.hand.height / 2
-          })
-        )
-      );
-    } else {
-
-      /**
-       *
-       *
-       *
-       */
-      this.finishAnimation();
-    }
-  },
-  onAnimationFinish: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.updateTextData();
-
-    /**
-     *
-     *
-     *
-     */
-    this.parameters.animation = false;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.hand.runAction(
+    this.elements.background.scale = 0;
+    this.elements.background.runAction(
       cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(0.2, {
-            x: this.elements.hand.x,
-            y: Camera.height + this.elements.hand.height / 2
-          })
+        cc.EaseBounceOut.create(
+          cc.ScaleTo.create(1.0, 1.0)
         ),
         cc.CallFunc.create(function() {
 
@@ -435,14 +324,56 @@ Reward = Popup.extend({
            *
            *
            */
-          this.showButtons();
+          this.parameters.sound = Sound.play(resources.main.sound.reward);
 
           /**
            *
            *
            *
            */
-          this.showCounter();
+          this.elements.element.runAction(
+            cc.ProgressFromTo.create(this.parameters.time.current, 100, 0)
+          );
+
+          /**
+           *
+           *
+           *
+           */
+          this.runAction(
+            cc.Sequence.create(
+              cc.Repeat.create(
+                cc.Sequence.create(
+                  cc.DelayTime.create(1.0),
+                  cc.CallFunc.create(this.onAnimation, this)
+                ),
+                this.parameters.time.current
+              ),
+              cc.CallFunc.create(this.hide, this)
+            )
+          );
+
+          /**
+           *
+           *
+           *
+           */
+          this.buttons.play.runAction(
+            cc.EaseSineInOut.create(
+              cc.MoveTo.create(0.5, {
+                x: this.buttons.play.x,
+                y: this.buttons.play.y + 500
+              })
+            )
+          );
+          this.buttons.stop.runAction(
+            cc.EaseSineInOut.create(
+              cc.MoveTo.create(0.5, {
+                x: this.buttons.stop.x,
+                y: this.buttons.stop.y + 500
+              })
+            )
+          );
         }.bind(this))
       )
     );
@@ -452,7 +383,46 @@ Reward = Popup.extend({
      *
      *
      */
-    Data.set(false, properties.coins, Counter.values.coins.total);
+    this.elements.element.setPercentage(100);
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.time.format(round(this.parameters.time.current));
+  },
+  onExit: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.manager.clear();
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.play.destroy();
+    this.buttons.stop.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.action.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.stop(this.parameters.sound);
   },
 
   /**
@@ -460,23 +430,66 @@ Reward = Popup.extend({
    *
    *
    */
-  startAnimation: function() {
+  onAnimation: function() {
 
     /**
      *
      *
      *
      */
-    this.onAnimationStart();
-  },
-  finishAnimation: function() {
+    var element = this.manager.create();
 
     /**
      *
      *
      *
      */
-    this.onAnimationFinish();
+    element.x = Camera.center.x;
+    element.y = Camera.center.y;
+
+    /**
+     *
+     *
+     *
+     */
+    element.scale = 1.0;
+    element.opacity = 255;
+
+    /**
+     *
+     *
+     *
+     */
+    element.setLocalZOrder(-1);
+
+    /**
+     *
+     *
+     *
+     */
+    element.runAction(
+      cc.FadeOut.create(0.3)
+    );
+    element.runAction(
+      cc.Sequence.create(
+        cc.ScaleTo.create(0.3, 1.7),
+        cc.CallFunc.create(element.destroy, element)
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.time.elapsed++;
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.time.format(this.parameters.time.current - this.parameters.time.elapsed);
   },
 
   /**
@@ -486,15 +499,6 @@ Reward = Popup.extend({
    */
   show: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.continue.create();
-    this.buttons.continue.setLocalZOrder(10);
-    this.buttons.continue.setScale(0);
 
     /**
      *
@@ -516,279 +520,29 @@ Reward = Popup.extend({
      *
      *
      */
-    this.buttons.continue.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.runAction(
+    this.elements.background.runAction(
       cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(0.2, {
-            x: this.elements.rocket.x + 500,
-            y: this.elements.rocket.y + 500
-          })
+        cc.EaseSineIn.create(
+          cc.ScaleTo.create(0.2, 0.0)
         ),
-        cc.CallFunc.create(this.elements.rocket.destroy, this.elements.rocket)
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.FadeTo.create(0.2, 0)
+              ),
+              cc.CallFunc.create(this.removeFromParent, this)
+            )
+          );
+        }.bind(this))
       )
     );
-
-    /**
-     *
-     *
-     *
-     */
-    this.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.FadeOut.create(0.2)
-        ),
-        cc.CallFunc.create(this.removeFromParent, this)
-      )
-    );
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  showCounter: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Game.backgrounds.b.y = 600;
-
-    /**
-     *
-     *
-     *
-     */
-    Game.backgrounds.b.removeFromParent();
-
-    /**
-     *
-     *
-     *
-     */
-    this.addChild(Game.backgrounds.b);
-
-    /**
-     *
-     *
-     *
-     */
-    Game.backgrounds.b.runAction(
-      cc.Sequence.create(
-        cc.EaseBounceOut.create(
-          cc.MoveTo.create(1.0, {
-            x: 0,
-            y: 110
-          })
-        )
-      )
-    );
-  },
-  hideCounter: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Game.backgrounds.b.removeFromParent();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.addChild(Game.backgrounds.b);
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  showButtons: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.setSkin(Character.getSkin());
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.create();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.x = Camera.center.x - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
-    this.elements.rocket.y = Camera.center.y - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.rotation = 45;
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(0.2, {
-            x: this.elements.rocket.x + 500,
-            y: this.elements.rocket.y + 500
-          })
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.like.create().scale = 0;
-    this.buttons.like.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.1),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.share.create().scale = 0;
-    this.buttons.share.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.2),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.leaderboard.create().scale = 0;
-    this.buttons.leaderboard.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.3),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.achievements.create().scale = 0;
-    this.buttons.achievements.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.4),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.store.create().scale = 0;
-    this.buttons.store.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.5),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.continue.create().scale = 0;
-    this.buttons.continue.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.6),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        ),
-        cc.CallFunc.create(Unlock.show, Unlock)
-      )
-    );
-  },
-  hideButtons: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.rocket.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.continue.destroy();
-    this.buttons.like.destroy();
-    this.buttons.share.destroy();
-    this.buttons.leaderboard.destroy();
-    this.buttons.achievements.destroy();
-    this.buttons.store.destroy();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  updateTextData: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.textes.coins.format(Counter.values.coins.total);
   },
 
   /**
@@ -798,175 +552,36 @@ Reward = Popup.extend({
    */
   pauseSchedulerAndActions: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.element.pauseSchedulerAndActions();
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.pause(this.parameters.sound);
   },
   resumeSchedulerAndActions: function() {
-    /**
-     *
-     *
-     *
-     */
-    if(this._super()) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.buttons.store.updateTextData();
-    }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  update: function(time) {
-    this._super(time);
+    this._super();
 
     /**
      *
      *
      *
      */
-    if(this.parameters.animation) {
-
-      /**
-       *
-       *
-       *
-       */
-      if(this.elements.hand.getNumberOfRunningActions() > 0) return;
-
-      /**
-       *
-       *
-       *
-       */
-      if(Counter.values.coins.current > 0) {
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.coins.time.elapsed += time;
-        if(this.parameters.coins.time.elapsed >= this.parameters.coins.time.current) {
-          this.parameters.coins.time.current = random(0.0, 0.5);
-          this.parameters.coins.time.elapsed = 0;
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.values.coins.current--;
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.values.coins.total++;
-
-          /**
-           *
-           *
-           *
-           */
-          var element = this.coins.create();
-
-          /**
-           *
-           *
-           *
-           */
-          element.x = Camera.center.x;
-          element.y = Camera.height - 310;
-
-          /**
-           *
-           *
-           *
-           */
-          element.runAction(
-            cc.Sequence.create(
-              cc.EaseSineInOut.create(
-                cc.MoveTo.create(random(0.5, 1.0), {
-                  x: element.x - 10,
-                  y: this.elements.pig.y + this.elements.pig.height / 2
-                })
-              ),
-              cc.CallFunc.create(element.destroy, element),
-              cc.CallFunc.create(function() {
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                Reward.updateTextData();
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                this.stopAllActions();
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                this.scale = 0.95;
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                this.runAction(
-                  cc.Sequence.create(
-                    cc.EaseSineInOut.create(
-                      cc.ScaleTo.create(0.2, 1.0)
-                    )
-                  )
-                );
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                Sound.play(resources.main.sound.coins.animation.finish);
-              }.bind(this.elements.pig))
-            )
-          );
-        }
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        this.finishAnimation();
-      }
-    }
+    this.elements.element.resumeSchedulerAndActions();
 
     /**
      *
      *
      *
      */
-    this.elements.hide.scale = this.elements.pig.scale;
-
-    /**
-     *
-     *
-     *
-     */
-    Visiblities.update();
+    Sound.resume(this.parameters.sound);
   }
 });
