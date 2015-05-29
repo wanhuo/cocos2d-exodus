@@ -430,7 +430,7 @@ Reward = Popup.extend({
      *
      */
     this.text.time.format(round(this.parameters.time.current));
-    this.text.action.format(25);
+    this.text.play.format(25);
 
     /**
      *
