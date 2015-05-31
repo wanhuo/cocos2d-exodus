@@ -74,26 +74,6 @@ var languages = {
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]}
   ],
-  'reward-time': [
-    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]},
-    {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [132, 209, 223]}
-  ],
-  'reward-action': [
-    {title: 'Would you like to watch a video\n and get $1 coins for free?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: 'Хотите посмотреть видео и получить\n$1 монет бесплатно?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
-  ],
-  'reward-text-nope': [
-    {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
-    {title: 'Нет уж', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
-  ],
-  'reward-text-get': [
-    {title: 'Get $1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
-    {title: 'Получить $1', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
-  ],
-  'never-show-me': [
-    {title: 'Never show me this window', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
-    {title: 'Больше не показывать мне это', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
-  ],
   'close': [
     {title: 'Close', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
     {title: 'Закрыть', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
@@ -202,14 +182,6 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
-  'unlock-string-1': [
-    {title: 'You have unlocked', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]},
-    {title: 'Вы открыли', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]}
-  ],
-  'unlock-string-2': [
-    {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]},
-    {title: '$2', font: 'Impact', size: 42, dimensions: false, color: [255, 255, 255]}
-  ],
   'store-title-0': [
     {title: 'Rockets', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
     {title: 'Ракеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]}
@@ -265,10 +237,6 @@ var languages = {
   'store-coins': [
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
-  ],
-  'store-unlock': [
-    {title: 'You should get $1 points\nto unlock this item', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Вы должны набрать $1 очков\nдля разблокировки', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-1': [
     {title: 'Simple Orange Rocket', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},

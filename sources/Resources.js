@@ -134,14 +134,12 @@ var resources = {
       credits: 'resource/Graphics/credits-button.png',
       coins: 'resource/Graphics/coins-button.png',
       empty: 'resource/Graphics/empty-button.png',
-      bottom: 'resource/Graphics/bottom-button.png',
       twitter: 'resource/Graphics/twitter-button.png',
       facebook: 'resource/Graphics/facebook-button.png',
       mail: 'resource/Graphics/mail-button.png',
       back: 'resource/Graphics/back-button.png'
     },
     notification: 'resource/Graphics/notification.png',
-    confetti: 'resource/Graphics/confetti.png',
     water: [
       'resource/Graphics/water-1.png',
       'resource/Graphics/water-2.png',
@@ -230,16 +228,6 @@ var resources = {
     moon: 'resource/Graphics/moon.png',
     creatures: {
       stegosaurus: 'resource/Graphics/creature-stegosaurus.png'
-    },
-    reward: {
-      backgrounds: [
-        'resource/Graphics/reward-background-1.png',
-        'resource/Graphics/reward-background-2.png'
-      ],
-      element: 'resource/Graphics/reward-element.png'
-    },
-    unlock: {
-      background: 'resource/Graphics/unlock-background.png'
     },
     credits: {
       decorations: [

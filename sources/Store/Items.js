@@ -64,9 +64,7 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
           owned: true,
-          achieved: true,
           selectable: true,
           selected: round(Data.get(false, properties.rocket)) == 0,
           selectCode: properties.rocket,
@@ -76,9 +74,7 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 3,
           owned: true,
-          achieved: Counter.values.scores.best >= 3,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 1,
           selectCode: properties.rocket,
@@ -88,9 +84,7 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 5,
           owned: true,
-          achieved: Counter.values.scores.best >= 5,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 2,
           selectCode: properties.rocket,
@@ -100,9 +94,7 @@ Items = cc.Class.extend({
         {
           price: 250,
           type: this.types.permanent,
-          unlock: 10,
           owned: Data.get(false, properties.rockets[3]),
-          achieved: Counter.values.scores.best >= 10,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 3,
           selectCode: properties.rocket,
@@ -112,9 +104,7 @@ Items = cc.Class.extend({
         {
           price: 750,
           type: this.types.permanent,
-          unlock: 20,
           owned: Data.get(false, properties.rockets[4]),
-          achieved: Counter.values.scores.best >= 20,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 4,
           selectCode: properties.rocket,
@@ -124,9 +114,7 @@ Items = cc.Class.extend({
         {
           price: 1500,
           type: this.types.permanent,
-          unlock: 30,
           owned: Data.get(false, properties.rockets[5]),
-          achieved: Counter.values.scores.best >= 30,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 5,
           selectCode: properties.rocket,
@@ -136,9 +124,7 @@ Items = cc.Class.extend({
         {
           price: 2500,
           type: this.types.permanent,
-          unlock: 40,
           owned: Data.get(false, properties.rockets[6]),
-          achieved: Counter.values.scores.best >= 40,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 6,
           selectCode: properties.rocket,
@@ -148,9 +134,7 @@ Items = cc.Class.extend({
         {
           price: 3250,
           type: this.types.permanent,
-          unlock: 50,
           owned: Data.get(false, properties.rockets[7]),
-          achieved: Counter.values.scores.best >= 50,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 7,
           selectCode: properties.rocket,
@@ -160,9 +144,7 @@ Items = cc.Class.extend({
         {
           price: 4500,
           type: this.types.permanent,
-          unlock: 60,
           owned: Data.get(false, properties.rockets[8]),
-          achieved: Counter.values.scores.best >= 60,
           selectable: true,
           selected: Data.get(false, properties.rocket) === 8,
           selectCode: properties.rocket,
@@ -180,32 +162,24 @@ Items = cc.Class.extend({
         {
           price: 50,
           type: this.types.consumable,
-          unlock: 10,
-          achieved: Counter.values.scores.best >= 10,
           purchaseCode: properties.creatures[0],
           item: new StoreItem21
         },
         {
           price: 350,
           type: this.types.consumable,
-          unlock: 20,
-          achieved: Counter.values.scores.best >= 20,
           purchaseCode: properties.creatures[1],
           item: new StoreItem22
         },
         {
           price: 250,
           type: this.types.consumable,
-          unlock: 10,
-          achieved: Counter.values.scores.best >= 10,
           purchaseCode: properties.creatures[2],
           item: new StoreItem23
         },
         {
           price: 500,
           type: this.types.consumable,
-          unlock: 30,
-          achieved: Counter.values.scores.best >= 30,
           purchaseCode: properties.creatures[3],
           item: new StoreItem24
         }
@@ -220,16 +194,12 @@ Items = cc.Class.extend({
         {
           price: 50,
           type: this.types.consumable,
-          unlock: 10,
-          achieved: Counter.values.scores.best >= 10,
           purchaseCode: properties.bonuses[0],
           item: new StoreItem31
         },
         {
           price: 400,
           type: this.types.consumable,
-          unlock: 30,
-          achieved: Counter.values.scores.best >= 30,
           purchaseCode: properties.bonuses[1],
           item: new StoreItem32
         }
@@ -252,10 +222,8 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
           purchaseCode: 0,
           owned: true,
-          achieved: true,
           selectable: false,
           available: true,
           item: new StoreItem51
@@ -263,10 +231,8 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
           purchaseCode: 0,
           owned: true,
-          achieved: true,
           selectable: false,
           available: true,
           item: new StoreItem52
@@ -274,10 +240,8 @@ Items = cc.Class.extend({
         {
           price: 0,
           type: this.types.permanent,
-          unlock: 0,
           purchaseCode: 0,
           owned: true,
-          achieved: true,
           selectable: false,
           available: true,
           item: new StoreItem53

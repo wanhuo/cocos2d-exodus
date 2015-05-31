@@ -129,13 +129,6 @@ Game = Screen.extend({
       tutorial: {
         state: false,
         current: false
-      },
-      ad: {
-        y: 0,
-        interstitial: {
-          current: 0,
-          times: 1
-        }
       }
     };
 
@@ -590,10 +583,8 @@ Game = Screen.extend({
      */
     new Splurge;
     new Finish;
-    new Reward;
     new Credits;
     new Store;
-    new Unlock;
     new Tutorial;
 
     /**
@@ -1241,7 +1232,6 @@ Game = Screen.extend({
        *
        */
       success: function() {
-        Game.parameters.ad.y = 0;
       }
     });
   },
@@ -1506,7 +1496,6 @@ Game = Screen.extend({
        *
        */
       success: function() {
-        Game.parameters.ad.y = 0;
       }
     });
     }
@@ -1594,7 +1583,6 @@ Game = Screen.extend({
            *
            */
           success: function() {
-            Game.parameters.ad.y = 0;
           }
         });
         break;
@@ -1779,7 +1767,7 @@ Game = Screen.extend({
      *
      */
     this.backgrounds.game.x = -Character.x + Camera.center.x;
-    this.backgrounds.game.y = min(-this.backgrounds.w.y + this.parameters.ad.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
+    this.backgrounds.game.y = min(-this.backgrounds.w.y, -Character.y + Camera.center.y / this.backgrounds.d.scale);
 
     /**
      *

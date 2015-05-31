@@ -89,7 +89,6 @@ StoreContent = StoreBackground.extend({
     this.text = {
       title: new Text('store-item-title-' + index + '-' + id, this, Text.position.left),
       description: new Text('store-item-description-' + index + '-' + id, this, Text.position.left),
-      unlock: new Text('store-unlock', this),
       price: new Text('store-price', this.elements.price),
       count: new Text('store-count', this.elements.count),
       purchase: new Text('store-purchase', this.buttons.purchase),
@@ -265,7 +264,6 @@ StoreContent = StoreBackground.extend({
      */
     this.selectable = item.selectable;
     this.selected = item.selected;
-    this.unlock = item.unlock;
     this.price = item.price;
     this.owned = item.owned;
     this.type = item.type;
@@ -287,62 +285,14 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
-    var unlocked = max(Counter.values.scores.current, Counter.values.scores.best) >= this.unlock;
+    this.item.setColor(cc.color.WHITE);
 
     /**
      *
      *
      *
      */
-    if(!unlocked) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.item.setColor(cc.color.BLACK);
-
-      /**
-       *
-       *
-       *
-       */
-      this.text.unlock.create().attr({
-        x: Camera.center.x,
-        y: 100
-      });
-      this.text.unlock.format(this.unlock);
-
-      /**
-       *
-       *
-       *
-       */
-      this.buttons.purchase.destroy();
-    } else {
-
-      /**
-       *
-       *
-       *
-       */
-      this.item.setColor(cc.color.WHITE);
-
-      /**
-       *
-       *
-       *
-       */
-      this.text.unlock.destroy();
-
-      /**
-       *
-       *
-       *
-       */
-      this.buttons.purchase.create();
-    }
+    this.buttons.purchase.create();
 
     /**
      *
@@ -357,29 +307,21 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      if(unlocked) {
+      this.elements.count.create().attr({
+        x: Camera.center.x + 180,
+        y: Camera.center.y - 380
+      });
 
-        /**
-         *
-         *
-         *
-         */
-        this.elements.count.create().attr({
-          x: Camera.center.x + 180,
-          y: Camera.center.y - 380
-        });
-
-        /**
-         *
-         *
-         *
-         */
-        this.text.count.create().attr({
-          x: this.elements.count.width / 2,
-          y: this.elements.count.height / 2
-        });
-        this.text.count.format(Data.get(false, this.purchaseCode) || 0);
-      }
+      /**
+       *
+       *
+       *
+       */
+      this.text.count.create().attr({
+        x: this.elements.count.width / 2,
+        y: this.elements.count.height / 2
+      });
+      this.text.count.format(Data.get(false, this.purchaseCode) || 0);
 
       /**
        *
@@ -430,44 +372,21 @@ StoreContent = StoreBackground.extend({
            *
            *
            */
-          if(unlocked) {
+          if(this.selected) {
 
             /**
              *
              *
              *
              */
-            if(this.selected) {
+            this.text.selected.create();
 
-              /**
-               *
-               *
-               *
-               */
-              this.text.selected.create();
-
-              /**
-               *
-               *
-               *
-               */
-              this.buttons.select.destroy();
-            } else {
-
-              /**
-               *
-               *
-               *
-               */
-              this.text.selected.destroy();
-
-              /**
-               *
-               *
-               *
-               */
-              this.buttons.select.create();
-            }
+            /**
+             *
+             *
+             *
+             */
+            this.buttons.select.destroy();
           } else {
 
             /**
@@ -482,7 +401,7 @@ StoreContent = StoreBackground.extend({
              *
              *
              */
-            this.buttons.select.destroy();
+            this.buttons.select.create();
           }
         } else {
 
@@ -501,6 +420,13 @@ StoreContent = StoreBackground.extend({
           this.buttons.select.destroy();
         }
       } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.item.setColor(cc.color.BLACK);
 
         /**
          *

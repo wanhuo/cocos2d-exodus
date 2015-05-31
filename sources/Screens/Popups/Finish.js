@@ -100,8 +100,7 @@ Finish = Popup.extend({
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
-      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
-      never: new Button(resources.main.buttons.bottom, 1, 1, this, this.hide.bind(this))
+      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this))
     };
 
     /**
@@ -110,8 +109,7 @@ Finish = Popup.extend({
      *
      */
     this.textes = {
-      coins: new Text('button-text-coins', this.buttons.coins),
-      never: new Text('never-show-me', this)
+      coins: new Text('button-text-coins', this.buttons.coins)
     };
 
     /**
@@ -144,7 +142,6 @@ Finish = Popup.extend({
      *
      *
      */
-    this.buttons.never.setLocalZOrder(1);
     this.buttons.continue.setLocalZOrder(1);
     this.buttons.like.setLocalZOrder(1);
     this.buttons.share.setLocalZOrder(1);
@@ -157,28 +154,21 @@ Finish = Popup.extend({
      *
      *
      */
-    this.textes.never.setLocalZOrder(1);
-
-    /**
-     *
-     *
-     *
-     */
     this.elements.hand.create().attr({
       x: Camera.center.x + 20,
       y: Camera.height - this.elements.hand.height / 2
     });
     this.elements.decoration.create().attr({
       x: Camera.center.x + 10,
-      y: 100
+      y: 40
     });
     this.elements.pig.create().attr({
       x: Camera.center.x,
-      y: 190 - this.elements.pig.height / 2
+      y: 130 - this.elements.pig.height / 2
     });
     this.elements.hide.create().attr({
       x: Camera.center.x,
-      y: 190 - this.elements.pig.height / 2
+      y: 130 - this.elements.pig.height / 2
     });
 
     /**
@@ -189,10 +179,6 @@ Finish = Popup.extend({
     this.buttons.coins.create().attr({
       x: Camera.center.x,
       y: 370
-    });
-    this.buttons.never.create().attr({
-      x: Camera.center.x,
-      y: 40
     });
     this.buttons.continue.attr({
       x: Camera.center.x,
@@ -227,10 +213,6 @@ Finish = Popup.extend({
     this.textes.coins.create().attr({
       x: this.buttons.coins.width / 2,
       y: this.buttons.coins.height / 2
-    });
-    this.textes.never.create().attr({
-      x: Camera.center.x,
-      y: 40
     });
 
     /**
@@ -309,21 +291,6 @@ Finish = Popup.extend({
     this.startAnimation();
   },
   onExit: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(Plugins.heyzap.available(Plugins.ad.types.video)) {
-
-      /**
-       *
-       *
-       *
-       */
-      Reward.show();
-    }
 
     /**
      *
@@ -771,7 +738,7 @@ Finish = Popup.extend({
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         ),
-        cc.CallFunc.create(Unlock.show, Unlock)
+        cc.CallFunc.create(this.buttons.continue.register, this.buttons.continue)
       )
     );
   },
