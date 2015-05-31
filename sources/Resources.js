@@ -128,6 +128,7 @@ var resources = {
       leaderboard: 'resource/Graphics/leaderboard-button.png',
       achievements: 'resource/Graphics/achievements-button.png',
       like: 'resource/Graphics/like-button.png',
+      rate: 'resource/Graphics/rate-button.png',
       sound: 'resource/Graphics/sound-button.png',
       store: 'resource/Graphics/store-button.png',
       share: 'resource/Graphics/share-button.png',

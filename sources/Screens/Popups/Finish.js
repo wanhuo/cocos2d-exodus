@@ -96,6 +96,7 @@ Finish = Popup.extend({
     this.buttons = {
       continue: new Button(resources.main.finish.buttons.continue, 1, 2, this, this.hide.bind(this)),
       like: new Button(resources.main.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
+      rate: new Button(resources.main.buttons.rate, 1, 2, this, Game.onRate.bind(Game)),
       share: new Button(resources.main.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
@@ -144,6 +145,7 @@ Finish = Popup.extend({
      */
     this.buttons.continue.setLocalZOrder(1);
     this.buttons.like.setLocalZOrder(1);
+    this.buttons.rate.setLocalZOrder(1);
     this.buttons.share.setLocalZOrder(1);
     this.buttons.leaderboard.setLocalZOrder(1);
     this.buttons.achievements.setLocalZOrder(1);
@@ -178,31 +180,35 @@ Finish = Popup.extend({
      */
     this.buttons.coins.create().attr({
       x: Camera.center.x,
-      y: 370
+      y: 320
     });
     this.buttons.continue.attr({
       x: Camera.center.x,
       y: Camera.center.y - 30
     });
     this.buttons.like.attr({
-      x: Camera.center.x - 210,
-      y: Camera.center.y - 255
+      x: Camera.center.x - 275,
+      y: Camera.center.y - 230
     });
-    this.buttons.share.attr({
-      x: Camera.center.x - 105,
-      y: Camera.center.y - 265
-    });
-    this.buttons.leaderboard.attr({
-      x: Camera.center.x,
+    this.buttons.rate.attr({
+      x: Camera.center.x - 165,
       y: Camera.center.y - 270
     });
+    this.buttons.share.attr({
+      x: Camera.center.x - 55,
+      y: Camera.center.y - 290
+    });
+    this.buttons.leaderboard.attr({
+      x: Camera.center.x + 55,
+      y: Camera.center.y - 290
+    });
     this.buttons.achievements.attr({
-      x: Camera.center.x + 105,
-      y: Camera.center.y - 265
+      x: Camera.center.x + 165,
+      y: Camera.center.y - 270
     });
     this.buttons.store.attr({
-      x: Camera.center.x + 210,
-      y: Camera.center.y - 255
+      x: Camera.center.x + 275,
+      y: Camera.center.y - 230
     });
 
     /**
@@ -671,6 +677,21 @@ Finish = Popup.extend({
      *
      *
      */
+    this.buttons.rate.create().scale = 0;
+    this.buttons.rate.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.1),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.share.create().scale = 0;
     this.buttons.share.runAction(
       cc.Sequence.create(
@@ -758,6 +779,7 @@ Finish = Popup.extend({
      */
     this.buttons.continue.destroy();
     this.buttons.like.destroy();
+    this.buttons.rate.destroy();
     this.buttons.share.destroy();
     this.buttons.leaderboard.destroy();
     this.buttons.achievements.destroy();

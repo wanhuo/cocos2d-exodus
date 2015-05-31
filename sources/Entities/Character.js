@@ -2219,13 +2219,6 @@ Character = Spine.extend({
              *
              *
              */
-            Plugins.heyzap.show(Plugins.ad.types.interstitial);
-
-            /**
-             *
-             *
-             *
-             */
             Game.setShake(0.5, 0.01);
 
             /**

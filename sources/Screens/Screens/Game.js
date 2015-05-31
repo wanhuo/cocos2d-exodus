@@ -295,7 +295,7 @@ Game = Screen.extend({
      */
     this.buttons = {
       play: new Button(resources.main.buttons.play, 1, 2, this.backgrounds.menu, this.onPlay.bind(this)),
-      like: new Button(resources.main.buttons.like, 1, 2, this.backgrounds.b, this.onLike.bind(this)),
+      rate: new Button(resources.main.buttons.rate, 1, 2, this.backgrounds.b, this.onRate.bind(this)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this.backgrounds.b, this.onLeaderboard.bind(this)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
@@ -424,7 +424,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.buttons.like.create().attr({
+    this.buttons.rate.create().attr({
       x: Camera.center.x - 210,
       y: Camera.center.y - 135
     });
@@ -750,7 +750,7 @@ Game = Screen.extend({
      *
      */
     this.buttons.play.unregister();
-    this.buttons.like.unregister();
+    this.buttons.rate.unregister();
     this.buttons.sound.unregister();
     this.buttons.leaderboard.unregister();
     this.buttons.achievements.unregister();
@@ -761,7 +761,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.buttons.like.runAction(
+    this.buttons.rate.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.2, 0.0)
@@ -774,7 +774,7 @@ Game = Screen.extend({
            *
            */
           this.y = Camera.height - 60;
-        }.bind(this.buttons.like)),
+        }.bind(this.buttons.rate)),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
         )
@@ -939,6 +939,22 @@ Game = Screen.extend({
     Analytics.sendEvent('System events', 'Achievements open', '', '');
   },
   onLike: function() {
+
+    /**
+     *
+     *  
+     *
+     */
+    Media.openFacebook('503287153144438');
+
+    /**
+     *
+     *
+     *
+     */
+    Analytics.sendEvent('System events', 'Facebook like', '', '');
+  },
+  onRate: function() {
 
     /**
      *
@@ -1133,7 +1149,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.buttons.like.register();
+    this.buttons.rate.register();
     this.buttons.sound.register();
     this.buttons.leaderboard.register();
     this.buttons.achievements.register();

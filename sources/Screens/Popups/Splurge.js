@@ -103,7 +103,6 @@ Splurge = Popup.extend({
     this.runAction(
       cc.Sequence.create(
         cc.DelayTime.create(Character.state.create ? 0.0 : 0.5),
-        cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(function() {
 
           /**
@@ -111,16 +110,11 @@ Splurge = Popup.extend({
            *
            *
            */
-          if(Counter.values.scores.current > 0) {
-
-            /**
-             *
-             *
-             *
-             */
-            Finish.show();
-          }
+          Plugins.heyzap.show(Plugins.ad.types.interstitial);
         }),
+        cc.DelayTime.create(0.5),
+        cc.FadeTo.create(0.2, 255),
+        cc.CallFunc.create(Finish.show, Finish),
         cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
 
