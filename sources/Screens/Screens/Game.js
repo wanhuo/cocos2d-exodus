@@ -129,6 +129,13 @@ Game = Screen.extend({
       tutorial: {
         state: false,
         current: false
+      },
+      ad: {
+        y: 0,
+        interstitial: {
+          current: 0,
+          times: 5
+        }
       }
     };
 
@@ -1071,6 +1078,13 @@ Game = Screen.extend({
    *
    */
   onMenu: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.ketchapp.show(Plugins.ad.types.interstitial);
   },
   onAnimation: function() {
 

@@ -131,6 +131,17 @@
 		78DEED7C1B1A911E0093CB64 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED661B1A911E0093CB64 /* Icon-76.png */; };
 		78DEED7D1B1A911E0093CB64 /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED671B1A911E0093CB64 /* Icon-80.png */; };
 		78DEED801B1A912F0093CB64 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED7F1B1A912F0093CB64 /* Icon.icns */; };
+		78DEEDFE1B1D035B0093CB64 /* AdWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DEEDF21B1D035B0093CB64 /* AdWebViewController.m */; };
+		78DEEDFF1B1D035B0093CB64 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDF31B1D035B0093CB64 /* close.png */; };
+		78DEEE001B1D035B0093CB64 /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDF41B1D035B0093CB64 /* close@2x.png */; };
+		78DEEE011B1D035B0093CB64 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDF51B1D035B0093CB64 /* down.png */; };
+		78DEEE021B1D035B0093CB64 /* facebook_like_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDF61B1D035B0093CB64 /* facebook_like_button.png */; };
+		78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DEEDF81B1D035B0093CB64 /* Interstitiel.m */; };
+		78DEEE041B1D035B0093CB64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 78DEEDFA1B1D035B0093CB64 /* Reachability.m */; };
+		78DEEE051B1D035B0093CB64 /* up.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDFB1B1D035B0093CB64 /* up.png */; };
+		78DEEE061B1D035B0093CB64 /* validate.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDFC1B1D035B0093CB64 /* validate.png */; };
+		78DEEE071B1D035B0093CB64 /* validate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEEDFD1B1D035B0093CB64 /* validate@2x.png */; };
+		78DEEE221B1D06AA0093CB64 /* Ketchapp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78DEEE211B1D06AA0093CB64 /* Ketchapp.mm */; };
 		78EA01DF1AEA5C1400057A05 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA01DE1AEA5C1400057A05 /* GoogleMobileAds.framework */; };
 		78EA01E11AEA5C4500057A05 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA01E01AEA5C4500057A05 /* CoreMedia.framework */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
@@ -357,6 +368,20 @@
 		78DEED661B1A911E0093CB64 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
 		78DEED671B1A911E0093CB64 /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		78DEED7F1B1A912F0093CB64 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
+		78DEEDF11B1D035B0093CB64 /* AdWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdWebViewController.h; sourceTree = "<group>"; };
+		78DEEDF21B1D035B0093CB64 /* AdWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdWebViewController.m; sourceTree = "<group>"; };
+		78DEEDF31B1D035B0093CB64 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		78DEEDF41B1D035B0093CB64 /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close@2x.png"; sourceTree = "<group>"; };
+		78DEEDF51B1D035B0093CB64 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		78DEEDF61B1D035B0093CB64 /* facebook_like_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_like_button.png; sourceTree = "<group>"; };
+		78DEEDF71B1D035B0093CB64 /* Interstitiel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interstitiel.h; sourceTree = "<group>"; };
+		78DEEDF81B1D035B0093CB64 /* Interstitiel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interstitiel.m; sourceTree = "<group>"; };
+		78DEEDF91B1D035B0093CB64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		78DEEDFA1B1D035B0093CB64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		78DEEDFB1B1D035B0093CB64 /* up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up.png; sourceTree = "<group>"; };
+		78DEEDFC1B1D035B0093CB64 /* validate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = validate.png; sourceTree = "<group>"; };
+		78DEEDFD1B1D035B0093CB64 /* validate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "validate@2x.png"; sourceTree = "<group>"; };
+		78DEEE211B1D06AA0093CB64 /* Ketchapp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Ketchapp.mm; sourceTree = "<group>"; };
 		78EA01DE1AEA5C1400057A05 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		78EA01E01AEA5C4500057A05 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		A922753D1517C094001B78AA /* application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,6 +505,7 @@
 		7823FBB71ABDBBC500447F0A /* plugins */ = {
 			isa = PBXGroup;
 			children = (
+				78DEEE201B1D06AA0093CB64 /* ketchapp */,
 				78809FA31B11D352002397E7 /* heyzap */,
 				7823FBB81ABDBBC500447F0A /* batch */,
 			);
@@ -603,16 +629,16 @@
 		7847CDDF1AB184820014E3F3 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				7847CDE51AB184820014E3F3 /* AppController.h */,
+				7847CDE61AB184820014E3F3 /* AppController.mm */,
+				7847CDEA1AB184820014E3F3 /* RootViewController.h */,
+				7847CDEB1AB184820014E3F3 /* RootViewController.mm */,
+				7847CDE71AB184820014E3F3 /* main.m */,
 				7878F9791ADDB01500A0F1D6 /* internal */,
 				7823FBB71ABDBBC500447F0A /* plugins */,
 				7847CDE01AB184820014E3F3 /* ad */,
 				7847CDE31AB184820014E3F3 /* analytics */,
-				7847CDE51AB184820014E3F3 /* AppController.h */,
-				7847CDE61AB184820014E3F3 /* AppController.mm */,
-				7847CDE71AB184820014E3F3 /* main.m */,
 				7847CDE81AB184820014E3F3 /* media */,
-				7847CDEA1AB184820014E3F3 /* RootViewController.h */,
-				7847CDEB1AB184820014E3F3 /* RootViewController.mm */,
 				7847CDEC1AB184820014E3F3 /* services */,
 				7847CDEE1AB184820014E3F3 /* social */,
 				7847CDF01AB184820014E3F3 /* support */,
@@ -761,6 +787,7 @@
 		78B0CFE41A9289E200E72640 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				78DEEDF01B1D035B0093CB64 /* Ketchapp */,
 				789799751B136C3C00041938 /* Vungle */,
 				78C5AE6F1B13480F00918D74 /* FacebookAudienceNetwork */,
 				78C5AE6D1B13480F00918D74 /* AdColony */,
@@ -852,6 +879,34 @@
 				78DEED7F1B1A912F0093CB64 /* Icon.icns */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		78DEEDF01B1D035B0093CB64 /* Ketchapp */ = {
+			isa = PBXGroup;
+			children = (
+				78DEEDF11B1D035B0093CB64 /* AdWebViewController.h */,
+				78DEEDF21B1D035B0093CB64 /* AdWebViewController.m */,
+				78DEEDF31B1D035B0093CB64 /* close.png */,
+				78DEEDF41B1D035B0093CB64 /* close@2x.png */,
+				78DEEDF51B1D035B0093CB64 /* down.png */,
+				78DEEDF61B1D035B0093CB64 /* facebook_like_button.png */,
+				78DEEDF71B1D035B0093CB64 /* Interstitiel.h */,
+				78DEEDF81B1D035B0093CB64 /* Interstitiel.m */,
+				78DEEDF91B1D035B0093CB64 /* Reachability.h */,
+				78DEEDFA1B1D035B0093CB64 /* Reachability.m */,
+				78DEEDFB1B1D035B0093CB64 /* up.png */,
+				78DEEDFC1B1D035B0093CB64 /* validate.png */,
+				78DEEDFD1B1D035B0093CB64 /* validate@2x.png */,
+			);
+			path = Ketchapp;
+			sourceTree = "<group>";
+		};
+		78DEEE201B1D06AA0093CB64 /* ketchapp */ = {
+			isa = PBXGroup;
+			children = (
+				78DEEE211B1D06AA0093CB64 /* Ketchapp.mm */,
+			);
+			path = ketchapp;
 			sourceTree = "<group>";
 		};
 		78F354581A1A0876009CD132 /* Platform */ = {
@@ -1122,18 +1177,23 @@
 				784222DA1A0A5D6800CDC2F5 /* project.json in Resources */,
 				784222D41A0A5D6800CDC2F5 /* resource in Resources */,
 				7828A0451A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */,
+				78DEEE071B1D035B0093CB64 /* validate@2x.png in Resources */,
 				784222D61A0A5D6800CDC2F5 /* sources in Resources */,
 				78DEED6C1B1A911E0093CB64 /* Default@2x~ipad.png in Resources */,
 				789799841B136C3C00041938 /* vg_timer.png in Resources */,
 				789799821B136C3C00041938 /* vg_mute_off.png in Resources */,
+				78DEEE001B1D035B0093CB64 /* close@2x.png in Resources */,
 				78DEED7A1B1A911E0093CB64 /* Icon-58.png in Resources */,
 				78DEED751B1A911E0093CB64 /* Icon-152.png in Resources */,
 				78DEED701B1A911E0093CB64 /* Icon-100.png in Resources */,
+				78DEEE011B1D035B0093CB64 /* down.png in Resources */,
 				78DEED6A1B1A911E0093CB64 /* Default.png in Resources */,
 				78DEED711B1A911E0093CB64 /* Icon-114.png in Resources */,
 				78DEED7D1B1A911E0093CB64 /* Icon-80.png in Resources */,
 				78DEED6B1B1A911E0093CB64 /* Default@2x.png in Resources */,
 				78DEED691B1A911E0093CB64 /* Default-568h@2x.png in Resources */,
+				78DEEE061B1D035B0093CB64 /* validate.png in Resources */,
+				78DEEE051B1D035B0093CB64 /* up.png in Resources */,
 				7823FBB51ABDB57400447F0A /* Batch.bundle in Resources */,
 				784222D81A0A5D6800CDC2F5 /* main.js in Resources */,
 				78DEED791B1A911E0093CB64 /* Icon-57.png in Resources */,
@@ -1144,6 +1204,8 @@
 				78DEED6E1B1A911E0093CB64 /* Default_iphone6plus.png in Resources */,
 				78DEED7B1B1A911E0093CB64 /* Icon-72.png in Resources */,
 				789799811B136C3C00041938 /* vg_cta.png in Resources */,
+				78DEEDFF1B1D035B0093CB64 /* close.png in Resources */,
+				78DEEE021B1D035B0093CB64 /* facebook_like_button.png in Resources */,
 				7828A0331A1F6E920079492B /* jsb_pluginx.js in Resources */,
 				78DEED731B1A911E0093CB64 /* Icon-128.png in Resources */,
 				7897997F1B136C3C00041938 /* __vungle.db in Resources */,
@@ -1198,13 +1260,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7847CDFD1AB184820014E3F3 /* Vibrator.mm in Sources */,
+				78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */,
 				7847CDF91AB184820014E3F3 /* RootViewController.mm in Sources */,
 				7822CCFD1AB6D54600FBE746 /* Chartboosts.mm in Sources */,
+				78DEEDFE1B1D035B0093CB64 /* AdWebViewController.m in Sources */,
 				7823FBC61ABDC0F900447F0A /* Batchcom.mm in Sources */,
 				7847CDF71AB184820014E3F3 /* main.m in Sources */,
 				7828A09D1A1F870D0079492B /* AppDelegate.cpp in Sources */,
 				7847CDF81AB184820014E3F3 /* Media.mm in Sources */,
 				7847CDF61AB184820014E3F3 /* AppController.mm in Sources */,
+				78DEEE041B1D035B0093CB64 /* Reachability.m in Sources */,
 				7878F97B1ADDB01500A0F1D6 /* Internal.mm in Sources */,
 				78809FAE1B11D3B4002397E7 /* HZAdMobBannerSupport.m in Sources */,
 				7847CDFC1AB184820014E3F3 /* Screenshot.mm in Sources */,
@@ -1213,6 +1278,7 @@
 				78809FA71B11D36B002397E7 /* Heyzap.mm in Sources */,
 				7847CDFA1AB184820014E3F3 /* Services.mm in Sources */,
 				7847CDFB1AB184820014E3F3 /* Social.mm in Sources */,
+				78DEEE221B1D06AA0093CB64 /* Ketchapp.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

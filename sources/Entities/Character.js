@@ -1962,7 +1962,7 @@ Character = Spine.extend({
        *
        *
        */
-      if(Bonuses.states[0]) {
+      if(true /*Bonuses.states[0]*/) {
 
         /**
          *

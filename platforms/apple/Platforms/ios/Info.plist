@@ -41,15 +41,28 @@
 				<string>fb747864001998896</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.ketchapp.rocketescape</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1364</string>
+	<string>1406</string>
 	<key>FacebookAppID</key>
 	<string>747864001998896</string>
 	<key>FacebookDisplayName</key>
 	<string>facebook</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Plugins</key>
+	<dict>
+		<key>Ketchapp</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>resource/Fonts/Impact.ttf</string>

@@ -110,8 +110,18 @@ Splurge = Popup.extend({
            *
            *
            */
-          Plugins.heyzap.show(Plugins.ad.types.interstitial);
-        }),
+          this.parameters.ad.interstitial.current++;
+          if(this.parameters.ad.interstitial.current >= this.parameters.ad.interstitial.times) {
+            this.parameters.ad.interstitial.current = 0;
+
+            /**
+             *
+             *
+             *
+             */
+            Plugins.heyzap.show(Plugins.ad.types.interstitial);
+          }
+        }.bind(Game)),
         cc.DelayTime.create(0.5),
         cc.FadeTo.create(0.2, 255),
         cc.CallFunc.create(Finish.show, Finish),

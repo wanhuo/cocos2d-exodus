@@ -217,7 +217,8 @@ var resources = {
     },
     counter: {
       texture: 'resource/Graphics/counter.png',
-      coins:  'resource/Graphics/counter-coins.png'
+      coins: 'resource/Graphics/counter-coins.png',
+      video: 'resource/Graphics/counter-video.png'
     },
     coin: {
       texture: 'resource/Graphics/coin.png',

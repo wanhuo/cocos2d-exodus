@@ -43,7 +43,8 @@ Counter = Button.extend({
      *
      *
      */
-    this.coins = new Entity(resources.main.counter.coins, Game.backgrounds.e);
+    this.coins = new Button(resources.main.counter.coins, 1, 1, Game.backgrounds.e, this.onCoins.bind(this));
+    this.video = new Button(resources.main.counter.video, 1, 2, Game.backgrounds.e, this.onVideo.bind(this));
 
     /**
      *
@@ -77,6 +78,10 @@ Counter = Button.extend({
     this.coins.create().attr({
       x: Camera.width + this.coins.width / 2,
       y: Camera.height - 50
+    });
+    this.video.attr({
+      x: Camera.width + this.coins.width / 2,
+      y: Camera.height - 210
     });
 
     /**
@@ -458,6 +463,67 @@ Counter = Button.extend({
      *
      */
     Analytics.sendEvent('System events', 'Share', '', '');
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCoins: function() {
+  },
+  onVideo: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.video.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    Finish.parameters.reward.current = 0;
+
+    /**
+     *
+     *
+     *
+     */
+    Finish.hide();
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.heyzap.show(Plugins.ad.types.video, {
+
+      /**
+       *
+       *
+       *
+       */
+      success: function() {
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.values.coins.current += 25;
+
+        /**
+         *
+         *
+         *
+         */
+        Finish.show();
+      }
+    });
   },
 
   /**
@@ -889,6 +955,7 @@ Counter = Button.extend({
        *
        */
       this.coins.x = Camera.width - 120;
+      this.video.x = Camera.width - 120;
     } else {
 
       /**
@@ -904,6 +971,7 @@ Counter = Button.extend({
        *
        */
       this.coins.x = Camera.width - (Game.backgrounds.b.y - this.coins.width / 2) + 30;
+      this.video.x = Camera.width - (Game.backgrounds.b.y - this.video.width / 2) + 30;
     }
   }
 });

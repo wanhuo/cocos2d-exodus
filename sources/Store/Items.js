@@ -191,18 +191,6 @@ Items = cc.Class.extend({
        *
        */
       [
-        {
-          price: 50,
-          type: this.types.consumable,
-          purchaseCode: properties.bonuses[0],
-          item: new StoreItem31
-        },
-        {
-          price: 400,
-          type: this.types.consumable,
-          purchaseCode: properties.bonuses[1],
-          item: new StoreItem32
-        }
       ],
 
       /**

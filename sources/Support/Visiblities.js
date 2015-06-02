@@ -54,7 +54,7 @@ Visiblities = {
      *
      *
      */
-    Game.buttons.like.visiblities = 'Game.backgrounds.b.y >= 270';
+    Game.buttons.rate.visiblities = 'Game.backgrounds.b.y >= 270';
     Game.buttons.sound.visiblities = 'Game.backgrounds.b.y >= 270';
     Game.buttons.leaderboard.visiblities = 'Game.backgrounds.b.y >= 270';
     Game.buttons.achievements.visiblities = 'Game.backgrounds.b.y >= 270';
@@ -190,7 +190,7 @@ Visiblities = {
      *
      *
      */
-    this.elements.push(Game.buttons.like);
+    this.elements.push(Game.buttons.rate);
     this.elements.push(Game.buttons.sound);
     this.elements.push(Game.buttons.leaderboard);
     this.elements.push(Game.buttons.achievements);

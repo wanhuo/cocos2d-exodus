@@ -70,6 +70,7 @@ App = {
       }
     },
     plugins: {
+      ketchapp: true,
       heyzap: {
         apple: 'ff4d63e68db9518cacc9a4b5d8e375d8',
         android: ''

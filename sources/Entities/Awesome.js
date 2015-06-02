@@ -83,7 +83,7 @@ Awesome = Entity.extend({
      *
      *
      */
-    this.text.format(position);
+    this.text.format(Counter.values.scores.best);
 
     /**
      *

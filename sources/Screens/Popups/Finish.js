@@ -65,7 +65,11 @@ Finish = Popup.extend({
         {x: 128, y: 158},
         {x: 128, y: 158},
         {x: 128, y: 158}
-      ]
+      ],
+      reward: {
+        current: 4,
+        total: 4
+      }
     };
 
     /**
@@ -587,6 +591,30 @@ Finish = Popup.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.reward.current++;
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.reward.current >= this.parameters.reward.total) {
+
+      /**
+       *
+       *
+       *
+       */
+      if(Plugins.heyzap.available(Plugins.ad.types.video)) {
+        Counter.video.create();
+      }
+    }
   },
   hideCounter: function() {
 
@@ -603,6 +631,13 @@ Finish = Popup.extend({
      *
      */
     Game.addChild(Game.backgrounds.b);
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.video.destroy();
   },
 
   /**
