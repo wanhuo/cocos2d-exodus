@@ -172,7 +172,7 @@ Shop = Button.extend({
      */
     Items.items.each(function(category) {
       category.each(function(item) {
-        if(!item.owned && Counter.values.scores.best >= item.unlock && Counter.values.coins.total >= item.price) {
+        if(!item.owned && Counter.values.coins.total >= item.price) {
           count++;
         }
       })

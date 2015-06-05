@@ -59,7 +59,7 @@ Switcher = Shop.extend({
      *
      */
     Items.items[this.index].each(function(item) {
-      if((!item.owned && Counter.values.scores.best >= item.unlock && Counter.values.coins.total >= item.price) || item.available) {
+      if((!item.owned && Counter.values.coins.total >= item.price) || item.available) {
         count++;
       }
     });

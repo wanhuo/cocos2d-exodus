@@ -28,7 +28,7 @@ StoreContentBackground = StoreBackground.extend({
    *
    *
    */
-  ctor: function(index) {
+  ctor: function(identifier) {
     this._super();
 
     /**
@@ -37,6 +37,7 @@ StoreContentBackground = StoreBackground.extend({
      *
      */
     this.parameters = {
+      identifier: identifier,
       index: 0
     };
 
@@ -169,14 +170,14 @@ StoreContentBackground = StoreBackground.extend({
      *
      *
      */
-    Items.items[index].each(function(element) {
+    Items.items[this.parameters.identifier].each(function(element) {
 
       /**
        *
        *
        *
        */
-      this.backgrounds.push(new StoreContent(index + 1, id + 1));
+      this.backgrounds.push(new StoreContent(this.parameters.identifier + 1, id + 1));
 
       /**
        *
@@ -200,7 +201,26 @@ StoreContentBackground = StoreBackground.extend({
      *
      *
      */
-    this.parameters.index = 0;
+    switch(this.parameters.identifier) {
+      default:
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.index = 0;
+      break;
+      case 0:
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.index = Character.parameters.skins.indexOf(Character.getSkin());
+      break;
+    }
 
     /**
      *
