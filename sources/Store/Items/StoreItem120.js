@@ -21,77 +21,30 @@
  *
  */
 
-var properties = {
-  purchases: {
+StoreItem120 = StoreItem100.extend({
 
+  /**
+   *
+   *
+   *
+   */
+  ctor: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.setSkin('20');
   },
 
-  music: 1,
-  sound: 2,
-  vibrate: 3,
-  language: 4,
-  ad: 5,
-  info: {
-    uid: 6,
-    name: 7,
-    surname: 8,
-    photo: 9
-  },
-  scores: {
-    best: 10,
-    jumps: 11,
-    deaths: 12
-  },
-  awesome: 13,
-  coins: 1000,
-  tutorial: 100,
-  rocket: 200,
-  rockets: [
-    201,
-    202,
-    203,
-    204,
-    205,
-    206,
-    207,
-    208,
-    209,
-    210,
-    211,
-    212,
-    213,
-    214,
-    215,
-    216,
-    217,
-    218,
-    219,
-    220,
-    221,
-    222,
-    223,
-    224,
-    225,
-    226,
-    227,
-    228,
-    229,
-    230,
-    231,
-    232,
-    233,
-    234,
-    235,
-    236
-  ],
-  creatures: [
-    301,
-    302,
-    303,
-    304
-  ],
-  bonuses: [
-    401,
-    402
-  ]
-};
+  /**
+   *
+   *
+   *
+   */
+  deepCopy: function() {
+    return new StoreItem120();
+  }
+});

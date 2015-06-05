@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem12 = StoreItem10.extend({
+StoreItem100 = Spine.extend({
 
   /**
    *
@@ -29,14 +29,28 @@ StoreItem12 = StoreItem10.extend({
    *
    */
   ctor: function() {
-    this._super();
+    this._super(resources.main.character.json, resources.main.character.atlas, 1.0);
 
     /**
      *
      *
      *
      */
-    this.setSkin('2');
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
+    this.scale = 2;
+
+    /**
+     *
+     *
+     *
+     */
+    this.retain();
   },
 
   /**
@@ -44,7 +58,75 @@ StoreItem12 = StoreItem10.extend({
    *
    *
    */
-  deepCopy: function() {
-    return new StoreItem12();
+  correctPositionForUnlock: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = 256;
+    this.y = 256;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onEnter: function() {
+    this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.x = Camera.center.x + 50;
+    this.y = Camera.center.y - 150;
+
+    /**
+     *
+     *
+     *
+     */
+    this.rotation = 45;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setTimeScale(10000);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(0, 'animation', false);
+    this.setAnimation(1, 'engine-start', false);
+
+    /**
+     *
+     *
+     *
+     */
+    setTimeout(function() {
+
+      /**
+       *
+       *
+       *
+       */
+      this.setTimeScale(1);
+
+      /**
+       *
+       *
+       *
+       */
+      this.setAnimation(0, 'engine-repeat', true);
+    }.bind(this), 200);
   }
 });

@@ -278,6 +278,110 @@ var languages = {
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
+  'store-item-title-1-11': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-12': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-13': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-14': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-15': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-16': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-17': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-18': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-19': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-20': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-21': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-22': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-23': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-24': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-25': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-26': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-27': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-28': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-29': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-30': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-31': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-32': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-33': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-34': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-35': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-title-1-36': [
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-item-title-2-1': [
     {title: 'Human', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Человек', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
@@ -351,6 +455,110 @@ var languages = {
     {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-1-10': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-11': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-12': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-13': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-14': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-15': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-16': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-17': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-18': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-19': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-20': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-21': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-22': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-23': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-24': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-25': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-26': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-27': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-28': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-29': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-30': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-31': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-32': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-33': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-34': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-35': [
+    {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'store-item-description-1-36': [
     {title: 'Some Additional Rocket.\n Description and name is coming soon.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Дополнительная ракета.\n Описание будет добавлено позже.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],

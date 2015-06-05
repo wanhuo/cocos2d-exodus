@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem17 = StoreItem10.extend({
+StoreItem109 = StoreItem100.extend({
 
   /**
    *
@@ -36,7 +36,7 @@ StoreItem17 = StoreItem10.extend({
      *
      *
      */
-    this.setSkin('7');
+    this.setSkin('9');
   },
 
   /**
@@ -45,6 +45,6 @@ StoreItem17 = StoreItem10.extend({
    *
    */
   deepCopy: function() {
-    return new StoreItem17();
+    return new StoreItem109();
   }
 });

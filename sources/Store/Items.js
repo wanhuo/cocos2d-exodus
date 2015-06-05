@@ -1,4 +1,4 @@
-/**
+0/**
  * Tooflya Inc. Development
  *
  * @author Igor Mats from Tooflya Inc.
@@ -69,7 +69,7 @@ Items = cc.Class.extend({
           selected: round(Data.get(false, properties.rocket)) == 0,
           selectCode: properties.rocket,
           purchaseCode: 0,
-          item: new StoreItem11
+          item: new StoreItem101
         },
         {
           price: 0,
@@ -79,7 +79,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 1,
           selectCode: properties.rocket,
           purchaseCode: 0,
-          item: new StoreItem12
+          item: new StoreItem102
         },
         {
           price: 0,
@@ -89,7 +89,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 2,
           selectCode: properties.rocket,
           purchaseCode: 0,
-          item: new StoreItem13
+          item: new StoreItem103
         },
         {
           price: 250,
@@ -99,7 +99,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 3,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[3],
-          item: new StoreItem14
+          item: new StoreItem104
         },
         {
           price: 750,
@@ -109,7 +109,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 4,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[4],
-          item: new StoreItem15
+          item: new StoreItem105
         },
         {
           price: 1500,
@@ -119,7 +119,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 5,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[5],
-          item: new StoreItem16
+          item: new StoreItem106
         },
         {
           price: 2500,
@@ -129,7 +129,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 6,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[6],
-          item: new StoreItem17
+          item: new StoreItem107
         },
         {
           price: 3250,
@@ -139,7 +139,7 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 7,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[7],
-          item: new StoreItem18
+          item: new StoreItem108
         },
         {
           price: 4500,
@@ -149,7 +149,277 @@ Items = cc.Class.extend({
           selected: Data.get(false, properties.rocket) === 8,
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[8],
-          item: new StoreItem19
+          item: new StoreItem109
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[9]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 9,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[9],
+          item: new StoreItem110
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[10]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 10,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[10],
+          item: new StoreItem111
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[11]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 11,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[11],
+          item: new StoreItem112
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[12]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 12,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[12],
+          item: new StoreItem113
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[13]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 13,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[13],
+          item: new StoreItem114
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[14]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 14,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[14],
+          item: new StoreItem115
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[15]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 15,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[15],
+          item: new StoreItem116
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[16]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 16,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[16],
+          item: new StoreItem117
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[17]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 17,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[17],
+          item: new StoreItem118
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[18]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 18,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[18],
+          item: new StoreItem119
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[19]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 19,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[19],
+          item: new StoreItem120
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[20]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 20,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[20],
+          item: new StoreItem121
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[21]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 21,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[21],
+          item: new StoreItem122
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[22]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 22,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[22],
+          item: new StoreItem123
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[23]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 23,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[23],
+          item: new StoreItem124
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[24]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 24,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[24],
+          item: new StoreItem125
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[25]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 25,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[25],
+          item: new StoreItem126
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[26]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 26,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[26],
+          item: new StoreItem127
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[27]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 27,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[27],
+          item: new StoreItem128
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[28]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 28,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[28],
+          item: new StoreItem129
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[29]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 29,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[29],
+          item: new StoreItem130
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[30]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 30,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[30],
+          item: new StoreItem131
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[31]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 31,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[31],
+          item: new StoreItem132
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[32]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 32,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[32],
+          item: new StoreItem133
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[33]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 33,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[33],
+          item: new StoreItem134
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[34]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 34,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[34],
+          item: new StoreItem135
+        },
+        {
+          price: 4500,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.rockets[35]),
+          selectable: true,
+          selected: Data.get(false, properties.rocket) === 35,
+          selectCode: properties.rocket,
+          purchaseCode: properties.rockets[35],
+          item: new StoreItem136
         }
       ],
 

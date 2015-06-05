@@ -21,7 +21,7 @@
  *
  */
 
-StoreItem10 = Spine.extend({
+StoreItem133 = StoreItem100.extend({
 
   /**
    *
@@ -29,52 +29,6 @@ StoreItem10 = Spine.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.character.json, resources.main.character.atlas, 1.0);
-
-    /**
-     *
-     *
-     *
-     */
-    this.needScheduleUpdate = true;
-
-    /**
-     *
-     *
-     *
-     */
-    this.scale = 2;
-
-    /**
-     *
-     *
-     *
-     */
-    this.retain();
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  correctPositionForUnlock: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.x = 256;
-    this.y = 256;
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onEnter: function() {
     this._super();
 
     /**
@@ -82,51 +36,15 @@ StoreItem10 = Spine.extend({
      *
      *
      */
-    this.x = Camera.center.x + 50;
-    this.y = Camera.center.y - 150;
+    this.setSkin('33');
+  },
 
-    /**
-     *
-     *
-     *
-     */
-    this.rotation = 45;
-
-    /**
-     *
-     *
-     *
-     */
-    this.setTimeScale(10000);
-
-    /**
-     *
-     *
-     *
-     */
-    this.setAnimation(0, 'animation', false);
-    this.setAnimation(1, 'engine-start', false);
-
-    /**
-     *
-     *
-     *
-     */
-    setTimeout(function() {
-
-      /**
-       *
-       *
-       *
-       */
-      this.setTimeScale(1);
-
-      /**
-       *
-       *
-       *
-       */
-      this.setAnimation(0, 'engine-repeat', true);
-    }.bind(this), 200);
+  /**
+   *
+   *
+   *
+   */
+  deepCopy: function() {
+    return new StoreItem133();
   }
 });
