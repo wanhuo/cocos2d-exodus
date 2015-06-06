@@ -51,8 +51,15 @@ Coin = Entity.extend({
    *
    *
    */
-  onCreate: function() {
+  onCreate: function(element) {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    element.destroy();
 
     /**
      *
@@ -155,6 +162,13 @@ Coin = Entity.extend({
      *
      */
     this.motion.create();
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.onCoin();
   },
   onDestroy: function() {
     this._super();

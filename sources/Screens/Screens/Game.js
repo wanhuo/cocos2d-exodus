@@ -104,44 +104,6 @@ Game = Screen.extend({
         }
       },
       camera: {
-        positions: [
-          450,
-          450,
-          450,
-          450,
-          445,
-          500,
-          550,
-          450,
-          420,
-          505,
-          555,
-          483,
-          458,
-          458,
-          439,
-          497,
-          458,
-          458,
-          408,
-          468,
-          379,
-          379,
-          379,
-          379,
-          545,
-          522,
-          463,
-          485,
-          495,
-          530,
-          555,
-          540,
-          475,
-          476,
-          476,
-          420
-        ],
         center: 450,
         x: 0,
         y: 0,
@@ -284,7 +246,7 @@ Game = Screen.extend({
     this.elements.bonuses = new Bonuses;
     this.elements.awesome = new Awesome;
     this.elements.explanation = new Explanation;
-    //this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
+    this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
     this.elements.stegosauruses = new Manager(10, new Stegosaurus, this.backgrounds.game);
     this.elements.triceratopses = new Manager(10, new Triceratops, this.backgrounds.game);
@@ -1260,7 +1222,7 @@ Game = Screen.extend({
     this.elements.coins.clear();
     this.elements.points.clear();
     this.elements.fishes.clear();
-    //this.elements.baloons.clear();
+    this.elements.baloons.clear();
 
     /**
      *
@@ -1275,6 +1237,13 @@ Game = Screen.extend({
      *
      */
     this.elements.bonuses.create();
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.awesome.destroy();
 
     /**
      *
@@ -1385,7 +1354,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.awesome.destroy();
+    this.elements.explanation.destroy();
 
     /**
      *
@@ -1642,15 +1611,6 @@ Game = Screen.extend({
           success: function() {
           }
         });
-        break;
-        case this.parameters.states.menu:
-
-        /**
-         *
-         *
-         *
-         */
-        Character.y = this.parameters.camera.positions[Character.parameters.skins.indexOf(Character.parameters.skin)];
         break;
       }
     }
@@ -1947,7 +1907,7 @@ Game = Screen.extend({
      * 
      *
      */
-    //this.updateBaloons(time);
+    this.updateBaloons(time);
 
     /**
      *

@@ -102,7 +102,7 @@ Items = cc.Class.extend({
           item: new StoreItem104
         },
         {
-          price: 750,
+          price: 275,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[4]),
           selectable: true,
@@ -112,7 +112,7 @@ Items = cc.Class.extend({
           item: new StoreItem105
         },
         {
-          price: 1500,
+          price: 325,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[5]),
           selectable: true,
@@ -122,7 +122,7 @@ Items = cc.Class.extend({
           item: new StoreItem106
         },
         {
-          price: 2500,
+          price: 350,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[6]),
           selectable: true,
@@ -132,7 +132,7 @@ Items = cc.Class.extend({
           item: new StoreItem107
         },
         {
-          price: 3250,
+          price: 425,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[7]),
           selectable: true,
@@ -142,7 +142,7 @@ Items = cc.Class.extend({
           item: new StoreItem108
         },
         {
-          price: 4500,
+          price: 475,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[8]),
           selectable: true,
@@ -152,7 +152,7 @@ Items = cc.Class.extend({
           item: new StoreItem109
         },
         {
-          price: 4500,
+          price: 525,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[9]),
           selectable: true,
@@ -162,7 +162,7 @@ Items = cc.Class.extend({
           item: new StoreItem110
         },
         {
-          price: 4500,
+          price: 625,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[10]),
           selectable: true,
@@ -172,7 +172,7 @@ Items = cc.Class.extend({
           item: new StoreItem111
         },
         {
-          price: 4500,
+          price: 650,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[11]),
           selectable: true,
@@ -182,7 +182,7 @@ Items = cc.Class.extend({
           item: new StoreItem112
         },
         {
-          price: 4500,
+          price: 675,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[12]),
           selectable: true,
@@ -192,7 +192,7 @@ Items = cc.Class.extend({
           item: new StoreItem113
         },
         {
-          price: 4500,
+          price: 725,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[13]),
           selectable: true,
@@ -202,7 +202,7 @@ Items = cc.Class.extend({
           item: new StoreItem114
         },
         {
-          price: 4500,
+          price: 850,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[14]),
           selectable: true,
@@ -212,7 +212,7 @@ Items = cc.Class.extend({
           item: new StoreItem115
         },
         {
-          price: 4500,
+          price: 875,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[15]),
           selectable: true,
@@ -222,7 +222,7 @@ Items = cc.Class.extend({
           item: new StoreItem116
         },
         {
-          price: 4500,
+          price: 925,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[16]),
           selectable: true,
@@ -232,7 +232,7 @@ Items = cc.Class.extend({
           item: new StoreItem117
         },
         {
-          price: 4500,
+          price: 950,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[17]),
           selectable: true,
@@ -242,7 +242,7 @@ Items = cc.Class.extend({
           item: new StoreItem118
         },
         {
-          price: 4500,
+          price: 975,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[18]),
           selectable: true,
@@ -252,7 +252,7 @@ Items = cc.Class.extend({
           item: new StoreItem119
         },
         {
-          price: 4500,
+          price: 1020,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[19]),
           selectable: true,
@@ -262,7 +262,7 @@ Items = cc.Class.extend({
           item: new StoreItem120
         },
         {
-          price: 4500,
+          price: 1050,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[20]),
           selectable: true,
@@ -272,7 +272,7 @@ Items = cc.Class.extend({
           item: new StoreItem121
         },
         {
-          price: 4500,
+          price: 1080,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[21]),
           selectable: true,
@@ -282,7 +282,7 @@ Items = cc.Class.extend({
           item: new StoreItem122
         },
         {
-          price: 4500,
+          price: 1110,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[22]),
           selectable: true,
@@ -292,7 +292,7 @@ Items = cc.Class.extend({
           item: new StoreItem123
         },
         {
-          price: 4500,
+          price: 1140,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[23]),
           selectable: true,
@@ -302,7 +302,7 @@ Items = cc.Class.extend({
           item: new StoreItem124
         },
         {
-          price: 4500,
+          price: 1195,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[24]),
           selectable: true,
@@ -312,7 +312,7 @@ Items = cc.Class.extend({
           item: new StoreItem125
         },
         {
-          price: 4500,
+          price: 1225,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[25]),
           selectable: true,
@@ -322,7 +322,7 @@ Items = cc.Class.extend({
           item: new StoreItem126
         },
         {
-          price: 4500,
+          price: 1275,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[26]),
           selectable: true,
@@ -332,7 +332,7 @@ Items = cc.Class.extend({
           item: new StoreItem127
         },
         {
-          price: 4500,
+          price: 1320,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[27]),
           selectable: true,
@@ -342,7 +342,7 @@ Items = cc.Class.extend({
           item: new StoreItem128
         },
         {
-          price: 4500,
+          price: 1350,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[28]),
           selectable: true,
@@ -352,7 +352,7 @@ Items = cc.Class.extend({
           item: new StoreItem129
         },
         {
-          price: 4500,
+          price: 1370,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[29]),
           selectable: true,
@@ -362,7 +362,7 @@ Items = cc.Class.extend({
           item: new StoreItem130
         },
         {
-          price: 4500,
+          price: 1390,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[30]),
           selectable: true,
@@ -372,7 +372,7 @@ Items = cc.Class.extend({
           item: new StoreItem131
         },
         {
-          price: 4500,
+          price: 1400,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[31]),
           selectable: true,
@@ -382,7 +382,7 @@ Items = cc.Class.extend({
           item: new StoreItem132
         },
         {
-          price: 4500,
+          price: 1450,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[32]),
           selectable: true,
@@ -392,7 +392,7 @@ Items = cc.Class.extend({
           item: new StoreItem133
         },
         {
-          price: 4500,
+          price: 1500,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[33]),
           selectable: true,
@@ -402,7 +402,7 @@ Items = cc.Class.extend({
           item: new StoreItem134
         },
         {
-          price: 4500,
+          price: 1500,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[34]),
           selectable: true,
@@ -412,7 +412,7 @@ Items = cc.Class.extend({
           item: new StoreItem135
         },
         {
-          price: 4500,
+          price: 1500,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[35]),
           selectable: true,

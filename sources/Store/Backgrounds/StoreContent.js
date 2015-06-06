@@ -614,8 +614,26 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      Finish.elements.rocket.x = Camera.center.x - Finish.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
-      Finish.elements.rocket.y = Camera.center.y - Finish.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+      Finish.elements.rocket.x = Camera.center.x - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
+      Finish.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    switch(Game.parameters.state) {
+      case Game.parameters.states.menu:
+
+      /**
+       *
+       *
+       *
+       */
+      Character.x = Camera.center.x + parameters.character.positions.menu[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
+      Character.y = parameters.character.positions.menu[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+      break;
     }
   }
 });

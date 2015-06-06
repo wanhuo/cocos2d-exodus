@@ -22,6 +22,7 @@
  */
 
 sources = sources.concat([
+  'sources/Parameters.js',
   'sources/Support/Events.js',
   'sources/Support/Visiblities.js',
   'sources/Entities/Text.js',

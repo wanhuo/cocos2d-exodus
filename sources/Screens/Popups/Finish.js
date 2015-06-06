@@ -54,44 +54,6 @@ Finish = Popup.extend({
           elapsed: 0
         }
       },
-      positions: [
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 128, y: 158},
-        {x: 140, y: 170},
-        {x: -10, y: 10},
-        {x: -200, y: -158},
-        {x: 128, y: 158},
-        {x: 200, y: 240},
-        {x: -23, y: 8},
-        {x: -170, y: -133},
-        {x: 35, y: 60},
-        {x: 100, y: 130},
-        {x: 100, y: 130},
-        {x: 153, y: 195},
-        {x: -10, y: 25},
-        {x: 105, y: 125},
-        {x: 100, y: 140},
-        {x: 245, y: 275},
-        {x: 73, y: 110},
-        {x: 325, y: 355},
-        {x: 325, y: 355},
-        {x: 325, y: 355},
-        {x: 325, y: 355},
-        {x: -150, y: -115},
-        {x: -77, y: -42},
-        {x: 100, y: 110},
-        {x: 30, y: 60},
-        {x: -7, y: 35},
-        {x: -102, y: -72},
-        {x: -161, y: -135},
-        {x: -123, y: -90},
-        {x: 68, y: 85},
-        {x: 56, y: 83},
-        {x: 56, y: 83},
-        {x: 220, y: 220}
-      ],
       reward: {
         current: 4,
         total: 4
@@ -405,6 +367,13 @@ Finish = Popup.extend({
        *
        *
        */
+      this.buttons.coins.opacity = 255;
+
+      /**
+       *
+       *
+       *
+       */
       this.elements.hand.runAction(
         cc.EaseSineInOut.create(
           cc.MoveTo.create(0.2, {
@@ -414,6 +383,13 @@ Finish = Popup.extend({
         )
       );
     } else {
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.coins.opacity = 0;
 
       /**
        *
@@ -438,6 +414,17 @@ Finish = Popup.extend({
      *
      */
     this.parameters.animation = false;
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.coins.runAction(
+      cc.EaseSineInOut.create(
+        cc.FadeOut.create(0.1)
+      )
+    );
 
     /**
      *
@@ -692,8 +679,8 @@ Finish = Popup.extend({
      *
      *
      */
-    this.elements.rocket.x = Camera.center.x - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
-    this.elements.rocket.y = Camera.center.y - this.parameters.positions[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
+    this.elements.rocket.x = Camera.center.x - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
+    this.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
 
     /**
      *

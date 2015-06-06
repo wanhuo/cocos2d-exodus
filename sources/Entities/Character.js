@@ -55,148 +55,6 @@ Character = Spine.extend({
       },
       status: false,
       scheduler: 0,
-      center: [
-        {
-          x: 0,
-          y: 22
-        },
-        {
-          x: 0,
-          y: 22
-        },
-        {
-          x: 0,
-          y: 22
-        },
-        {
-          x: 0,
-          y: 22.5
-        },
-        {
-          x: 0,
-          y: 24
-        },
-        {
-          x: 0,
-          y: -3
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        },
-        {
-          x: 0,
-          y: 0
-        }
-      ],
       animations: {
         animation: {
           index: 1,
@@ -666,8 +524,8 @@ Character = Spine.extend({
      * 
      *
      */
-    this.x = Camera.center.x;
-    this.y = Game.parameters.camera.positions[this.parameters.skins.indexOf(this.parameters.skin)];
+    this.x = Camera.center.x + parameters.character.positions.menu[this.parameters.skins.indexOf(this.parameters.skin)].x;
+    this.y = parameters.character.positions.menu[this.parameters.skins.indexOf(this.parameters.skin)].y;
 
     /**
      *
@@ -691,7 +549,13 @@ Character = Spine.extend({
      *
      */
     this.runAction(
-      cc.ScaleTo.create(0.5, 1.0)
+      cc.Spawn.create(
+        cc.ScaleTo.create(0.5, 1.0),
+        cc.MoveTo.create(0.5, {
+          x: Camera.center.x,
+          y: Game.parameters.camera.center
+        })
+      )
     );
   },
   onPrepare: function() {
@@ -862,8 +726,8 @@ Character = Spine.extend({
      *
      *
      */
-    Game.elements.explanation.x = this.parameters.center[this.parameters.skins.indexOf(this.parameters.skin)].x;
-    Game.elements.explanation.y = this.parameters.center[this.parameters.skins.indexOf(this.parameters.skin)].y;
+    Game.elements.explanation.x = parameters.character.anchor[this.parameters.skins.indexOf(this.parameters.skin)].x;
+    Game.elements.explanation.y = parameters.character.anchor[this.parameters.skins.indexOf(this.parameters.skin)].y;
   },
   onRestore: function() {
 
@@ -2025,21 +1889,7 @@ Character = Spine.extend({
        *
        *
        */
-      element.destroy();
-
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.coins.create();
-
-      /**
-       *
-       *
-       *
-       */
-      Counter.onCoin();
+      Game.elements.coins.create(element);
       break;
     }
   },
