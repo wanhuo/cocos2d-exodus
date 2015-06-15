@@ -896,7 +896,7 @@ var languages = {
     {title: 'HOW TO PLAY', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]},
     {title: 'КАК ИГРАТЬ', font: 'Impact', size: 122, dimensions: false, color: [255, 255, 255]},
     {title: 'INSTRUÇÕES', font: 'Impact', size: 122, dimensions: false, color: [255, 255, 255]},
-    {title: 'Comment jouer', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]}
+    {title: 'Comment jouer', font: 'Impact', size: 100, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-text-2': [
     {title: 'TAP FASTER TO FILL THE ROCKET', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
