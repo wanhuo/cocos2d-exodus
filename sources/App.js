@@ -48,7 +48,9 @@ App = {
     },
     languages: [
       {iso: 'en', id: 0},
-      {iso: 'ru', id: 1}
+      {iso: 'ru', id: 1},
+      {iso: 'pt', id: 2},
+      {iso: 'fr', id: 3}
     ],
     analytics: {
       tooflya: 'UA-48406912-20',
