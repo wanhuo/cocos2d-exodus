@@ -55,7 +55,7 @@ StoreItem50 = Entity.extend({
      *
      */
     this.buttons = {
-      purchase: new Button(resources.main.store.items[4][index - 1].button, 1, 1, this)
+      purchase: new Button(resources.main.store.items[4][index - 1].button, 1, 2, this, this.onTouch)
     };
 
     /**
@@ -67,50 +67,6 @@ StoreItem50 = Entity.extend({
       x: this.width / 2,
       y: -80
     });
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.purchase.onTouchStart = function() {
-      this.stopAllActions();
-      this.runAction(
-        cc.ScaleTo.create(0.1, 0.9)
-      );
-    }.bind(this.buttons.purchase);
-    this.buttons.purchase.onTouchFinish = function(touch, e) {
-      this.stopAllActions();
-      this.runAction(
-        cc.Sequence.create(
-          cc.ScaleTo.create(0.1, 1.0),
-          cc.CallFunc.create(function() {
-
-            /**
-             *
-             *
-             *
-             */
-            if(touch) {
-
-              /**
-               *
-               *
-               *
-               */
-              this.parent.onTouch();
-
-              /**
-               *
-               *
-               *
-               */
-              Sound.play(resources.main.sound.store.purchase);
-            }
-          }.bind(this))
-        )
-      );
-    }.bind(this.buttons.purchase);
 
     /**
      *
@@ -218,5 +174,12 @@ StoreItem50 = Entity.extend({
        */
       element.updateTextData();
     });
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.store.purchase);
   }
 });

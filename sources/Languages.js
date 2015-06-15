@@ -54,6 +54,10 @@ var languages = {
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
   ],
+  'video-coins': [
+    {title: '$1 FREE', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]},
+    {title: '$1 FREE', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
+  ],
   'decoration-0': [
     {title: 'TO THE MOON', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
     {title: 'Направляюсь к луне!', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}

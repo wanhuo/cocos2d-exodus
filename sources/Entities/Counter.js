@@ -60,7 +60,8 @@ Counter = Button.extend({
       status: new Text('fail', Game.backgrounds.b),
       coins: new Text('coins', this.coins),
       decoration: new Text('decoration-0', Game.backgrounds.b),
-      share: new Text('share', Game.backgrounds.b)
+      share: new Text('share', Game.backgrounds.b),
+      video: new Text('video-coins', this.video)
     };
 
     /**
@@ -108,6 +109,10 @@ Counter = Button.extend({
     this.text.coins.create().attr({
       x: this.coins.width / 2,
       y: this.coins.height / 2
+    });
+    this.text.video.create().attr({
+      x: this.video.width / 2 + 30,
+      y: 38
     });
 
     /**
@@ -908,6 +913,7 @@ Counter = Button.extend({
      *
      */
     this.text.coins.format(this.values.coins.current + this.values.coins.total);
+    this.text.video.format(25);
 
     /**
      *
