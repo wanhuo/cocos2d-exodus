@@ -658,6 +658,13 @@ Character = Spine.extend({
      *
      *
      */
+    Game.elements.coins.clear();
+
+    /**
+     *
+     *
+     *
+     */
     this.smokes.pauseSchedulerAndActions();
 
     /**
@@ -1550,10 +1557,18 @@ Character = Spine.extend({
            *
            *
            */
+          element.parameters.bonus = true;
+
+          /**
+           *
+           *
+           *
+           */
           Game.elements.points.bonus.push({
             x: element.x,
             y: element.y
           });
+
         }
 
         /**
@@ -1740,6 +1755,12 @@ Character = Spine.extend({
          *
          */
         if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
+
+          /**
+           *
+           *
+           *
+           */
           return this.proceedPoint(0);
         }
       }
@@ -1783,6 +1804,13 @@ Character = Spine.extend({
           bonus = true;
         }
       }
+
+      /**
+       *
+       *
+       *
+       */
+      bonus = bonus || ((element instanceof cc.Node) ? element.parameters.bonus && Game.elements.points.bonus.length : false);
 
       /**
        *
@@ -1836,21 +1864,22 @@ Character = Spine.extend({
          *
          */
         this.updateTraectory();
+
+        /**
+         *
+         *
+         *
+         */
+        if(element instanceof cc.Node) Game.elements.coins.create().setCurrentFrameIndexAction(0);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.coins.create().setCurrentFrameIndexAction(0);
       }
-
-      /**
-       *
-       *
-       *
-       */
-      Counter.onJump();
-
-      /**
-       *
-       *
-       *
-       */
-      Counter.count();
       break;
       case 1:
 
@@ -1889,7 +1918,7 @@ Character = Spine.extend({
        *
        *
        */
-      Game.elements.coins.create(element);
+      Game.elements.coins.create(element).setCurrentFrameIndexAction(2);
       break;
     }
   },

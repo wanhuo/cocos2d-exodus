@@ -21,7 +21,7 @@
  *
  */
 
-Coin = Entity.extend({
+Coin = TiledEntity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Coin = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.coin.texture);
+    this._super(resources.main.points.texture, 1, 3);
 
     /**
      *
@@ -51,7 +51,7 @@ Coin = Entity.extend({
    *
    *
    */
-  onCreate: function(element) {
+  onCreate: function(element, motion) {
     this._super();
 
     /**
@@ -59,7 +59,9 @@ Coin = Entity.extend({
      *
      *
      */
-    element.destroy();
+    if(element instanceof cc.Node) {
+      element.destroy();
+    }
 
     /**
      *
@@ -81,94 +83,7 @@ Coin = Entity.extend({
      *
      *
      */
-    this.runAction(
-      cc.Sequence.create(
-        cc.EaseSineInOut.create(
-          cc.BezierTo.create(1.0, [
-            {
-              x: this.x,
-              y: this.y
-            },
-            {
-              x: random(0, Camera.width),
-              y: Camera.center.y
-            },
-            {
-              x: Counter.coins.x - Counter.coins.width / 4,
-              y: Camera.height - 40
-            }
-          ])
-        ),
-        cc.CallFunc.create(this.destroy, this),
-        cc.CallFunc.create(function() {
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.coins.stopAllActions();
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.coins.scale = 1.0;
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.coins.runAction(
-            cc.Sequence.create(
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.06, 1.1)
-              ),
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.06, 1.0)
-              )
-            )
-          );
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.values.coins.current++;
-
-          /**
-           *
-           *
-           *
-           */
-          Counter.updateTextData();
-
-          /**
-           *
-           *
-           *
-           */
-          Sound.play(resources.main.sound.coins.collect);
-        })
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
     this.motion.create();
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.onCoin();
   },
   onDestroy: function() {
     this._super();
@@ -179,6 +94,171 @@ Coin = Entity.extend({
      *
      */
     this.motion.destroy();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  setCurrentFrameIndexAction: function(index) {
+    this.setCurrentFrameIndex(index);
+
+    /**
+     *
+     *
+     *
+     */
+    switch(index) {
+      case 0:
+
+      /**
+       *
+       *
+       *
+       */
+      Sound.play(resources.main.sound.counter.count.random());
+
+      /**
+       *
+       *
+       *
+       */
+      this.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.BezierTo.create(1.0, [
+              {
+                x: this.x,
+                y: this.y
+              },
+              {
+                x: random(0, Camera.center.x / 2),
+                y: Camera.center.y
+              },
+              {
+                x: Camera.center.x,
+                y: Counter.y + Counter.parent.y
+              }
+            ])
+          ),
+          cc.CallFunc.create(this.destroy, this),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.onJump();
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.count();
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.updateTextData();
+          })
+        )
+      );
+      break;
+      case 2:
+
+      /**
+       *
+       *
+       *
+       */
+      Counter.onCoin();
+
+      /**
+       *
+       *
+       *
+       */
+      this.runAction(
+        cc.Sequence.create(
+          cc.EaseSineInOut.create(
+            cc.BezierTo.create(1.0, [
+              {
+                x: this.x,
+                y: this.y
+              },
+              {
+                x: random(0, Camera.width),
+                y: Camera.center.y
+              },
+              {
+                x: Counter.coins.x - Counter.coins.width / 4,
+                y: Camera.height - 40
+              }
+            ])
+          ),
+          cc.CallFunc.create(this.destroy, this),
+          cc.CallFunc.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.coins.stopAllActions();
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.coins.scale = 1.0;
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.coins.runAction(
+              cc.Sequence.create(
+                cc.EaseSineInOut.create(
+                  cc.ScaleTo.create(0.06, 1.1)
+                ),
+                cc.EaseSineInOut.create(
+                  cc.ScaleTo.create(0.06, 1.0)
+                )
+              )
+            );
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.values.coins.current++;
+
+            /**
+             *
+             *
+             *
+             */
+            Counter.updateTextData();
+
+            /**
+             *
+             *
+             *
+             */
+            Sound.play(resources.main.sound.coins.collect);
+          })
+        )
+      );
+      break;
+    }
   },
 
   /**

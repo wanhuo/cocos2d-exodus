@@ -38,7 +38,8 @@ Point = TiledEntity.extend({
      */
     this.parameters = {
       active: true,
-      rebose: true
+      rebose: true,
+      bonus: false
     };
 
     /**
@@ -64,6 +65,7 @@ Point = TiledEntity.extend({
      */
     this.parameters.active = true;
     this.parameters.rebose = true;
+    this.parameters.bonus = false;
 
     /**
      *

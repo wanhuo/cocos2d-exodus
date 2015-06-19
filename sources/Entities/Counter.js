@@ -740,13 +740,6 @@ Counter = Button.extend({
      *
      */
     this.onCount();
-
-    /**
-     *
-     *
-     *
-     */
-    Sound.play(resources.main.sound.counter.count.random());
   },
 
   /**

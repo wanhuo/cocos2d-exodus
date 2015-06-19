@@ -253,7 +253,8 @@ Game = Screen.extend({
     this.elements.people = new Manager(10, new Human, this.backgrounds.game);
     this.elements.points = new Points;
     this.elements.coins = new Manager(10, new Coin, this.backgrounds.c, true);
-    this.elements.name = new Name;    this.elements.moon = new Moon;
+    this.elements.name = new Name;
+    this.elements.moon = new Moon;
     this.elements.brume1 = new Brume(0);
     this.elements.brume2 = new Brume(1);
     this.elements.planet1 = new Planet(0);
