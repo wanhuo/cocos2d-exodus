@@ -161,7 +161,7 @@ Items = cc.Class.extend({
           purchaseCode: properties.rockets[9],
           item: new StoreItem110
         },
-        {
+        /*{
           price: 625,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[10]),
@@ -190,7 +190,7 @@ Items = cc.Class.extend({
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[12],
           item: new StoreItem113
-        },
+        },*/
         {
           price: 725,
           type: this.types.permanent,
@@ -201,7 +201,7 @@ Items = cc.Class.extend({
           purchaseCode: properties.rockets[13],
           item: new StoreItem114
         },
-        {
+        /*{
           price: 850,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[14]),
@@ -210,7 +210,7 @@ Items = cc.Class.extend({
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[14],
           item: new StoreItem115
-        },
+        },*/
         {
           price: 875,
           type: this.types.permanent,
@@ -261,7 +261,7 @@ Items = cc.Class.extend({
           purchaseCode: properties.rockets[19],
           item: new StoreItem120
         },
-        {
+        /*{
           price: 1050,
           type: this.types.permanent,
           owned: Data.get(false, properties.rockets[20]),
@@ -290,7 +290,7 @@ Items = cc.Class.extend({
           selectCode: properties.rocket,
           purchaseCode: properties.rockets[22],
           item: new StoreItem123
-        },
+        },*/
         {
           price: 1140,
           type: this.types.permanent,
