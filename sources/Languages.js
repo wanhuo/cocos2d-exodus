@@ -841,56 +841,56 @@ var languages = {
   'store-item-description-2-1': [
     {title: 'Large team is always good!\n Rocket will steer from heavy peak.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Большая команда всегда хорошо!\n Ракета вырулит из тяжелых пике.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Equipas grandes é sempre boa ideia!\nO foguete será conduzido em grande altitude.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Avoir une grande équipe est toujours une bonne chose !\nLa fusée sera plus dirigeable dans les hautes altitudes.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Equipas grandes é sempre boa ideia!\n O foguete será conduzido em grande altitude.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Avoir une grande équipe est toujours une bonne chose !\n La fusée sera plus dirigeable dans les hautes altitudes.', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-2': [
     {title: 'Stegosaurus can save the rocket from crash\n with 25% probability.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Стегозавр может спасти ракету от крушения\n с вероятностью 25%.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Stegosaurus pode salvar o foguete de\nse despenhar com 25% de probabilidade.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Le Stegosaurus a 25% de chance\nde sauver la fusée lors d\'un crash.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Stegosaurus pode salvar o foguete de\n se despenhar com 25% de probabilidade.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Le Stegosaurus a 25% de chance\n de sauver la fusée lors d\'un crash.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-3': [
     {title: 'Apatosaurus so huge!!\n It slows down the rocket.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Апатозавр настолько тяжелый, что\n замедляет ракету.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Apatosaurus é tão grande!!\nEle reduz a velocidade do foguete.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Le Apatosaurus est énorme !!\nIl ralentit la vitesse de la fusée.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Apatosaurus é tão grande!!\n Ele reduz a velocidade do foguete.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Le Apatosaurus est énorme !!\n Il ralentit la vitesse de la fusée.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-4': [
     {title: 'Triceratops absorbs rocket\'s vibrations\n in areas of turbulence', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Трицераптор поглощает колебания ракеты\n в зонах турбулентности.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Triceratops absorve as vibrações\ndo foguete em zonas de turbulência.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Le Triceratops absorbe les vibrations\nde la fusée lors des zones de turbulence.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Triceratops absorve as vibrações\n do foguete em zonas de turbulência.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Le Triceratops absorbe les vibrations\n de la fusée lors des zones de turbulence.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-3-1': [
     {title: 'Coins Magnet collect all coins automatically.\n No need to tap on each coin.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Магнит собирает монетки автоматически.\n Вам не нужно жать на каждую монетку.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'O Íman de moedas coleciona as moedas automaticamente.\nNão precisas de tocar nas moedas.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'L\'aimant à pièces collecte automatiquement\ntoutes les pièces. Pas besoin d\'appuyer sur les pièces.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'O Íman de moedas coleciona as moedas automaticamente.\n Não precisas de tocar nas moedas.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'L\'aimant à pièces collecte automatiquement\n toutes les pièces. Pas besoin d\'appuyer sur les pièces.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-3-2': [
     {title: 'Increases the probability of a\n coin for 2 times.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Увеличивает вероятность появления\n монетки в 2 раза.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Aumenta a probabilidade de uma moeda\naparecer em 2 vezes mais.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Aumenta a probabilidade de uma moeda\n aparecer em 2 vezes mais.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Augmente la probabilité d\'obtenir 2 pièces au lieu d\'une.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-1': [
     {title: 'Get 200 coins only for $1.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 200 монет всего за $1.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Compra 200 moedas por apenas $1.99\nQualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 200 pièces pour seulement $1.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Compra 200 moedas por apenas $1.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Acheter 200 pièces pour seulement $1.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-2': [
     {title: 'Get 500 coins only for $2.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 500 монет всего за $2.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Compra 500 moedas por apenas $2.99\nQualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 500 pièces pour seulement $2.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Compra 500 moedas por apenas $2.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Acheter 500 pièces pour seulement $2.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-3': [
     {title: 'Get 1000 coins only for $4.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 1000 монет всего за $4.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Compra 1000 moedas por apenas $4.99\nQualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 1000 pièces pour seulement $4.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Compra 1000 moedas por apenas $4.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Acheter 1000 pièces pour seulement $4.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-text-1': [
     {title: 'HOW TO PLAY', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]},
