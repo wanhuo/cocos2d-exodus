@@ -1455,6 +1455,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = "/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
+				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = application;
 				PROVISIONING_PROFILE = "";
@@ -1501,6 +1502,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				LIBRARY_SEARCH_PATHS = "/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
+				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = application;
 				PROVISIONING_PROFILE = "";

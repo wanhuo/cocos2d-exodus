@@ -1557,18 +1557,7 @@ Character = Spine.extend({
            *
            *
            */
-          element.parameters.bonus = true;
-
-          /**
-           *
-           *
-           *
-           */
-          Game.elements.points.bonus.push({
-            x: element.x,
-            y: element.y
-          });
-
+          Game.elements.points.bonus.push(element);
         }
 
         /**
@@ -1618,6 +1607,12 @@ Character = Spine.extend({
      */
     if(Game.elements.points.bonus.length >= 4) {
       if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
+
+        /**
+         *
+         *
+         *
+         */
         Game.elements.points.bonus = [];
 
         /**
@@ -1747,22 +1742,14 @@ Character = Spine.extend({
        *
        *
        */
-      if(Game.elements.points.bonus.length) {
+      if(this.isOnSpecialZone()) {
 
         /**
          *
          *
          *
          */
-        if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
-
-          /**
-           *
-           *
-           *
-           */
-          return this.proceedPoint(0);
-        }
+        return this.proceedPoint(0);
       }
 
       /**
@@ -1786,38 +1773,15 @@ Character = Spine.extend({
        *
        *
        */
-      var bonus = false;
-
-      /**
-       *
-       *
-       *
-       */
-      if(Game.elements.points.bonus.length) {
+      if(this.isOnSpecialZone()) {
 
         /**
          *
          *
          *
          */
-        if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
-          bonus = true;
-        }
-      }
-
-      /**
-       *
-       *
-       *
-       */
-      bonus = bonus || ((element instanceof cc.Node) ? element.parameters.bonus && Game.elements.points.bonus.length : false);
-
-      /**
-       *
-       *
-       *
-       */
-      if(!bonus) {
+        Game.elements.coins.create().setCurrentFrameIndexAction(0);
+      } else {
 
         /**
          *
@@ -1871,14 +1835,6 @@ Character = Spine.extend({
          *
          */
         if(element instanceof cc.Node) Game.elements.coins.create().setCurrentFrameIndexAction(0);
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        Game.elements.coins.create().setCurrentFrameIndexAction(0);
       }
       break;
       case 1:
@@ -1928,7 +1884,7 @@ Character = Spine.extend({
    *
    *
    */
-  updateStatus: function() {
+  isOnSpecialZone: function() {
 
     /**
      *
@@ -1942,9 +1898,39 @@ Character = Spine.extend({
        *
        *
        */
-      if(this.x > (Game.elements.points.bonus[0].x - this.parameters.collision.x / 2) && this.x < (Game.elements.points.bonus[3].x + this.parameters.collision.x / 2)) {
-        return this.showStatus();
+      if(this.x >= (Game.elements.points.bonus[0].x - this.parameters.collision.x) && this.x <= (Game.elements.points.bonus[3].x + this.parameters.collision.x)) {
+        return true;
       }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    return false;
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateStatus: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.isOnSpecialZone()) {
+
+      /**
+       *
+       *
+       *
+       */
+      return this.showStatus();
     }
 
     /**

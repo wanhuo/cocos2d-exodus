@@ -58,6 +58,13 @@ Points = Manager.extend({
      *
      *
      */
+    this.animator.destroy();
+
+    /**
+     *
+     *
+     *
+     */
     if(animated) {
 
       /**
