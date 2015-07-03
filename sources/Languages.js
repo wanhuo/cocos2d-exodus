@@ -38,7 +38,7 @@ var languages = {
     {title: 'BEST SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
     {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
     {title: 'MELHOR SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
-    {title: 'MEILLEUR SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}
+    {title: 'MEILLEUR: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}
   ],
   'jumps': [
     {title: 'TAPS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
@@ -98,7 +98,7 @@ var languages = {
     {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Falha', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
-    {title: 'Echec', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
+    {title: 'Raté', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
   'finish-coins': [
     {title: '$1', font: 'Impact', size: 180, dimensions: false, color: [74, 204, 200]},
@@ -878,19 +878,19 @@ var languages = {
     {title: 'Get 200 coins only for $1.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 200 монет всего за $1.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Compra 200 moedas por apenas $1.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 200 pièces pour seulement $1.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Acheter 200 pièces pour $1.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-2': [
     {title: 'Get 500 coins only for $2.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 500 монет всего за $2.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Compra 500 moedas por apenas $2.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 500 pièces pour seulement $2.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Acheter 500 pièces pour $2.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-5-3': [
     {title: 'Get 1000 coins only for $4.99\n Any purchase will remove the ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Получите 1000 монет всего за $4.99\n Любая покупка отключит рекламу.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Compra 1000 moedas por apenas $4.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Acheter 1000 pièces pour seulement $4.99\n Toute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Acheter 1000 pièces pour $4.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-text-1': [
     {title: 'HOW TO PLAY', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]},
@@ -911,9 +911,9 @@ var languages = {
     {title: 'APPUYER QUAND LA FUSÉE SURVOLE LE ROND VERT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
-    {title: 'OMG! I\'ve got $1 points playing Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'Ого! Я достиг $1 очков в игре Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! Eu ganhei $1 pontos a jogar Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Rocket Escape! #RocketEscape @tooflya ', font: 'Impact', size: 0, dimensions: false}
+    {title: 'OMG! I\'ve got $1 points playing Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Ого! Я достиг $1 очков в игре Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false}
   ]
 };

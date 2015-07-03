@@ -17,7 +17,7 @@
                BlueprintIdentifier = "A922753C1517C094001B78AA"
                BuildableName = "application.app"
                BlueprintName = "ios"
-               ReferencedContainer = "container:cocos2d-rocket-escape.xcodeproj">
+               ReferencedContainer = "container:cocos2d-exodus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "A922753C1517C094001B78AA"
             BuildableName = "application.app"
             BlueprintName = "ios"
-            ReferencedContainer = "container:cocos2d-rocket-escape.xcodeproj">
+            ReferencedContainer = "container:cocos2d-exodus.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "A922753C1517C094001B78AA"
             BuildableName = "application.app"
             BlueprintName = "ios"
-            ReferencedContainer = "container:cocos2d-rocket-escape.xcodeproj">
+            ReferencedContainer = "container:cocos2d-exodus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -76,7 +76,7 @@
             BlueprintIdentifier = "A922753C1517C094001B78AA"
             BuildableName = "application.app"
             BlueprintName = "ios"
-            ReferencedContainer = "container:cocos2d-rocket-escape.xcodeproj">
+            ReferencedContainer = "container:cocos2d-exodus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -1064,7 +1064,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A92275371517C094001B78AA /* Build configuration list for PBXProject "cocos2d-rocket-escape" */;
+			buildConfigurationList = A92275371517C094001B78AA /* Build configuration list for PBXProject "cocos2d-exodus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1336,6 +1336,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/mac/Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
@@ -1361,6 +1362,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/mac/Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
@@ -1525,7 +1527,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A92275371517C094001B78AA /* Build configuration list for PBXProject "cocos2d-rocket-escape" */ = {
+		A92275371517C094001B78AA /* Build configuration list for PBXProject "cocos2d-exodus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A92276FE1517C097001B78AA /* Debug */,
