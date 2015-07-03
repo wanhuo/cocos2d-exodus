@@ -245,10 +245,10 @@ var languages = {
     {title: 'Powered by', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-19': [
-    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
-    {title: 'Rocket Escape', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
+    {title: 'Exodus', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Exodus', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Exodus', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
+    {title: 'Exodus', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
   'credits-title-20': [
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
