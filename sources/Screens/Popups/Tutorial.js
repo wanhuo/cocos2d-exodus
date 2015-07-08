@@ -63,7 +63,7 @@ Tutorial = Popup.extend({
           {
             index: 2,
             name: 'step2',
-            time: 0.5,
+            time: 0.25,
             loop: false,
             count: {
               current: 0,
@@ -125,6 +125,10 @@ Tutorial = Popup.extend({
      */
     this.text = {
       play: new Text('tutorial-text-1', this.backgrounds.s),
+      taps: [
+        new Text('tap', this.backgrounds.d),
+        new Text('tap', this.backgrounds.d)
+      ],
       chapters: [
         new Text('tutorial-text-2', this.backgrounds.d),
         new Text('tutorial-text-3', this.backgrounds.d)
@@ -224,6 +228,7 @@ Tutorial = Popup.extend({
              *
              *
              */
+            this.setTimeScale(Tutorial.parameters.animations.chapters[this.i].time);
             this.setAnimation(Tutorial.parameters.animations.chapters[this.i].index, Tutorial.parameters.animations.chapters[this.i].name, Tutorial.parameters.animations.chapters[this.i].loop);
           }
           break;
@@ -281,7 +286,28 @@ Tutorial = Popup.extend({
              *
              *
              */
+            Tutorial.elements.hands[1].stopAllActions();
+            Tutorial.elements.hands[1].runAction(
+                cc.Sequence.create(
+                  cc.ScaleTo.create(0.0, 1.0),
+                  cc.DelayTime.create(0.2),
+                  cc.ScaleTo.create(0.0, 1.5)
+                )
+            );
             Tutorial.elements.hands[1].animate(0.2, 1);
+
+            /**
+             *
+             *
+             *
+             */
+            Tutorial.text.taps[1].runAction(
+              cc.Sequence.create(
+                cc.FadeIn.create(0.0),
+                cc.DelayTime.create(0.2),
+                cc.FadeOut.create(0.0)
+              )
+            );
 
             /**
              *
@@ -337,6 +363,17 @@ Tutorial = Popup.extend({
        *
        *
        */
+      this.text.taps[i].create().attr({
+        x: Camera.center.x + Camera.width * i,
+        y: Camera.center.y + 200
+      });
+      this.text.taps[i].setLocalZOrder(100);
+
+      /**
+       *
+       *
+       *
+       */
       this.elements.navigation.backgrounds[i].create().attr({
         x: Camera.center.x + 25 * (i === 0 ? -1 : 1),
         y: 50
@@ -359,7 +396,38 @@ Tutorial = Popup.extend({
      *
      *
      */
+    this.elements.hands[1].y += 100;
+    this.elements.hands[1].scale = 1.5;
+
+    /**
+     *
+     *
+     *
+     */
     this.elements.hands[0].animate(0.1);
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.taps[0].runAction(
+      cc.RepeatForever.create(
+        cc.Sequence.create(
+          cc.FadeIn.create(0.0),
+          cc.DelayTime.create(0.1),
+          cc.FadeOut.create(0.0),
+          cc.DelayTime.create(0.1)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.text.taps[1].opacity = 0;
   },
 
   /**
@@ -491,8 +559,8 @@ Tutorial = Popup.extend({
      *
      *
      */
-    this.elements.chapters[this.parameters.index].setAnimation(this.parameters.animations.chapters[this.parameters.index].index, this.parameters.animations.chapters[this.parameters.index].name, this.parameters.animations.chapters[this.parameters.index].loop);
     this.elements.chapters[this.parameters.index].setTimeScale(this.parameters.animations.chapters[this.parameters.index].time);
+    this.elements.chapters[this.parameters.index].setAnimation(this.parameters.animations.chapters[this.parameters.index].index, this.parameters.animations.chapters[this.parameters.index].name, this.parameters.animations.chapters[this.parameters.index].loop);
   },
 
   /**

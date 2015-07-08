@@ -103,6 +103,14 @@ Store = Popup.extend({
      *
      *
      */
+    this.buttons.bonuses.visible = false;
+    this.buttons.points.visible = false;
+
+    /**
+     *
+     *
+     *
+     */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
       baloon: new Text('store-title-0', this.elements.baloon)
