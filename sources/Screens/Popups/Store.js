@@ -139,18 +139,18 @@ Store = Popup.extend({
       x: Camera.center.x,
       y: Camera.height - 300
     });
-    this.buttons.bonuses.create().attr({
+    /*this.buttons.bonuses.create().attr({
       x: Camera.center.x + 150,
       y: Camera.height - 300
     });
-    /*this.buttons.points.create().attr({
+    this.buttons.points.create().attr({
       x: Camera.center.x + 115,
       y: Camera.height - 300
-    });
-    this.buttons.coins.create().attr({
-      x: Camera.center.x + 230,
-      y: Camera.height - 300
     });*/
+    this.buttons.coins.create().attr({
+      x: Camera.center.x + 150,
+      y: Camera.height - 300
+    });
     this.buttons.back.create().attr({
       x: 65,
       y: Camera.height - 65
