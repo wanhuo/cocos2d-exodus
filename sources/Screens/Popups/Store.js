@@ -103,14 +103,6 @@ Store = Popup.extend({
      *
      *
      */
-    this.buttons.bonuses.visible = false;
-    this.buttons.points.visible = false;
-
-    /**
-     *
-     *
-     *
-     */
     this.text = {
       coins: new Text('store-coins', this.elements.coins),
       baloon: new Text('store-title-0', this.elements.baloon)
@@ -140,25 +132,25 @@ Store = Popup.extend({
      *
      */
     this.buttons.rockets.create().attr({
-      x: Camera.center.x - 230,
+      x: Camera.center.x - 150,
       y: Camera.height - 300
     });
     this.buttons.creatures.create().attr({
-      x: Camera.center.x - 115,
-      y: Camera.height - 300
-    });
-    this.buttons.bonuses.create().attr({
       x: Camera.center.x,
       y: Camera.height - 300
     });
-    this.buttons.points.create().attr({
+    this.buttons.bonuses.create().attr({
+      x: Camera.center.x + 150,
+      y: Camera.height - 300
+    });
+    /*this.buttons.points.create().attr({
       x: Camera.center.x + 115,
       y: Camera.height - 300
     });
     this.buttons.coins.create().attr({
       x: Camera.center.x + 230,
       y: Camera.height - 300
-    });
+    });*/
     this.buttons.back.create().attr({
       x: 65,
       y: Camera.height - 65
