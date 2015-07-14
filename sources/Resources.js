@@ -93,6 +93,16 @@ var resources = {
       atlas: 'resource/Graphics/triceratops.atlas',
       json: 'resource/Graphics/triceratops.json'
     },
+    gift: {
+      texture: 'resource/Graphics/gift.png',
+      atlas: 'resource/Graphics/gift.atlas',
+      json: 'resource/Graphics/gift.json'
+    },
+    video: {
+      texture: 'resource/Graphics/video.png',
+      atlas: 'resource/Graphics/video.atlas',
+      json: 'resource/Graphics/video.json'
+    },
     baloon: {
       texture: 'resource/Graphics/baloon.png',
       atlas: 'resource/Graphics/baloon.atlas',

@@ -55,9 +55,10 @@ Finish = Popup.extend({
         }
       },
       reward: {
-        current: 4,
+        current: 0,
         total: 4
-      }
+      },
+      gift: 100
     };
 
     /**
@@ -89,7 +90,7 @@ Finish = Popup.extend({
       continue: new Button(resources.main.finish.buttons.continue, 1, 2, this, this.hide.bind(this)),
       like: new Button(resources.main.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
       rate: new Button(resources.main.buttons.rate, 1, 2, this, Game.onRate.bind(Game)),
-      share: new Button(resources.main.buttons.share, 1, 2, this, Counter.onTouch.bind(Counter)),
+      share: new Button(resources.main.buttons.share, 1, 2, this, Game.onShare.bind(Counter)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
@@ -520,7 +521,7 @@ Finish = Popup.extend({
       )
     );
   },
-  hide: function() {
+  hide: function(callback) {
 
     /**
      *
@@ -556,7 +557,9 @@ Finish = Popup.extend({
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
-        cc.CallFunc.create(this.removeFromParent, this)
+        cc.CallFunc.create(this.removeFromParent, this),
+        cc.CallFunc.create(callback ? callback : function() {
+        })
       )
     );
   },
@@ -627,6 +630,31 @@ Finish = Popup.extend({
       if(Plugins.heyzap.available(Plugins.ad.types.video)) {
         Counter.video.create();
       }
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      if(probably(this.parameters.gift)) {
+
+        /**
+         *
+         *
+         *
+         */
+        Counter.gift.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.elements.pig.visible = false;
+          this.elements.decoration.visible = false;
+        }.bind(this));
+      }
     }
   },
   hideCounter: function() {
@@ -650,6 +678,7 @@ Finish = Popup.extend({
      *
      *
      */
+    Counter.gift.destroy();
     Counter.video.destroy();
   },
 

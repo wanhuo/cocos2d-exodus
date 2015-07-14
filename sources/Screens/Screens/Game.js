@@ -130,6 +130,28 @@ Game = Screen.extend({
 
     /**
      *
+     *
+     *
+     *
+     *
+     */
+    new Items;
+
+    /**
+     *
+     *
+     *
+     *
+     *
+     */
+    new Splurge;
+    new Finish;
+    new Credits;
+    new Store;
+    new Tutorial;
+
+    /**
+     *
      * 
      *
      */
@@ -564,28 +586,6 @@ Game = Screen.extend({
 
     /**
      *
-     *
-     *
-     *
-     *
-     */
-    new Items;
-
-    /**
-     *
-     *
-     *
-     *
-     *
-     */
-    new Splurge;
-    new Finish;
-    new Credits;
-    new Store;
-    new Tutorial;
-
-    /**
-     *
      * 
      *
      */
@@ -995,6 +995,65 @@ Game = Screen.extend({
      *
      */
     Analytics.sendEvent('System events', 'Sound state was changed', '', '');
+  },
+  onShare: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    var text = new Text('share-message');
+
+    /**
+     *
+     *
+     *
+     */
+    text.format(Counter.values.scores.best);
+
+    /**
+     *
+     *
+     *
+     */
+    Screenshot.save();
+
+    /**
+     *
+     *
+     *
+     */
+    Social.share({
+      screenshot: {
+        width: Camera.width,
+        height: Camera.width,
+        x: 0,
+        y: 0
+      },
+      message: text.getString(),
+      url: (function() {
+        if(cc.sys.isNative) {
+          switch(cc.sys.os) {
+            case cc.sys.OS_ANDROID:
+            return Config.links.android;
+            break;
+            case cc.sys.OS_IOS:
+            return Config.links.apple;
+            break;
+          }
+        } else {
+          return 'http://www.tooflya.com';
+        }
+      })()
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    Analytics.sendEvent('System events', 'Share', '', '');
   },
 
   /**

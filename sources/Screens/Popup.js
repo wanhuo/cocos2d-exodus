@@ -51,6 +51,10 @@ Popup = BackgroundColor.extend({
      *
      */
     this.parameters = {
+      callbacks: {
+        show: false,
+        hide: false
+      }
     };
 
     /**
@@ -253,7 +257,7 @@ Popup = BackgroundColor.extend({
       Game.addChild(this);
     }
   },
-  hide: function() {
+  hide: function(callback) {
 
     /**
      *

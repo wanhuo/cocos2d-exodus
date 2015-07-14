@@ -44,7 +44,14 @@ Counter = Button.extend({
      *
      */
     this.coins = new Button(resources.main.counter.coins, 1, 1, Game.backgrounds.e, this.onCoins.bind(this));
-    this.video = new Button(resources.main.counter.video, 1, 2, Game.backgrounds.e, this.onVideo.bind(this));
+
+    /**
+     *
+     *
+     *
+     */
+    this.video = new Video;
+    this.gift = new Gift;
 
     /**
      *
@@ -60,8 +67,7 @@ Counter = Button.extend({
       status: new Text('fail', Game.backgrounds.b),
       coins: new Text('coins', this.coins),
       decoration: new Text('decoration-0', Game.backgrounds.b),
-      share: new Text('share', Game.backgrounds.b),
-      video: new Text('video-coins', this.video)
+      share: new Text('share', Game.backgrounds.b)
     };
 
     /**
@@ -79,10 +85,6 @@ Counter = Button.extend({
     this.coins.create().attr({
       x: Camera.width + this.coins.width / 2,
       y: Camera.height - 50
-    });
-    this.video.attr({
-      x: Camera.width + this.coins.width / 2,
-      y: Camera.height - 210
     });
 
     /**
@@ -109,10 +111,6 @@ Counter = Button.extend({
     this.text.coins.create().attr({
       x: this.coins.width / 2,
       y: this.coins.height / 2
-    });
-    this.text.video.create().attr({
-      x: this.video.width / 2 + 30,
-      y: 38
     });
 
     /**
@@ -417,57 +415,7 @@ Counter = Button.extend({
      *
      *
      */
-    var text = new Text('share-message');
-
-    /**
-     *
-     *
-     *
-     */
-    text.format(this.values.scores.best);
-
-    /**
-     *
-     *
-     *
-     */
-    Screenshot.save();
-
-    /**
-     *
-     *
-     *
-     */
-    Social.share({
-      screenshot: {
-        width: Camera.width,
-        height: Camera.width,
-        x: 0,
-        y: 0
-      },
-      message: text.getString(),
-      url: (function() {
-        if(cc.sys.isNative) {
-          switch(cc.sys.os) {
-            case cc.sys.OS_ANDROID:
-            return Config.links.android;
-            break;
-            case cc.sys.OS_IOS:
-            return Config.links.apple;
-            break;
-          }
-        } else {
-          return 'http://www.tooflya.com';
-        }
-      })()
-    });
-
-    /**
-     *
-     *
-     *
-     */
-    Analytics.sendEvent('System events', 'Share', '', '');
+    Game.onShare();
   },
 
   /**
@@ -476,59 +424,6 @@ Counter = Button.extend({
    *
    */
   onCoins: function() {
-  },
-  onVideo: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    this.video.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    Finish.parameters.reward.current = 0;
-
-    /**
-     *
-     *
-     *
-     */
-    Finish.hide();
-
-    /**
-     *
-     *
-     *
-     */
-    Plugins.heyzap.show(Plugins.ad.types.video, {
-
-      /**
-       *
-       *
-       *
-       */
-      success: function() {
-
-        /**
-         *
-         *
-         *
-         */
-        Counter.values.coins.current += 25;
-
-        /**
-         *
-         *
-         *
-         */
-        Finish.show();
-      }
-    });
   },
 
   /**
@@ -906,7 +801,6 @@ Counter = Button.extend({
      *
      */
     this.text.coins.format(this.values.coins.current + this.values.coins.total);
-    this.text.video.format(25);
 
     /**
      *
@@ -954,7 +848,6 @@ Counter = Button.extend({
        *
        */
       this.coins.x = Camera.width - 120;
-      this.video.x = Camera.width - 120;
     } else {
 
       /**
@@ -970,7 +863,6 @@ Counter = Button.extend({
        *
        */
       this.coins.x = Camera.width - (Game.backgrounds.b.y - this.coins.width / 2) + 30;
-      this.video.x = Camera.width - (Game.backgrounds.b.y - this.video.width / 2) + 30;
     }
   }
 });
