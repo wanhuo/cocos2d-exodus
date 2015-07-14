@@ -21,7 +21,7 @@
  *
  */
 
-package com.tooflya.rocketescape;
+package com.ketchapp.exodus;
 
 import android.content.Intent;
 import android.os.Bundle;

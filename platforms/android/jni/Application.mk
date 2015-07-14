@@ -4,7 +4,7 @@ APP_ABI := armeabi
 
 NDK_TOOLCHAIN_VERSION=clang
 
-APP_CPPFLAGS := -frtti -DCC_ENABLE_CHIPMUNK_INTEGRATION=1 -std=c++11 -fsigned-char
+APP_CPPFLAGS := -frtti -DCC_ENABLE_CHIPMUNK_INTEGRATION=0 -std=c++11 -fsigned-char
 APP_LDFLAGS := -latomic
 
 ifeq ($(NDK_DEBUG),1)
