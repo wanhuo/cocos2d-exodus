@@ -51,7 +51,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1458</string>
+	<string>1478</string>
 	<key>FacebookAppID</key>
 	<string>747864001998896</string>
 	<key>FacebookDisplayName</key>
@@ -88,6 +88,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>apple-store-id</key>
-	<string>977095941</string>
+	<string>1015871717</string>
 </dict>
 </plist>

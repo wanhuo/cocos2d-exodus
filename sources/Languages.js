@@ -28,6 +28,12 @@ var languages = {
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]},
     {title: '$1', font: 'Impact', size: 114, dimensions: false, color: [42, 104, 93]}
   ],
+  'tap': [
+    {title: 'TAP', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
+    {title: 'TAP', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
+    {title: 'TAP', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
+    {title: 'TAP', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]}
+  ],
   'items-count': [
     {title: '$1', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
     {title: '$1', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]},
@@ -839,8 +845,8 @@ var languages = {
     {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-1': [
-    {title: 'Large team is always good!\n Rocket will steer from heavy peak.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Большая команда всегда хорошо!\n Ракета вырулит из тяжелых пике.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Large team is always good!\n Rocket will be more ease to control.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Большая команда всегда хорошо!\n Ракета будет легче в управляемости.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Equipas grandes é sempre boa ideia!\n O foguete será conduzido em grande altitude.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Avoir une grande équipe est toujours une bonne chose !\n La fusée sera plus dirigeable dans les hautes altitudes.', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],

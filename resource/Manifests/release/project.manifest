@@ -1,7 +1,7 @@
 {
-  "packageUrl": "http://www.tooflya.com/games/rocket-escape/updates/release/",
-  "remoteManifestUrl": "http://www.tooflya.com/games/rocket-escape/updates/release/project.manifest",
-  "remoteVersionUrl": "http://www.tooflya.com/games/rocket-escape/updates/release/version.manifest",
+  "packageUrl": "http://www.tooflya.com/games/exodus/updates/release/",
+  "remoteManifestUrl": "http://www.tooflya.com/games/exodus/updates/release/project.manifest",
+  "remoteVersionUrl": "http://www.tooflya.com/games/exodus/updates/release/version.manifest",
   "version": "1.0.0",
   "engineVersion": "3.4",
   "assets": {

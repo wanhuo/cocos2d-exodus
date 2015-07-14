@@ -132,23 +132,23 @@ Store = Popup.extend({
      *
      */
     this.buttons.rockets.create().attr({
-      x: Camera.center.x - 230,
+      x: Camera.center.x - 150,
       y: Camera.height - 300
     });
     this.buttons.creatures.create().attr({
-      x: Camera.center.x - 115,
+      x: Camera.center.x,
       y: Camera.height - 300
     });
-    this.buttons.bonuses.create().attr({
-      x: Camera.center.x,
+    /*this.buttons.bonuses.create().attr({
+      x: Camera.center.x + 150,
       y: Camera.height - 300
     });
     this.buttons.points.create().attr({
       x: Camera.center.x + 115,
       y: Camera.height - 300
-    });
+    });*/
     this.buttons.coins.create().attr({
-      x: Camera.center.x + 230,
+      x: Camera.center.x + 150,
       y: Camera.height - 300
     });
     this.buttons.back.create().attr({
