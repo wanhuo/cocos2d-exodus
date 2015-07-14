@@ -20,7 +20,7 @@
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
-	<string>com.ketchapp.exodus</string>
+	<string>com.tooflya.rocketescape</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -51,7 +51,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1480</string>
+	<string>1481</string>
 	<key>FacebookAppID</key>
 	<string>747864001998896</string>
 	<key>FacebookDisplayName</key>

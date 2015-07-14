@@ -101,9 +101,9 @@ var languages = {
     {title: 'Ouch', font: 'Impact', size: 46, dimensions: false, color: [255, 221, 96]}
   ],
   'fail': [
-    {title: 'Fail', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
+    {title: 'Miss', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Долетался', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
-    {title: 'Falha', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
+    {title: 'Falhaste', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]},
     {title: 'Raté', font: 'Impact', size: 46, dimensions: false, color: [237, 58, 90]}
   ],
   'finish-coins': [
@@ -845,10 +845,10 @@ var languages = {
     {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-1': [
-    {title: 'Large team is always good!\n Rocket will be more ease to control.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Rocket will be more easy to control.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Большая команда всегда хорошо!\n Ракета будет легче в управляемости.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Equipas grandes é sempre boa ideia!\n O foguete será conduzido em grande altitude.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Avoir une grande équipe est toujours une bonne chose !\n La fusée sera plus dirigeable dans les hautes altitudes.', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
+    {title: 'O rocket será mais fácil de controlar.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'La fusée sera plus facilement dirigeable.', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-2': [
     {title: 'Stegosaurus can save the rocket from crash\n with 25% probability.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
@@ -917,9 +917,9 @@ var languages = {
     {title: 'APPUYER QUAND LA FUSÉE SURVOLE LE ROND VERT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
-    {title: 'OMG! I\'ve got $1 points playing Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'Ого! Я достиг $1 очков в игре Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus @tooflya ', font: 'Impact', size: 0, dimensions: false}
+    {title: 'OMG! I\'ve got $1 points playing Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Ого! Я достиг $1 очков в игре Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}
   ]
 };
