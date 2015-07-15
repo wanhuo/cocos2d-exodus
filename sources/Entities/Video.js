@@ -58,6 +58,13 @@ Video = Spine.extend({
      *
      *
      */
+    this.setLocalZOrder(100);
+
+    /**
+     *
+     *
+     *
+     */
     this.width = 505;
     this.height = 155;
 
@@ -158,7 +165,7 @@ Video = Spine.extend({
    *
    *
    */
-  onTouch: function() {
+  onTouchStart: function() {
     if(!this.parameters.enable) return false;
 
     /**
@@ -166,7 +173,7 @@ Video = Spine.extend({
      *
      *
      */
-    Finish.parameters.reward.current = 0;
+    Finish.hide();
 
     /**
      *
@@ -194,7 +201,7 @@ Video = Spine.extend({
          *
          *
          */
-        Finish.show();
+        Finish.show(true);
       }
     });
   }

@@ -1309,7 +1309,7 @@ Game = Screen.extend({
      *
      *
      *
-     */
+     */console.log("onPrepare");
     Plugins.heyzap.show(Plugins.ad.types.banner, {
 
       /**
@@ -1573,17 +1573,17 @@ Game = Screen.extend({
        *
        *
        *
-       */
-    Plugins.heyzap.hide(Plugins.ad.types.banner, {
+       */console.log("pause");
+      Plugins.heyzap.hide(Plugins.ad.types.banner, {
 
-      /**
-       *
-       *
-       *
-       */
-      success: function() {
-      }
-    });
+        /**
+         *
+         *
+         *
+         */
+        success: function() {
+        }
+      });
     }
   },
   resumeSchedulerAndActions: function() {
@@ -1660,7 +1660,7 @@ Game = Screen.extend({
          *
          *
          *
-         */
+         */console.log("resume");
         Plugins.heyzap.show(Plugins.ad.types.banner, {
 
           /**

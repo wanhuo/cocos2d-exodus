@@ -98,6 +98,13 @@ Gift = Spine.extend({
      *
      *
      */
+    this.setSkin(this.parameters.skins.standart.random());
+
+    /**
+     *
+     *
+     *
+     */
     this.needScheduleUpdate = true;
 
     /**
@@ -143,21 +150,6 @@ Gift = Spine.extend({
      *
      *
      */
-    this.setSlotsToSetupPose();
-    this.setBonesToSetupPose();
-
-    /**
-     *
-     *
-     *
-     */
-    this.setSkin(this.parameters.skins.standart.random());
-
-    /**
-     *
-     *
-     *
-     */
     this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);
 
     /**
@@ -176,6 +168,21 @@ Gift = Spine.extend({
   },
   onDestroy: function() {
     this._super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.setSlotsToSetupPose();
+    this.setBonesToSetupPose();
+
+    /**
+     *
+     *
+     *
+     */
+    this.setSkin(this.parameters.skins.standart.random());
   },
 
   /**
@@ -198,34 +205,50 @@ Gift = Spine.extend({
      *
      *
      */
-    this.setSkin(this.parameters.skins.additional.random());
-
-    /**
-     *
-     *
-     *
-     */
-    switch(this.parameters.skin) {
-      case '10':
-      Counter.values.coins.current = 10;
-      break;
-      case '11':
-      Counter.values.coins.current = 20;
-      break;
-      case '12':
-      Counter.values.coins.current = 30;
-      break;
-    }
-
-    /**
-     *
-     *
-     *
-     */
     this.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.5),
+        cc.Repeat.create(
+          cc.Sequence.create(
+            cc.ScaleTo.create(0.05, 0.9),
+            cc.ScaleTo.create(0.05, 1.0)
+          ),
+          10
+        ),
         cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.setSkin(this.parameters.skins.additional.random());
+
+          /**
+           *
+           *
+           *
+           */
+          switch(this.parameters.skin) {
+            case '10':
+            Counter.values.coins.current = 10;
+            break;
+            case '11':
+            Counter.values.coins.current = 20;
+            break;
+            case '12':
+            Counter.values.coins.current = 30;
+            break;
+          }
+        }.bind(this)),
+        cc.DelayTime.create(1.0),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Game.parameters.scheduler++;
 
           /**
            *
@@ -239,7 +262,14 @@ Gift = Spine.extend({
              *
              *
              */
-            Finish.show();
+            Finish.show(true);
+
+            /**
+             *
+             *
+             *
+             */
+            Game.parameters.scheduler--;
           });
         })
       )
