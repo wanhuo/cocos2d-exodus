@@ -54,6 +54,7 @@ Finish = Popup.extend({
           elapsed: 0
         }
       },
+      disable: false,
       reward: {
         current: 0,
         total: 4
@@ -496,7 +497,7 @@ Finish = Popup.extend({
    *
    *
    */
-  show: function() {
+  show: function(disable) {
     this._super();
 
     /**
@@ -520,6 +521,13 @@ Finish = Popup.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.disable = (disable === true);
   },
   hide: function(callback) {
 
@@ -613,47 +621,62 @@ Finish = Popup.extend({
      *
      *
      */
-    this.parameters.reward.current++;
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.parameters.reward.current >= this.parameters.reward.total) {
+    if(!this.parameters.disable) {
 
       /**
        *
        *
        *
        */
-      if(Plugins.heyzap.available(Plugins.ad.types.video)) {
-        Counter.video.create();
-      }
-    } else {
+      this.parameters.reward.current++;
 
       /**
        *
        *
        *
        */
-      if(probably(this.parameters.gift)) {
+      if(this.parameters.reward.current >= this.parameters.reward.total) {
 
         /**
          *
          *
          *
          */
-        Counter.gift.create(function() {
+        this.parameters.reward.current = 0;
+
+        /**
+         *
+         *
+         *
+         */
+        if(Plugins.heyzap.available(Plugins.ad.types.video)) {
+          Counter.video.create();
+        }
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        if(probably(this.parameters.gift)) {
 
           /**
            *
            *
            *
            */
-          this.elements.pig.visible = false;
-          this.elements.decoration.visible = false;
-        }.bind(this));
+          Counter.gift.create(function() {
+
+            /**
+             *
+             *
+             *
+             */
+            this.elements.pig.visible = false;
+            this.elements.decoration.visible = false;
+          }.bind(this));
+        }
       }
     }
   },
