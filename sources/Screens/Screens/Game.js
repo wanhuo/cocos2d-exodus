@@ -1309,7 +1309,7 @@ Game = Screen.extend({
      *
      *
      *
-     */console.log("onPrepare");
+     */
     Plugins.heyzap.show(Plugins.ad.types.banner, {
 
       /**
@@ -1573,7 +1573,7 @@ Game = Screen.extend({
        *
        *
        *
-       */console.log("pause");
+       */
       Plugins.heyzap.hide(Plugins.ad.types.banner, {
 
         /**
@@ -1660,7 +1660,7 @@ Game = Screen.extend({
          *
          *
          *
-         */console.log("resume");
+         */
         Plugins.heyzap.show(Plugins.ad.types.banner, {
 
           /**
@@ -1781,7 +1781,7 @@ Game = Screen.extend({
      *
      *
      */
-    if(probably(1.0) && this.elements.rockets.count().count < this.elements.rockets.count().capacity) {
+    if(probably(1) && this.elements.rockets.count().count < this.elements.rockets.count().capacity) {
       this.elements.rockets.create();
     }
   },
@@ -1799,7 +1799,7 @@ Game = Screen.extend({
      *
      */
     if(this.elements.baloons.count().count < this.elements.baloons.count().capacity) {
-      if(probably(1)) {
+      if(probably(10)) {
         this.elements.baloons.create();
       }
     }

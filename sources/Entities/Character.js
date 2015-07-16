@@ -2462,12 +2462,12 @@ Character = Spine.extend({
      */
     this.parameters.scheduler--;
 
-      /**
-       *
-       *
-       *
-       */
-      if(this.parameters.scheduler === 0) {
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.scheduler === 0) {
 
       /**
        *

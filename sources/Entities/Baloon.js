@@ -36,16 +36,6 @@ Baloon = Spine.extend({
      * 
      *
      */
-    if(cc.sys.isNative) {
-      this.width = 244;
-      this.height = 107;
-    }
-
-    /**
-     *
-     * 
-     *
-     */
     this.parameters = {
       animations: {
         animation: {
@@ -60,6 +50,14 @@ Baloon = Spine.extend({
         '2'
       ]
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.width = 244;
+    this.height = 107;
 
     /**
      *
@@ -89,7 +87,7 @@ Baloon = Spine.extend({
      *
      *
      */
-    this.x = Game.parameters.camera.x + Game.parameters.camera.width;
+    this.x = Game.parameters.camera.x + Game.parameters.camera.width + this.width / 2;
     this.y = random(Camera.center.y, Camera.height / Game.parameters.scale.min);
 
     /**
@@ -116,7 +114,7 @@ Baloon = Spine.extend({
      *
      *
      */
-    if(this.x < abs(this.parent.x) - Camera.width * Game.parallax.scale()) {
+    if(this.x < Game.parameters.camera.x) {
       this.destroy();
     }
   },

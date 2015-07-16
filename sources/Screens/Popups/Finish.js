@@ -59,7 +59,7 @@ Finish = Popup.extend({
         current: 0,
         total: 4
       },
-      gift: 100
+      gift: 5
     };
 
     /**

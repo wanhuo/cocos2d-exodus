@@ -173,6 +173,13 @@ Video = Spine.extend({
      *
      *
      */
+    Sound.play(resources.main.sound.touch);
+
+    /**
+     *
+     *
+     *
+     */
     Finish.hide();
 
     /**

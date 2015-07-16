@@ -42,8 +42,8 @@ var languages = {
   ],
   'best': [
     {title: 'BEST SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
-    {title: 'Лучший результат: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
-    {title: 'MELHOR SCORE: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]},
+    {title: 'Лучший результат: $1', font: 'Impact', size: 28, dimensions: false, color: [42, 104, 93]},
+    {title: 'MELHOR SCORE: $1', font: 'Impact', size: 28, dimensions: false, color: [42, 104, 93]},
     {title: 'MEILLEUR: $1', font: 'Impact', size: 36, dimensions: false, color: [42, 104, 93]}
   ],
   'jumps': [
@@ -912,7 +912,7 @@ var languages = {
   ],
   'tutorial-text-3': [
     {title: 'TAP WHEN THE ROCKET\nWILL FLY THROUGH THE GREEN POINT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Нажимайте когда ракета пролетает через зеленую точку', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Нажимайте когда ракета пролетает\nчерез зеленую точку', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'TOCA QUANDO O FOGUETE PASSAR PELO PONTO VERDE', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'APPUYER QUAND LA FUSÉE SURVOLE LE ROND VERT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],

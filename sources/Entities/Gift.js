@@ -198,6 +198,13 @@ Gift = Spine.extend({
      *
      *
      */
+    Sound.play(resources.main.sound.touch);
+
+    /**
+     *
+     *
+     *
+     */
     this.parameters.enable = false;
 
     /**
