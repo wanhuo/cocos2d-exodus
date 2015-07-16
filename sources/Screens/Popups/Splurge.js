@@ -76,6 +76,15 @@ Splurge = Popup.extend({
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Internal.onStart();
+        }),
         cc.CallFunc.create(this.hide, this)
       )
     );

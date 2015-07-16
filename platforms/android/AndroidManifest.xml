@@ -5,7 +5,7 @@
   android:versionCode="1581"
   android:versionName="1.0.0">
 
-  <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="21" />
+  <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="24" />
 
   <uses-feature android:glEsVersion="0x00020000" />
 
@@ -38,7 +38,7 @@
       android:configChanges="orientation|screenLayout|screenSize"
       android:label="@string/name"
       android:screenOrientation="portrait"
-      android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+      android:theme="@style/splash">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 

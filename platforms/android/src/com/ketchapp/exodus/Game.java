@@ -103,6 +103,6 @@ public class Game extends Application {
      *
      *
      */
-    //Cocos2dxJavascriptJavaBridge.evalString(instructions);
+    Cocos2dxJavascriptJavaBridge.evalString(instructions);
   }
 }
