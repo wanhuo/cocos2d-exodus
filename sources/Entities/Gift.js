@@ -199,6 +199,7 @@ Gift = Spine.extend({
      *
      */
     Sound.play(resources.main.sound.touch);
+    Sound.play(resources.main.sound.gift);
 
     /**
      *
@@ -216,11 +217,12 @@ Gift = Spine.extend({
       cc.Sequence.create(
         cc.Repeat.create(
           cc.Sequence.create(
-            cc.ScaleTo.create(0.05, 0.9),
-            cc.ScaleTo.create(0.05, 1.0)
+            cc.ScaleTo.create(0.05, 0.8),
+            cc.ScaleTo.create(0.05, 1.1)
           ),
-          10
+          12
         ),
+        cc.ScaleTo.create(0.05, 1.0),
         cc.CallFunc.create(function() {
 
           /**

@@ -324,7 +324,8 @@ var resources = {
           'resource/Sound/bonus-use-2.sound',
           'resource/Sound/bonus-use-3.sound'
         ]
-      }
+      },
+      gift: 'resource/Sound/gift.sound'
     }
   }
 };

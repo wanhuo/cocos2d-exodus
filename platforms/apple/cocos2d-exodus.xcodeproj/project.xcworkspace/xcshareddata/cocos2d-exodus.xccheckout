@@ -56,6 +56,14 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocos2d</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>4ED8BB3D12A803EAEA7D347C6F0A1EAC517748B3</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2d-apple-library</string>
@@ -75,14 +83,6 @@
 			<string>1BBA9D5B07DFE06B55383FF7E11710171EEB5A8D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cocos2d-tooflya-sdk</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>852ED3691A47A99B0D19C820A500AE9772B2A44E</string>
-			<key>IDESourceControlWCCName</key>
-			<string>cocos2d-x</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
