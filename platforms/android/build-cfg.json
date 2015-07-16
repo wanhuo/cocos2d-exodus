@@ -1,9 +1,8 @@
 {
   "ndk_module_path" :[
-    "../../../cocos2d/frameworks/js-bindings",
-    "../../../cocos2d/frameworks/js-bindings/cocos2d-x",
-    "../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos",
-    "../../../cocos2d/frameworks/js-bindings/cocos2d-x/external"
+    "../../../cocos2d", 
+    "../../../cocos2d/cocos", 
+    "../../../cocos2d/external"
   ],
   "copy_resources": [
     {
@@ -31,24 +30,8 @@
       "to": ""
     },
     {
-      "from": "../../../cocos2d/frameworks/js-bindings/bindings/script",
+      "from": "../../../cocos2d/cocos/scripting/js-bindings/script",
       "to": "script"
-    },
-    {
-      "from": "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/script", 
-      "to": ""
-    },
-    {
-      "from": "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/protocols/proj.android/src", 
-      "to": "../src"
-    },
-    {
-      "from": "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/plugins/facebook/proj.android/src", 
-      "to": "../src"
-    }, 
-    {
-      "from": "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/plugins/facebook/proj.android/sdk", 
-      "to": "../libs"
     }
   ]
 }

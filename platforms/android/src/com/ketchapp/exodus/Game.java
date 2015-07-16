@@ -28,8 +28,6 @@ import android.os.Bundle;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
-import org.cocos2dx.plugin.PluginWrapper;
-import org.cocos2dx.plugin.FacebookWrapper;
 
 import com.tooflya.android.cocos2d.library.Application;
 
@@ -49,21 +47,6 @@ public class Game extends Application {
   public Cocos2dxGLSurfaceView onCreateView() {
     Cocos2dxGLSurfaceView glSurfaceView = super.onCreateView();
 
-    /**
-     *
-     *
-     *
-     */
-    PluginWrapper.init(this);
-    PluginWrapper.setGLSurfaceView(glSurfaceView);
-
-    /**
-     *
-     *
-     *
-     */
-    FacebookWrapper.onCreate(this);
-
     return glSurfaceView;
   }
 
@@ -75,13 +58,6 @@ public class Game extends Application {
   @Override
   protected void onActivityResult(int request, int response, Intent data) {
     super.onActivityResult(request, response, data);
-
-    /**
-     *
-     *
-     *
-     */
-    FacebookWrapper.onAcitivityResult(request, response, data);
   }
 
   /**
@@ -92,13 +68,6 @@ public class Game extends Application {
   @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-
-    /**
-     *
-     *
-     *
-     */
-    FacebookWrapper.onSaveInstanceState(outState);
   }
 
   /**
@@ -134,6 +103,6 @@ public class Game extends Application {
      *
      *
      */
-    Cocos2dxJavascriptJavaBridge.evalString(instructions);
+    //Cocos2dxJavascriptJavaBridge.evalString(instructions);
   }
 }

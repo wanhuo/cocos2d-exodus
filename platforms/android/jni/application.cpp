@@ -26,7 +26,6 @@
 #include "platform/android/jni/JniHelper.h"
 #include <jni.h>
 #include <android/log.h>
-#include "PluginJniHelper.h"
 
 using namespace cocos2d;
 
@@ -35,16 +34,9 @@ using namespace cocos2d;
  *
  *
  */
-void cocos_android_app_init(JNIEnv* env, jobject thiz) {
+void cocos_android_app_init(JNIEnv* env) {
   AppDelegate *pAppDelegate = new AppDelegate();
 
   JavaVM* vm;
   env->GetJavaVM(&vm);
-
-  /**
-   *
-   *
-   *
-   */
-  PluginJniHelper::setJavaVM(vm);
 }
