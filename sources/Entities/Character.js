@@ -142,7 +142,6 @@ Character = Spine.extend({
         '35',
         '36'
       ],
-      high: false,
       shadow: {
         scale: {
           position: {
@@ -1179,13 +1178,6 @@ Character = Spine.extend({
 
     /**
      *
-     *
-     *
-     */
-    this.updateHigh(time);
-
-    /**
-     *
      * 
      *
      */
@@ -2080,49 +2072,6 @@ Character = Spine.extend({
         this.onShakeFinish();
       }
     }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  updateHigh: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(!this.parameters.high) {
-      if(Counter.values.position > 0) {
-        if(this.y > Counter.values.position) {
-          this.parameters.high = true;
-
-          /**
-           *
-           *
-           *
-           */
-          Sound.play(resources.main.sound.awesome);
-        }
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        this.parameters.high = true;
-      }
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.values.position = max(Counter.values.position, this.y);
   },
 
   /**

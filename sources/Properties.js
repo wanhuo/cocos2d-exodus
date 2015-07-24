@@ -42,7 +42,6 @@ var properties = {
     jumps: 11,
     deaths: 12
   },
-  awesome: 13,
   coins: 1000,
   tutorial: 100,
   rocket: 200,

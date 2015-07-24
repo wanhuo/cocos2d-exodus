@@ -143,9 +143,6 @@ var resources = {
       texture: 'resource/Graphics/explanation.png',
       circle: 'resource/Graphics/explanation-circle.png'
     },
-    awesome: {
-      texture: 'resource/Graphics/awesome.png',
-    },
     meteorit: 'resource/Graphics/meteorit.png',
     buttons: {
       play: 'resource/Graphics/play-button.png',
@@ -285,7 +282,6 @@ var resources = {
       touch: 'resource/Sound/touch.sound',
       save: 'resource/Sound/save.sound',
       swipe: 'resource/Sound/swipe.sound',
-      awesome: 'resource/Sound/awesome.sound',
       unlock: 'resource/Sound/unlock.sound',
       reward: 'resource/Sound/reward.sound',
       character: {

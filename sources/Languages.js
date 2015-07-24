@@ -136,12 +136,6 @@ var languages = {
     {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]},
     {title: 'Nope', font: 'Impact', size: 37, dimensions: false, color: [228, 149, 81]}
   ],
-  'awesome': [
-    {title: 'Best score: $1', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
-    {title: 'Лучший результат: $1', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
-    {title: 'Melhor score: $1', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]},
-    {title: 'Meilleur score: $1', font: 'Impact', size: 72, dimensions: false, color: [255, 255, 255]}
-  ],
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Спасибо за игру!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},

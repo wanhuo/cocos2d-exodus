@@ -698,11 +698,10 @@ Counter = Button.extend({
      *
      *
      */
-    Data.set(false, [properties.scores.best, properties.scores.jumps, properties.scores.deaths, properties.awesome], [
+    Data.set(false, [properties.scores.best, properties.scores.jumps, properties.scores.deaths], [
       this.values.scores.best,
       this.values.info.jumps,
-      this.values.info.deaths,
-      this.values.position
+      this.values.info.deaths
     ]);
 
     /**
@@ -776,8 +775,7 @@ Counter = Button.extend({
       info: {
         jumps: round(Data.get(false, properties.scores.jumps)),
         deaths: round(Data.get(false, properties.scores.deaths))
-      },
-      position: round(Data.get(false, properties.awesome))
+      }
     };
   },
 
