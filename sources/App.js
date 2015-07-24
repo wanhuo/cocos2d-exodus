@@ -87,7 +87,7 @@ App = {
       }
     },
     links: {
-      apple: 'https://t.co/jyzwTUtR9X',
+      apple: 'https://itunes.apple.com/app/exodus/id1022196879',
       android: 'https://t.co/tHslobAt8u'
     }
   }
