@@ -26,7 +26,6 @@
 		7823FBC41ABDBF9500447F0A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7823FBC31ABDBF9500447F0A /* libsqlite3.dylib */; };
 		7823FBC61ABDC0F900447F0A /* Batchcom.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7823FBC51ABDC0F900447F0A /* Batchcom.mm */; };
 		7823FBC71ABDC10F00447F0A /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7823FBB41ABDB57400447F0A /* Batch.framework */; };
-		7828A0341A1F6E920079492B /* jsb_pluginx.js in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0321A1F6E920079492B /* jsb_pluginx.js */; };
 		7828A0451A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A0461A1F7E9A0079492B /* cocos2d-tooflya-sdk in Resources */ = {isa = PBXBuildFile; fileRef = 7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */; };
 		7828A09D1A1F870D0079492B /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7828A09B1A1F870D0079492B /* AppDelegate.cpp */; };
@@ -79,6 +78,8 @@
 		78B0CFDC1A924EED00E72640 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFDB1A924EED00E72640 /* MessageUI.framework */; };
 		78B0CFDE1A924EF800E72640 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFDD1A924EF800E72640 /* StoreKit.framework */; };
 		78B0CFF41A9289E200E72640 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFF21A9289E200E72640 /* libGoogleAnalyticsServices.a */; };
+		78BD4B8B1B5D307D00DB7B64 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CA6DC81B56786D00F2525F /* libcocos2d Mac.a */; };
+		78BD4B8C1B5D308300DB7B64 /* libjscocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CA6DDF1B5678F100F2525F /* libjscocos2d Mac.a */; };
 		78C3989A1A8A6D2300604331 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398991A8A6D2300604331 /* CoreData.framework */; };
 		78C3989C1A8A6D2E00604331 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C3989B1A8A6D2E00604331 /* SystemConfiguration.framework */; };
 		78C3989E1A8A6D4000604331 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C3989D1A8A6D4000604331 /* libz.dylib */; };
@@ -358,6 +359,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78BD4B8C1B5D308300DB7B64 /* libjscocos2d Mac.a in Frameworks */,
+				78BD4B8B1B5D307D00DB7B64 /* libcocos2d Mac.a in Frameworks */,
 				502380DC17EBB88200990C9B /* libcurl.dylib in Frameworks */,
 				509D4A8817EBB24E00697056 /* libsqlite3.dylib in Frameworks */,
 				509D4A8917EBB24E00697056 /* libz.dylib in Frameworks */,
@@ -1066,7 +1069,6 @@
 				784222D71A0A5D6800CDC2F5 /* sources in Resources */,
 				78DEED801B1A912F0093CB64 /* Icon.icns in Resources */,
 				784222D91A0A5D6800CDC2F5 /* main.js in Resources */,
-				7828A0341A1F6E920079492B /* jsb_pluginx.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,7 +1238,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/manual $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/platform/mac $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/external/spidermonkey/include/mac $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/auto $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external/glfw3/include/mac";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d $(SRCROOT)/../../../cocos2d/cocos $(SRCROOT)/../../../cocos2d/cocos/base $(SRCROOT)/../../../cocos2d/cocos/audio $(SRCROOT)/../../../cocos2d/cocos/audio/include $(SRCROOT)/../../../cocos2d/cocos/editor-support $(SRCROOT)/../../../cocos2d/extensions $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings/auto $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings/manual $(SRCROOT)/../../../cocos2d/external/spidermonkey/include/mac $(SRCROOT)/../../../cocos2d/external/glfw3/include/mac";
 			};
 			name = Debug;
 		};
@@ -1262,7 +1264,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
 				SDKROOT = macosx;
-				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/manual $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/platform/mac $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/external/spidermonkey/include/mac $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/auto $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external/glfw3/include/mac";
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d $(SRCROOT)/../../../cocos2d/cocos $(SRCROOT)/../../../cocos2d/cocos/base $(SRCROOT)/../../../cocos2d/cocos/audio $(SRCROOT)/../../../cocos2d/cocos/audio/include $(SRCROOT)/../../../cocos2d/cocos/editor-support $(SRCROOT)/../../../cocos2d/extensions $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings/auto $(SRCROOT)/../../../cocos2d/cocos/scripting/js-bindings/manual $(SRCROOT)/../../../cocos2d/external/spidermonkey/include/mac $(SRCROOT)/../../../cocos2d/external/glfw3/include/mac";
 			};
 			name = Release;
 		};
