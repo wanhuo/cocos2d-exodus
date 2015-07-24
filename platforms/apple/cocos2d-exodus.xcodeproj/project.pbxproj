@@ -219,7 +219,6 @@
 		7823FBBC1ABDBF0B00447F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7823FBC31ABDBF9500447F0A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		7823FBC51ABDC0F900447F0A /* Batchcom.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Batchcom.mm; sourceTree = "<group>"; };
-		7828A0321A1F6E920079492B /* jsb_pluginx.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = jsb_pluginx.js; path = "../../../cocos2d/frameworks/js-bindings/cocos2d-x/plugin/jsbindings/script/jsb_pluginx.js"; sourceTree = "<group>"; };
 		7828A0441A1F7E9A0079492B /* cocos2d-tooflya-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "cocos2d-tooflya-sdk"; path = "../../../cocos2d-tooflya-sdk"; sourceTree = "<group>"; };
 		7828A0491A1F86C80079492B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7828A04C1A1F86C80079492B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -635,14 +634,6 @@
 			path = vibrator;
 			sourceTree = "<group>";
 		};
-		784CA6E41A1A5C43001145DC /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				7828A0321A1F6E920079492B /* jsb_pluginx.js */,
-			);
-			name = Support;
-			sourceTree = "<group>";
-		};
 		7878F9791ADDB01500A0F1D6 /* internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,7 +847,6 @@
 				78DEED521B1A911E0093CB64 /* Resource */,
 				7828A09F1A1F87BA0079492B /* Sources */,
 				7828A0471A1F86C80079492B /* Platforms */,
-				784CA6E41A1A5C43001145DC /* Support */,
 			);
 			name = Platform;
 			sourceTree = "<group>";
@@ -1234,6 +1224,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/mac/Info.plist";
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = application;
