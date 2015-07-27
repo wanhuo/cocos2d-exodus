@@ -369,13 +369,6 @@ Character = Spine.extend({
      *
      *
      */
-    this.parameters.high = false;
-
-    /**
-     *
-     *
-     *
-     */
     this.setSkin(this.parameters.skins[round(Data.get(false, properties.rocket))]);
   },
   onDestroy: function() {

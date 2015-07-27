@@ -71,6 +71,13 @@ Creature = Spine.extend({
      *
      */
     this.setLocalZOrder(20);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.setSkin(this.parameters.skins.random());
   },
 
   /**
