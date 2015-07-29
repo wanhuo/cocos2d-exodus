@@ -204,7 +204,7 @@ Splurge = Popup.extend({
            *
            *
            */
-          Character.destroy();
+          Character.changeState(Character.states.water);
         })
       )
     );
