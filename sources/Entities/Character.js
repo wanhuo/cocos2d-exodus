@@ -51,7 +51,8 @@ Character = Spine.extend({
         prepare: 3,
         game: 4,
         loss: 5,
-        restore: 6
+        restore: 6,
+        water: 7
       },
       status: false,
       scheduler: 0,
@@ -373,56 +374,6 @@ Character = Spine.extend({
   },
   onDestroy: function() {
     this._super();
-
-    /**
-     *
-     *
-     *
-     */
-    clearInterval(this.parameters.sound.handler);
-
-    /**
-     *
-     *
-     *
-     */
-    Sound.stop(this.parameters.sound.id.start);
-    Sound.stop(this.parameters.sound.id.repeat);
-
-    /**
-     *
-     *
-     *
-     */
-    this.shadow.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    this.onShakeFinish();
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.onDeath();
-
-    /**
-     *
-     *
-     *
-     */
-    Game.changeState(Game.parameters.states.loss);
-
-    /**
-     *
-     *
-     *
-     */
-    Sound.play(resources.main.sound.character.destroy);
   },
 
   /**
@@ -736,6 +687,65 @@ Character = Spine.extend({
      *
      */
     this.reset();
+  },
+  onWater: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    clearInterval(this.parameters.sound.handler);
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.stop(this.parameters.sound.id.start);
+    Sound.stop(this.parameters.sound.id.repeat);
+
+    /**
+     *
+     *
+     *
+     */
+    this.shadow.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    this.onShakeFinish();
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.onDeath();
+
+    /**
+     *
+     *
+     *
+     */
+    Game.changeState(Game.parameters.states.loss);
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.character.destroy);
+
+    /**
+     *
+     *
+     *
+     */
+    this.state.create = false;
   },
 
   /**
@@ -1111,6 +1121,9 @@ Character = Spine.extend({
       break;
       case this.parameters.states.restore:
       this.onRestore();
+      break;
+      case this.parameters.states.water:
+      this.onWater();
       break;
     }
   },
@@ -2168,7 +2181,7 @@ Character = Spine.extend({
              *
              *
              */
-            this.destroy();
+            this.changeState(this.parameters.states.water);
           }
           break;
         }

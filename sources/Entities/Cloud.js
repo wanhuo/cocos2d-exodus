@@ -50,7 +50,7 @@ Cloud = Parallax.extend({
      *
      *
      */
-    this.needScheduleUpdate = true;
+    //this.needScheduleUpdate = true;
   },
 
   /**

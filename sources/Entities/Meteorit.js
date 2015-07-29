@@ -50,7 +50,7 @@ Meteorit = Parallax.extend({
      *
      *
      */
-    this.needScheduleUpdate = true;
+    //this.needScheduleUpdate = true;
   },
 
   /**
