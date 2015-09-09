@@ -59,7 +59,7 @@ Finish = Popup.extend({
         current: 0,
         total: 4
       },
-      gift: 20
+      gift: 30
     };
 
     /**
@@ -242,14 +242,14 @@ Finish = Popup.extend({
    *
    *
    */
-  onTouch: function() {console.log("onTouch");
+  onTouch: function() {
 
     /**
      *
      *
      *
      */
-    if(this.parameters.animation) {console.log("this.parameters.animation");
+    if(this.parameters.animation) {
 
       /**
        *
@@ -452,7 +452,7 @@ Finish = Popup.extend({
           this.showCounter();
         }.bind(this))
       )
-    );console.log("this.elements.hand.runAction(cc.Sequence.create(");
+    );
 
     /**
      *

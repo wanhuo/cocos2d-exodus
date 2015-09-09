@@ -191,6 +191,20 @@ Gift = Spine.extend({
    *
    */
   onTouchStart: function() {
+    this.runAction(
+      cc.ScaleTo.create(0.2, 0.8)
+    );
+  },
+  onTouchFinish: function(touch, e) {
+    this.stopAllActions();
+    this.setScale(1.0);
+
+    /**
+     *
+     *
+     *
+     */
+    if(!touch) return false;
     if(!this.parameters.enable) return false;
 
     /**
