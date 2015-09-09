@@ -21,7 +21,7 @@
  *
  */
 
-Counter = Button.extend({
+Counter = Entity.extend({
 
   /**
    *
@@ -29,7 +29,7 @@ Counter = Button.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.counter.texture, 1, 1, Game.backgrounds.b, this.onTouch.bind(this));
+    this._super(resources.main.counter.texture, Game.backgrounds.b);
 
     /**
      *

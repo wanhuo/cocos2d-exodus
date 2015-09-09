@@ -59,10 +59,10 @@ var languages = {
     {title: 'MORTS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'share': [
-    {title: 'Tap counter to share your result', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: 'Нажмите на счетчик чтобы\nподелиться результатами', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: 'Toca na contagem de pontos\npara partilhar a tua pontuação', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: 'Appuyer sur le compteur\npour partager votre score', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
   'start': [
     {title: 'Tap screen to launch a rocket', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},

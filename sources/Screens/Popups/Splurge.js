@@ -64,7 +64,6 @@ Splurge = Popup.extend({
      */
     this.show();
 
-
     /**
      *
      *
@@ -204,7 +203,7 @@ Splurge = Popup.extend({
            *
            *
            */
-          Character.changeState(Character.states.water);
+          Character.changeState(Character.parameters.states.water);
         })
       )
     );

@@ -131,7 +131,7 @@ Popup = BackgroundColor.extend({
        *
        *
        */
-      Counter.unregister();
+      //Counter.unregister();
 
       /**
        *
@@ -208,7 +208,7 @@ Popup = BackgroundColor.extend({
        *
        *
        */
-      Counter.register();
+      //Counter.register();
 
       /**
        *

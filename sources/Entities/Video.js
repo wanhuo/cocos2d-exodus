@@ -73,7 +73,7 @@ Video = Spine.extend({
      *
      *
      */
-    this.setContentSize(this.width,this.height);
+    this.setContentSize(this.width, this.height);
 
     /**
      *
@@ -180,7 +180,7 @@ Video = Spine.extend({
      *
      *
      */
-    Finish.hide();
+    this.parameters.enable = false;
 
     /**
      *
@@ -208,7 +208,29 @@ Video = Spine.extend({
          *
          *
          */
-        Finish.show(true);
+        Game.parameters.scheduler++;
+
+        /**
+         *
+         *
+         *
+         */
+        Finish.hide(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          Finish.show(true);
+
+          /**
+           *
+           *
+           *
+           */
+          Game.parameters.scheduler--;
+        });
       }
     });
   }

@@ -242,14 +242,14 @@ Finish = Popup.extend({
    *
    *
    */
-  onTouch: function() {
+  onTouch: function() {console.log("onTouch");
 
     /**
      *
      *
      *
      */
-    if(this.parameters.animation) {
+    if(this.parameters.animation) {console.log("this.parameters.animation");
 
       /**
        *
@@ -291,12 +291,6 @@ Finish = Popup.extend({
     this.startAnimation();
   },
   onExit: function() {
-
-    /**
-     *
-     *
-     *
-     */
     this._super();
 
     /**
@@ -458,7 +452,7 @@ Finish = Popup.extend({
           this.showCounter();
         }.bind(this))
       )
-    );
+    );console.log("this.elements.hand.runAction(cc.Sequence.create(");
 
     /**
      *
