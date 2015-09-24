@@ -58,12 +58,6 @@ var languages = {
     {title: 'MORTES: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
     {title: 'MORTS: $1', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
   ],
-  'share': [
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
-    {title: '', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]}
-  ],
   'start': [
     {title: 'Tap screen to launch a rocket', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
     {title: 'Нажмите на экран\nдля запуска ракеты', font: 'Impact', size: 32, dimensions: false, color: [42, 104, 93]},
@@ -845,10 +839,10 @@ var languages = {
     {title: 'La fusée sera plus facilement dirigeable.', font: 'Impact', size: 26, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-2': [
-    {title: 'Stegosaurus can save the rocket from crash\n with 25% probability.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Стегозавр может спасти ракету от крушения\n с вероятностью 25%.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Stegosaurus pode salvar o foguete de\n se despenhar com 25% de probabilidade.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Le Stegosaurus a 25% de chance\n de sauver la fusée lors d\'un crash.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+    {title: 'Stegosaurus can save the rocket\n from crash.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Стегозавр может спасти ракету\n от крушения.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stegosaurus pode salvar o foguete\n de se despenhar.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Le Stegosaurus de sauver la fusée\n lors d\'un crash.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-3': [
     {title: 'Apatosaurus so huge!!\n It slows down the rocket.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
@@ -857,7 +851,7 @@ var languages = {
     {title: 'Le Apatosaurus est énorme !!\n Il ralentit la vitesse de la fusée.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-description-2-4': [
-    {title: 'Triceratops absorbs rocket\'s vibrations\n in areas of turbulence', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Triceratops absorbs rocket\'s vibrations\n in areas of turbulence.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Трицераптор поглощает колебания ракеты\n в зонах турбулентности.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Triceratops absorve as vibrações\n do foguete em zonas de turbulência.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Le Triceratops absorbe les vibrations\n de la fusée lors des zones de turbulence.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
@@ -911,9 +905,9 @@ var languages = {
     {title: 'APPUYER QUAND LA FUSÉE SURVOLE LE ROND VERT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
-    {title: 'OMG! I\'ve got $1 points playing Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'Ого! Я достиг $1 очков в игре Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}
+    {title: 'OMG! I scored $1 points in #Exodus ! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'ОГО! Я набрал $1 очков в игре #Exodus! Можешь побить мой рекорд? ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},//е
+    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}//е
   ]
 };

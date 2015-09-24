@@ -49,7 +49,6 @@ Splurge = Popup.extend({
       }
     };
 
-
     /**
      *
      *
@@ -132,8 +131,6 @@ Splurge = Popup.extend({
         }.bind(Game)),
         cc.DelayTime.create(0.5),
         cc.FadeTo.create(0.2, 255),
-        cc.CallFunc.create(Finish.show, Finish),
-        cc.DelayTime.create(0.5),
         cc.CallFunc.create(function() {
 
           /**
@@ -141,7 +138,7 @@ Splurge = Popup.extend({
            *
            *
            */
-          Counter.clear();
+          this.resetParallaxes();
 
           /**
            *
@@ -156,22 +153,8 @@ Splurge = Popup.extend({
            *
            */
           this.changeState(this.parameters.states.prepare);
-
-          /**
-           *
-           *
-           *
-           */
-          this.resetParallaxes();
-
-          /**
-           *
-           *
-           *
-           */
-          cc.sys.garbageCollect();
         }.bind(Game)),
-        cc.DelayTime.create(0.5),
+        cc.CallFunc.create(Finish.show, Finish),
         cc.FadeOut.create(0.5),
         cc.CallFunc.create(this.hide, this)
       )

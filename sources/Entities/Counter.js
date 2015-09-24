@@ -66,8 +66,7 @@ Counter = Entity.extend({
       start: new Text('start', Game.backgrounds.b),
       status: new Text('fail', Game.backgrounds.b),
       coins: new Text('coins', this.coins),
-      decoration: new Text('decoration-0', Game.backgrounds.b),
-      share: new Text('share', Game.backgrounds.b)
+      decoration: new Text('decoration-0', Game.backgrounds.b)
     };
 
     /**
@@ -265,157 +264,8 @@ Counter = Entity.extend({
      *
      */
     this.text.status.destroy();
+    this.text.start.destroy();
     this.text.decoration.destroy();
-    this.text.share.destroy();
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onSwipe: function() {
-    return true;
-  },
-
-  /**
-   *
-   * 
-   *
-   */
-  onSwipeRight: function() {
-  },
-  onSwipeLeft: function() {
-  },
-  onSwipeUp: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(Game.backgrounds.b.y <= 0 && (Game.backgrounds.b.getNumberOfRunningActions() < 1 || Game.backgrounds.b.swipeAction)) {
-
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.b.stopAllActions();
-
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.b.runAction(
-        cc.EaseSineInOut.create(
-          cc.MoveTo.create(0.25, {
-            x: 0,
-            y: 270
-          })
-        )
-      );
-    }
-  },
-  onSwipeDown: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    if(Game.backgrounds.b.y > 0 && Game.backgrounds.b.getNumberOfRunningActions() < 1) {
-
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.b.swipeAction = true;
-
-      /**
-       *
-       *
-       *
-       */
-      Game.backgrounds.b.runAction(
-        cc.Sequence.create(
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.25, {
-              x: 0,
-              y: 0
-            })
-          ),
-          cc.DelayTime.create(2.0),
-          cc.EaseSineInOut.create(
-            cc.MoveTo.create(0.25, {
-              x: 0,
-              y: 270
-            })
-          )
-        )
-      );
-    }
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onTouchStart: function() {
-    this.stopAllActions();
-    this.runAction(
-      cc.ScaleTo.create(0.1, 0.9)
-    );
-  },
-  onTouchFinish: function(touch, e) {
-    this.stopAllActions();
-    this.runAction(
-      cc.Sequence.create(
-        cc.ScaleTo.create(0.1, 1.0),
-        cc.CallFunc.create(function() {
-
-          /**
-           *
-           *
-           *
-           */
-          if(touch) {
-
-            /**
-             *
-             *
-             *
-             */
-            this.onTouch();
-
-            /**
-             *
-             *
-             *
-             */
-            Sound.play(resources.main.sound.touch);
-          }
-        }.bind(this))
-      )
-    );
-  },
-
-  /**
-   *
-   *
-   *
-   */
-  onTouch: function() {
-
-    /**
-     *
-     *
-     *
-     */
-    Game.onShare();
   },
 
   /**
@@ -424,6 +274,30 @@ Counter = Entity.extend({
    *
    */
   onCoins: function() {
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onStart: function() {
+    this.text.start.create().attr({
+      x: Camera.center.x,
+      y: this.y - 180,
+      opacity: 0
+    });
+    this.text.start.runAction(
+      cc.FadeIn.create(1.0)
+    );
+  },
+  onGame: function() {
+    this.text.start.runAction(
+      cc.Sequence.create(
+        cc.FadeOut.create(1.0),
+        cc.CallFunc.create(this.text.start.destroy, this.text.start)
+      )
+    );
   },
 
   /**
@@ -710,45 +584,6 @@ Counter = Entity.extend({
      *
      */
     this.updateTextData();
-
-    /**
-     *
-     *
-     *
-     */
-    if(probably(20)) {
-      if(this.text.share.getNumberOfRunningActions() > 0) return false;
-
-      this.text.share.create().attr({
-        x: Camera.center.x,
-        y: this.y - 180,
-        opacity: 0
-      });
-      this.text.share.runAction(
-        cc.Sequence.create(
-          cc.FadeIn.create(1.0),
-          cc.DelayTime.create(5.0),
-          cc.FadeOut.create(1.0),
-          cc.CallFunc.create(this.text.share.destroy, this.text.share)
-        )
-      );
-    } else {
-      if(this.text.start.getNumberOfRunningActions() > 0) return false;
-
-      this.text.start.create().attr({
-        x: Camera.center.x,
-        y: this.y - 180,
-        opacity: 0
-      });
-      this.text.start.runAction(
-        cc.Sequence.create(
-          cc.FadeIn.create(1.0),
-          cc.DelayTime.create(1.0),
-          cc.FadeOut.create(1.0),
-          cc.CallFunc.create(this.text.start.destroy, this.text.start)
-        )
-      );
-    }
   },
 
   /**

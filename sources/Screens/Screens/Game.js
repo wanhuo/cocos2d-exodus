@@ -115,6 +115,7 @@ Game = Screen.extend({
         repeat: 4,
         count: 8
       },
+      creatures: true,
       tutorial: {
         state: false,
         current: false
@@ -660,36 +661,6 @@ Game = Screen.extend({
        *
        */
       Character.onTouchBegan(touch, e);
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    else if(this.parameters.state === this.parameters.states.prepare) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.elements.creatures.time();
-    }
-
-    /**
-     *
-     *
-     *
-     */
-    else if(this.parameters.state === this.parameters.states.tutorial) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.parameters.tutorial.current.onAction();
     }
 
     /**
@@ -1288,30 +1259,47 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.creatures.create();
+    this.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.5),
+        cc.CallFunc.create(function() {
+          if(this.parameters.creatures) {
+            this.parameters.creatures = false;
 
-    /**
-     *
-     *
-     *
-     */
-    this.elements.bonuses.create();
+            /**
+             *
+             *
+             *
+             */
+            this.elements.creatures.create();
+          } else {
 
-    /**
-     *
-     *
-     *
-     */
-    Plugins.heyzap.show(Plugins.ad.types.banner, {
+            /**
+             *
+             *
+             *
+             */
+            this.changeState(this.parameters.states.start);
+          }
 
-      /**
-       *
-       *
-       *
-       */
-      success: function() {
-      }
-    });
+          /**
+           *
+           *
+           *
+           */
+          Plugins.heyzap.show(Plugins.ad.types.banner, {
+
+            /**
+             *
+             *
+             *
+             */
+            success: function() {
+            }
+          });
+        }.bind(this))
+      )
+    );
   },
   onStart: function() {
 
@@ -1320,32 +1308,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.elements.bonuses.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    if(this.backgrounds.b.getNumberOfRunningActions() < 1) {
-
-      /**
-       *
-       *
-       *
-       */
-      this.backgrounds.b.runAction(
-        cc.Sequence.create(
-          cc.EaseBounceOut.create(
-            cc.MoveTo.create(1.0, {
-                x: 0,
-                y: 270
-              }
-            )
-          )
-        )
-      );
-    }
+    Counter.onStart();
   },
   onGame: function() {
 
@@ -1354,7 +1317,31 @@ Game = Screen.extend({
      *
      *
      */
+    Counter.onGame();
+
+    /**
+     *
+     *
+     *
+     */
     Character.changeState(Character.parameters.states.game);
+
+    /**
+     *
+     *
+     *
+     */
+    this.backgrounds.b.runAction(
+      cc.Sequence.create(
+        cc.EaseBounceOut.create(
+          cc.MoveTo.create(1.0, {
+              x: 0,
+              y: 270
+            }
+          )
+        )
+      )
+    );
 
     /**
      *
@@ -1915,20 +1902,18 @@ Game = Screen.extend({
       case this.parameters.states.prepare:
       case this.parameters.states.start:
       case this.parameters.states.game:
-
-      /**
-       *
-       *
-       *
-       */
-      this.updateWater(time);
-
-      /**
-       *
-       * 
-       *
-       */
       this.updateCamera(time);
+      break;
+    }
+
+    /**
+     *
+     * 
+     *
+     */
+    switch(this.parameters.state) {
+      case this.parameters.states.game:
+      this.updateWater(time);
       break;
     }
 

@@ -161,8 +161,8 @@ Creatures = cc.Class.extend({
     this.current = [
       round(Data.get(false, properties.creatures[0])) + 1,
       round(Data.get(false, properties.creatures[1])),
-      round(Data.get(false, properties.creatures[2])) + 1,
-      round(Data.get(false, properties.creatures[3])) + 1
+      round(Data.get(false, properties.creatures[2])) * 10 + 1,
+      round(Data.get(false, properties.creatures[3])) * 10 + 1
     ];
 
     /**
@@ -178,7 +178,7 @@ Creatures = cc.Class.extend({
        *
        *
        */
-      var count = Data.get(false, properties.creatures[i]) + (i == 0 ? 5 : 0);
+      var count = (Data.get(false, properties.creatures[i]) + (i == 0 ? 5 : 0)) * (i == 0 ? 1 : 10);
 
       /**
        *

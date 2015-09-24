@@ -682,6 +682,7 @@ Finish = Popup.extend({
      *
      */
     Game.backgrounds.b.removeFromParent();
+    Game.backgrounds.b.y = 0;
 
     /**
      *
@@ -697,6 +698,13 @@ Finish = Popup.extend({
      */
     Counter.gift.destroy();
     Counter.video.destroy();
+
+    /**
+     *
+     *
+     *
+     */
+    Counter.clear();
   },
 
   /**
@@ -956,7 +964,7 @@ Finish = Popup.extend({
          */
         this.parameters.coins.time.elapsed += time;
         if(this.parameters.coins.time.elapsed >= this.parameters.coins.time.current) {
-          this.parameters.coins.time.current = random(0.0, 0.5);
+          this.parameters.coins.time.current = random(0.0, 0.1);
           this.parameters.coins.time.elapsed = 0;
 
           /**

@@ -74,9 +74,9 @@ Visiblities = {
      *
      *
      */
-    Game.elements.water1.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
-    Game.elements.water2.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
-    Game.elements.water3.visiblities = 'y + Game.backgrounds.w.y < -150 / s';
+    Game.elements.water1.visiblities = 'y + Game.backgrounds.w.y < -170 / s';
+    Game.elements.water2.visiblities = 'y + Game.backgrounds.w.y < -170 / s';
+    Game.elements.water3.visiblities = 'y + Game.backgrounds.w.y < -170 / s';
 
     /**
      *
@@ -162,9 +162,9 @@ Visiblities = {
      *
      *
      */
-    Game.elements.parallaxes.trees1.visiblities = 'y < -300 / s';
-    Game.elements.parallaxes.trees2.visiblities = 'y < -300 / s';
-    Game.elements.parallaxes.trees3.visiblities = 'y < -300 / s';
+    Game.elements.parallaxes.trees1.visiblities = 'y < -500 / s';
+    Game.elements.parallaxes.trees2.visiblities = 'y < -500 / s';
+    Game.elements.parallaxes.trees3.visiblities = 'y < -500 / s';
 
     /**
      *

@@ -436,20 +436,29 @@ Items = cc.Class.extend({
           item: new StoreItem21
         },
         {
-          price: 350,
-          type: this.types.consumable,
+          price: 250,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.creatures[1]),
+          selectable: true,
+          selected: true,
           purchaseCode: properties.creatures[1],
           item: new StoreItem22
         },
         {
-          price: 250,
-          type: this.types.consumable,
+          price: 350,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.creatures[2]),
+          selectable: true,
+          selected: true,
           purchaseCode: properties.creatures[2],
           item: new StoreItem23
         },
         {
           price: 500,
-          type: this.types.consumable,
+          type: this.types.permanent,
+          owned: Data.get(false, properties.creatures[3]),
+          selectable: true,
+          selected: true,
           purchaseCode: properties.creatures[3],
           item: new StoreItem24
         }

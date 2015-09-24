@@ -215,6 +215,13 @@ Video = Spine.extend({
          *
          *
          */
+        Game.parameters.ad.interstitial.current = 0;
+
+        /**
+         *
+         *
+         *
+         */
         Counter.values.coins.current += 25;
 
         /**

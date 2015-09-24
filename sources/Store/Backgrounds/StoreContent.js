@@ -336,6 +336,29 @@ StoreContent = StoreBackground.extend({
        *
        */
       this.buttons.select.destroy();
+
+      /**
+       *
+       *
+       *
+       */
+      if(Data.get(false, this.purchaseCode) < 1) {
+
+        /**
+         *
+         *
+         *
+         */
+        this.item.setColor(cc.color.BLACK);
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.item.setColor(cc.color.WHITE);
+      }
       break;
       case Items.types.permanent:
 
@@ -467,6 +490,13 @@ StoreContent = StoreBackground.extend({
    *
    */
   onPurchase: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Game.parameters.creatures = true;
 
     /**
      *

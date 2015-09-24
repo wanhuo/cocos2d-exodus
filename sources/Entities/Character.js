@@ -228,7 +228,8 @@ Character = Spine.extend({
         },
         handler: false,
         time: 5300
-      }
+      },
+      saved: false
     };
 
     /**
@@ -243,7 +244,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.smokes = new Manager(100, new Smoke, Game.backgrounds.game, true);
+    this.smokes = new Manager(100, new Smoke, Game.backgrounds.game, true, 9);
 
     /**
      *
@@ -257,7 +258,7 @@ Character = Spine.extend({
      * 
      *
      */
-    this.shadow.setLocalZOrder(9);
+    this.shadow.setLocalZOrder(8);
 
     /**
      *
@@ -539,6 +540,13 @@ Character = Spine.extend({
      *
      */
     this.reset();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.saved = false;
   },
   onGame: function() {
 
@@ -680,6 +688,7 @@ Character = Spine.extend({
     Game.elements.explanation.y = parameters.character.anchor[this.parameters.skins.indexOf(this.parameters.skin)].y;
   },
   onRestore: function() {
+    this.parameters.saved = true;
 
     /**
      *
@@ -1423,7 +1432,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat / (Bonuses.states[1] ? 2 : 1);
+    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;// / (Bonuses.states[1] ? 2 : 1);
     var coinses = 0;
 
     /**
@@ -2159,7 +2168,7 @@ Character = Spine.extend({
            *
            *
            */
-          if(this.saveFromWater()) {
+          if(!this.parameters.saved && this.saveFromWater()) {
 
             /**
              *
@@ -2287,11 +2296,6 @@ Character = Spine.extend({
    *
    */
   saveFromWater: function() {
-    /**
-     *
-     *
-     *
-     */
     var count = Data.get(false, properties.creatures[1]);
 
     /**
@@ -2299,8 +2303,8 @@ Character = Spine.extend({
      *
      *
      */
-    for(var i = 0; i < count; i++) {
-      if(probably(25)) {
+    if(count > 0) {
+      if(probably(50)) {
 
         /**
          *

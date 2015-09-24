@@ -516,8 +516,8 @@
 		7828A09A1A1F870D0079492B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				78902D911B9E3B2400A8475D /* AppDelegate.h */,
 				78902D921B9E3B2400A8475D /* AppDelegate.cpp */,
+				78902D911B9E3B2400A8475D /* AppDelegate.h */,
 			);
 			name = Classes;
 			path = "../../../cocos2d-tooflya-sdk/Classes";

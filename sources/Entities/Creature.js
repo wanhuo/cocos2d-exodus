@@ -55,7 +55,7 @@ Creature = Spine.extend({
         max: 100.0
       },
       position: true,
-      time: 1.0
+      time: 0.0
     };
 
     /**
@@ -100,7 +100,7 @@ Creature = Spine.extend({
      * 
      *
      */
-    this.parameters.time = 1.0;
+    this.parameters.time = 5.0;
 
     /**
      *
@@ -129,7 +129,7 @@ Creature = Spine.extend({
      * 
      *
      */
-    this.x = this.parameters.position ? random(0, Camera.center.x / 2) : random(Camera.center.x + Camera.center.x / 2, Camera.width)
+    this.x = this.parameters.position ? 0 : Camera.width
     this.y = 340;
 
     /**
@@ -165,6 +165,13 @@ Creature = Spine.extend({
    */
   update: function(time) {
     this._super(time);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters.time += 0.05;
 
     /**
      *
