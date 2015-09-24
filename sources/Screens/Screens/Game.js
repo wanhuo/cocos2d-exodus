@@ -85,7 +85,7 @@ Game = Screen.extend({
         },
         y: {
           min: 0,
-          max: Camera.center.y / 4
+          max: 0
         }
       },
       scale: {

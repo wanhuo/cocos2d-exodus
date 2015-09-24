@@ -36,8 +36,8 @@ Apatosaurus = Creature.extend({
      *
      *
      */
-    this.parameters.speed.min = 5.0;
-    this.parameters.speed.max = 10.0;
+    this.parameters.speed.min = 10.0;
+    this.parameters.speed.max = 30.0;
 
     /**
      *

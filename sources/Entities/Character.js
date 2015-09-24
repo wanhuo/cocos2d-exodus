@@ -642,7 +642,7 @@ Character = Spine.extend({
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0 / Game.backgrounds.d.scale)
         ),
-        cc.DelayTime.create(2.0),
+        cc.DelayTime.create(0.5),
         cc.EaseSineInOut.create(
           cc.ScaleTo.create(0.5, 1.0)
         ),
