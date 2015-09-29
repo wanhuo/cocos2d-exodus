@@ -535,6 +535,41 @@ StoreContent = StoreBackground.extend({
        *
        */
       Data.set(false, this.purchaseCode, true);
+
+      /**
+       *
+       *
+       *
+       */
+      this.onSelect();
+
+      /**
+       *
+       * Manage achievements.
+       *
+       */
+      var count = 0;
+      properties.rockets.each(function(element) {
+        if(Data.get(false, element)) {
+          count++;
+        }
+      });
+
+      if(count >= 25) {
+        Services.achievements.update(Config.services.achievements.characters[4]);
+      }
+      if(count >= 20) {
+        Services.achievements.update(Config.services.achievements.characters[3]);
+      }
+      if(count >= 15) {
+        Services.achievements.update(Config.services.achievements.characters[2]);
+      }
+      if(count >= 10) {
+        Services.achievements.update(Config.services.achievements.characters[1]);
+      }
+      if(count >= 5) {
+        Services.achievements.update(Config.services.achievements.characters[0]);
+      }
       break;
     }
 
@@ -566,7 +601,6 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.updateInfo();
-    this.onSelect();
   },
 
   /**

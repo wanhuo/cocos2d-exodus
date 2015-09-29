@@ -547,20 +547,36 @@ Counter = Entity.extend({
      * Manage achievements.
      *
      */
-    if(this.values.scores.current >= 100) {
+    if(this.values.scores.current >= 500) {
       Services.achievements.update(Config.services.achievements.scores[4]);
     }
-    if(this.values.scores.current >= 20) {
+    if(this.values.scores.current >= 100) {
       Services.achievements.update(Config.services.achievements.scores[3]);
     }
-    if(this.values.scores.current >= 10) {
+    if(this.values.scores.current >= 50) {
       Services.achievements.update(Config.services.achievements.scores[2]);
     }
-    if(this.values.scores.current >= 5) {
+    if(this.values.scores.current >= 10) {
       Services.achievements.update(Config.services.achievements.scores[1]);
     }
     if(this.values.scores.current >= 1) {
       Services.achievements.update(Config.services.achievements.scores[0]);
+    }
+
+    if(this.values.info.deaths >= 100) {
+      Services.achievements.update(Config.services.achievements.games[4]);
+    }
+    if(this.values.info.deaths >= 50) {
+      Services.achievements.update(Config.services.achievements.games[3]);
+    }
+    if(this.values.info.deaths >= 20) {
+      Services.achievements.update(Config.services.achievements.games[2]);
+    }
+    if(this.values.info.deaths >= 10) {
+      Services.achievements.update(Config.services.achievements.games[1]);
+    }
+    if(this.values.info.deaths >= 1) {
+      Services.achievements.update(Config.services.achievements.games[0]);
     }
 
     /**

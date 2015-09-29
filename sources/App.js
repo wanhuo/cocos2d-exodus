@@ -63,11 +63,25 @@ App = {
       },
       achievements: {
         scores: [
-          'CgkI88CN0aIVEAIQAA',
-          'CgkI88CN0aIVEAIQAg',
-          'CgkI88CN0aIVEAIQAw',
-          'CgkI88CN0aIVEAIQBA',
-          'CgkI88CN0aIVEAIQBQ'
+          '5h4aTO874O',
+          'RT129bNv88',
+          'G1LtY2BAQx',
+          '85GN3e7785',
+          'PAL233Ram5'
+        ],
+        characters: [
+          'WYP4TiB9gB',
+          '5nJS6d7U7s',
+          'HtiM9GQzah',
+          'Zdim7SxsrZ',
+          '20PyRG525U'
+        ],
+        games: [
+          'saN3y632ZK',
+          'Cy39chaqGG',
+          'Bek0TNk0ez',
+          '950yV01zA9',
+          '4Z11fzxV63'
         ]
       }
     },
