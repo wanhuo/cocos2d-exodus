@@ -403,7 +403,7 @@ Credits = Popup.extend({
      *
      *
      */
-    // TODO: Open mail.
+    Media.openMail();
   },
 
   /**

@@ -1052,43 +1052,53 @@ Game = Screen.extend({
      *
      *
      */
-    Screenshot.save();
+    this.runAction(
+      cc.Sequence.create(
+        cc.CallFunc.create(Modal.show, Modal),
+        cc.DelayTime.create(1.0),
+        cc.CallFunc.create(Screenshot.save, Screenshot),
+        cc.DelayTime.create(1.0),
+        cc.CallFunc.create(function() {
 
-    /**
-     *
-     *
-     *
-     */
-    Social.share({
-      screenshot: {
-        width: Camera.width,
-        height: Camera.width,
-        x: 0,
-        y: 0
-      },
-      message: text.getString(),
-      url: (function() {
-        if(cc.sys.isNative) {
-          switch(cc.sys.os) {
-            case cc.sys.OS_ANDROID:
-            return Config.links.android;
-            break;
-            case cc.sys.OS_IOS:
-            return Config.links.apple;
-            break;
-          }
-        } else {
-          return 'http://www.tooflya.com';
-        }
-      })()
-    });
+          /**
+           *
+           *
+           *
+           */
+          Social.share({
+            screenshot: {
+              width: Camera.width,
+              height: Camera.width,
+              x: 0,
+              y: 0
+            },
+            message: text.getString(),
+            url: (function() {
+              if(cc.sys.isNative) {
+                switch(cc.sys.os) {
+                  case cc.sys.OS_ANDROID:
+                  return Config.links.android;
+                  break;
+                  case cc.sys.OS_IOS:
+                  return Config.links.apple;
+                  break;
+                }
+              } else {
+                return 'http://www.tooflya.com';
+              }
+            })()
+          });
 
-    /**
-     *
-     *
-     *
-     */
-    Analytics.sendEvent('System events', 'Share', '', '');
+          /**
+           *
+           *
+           *
+           */
+          Analytics.sendEvent('System events', 'Share', '', '');
+        }),
+        cc.CallFunc.create(Modal.hide, Modal)
+      )
+    );
   },
 
   /**

@@ -91,7 +91,7 @@ Finish = Popup.extend({
       continue: new Button(resources.main.finish.buttons.continue, 1, 2, this, this.hide.bind(this)),
       like: new Button(resources.main.buttons.like, 1, 2, this, Game.onLike.bind(Game)),
       rate: new Button(resources.main.buttons.rate, 1, 2, this, Game.onRate.bind(Game)),
-      share: new Button(resources.main.buttons.share, 1, 2, this, Game.onShare.bind(Counter)),
+      share: new Button(resources.main.buttons.share, 1, 2, this, Game.onShare.bind(this)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),

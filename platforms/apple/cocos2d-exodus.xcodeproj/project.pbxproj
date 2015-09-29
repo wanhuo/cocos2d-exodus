@@ -68,7 +68,6 @@
 		78B0CFD61A924ECE00E72640 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFD51A924ECE00E72640 /* CoreTelephony.framework */; };
 		78B0CFD81A924ED900E72640 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFD71A924ED900E72640 /* EventKit.framework */; };
 		78B0CFDA1A924EE300E72640 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFD91A924EE300E72640 /* EventKitUI.framework */; };
-		78B0CFDC1A924EED00E72640 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFDB1A924EED00E72640 /* MessageUI.framework */; };
 		78B0CFDE1A924EF800E72640 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFDD1A924EF800E72640 /* StoreKit.framework */; };
 		78B0CFF41A9289E200E72640 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B0CFF21A9289E200E72640 /* libGoogleAnalyticsServices.a */; };
 		78BD4B8B1B5D307D00DB7B64 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78CA6DC81B56786D00F2525F /* libcocos2d Mac.a */; };
@@ -85,7 +84,6 @@
 		78C5AE821B134C4800918D74 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE801B134C4800918D74 /* EventKit.framework */; };
 		78C5AE831B134C4800918D74 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE811B134C4800918D74 /* EventKitUI.framework */; };
 		78C5AE851B134C5800918D74 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE841B134C5800918D74 /* MediaPlayer.framework */; };
-		78C5AE871B134C6400918D74 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE861B134C6400918D74 /* MessageUI.framework */; };
 		78C5AE891B134C7200918D74 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE881B134C7200918D74 /* WebKit.framework */; };
 		78C5AE8B1B134C7E00918D74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE8A1B134C7E00918D74 /* SystemConfiguration.framework */; };
 		78C5AE8D1B134C8A00918D74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE8C1B134C8A00918D74 /* StoreKit.framework */; };
@@ -138,6 +136,8 @@
 		78DF453F1BBAA54F004E4570 /* Purchase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78DF453E1BBAA54F004E4570 /* Purchase.mm */; };
 		78EA01DF1AEA5C1400057A05 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA01DE1AEA5C1400057A05 /* GoogleMobileAds.framework */; };
 		78EA01E11AEA5C4500057A05 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA01E01AEA5C4500057A05 /* CoreMedia.framework */; };
+		78EC8D6D1BBAF0B900CC5785 /* Modal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78EC8D6C1BBAF0B900CC5785 /* Modal.mm */; };
+		78EC8D6F1BBAF5F500CC5785 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EC8D6E1BBAF5F500CC5785 /* MessageUI.framework */; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
 		A92275481517C094001B78AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275471517C094001B78AA /* AudioToolbox.framework */; };
@@ -351,6 +351,11 @@
 		78DF453E1BBAA54F004E4570 /* Purchase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Purchase.mm; sourceTree = "<group>"; };
 		78EA01DE1AEA5C1400057A05 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		78EA01E01AEA5C4500057A05 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		78EC8D6B1BBAF0B900CC5785 /* Modal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modal.h; sourceTree = "<group>"; };
+		78EC8D6C1BBAF0B900CC5785 /* Modal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Modal.mm; sourceTree = "<group>"; };
+		78EC8D6E1BBAF5F500CC5785 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		78EC8D701BBB027F00CC5785 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		78EC8D711BBB02EB00CC5785 /* Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Internal.h; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275451517C094001B78AA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -388,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78EC8D6F1BBAF5F500CC5785 /* MessageUI.framework in Frameworks */,
 				78DF45281BB9C897004E4570 /* libxml2.dylib in Frameworks */,
 				78096F1E1B9D96DB00B6E492 /* libiconv.dylib in Frameworks */,
 				78CA6DE91B567A4E00F2525F /* libjscocos2d iOS.a in Frameworks */,
@@ -396,7 +402,6 @@
 				78C5AE8D1B134C8A00918D74 /* StoreKit.framework in Frameworks */,
 				78C5AE8B1B134C7E00918D74 /* SystemConfiguration.framework in Frameworks */,
 				78C5AE891B134C7200918D74 /* WebKit.framework in Frameworks */,
-				78C5AE871B134C6400918D74 /* MessageUI.framework in Frameworks */,
 				78C5AE851B134C5800918D74 /* MediaPlayer.framework in Frameworks */,
 				78C5AE821B134C4800918D74 /* EventKit.framework in Frameworks */,
 				78C5AE831B134C4800918D74 /* EventKitUI.framework in Frameworks */,
@@ -413,7 +418,6 @@
 				78C5AE791B134AF400918D74 /* AdColony.framework in Frameworks */,
 				78C3989C1A8A6D2E00604331 /* SystemConfiguration.framework in Frameworks */,
 				78B0CFDE1A924EF800E72640 /* StoreKit.framework in Frameworks */,
-				78B0CFDC1A924EED00E72640 /* MessageUI.framework in Frameworks */,
 				78B0CFDA1A924EE300E72640 /* EventKitUI.framework in Frameworks */,
 				78B0CFD81A924ED900E72640 /* EventKit.framework in Frameworks */,
 				78B0CFD61A924ECE00E72640 /* CoreTelephony.framework in Frameworks */,
@@ -564,6 +568,7 @@
 				7847CDEB1AB184820014E3F3 /* RootViewController.mm */,
 				7847CDEA1AB184820014E3F3 /* RootViewController.h */,
 				7847CDE71AB184820014E3F3 /* main.m */,
+				78EC8D6A1BBAF0B900CC5785 /* modal */,
 				78DF45391BBA993C004E4570 /* purchase */,
 				7878F9791ADDB01500A0F1D6 /* internal */,
 				7823FBB71ABDBBC500447F0A /* plugins */,
@@ -607,6 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				7847CDE91AB184820014E3F3 /* Media.mm */,
+				78EC8D701BBB027F00CC5785 /* Media.h */,
 			);
 			path = media;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 			isa = PBXGroup;
 			children = (
 				7878F97A1ADDB01500A0F1D6 /* Internal.mm */,
+				78EC8D711BBB02EB00CC5785 /* Internal.h */,
 			);
 			path = internal;
 			sourceTree = "<group>";
@@ -859,6 +866,15 @@
 			path = purchase;
 			sourceTree = "<group>";
 		};
+		78EC8D6A1BBAF0B900CC5785 /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				78EC8D6C1BBAF0B900CC5785 /* Modal.mm */,
+				78EC8D6B1BBAF0B900CC5785 /* Modal.h */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
 		78F354581A1A0876009CD132 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,6 +911,7 @@
 		A92275401517C094001B78AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78EC8D6E1BBAF5F500CC5785 /* MessageUI.framework */,
 				78DF45271BB9C897004E4570 /* libxml2.dylib */,
 				78902D951B9E3B4900A8475D /* libiconv.dylib */,
 				78096F191B9D96DB00B6E492 /* libiconv.2.4.0.dylib */,
@@ -1196,6 +1213,7 @@
 				7878F97B1ADDB01500A0F1D6 /* Internal.mm in Sources */,
 				78809FAE1B11D3B4002397E7 /* HZAdMobBannerSupport.m in Sources */,
 				78902D931B9E3B2400A8475D /* AppDelegate.cpp in Sources */,
+				78EC8D6D1BBAF0B900CC5785 /* Modal.mm in Sources */,
 				78DF453F1BBAA54F004E4570 /* Purchase.mm in Sources */,
 				7847CDFC1AB184820014E3F3 /* Screenshot.mm in Sources */,
 				7847CDF51AB184820014E3F3 /* Analytics.mm in Sources */,
