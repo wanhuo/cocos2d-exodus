@@ -83,8 +83,8 @@ Gift = Spine.extend({
      *
      *
      */
-    this.width = 265;
-    this.height = 253;
+    this.width = 200;
+    this.height = 200;
 
     /**
      *
@@ -203,7 +203,6 @@ Gift = Spine.extend({
     );
   },
   onTouchFinish: function(touch, e) {
-    if(!touch) return false;
     if(!this.parameters.enable) return false;
 
     /**
@@ -213,6 +212,14 @@ Gift = Spine.extend({
      */
     this.stopAllActions();
     this.setScale(1.0);
+
+    /**
+     *
+     *
+     *
+     */
+    if(!touch) return false;
+    if(!this.parameters.enable) return false;
 
     /**
      *

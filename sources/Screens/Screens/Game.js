@@ -319,7 +319,8 @@ Game = Screen.extend({
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
       store: new Shop(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
-      credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.b, this.onCredits.bind(this))
+      credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.b, this.onCredits.bind(this)),
+      noad: new Button(resources.main.buttons.noad, 2, 1, this.backgrounds.b, this.onDisableAds.bind(this))
     };
 
     /**
@@ -455,7 +456,11 @@ Game = Screen.extend({
       y: Camera.center.y + 110
     });
     this.buttons.credits.create().attr({
-      x: Camera.center.x,
+      x: Camera.center.x + 42,
+      y: 70
+    });
+    this.buttons.noad.create().attr({
+      x: Camera.center.x - 42,
       y: 70
     });
 
@@ -626,6 +631,15 @@ Game = Screen.extend({
      *
      */
     this.updateSoundState();
+
+    /**
+     *
+     *
+     *
+     */
+    if(Data.get(false, properties.ad)) {
+      this.disableAds();
+    }
   },
 
   /**
@@ -911,6 +925,19 @@ Game = Screen.extend({
       );
     }
   },
+  onDisableAds: function() {
+    Purchase.purchaseItem('com.ketchapp.exodus.remove.ads', {
+      success: function() {
+
+        /**
+         *
+         *
+         *
+         */
+        this.disableAds();
+      }.bind(this)
+    });
+  },
   onLeaderboard: function() {
 
     /**
@@ -1062,6 +1089,25 @@ Game = Screen.extend({
      *
      */
     Analytics.sendEvent('System events', 'Share', '', '');
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  disableAds: function() {
+    Data.set(false, properties.ad, true);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.noad.destroy();
+    this.buttons.credits.attr({
+      x: Camera.center.x
+    });
   },
 
   /**
@@ -1309,6 +1355,14 @@ Game = Screen.extend({
               cc.CallFunc.create(this.buttons.credits.register, this.buttons.credits)
             )
           );
+          this.buttons.noad.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.FadeIn.create(0.5)
+              ),
+              cc.CallFunc.create(this.buttons.noad.register, this.buttons.noad)
+            )
+          );
         }.bind(this)),
         cc.CallFunc.create(function() {
           if(this.parameters.creatures) {
@@ -1348,22 +1402,6 @@ Game = Screen.extend({
      *
      */
     this.tutorial.hand.create().animate(0.2);
-
-    /**
-     *
-     *
-     *
-     */
-    Plugins.heyzap.show(Plugins.ad.types.banner, {
-
-      /**
-       *
-       *
-       *
-       */
-      success: function() {
-      }
-    });
   },
   onGame: function() {
 
@@ -1388,10 +1426,18 @@ Game = Screen.extend({
      */
     this.buttons.credits.runAction(
       cc.Sequence.create(
+        cc.CallFunc.create(this.buttons.credits.unregister, this.buttons.credits),
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.5)
-        ),
-        cc.CallFunc.create(this.buttons.credits.unregister, this.buttons.credits)
+        )
+      )
+    );
+    this.buttons.noad.runAction(
+      cc.Sequence.create(
+        cc.CallFunc.create(this.buttons.noad.unregister, this.buttons.noad),
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.5)
+        )
       )
     );
 
@@ -1640,10 +1686,7 @@ Game = Screen.extend({
        *
        */
       switch(this.parameters.state) {
-        case this.parameters.states.prepare:
-        case this.parameters.states.start:
         case this.parameters.states.game:
-        case this.parameters.states.loss:
 
         /**
          *

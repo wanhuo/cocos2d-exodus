@@ -846,6 +846,22 @@ Character = Spine.extend({
 
       /**
        *
+       *
+       *
+       */
+      Plugins.heyzap.show(Plugins.ad.types.banner, {
+
+        /**
+         *
+         *
+         *
+         */
+        success: function() {
+        }
+      });
+
+      /**
+       *
        * 
        *
        */

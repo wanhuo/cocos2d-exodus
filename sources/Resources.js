@@ -159,7 +159,8 @@ var resources = {
       twitter: 'resource/Graphics/twitter-button.png',
       facebook: 'resource/Graphics/facebook-button.png',
       mail: 'resource/Graphics/mail-button.png',
-      back: 'resource/Graphics/back-button.png'
+      back: 'resource/Graphics/back-button.png',
+      noad: 'resource/Graphics/noad-button.png'
     },
     notification: 'resource/Graphics/notification.png',
     water: [

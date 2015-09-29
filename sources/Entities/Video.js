@@ -65,8 +65,8 @@ Video = Spine.extend({
      *
      *
      */
-    this.width = 505;
-    this.height = 155;
+    this.width = 200;
+    this.height = 200;
 
     /**
      *
