@@ -43,7 +43,7 @@ Counter = Entity.extend({
      *
      *
      */
-    this.coins = new Button(resources.main.counter.coins, 1, 1, Game.backgrounds.e, this.onCoins.bind(this));
+    this.coins = new Entity(resources.main.counter.coins, Game.backgrounds.e);
 
     /**
      *
@@ -273,14 +273,6 @@ Counter = Entity.extend({
    *
    *
    */
-  onCoins: function() {
-  },
-
-  /**
-   *
-   *
-   *
-   */
   onStart: function() {
     this.text.start.create().attr({
       x: Camera.center.x,
@@ -384,6 +376,24 @@ Counter = Entity.extend({
      *
      */
     this.updateTextData(true);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.parameters.tutorial.enable) {
+      if(this.values.scores.current >= 5) {
+        Game.parameters.tutorial.enable = false;
+
+        /**
+         *
+         *
+         *
+         */
+        Data.set(false, properties.tutorial, true);
+      }
+    }
   },
   onJump: function() {
 

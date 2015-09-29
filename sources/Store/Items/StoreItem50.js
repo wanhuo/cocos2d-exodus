@@ -159,6 +159,7 @@ StoreItem50 = Entity.extend({
      *
      */
     Data.set(false, properties.coins, Counter.values.coins.total);
+    Data.set(false, properties.ad, true);
 
     /**
      *

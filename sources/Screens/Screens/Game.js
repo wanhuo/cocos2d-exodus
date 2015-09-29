@@ -117,8 +117,8 @@ Game = Screen.extend({
       },
       creatures: true,
       tutorial: {
-        state: false,
-        current: false
+        enable: false,
+        running: false
       },
       ad: {
         y: 0,
@@ -149,7 +149,6 @@ Game = Screen.extend({
     new Finish;
     new Credits;
     new Store;
-    new Tutorial;
 
     /**
      *
@@ -194,6 +193,7 @@ Game = Screen.extend({
      */
     this.backgrounds.menu.background = new BackgroundColor(this.backgrounds.b, cc.color.BLACK);
     this.backgrounds.menu.holder = new Background(this.backgrounds.menu.background);
+    this.backgrounds.menu.ui = new Background(this.backgrounds.menu.background);
 
     /**
      *
@@ -313,14 +313,34 @@ Game = Screen.extend({
      *
      */
     this.buttons = {
-      play: new Button(resources.main.buttons.play, 1, 2, this.backgrounds.menu, this.onPlay.bind(this)),
+      play: new Button(resources.main.buttons.play, 1, 2, this.backgrounds.menu.ui, this.onPlay.bind(this)),
       rate: new Button(resources.main.buttons.rate, 1, 2, this.backgrounds.b, this.onRate.bind(this)),
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this.backgrounds.b, this.onLeaderboard.bind(this)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this.backgrounds.b, this.onAchievements.bind(this)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this.backgrounds.b, this.onSound.bind(this)),
       store: new Shop(resources.main.buttons.store, 1, 2, this.backgrounds.b, this.onStore.bind(this)),
-      credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.menu.holder, this.onCredits.bind(this))
+      credits: new Button(resources.main.buttons.credits, 2, 2, this.backgrounds.b, this.onCredits.bind(this))
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial = {
+      hand: new AnimatedEntity(resources.main.tutorial.hand, 2, 1, this.backgrounds.e)
+    };
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.hand.attr({
+      x: Camera.center.x / 0.75,
+      y: Camera.center.y / 2
+    });
+    this.tutorial.hand.needScheduleUpdate = true;
 
     /**
      *
@@ -353,6 +373,7 @@ Game = Screen.extend({
      */
     this.backgrounds.menu.background.setLocalZOrder(500);
     this.backgrounds.menu.holder.setLocalZOrder(500);
+    this.backgrounds.menu.ui.setLocalZOrder(-1);
 
     /**
      *
@@ -707,15 +728,6 @@ Game = Screen.extend({
      *
      *
      */
-    if(!Data.get(false, properties.tutorial)) {
-      return Tutorial.show();
-    }
-
-    /**
-     *
-     *
-     *
-     */
     this.buttons.play.unregister();
     this.buttons.rate.unregister();
     this.buttons.sound.unregister();
@@ -865,6 +877,7 @@ Game = Screen.extend({
     Store.show();
   },
   onCredits: function() {
+    if(this.buttons.credits.getNumberOfRunningActions() > 0) return false;
 
     /**
      *
@@ -872,6 +885,31 @@ Game = Screen.extend({
      *
      */
     this.buttons.credits.setCurrentFrameIndex(Credits.toogle() ? 2 : 0);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Credits.state.create) {
+      this.buttons.credits.runAction(
+        cc.EaseSineInOut.create(
+          cc.MoveBy.create(0.5, {
+            x: 0,
+            y: Credits.parameters.height
+          })
+        )
+      );
+    } else {
+      this.buttons.credits.runAction(
+        cc.EaseSineInOut.create(
+          cc.MoveBy.create(0.5, {
+            x: 0,
+            y: -Credits.parameters.height
+          })
+        )
+      );
+    }
   },
   onLeaderboard: function() {
 
@@ -1112,15 +1150,7 @@ Game = Screen.extend({
      *
      *
      */
-    this.backgrounds.menu.background.removeFromParent();
-    this.backgrounds.menu.removeFromParent();
-
-    /**
-     *
-     *
-     *
-     */
-    Credits.release();
+    this.backgrounds.menu.ui.removeFromParent();
 
     /**
      *
@@ -1169,6 +1199,8 @@ Game = Screen.extend({
     );
   },
   onPrepare: function() {
+    this.parameters.tutorial.enable = !Data.get(false, properties.tutorial);
+    this.parameters.tutorial.running = false;
 
     /**
      *
@@ -1261,7 +1293,23 @@ Game = Screen.extend({
      */
     this.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.5),
+        cc.DelayTime.create(0.05),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.buttons.credits.runAction(
+            cc.Sequence.create(
+              cc.EaseSineInOut.create(
+                cc.FadeIn.create(0.5)
+              ),
+              cc.CallFunc.create(this.buttons.credits.register, this.buttons.credits)
+            )
+          );
+        }.bind(this)),
         cc.CallFunc.create(function() {
           if(this.parameters.creatures) {
             this.parameters.creatures = false;
@@ -1281,22 +1329,6 @@ Game = Screen.extend({
              */
             this.changeState(this.parameters.states.start);
           }
-
-          /**
-           *
-           *
-           *
-           */
-          Plugins.heyzap.show(Plugins.ad.types.banner, {
-
-            /**
-             *
-             *
-             *
-             */
-            success: function() {
-            }
-          });
         }.bind(this))
       )
     );
@@ -1309,6 +1341,29 @@ Game = Screen.extend({
      *
      */
     Counter.onStart();
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.hand.create().animate(0.2);
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.heyzap.show(Plugins.ad.types.banner, {
+
+      /**
+       *
+       *
+       *
+       */
+      success: function() {
+      }
+    });
   },
   onGame: function() {
 
@@ -1325,6 +1380,20 @@ Game = Screen.extend({
      *
      */
     Character.changeState(Character.parameters.states.game);
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.credits.runAction(
+      cc.Sequence.create(
+        cc.EaseSineInOut.create(
+          cc.FadeOut.create(0.5)
+        ),
+        cc.CallFunc.create(this.buttons.credits.unregister, this.buttons.credits)
+      )
+    );
 
     /**
      *
@@ -1401,44 +1470,7 @@ Game = Screen.extend({
      */
     Analytics.sendEvent('System events', 'Game finish', '', '');
   },
-  onTutorial: function(reverse) {
-
-    /**
-     *
-     * 
-     *
-     */
-    if(reverse) {
-
-      /**
-       *
-       * 
-       *
-       */
-      this.parameters.state = this.parameters.tutorial.state;
-
-      /**
-       *
-       * 
-       *
-       */
-      this.parameters.tutorial.state = false;
-
-      /**
-       *
-       * 
-       *
-       */
-      this.resumeSchedulerAndActions();
-    } else {
-
-      /**
-       *
-       * 
-       *
-       */
-      this.pauseSchedulerAndActions();
-    }
+  onTutorial: function() {
   },
 
   /**

@@ -264,16 +264,7 @@ var resources = {
       ]
     },
     tutorial: {
-      tutorial: {
-        texture: 'resource/Graphics/tutorial.png',
-        atlas: 'resource/Graphics/tutorial.atlas',
-        json: 'resource/Graphics/tutorial.json'
-      },
-      hand: 'resource/Graphics/tutorial-hand.png',
-      navigation: [
-        'resource/Graphics/tutorial-navigation-1.png',
-        'resource/Graphics/tutorial-navigation-2.png'
-      ]
+      hand: 'resource/Graphics/tutorial-hand.png'
     },
     music: {
       background: 'resource/Music/music-1.music'

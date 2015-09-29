@@ -29,7 +29,7 @@ Name = Entity.extend({
    *
    */
   ctor: function() {
-    this._super(resources.main.name, Game.backgrounds.menu);
+    this._super(resources.main.name, Game.backgrounds.menu.ui);
 
     /**
      *

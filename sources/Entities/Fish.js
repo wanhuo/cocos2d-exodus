@@ -165,6 +165,13 @@ Fish = Spine.extend({
      *
      *
      */
+    time *= Character.parameters.time;
+
+    /**
+     *
+     *
+     *
+     */
     this.x += (this.parameters.vector.x * this.parameters.speed.x * time) * (this.parameters.position ? 1 : -1);
     this.y += this.parameters.vector.y * this.parameters.speed.y * time;
 

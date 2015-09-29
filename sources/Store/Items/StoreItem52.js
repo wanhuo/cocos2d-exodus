@@ -38,13 +38,17 @@ StoreItem52 = StoreItem50.extend({
    *
    */
   onTouch: function() {
-    Counter.values.coins.total += 500;
+    Purchase.purchaseItem('com.ketchapp.exodus.coins.500', {
+      success: function() {
+        Counter.values.coins.total += 500;
 
-    /**
-     *
-     *
-     *
-     */
-    this._super();
+        /**
+         *
+         *
+         *
+         */
+        StoreItem50.prototype.onTouch.call(this);
+      }.bind(this)
+    });
   }
 });

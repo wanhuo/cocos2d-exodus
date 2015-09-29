@@ -839,6 +839,13 @@ Character = Spine.extend({
 
       /**
        *
+       *
+       *
+       */
+      Game.tutorial.hand.destroy();
+
+      /**
+       *
        * 
        *
        */
@@ -1073,6 +1080,22 @@ Character = Spine.extend({
      *
      */
     this.setAnimation(this.parameters.animations.status.start.index, this.parameters.animations.status.start.name, false);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.parameters.tutorial.enable) {
+      this.parameters.time = this.isOnSpecialZone() ? 0.5 : 0.05;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.tutorial.hand.create();
+    }
   },
   hideStatus: function() {
 
@@ -1090,6 +1113,22 @@ Character = Spine.extend({
      *
      */
     this.setAnimation(this.parameters.animations.status.finish.index, this.parameters.animations.status.finish.name, false);
+
+    /**
+     *
+     *
+     *
+     */
+    if(Game.parameters.tutorial.enable || true) {
+      this.parameters.time = 1.0;
+
+      /**
+       *
+       *
+       *
+       */
+      Game.tutorial.hand.destroy();
+    }
   },
 
   /**
@@ -1322,7 +1361,7 @@ Character = Spine.extend({
          *
          */
         if(scale) {
-            parameters.speed.y -= parameters.speed.decrease.max.y * scale * this.parameters.time;
+          parameters.speed.y -= parameters.speed.decrease.max.y * scale * this.parameters.time;
         } else {
           if(this.parameters.active) {
             parameters.speed.y -= parameters.speed.decrease.y * this.parameters.time;
@@ -1476,7 +1515,7 @@ Character = Spine.extend({
          *
          *
          */
-        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && probably(1)) ? 4 : 0;
+        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
       }
 
       /**
@@ -1764,14 +1803,16 @@ Character = Spine.extend({
        *
        *
        */
-      this.changeState(this.parameters.states.loss);
+      if(!Game.parameters.tutorial.enable) {
+        this.changeState(this.parameters.states.loss);
 
-      /**
-       *
-       *
-       *
-       */
-      Counter.onFail();
+        /**
+         *
+         *
+         *
+         */
+        Counter.onFail();
+      }
       break;
       case 0:
 
@@ -1789,6 +1830,13 @@ Character = Spine.extend({
          */
         Game.elements.coins.create().setCurrentFrameIndexAction(0);
       } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.time = 1.0;
 
         /**
          *

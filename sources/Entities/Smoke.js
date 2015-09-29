@@ -108,7 +108,7 @@ Smoke = TiledEntity.extend({
     this.runAction(
       cc.Sequence.create(
         cc.EaseSineInOut.create(
-          cc.FadeOut.create(1.0)
+          cc.FadeOut.create(1.0 / Character.parameters.time)
         ),
         cc.CallFunc.create(this.destroy, this)
       )

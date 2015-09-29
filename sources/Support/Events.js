@@ -35,6 +35,13 @@ Events.onStart = function() {
    *
    *
    */
+  Services.signin();
+
+  /**
+   *
+   *
+   *
+   */
   Screens.replace('Game');
 
   /**
@@ -42,30 +49,7 @@ Events.onStart = function() {
    *
    *
    */
-  User.setup({
-
-    /**
-     *
-     *
-     *
-     */
-    finish: function() {
-
-      /**
-       *
-       *
-       *
-       */
-      Services.signin();
-
-      /**
-       *
-       *
-       *
-       */
-      Analytics.sendEvent('System events', 'Application launch', '', '');
-    }
-  });
+  Analytics.sendEvent('System events', 'Application launch', '', '');
 };
 
 Events.onStop = function() {

@@ -412,6 +412,7 @@ Credits = Popup.extend({
    *
    */
   show: function() {
+    this.state.create = true;
 
     /**
      *
@@ -453,6 +454,7 @@ Credits = Popup.extend({
     );
   },
   hide: function() {
+    this.state.create = false;
 
     /**
      *

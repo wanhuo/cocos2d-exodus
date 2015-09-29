@@ -566,6 +566,7 @@ StoreContent = StoreBackground.extend({
      *
      */
     this.updateInfo();
+    this.onSelect();
   },
 
   /**
