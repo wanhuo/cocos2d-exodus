@@ -262,6 +262,7 @@ StoreContent = StoreBackground.extend({
      *
      *
      */
+    this.autoselectable = item.autoselectable;
     this.selectable = item.selectable;
     this.selected = item.selected;
     this.price = item.price;
@@ -541,7 +542,9 @@ StoreContent = StoreBackground.extend({
        *
        *
        */
-      this.onSelect();
+      if(this.autoselectable) {
+        this.onSelect();
+      }
 
       /**
        *
