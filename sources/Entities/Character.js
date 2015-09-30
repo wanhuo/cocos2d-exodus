@@ -273,6 +273,13 @@ Character = Spine.extend({
      *
      */
     this.changeState(this.parameters.states.menu);
+
+    /**
+     *
+     *
+     *
+     */
+    Spine.prototype.onCreateTextures.call(this);
   },
 
   /**

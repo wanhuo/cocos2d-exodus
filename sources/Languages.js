@@ -886,23 +886,47 @@ var languages = {
     {title: 'Compra 1000 moedas por apenas $4.99\n Qualquer compra irá remover os ads.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Acheter 1000 pièces pour $4.99\nToute achat retirera définitivement les publicités.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
-  'tutorial-text-1': [
-    {title: 'HOW TO PLAY', font: 'Impact', size: 112, dimensions: false, color: [255, 255, 255]},
-    {title: 'КАК ИГРАТЬ', font: 'Impact', size: 122, dimensions: false, color: [255, 255, 255]},
-    {title: 'INSTRUÇÕES', font: 'Impact', size: 122, dimensions: false, color: [255, 255, 255]},
-    {title: 'Comment jouer', font: 'Impact', size: 100, dimensions: false, color: [255, 255, 255]}
+  'tutorial-number-1': [
+    {title: '1.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '1.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '1.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '1.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
-  'tutorial-text-2': [
-    {title: 'TAP FASTER TO FILL THE ROCKET', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Нажимайте быстрее чтобы заполнить ракету', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'TOCA RÁPIDO PARA ENCHER O FOGUETE', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'APPUYER RAPIDEMENT POUR REMPLIR LA FUSÉE', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  'tutorial-number-2': [
+    {title: '2.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '2.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '2.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '2.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
-  'tutorial-text-3': [
-    {title: 'TAP WHEN THE ROCKET\nWILL FLY THROUGH THE GREEN POINT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+  'tutorial-number-3': [
+    {title: '3.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '3.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '3.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: '3.', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-title-1': [
+    {title: 'How to play?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Как игать?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'InstruÇÕes', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Comment jouer?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-title-2': [
+    {title: 'Tap when the rocket will fly\nthrough a green point:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Нажимайте когда ракета пролетает\nчерез зеленую точку', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'TOCA QUANDO O FOGUETE PASSAR PELO PONTO VERDE', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'APPUYER QUAND LA FUSÉE SURVOLE LE ROND VERT', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-title-3': [
+    {title: 'Tap faster when you are\non bonus line:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
+  'tutorial-title-4': [
+    {title: 'Collect coins:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
     {title: 'OMG! I scored $1 points in #Exodus ! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},

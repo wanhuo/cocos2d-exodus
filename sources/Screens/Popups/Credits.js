@@ -123,6 +123,26 @@ Credits = Popup.extend({
      *
      *
      */
+    this.tutorial = {
+      repeat: new Repeat,
+      numbers: [
+        new Text('tutorial-number-1', this.backgrounds.scroll),
+        new Text('tutorial-number-2', this.backgrounds.scroll),
+        new Text('tutorial-number-3', this.backgrounds.scroll)
+      ],
+      titles: [
+        new Text('tutorial-title-1', this.backgrounds.scroll),
+        new Text('tutorial-title-2', this.backgrounds.scroll),
+        new Text('tutorial-title-3', this.backgrounds.scroll),
+        new Text('tutorial-title-4', this.backgrounds.scroll)
+      ]
+    };
+
+    /**
+     *
+     *
+     *
+     */
     this.text = [
       new Text('credits-title-1', this.backgrounds.scroll),
       new Text('credits-title-2', this.backgrounds.scroll, Text.position.right),
@@ -147,7 +167,7 @@ Credits = Popup.extend({
       new Text('credits-title-21', this.backgrounds.scroll, Text.position.left),
       new Text('credits-title-22', this.backgrounds.scroll, Text.position.left)
     ];
-
+var t = 1000;
     /**
      *
      *
@@ -155,15 +175,15 @@ Credits = Popup.extend({
      */
     this.elements.decorations[0].create().attr({
       x: 120,
-      y: Camera.height - 300
+      y: Camera.height - 300 - 400
     });
     this.elements.decorations[1].create().attr({
       x: Camera.width - 150,
-      y: Camera.height - 400
+      y: Camera.height - 400 - 400
     });
     this.elements.decorations[2].create().attr({
       x: 120,
-      y: Camera.height - 800
+      y: Camera.height - 800 - 400
     });
 
     /**
@@ -173,15 +193,65 @@ Credits = Popup.extend({
      */
     this.buttons.twitter.create().attr({
       x: Camera.center.x - 75,
-      y: Camera.height - 650
+      y: Camera.height - 650 - t
     });
     this.buttons.facebook.create().attr({
       x: Camera.center.x,
-      y: Camera.height - 650
+      y: Camera.height - 650 - t
     });
     this.buttons.mail.create().attr({
       x: Camera.center.x + 75,
-      y: Camera.height - 650
+      y: Camera.height - 650 - t
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.repeat.create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 700
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.titles[0].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 100
+    });
+    this.tutorial.titles[1].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 180
+    });
+    this.tutorial.titles[2].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 380
+    });
+    this.tutorial.titles[3].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 560
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.numbers[0].create().attr({
+      x: Camera.center.x - this.tutorial.titles[1].width / 2 - 25,
+      y: Camera.height - 150
+    });
+    this.tutorial.numbers[1].create().attr({
+      x: Camera.center.x - this.tutorial.titles[2].width / 2 - 25,
+      y: Camera.height - 350
+    });
+    this.tutorial.numbers[2].create().attr({
+      x: Camera.center.x - this.tutorial.titles[3].width / 2 - 25,
+      y: Camera.height - 550
     });
 
     /**
@@ -191,19 +261,19 @@ Credits = Popup.extend({
      */
     this.text[0].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 100
+      y: Camera.height - 100 - t
     });
     this.text[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 160
+      y: Camera.height - 160 - t
     });
     this.text[2].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 200
+      y: Camera.height - 200 - t
     });
     this.text[3].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 240
+      y: Camera.height - 240 - t
     });
 
     /**
@@ -213,15 +283,15 @@ Credits = Popup.extend({
      */
     this.text[4].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 440
+      y: Camera.height - 440 - t
     });
     this.text[5].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 520
+      y: Camera.height - 520 - t
     });
     this.text[6].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 580
+      y: Camera.height - 580 - t
     });
 
     /**
@@ -231,31 +301,31 @@ Credits = Popup.extend({
      */
     this.text[7].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 780
+      y: Camera.height - 780 - t
     });
     this.text[8].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 840
+      y: Camera.height - 840 - t
     });
     this.text[9].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 880
+      y: Camera.height - 880 - t
     });
     this.text[10].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 940
+      y: Camera.height - 940 - t
     });
     this.text[11].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 980
+      y: Camera.height - 980 - t
     });
     this.text[12].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1040
+      y: Camera.height - 1040 - t
     });
     this.text[13].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1080
+      y: Camera.height - 1080 - t
     });
 
     /**
@@ -265,15 +335,15 @@ Credits = Popup.extend({
      */
     this.text[14].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1280
+      y: Camera.height - 1280 - t
     });
     this.text[15].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1340
+      y: Camera.height - 1340 - t
     });
     this.text[16].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1380
+      y: Camera.height - 1380 - t
     });
 
     /**
@@ -283,7 +353,7 @@ Credits = Popup.extend({
      */
     this.text[17].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1580
+      y: Camera.height - 1580 - t
     });
 
     /**
@@ -324,11 +394,11 @@ Credits = Popup.extend({
      */
     this.elements.powered[0].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1780
+      y: Camera.height - 1780 - t
     });
     this.elements.powered[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1980
+      y: Camera.height - 1980 - t
     });
 
     /**
@@ -536,7 +606,6 @@ Credits = Popup.extend({
    *
    */
   update: function(time) {
-    this._super(time);
 
     /**
      *

@@ -21,15 +21,15 @@
  *
  */
 
-Creature = Spine.extend({
+Repeat = Spine.extend({
 
   /**
    *
    *
    *
    */
-  ctor: function(json, atlas) {
-    this._super(json, atlas, 1.0);
+  ctor: function() {
+    this._super(resources.main.repeat.json, resources.main.repeat.atlas, 1.0, Credits.backgrounds.scroll);
 
     /**
      *
@@ -37,26 +37,37 @@ Creature = Spine.extend({
      *
      */
     this.parameters = {
+      enable: true,
       animations: {
         animation: {
           index: 1,
           name: 'animation',
-          time: 1.0,
           loop: true
         }
-      },
-      skins: [
-        '1'
-      ],
-      speed: {
-        x: 0,
-        y: 0,
-        min: 50.0,
-        max: 100.0
-      },
-      position: true,
-      time: 0.0
+      }
     };
+
+    /**
+     *
+     *
+     *
+     */
+    this.setLocalZOrder(100);
+
+    /**
+     *
+     *
+     *
+     */
+    this.width = 200;
+    this.height = 200;
+
+    /**
+     *
+     *
+     *
+     */
+    this.setContentSize(this.width, this.height);
 
     /**
      *
@@ -67,17 +78,10 @@ Creature = Spine.extend({
 
     /**
      *
-     * 
+     *
      *
      */
-    this.setLocalZOrder(20);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.setSkin(this.parameters.skins.random());
+    this.register();
 
     /**
      *
@@ -97,72 +101,35 @@ Creature = Spine.extend({
 
     /**
      *
-     * 
+     *
      *
      */
-    this.setSkin(this.parameters.skins.random());
+    this.parameters.enable = true;
 
     /**
      *
-     * 
+     *
      *
      */
-    this.parameters.time = 5.0;
+    this.setSlotsToSetupPose();
+    this.setBonesToSetupPose();
 
     /**
      *
-     * 
+     *
      *
      */
-    this.parameters.position = probably(50);
+    this.clearTracks();
 
     /**
      *
-     * 
+     *
      *
      */
-    setTimeout(function() {
-
-      /**
-       *
-       * 
-       *
-       */
-      this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, true);
-    }.bind(this), random(0, 500));
-
-    /**
-     *
-     * 
-     *
-     */
-    this.x = this.parameters.position ? 0 : Camera.width
-    this.y = 340;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.speed.x = random(this.parameters.speed.min, this.parameters.speed.max);
-    this.parameters.speed.y = 0;
-
-    /**
-     *
-     * 
-     *
-     */
-    this.scaleX = this.parameters.position ? 1 : -1;
+    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);
   },
   onDestroy: function() {
     this._super();
-
-    /**
-     *
-     * 
-     *
-     */
-    Game.onSave();
   },
 
   /**
@@ -180,36 +147,42 @@ Creature = Spine.extend({
    *
    *
    */
-  update: function(time) {
-    this._super(time);
-
-    /**
-     *
-     * 
-     *
-     */
-    this.parameters.time += 0.05;
-
-    /**
-     *
-     *
-     *
-     */
-    this.x += (this.parameters.speed.x * time * (this.parameters.position ? 1 : -1)) * this.parameters.time;
+  onTouchStart: function() {
+    this.runAction(
+      cc.ScaleTo.create(0.2, 0.8)
+    );
+  },
+  onTouchFinish: function(touch, e) {
+    this.stopAllActions();
+    this.setScale(1.0);
 
     /**
      *
      *
      *
      */
-    if(this.parameters.position) {
-      if(this.x >= Game.parameters.camera.x + Game.parameters.camera.width / 2) {
-        this.destroy();
-      }
-    } else {
-      if(this.x <= Game.parameters.camera.x + Game.parameters.camera.width / 2) {
-        this.destroy();
-      }
-    }
+    if(!touch) return false;
+    if(!this.parameters.enable) return false;
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.touch);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.enable = false;
+
+    /**
+     *
+     *
+     *
+     */
+    //
   }
 });

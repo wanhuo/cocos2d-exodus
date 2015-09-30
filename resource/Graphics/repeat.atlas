@@ -1,0 +1,48 @@
+
+repeat.png
+size: 638,291
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 2, 38
+  size: 250, 251
+  orig: 250, 251
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 254, 53
+  size: 236, 236
+  orig: 236, 236
+  offset: 0, 0
+  index: -1
+text-gem
+  rotate: false
+  xy: 492, 5
+  size: 143, 120
+  orig: 143, 120
+  offset: 0, 0
+  index: -1
+video frame 1
+  rotate: true
+  xy: 492, 127
+  size: 162, 144
+  orig: 162, 144
+  offset: 0, 0
+  index: -1
+video frame 2
+  rotate: true
+  xy: 44, 8
+  size: 28, 44
+  orig: 28, 44
+  offset: 0, 0
+  index: -1
+video frame 3
+  rotate: true
+  xy: 2, 2
+  size: 34, 40
+  orig: 34, 40
+  offset: 0, 0
+  index: -1
