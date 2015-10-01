@@ -93,6 +93,13 @@ Fish = Spine.extend({
        */
       return false;
     }.bind(this);
+
+    /**
+     *
+     *
+     *
+     */
+    Spine.prototype.onCreateTextures.call(this);
   },
 
   /**
@@ -150,6 +157,16 @@ Fish = Spine.extend({
   },
   onDestroy: function() {
     this._super();
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onCreateTextures: function() {
+  },
+  onDestroyTextures: function() {
   },
 
   /**

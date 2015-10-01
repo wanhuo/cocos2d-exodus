@@ -103,6 +103,11 @@ var resources = {
       atlas: 'resource/Graphics/video.atlas',
       json: 'resource/Graphics/video.json'
     },
+    repeat: {
+      texture: 'resource/Graphics/repeat.png',
+      atlas: 'resource/Graphics/repeat.atlas',
+      json: 'resource/Graphics/repeat.json'
+    },
     baloon: {
       texture: 'resource/Graphics/baloon.png',
       atlas: 'resource/Graphics/baloon.atlas',

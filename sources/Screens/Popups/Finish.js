@@ -59,7 +59,10 @@ Finish = Popup.extend({
         current: 0,
         total: 4
       },
-      gift: 30
+      gift: {
+        current: random(0, 15),
+        total: 15
+      }
     };
 
     /**
@@ -623,6 +626,7 @@ Finish = Popup.extend({
        *
        */
       this.parameters.reward.current++;
+      this.parameters.gift.current++;
 
       /**
        *
@@ -653,7 +657,8 @@ Finish = Popup.extend({
          *
          *
          */
-        if(probably(this.parameters.gift)) {
+        if(this.parameters.gift.current >= this.parameters.gift.total) {
+          this.parameters.gift.current = 0;
 
           /**
            *

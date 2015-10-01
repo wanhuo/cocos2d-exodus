@@ -61,6 +61,7 @@ sources = sources.concat([
   'sources/Entities/Switcher.js',
   'sources/Entities/Gift.js',
   'sources/Entities/Video.js',
+  'sources/Entities/Repeat.js',
   'sources/Screens/Popup.js',
   'sources/Screens/Screen.js',
   'sources/Screens/Screens/Game.js',
