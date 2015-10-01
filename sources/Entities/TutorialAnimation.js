@@ -29,21 +29,48 @@ TutorialAnimation = Spine.extend({
    *
    */
   ctor: function(animation) {
-    this._super(animation.json, animation.atlas, Credits.backgrounds.scroll);
+    this._super(animation.json, animation.atlas, 1.0, Credits.backgrounds.scroll);
+
+    /**
+     *
+     * 
+     *
+     */
+    this.parameters = {
+      animations: {
+        animation: {
+          index: 1,
+          name: 'animation',
+          loop: true
+        },
+        click: {
+          index: 2,
+          name: 'click',
+          loop: false
+        }
+      }
+    };
 
     /**
      *
      *
      *
      */
-    //
+    this.setAnimationListener(this, this.onAnimationStateChanged.bind(this));
 
     /**
      *
      *
      *
      */
-    Spine.prototype.onCreateTexture.call(this);
+    this.needScheduleUpdate = true;
+
+    /**
+     *
+     *
+     *
+     */
+    Spine.prototype.onCreateTextures.call(this);
   },
 
   /**
@@ -52,9 +79,31 @@ TutorialAnimation = Spine.extend({
    *
    */
   onCreate: function() {
-    this._super();
+    this._super();console.log(1);
+
+    /**
+     *
+     *
+     *
+     */
+    this.setSlotsToSetupPose();
+    this.setBonesToSetupPose();
+
+    /**
+     *
+     *
+     *
+     */
+    this.clearTracks();
+
+    /**
+     *
+     *
+     *
+     */
+    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);this.setTimeScale(0.3);
   },
-  onDestory: function() {
+  onDestroy: function() {
     this._super();
   },
 
@@ -63,8 +112,19 @@ TutorialAnimation = Spine.extend({
    *
    *
    */
-  onCreateTexture: function() {
+  onCreateTextures: function() {
   },
-  onDestoryTexture: function() {
+  onDestroyTextures: function() {
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onAnimationStateChanged: function(target, index, type, event) {
+    if(event) {
+      this.setAnimation(this.parameters.animations.click.index, this.parameters.animations.click.name, this.parameters.animations.click.loop);
+    }
   }
 });
