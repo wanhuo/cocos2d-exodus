@@ -126,7 +126,9 @@ Credits = Popup.extend({
     this.tutorial = {
       repeat: new Repeat,
       animations: [
-        new TutorialAnimation(resources.main.tutorial.animations.b)
+        new TutorialAnimation(resources.main.tutorial.animations.a),
+        new TutorialAnimation(resources.main.tutorial.animations.b),
+        new TutorialAnimation(resources.main.tutorial.animations.c)
       ],
       numbers: [
         new Text('tutorial-number-1', this.backgrounds.scroll),
@@ -180,8 +182,16 @@ Credits = Popup.extend({
       x: Camera.center.x,
       y: Camera.height - 600
     });
+    this.tutorial.animations[1].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 1000
+    });
+    this.tutorial.animations[2].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 1400
+    });
 
-    var t = 1200;
+    var t = 1600;
     /**
      *
      *
@@ -189,15 +199,15 @@ Credits = Popup.extend({
      */
     this.elements.decorations[0].create().attr({
       x: 120,
-      y: Camera.height - 300
+      y: Camera.height - 500
     });
     this.elements.decorations[1].create().attr({
       x: Camera.width - 150,
-      y: Camera.height - 400
+      y: Camera.height - 600
     });
     this.elements.decorations[2].create().attr({
       x: 120,
-      y: Camera.height - 800
+      y: Camera.height - 1000
     });
 
     /**
@@ -247,7 +257,7 @@ Credits = Popup.extend({
     });
     this.tutorial.titles[3].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 560 - 500
+      y: Camera.height - 560 - 700
     });
 
     /**
@@ -265,7 +275,7 @@ Credits = Popup.extend({
     });
     this.tutorial.numbers[2].create().attr({
       x: Camera.center.x - this.tutorial.titles[3].width / 2 - 25,
-      y: Camera.height - 550 - 500
+      y: Camera.height - 550 - 700
     });
 
     /**

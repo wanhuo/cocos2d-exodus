@@ -283,9 +283,9 @@ var resources = {
           json: 'resource/Graphics/tutorial-animation-2.json'
         },
         c: {
-          texture: 'resource/Graphics/tutorial-animation-2.png',
-          atlas: 'resource/Graphics/tutorial-animation-2.atlas',
-          json: 'resource/Graphics/tutorial-animation-2.json'
+          texture: 'resource/Graphics/tutorial-animation-3.png',
+          atlas: 'resource/Graphics/tutorial-animation-3.atlas',
+          json: 'resource/Graphics/tutorial-animation-3.json'
         }
       }
     },

@@ -101,7 +101,7 @@ TutorialAnimation = Spine.extend({
      *
      *
      */
-    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);this.setTimeScale(0.3);
+    this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);
   },
   onDestroy: function() {
     this._super();
