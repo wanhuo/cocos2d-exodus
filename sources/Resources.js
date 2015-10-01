@@ -270,7 +270,24 @@ var resources = {
       ]
     },
     tutorial: {
-      hand: 'resource/Graphics/tutorial-hand.png'
+      hand: 'resource/Graphics/tutorial-hand.png',
+      animations: {
+        a: {
+          texture: 'resource/Graphics/tutorial-animation-1.png',
+          atlas: 'resource/Graphics/tutorial-animation-1.atlas',
+          json: 'resource/Graphics/tutorial-animation-1.json'
+        },
+        b: {
+          texture: 'resource/Graphics/tutorial-animation-2.png',
+          atlas: 'resource/Graphics/tutorial-animation-2.atlas',
+          json: 'resource/Graphics/tutorial-animation-2.json'
+        },
+        c: {
+          texture: 'resource/Graphics/tutorial-animation-2.png',
+          atlas: 'resource/Graphics/tutorial-animation-2.atlas',
+          json: 'resource/Graphics/tutorial-animation-2.json'
+        }
+      }
     },
     music: {
       background: 'resource/Music/music-1.music'
