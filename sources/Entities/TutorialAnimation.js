@@ -79,7 +79,7 @@ TutorialAnimation = Spine.extend({
    *
    */
   onCreate: function() {
-    this._super();console.log(1);
+    this._super();
 
     /**
      *

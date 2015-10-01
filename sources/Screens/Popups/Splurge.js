@@ -70,7 +70,8 @@ Splurge = Popup.extend({
      */
     this.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.5),
+        cc.CallFunc.create(Modal.show, Modal),
+        cc.DelayTime.create(1.5),
         cc.EaseSineInOut.create(
           cc.FadeOut.create(0.2)
         ),
@@ -83,7 +84,8 @@ Splurge = Popup.extend({
            */
           Internal.onStart();
         }),
-        cc.CallFunc.create(this.hide, this)
+        cc.CallFunc.create(this.hide, this),
+        cc.CallFunc.create(Modal.hide, Modal)
       )
     );
   },

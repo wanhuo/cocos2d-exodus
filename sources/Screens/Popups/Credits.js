@@ -199,15 +199,15 @@ Credits = Popup.extend({
      */
     this.elements.decorations[0].create().attr({
       x: 120,
-      y: Camera.height - 500
+      y: Camera.height - 900
     });
     this.elements.decorations[1].create().attr({
       x: Camera.width - 150,
-      y: Camera.height - 600
+      y: Camera.height - 1000
     });
     this.elements.decorations[2].create().attr({
       x: 120,
-      y: Camera.height - 1000
+      y: Camera.height - 1400
     });
 
     /**

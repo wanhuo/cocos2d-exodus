@@ -182,6 +182,20 @@ Repeat = Spine.extend({
            *
            *
            */
+          Data.set(false, properties.tutorial, false);
+
+          /**
+           *
+           *
+           *
+           */
+          Game.parameters.tutorial.enable = true;
+
+          /**
+           *
+           *
+           *
+           */
           switch(this.parameters.state) {
             case this.parameters.states.menu:
             this.onPlay();

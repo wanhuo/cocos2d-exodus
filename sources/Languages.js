@@ -347,220 +347,178 @@ var languages = {
     {title: '$1', font: 'Impact', size: 42, dimensions: false, color: [228, 149, 81]}
   ],
   'store-item-title-1-1': [
-    {title: 'Orange', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Orange', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Orange', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: 'Orange', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-2': [
     {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Rise', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-3': [
+  'store-item-title-1-2': [
     {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Phantom', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-4': [
+  'store-item-title-1-3': [
     {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Missyfier', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-5': [
+  'store-item-title-1-4': [
     {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Tornado', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-6': [
+  'store-item-title-1-5': [
     {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Redsoker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-7': [
+  'store-item-title-1-6': [
     {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Foggy', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-8': [
+  'store-item-title-1-7': [
     {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Gravitsapa', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-9': [
+  'store-item-title-1-8': [
     {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Spacewalker', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
-  'store-item-title-1-10': [
+  'store-item-title-1-9': [
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
     {title: 'Punisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
+  'store-item-title-1-10': [
+    {title: 'Violent', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Violent', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Violent', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Violent', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-item-title-1-11': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Rony', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Rony', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Rony', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Rony', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-12': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Grapster', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Grapster', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Grapster', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Grapster', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-13': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Ringo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Ringo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Ringo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Ringo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-14': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Strangers', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Strangers', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Strangers', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Strangers', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-15': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Mistery', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Mistery', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Mistery', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Mistery', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-16': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Diablo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Diablo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Diablo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Diablo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-17': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Spenser', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Spenser', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Spenser', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Spenser', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-18': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Fisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Fisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Fisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Fisher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-19': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Turtile', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Turtile', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Turtile', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Turtile', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-20': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Musher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Musher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Musher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Musher', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-21': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Bluree', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Bluree', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Bluree', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Bluree', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-22': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Indigo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Indigo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Indigo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Indigo', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-23': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Dexter', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Dexter', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Dexter', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Dexter', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-24': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Sender', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Sender', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Sender', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Sender', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-25': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Zeta', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Zeta', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Zeta', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Zeta', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-26': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Kidner', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Kidner', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Kidner', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Kidner', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-27': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Stiller', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stiller', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stiller', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stiller', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-28': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Stinger', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stinger', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stinger', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Stinger', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-1-29': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-30': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-31': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-32': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-33': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-34': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-35': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
-  ],
-  'store-item-title-1-36': [
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
-    {title: '', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
+    {title: 'Robotics', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Robotics', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Robotics', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
+    {title: 'Robotics', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]}
   ],
   'store-item-title-2-1': [
     {title: 'Human', font: 'Impact', size: 64, dimensions: false, color: [255, 255, 255]},
