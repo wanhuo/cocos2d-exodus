@@ -190,5 +190,50 @@ Splurge = Popup.extend({
         })
       )
     );
+  },
+  animation3: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    this.show();
+
+    /**
+     *
+     *
+     *
+     */
+    this.runAction(
+      cc.Sequence.create(
+        cc.FadeTo.create(0.2, 255),
+        cc.CallFunc.create(function() {
+
+          /**
+           *
+           *
+           *
+           */
+          this.resetParallaxes();
+
+          /**
+           *
+           *
+           *
+           */
+          Character.setSlotsToSetupPoseCustom();
+
+          /**
+           *
+           *
+           *
+           */
+          this.changeState(this.parameters.states.prepare);
+        }.bind(Game)),
+        cc.FadeOut.create(0.5),
+        cc.CallFunc.create(this.hide, this)
+      )
+    );
   }
 });

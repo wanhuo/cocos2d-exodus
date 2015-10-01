@@ -103,7 +103,7 @@ StoreContent = StoreBackground.extend({
      */
     this.elements.price.create().attr({
       x: 130,
-      y: Camera.height - 625
+      y: Camera.height - 625 + (this.text.description.width < 100 ? 100 : 0)
     });
 
     /**

@@ -175,15 +175,15 @@ var t = 1000;
      */
     this.elements.decorations[0].create().attr({
       x: 120,
-      y: Camera.height - 300 - 400
+      y: Camera.height - 300
     });
     this.elements.decorations[1].create().attr({
       x: Camera.width - 150,
-      y: Camera.height - 400 - 400
+      y: Camera.height - 400
     });
     this.elements.decorations[2].create().attr({
       x: 120,
-      y: Camera.height - 800 - 400
+      y: Camera.height - 800
     });
 
     /**
@@ -211,7 +211,7 @@ var t = 1000;
      */
     this.tutorial.repeat.create().attr({
       x: Camera.center.x,
-      y: Camera.height - 700
+      y: Camera.height - 320
     });
 
     /**
@@ -225,15 +225,15 @@ var t = 1000;
     });
     this.tutorial.titles[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 180
+      y: Camera.height - 180 - 300
     });
     this.tutorial.titles[2].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 380
+      y: Camera.height - 380 - 300
     });
     this.tutorial.titles[3].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 560
+      y: Camera.height - 560 - 300
     });
 
     /**
@@ -243,15 +243,15 @@ var t = 1000;
      */
     this.tutorial.numbers[0].create().attr({
       x: Camera.center.x - this.tutorial.titles[1].width / 2 - 25,
-      y: Camera.height - 150
+      y: Camera.height - 150 - 300
     });
     this.tutorial.numbers[1].create().attr({
       x: Camera.center.x - this.tutorial.titles[2].width / 2 - 25,
-      y: Camera.height - 350
+      y: Camera.height - 350 - 300
     });
     this.tutorial.numbers[2].create().attr({
       x: Camera.center.x - this.tutorial.titles[3].width / 2 - 25,
-      y: Camera.height - 550
+      y: Camera.height - 550 - 300
     });
 
     /**
@@ -560,7 +560,7 @@ var t = 1000;
    *
    *
    */
-  toogle: function() {
+  toogle: function(params) {
 
     /**
      *
@@ -574,7 +574,7 @@ var t = 1000;
        *
        *
        */
-      this.hide();
+      this.hide(params);
     
       /**
        *
@@ -589,7 +589,7 @@ var t = 1000;
        *
        *
        */
-      this.show();
+      this.show(params);
     
       /**
        *
@@ -606,6 +606,7 @@ var t = 1000;
    *
    */
   update: function(time) {
+    this._super(time);
 
     /**
      *

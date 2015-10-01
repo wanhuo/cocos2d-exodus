@@ -104,13 +104,6 @@ Repeat = Spine.extend({
      *
      *
      */
-    this.parameters.enable = true;
-
-    /**
-     *
-     *
-     *
-     */
     this.setSlotsToSetupPose();
     this.setBonesToSetupPose();
 
@@ -127,6 +120,7 @@ Repeat = Spine.extend({
      *
      */
     this.setAnimation(this.parameters.animations.animation.index, this.parameters.animations.animation.name, this.parameters.animations.animation.loop);
+    this.setTimeScale(2);
   },
   onDestroy: function() {
     this._super();
@@ -162,7 +156,6 @@ Repeat = Spine.extend({
      *
      */
     if(!touch) return false;
-    if(!this.parameters.enable) return false;
 
     /**
      *
@@ -176,13 +169,36 @@ Repeat = Spine.extend({
      *
      *
      */
-    this.parameters.enable = false;
+    Game.runAction(
+      cc.Sequence.create(
+        cc.CallFunc.create(Modal.block, Modal),
+        cc.DelayTime.create(0.5),
+        cc.CallFunc.create(Game.onCredits, Game),
+        cc.DelayTime.create(0.5),
+        cc.CallFunc.create(function() {
 
-    /**
-     *
-     *
-     *
-     */
-    //
+          /**
+           *
+           *
+           *
+           */
+          switch(this.parameters.state) {
+            case this.parameters.states.menu:
+            this.onPlay();
+            break;
+            defult:
+            Splurge.animation3();
+            break;
+          }
+
+          /**
+           *
+           *
+           *
+           */
+          Modal.hide();
+        }.bind(Game))
+      )
+    );
   }
 });

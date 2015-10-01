@@ -243,6 +243,7 @@ Gift = Spine.extend({
      */
     this.runAction(
       cc.Sequence.create(
+        cc.CallFunc.create(Modal.block, Modal, true),
         cc.Repeat.create(
           cc.Sequence.create(
             cc.ScaleTo.create(0.05, 0.8),
@@ -308,7 +309,8 @@ Gift = Spine.extend({
              */
             Game.parameters.scheduler--;
           });
-        })
+        }),
+        cc.CallFunc.create(Modal.hide, Modal)
       )
     );
   },
