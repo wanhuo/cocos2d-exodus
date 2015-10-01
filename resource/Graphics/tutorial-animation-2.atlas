@@ -1,0 +1,48 @@
+
+tutorial-animation-2.png
+size: 899,73
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/hand
+  rotate: true
+  xy: 723, 3
+  size: 68, 79
+  orig: 68, 79
+  offset: 0, 0
+  index: -1
+skins/1/hand-effect-1
+  rotate: false
+  xy: 2, 2
+  size: 27, 22
+  orig: 27, 22
+  offset: 0, 0
+  index: -1
+skins/1/hand-effect-2
+  rotate: true
+  xy: 861, 33
+  size: 38, 36
+  orig: 38, 36
+  offset: 0, 0
+  index: -1
+skins/1/line
+  rotate: false
+  xy: 2, 26
+  size: 604, 45
+  orig: 604, 45
+  offset: 0, 0
+  index: -1
+skins/1/point
+  rotate: false
+  xy: 804, 16
+  size: 55, 55
+  orig: 55, 55
+  offset: 0, 0
+  index: -1
+skins/1/rocket
+  rotate: false
+  xy: 608, 10
+  size: 113, 61
+  orig: 113, 61
+  offset: 0, 0
+  index: -1
