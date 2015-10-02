@@ -56,6 +56,7 @@
 		78809FAE1B11D3B4002397E7 /* HZAdMobBannerSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 78809FAC1B11D3B4002397E7 /* HZAdMobBannerSupport.m */; };
 		78809FB31B11DE75002397E7 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78809FB21B11DE75002397E7 /* iAd.framework */; };
 		78809FB51B11DEB3002397E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78809FB41B11DEB3002397E7 /* MobileCoreServices.framework */; };
+		78817A761BBDAFD3008BA961 /* Icon-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 78817A751BBDAFD3008BA961 /* Icon-512.png */; };
 		78902D931B9E3B2400A8475D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78902D921B9E3B2400A8475D /* AppDelegate.cpp */; };
 		78902D941B9E3B2400A8475D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78902D921B9E3B2400A8475D /* AppDelegate.cpp */; };
 		78902D961B9E3B4900A8475D /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 78902D951B9E3B4900A8475D /* libiconv.dylib */; };
@@ -258,6 +259,7 @@
 		78809FAC1B11D3B4002397E7 /* HZAdMobBannerSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZAdMobBannerSupport.m; sourceTree = "<group>"; };
 		78809FB21B11DE75002397E7 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/iAd.framework; sourceTree = DEVELOPER_DIR; };
 		78809FB41B11DEB3002397E7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		78817A751BBDAFD3008BA961 /* Icon-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-512.png"; sourceTree = "<group>"; };
 		78902D911B9E3B2400A8475D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		78902D921B9E3B2400A8475D /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		78902D951B9E3B4900A8475D /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -788,12 +790,13 @@
 				78DEED571B1A911E0093CB64 /* Default_iphone6.png */,
 				78DEED581B1A911E0093CB64 /* Default_iphone6plus.png */,
 				78DEED591B1A911E0093CB64 /* Default~ipad.png */,
-				78DEED5A1B1A911E0093CB64 /* Icon-100.png */,
+				78817A751BBDAFD3008BA961 /* Icon-512.png */,
 				78DEED5B1B1A911E0093CB64 /* Icon-114.png */,
 				78DEED5C1B1A911E0093CB64 /* Icon-120.png */,
 				78DEED5D1B1A911E0093CB64 /* Icon-128.png */,
 				78DEED5E1B1A911E0093CB64 /* Icon-144.png */,
 				78DEED5F1B1A911E0093CB64 /* Icon-152.png */,
+				78DEED5A1B1A911E0093CB64 /* Icon-100.png */,
 				78DEED601B1A911E0093CB64 /* Icon-29.png */,
 				78DEED611B1A911E0093CB64 /* Icon-40.png */,
 				78DEED621B1A911E0093CB64 /* Icon-50.png */,
@@ -1130,6 +1133,7 @@
 				78DEED701B1A911E0093CB64 /* Icon-100.png in Resources */,
 				78DEEE011B1D035B0093CB64 /* down.png in Resources */,
 				78DEED6A1B1A911E0093CB64 /* Default.png in Resources */,
+				78817A761BBDAFD3008BA961 /* Icon-512.png in Resources */,
 				78DEED711B1A911E0093CB64 /* Icon-114.png in Resources */,
 				78DEED7D1B1A911E0093CB64 /* Icon-80.png in Resources */,
 				78DEED6B1B1A911E0093CB64 /* Default@2x.png in Resources */,
