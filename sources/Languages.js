@@ -864,26 +864,26 @@ var languages = {
   ],
   'tutorial-title-1': [
     {title: 'How to play?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: 'Как игать?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Как играть?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'InstruÇÕes?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Comment jouer?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-title-2': [
     {title: 'Tap when the rocket will fly\nthrough a green point:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Нажимайте когда ракета пролетает\nчерез зеленую точку:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'TOCA QUANDO O FOGUETE PASSAR\nPELO PONTO VERDE:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Toque no ecrã quando o foguete passar\npor cima dos pontos verdes:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'APPUYER QUAND LA FUSÉE\nSURVOLE LE ROND VERT:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-title-3': [
     {title: 'Tap faster when you are\non bonus line:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Нажимайте быстрее когда ракета\nнаходится на бонусной линии:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Empurre mais rápido quando o\nfoguete está na linha de bônus:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Toque muitas vezes quando o foguete\npassar por cima da linha de bónus:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Poussez plus rapide lorsque la fusée\nest sur la ligne de bonus:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-title-4': [
     {title: 'Collect coins:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Собирайте монеты:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Coletar moedas:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Apanhe as moedas:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Collecter des pièces:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
