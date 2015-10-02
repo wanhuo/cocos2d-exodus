@@ -865,7 +865,7 @@ var languages = {
   'tutorial-title-1': [
     {title: 'How to play?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Как играть?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: 'InstruÇÕes?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Como jogar?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Comment jouer?', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'tutorial-title-2': [
@@ -887,7 +887,7 @@ var languages = {
     {title: 'Collecter des pièces:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'share-message': [
-    {title: 'OMG! I scored $1 points in #Exodus ! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! I scored $1 points in #Exodus! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},
     {title: 'ОГО! Я набрал $1 очков в игре #Exodus! Можешь побить мой рекорд? ', font: 'Impact', size: 0, dimensions: false},
     {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},//е
     {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}//е

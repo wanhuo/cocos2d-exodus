@@ -180,15 +180,15 @@ Credits = Popup.extend({
      */
     this.tutorial.animations[0].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 600
+      y: Camera.height - 300
     });
     this.tutorial.animations[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1000
+      y: Camera.height - 700
     });
     this.tutorial.animations[2].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1400
+      y: Camera.height - 1100
     });
 
     var t = 1600;
@@ -235,7 +235,7 @@ Credits = Popup.extend({
      */
     this.tutorial.repeat.create().attr({
       x: Camera.center.x,
-      y: Camera.height - 320
+      y: Camera.height - 1530
     });
 
     /**
@@ -249,15 +249,15 @@ Credits = Popup.extend({
     });
     this.tutorial.titles[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 180 - 300
+      y: Camera.height - 180 - 0
     });
     this.tutorial.titles[2].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 380 - 500
+      y: Camera.height - 380 - 200
     });
     this.tutorial.titles[3].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 560 - 700
+      y: Camera.height - 560 - 400
     });
 
     /**
@@ -267,15 +267,15 @@ Credits = Popup.extend({
      */
     this.tutorial.numbers[0].create().attr({
       x: Camera.center.x - this.tutorial.titles[1].width / 2 - 25,
-      y: Camera.height - 150 - 300
+      y: Camera.height - 150 - 0
     });
     this.tutorial.numbers[1].create().attr({
       x: Camera.center.x - this.tutorial.titles[2].width / 2 - 25,
-      y: Camera.height - 350 - 500
+      y: Camera.height - 350 - 200
     });
     this.tutorial.numbers[2].create().attr({
       x: Camera.center.x - this.tutorial.titles[3].width / 2 - 25,
-      y: Camera.height - 550 - 700
+      y: Camera.height - 550 - 400
     });
 
     /**
@@ -514,6 +514,22 @@ Credits = Popup.extend({
      *
      */
     Game.backgrounds.menu.holder.addChild(this);
+
+    /**
+     *
+     *
+     *
+     */
+    Credits.backgrounds.scroll.getInnerContainer().y = this.backgrounds.scroll.d;
+    Credits.backgrounds.scroll.getInnerContainer().runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.5),
+        cc.MoveTo.create(60.0, {
+          x: 0,
+          y: 0
+        })
+      )
+    );
 
     /**
      *
