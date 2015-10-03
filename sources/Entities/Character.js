@@ -1118,6 +1118,15 @@ Character = Spine.extend({
        *
        */
       Game.tutorial.hand.create();
+
+      /**
+       *
+       *
+       *
+       */
+      for(var i = 0; i < this.smokes.count().count; i++) {
+        this.smokes.get(i).stopAllActions();
+      }
     }
   },
   hideStatus: function() {
@@ -1494,7 +1503,7 @@ Character = Spine.extend({
      * 
      *
      */
-    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;// / (Bonuses.states[1] ? 2 : 1);
+    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;
     var coinses = 0;
 
     /**
@@ -1514,7 +1523,7 @@ Character = Spine.extend({
 
     /**
      *
-     * 
+     * TODO: Maybe here is a bottleneck.
      *
      */
     var parameters = cc.clone(this.parameters);
@@ -1532,13 +1541,11 @@ Character = Spine.extend({
        *
        */
       if(!bonus) {
-
-        /**
-         *
-         *
-         *
-         */
-        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
+        if(Game.parameters.tutorial.enable && Counter.values.scores.current >= 3) {
+          bonus = 4;
+        } else {
+          bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
+        }
       }
 
       /**
