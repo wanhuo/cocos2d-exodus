@@ -115,7 +115,8 @@ Credits = Popup.extend({
     this.buttons = {
       twitter: new Button(resources.main.buttons.twitter, 1, 2, this.backgrounds.scroll, this.onTwitter.bind(this)),
       facebook: new Button(resources.main.buttons.facebook, 1, 2, this.backgrounds.scroll, this.onFacebook.bind(this)),
-      mail: new Button(resources.main.buttons.mail, 1, 2, this.backgrounds.scroll, this.onMail.bind(this))
+      mail: new Button(resources.main.buttons.mail, 1, 2, this.backgrounds.scroll, this.onMail.bind(this)),
+      restore: new Button(resources.main.buttons.restore, 1, 2, this.backgrounds.scroll, this.onRestorePurchases.bind(this))
     };
 
     /**
@@ -170,7 +171,8 @@ Credits = Popup.extend({
       new Text('credits-title-19', this.backgrounds.scroll, Text.position.left),
       new Text('credits-title-20', this.backgrounds.scroll, Text.position.left),
       new Text('credits-title-21', this.backgrounds.scroll, Text.position.left),
-      new Text('credits-title-22', this.backgrounds.scroll, Text.position.left)
+      new Text('credits-title-22', this.backgrounds.scroll, Text.position.left),
+      new Text('credits-title-23', this.backgrounds.scroll)
     ];
 
     /**
@@ -323,33 +325,47 @@ Credits = Popup.extend({
      *
      *
      */
-    this.text[7].create().attr({
+    this.text[22].create().attr({
       x: Camera.center.x,
       y: Camera.height - 780 - t
     });
+    this.buttons.restore.create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 850 - t
+    });
+
+    /**
+     *
+     *
+     *
+     */
+    this.text[7].create().attr({
+      x: Camera.center.x,
+      y: Camera.height - 780 - 200 - t
+    });
     this.text[8].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 840 - t
+      y: Camera.height - 840 - 200 - t
     });
     this.text[9].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 880 - t
+      y: Camera.height - 880 - 200 - t
     });
     this.text[10].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 940 - t
+      y: Camera.height - 940 - 200 - t
     });
     this.text[11].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 980 - t
+      y: Camera.height - 980 - 200 - t
     });
     this.text[12].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1040 - t
+      y: Camera.height - 1040 - 200 - t
     });
     this.text[13].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1080 - t
+      y: Camera.height - 1080 - 200 - t
     });
 
     /**
@@ -359,15 +375,15 @@ Credits = Popup.extend({
      */
     this.text[14].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1280 - t
+      y: Camera.height - 1280 - 200 - t
     });
     this.text[15].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1340 - t
+      y: Camera.height - 1340 - 200 - t
     });
     this.text[16].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1380 - t
+      y: Camera.height - 1380 - 200 - t
     });
 
     /**
@@ -377,7 +393,7 @@ Credits = Popup.extend({
      */
     this.text[17].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1580 - t
+      y: Camera.height - 1580 - 200 - t
     });
 
     /**
@@ -418,11 +434,11 @@ Credits = Popup.extend({
      */
     this.elements.powered[0].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1780 - t
+      y: Camera.height - 1780 - 200 - t
     });
     this.elements.powered[1].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 1980 - t
+      y: Camera.height - 1980 - 200 - t
     });
 
     /**
@@ -491,6 +507,15 @@ Credits = Popup.extend({
     Media.openFacebook();
   },
   onMail: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    Media.openMail();
+  },
+  onRestorePurchases: function() {
 
     /**
      *

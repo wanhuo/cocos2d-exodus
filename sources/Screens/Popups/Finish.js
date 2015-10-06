@@ -98,7 +98,8 @@ Finish = Popup.extend({
       leaderboard: new Button(resources.main.buttons.leaderboard, 1, 2, this, Game.onLeaderboard.bind(Game)),
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
-      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this))
+      coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
+      noad: new Button(resources.main.buttons.lnoad, 1, 2, this, Game.onDisableAds.bind(Game))
     };
 
     /**
@@ -147,6 +148,7 @@ Finish = Popup.extend({
     this.buttons.leaderboard.setLocalZOrder(1);
     this.buttons.achievements.setLocalZOrder(1);
     this.buttons.store.setLocalZOrder(1);
+    this.buttons.noad.setLocalZOrder(1);
 
     /**
      *
@@ -183,29 +185,33 @@ Finish = Popup.extend({
       x: Camera.center.x,
       y: Camera.center.y - 30 + (Game.parameters.ad.disabled ? 0 : 100)
     });
+    this.buttons.noad.attr({
+      x: Camera.center.x - 240,
+      y: Camera.center.y - 90 + (Game.parameters.ad.disabled ? 0 : 100)
+    });
     this.buttons.like.attr({
-      x: Camera.center.x - 275,
-      y: Camera.center.y - 230 + (Game.parameters.ad.disabled ? 0 : 100)
+      x: Camera.center.x - 200,
+      y: Camera.center.y - 200 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.rate.attr({
-      x: Camera.center.x - 165,
+      x: Camera.center.x - 110,
       y: Camera.center.y - 270 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.share.attr({
-      x: Camera.center.x - 55,
+      x: Camera.center.x,
       y: Camera.center.y - 290 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.leaderboard.attr({
-      x: Camera.center.x + 55,
-      y: Camera.center.y - 290 + (Game.parameters.ad.disabled ? 0 : 100)
-    });
-    this.buttons.achievements.attr({
-      x: Camera.center.x + 165,
+      x: Camera.center.x + 110,
       y: Camera.center.y - 270 + (Game.parameters.ad.disabled ? 0 : 100)
     });
+    this.buttons.achievements.attr({
+      x: Camera.center.x + 200,
+      y: Camera.center.y - 200 + (Game.parameters.ad.disabled ? 0 : 100)
+    });
     this.buttons.store.attr({
-      x: Camera.center.x + 275,
-      y: Camera.center.y - 230 + (Game.parameters.ad.disabled ? 0 : 100)
+      x: Camera.center.x + 240,
+      y: Camera.center.y - 90 + (Game.parameters.ad.disabled ? 0 : 100)
     });
 
     /**
@@ -846,6 +852,21 @@ Finish = Popup.extend({
      */
     this.buttons.store.create().scale = 0;
     this.buttons.store.runAction(
+      cc.Sequence.create(
+        cc.DelayTime.create(0.5),
+        cc.EaseSineOut.create(
+          cc.ScaleTo.create(0.2, 1.0)
+        )
+      )
+    );
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.noad.create().scale = 0;
+    this.buttons.noad.runAction(
       cc.Sequence.create(
         cc.DelayTime.create(0.5),
         cc.EaseSineOut.create(

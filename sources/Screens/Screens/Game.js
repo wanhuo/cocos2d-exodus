@@ -1100,7 +1100,7 @@ Game = Screen.extend({
    *
    */
   disableAds: function() {
-    //Data.set(false, properties.ad, true);
+    Data.set(false, properties.ad, true);
 
     /**
      *
@@ -1166,16 +1166,29 @@ Game = Screen.extend({
      *
      *
      */
-    Finish.elements.decoration.y -= 100;
-    Finish.elements.pig.y -= 100;
-    Finish.elements.hide.y -= 100;
-    Finish.buttons.continue.y -= 100;
-    Finish.buttons.like.y -= 100;
-    Finish.buttons.share.y -= 100;
-    Finish.buttons.rate.y -= 100;
-    Finish.buttons.leaderboard.y -= 100;
-    Finish.buttons.achievements.y -= 100;
-    Finish.buttons.store.y -= 100;
+    if(Finish.state.create) {
+      Finish.elements.decoration.y -= 100;
+      Finish.elements.pig.y -= 100;
+      Finish.elements.hide.y -= 100;
+      Finish.buttons.continue.y -= 100;
+      Finish.buttons.like.y -= 100;
+      Finish.buttons.share.y -= 100;
+      Finish.buttons.rate.y -= 100;
+      Finish.buttons.leaderboard.y -= 100;
+      Finish.buttons.achievements.y -= 100;
+      Finish.buttons.store.y -= 100;
+    } else {
+      Finish.elements.decoration.y -= 100;
+      Finish.elements.pig.y -= 100;
+      Finish.elements.hide.y -= 100;
+      Finish.buttons.continue.y -= 100;
+      Finish.buttons.like.y -= 100;
+      Finish.buttons.share.y -= 100;
+      Finish.buttons.rate.y -= 100;
+      Finish.buttons.leaderboard.y -= 100;
+      Finish.buttons.achievements.y -= 100;
+      Finish.buttons.store.y -= 100;
+    }
 
     /**
      *

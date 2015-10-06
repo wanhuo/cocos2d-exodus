@@ -262,6 +262,12 @@ var languages = {
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]},
     {title: '$1', font: 'Impact', size: 32, dimensions: false, color: [21, 157, 191]}
   ],
+  'credits-title-23': [
+    {title: 'Restore purchases', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Восстановление покупок', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Recuperar compras', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: '', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
+  ],
   'store-title-0': [
     {title: 'Rockets', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
     {title: 'Ракеты', font: 'Impact', size: 42, dimensions: false, color: [21, 176, 191]},
@@ -889,7 +895,7 @@ var languages = {
   'share-message': [
     {title: 'OMG! I scored $1 points in #Exodus! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},
     {title: 'ОГО! Я набрал $1 очков в игре #Exodus! Можешь побить мой рекорд? ', font: 'Impact', size: 0, dimensions: false},
-    {title: 'OMG! Eu ganhei $1 pontos a jogar Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false},//е
-    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}//е
+    {title: 'OMG! I consegui $1 pontos no #Exodus! Consegues bater o meu recorde? ', font: 'Impact', size: 0, dimensions: false},
+    {title: 'OMG! J\'ai obtenu $1 points pour avoir joué Exodus! #Exodus ', font: 'Impact', size: 0, dimensions: false}
   ]
 };

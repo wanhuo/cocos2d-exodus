@@ -165,7 +165,9 @@ var resources = {
       facebook: 'resource/Graphics/facebook-button.png',
       mail: 'resource/Graphics/mail-button.png',
       back: 'resource/Graphics/back-button.png',
-      noad: 'resource/Graphics/noad-button.png'
+      noad: 'resource/Graphics/noad-button.png',
+      lnoad: 'resource/Graphics/noad-finish-button.png',
+      restore: 'resource/Graphics/restore-purchases-button.png'
     },
     notification: 'resource/Graphics/notification.png',
     water: [
