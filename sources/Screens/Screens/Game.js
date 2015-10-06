@@ -20,7 +20,7 @@
  * @version of cocos2d is 3.5
  *
  */
-sys.localStorage.clear();
+
 Game = Screen.extend({
 
   /**
