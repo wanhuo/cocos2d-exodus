@@ -99,7 +99,7 @@ Finish = Popup.extend({
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
       coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
-      noad: new Button(resources.main.buttons.lnoad, 1, 2, this, Game.onDisableAds.bind(Game)),
+      noad: new Button(resources.main.buttons.lnoad, 2, 1, this, Game.onDisableAds.bind(Game)),
       sound: new Button(resources.main.buttons.sound, 2, 2, this, this.onSound.bind(this))
     };
 

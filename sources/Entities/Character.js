@@ -1940,28 +1940,30 @@ Character = Spine.extend({
        *
        *
        */
-      this.parameters.active = this.parameters.speed.state = false;
+      if(!Game.parameters.tutorial.enable) {
+        this.parameters.active = this.parameters.speed.state = false;
 
-      /**
-       *
-       *
-       *
-       */
-      this.updateTraectory();
+        /**
+         *
+         *
+         *
+         */
+        this.updateTraectory();
 
-      /**
-       *
-       *
-       *
-       */
-      Counter.onJump();
+        /**
+         *
+         *
+         *
+         */
+        Counter.onJump();
 
-      /**
-       *
-       *
-       *
-       */
-      Counter.onMistake();
+        /**
+         *
+         *
+         *
+         */
+        Counter.onMistake();
+      }
       break;
       case 2:
 
