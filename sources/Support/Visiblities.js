@@ -336,7 +336,7 @@ Visiblities = {
      *
      *
      */
-    var y = Game.backgrounds.game.y + Camera.center.y / 4;
+    var y = Game.backgrounds.game.y + Camera.center.y / 4 + (Game.parameters.ad.disabled ? 0 : 100);
     var x = Game.backgrounds.game.x;
 
     /**

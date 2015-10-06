@@ -99,7 +99,8 @@ Finish = Popup.extend({
       achievements: new Button(resources.main.buttons.achievements, 1, 2, this, Game.onAchievements.bind(Game)),
       store: new Shop(resources.main.buttons.store, 1, 2, this, Game.onStore.bind(Game)),
       coins: new Button(resources.main.counter.coins, 1, 1, this, this.onCoins.bind(this)),
-      noad: new Button(resources.main.buttons.lnoad, 1, 2, this, Game.onDisableAds.bind(Game))
+      noad: new Button(resources.main.buttons.lnoad, 1, 2, this, Game.onDisableAds.bind(Game)),
+      sound: new Button(resources.main.buttons.sound, 2, 2, this, this.onSound.bind(this))
     };
 
     /**
@@ -149,6 +150,7 @@ Finish = Popup.extend({
     this.buttons.achievements.setLocalZOrder(1);
     this.buttons.store.setLocalZOrder(1);
     this.buttons.noad.setLocalZOrder(1);
+    this.buttons.sound.setLocalZOrder(1);
 
     /**
      *
@@ -184,6 +186,10 @@ Finish = Popup.extend({
     this.buttons.continue.attr({
       x: Camera.center.x,
       y: Camera.center.y - 30 + (Game.parameters.ad.disabled ? 0 : 100)
+    });
+    this.buttons.sound.attr({
+      x: Camera.center.x - 240,
+      y: Camera.center.y - 90 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.noad.attr({
       x: Camera.center.x - 240,
@@ -298,6 +304,13 @@ Finish = Popup.extend({
      *
      */
     this.startAnimation();
+
+    /**
+     *
+     * 
+     *
+     */
+    this.updateSoundState();
   },
   onExit: function() {
     this._super();
@@ -330,6 +343,41 @@ Finish = Popup.extend({
    *
    */
   onCoins: function() {
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  onSound: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(!Music.enabled || !Sound.enabled) {
+      Music.changeState(true);
+      Sound.changeState(true);
+    } else {
+      Music.changeState(false);
+      Sound.changeState(false);
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    this.updateSoundState();
+
+    /**
+     *
+     *
+     *
+     */
+    Analytics.sendEvent('System events', 'Sound state was changed', '', '');
   },
 
   /**
@@ -720,6 +768,41 @@ Finish = Popup.extend({
 
   /**
    *
+   * 
+   *
+   */
+  updateSoundState: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(!Music.enabled || !Sound.enabled) {
+      Music.changeState(false);
+      Sound.changeState(false);
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.sound.setCurrentFrameIndex(0);
+    } else {
+      Music.changeState(true);
+      Sound.changeState(true);
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.sound.setCurrentFrameIndex(2);
+    }
+  },
+
+  /**
+   *
    *
    *
    */
@@ -775,6 +858,47 @@ Finish = Popup.extend({
      *
      *
      */
+    if(Game.parameters.ad.disabled) {
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.noad.destroy();
+      this.buttons.sound.create().scale = 0;
+      this.buttons.sound.runAction(
+        cc.Sequence.create(
+          cc.DelayTime.create(0.05),
+          cc.EaseSineOut.create(
+            cc.ScaleTo.create(0.2, 1.0)
+          )
+        )
+      );
+    } else {
+
+      /**
+       *
+       *
+       *
+       */
+      this.buttons.sound.destroy();
+      this.buttons.noad.create().scale = 0;
+      this.buttons.noad.runAction(
+        cc.Sequence.create(
+          cc.DelayTime.create(0.05),
+          cc.EaseSineOut.create(
+            cc.ScaleTo.create(0.2, 1.0)
+          )
+        )
+      );
+    }
+
+    /**
+     *
+     *
+     *
+     */
     this.buttons.like.create().scale = 0;
     this.buttons.like.runAction(
       cc.Sequence.create(
@@ -793,7 +917,7 @@ Finish = Popup.extend({
     this.buttons.rate.create().scale = 0;
     this.buttons.rate.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.1),
+        cc.DelayTime.create(0.15),
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         )
@@ -823,7 +947,7 @@ Finish = Popup.extend({
     this.buttons.leaderboard.create().scale = 0;
     this.buttons.leaderboard.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.3),
+        cc.DelayTime.create(0.25),
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         )
@@ -838,7 +962,7 @@ Finish = Popup.extend({
     this.buttons.achievements.create().scale = 0;
     this.buttons.achievements.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.4),
+        cc.DelayTime.create(0.3),
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         )
@@ -853,22 +977,7 @@ Finish = Popup.extend({
     this.buttons.store.create().scale = 0;
     this.buttons.store.runAction(
       cc.Sequence.create(
-        cc.DelayTime.create(0.5),
-        cc.EaseSineOut.create(
-          cc.ScaleTo.create(0.2, 1.0)
-        )
-      )
-    );
-
-    /**
-     *
-     *
-     *
-     */
-    this.buttons.noad.create().scale = 0;
-    this.buttons.noad.runAction(
-      cc.Sequence.create(
-        cc.DelayTime.create(0.5),
+        cc.DelayTime.create(0.35),
         cc.EaseSineOut.create(
           cc.ScaleTo.create(0.2, 1.0)
         )
@@ -912,6 +1021,8 @@ Finish = Popup.extend({
     this.buttons.leaderboard.destroy();
     this.buttons.achievements.destroy();
     this.buttons.store.destroy();
+    this.buttons.noad.destroy();
+    this.buttons.sound.destroy();
   },
 
   /**

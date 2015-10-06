@@ -522,7 +522,7 @@ Credits = Popup.extend({
      *
      *
      */
-    Media.openMail();
+    Purchase.restore();
   },
 
   /**

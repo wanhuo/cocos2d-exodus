@@ -892,6 +892,18 @@ var languages = {
     {title: 'Apanhe as moedas:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Collecter des pièces:', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
+  'restore-purchases-successful-message': [
+    {title: 'Your previous purchases was successful restored!', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Ваши предыдущие внутриигровые покупки были успешно восстановлены!', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Your previous purchases was successful restored!', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Your previous purchases was successful restored!', font: 'Impact', size: 0, dimensions: false}
+  ],
+  'restore-purchases-error-message': [
+    {title: 'Sorry, no previous purchases could be restored.', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Извините, но предыдущие внутриигровые покупки не могут быть восстановлены.', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Sorry, no previous purchases could be restored.', font: 'Impact', size: 0, dimensions: false},
+    {title: 'Sorry, no previous purchases could be restored.', font: 'Impact', size: 0, dimensions: false}
+  ],
   'share-message': [
     {title: 'OMG! I scored $1 points in #Exodus! Can you beat my score? ', font: 'Impact', size: 0, dimensions: false},
     {title: 'ОГО! Я набрал $1 очков в игре #Exodus! Можешь побить мой рекорд? ', font: 'Impact', size: 0, dimensions: false},

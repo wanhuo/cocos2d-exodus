@@ -165,6 +165,13 @@ Gift = Spine.extend({
         )
       )
     );
+
+    /**
+     *
+     *
+     *
+     */
+    Sound.play(resources.main.sound.unlock);
   },
   onDestroy: function() {
     this._super();

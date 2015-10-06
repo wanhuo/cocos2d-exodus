@@ -20,7 +20,7 @@
  * @version of cocos2d is 3.5
  *
  */
-
+sys.localStorage.clear();
 Game = Screen.extend({
 
   /**
@@ -1100,6 +1100,13 @@ Game = Screen.extend({
    *
    */
   disableAds: function() {
+    if(this.parameters.ad.disabled) return false;
+
+    /**
+     *
+     *
+     *
+     */
     Data.set(false, properties.ad, true);
 
     /**
@@ -1166,29 +1173,29 @@ Game = Screen.extend({
      *
      *
      */
-    if(Finish.state.create) {
-      Finish.elements.decoration.y -= 100;
-      Finish.elements.pig.y -= 100;
-      Finish.elements.hide.y -= 100;
-      Finish.buttons.continue.y -= 100;
-      Finish.buttons.like.y -= 100;
-      Finish.buttons.share.y -= 100;
-      Finish.buttons.rate.y -= 100;
-      Finish.buttons.leaderboard.y -= 100;
-      Finish.buttons.achievements.y -= 100;
-      Finish.buttons.store.y -= 100;
-    } else {
-      Finish.elements.decoration.y -= 100;
-      Finish.elements.pig.y -= 100;
-      Finish.elements.hide.y -= 100;
-      Finish.buttons.continue.y -= 100;
-      Finish.buttons.like.y -= 100;
-      Finish.buttons.share.y -= 100;
-      Finish.buttons.rate.y -= 100;
-      Finish.buttons.leaderboard.y -= 100;
-      Finish.buttons.achievements.y -= 100;
-      Finish.buttons.store.y -= 100;
+    if(Finish.parent) {
+      Finish.buttons.noad.destroy();
+      Finish.buttons.sound.create().scale = 1.0;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    Finish.elements.rocket.y -= 100;
+    Finish.elements.decoration.y -= 100;
+    Finish.elements.pig.y -= 100;
+    Finish.elements.hide.y -= 100;
+    Finish.buttons.continue.y -= 100;
+    Finish.buttons.like.y -= 100;
+    Finish.buttons.share.y -= 100;
+    Finish.buttons.rate.y -= 100;
+    Finish.buttons.leaderboard.y -= 100;
+    Finish.buttons.achievements.y -= 100;
+    Finish.buttons.store.y -= 100;
+    Finish.buttons.noad.y -= 100;
+    Finish.buttons.sound.y -= 100;
 
     /**
      *
@@ -1202,6 +1209,22 @@ Game = Screen.extend({
       Character.shadow.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
       break;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    if(Credits.parent) {
+      this.buttons.credits.stopAllActions();
+      this.onCredits();
+      this.buttons.credits.stopAllActions();
+      this.buttons.credits.attr({
+        x: Camera.center.x,
+        y: 70
+      });
+    }
+
     /**
      *
      *
@@ -1772,6 +1795,13 @@ Game = Screen.extend({
        *
        */
       this.buttons.store.updateTextData();
+
+      /**
+       *
+       *
+       *
+       */
+      this.updateSoundState();
     }
   },
 

@@ -673,7 +673,8 @@ StoreContent = StoreBackground.extend({
     Character.release();
     Finish.elements.rocket.release();
 
-    cc.Node.prototype.unscheduleUpdate.call(Character);
+    Character.setAnimation(0, 'engine-finish', false);
+    //cc.Node.prototype.unscheduleUpdate.call(Character);
 
     if(b) {
 
@@ -683,7 +684,7 @@ StoreContent = StoreBackground.extend({
        *
        */
       Finish.elements.rocket.x = Camera.center.x - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].x;
-      Finish.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y;
+      Finish.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y + (Game.parameters.ad.disabled ? 0 : 100);
     }
 
     /**

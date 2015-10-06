@@ -1118,6 +1118,9 @@ Character = Spine.extend({
        */
       for(var i = 0; i < this.smokes.count().count; i++) {
         this.smokes.get(i).stopAllActions();
+        if(this.smokes.get(i).x < Game.parameters.camera.x - Camera.width / 4) {
+          this.smokes.get(i).destroy();
+        }
       }
     }
   },
@@ -1464,6 +1467,7 @@ Character = Spine.extend({
       Game.parameters.coins.current = 0;
     }
     this.parameters.generate.coinses = 0;
+    this.parameters.generate.nb = true;
 
     /**
      *
@@ -1471,6 +1475,7 @@ Character = Spine.extend({
      *
      */
     this.parameters.generate.parameters = {
+      start: 30,
       vector: {
         x: this.parameters.vector.x,
         y: this.parameters.vector.y,
@@ -1570,22 +1575,7 @@ Character = Spine.extend({
        *
        *
        */
-      /*if(!bonus) {
-
-        /**
-         *
-         *
-         *
-         *
-        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
-      }*/
-
-      /**
-       *
-       *
-       *
-       */
-      for(var i = 0; i < 15; i++) {
+      for(var i = 0; i < 15 + this.parameters.generate.parameters.start; i++) {
 
         /**
          *
@@ -1602,6 +1592,13 @@ Character = Spine.extend({
         this.parameters.generate.x += this.parameters.generate.position.x;
         this.parameters.generate.y += this.parameters.generate.position.y;
       }
+
+      /**
+       *
+       *
+       *
+       */
+      this.parameters.generate.parameters.start = 0;
 
       /**
        *
@@ -1690,11 +1687,11 @@ Character = Spine.extend({
          *
          *
          */
-        if(!this.parameters.generate.bonus) {
+        if(this.parameters.generate.nb && !this.parameters.generate.bonus) {
           if(Game.parameters.tutorial.enable && Counter.values.scores.current >= 3) {
             this.parameters.generate.bonus = 4;
           } else {
-            this.parameters.generate.bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
+            this.parameters.generate.bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && probably(1)) ? 4 : 0;
           }
         }
 
@@ -1718,39 +1715,15 @@ Character = Spine.extend({
        *
        *
        */
-      if(Game.elements.points.bonus.length >= 4) {
-        if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
 
-          /**
-           *
-           *
-           *
-           */
-          Game.elements.points.bonus = [];
-
-          /**
-           *
-           *
-           *
-           */
-          Game.elements.points.animator.destroy();
-        }
-      } else {
-
-        /**
-         *
-         *
-         *
-         */
-        Game.elements.points.animator.destroy();
-      }
 
       /**
        *
        *
        *
        */
-      if(Game.elements.points.bonus.length >= 4) {
+      if(this.parameters.generate.nb && Game.elements.points.bonus.length >= 4) {
+        this.parameters.generate.nb = false;
 
         /**
          *
@@ -2014,7 +1987,7 @@ Character = Spine.extend({
      *
      *
      */
-    if(Game.elements.points.bonus.length) {
+    if(Game.elements.points.bonus.length > 3) {
 
       /**
        *

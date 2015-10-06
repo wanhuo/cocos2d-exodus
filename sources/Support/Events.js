@@ -60,3 +60,26 @@ Events.onPause = function() {
 
 Events.onResume = function() {
 };
+
+/**
+ *
+ *
+ *
+ */
+Events.onRestorePurchaseSuccess = function() {
+  Modal.hide();
+  Modal.message(Language.get('credits-title-23').title, Language.get('restore-purchases-successful-message').title);
+};
+
+Events.onRestorePurchaseError = function() {
+  Modal.hide();
+  Modal.message(Language.get('credits-title-23').title, Language.get('restore-purchases-error-message').title);
+};
+
+Events.onPurchaseRestored = function(id) {
+  switch(id) {
+    case 'com.ketchapp.exodus.remove.ads':
+    Game.disableAds();
+    break;
+  }
+};
