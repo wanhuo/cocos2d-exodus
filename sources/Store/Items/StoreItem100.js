@@ -83,7 +83,7 @@ StoreItem100 = Spine.extend({
      *
      */
     this.x = Camera.center.x + 50;
-    this.y = Camera.center.y - 150;
+    this.y = Camera.center.y - 50;
 
     /**
      *

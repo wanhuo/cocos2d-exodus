@@ -229,7 +229,15 @@ Character = Spine.extend({
         handler: false,
         time: 5300
       },
-      saved: false
+      saved: false,
+      generate: {
+        timeout: false,
+        parameters: false,
+        x: 0,
+        y: 0,
+        coins: false,
+        coinses: 0
+      }
     };
 
     /**
@@ -539,7 +547,7 @@ Character = Spine.extend({
      *
      */
     this.shadow.x = this.x;
-    this.shadow.y = 340;
+    this.shadow.y = Game.parameters.camera.center - 110;
 
     /**
      *
@@ -850,22 +858,6 @@ Character = Spine.extend({
        *
        */
       Game.tutorial.hand.destroy();
-
-      /**
-       *
-       *
-       *
-       */
-      Plugins.heyzap.show(Plugins.ad.types.banner, {
-
-        /**
-         *
-         *
-         *
-         */
-        success: function() {
-        }
-      });
 
       /**
        *
@@ -1316,14 +1308,14 @@ Character = Spine.extend({
    *
    *
    */
-  updatePosition: function(parameters, scale) {
+  updatePosition: function(parameters, scale, undo) {
 
     /**
      *
      * 
      *
      */
-    var time = (1.0 / 60.0) * this.parameters.time;
+    var time = (1.0 / 60.0) * (undo || this.parameters.time);
 
     /**
      *
@@ -1338,15 +1330,15 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.x < parameters.speed.max.x) {
-        parameters.speed.x += parameters.speed.increase.x * this.parameters.time;
+        parameters.speed.x += parameters.speed.increase.x * (undo || this.parameters.time);
 
         /**
          *
          * 
          *
          */
-        parameters.speed.increase.x += parameters.speed.increase.increase.x * this.parameters.time;
-        parameters.speed.increase.y += parameters.speed.increase.increase.y * this.parameters.time;
+        parameters.speed.increase.x += parameters.speed.increase.increase.x * (undo || this.parameters.time);
+        parameters.speed.increase.y += parameters.speed.increase.increase.y * (undo || this.parameters.time);
       }
     }
 
@@ -1363,7 +1355,7 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.y < parameters.speed.max.y) {
-        parameters.speed.y += this.parameters.time * parameters.speed.increase.y * max(1, Creatures.current[0] / 10);
+        parameters.speed.y += (undo || this.parameters.time) * parameters.speed.increase.y * max(1, Creatures.current[0] / 10);
       } else {
         parameters.speed.state = false;
       }
@@ -1375,7 +1367,7 @@ Character = Spine.extend({
        *
        */
       if(parameters.speed.x > parameters.speed.min.x) {
-        parameters.speed.x -= parameters.speed.decrease.x * this.parameters.time;
+        parameters.speed.x -= parameters.speed.decrease.x * (undo || this.parameters.time);
       } else {
         parameters.speed.state = false;
       }
@@ -1393,12 +1385,12 @@ Character = Spine.extend({
          *
          */
         if(scale) {
-          parameters.speed.y -= parameters.speed.decrease.max.y * scale * this.parameters.time;
+          parameters.speed.y -= parameters.speed.decrease.max.y * scale * (undo || this.parameters.time);
         } else {
           if(this.parameters.active) {
-            parameters.speed.y -= parameters.speed.decrease.y * this.parameters.time;
+            parameters.speed.y -= parameters.speed.decrease.y * (undo || this.parameters.time);
           } else {
-            parameters.speed.y -= parameters.speed.decrease.max.y * this.parameters.time;
+            parameters.speed.y -= parameters.speed.decrease.max.y * (undo || this.parameters.time);
           }
         }
       } else {
@@ -1411,7 +1403,7 @@ Character = Spine.extend({
        *
        */
       if(this.parameters.state === this.parameters.states.loss) {
-        if(parameters.speed.x > 0) parameters.speed.x -= 5 * scale * this.parameters.time;
+        if(parameters.speed.x > 0) parameters.speed.x -= 5 * scale * (undo || this.parameters.time);
       }
     }
 
@@ -1439,79 +1431,30 @@ Character = Spine.extend({
    *
    *
    */
-  updateTraectory: function() {
+  onUpdateTraectoryStart: function() {
+    this.onUpdateTraectoryFinish();
 
     /**
      *
      *
      *
      */
-    Game.elements.points.bonus = [];
-
-    /**
-     *
-     *
-     *
-     */
-    Game.elements.points.animator.destroy();
-
-    /**
-     *
-     * TODO: We have a performance issue here.
-     *
-     */
-    Game.elements.points.clear(/*true*/false);
+    Game.elements.points.clear();
 
     /**
      *
      * 
      *
      */
-    var bonus = 0;
+    this.parameters.generate.bonus = 0;
 
     /**
      *
      * 
      *
      */
-    var capacity = 16;
-
-    /**
-     *
-     * 
-     *
-     */
-    var count = -capacity / 2;
-
-    /**
-     *
-     * 
-     *
-     */
-    var time = 0.1;
-
-    /**
-     *
-     * 
-     *
-     */
-    var x = this.x;
-    var y = this.y;
-
-    /**
-     *
-     * 
-     *
-     */
-    var coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;
-    var coinses = 0;
-
-    /**
-     *
-     * 
-     *
-     */
-    if(coins) {
+    this.parameters.generate.coins = Game.parameters.coins.current >= Game.parameters.coins.repeat;
+    if(this.parameters.generate.coins) {
 
       /**
        *
@@ -1520,32 +1463,106 @@ Character = Spine.extend({
        */
       Game.parameters.coins.current = 0;
     }
-
-    /**
-     *
-     * TODO: Maybe here is a bottleneck.
-     *
-     */
-    var parameters = cc.clone(this.parameters);
+    this.parameters.generate.coinses = 0;
 
     /**
      *
      *
      *
      */
-    while(y > 0) {
+    this.parameters.generate.parameters = {
+      vector: {
+        x: this.parameters.vector.x,
+        y: this.parameters.vector.y,
+        setup: {
+          x: this.parameters.vector.setup.x,
+          y: this.parameters.vector.setup.y
+        }
+      },
+      speed: {
+        state: this.parameters.speed.state,
+        x: this.parameters.speed.x,
+        y: this.parameters.speed.y,
+        maximum: {
+          x: this.parameters.speed.maximum.x,
+          y: this.parameters.speed.maximum.y
+        },
+        max: {
+          x: this.parameters.speed.max.x,
+          y: this.parameters.speed.max.y,
+          increase: {
+            x: this.parameters.speed.max.increase.x,
+            y: this.parameters.speed.max.increase.y
+          },
+          setup: {
+            x: this.parameters.speed.max.setup.x,
+            y: this.parameters.speed.max.setup.y
+          }
+        },
+        min: {
+          x: this.parameters.speed.min.x,
+          y: this.parameters.speed.min.y
+        },
+        increase: {
+          x: this.parameters.speed.increase.x,
+          y: this.parameters.speed.increase.y,
+          increase: {
+            x: this.parameters.speed.increase.increase.x,
+            y: this.parameters.speed.increase.increase.y
+          }
+        },
+        decrease: {
+          x: this.parameters.speed.decrease.x,
+          y: this.parameters.speed.decrease.y,
+          max: {
+            x: this.parameters.speed.decrease.max.x,
+            y: this.parameters.speed.decrease.max.y,
+          }
+        },
+        setup: {
+          x: this.parameters.speed.setup.x,
+          y: this.parameters.speed.setup.y
+        }
+      }    };
+
+    this.parameters.generate.x = this.x;
+    this.parameters.generate.y = this.y;
+  },
+  onUpdateTraectoryFinish: function() {
+
+    /**
+     *
+     *
+     *
+     */
+    if(this.parameters.generate.timeout) {
+      clearTimeout(this.parameters.generate.timeout);
 
       /**
        *
        *
        *
        */
-      if(!bonus) {
-        if(Game.parameters.tutorial.enable && Counter.values.scores.current >= 3) {
-          bonus = 4;
-        } else {
-          bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
-        }
+      this.parameters.generate.timeout = false;
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
+  updateTraectory: function() {
+    this.onUpdateTraectoryStart();
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.generate.timeout = setInterval(function() {
+      if(this.parameters.state !== this.parameters.states.game) {
+        return this.onUpdateTraectoryFinish();
       }
 
       /**
@@ -1553,28 +1570,53 @@ Character = Spine.extend({
        *
        *
        */
-      var position = this.updatePosition(parameters);
+      /*if(!bonus) {
+
+        /**
+         *
+         *
+         *
+         *
+        bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
+      }*/
 
       /**
        *
        *
        *
        */
-      x += position.x;
-      y += position.y;
-
-      /**
-       *
-       *
-       *
-       */
-      if(count > 0 && count % capacity === 0) {
+      for(var i = 0; i < 15; i++) {
 
         /**
          *
          *
          *
          */
+        this.parameters.generate.position = this.updatePosition(this.parameters.generate.parameters, false, 1.0);
+
+        /**
+         *
+         *
+         *
+         */
+        this.parameters.generate.x += this.parameters.generate.position.x;
+        this.parameters.generate.y += this.parameters.generate.position.y;
+      }
+
+      /**
+       *
+       *
+       *
+       */
+      var x = this.parameters.generate.x;
+      var y = this.parameters.generate.y;
+
+      /**
+       *
+       *
+       *
+       */
+      if(y > 0) {
         var element = Game.elements.points.create();
 
         /**
@@ -1590,14 +1632,15 @@ Character = Spine.extend({
          *
          *
          */
-        if(coins) {
+        if(this.parameters.generate.coins) {
 
           /**
            *
            *
            *
            */
-          coinses++;
+          this.parameters.generate.coinses++;
+          this.parameters.generate.coins = this.parameters.generate.coinses < Game.parameters.coins.count;
 
           /**
            *
@@ -1605,21 +1648,14 @@ Character = Spine.extend({
            *
            */
           element.setCurrentFrameIndex(2);
+        } else if(this.parameters.generate.bonus > 0) {
 
           /**
            *
            *
            *
            */
-          coins = coinses < Game.parameters.coins.count;
-        } else if(bonus > 0) {
-
-          /**
-           *
-           *
-           *
-           */
-          bonus--;
+          this.parameters.generate.bonus--;
 
           /**
            *
@@ -1641,23 +1677,25 @@ Character = Spine.extend({
          *
          *
          */
-        if(x < Game.parameters.camera.x + Game.parameters.camera.width * 2) {
-
-          /**
-           *
-           *
-           *
-           */
-          element.runAction(
-            cc.Sequence.create(
-              cc.DelayTime.create(time),
-              cc.EaseSineInOut.create(
-                cc.ScaleTo.create(0.5, 2.0)
-              )
+        element.runAction(
+          cc.Sequence.create(
+            cc.EaseSineInOut.create(
+              cc.ScaleTo.create(0.2, 2.0)
             )
-          );
-        } else {
-          element.scale = 2;
+          )
+        );
+
+        /**
+         *
+         *
+         *
+         */
+        if(!this.parameters.generate.bonus) {
+          if(Game.parameters.tutorial.enable && Counter.values.scores.current >= 3) {
+            this.parameters.generate.bonus = 4;
+          } else {
+            this.parameters.generate.bonus = (Game.backgrounds.d.scale <= Game.parameters.scale.min && x > Game.parameters.camera.x + Game.parameters.camera.width && (probably(1) || Game.parameters.tutorial.enable)) ? 4 : 0;
+          }
         }
 
         /**
@@ -1665,7 +1703,14 @@ Character = Spine.extend({
          *
          *
          */
-        time += 0.05;
+      } else {
+
+        /**
+         *
+         *
+         *
+         */
+        this.onUpdateTraectoryFinish();
       }
 
       /**
@@ -1673,23 +1718,24 @@ Character = Spine.extend({
        *
        *
        */
-      count++;
-    }
+      if(Game.elements.points.bonus.length >= 4) {
+        if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
 
-    /**
-     *
-     *
-     *
-     */
-    if(Game.elements.points.bonus.length >= 4) {
-      if(Game.elements.points.bonus[3].y < Game.elements.points.bonus[0].y) {
+          /**
+           *
+           *
+           *
+           */
+          Game.elements.points.bonus = [];
 
-        /**
-         *
-         *
-         *
-         */
-        Game.elements.points.bonus = [];
+          /**
+           *
+           *
+           *
+           */
+          Game.elements.points.animator.destroy();
+        }
+      } else {
 
         /**
          *
@@ -1698,62 +1744,54 @@ Character = Spine.extend({
          */
         Game.elements.points.animator.destroy();
       }
-    } else {
 
       /**
        *
        *
        *
        */
-      Game.elements.points.animator.destroy();
-    }
+      if(Game.elements.points.bonus.length >= 4) {
 
-    /**
-     *
-     *
-     *
-     */
-    if(Game.elements.points.bonus.length >= 4) {
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.points.animator.create().reset();
 
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.points.animator.create().reset();
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.points.animator.x = Game.elements.points.bonus[0].x;
+        Game.elements.points.animator.y = Game.elements.points.bonus[0].y;
 
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.points.animator.x = Game.elements.points.bonus[0].x;
-      Game.elements.points.animator.y = Game.elements.points.bonus[0].y;
-
-      /**
-       *
-       *
-       *
-       */
-      Game.elements.points.animator.runAction(
-        cc.RepeatForever.create(
-          cc.Sequence.create(
-            cc.BezierTo.create(0.2,
-            [
-              {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y},
-              {x: Game.elements.points.bonus[2].x, y: Game.elements.points.bonus[2].y},
-              {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y}
-            ]),
-            cc.BezierTo.create(0.2,
-            [
-              {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y},
-              {x: Game.elements.points.bonus[1].x, y: Game.elements.points.bonus[1].y},
-              {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y}
-            ])
+        /**
+         *
+         *
+         *
+         */
+        Game.elements.points.animator.runAction(
+          cc.RepeatForever.create(
+            cc.Sequence.create(
+              cc.BezierTo.create(0.2,
+              [
+                {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y},
+                {x: Game.elements.points.bonus[2].x, y: Game.elements.points.bonus[2].y},
+                {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y}
+              ]),
+              cc.BezierTo.create(0.2,
+              [
+                {x: Game.elements.points.bonus[3].x, y: Game.elements.points.bonus[3].y},
+                {x: Game.elements.points.bonus[1].x, y: Game.elements.points.bonus[1].y},
+                {x: Game.elements.points.bonus[0].x, y: Game.elements.points.bonus[0].y}
+              ])
+            )
           )
-        )
-      );
-    }
+        );
+      }
+    }.bind(this), 100);
   },
 
   /**
@@ -2402,14 +2440,14 @@ Character = Spine.extend({
             cc.EaseSineInOut.create(
               cc.MoveBy.create(0.2, {
                 x: 0,
-                y: 180
+                y: 180 + (Game.parameters.ad.disabled ? 0 : 100)
               })
             ),
             cc.DelayTime.create(0.5),
             cc.EaseSineInOut.create(
               cc.MoveBy.create(0.2, {
                 x: 0,
-                y: -180
+                y: -180 + (Game.parameters.ad.disabled ? 0 : 100)
               })
             ),
             cc.CallFunc.create(Game.stegosaurus.destroy, Game.stegosaurus)

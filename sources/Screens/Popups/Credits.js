@@ -49,7 +49,7 @@ Credits = Popup.extend({
       },
       height: 800,
       scroll: {
-        padding: 50
+        padding: 150
       }
     };
 
@@ -199,15 +199,15 @@ Credits = Popup.extend({
      */
     this.elements.decorations[0].create().attr({
       x: 120,
-      y: Camera.height - 900
+      y: Camera.height - 700
     });
     this.elements.decorations[1].create().attr({
       x: Camera.width - 150,
-      y: Camera.height - 1000
+      y: Camera.height - 800
     });
     this.elements.decorations[2].create().attr({
       x: 120,
-      y: Camera.height - 1400
+      y: Camera.height - 1200
     });
 
     /**

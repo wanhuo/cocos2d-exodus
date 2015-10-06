@@ -119,7 +119,7 @@ Store = Popup.extend({
     });
     this.elements.decorations[0].create().attr({
       x: Camera.center.x,
-      y: Camera.height - 300
+      y: Camera.height - 250
     });
     this.elements.coins.create().attr({
       x: Camera.width - 120,
@@ -133,11 +133,11 @@ Store = Popup.extend({
      */
     this.buttons.rockets.create().attr({
       x: Camera.center.x - 150,
-      y: Camera.height - 300
+      y: Camera.height - 250
     });
     this.buttons.creatures.create().attr({
       x: Camera.center.x,
-      y: Camera.height - 300
+      y: Camera.height - 250
     });
     /*this.buttons.bonuses.create().attr({
       x: Camera.center.x + 150,
@@ -149,7 +149,7 @@ Store = Popup.extend({
     });*/
     this.buttons.coins.create().attr({
       x: Camera.center.x + 150,
-      y: Camera.height - 300
+      y: Camera.height - 250
     });
     this.buttons.back.create().attr({
       x: 65,

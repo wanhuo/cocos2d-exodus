@@ -52,6 +52,7 @@ Points = Manager.extend({
    *
    */
   clear: function(animated) {
+    this.bonus = [];
 
     /**
      *

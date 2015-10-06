@@ -137,7 +137,7 @@ Creature = Spine.extend({
      *
      */
     this.x = this.parameters.position ? 0 : Camera.width
-    this.y = 340;
+    this.y = Game.parameters.camera.center - 110;
 
     /**
      *

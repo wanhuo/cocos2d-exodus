@@ -159,15 +159,15 @@ Finish = Popup.extend({
     });
     this.elements.decoration.create().attr({
       x: Camera.center.x + 10,
-      y: 40
+      y: 40 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.elements.pig.create().attr({
       x: Camera.center.x,
-      y: 130 - this.elements.pig.height / 2
+      y: 130 - this.elements.pig.height / 2 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.elements.hide.create().attr({
       x: Camera.center.x,
-      y: 130 - this.elements.pig.height / 2
+      y: 130 - this.elements.pig.height / 2 + (Game.parameters.ad.disabled ? 0 : 100)
     });
 
     /**
@@ -177,35 +177,35 @@ Finish = Popup.extend({
      */
     this.buttons.coins.create().attr({
       x: Camera.center.x,
-      y: 320
+      y: 420
     });
     this.buttons.continue.attr({
       x: Camera.center.x,
-      y: Camera.center.y - 30
+      y: Camera.center.y - 30 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.like.attr({
       x: Camera.center.x - 275,
-      y: Camera.center.y - 230
+      y: Camera.center.y - 230 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.rate.attr({
       x: Camera.center.x - 165,
-      y: Camera.center.y - 270
+      y: Camera.center.y - 270 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.share.attr({
       x: Camera.center.x - 55,
-      y: Camera.center.y - 290
+      y: Camera.center.y - 290 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.leaderboard.attr({
       x: Camera.center.x + 55,
-      y: Camera.center.y - 290
+      y: Camera.center.y - 290 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.achievements.attr({
       x: Camera.center.x + 165,
-      y: Camera.center.y - 270
+      y: Camera.center.y - 270 + (Game.parameters.ad.disabled ? 0 : 100)
     });
     this.buttons.store.attr({
       x: Camera.center.x + 275,
-      y: Camera.center.y - 230
+      y: Camera.center.y - 230 + (Game.parameters.ad.disabled ? 0 : 100)
     });
 
     /**
@@ -739,7 +739,7 @@ Finish = Popup.extend({
      *
      */
     this.elements.rocket.x = Camera.center.x - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].x - 500;
-    this.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500;
+    this.elements.rocket.y = Camera.center.y - parameters.character.positions.finish[Character.parameters.skins.indexOf(Character.parameters.skin)].y - 500 + (Game.parameters.ad.disabled ? 0 : 100);
 
     /**
      *

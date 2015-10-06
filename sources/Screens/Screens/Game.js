@@ -104,7 +104,7 @@ Game = Screen.extend({
         }
       },
       camera: {
-        center: 450,
+        center: 450 + (Data.get(false, properties.ad) ? 0 : 100),
         x: 0,
         y: 0,
         width: Camera.width,
@@ -121,7 +121,7 @@ Game = Screen.extend({
         running: false
       },
       ad: {
-        y: 0,
+        disabled: Data.get(false, properties.ad),
         interstitial: {
           current: 0,
           times: 5
@@ -234,7 +234,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: 190
+          y: 200 + (this.parameters.ad.disabled ? 0 : 100)
         }
       )
     );
@@ -247,7 +247,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: 140
+          y: 150 + (this.parameters.ad.disabled ? 0 : 100)
         }
       )
     );
@@ -261,7 +261,7 @@ Game = Screen.extend({
         },
         {
           x: 0,
-          y: 10
+          y: -50 + (this.parameters.ad.disabled ? 0 : 100)
         }
       )
     );
@@ -339,7 +339,7 @@ Game = Screen.extend({
      */
     this.tutorial.hand.attr({
       x: Camera.center.x / 0.75,
-      y: Camera.center.y / 2
+      y: Camera.center.y / 2 + (this.parameters.ad.disabled ? 0 : 100)
     });
     this.tutorial.hand.needScheduleUpdate = true;
 
@@ -456,13 +456,15 @@ Game = Screen.extend({
       y: Camera.center.y + 110
     });
     this.buttons.credits.create().attr({
-      x: Camera.center.x + 42,
-      y: 70
+      x: Camera.center.x + (this.parameters.ad.disabled ? 0 : 42),
+      y: 70 + (this.parameters.ad.disabled ? 0 : 100)
     });
-    this.buttons.noad.create().attr({
-      x: Camera.center.x - 42,
-      y: 70
-    });
+    if(!this.parameters.ad.disabled) {
+      this.buttons.noad.create().attr({
+        x: Camera.center.x - 42,
+        y: 170
+      });
+    }
 
     /**
      *
@@ -631,15 +633,6 @@ Game = Screen.extend({
      *
      */
     this.updateSoundState();
-
-    /**
-     *
-     *
-     *
-     */
-    if(Data.get(false, properties.ad)) {
-      this.disableAds();
-    }
   },
 
   /**
@@ -910,7 +903,7 @@ Game = Screen.extend({
         cc.EaseSineInOut.create(
           cc.MoveBy.create(0.5, {
             x: 0,
-            y: Credits.parameters.height
+            y: Credits.parameters.height - (this.parameters.ad.disabled ? 0 : 100)
           })
         )
       );
@@ -919,7 +912,7 @@ Game = Screen.extend({
         cc.EaseSineInOut.create(
           cc.MoveBy.create(0.5, {
             x: 0,
-            y: -Credits.parameters.height
+            y: -Credits.parameters.height + (this.parameters.ad.disabled ? 0 : 100)
           })
         )
       );
@@ -1107,7 +1100,7 @@ Game = Screen.extend({
    *
    */
   disableAds: function() {
-    Data.set(false, properties.ad, true);
+    //Data.set(false, properties.ad, true);
 
     /**
      *
@@ -1118,6 +1111,90 @@ Game = Screen.extend({
     this.buttons.credits.attr({
       x: Camera.center.x
     });
+
+    /**
+     *
+     *
+     *
+     */
+    Plugins.heyzap.hide(Plugins.ad.types.banner);
+
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.camera.center -= 100;
+
+    /**
+     *
+     *
+     *
+     */
+    this.tutorial.hand.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.ground.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.parallaxes.trees1.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.parallaxes.trees2.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.parallaxes.trees3.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.parallaxes.mountains1.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.parallaxes.mountains2.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+
+    /**
+     *
+     *
+     *
+     */
+    this.elements.water1.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.water2.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+    this.elements.water3.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+
+    /**
+     *
+     *
+     *
+     */
+    this.buttons.credits.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+
+    /**
+     *
+     *
+     *
+     */
+    Finish.elements.decoration.y -= 100;
+    Finish.elements.pig.y -= 100;
+    Finish.elements.hide.y -= 100;
+    Finish.buttons.continue.y -= 100;
+    Finish.buttons.like.y -= 100;
+    Finish.buttons.share.y -= 100;
+    Finish.buttons.rate.y -= 100;
+    Finish.buttons.leaderboard.y -= 100;
+    Finish.buttons.achievements.y -= 100;
+    Finish.buttons.store.y -= 100;
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this.parameters.state) {
+      case this.parameters.states.prepare:
+      case this.parameters.states.start:
+      Character.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+      Character.shadow.runAction(cc.EaseSineInOut.create(cc.MoveBy.create(0.5, {x: 0, y: -100})));
+      break;
+    }
+    /**
+     *
+     *
+     *
+     */
+    this.parameters.ad.disabled = true;
   },
 
   /**
@@ -1197,7 +1274,16 @@ Game = Screen.extend({
      *
      *
      */
-    Plugins.ketchapp.show(Plugins.ad.types.interstitial);
+    Plugins.heyzap.show(Plugins.ad.types.banner, {
+
+      /**
+       *
+       *
+       *
+       */
+      success: function() {
+      }
+    });
   },
   onAnimation: function() {
 
@@ -1613,22 +1699,6 @@ Game = Screen.extend({
        *
        */
       this.h.pauseSchedulerAndActions();
-
-      /**
-       *
-       *
-       *
-       */
-      Plugins.heyzap.hide(Plugins.ad.types.banner, {
-
-        /**
-         *
-         *
-         *
-         */
-        success: function() {
-        }
-      });
     }
   },
   resumeSchedulerAndActions: function() {
@@ -1689,32 +1759,6 @@ Game = Screen.extend({
        *
        */
       this.buttons.store.updateTextData();
-
-      /**
-       *
-       *
-       *
-       */
-      switch(this.parameters.state) {
-        case this.parameters.states.game:
-
-        /**
-         *
-         *
-         *
-         */
-        Plugins.heyzap.show(Plugins.ad.types.banner, {
-
-          /**
-           *
-           *
-           *
-           */
-          success: function() {
-          }
-        });
-        break;
-      }
     }
   },
 

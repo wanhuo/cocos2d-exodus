@@ -129,7 +129,7 @@ Gift = Spine.extend({
      *
      */
     this.x = Camera.center.x;
-    this.y = 150;
+    this.y = 150 + (Game.parameters.ad.disabled ? 0 : 100);
 
     /**
      *

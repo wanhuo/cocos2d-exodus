@@ -37,7 +37,7 @@ Ground = Parallax.extend({
       },
       {
         x: random(0, Camera.width),
-        y: 160
+        y: 160 + (Game.parameters.ad.disabled ? 0 : 100)
       },
       {
         x: 0.5,

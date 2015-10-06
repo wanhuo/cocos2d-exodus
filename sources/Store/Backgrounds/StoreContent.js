@@ -103,7 +103,7 @@ StoreContent = StoreBackground.extend({
      */
     this.elements.price.create().attr({
       x: 130,
-      y: Camera.height - 625 + (this.text.description.width < 100 ? 100 : 0)
+      y: Camera.height - 525 + (this.text.description.width < 100 ? 100 : 0)
     });
 
     /**
@@ -113,11 +113,11 @@ StoreContent = StoreBackground.extend({
      */
     this.buttons.purchase.create().attr({
       x: Camera.center.x,
-      y: 100
+      y: 200
     });
     this.buttons.select.create().attr({
       x: Camera.center.x,
-      y: 100
+      y: 200
     });
 
     /**
@@ -127,11 +127,11 @@ StoreContent = StoreBackground.extend({
      */
     this.text.title.create().attr({
       x: 50 - 8,
-      y: Camera.height - 450
+      y: Camera.height - 350
     });
     this.text.description.create().attr({
       x: 50,
-      y: Camera.height - 550
+      y: Camera.height - 450
     });
     this.text.price.create().attr({
       x: this.elements.price.width / 2,
@@ -147,7 +147,7 @@ StoreContent = StoreBackground.extend({
     });
     this.text.selected.create().attr({
       x: Camera.center.x,
-      y: 100
+      y: 200
     });
 
     /**
@@ -310,7 +310,7 @@ StoreContent = StoreBackground.extend({
        */
       this.elements.count.create().attr({
         x: Camera.center.x + 180,
-        y: Camera.center.y - 380
+        y: Camera.center.y - 280
       });
 
       /**

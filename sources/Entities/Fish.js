@@ -131,7 +131,7 @@ Fish = Spine.extend({
      *
      */
     this.x = (this.parameters.position ? random(Game.parameters.camera.x, Game.parameters.camera.x + Game.parameters.camera.width / 2) : random(Game.parameters.camera.x + Game.parameters.camera.width / 2, Game.parameters.camera.x + Game.parameters.camera.width));
-    this.y = 130;
+    this.y = 130 + (Game.parameters.ad.disabled ? 0 : 100);
 
     /**
      *

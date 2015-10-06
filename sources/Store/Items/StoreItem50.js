@@ -105,7 +105,7 @@ StoreItem50 = Entity.extend({
      *
      */
     this.x = Camera.center.x;
-    this.y = Camera.center.y - 200;
+    this.y = Camera.center.y - 100 - (Game.parameters.ad.disabled ? 100 : 0);
 
     /**
      *
