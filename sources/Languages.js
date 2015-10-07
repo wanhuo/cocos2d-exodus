@@ -133,7 +133,7 @@ var languages = {
   'credits-title-1': [
     {title: 'Thanks for playing!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Спасибо за игру!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
-    {title: 'Obrigado por jogares!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
+    {title: 'Obrigado por jogar!', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]},
     {title: 'Merci d\'avoir joué !', font: 'Impact', size: 52, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-2': [
@@ -163,7 +163,7 @@ var languages = {
   'credits-title-6': [
     {title: 'You can get support in social\nnetworks or send us an email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Вы можете получить поддержку в социальных\nсетях или написав нам письмо.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
-    {title: 'Podes pedir suporte nas redes\nsociais ou enviando-nos um email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
+    {title: 'Pode pedir suporte nas redes\nsociais ou enviando-nos um email.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]},
     {title: 'Vous pouvez contacter le support\nvia les réseaux sociaux ou par mail.', font: 'Impact', size: 32, dimensions: false, color: [255, 255, 255]}
   ],
   'credits-title-7': [
