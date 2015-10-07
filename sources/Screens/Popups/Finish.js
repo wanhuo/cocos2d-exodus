@@ -757,13 +757,6 @@ Finish = Popup.extend({
      */
     Counter.gift.destroy();
     Counter.video.destroy();
-
-    /**
-     *
-     *
-     *
-     */
-    Counter.clear();
   },
 
   /**

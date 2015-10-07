@@ -1515,6 +1515,13 @@ Game = Screen.extend({
              */
             this.changeState(this.parameters.states.start);
           }
+
+          /**
+           *
+           *
+           *
+           */
+          Counter.clear();
         }.bind(this))
       )
     );
