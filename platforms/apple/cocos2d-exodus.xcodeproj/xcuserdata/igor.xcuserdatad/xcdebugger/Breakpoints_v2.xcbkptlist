@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../cocos2d/cocos/scripting/js-bindings/manual/ScriptingCore.cpp"
-            timestampString = "466047810.850171"
+            timestampString = "466105554.856759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1526"
             endingLineNumber = "1526"
-            landmarkName = "SimpleRunLoop::update(float dt)"
+            landmarkName = "ScriptingCore::sendEvent(ScriptEvent* evt)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

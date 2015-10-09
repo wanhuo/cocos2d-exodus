@@ -148,6 +148,10 @@ var resources = {
       texture: 'resource/Graphics/explanation.png',
       circle: 'resource/Graphics/explanation-circle.png'
     },
+    missile: {
+      texture: 'resource/Graphics/missile.png',
+      status: 'resource/Graphics/missile-status.png'
+    },
     meteorit: 'resource/Graphics/meteorit.png',
     buttons: {
       play: 'resource/Graphics/play-button.png',

@@ -2086,6 +2086,20 @@ Character = Spine.extend({
    *
    *
    */
+  updateMissiles: function() {
+    for(var i = 0; i < Game.elements.missiles.count().count; i++) {
+      var point = Game.elements.missiles.get(i);
+      if(abs(this.x - point.x) <= this.parameters.collision.x && abs(this.y - point.y) <= this.parameters.collision.y) {
+        this.changeState(this.parameters.states.loss);
+      }
+    }
+  },
+
+  /**
+   *
+   *
+   *
+   */
   updateShadow: function(time) {
 
     /**
@@ -2321,6 +2335,7 @@ Character = Spine.extend({
        *
        */
       this.updateStatus(time);
+      this.updateMissiles(time);
       break;
       case this.parameters.states.loss:
 

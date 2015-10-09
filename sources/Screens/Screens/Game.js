@@ -274,6 +274,7 @@ Game = Screen.extend({
     this.elements.people = new Manager(10, new Human, this.backgrounds.game);
     this.elements.points = new Points;
     this.elements.coins = new Manager(10, new Coin, this.backgrounds.c, true);
+    this.elements.missiles = new Manager(10, new Missile, this.backgrounds.game, true);
     this.elements.name = new Name;
     this.elements.moon = new Moon;
     this.elements.brume1 = new Brume(0);
@@ -1462,6 +1463,7 @@ Game = Screen.extend({
     this.elements.points.clear();
     this.elements.fishes.clear();
     this.elements.baloons.clear();
+    this.elements.missiles.clear();
 
     /**
      *
@@ -1847,6 +1849,13 @@ Game = Screen.extend({
       this.onTutorial();
       break;
     }
+
+    /**
+     *
+     *
+     *
+     */
+    cc.sys.garbageCollect();
   },
 
   /**
@@ -1955,6 +1964,25 @@ Game = Screen.extend({
     if(this.elements.fishes.count().count < this.elements.fishes.count().capacity) {
       if(probably(50)) {
         this.elements.fishes.create();
+      }
+    }
+  },
+
+  /**
+   *
+   * 
+   *
+   */
+  updateMissiles: function(time) {
+
+    /**
+     *
+     *
+     *
+     */
+    if(!this.parameters.tutorial.enabled && Counter.values.scores.current >= 3) {
+      if(this.elements.missiles.count().count < 1) {
+        this.elements.missiles.create();
       }
     }
   },
@@ -2093,13 +2121,8 @@ Game = Screen.extend({
      * 
      *
      */
+    this.updateMissiles(time);
     this.updateBaloons(time);
-
-    /**
-     *
-     * 
-     *
-     */
     this.updateFishes(time);
 
     /**
