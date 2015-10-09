@@ -2335,7 +2335,7 @@ Character = Spine.extend({
        *
        */
       this.updateStatus(time);
-      this.updateMissiles(time);
+      //this.updateMissiles(time);
       break;
       case this.parameters.states.loss:
 

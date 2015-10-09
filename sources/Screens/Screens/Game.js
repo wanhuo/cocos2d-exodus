@@ -1038,7 +1038,7 @@ Game = Screen.extend({
      *
      *
      */
-    text.format(Counter.values.scores.best);
+    text.format(Counter.values.scores.current);
 
     /**
      *
@@ -2121,7 +2121,7 @@ Game = Screen.extend({
      * 
      *
      */
-    this.updateMissiles(time);
+    //this.updateMissiles(time);
     this.updateBaloons(time);
     this.updateFishes(time);
 

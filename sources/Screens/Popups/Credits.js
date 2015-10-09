@@ -545,6 +545,7 @@ Credits = Popup.extend({
      *
      *
      */
+    Credits.backgrounds.scroll.getInnerContainer().y = this.backgrounds.scroll.d;
     Credits.backgrounds.scroll.getInnerContainer().runAction(
       cc.Sequence.create(
         cc.DelayTime.create(0.5),
