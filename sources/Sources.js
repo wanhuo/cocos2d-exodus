@@ -55,7 +55,6 @@ sources = sources.concat([
   'sources/Entities/Meteorit.js',
   'sources/Entities/Coin.js',
   'sources/Entities/Rocket.js',
-  'sources/Entities/Bonus.js',
   'sources/Entities/Explanation.js',
   'sources/Entities/Shop.js',
   'sources/Entities/Switcher.js',
@@ -118,6 +117,5 @@ sources = sources.concat([
   'sources/Store/Items/StoreItem53.js',
   'sources/Store/Items.js',
   'sources/Managers/ScreensManager.js',
-  'sources/Managers/Points.js',
-  'sources/Managers/Bonuses.js'
+  'sources/Managers/Points.js'
 ]);

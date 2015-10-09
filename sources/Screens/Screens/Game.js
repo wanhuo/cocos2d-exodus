@@ -266,7 +266,6 @@ Game = Screen.extend({
       )
     );
     this.elements.character = new Character;
-    this.elements.bonuses = new Bonuses;
     this.elements.explanation = new Explanation;
     this.elements.baloons = new Manager(1, new Baloon, this.backgrounds.game);
     this.elements.apatosauruses = new Manager(10, new Apatosaurus, this.backgrounds.game);
@@ -1612,13 +1611,6 @@ Game = Screen.extend({
      *
      */
     this.elements.creatures.clear();
-
-    /**
-     *
-     *
-     *
-     */
-    this.elements.bonuses.clear();
 
     /**
      *
