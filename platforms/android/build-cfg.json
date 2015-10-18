@@ -6,32 +6,28 @@
   ],
   "copy_resources": [
     {
-      "from": "../../sources",
-      "to": "sources"
+      "from": "../../resource/Fonts",
+      "to": "Fonts"
     },
     {
-      "from": "../../../cocos2d-tooflya-sdk/sources",
-      "to": "cocos2d-tooflya-sdk/sources"
+      "from": "../../resource/Graphics",
+      "to": "Graphics"
     },
     {
-      "from": "../../resource",
-      "to": "resource"
+      "from": "../../resource/Json",
+      "to": "Json"
     },
     {
-      "from": "../../../cocos2d-tooflya-sdk/resource",
-      "to": "cocos2d-tooflya-sdk/resource"
+      "from": "../../resource/Music",
+      "to": "Music"
     },
     {
-      "from": "../../main.js",
-      "to": ""
+      "from": "../../resource/Sound",
+      "to": "Sound"
     },
     {
-      "from": "../../project.json",
-      "to": ""
-    },
-    {
-      "from": "../../../cocos2d/cocos/scripting/js-bindings/script",
-      "to": "script"
+      "from": "../../resource/Config/android",
+      "to": "Config"
     }
   ]
 }

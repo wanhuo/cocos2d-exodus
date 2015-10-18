@@ -1,0 +1,27 @@
+
+tutorial-repeat.png
+size: 228,300
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+skins/1/body
+  rotate: false
+  xy: 2, 97
+  size: 201, 201
+  orig: 201, 201
+  offset: 0, 0
+  index: -1
+skins/1/icon-1
+  rotate: false
+  xy: 146, 7
+  size: 80, 88
+  orig: 80, 88
+  offset: 0, 0
+  index: -1
+skins/1/icon-2
+  rotate: true
+  xy: 2, 2
+  size: 93, 142
+  orig: 93, 142
+  offset: 0, 0
+  index: -1
