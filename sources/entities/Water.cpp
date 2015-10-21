@@ -61,7 +61,7 @@ void Water::initType1()
   this->setPosition(0, 200 + (!Application->parameters.ad ? 100 : 0));
   this->setSpeed(50, 0);
 
-  this->addElement(new Parallax("water-1.png"));
+  this->addElement(new ParallaxEntity("water-1.png"));
 
   this->runAction(
     RepeatForever::create(
@@ -83,7 +83,7 @@ void Water::initType2()
   this->setPosition(0, 150 + (!Application->parameters.ad ? 100 : 0));
   this->setSpeed(-100, 0);
 
-  this->addElement(new Parallax("water-2.png"));
+  this->addElement(new ParallaxEntity("water-2.png"));
 
   this->runAction(
     RepeatForever::create(
@@ -107,7 +107,7 @@ void Water::initType3()
 
   this->setLocalZOrder(10);
 
-  this->addElement(new Parallax("water-3.png"));
+  this->addElement(new ParallaxEntity("water-3.png"));
 
   this->runAction(
     RepeatForever::create(

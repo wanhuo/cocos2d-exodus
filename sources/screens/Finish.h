@@ -87,12 +87,15 @@ class Finish : public Screen
    *
    */
   protected:
-  BackgroundColor* background;
+  Entity* background;
   Buttons buttons;
 
   FinishCounter* counter;
 
   Spine* decoration;
+
+  float backgroundTextureX;
+  float backgroundTextureY;
 
   /**
    *
@@ -124,6 +127,8 @@ class Finish : public Screen
   virtual void showButtons();
 
   virtual void updateSoundState();
+
+  virtual void update(float time);
 };
 
 #endif

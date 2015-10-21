@@ -54,6 +54,7 @@ class Creature : public Spine
   protected:
   bool position;
 
+  int index;
   float speed;
 
   /**
@@ -67,6 +68,8 @@ class Creature : public Spine
 
   virtual void onCreate();
   virtual void onDestroy(bool action = false);
+
+  virtual void onAction();
 
   virtual void update(float time);
 };

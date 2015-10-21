@@ -33,46 +33,20 @@
  *
  */
 Decorations::Decorations()
+: BatchEntity("ui.png", nullptr, true)
 {
   Director::getInstance()->setNotificationNode(this);
 
-  this->rockets.decorations.small = new Pool(new Rocket::DecorationSmall, this, true);
-  this->rockets.decorations.large = new Pool(new Rocket::DecorationLarge, this, true);
+  this->rockets.decorations.small = new Pool(new Rocket::DecorationSmall, this);
+  this->rockets.decorations.large = new Pool(new Rocket::DecorationLarge, this);
 
-  this->rockets.elements = new Pool(new Rocket(this->rockets.decorations), this, true);
+  this->rockets.elements = new Pool(new Rocket(this->rockets.decorations), this);
+
+  this->setScheduleUpdate(true);
 }
 
 Decorations::~Decorations()
 {
-}
-
-/**
- *
- *
- *
- */
-void Decorations::onEnter()
-{
-  Node::onEnter();
-
-  /**
-   *
-   *
-   *
-   */
-  this->scheduleUpdate();
-}
-
-void Decorations::onExit()
-{
-  Node::onExit();
-
-  /**
-   *
-   *
-   *
-   */
-  this->unscheduleUpdate();
 }
 
 /**

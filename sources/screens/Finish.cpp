@@ -50,10 +50,14 @@ Finish::Finish()
 {
   instance = this;
 
-  this->background = new BackgroundColor(this, Color4B(132, 209, 200, 255));
+  this->background = new Entity("test.png", this, true);
+  this->background->getTexture()->setTexParameters({ GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
+  this->background->setTextureRect(Rect(0, 0, Application->width, Application->height));
+  this->background->setPosition(Application->center.x, Application->center.y);
   this->holder = new Background(this);
 
   this->decoration = new Spine("character.json", "character.atlas", 1.0, this->holder);
+  this->decoration->setScheduleTextures(true);
 
   this->counter = new FinishCounter;
 
@@ -93,9 +97,13 @@ void Finish::onEnter()
    *
    *
    */
-  this->updateSoundState();
+  this->backgroundTextureX = 0;
+  this->backgroundTextureY = 0;
 
+  this->updateSoundState();
   this->showButtons();
+
+  Application->changeState(Game::STATE_FINISH);
 
   /**
    *
@@ -203,39 +211,42 @@ void Finish::showButtons()
 {
   Node* special = nullptr;
 
-  this->parameters.elapsed.video++;
-  this->parameters.elapsed.gift++;
-  this->parameters.elapsed.ad++;
+  if(Application->state == Game::STATE_LOSE)
+  {
+    this->parameters.elapsed.video++;
+    this->parameters.elapsed.gift++;
+    this->parameters.elapsed.ad++;
 
-  if(Heyzap::available(Config::AD_TYPE_VIDEO) && this->parameters.elapsed.video >= this->parameters.video)
-  {
-    special = this->buttons.video->_create();
-  }
-  else
-  {
-    if(this->parameters.elapsed.gift >= this->parameters.gift)
+    if(Heyzap::available(Config::AD_TYPE_VIDEO) && this->parameters.elapsed.video >= this->parameters.video)
     {
-      special = this->buttons.gift->_create();
+      special = this->buttons.video->_create();
     }
     else
     {
-      if(Application->counter->values.coins >= 100)
+      if(this->parameters.elapsed.gift >= this->parameters.gift)
       {
-        special = this->buttons.character->_create();
+        special = this->buttons.gift->_create();
       }
-
-      if(this->parameters.elapsed.ad >= this->parameters.ad)
+      else
       {
-        this->parameters.elapsed.ad = 0;
+        if(Application->counter->values.coins >= 100)
+        {
+          special = this->buttons.character->_create();
+        }
 
-        Heyzap::show(Config::AD_TYPE_INTERSTITIAL);
+        if(this->parameters.elapsed.ad >= this->parameters.ad)
+        {
+          this->parameters.elapsed.ad = 0;
+
+          Heyzap::show(Config::AD_TYPE_INTERSTITIAL);
+        }
       }
     }
-  }
 
-  if(special)
-  {
-    Sound->play("special");
+    if(special)
+    {
+      Sound->play("special");
+    }
   }
 
   if(special && !Application->parameters.ad)
@@ -413,4 +424,24 @@ void Finish::updateSoundState()
 
     this->buttons.sound->setCurrentFrameIndex(2);
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Finish::update(float time)
+{
+  this->background->setTextureRect(
+    Rect(
+      this->backgroundTextureX,
+      this->backgroundTextureY,
+      Application->width,
+      Application->height
+    )
+  );
+
+  this->backgroundTextureX -= 1;
+  this->backgroundTextureY -= 1;
 }

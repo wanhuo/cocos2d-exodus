@@ -37,13 +37,13 @@ FinishCounter::FinishCounter()
 
   this->texts.value = new Text("counter", this, true);
   this->texts.best = new Text("best", this, true);
-  this->texts.jumps = new Text("jumps", this, true);
+  this->texts.taps = new Text("jumps", this, true);
   this->texts.deaths = new Text("deaths", this, true);
   this->texts.coins = new Text("coins", this->coins, true);
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
   this->texts.best->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 260);
-  this->texts.jumps->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 220);
+  this->texts.taps->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 220);
   this->texts.deaths->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 180);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
 }
@@ -101,6 +101,6 @@ void FinishCounter::updateTextData()
   this->texts.value->data(Application->counter->values.score);
   this->texts.best->data(Application->counter->values.best);
   this->texts.coins->data(Application->counter->values.coins);
-  this->texts.jumps->data(Application->counter->values.jumps);
+  this->texts.taps->data(Application->counter->values.taps);
   this->texts.deaths->data(Application->counter->values.deaths);
 }

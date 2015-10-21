@@ -16,10 +16,12 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Entity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/TiledEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/AnimatedEntity.cpp \
+                   ../../../../cocos2d-tooflya-sdk/entities/BatchEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Button.cpp \
+                   ../../../../cocos2d-tooflya-sdk/entities/Motion.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Text.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Spine.cpp \
-                   ../../../../cocos2d-tooflya-sdk/entities/Parallax.cpp \
+                   ../../../../cocos2d-tooflya-sdk/entities/ParallaxEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/parallax/ParallaxPool.cpp \
                    ../../../../cocos2d-tooflya-sdk/pools/Pool.cpp \
                    ../../../../cocos2d-tooflya-sdk/screens/Screen.cpp \
@@ -46,18 +48,18 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/Fish.cpp \
                    ../../../sources/entities/Name.cpp \
                    ../../../sources/entities/Water.cpp \
-                   ../../../sources/entities/Ground.cpp \
-                   ../../../sources/entities/Tree.cpp \
-                   ../../../sources/entities/Cloud.cpp \
-                   ../../../sources/entities/Mountain.cpp \
                    ../../../sources/entities/Creature.cpp \
                    ../../../sources/entities/Human.cpp \
+                   ../../../sources/entities/Pointer.cpp \
+                   ../../../sources/entities/Barror.cpp \
+                   ../../../sources/entities/Explanation.cpp \
                    ../../../sources/entities/AnimatedButton.cpp \
                    ../../../sources/entities/VideoButton.cpp \
                    ../../../sources/entities/GiftButton.cpp \
                    ../../../sources/entities/CharacterButton.cpp \
                    ../../../sources/entities/TutorialAnimation.cpp \
                    ../../../sources/entities/TutorialRepeat.cpp \
+                   ../../../sources/entities/Parallax.cpp \
                    ../../../sources/popups/Decorations.cpp \
                    ../../../sources/popups/Credits.cpp \
                    ../../../sources/screens/Game.cpp \

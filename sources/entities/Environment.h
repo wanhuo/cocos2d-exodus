@@ -29,18 +29,17 @@
 #include "Entity.h"
 #include "TiledEntity.h"
 #include "AnimatedEntity.h"
+#include "BatchEntity.h"
 
 #include "ParallaxPool.h"
+#include "Parallax.h"
 
 #include "Creatures.h"
 #include "Human.h"
 #include "Fish.h"
-#include "Ground.h"
-#include "Tree.h"
-#include "Mountain.h"
-#include "Slice.h"
-#include "Cloud.h"
 #include "Water.h"
+#include "Pointer.h"
+#include "Barror.h"
 
 /**
  *
@@ -54,26 +53,44 @@ class Environment : public Ref
    *
    *
    */
+  private:
+  struct Parallaxes
+  {
+    BatchEntity* fixed;
+    ParallaxPool* dynamic;
+  };
+  
+  /**
+   *
+   *
+   *
+   */
+  protected:
+  Parallaxes parallaxes;
+
+  virtual void addStaticParallax(Json* elementJsonData);
+  virtual void addDynamicParallax(Json* elementJsonData);
+
+  /**
+   *
+   *
+   *
+   */
   public:
   Environment();
- ~Environment();
-
-  Entity* background1;
-  Entity* background2;
-  Entity* background3;
-  Entity* background4;
+ ~Environment();void test();
 
   ParallaxPool* water1;
   ParallaxPool* water2;
   ParallaxPool* water3;
-
-  ParallaxPool* parallaxes;
 
   Pool* fishes;
   Pool* baloons;
   Pool* rockets;
   Pool* missiles;
   Pool* smoke;
+  Pool* pointers;
+  Pool* barrors;
 
   AnimatedEntity* hand;
 

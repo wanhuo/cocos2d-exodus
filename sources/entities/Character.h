@@ -26,6 +26,10 @@
 
 #include "Spine.h"
 
+#include "CharacterTypes.h"
+#include "Explanation.h"
+#include "Pointer.h"
+
 /**
  *
  *
@@ -62,52 +66,6 @@ class Character : public Spine
     SpineAnimation status_finish;
   };
 
-  struct WHATMax
-  {
-    float x;
-    float y;
-
-    Vec2 increase = Vec2(100, 0);
-    Vec2 setup = Vec2(850, 500);
-  };
-
-  struct WHATincrease
-  {
-    float x = 0.0;
-    float y = 5.0;
-
-    Vec2 increase = Vec2(0.1, 0.0);
-  };
-
-  struct WHATdecrease
-  {
-    float x = 0.0;
-    float y = 3.0;
-
-    Vec2 max = Vec2(0.0, 10.0);
-  };
-
-  struct Parameters
-  {
-    bool state;
-
-    float x;
-    float y;
-    float time = 1;
-
-    Vec2 setup = Vec2(0, 0);
-
-    WHATMax max;
-    Vec2 min = Vec2(0, -2000);
-
-    Vec2 maximum = Vec2(1500, 0);
-
-    WHATincrease increase;
-    WHATdecrease decrease;
-
-    int sound;
-  };
-
   Animations animations;
 
   /**
@@ -117,6 +75,7 @@ class Character : public Spine
    */
   protected:
   Entity* shadow;
+  Explanation* explanation;
 
   /**
    *
@@ -132,8 +91,9 @@ class Character : public Spine
   const static int STATE_START = 5;
   const static int STATE_RESTORE = 6;
   const static int STATE_GAME = 7;
-  const static int STATE_LOSE_WATER = 8;
-  const static int STATE_LOSE_MISTAKE = 9;
+  const static int STATE_LOSE = 8;
+  const static int STATE_LOSE_WATER = 9;
+  const static int STATE_LOSE_MISTAKE = 10;
 
   const static int COLLISION_SIZE_X = 75;
   const static int COLLISION_SIZE_Y = 75;
@@ -142,7 +102,7 @@ class Character : public Spine
  ~Character();
 
   Parameters parameters;
-  Parameters parameters2;
+  Generate generate;
 
   Pool* smoke;
 
@@ -168,11 +128,22 @@ class Character : public Spine
   virtual void onStart();
   virtual void onRestore();
   virtual void onGame();
+  virtual void onLose();
   virtual void onLoseWater();
   virtual void onLoseMistake();
 
   virtual void onTouch();
   virtual void onSave();
+
+  virtual void onPointerSuccess(Pointer* pointer);
+  virtual void onPointerMistake(Pointer* pointer);
+  virtual void onPointerCoin(Pointer* pointer);
+  virtual void onPointerFail();
+
+  virtual void proceedPointer();
+
+  virtual Pointer* getCollisionPointer();
+  virtual int getCollisionIndex();
 
   virtual void startSound();
   virtual void stopSound();
@@ -189,10 +160,12 @@ class Character : public Spine
 
   virtual void updateMenu(float time);
   virtual void updateAnimation(float time);
+  virtual void updateStart(float time);
   virtual void updatePrepare(float time);
   virtual void updateRestore(float time);
   virtual void updateGame(float time);
   virtual void updateSend(float time);
+  virtual void updateLose(float time);
   virtual void updateLoseWater(float time);
   virtual void updateLoseMistake(float time);
 
@@ -202,8 +175,9 @@ class Character : public Spine
 
   virtual void updateShadow();
   virtual void updateSmoke();
-  virtual void updateStatus();
-  virtual void updateSound();
+  virtual void updateStatus(bool state);
+
+  virtual void updatePointers();
 
   virtual void updateStates(float time);
   virtual void update(float time);

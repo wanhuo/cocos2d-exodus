@@ -28,7 +28,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -160,13 +160,13 @@
             <string></string>
         </struct>
         <key>autoAliasEnabled</key>
-        <true/>
+        <false/>
         <key>trimSpriteNames</key>
         <false/>
         <key>prependSmartFolderName</key>
         <false/>
         <key>cleanTransparentPixels</key>
-        <true/>
+        <false/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -180,7 +180,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>
@@ -213,6 +213,19 @@
             <filename>../Graphics/ui/store-button.png</filename>
             <filename>../Graphics/ui/tutorial-hand.png</filename>
             <filename>../Graphics/ui/cocos2dx.png</filename>
+            <filename>../Graphics/ui/explanation.png</filename>
+            <filename>../Graphics/ui/explanation-root.png</filename>
+            <filename>../Graphics/ui/freepick.png</filename>
+            <filename>../Graphics/ui/twitter-button.png</filename>
+            <filename>../Graphics/ui/name.png</filename>
+            <filename>../Graphics/ui/rocket-decoration-large.png</filename>
+            <filename>../Graphics/ui/rocket-decoration-small.png</filename>
+            <filename>../Graphics/ui/rocket.png</filename>
+            <filename>../Graphics/ui/store-switcher-1-button.png</filename>
+            <filename>../Graphics/ui/store-switcher-2-button.png</filename>
+            <filename>../Graphics/ui/store-switcher-3-button.png</filename>
+            <filename>../Graphics/ui/store-baloon.png</filename>
+            <filename>../Graphics/ui/store-decoration.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

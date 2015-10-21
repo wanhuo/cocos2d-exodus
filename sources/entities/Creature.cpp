@@ -56,6 +56,7 @@ void Creature::onCreate()
    */
   float x;
 
+  this->index = 1;
   this->speed = random(100.0, 300.0);
   this->position = probably(50);
 
@@ -96,6 +97,16 @@ void Creature::onDestroy(bool action)
  *
  *
  */
+void Creature::onAction()
+{
+  this->index++;
+}
+
+/**
+ *
+ *
+ *
+ */
 void Creature::update(float time)
 {
   Spine::update(time);
@@ -105,7 +116,7 @@ void Creature::update(float time)
    *
    *
    */
-  float x = this->getPositionX() + this->speed * time * (this->position ? 1 : -1);
+  float x = this->getPositionX() + this->speed * this->index * time * (this->position ? 1 : -1);
 
   this->setPositionX(x);
 

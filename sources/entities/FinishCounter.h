@@ -44,7 +44,7 @@ class FinishCounter : public Entity
   {
     Text* value;
     Text* best;
-    Text* jumps;
+    Text* taps;
     Text* deaths;
     Text* coins;
   };

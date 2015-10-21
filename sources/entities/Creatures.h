@@ -53,6 +53,8 @@ class Creatures : public Ref
   virtual void onCreate();
   virtual void onDestroy();
 
+  virtual void onAction();
+
   virtual void create();
 
   Pool* humans;

@@ -154,6 +154,7 @@ Game::Game()
   this->w->retain();
 
   this->b->setCascadeOpacityEnabled(true);
+  this->c->setCascadeOpacityEnabled(true);
 
   this->game->setScale(4.0);
   this->game->setPositionY(690);
@@ -176,6 +177,9 @@ void Game::onTouchStart(cocos2d::Touch* touch, Event* event)
   {
     case STATE_START:
     this->changeState(STATE_GAME);
+    break;
+    case STATE_PREPARE:
+    this->environment->creatures->onAction();
     break;
   }
 
@@ -437,6 +441,8 @@ void Game::onPrepare()
   this->w->removeFromParent();
   this->game->addChild(this->w);
 
+  this->h->setScale(1.0);
+
   this->w->stopAllActions();
   this->w->setPositionY(0);
 
@@ -538,10 +544,16 @@ void Game::onGame()
 
 void Game::onLose()
 {
+  this->h->stopAllActions();
+
   this->environment->onLose();
   this->counter->onLose();
 
   Finish::getInstance()->show();
+}
+
+void Game::onFinish()
+{
 }
 
 /**
@@ -574,6 +586,9 @@ void Game::changeState(int state)
       break;
       case STATE_LOSE:
       this->onLose();
+      break;
+      case STATE_FINISH:
+      this->onFinish();
       break;
     }
   }
@@ -681,6 +696,10 @@ void Game::updateLose(float time)
 {
 }
 
+void Game::updateFinish(float time)
+{
+}
+
 /**
  *
  *
@@ -707,6 +726,9 @@ void Game::updateStates(float time)
     break;
     case STATE_LOSE:
     this->updateLose(time);
+    break;
+    case STATE_FINISH:
+    this->updateFinish(time);
     break;
   }
 

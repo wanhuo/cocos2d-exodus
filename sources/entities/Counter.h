@@ -46,7 +46,7 @@ class Counter : public Entity
   {
     Text* value;
     Text* best;
-    Text* jumps;
+    Text* taps;
     Text* deaths;
     Text* start;
     Text* status;
@@ -59,7 +59,7 @@ class Counter : public Entity
     int score = 0;
     int best = Storage::get("values-best");
     int coins = Storage::get("values-coins");
-    int jumps = Storage::get("values-jumps");
+    int taps = Storage::get("values-taps");
     int deaths = Storage::get("values-deaths");
   };
 
@@ -90,6 +90,15 @@ class Counter : public Entity
 
   virtual void onCreate();
   virtual void onDestroy(bool action = false);
+
+  virtual void onScore(bool update = false);
+  virtual void onCoin(bool update = false);
+  virtual void onTap();
+  virtual void onDeath();
+
+  virtual void onSuccess();
+  virtual void onMistake();
+  virtual void onFail();
 
   virtual void onMenu();
   virtual void onAnimation();

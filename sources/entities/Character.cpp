@@ -71,6 +71,8 @@ Character::Character()
     "36"
   };
 
+  this->explanation = new Explanation(this);
+
   this->shadow = new Entity("character-shadow.png", Application->game);
   this->shadow->setLocalZOrder(5);
 
@@ -99,11 +101,15 @@ void Character::reset()
   this->_create();
 
   this->parameters.state = true;
+  this->parameters.active = true;
   this->parameters.x = this->parameters.setup.x;
   this->parameters.y = this->parameters.setup.y;
   this->parameters.max.x = this->parameters.max.setup.x;
   this->parameters.max.y = this->parameters.max.setup.y;
   this->parameters.increase.x = 0;
+
+  this->generate.start = -1;
+  this->generate.count = 0;
 
   this->setRotation(0);
   this->setPosition(Application->center.x, Application->camera.center);
@@ -241,32 +247,80 @@ void Character::onStart()
 
 void Character::onGame()
 {
-  this->startUpdateTraectory();
+  auto action = Sequence::create(
+    DelayTime::create(2.5),
+    CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
+    nullptr
+  );
+  action->setTag(1);
+
+  this->runAction(action);
 }
 
 void Character::onRestore()
 {
 }
 
+void Character::onLose()
+{
+  Application->counter->onDeath();
+
+  this->explanation->_destroy(true);
+  this->smoke->resumeSchedulerAndActions();
+
+  this->stopSound();
+  this->stopAllActions();
+
+  Application->changeState(Game::STATE_LOSE);
+}
+
 void Character::onLoseWater()
 {
-  Sound->play("water");
+  this->stopUpdateTraectory();
+  this->stopSound();
+  this->stopAllActions();
+
+  this->updateStatus(false);
 
   Application->runAction(
     Sequence::create(
       Shake::create(0.5, 10.0),
       CallFunc::create([=] () {
-        Application->changeState(Game::STATE_LOSE);
+        this->changeState(STATE_LOSE);
       }),
       nullptr
     )
   );
 
-  this->_destroy();
+  Sound->play("water");
 }
 
 void Character::onLoseMistake()
 {
+  this->stopUpdateTraectory();
+  this->stopSound();
+  this->stopAllActions();
+
+  this->updateStatus(false);
+
+  this->explanation->_create();
+  this->smoke->pauseSchedulerAndActions();
+
+  Application->environment->barrors->clear(true);
+  Application->h->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.5, 1.0 / Application->d->getScale())
+      ),
+      DelayTime::create(1.0),
+      CallFunc::create([=] () {
+        this->changeState(STATE_LOSE);
+      }),
+      nullptr
+    )
+  );
+
+  Sound->play("water");
 }
 
 /**
@@ -276,12 +330,15 @@ void Character::onLoseMistake()
  */
 void Character::onTouch()
 {
+  Application->counter->onTap();
+
   switch(this->state)
   {
     case STATE_START:
     this->changeState(STATE_SEND);
     break;
     case STATE_GAME:
+    this->proceedPointer();
     break;
   }
 }
@@ -291,6 +348,128 @@ void Character::onSave()
   this->setAnimation(this->animations.save);
 
   Sound->play("save");
+}
+
+/**
+ *
+ *
+ *
+ */
+void Character::onPointerSuccess(Pointer* pointer)
+{
+  Application->counter->onScore();
+  Application->counter->onSuccess();
+
+  this->parameters.state = this->parameters.active = true;
+
+  if(this->parameters.x < this->parameters.maximum.x)
+  {
+    this->parameters.max.x += this->parameters.max.increase.x;
+    this->parameters.max.y += this->parameters.max.increase.y;
+  }
+
+  pointer->_destroy(true);
+
+  this->startUpdateTraectory();
+}
+
+void Character::onPointerMistake(Pointer* pointer)
+{
+  Application->counter->onMistake();
+
+  this->parameters.state = this->parameters.active = false;
+
+  pointer->_destroy(true);
+
+  this->startUpdateTraectory();
+}
+
+void Character::onPointerCoin(Pointer* pointer)
+{
+  Application->counter->onCoin();
+
+  pointer->_destroy(true);
+}
+
+void Character::onPointerFail()
+{
+  Application->counter->onFail();
+
+  this->changeState(STATE_LOSE_MISTAKE);
+}
+
+/**
+ *
+ *
+ *
+ */
+void Character::proceedPointer()
+{
+  if(this->generate.start >= 0)
+  {
+    auto pointer = this->getCollisionPointer();
+
+    if(pointer)
+    {
+      auto index = pointer->getCurrentFrameIndex();
+
+      switch(index)
+      {
+        case Pointer::SUCCESS:
+        this->onPointerSuccess(pointer);
+        return;
+        case Pointer::MISTAKE:
+        this->onPointerMistake(pointer);
+        return;
+        /**
+         *
+         * @Replaced
+         * Replaced by automatic coins collect.
+         *
+        case Pointer::COIN:
+        this->onPointerCoin(pointer);
+        return;
+        */
+      }
+    }
+
+    this->onPointerFail();
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
+Pointer* Character::getCollisionPointer()
+{
+  float x = this->getPositionX();
+  float y = this->getPositionY();
+
+  for(int i = 0; i < Application->environment->pointers->count; i++)
+  {
+    auto pointer = Application->environment->pointers->element(i);
+
+    if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+    {
+      return (Pointer*) pointer;
+    }
+  }
+
+  return nullptr;
+}
+
+int Character::getCollisionIndex()
+{
+  Pointer* pointer = this->getCollisionPointer();
+
+  if(pointer)
+  {
+    return pointer->getCurrentFrameIndex();
+  }
+
+  return -1;
 }
 
 /**
@@ -339,23 +518,14 @@ void Character::stopSound()
  */
 void Character::startUpdateTraectory()
 {
-  auto action = Sequence::create(
-    DelayTime::create(2.5),
-    CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectoryStart, this)),
-    CallFunc::create([=] ()
-    {
-      auto action = RepeatForever::create(
-        Sequence::create(
-          CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectory, this)),
-          DelayTime::create(0.1),
-          nullptr
-        )
-      );
-      action->setTag(1);
+  this->onUpdateTraectoryStart();
 
-      this->runAction(action);
-    }),
-    nullptr
+  auto action = RepeatForever::create(
+    Sequence::create(
+      CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectory, this)),
+      DelayTime::create(0.1),
+      nullptr
+    )
   );
   action->setTag(1);
 
@@ -365,6 +535,8 @@ void Character::startUpdateTraectory()
 void Character::stopUpdateTraectory()
 {
   this->stopActionByTag(1);
+
+  this->onUpdateTraectoryFinish();
 }
 
 /**
@@ -374,7 +546,19 @@ void Character::stopUpdateTraectory()
  */
 void Character::onUpdateTraectoryStart()
 {
-  this->parameters2 = this->parameters;
+  this->stopUpdateTraectory();
+
+  Application->environment->pointers->clear();
+
+  this->generate.parameters = this->parameters;
+
+  this->generate.start = 30;
+
+  this->generate.x = this->getPositionX();
+  this->generate.y = this->getPositionY();
+
+  this->generate.count++;
+  this->generate.coins = this->generate.count % 5 == 0 ? 5 : 0;
 }
 
 void Character::onUpdateTraectoryFinish()
@@ -388,6 +572,34 @@ void Character::onUpdateTraectoryFinish()
  */
 void Character::onUpdateTraectory()
 {
+  for(int i = 0; i < 15 + this->generate.start; i++)
+  {
+    Vec2 position = this->updatePosition(this->generate.parameters);
+
+    this->generate.x += position.x;
+    this->generate.y += position.y;
+  }
+
+  this->generate.start = 0;
+
+  float x = this->generate.x;
+  float y = this->generate.y;
+
+  if(y > 0) // TODO: y > water.y
+  {
+    Pointer* element = (Pointer*) Application->environment->pointers->_create();
+
+    element->setPosition(x, y);
+
+    if(this->generate.coins-- > 0)
+    {
+      element->setCurrentFrameIndex(Pointer::COIN);
+    }
+  }
+  else
+  {
+    this->stopUpdateTraectory();
+  }
 }
 
 /**
@@ -424,6 +636,9 @@ void Character::changeState(int state)
       case STATE_GAME:
       this->onGame();
       break;
+      case STATE_LOSE:
+      this->onLose();
+      break;
       case STATE_LOSE_WATER:
       this->onLoseWater();
       break;
@@ -447,11 +662,16 @@ void Character::updateAnimation(float time)
 {
 }
 
-void Character::updateSend(float time)
+void Character::updatePrepare(float time)
 {
 }
 
-void Character::updatePrepare(float time)
+void Character::updateStart(float time)
+{
+  this->updateShadow();
+}
+
+void Character::updateSend(float time)
 {
 }
 
@@ -464,6 +684,11 @@ void Character::updateGame(float time)
   this->updateShadow();
   this->updateSmoke();
   this->updatePosition();
+  this->updatePointers();
+}
+
+void Character::updateLose(float time)
+{
 }
 
 void Character::updateLoseWater(float time)
@@ -539,7 +764,14 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
 
     if(parameters.y > parameters.min.y)
     {
-      parameters.y -= parameters.decrease.y * time;
+      if(parameters.active)
+      {
+        parameters.y -= parameters.decrease.y * time;
+      }
+      else
+      {
+        parameters.y -= parameters.decrease.max.y * time;
+      }
     }
     else
     {
@@ -600,12 +832,57 @@ void Character::updateSmoke()
   this->smoke->_create();
 }
 
-void Character::updateStatus()
+void Character::updateStatus(bool state)
 {
+  if(state)
+  {
+    this->setAnimation(this->animations.status_start);
+  }
+  else
+  {
+    this->setAnimation(this->animations.status_finish);
+  }
 }
 
-void Character::updateSound()
+/**
+ *
+ *
+ *
+ */
+void Character::updatePointers()
 {
+  auto pointer = this->getCollisionPointer();
+
+  if(pointer)
+  {
+    switch(pointer->getCurrentFrameIndex())
+    {
+      default:
+      this->updateStatus(false);
+      break;
+      case Pointer::SUCCESS:
+      this->updateStatus(true);
+      break;
+      case Pointer::MISTAKE:
+      this->updateStatus(false);
+      break;
+      case Pointer::COIN:
+      this->updateStatus(false);
+
+      /**
+       *
+       * @Optional
+       * Comment this to allow manual coins collect.
+       *
+       */
+      this->onPointerCoin(pointer);
+      break;
+    }
+  }
+  else
+  {
+    this->updateStatus(false);
+  }
 }
 
 /**
@@ -623,6 +900,9 @@ void Character::updateStates(float time)
     case STATE_ANIMATION:
     this->updateAnimation(time);
     break;
+    case STATE_START:
+    this->updateStart(time);
+    break;
     case STATE_SEND:
     this->updateSend(time);
     break;
@@ -634,6 +914,9 @@ void Character::updateStates(float time)
     break;
     case STATE_GAME:
     this->updateGame(time);
+    break;
+    case STATE_LOSE:
+    this->updateLose(time);
     break;
     case STATE_LOSE_WATER:
     this->updateLoseWater(time);

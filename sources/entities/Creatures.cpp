@@ -64,6 +64,21 @@ void Creatures::onDestroy()
  *
  *
  */
+void Creatures::onAction()
+{
+  for(int i = 0; i < this->humans->count; i++)
+  {
+    Creature* element = (Creature*) this->humans->element(i);
+
+    element->onAction();
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
 void Creatures::create()
 {
   for(int i = 0; i < 10; i++)

@@ -32,6 +32,7 @@
 #include "BackgroundColor.h"
 #include "Screen.h"
 #include "ParallaxPool.h"
+#include "Shake.h"
 
 #include "AnimatedButton.h"
 #include "Creatures.h"
@@ -39,16 +40,12 @@
 #include "Counter.h"
 #include "FinishCounter.h"
 #include "Character.h"
+#include "Explanation.h"
 #include "Fish.h"
 #include "Name.h"
-#include "Ground.h"
-#include "Tree.h"
-#include "Mountain.h"
-#include "Slice.h"
-#include "Cloud.h"
 #include "Water.h"
 #include "Rocket.h"
-#include "Shake.h"
+#include "Pointer.h"
 
 #include "Environment.h"
 
@@ -119,6 +116,7 @@ class Game : public Screen
   const static int STATE_START = 4;
   const static int STATE_GAME = 5;
   const static int STATE_LOSE = 6;
+  const static int STATE_FINISH = 7;
 
   static float SCALE_MAX;
   static float SCALE_MIN;
@@ -130,7 +128,7 @@ class Game : public Screen
   const static int DECORATIONS_POSITION_MIN = -1280 * (4 - 1);
   const static int DECORATIONS_POSITION_RATIO = 3;
 
-  const static int MAX_OFFSET_X = 4;
+  const static int MAX_OFFSET_X = 8;
   const static int MAX_OFFSET_Y = 0;
 
   int state = 0;
@@ -187,6 +185,7 @@ class Game : public Screen
   virtual void onStart();
   virtual void onGame();
   virtual void onLose();
+  virtual void onFinish();
 
   virtual void changeState(int state);
 
@@ -200,6 +199,7 @@ class Game : public Screen
   virtual void updateStart(float time);
   virtual void updateGame(float time);
   virtual void updateLose(float time);
+  virtual void updateFinish(float time);
 
   virtual void updateStates(float time);
   virtual void update(float time);

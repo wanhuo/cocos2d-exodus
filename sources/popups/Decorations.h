@@ -24,7 +24,7 @@
 #ifndef _DECORATIONS_H_
 #define _DECORATIONS_H_
 
-#include "Macros.h"
+#include "BatchEntity.h"
 
 #include "Pool.h"
 
@@ -35,7 +35,7 @@
  *
  *
  */
-class Decorations : public Node
+class Decorations : public BatchEntity
 {
   /**
    *
@@ -65,9 +65,6 @@ class Decorations : public Node
   public:
   Decorations();
  ~Decorations();
-
-  virtual void onEnter();
-  virtual void onExit();
 
   virtual void update(float time);
 };
