@@ -90,7 +90,7 @@ void Fish::onDestroy(bool action)
    */
   if(action)
   {
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 20; i++)
     {
       this->decorations->_create()->setPosition(this->getPosition());
     }
@@ -185,6 +185,13 @@ Fish::Decoration::~Decoration()
 void Fish::Decoration::onCreate()
 {
   Entity::onCreate();
+
+  /**
+   *
+   *
+   *
+   */
+  this->setScale(random(0.1, 1.0));
 }
 
 void Fish::Decoration::onDestroy(bool action)
