@@ -87,15 +87,12 @@ class Finish : public Screen
    *
    */
   protected:
-  Entity* background;
+  BackgroundColor* background;
   Buttons buttons;
 
   FinishCounter* counter;
 
   Spine* decoration;
-
-  float backgroundTextureX;
-  float backgroundTextureY;
 
   /**
    *

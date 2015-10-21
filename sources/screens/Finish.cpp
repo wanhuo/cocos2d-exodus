@@ -50,10 +50,7 @@ Finish::Finish()
 {
   instance = this;
 
-  this->background = new Entity("test.png", this, true);
-  this->background->getTexture()->setTexParameters({ GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT});
-  this->background->setTextureRect(Rect(0, 0, Application->width, Application->height));
-  this->background->setPosition(Application->center.x, Application->center.y);
+  this->background = new BackgroundColor(this, Color4B(132, 209, 200, 255));
   this->holder = new Background(this);
 
   this->decoration = new Spine("character.json", "character.atlas", 1.0, this->holder);
@@ -97,9 +94,6 @@ void Finish::onEnter()
    *
    *
    */
-  this->backgroundTextureX = 0;
-  this->backgroundTextureY = 0;
-
   this->updateSoundState();
   this->showButtons();
 
@@ -433,15 +427,4 @@ void Finish::updateSoundState()
  */
 void Finish::update(float time)
 {
-  this->background->setTextureRect(
-    Rect(
-      this->backgroundTextureX,
-      this->backgroundTextureY,
-      Application->width,
-      Application->height
-    )
-  );
-
-  this->backgroundTextureX -= 1;
-  this->backgroundTextureY -= 1;
 }
