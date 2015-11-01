@@ -85,6 +85,7 @@ Character::Character()
    */
   this->setScheduleTextures(true);
   this->setLocalZOrder(10);
+  this->setGlobalZOrder(0);
 }
 
 Character::~Character()
@@ -118,6 +119,8 @@ void Character::reset()
   this->smoke->clear();
 
   this->shadow->setPosition(Application->center.x, Application->camera.center - 110);
+
+  this->setGlobalZOrder(0);
 }
 
 /**
@@ -180,6 +183,7 @@ void Character::onAnimationComplete(int index, int count)
     case STATE_START:
     case STATE_SEND:
     case STATE_GAME:
+    case STATE_TRANSFER:
     if(index == this->animations.engine_repeat.index)
     {
       this->setAnimation(this->animations.engine_repeat);
@@ -247,6 +251,8 @@ void Character::onStart()
 
 void Character::onGame()
 {
+  this->setGlobalZOrder(11);
+
   auto action = Sequence::create(
     DelayTime::create(2.5),
     CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
@@ -255,6 +261,48 @@ void Character::onGame()
   action->setTag(1);
 
   this->runAction(action);
+}
+
+void Character::onTransfer()
+{
+  Application->transfer->runAction(
+    Spawn::create(
+      Sequence::create(
+        FadeIn::create(0.2),
+        DelayTime::create(2.6),
+        CallFunc::create([=] () {
+        Application->w->setVisible(true);
+        }),
+        FadeOut::create(0.2),
+        CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
+        nullptr
+      ),
+      Sequence::create(
+        DelayTime::create(0.2),
+        CallFunc::create([=] () {
+        Application->w->setPositionY(0);
+        Application->w->setVisible(false);
+        Application->w->runAction(
+          Sequence::create(
+            DelayTime::create(2.8),
+            DelayTime::create(3.0),
+            nullptr
+          )
+        );
+
+        Application->nextEnvironment();
+
+        this->setPositionY(0);
+        }),
+        nullptr
+      ),
+      nullptr
+    )
+  );
+
+  this->updateStatus(false);
+
+  Sound->play("transfer");
 }
 
 void Character::onRestore()
@@ -306,7 +354,7 @@ void Character::onLoseMistake()
   this->explanation->_create();
   this->smoke->pauseSchedulerAndActions();
 
-  Application->environment->barrors->clear(true);
+  Application->barrors->clear(true);
   Application->h->runAction(
     Sequence::create(
       EaseSineInOut::create(
@@ -320,7 +368,10 @@ void Character::onLoseMistake()
     )
   );
 
-  Sound->play("water");
+  this->parameters.x = 0;
+  this->parameters.y = 0;
+
+  Sound->play("mistake");
 }
 
 /**
@@ -357,20 +408,35 @@ void Character::onSave()
  */
 void Character::onPointerSuccess(Pointer* pointer)
 {
-  Application->counter->onScore();
-  Application->counter->onSuccess();
-
-  this->parameters.state = this->parameters.active = true;
-
-  if(this->parameters.x < this->parameters.maximum.x)
+  if(pointer)
   {
-    this->parameters.max.x += this->parameters.max.increase.x;
-    this->parameters.max.y += this->parameters.max.increase.y;
+    Application->counter->onScore();
+    Application->counter->onSuccess();
+
+    this->parameters.state = this->parameters.active = true;
+
+    if(this->parameters.x < this->parameters.maximum.x)
+    {
+      this->parameters.max.x += this->parameters.max.increase.x;
+      this->parameters.max.y += this->parameters.max.increase.y;
+    }
+
+    pointer->_destroy(true);
+
+    this->startUpdateTraectory();
   }
+  else
+  {
+    Barror* barror = (Barror*) Application->barrors->_create();
 
-  pointer->_destroy(true);
+    auto position = this->convertToWorldSpace(Vec2::ZERO);
 
-  this->startUpdateTraectory();
+    position.x -= 30;
+    position.y -= 30;
+
+    barror->setPosition(position);
+    barror->animate(0);
+  }
 }
 
 void Character::onPointerMistake(Pointer* pointer)
@@ -407,33 +473,40 @@ void Character::proceedPointer()
 {
   if(this->generate.start >= 0)
   {
-    auto pointer = this->getCollisionPointer();
-
-    if(pointer)
+    if(this->isOnBonusTraectory())
     {
-      auto index = pointer->getCurrentFrameIndex();
-
-      switch(index)
-      {
-        case Pointer::SUCCESS:
-        this->onPointerSuccess(pointer);
-        return;
-        case Pointer::MISTAKE:
-        this->onPointerMistake(pointer);
-        return;
-        /**
-         *
-         * @Replaced
-         * Replaced by automatic coins collect.
-         *
-        case Pointer::COIN:
-        this->onPointerCoin(pointer);
-        return;
-        */
-      }
+      this->onPointerSuccess(nullptr);
     }
+    else
+    {
+      auto pointer = this->getCollisionPointer();
 
-    this->onPointerFail();
+      if(pointer)
+      {
+        auto index = pointer->getCurrentFrameIndex();
+
+        switch(index)
+        {
+          case Pointer::SUCCESS:
+          this->onPointerSuccess(pointer);
+          return;
+          case Pointer::MISTAKE:
+          this->onPointerMistake(pointer);
+          return;
+          /**
+           *
+           * @Replaced
+           * Replaced by automatic coins collect.
+           *
+          case Pointer::COIN:
+          this->onPointerCoin(pointer);
+          return;
+          */
+        }
+      }
+
+      this->onPointerFail();
+    }
   }
 }
 
@@ -447,9 +520,9 @@ Pointer* Character::getCollisionPointer()
   float x = this->getPositionX();
   float y = this->getPositionY();
 
-  for(int i = 0; i < Application->environment->pointers->count; i++)
+  for(int i = 0; i < Application->pointers->count; i++)
   {
-    auto pointer = Application->environment->pointers->element(i);
+    auto pointer = Application->pointers->element(i);
 
     if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
     {
@@ -520,16 +593,25 @@ void Character::startUpdateTraectory()
 {
   this->onUpdateTraectoryStart();
 
-  auto action = RepeatForever::create(
-    Sequence::create(
-      CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectory, this)),
-      DelayTime::create(0.1),
-      nullptr
-    )
-  );
-  action->setTag(1);
+  if(this->getPositionY() >= 14000 && Application->isNextEnvironment())
+  {
+    this->changeState(STATE_TRANSFER);
+  }
+  else
+  {
+    this->state = STATE_GAME;
 
-  this->runAction(action);
+    auto action = RepeatForever::create(
+      Sequence::create(
+        CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectory, this)),
+        DelayTime::create(0.1),
+        nullptr
+      )
+    );
+    action->setTag(1);
+
+    this->runAction(action);
+  }
 }
 
 void Character::stopUpdateTraectory()
@@ -537,6 +619,7 @@ void Character::stopUpdateTraectory()
   this->stopActionByTag(1);
 
   this->onUpdateTraectoryFinish();
+  this->onUpdateTraectoryBonusDestroy();
 }
 
 /**
@@ -548,7 +631,7 @@ void Character::onUpdateTraectoryStart()
 {
   this->stopUpdateTraectory();
 
-  Application->environment->pointers->clear();
+  Application->pointers->clear();
 
   this->generate.parameters = this->parameters;
 
@@ -578,6 +661,16 @@ void Character::onUpdateTraectory()
 
     this->generate.x += position.x;
     this->generate.y += position.y;
+
+    if(this->generate.bonus)
+    {
+      this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+
+      if(this->generate.bonus_points.size() >= 200)
+      {
+        this->onUpdateTraectoryBonusCreate();
+      }
+    }
   }
 
   this->generate.start = 0;
@@ -585,21 +678,81 @@ void Character::onUpdateTraectory()
   float x = this->generate.x;
   float y = this->generate.y;
 
-  if(y > 0) // TODO: y > water.y
+  if(Application->w->getPositionY() + 130 > 0)
   {
-    Pointer* element = (Pointer*) Application->environment->pointers->_create();
-
-    element->setPosition(x, y);
-
-    if(this->generate.coins-- > 0)
+    if(!this->generate.bonus)
     {
-      element->setCurrentFrameIndex(Pointer::COIN);
+      Pointer* element = (Pointer*) Application->pointers->_create();
+
+      element->setPosition(x, y);
+
+      if(this->generate.coins-- > 0)
+      {
+        element->setCurrentFrameIndex(Pointer::COIN);
+      }
     }
   }
   else
   {
     this->stopUpdateTraectory();
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Character::onUpdateTraectoryBonusCreate()
+{
+  this->generate.bonus = false;
+
+  Vector<FiniteTimeAction*> actions;
+
+  for(int i = 0; i < this->generate.bonus_points.size() - 1; i++)
+  {
+    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+  }
+
+  for(int i = this->generate.bonus_points.size() - 2; i > 0; i--)
+  {
+    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+  }
+
+  Application->bonus->_create();
+  Application->bonus->runAction(
+    RepeatForever::create(
+      Sequence::create(actions)
+    )
+  );
+}
+
+void Character::onUpdateTraectoryBonusDestroy()
+{
+  this->generate.bonus = probably(10);
+  this->generate.bonus_points.clear();
+
+  Application->bonus->_destroy();
+}
+
+/**
+ *
+ *
+ *
+ */
+bool Character::isOnBonusTraectory(float x)
+{
+  if(x < 0)
+  {
+    x = this->getPositionX();
+  }
+
+  if(this->generate.bonus_points.size() > 0)
+  {
+    return x >= this->generate.bonus_points.at(0).x && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x;
+  }
+
+  return false;
 }
 
 /**
@@ -635,6 +788,9 @@ void Character::changeState(int state)
       break;
       case STATE_GAME:
       this->onGame();
+      break;
+      case STATE_TRANSFER:
+      this->onTransfer();
       break;
       case STATE_LOSE:
       this->onLose();
@@ -687,6 +843,12 @@ void Character::updateGame(float time)
   this->updatePointers();
 }
 
+void Character::updateTransfer(float time)
+{
+  this->updateSmoke();
+  this->updatePosition();
+}
+
 void Character::updateLose(float time)
 {
 }
@@ -716,9 +878,12 @@ void Character::updatePosition()
   this->setPosition(x, y);
   this->setRotation(r);
 
-  if(y < Application->w->getPositionY())
+  if(this->state == STATE_GAME)
   {
-    this->changeState(STATE_LOSE_WATER);
+    if(y < Application->w->getPositionY() + 130)
+    {
+      this->changeState(STATE_LOSE_WATER);
+    }
   }
 }
 
@@ -915,6 +1080,9 @@ void Character::updateStates(float time)
     case STATE_GAME:
     this->updateGame(time);
     break;
+    case STATE_TRANSFER:
+    this->updateTransfer(time);
+    break;
     case STATE_LOSE:
     this->updateLose(time);
     break;
@@ -967,9 +1135,10 @@ void Character::update(float time)
  *
  */
 Character::Smoke::Smoke()
-: TiledEntity("character-smoke.png", 2, 1)
+: Entity("character-smoke.png")
 {
   this->setLocalZOrder(6);
+  this->setGlobalZOrder(10);
 }
 
 Character::Smoke::~Smoke()
@@ -978,7 +1147,7 @@ Character::Smoke::~Smoke()
 
 void Character::Smoke::onCreate()
 {
-  TiledEntity::onCreate();
+  Entity::onCreate();
 
   float angle = -Application->character->getRotation() * M_PI / 180.0;
 
@@ -1007,7 +1176,7 @@ void Character::Smoke::onCreate()
 
 void Character::Smoke::onDestroy(bool action)
 {
-  TiledEntity::onDestroy(action);
+  Entity::onDestroy(action);
 }
 
 Character::Smoke* Character::Smoke::deepCopy()

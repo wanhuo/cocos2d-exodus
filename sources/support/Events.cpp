@@ -88,6 +88,7 @@ void Events::onScores()
 {
   Analytics::sendEvent("Application", "application.events.onScores", "Application onScores event");
 
+  Modal::show();
   Services::showScores();
 }
 
@@ -100,6 +101,7 @@ void Events::onAchievements()
 {
   Analytics::sendEvent("Application", "application.events.onAchievements", "Application onAchievements event");
 
+  Modal::show();
   Services::showAchievements();
 }
 

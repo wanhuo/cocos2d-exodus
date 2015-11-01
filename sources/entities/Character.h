@@ -43,7 +43,7 @@ class Character : public Spine
    *
    */
   private:
-  class Smoke : public TiledEntity
+  class Smoke : public Entity
   {
     public:
     Smoke();
@@ -91,9 +91,10 @@ class Character : public Spine
   const static int STATE_START = 5;
   const static int STATE_RESTORE = 6;
   const static int STATE_GAME = 7;
-  const static int STATE_LOSE = 8;
-  const static int STATE_LOSE_WATER = 9;
-  const static int STATE_LOSE_MISTAKE = 10;
+  const static int STATE_TRANSFER = 8;
+  const static int STATE_LOSE = 9;
+  const static int STATE_LOSE_WATER = 10;
+  const static int STATE_LOSE_MISTAKE = 11;
 
   const static int COLLISION_SIZE_X = 75;
   const static int COLLISION_SIZE_Y = 75;
@@ -128,6 +129,7 @@ class Character : public Spine
   virtual void onStart();
   virtual void onRestore();
   virtual void onGame();
+  virtual void onTransfer();
   virtual void onLose();
   virtual void onLoseWater();
   virtual void onLoseMistake();
@@ -156,6 +158,11 @@ class Character : public Spine
 
   virtual void onUpdateTraectory();
 
+  virtual void onUpdateTraectoryBonusCreate();
+  virtual void onUpdateTraectoryBonusDestroy();
+
+  virtual bool isOnBonusTraectory(float x = -1);
+
   virtual void changeState(int state);
 
   virtual void updateMenu(float time);
@@ -164,6 +171,7 @@ class Character : public Spine
   virtual void updatePrepare(float time);
   virtual void updateRestore(float time);
   virtual void updateGame(float time);
+  virtual void updateTransfer(float time);
   virtual void updateSend(float time);
   virtual void updateLose(float time);
   virtual void updateLoseWater(float time);

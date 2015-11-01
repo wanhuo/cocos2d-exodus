@@ -38,6 +38,9 @@ Fish::Fish(Pool* decorations)
   };
 
   this->decorations = decorations;
+
+  this->setGlobalZOrder(4);
+  this->decorations->setGlobalZOrder(3);
 }
 
 Fish::~Fish()
@@ -90,9 +93,14 @@ void Fish::onDestroy(bool action)
    */
   if(action)
   {
-    for(int i = 0; i < 20; i++)
+    if(Application->character->getPositionY() - Application->w->getPositionY() < Application->camera.center * 3)
     {
-      this->decorations->_create()->setPosition(this->getPosition());
+      for(int i = 0; i < 20; i++)
+      {
+        this->decorations->_create()->setPosition(this->getPosition());
+      }
+
+      Sound->play("water-splash-" + patch::to_string(random(1, 7)));
     }
   }
 }
@@ -228,7 +236,7 @@ void Fish::Decoration::update(float time)
 
   this->setPosition(x, y);
 
-  if(y < 130)
+  if(y < 30 + (Application->parameters.ad ? 0 : 100))
   {
     this->_destroy(true);
   }

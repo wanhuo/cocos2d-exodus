@@ -57,10 +57,10 @@ class Counter : public Entity
   struct Values
   {
     int score = 0;
-    int best = Storage::get("values-best");
-    int coins = Storage::get("values-coins");
-    int taps = Storage::get("values-taps");
-    int deaths = Storage::get("values-deaths");
+    int best = Storage::get("values.scores.best");
+    int coins = Storage::get("values.currenct.coins");
+    int taps = Storage::get("values.info.taps");
+    int deaths = Storage::get("values.info.deaths");
   };
 
   /**
@@ -107,7 +107,8 @@ class Counter : public Entity
   virtual void onGame();
   virtual void onLose();
 
-  virtual void save();
+  virtual bool save();
+
   virtual void reset();
 
   virtual void updateTextData();

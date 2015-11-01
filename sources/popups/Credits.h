@@ -52,10 +52,10 @@ class Credits : public BackgroundColor
 
   struct Parameters
   {
-    float time = 0.5;
-    float height = 800;
-    float opacity = 100;
-    float padding = 150;
+    float time = 0.6;
+    float height = 950;
+    float opacity = 200;
+    float padding = 380;
   };
 
   struct Texts

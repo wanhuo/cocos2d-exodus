@@ -37,7 +37,7 @@ struct WHATMax
   float y;
 
   Vec2 increase = Vec2(100, 0);
-  Vec2 setup = Vec2(850, 500);
+  Vec2 setup = Vec2(1000, 500);
 };
 
 struct WHATincrease
@@ -90,6 +90,9 @@ struct Generate
   int count = 0;
 
   Parameters parameters;
+
+  bool bonus;
+  vector<Vec2> bonus_points;
 };
 
 #endif

@@ -74,6 +74,8 @@ Finish::Finish()
 
   this->background->setLocalZOrder(-1);
   this->decoration->setLocalZOrder(-1);
+
+  this->buttons.store->addChild(new Handler);
 }
 
 Finish::~Finish()
@@ -87,24 +89,14 @@ Finish::~Finish()
  */
 void Finish::onEnter()
 {
-  Screen::onEnter();
-
-  /**
-   *
-   *
-   *
-   */
   this->updateSoundState();
   this->showButtons();
 
   Application->changeState(Game::STATE_FINISH);
 
-  /**
-   *
-   *
-   *
-   */
   Events::onScreenChanged("Finish");
+
+  Screen::onEnter();
 }
 
 void Finish::onExit()

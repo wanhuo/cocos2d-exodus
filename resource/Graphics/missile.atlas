@@ -1,0 +1,27 @@
+
+missile.png
+size: 206,296
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+skins/1/body
+  rotate: false
+  xy: 2, 3
+  size: 139, 291
+  orig: 139, 291
+  offset: 0, 0
+  index: -1
+skins/1/flame
+  rotate: false
+  xy: 143, 66
+  size: 61, 228
+  orig: 61, 228
+  offset: 0, 0
+  index: -1
+skins/1/icon
+  rotate: false
+  xy: 143, 2
+  size: 60, 62
+  orig: 60, 62
+  offset: 0, 0
+  index: -1

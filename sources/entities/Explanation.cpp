@@ -35,7 +35,9 @@ Explanation::Explanation(Node* parent)
   this->elements = new Pool(new Entity("explanation.png"), this);
 
   float x = 0;
-  float y = Application->center.y;
+  float y = Application->center.y + 20;
+
+  bool f = false;
 
   while(y > -Application->center.y)
   {
@@ -45,10 +47,18 @@ Explanation::Explanation(Node* parent)
 
     x -= 0;
     y -= element->getHeight() * 1.5;
+
+    if(!f && y < 0)
+    {
+      f = true;
+      y -= 40;
+    }
   }
 
-  x = Application->center.y;
+  x = Application->center.y + 20;
   y = 0;
+
+  f = false;
 
   while(x > -Application->center.y)
   {
@@ -59,7 +69,15 @@ Explanation::Explanation(Node* parent)
 
     x -= element->getHeight() * 1.5;
     y -= 0;
+
+    if(!f && x < 0)
+    {
+      f = true;
+      x -= 40;
+    }
   }
+
+  this->setGlobalZOrder(12);
 }
 
 Explanation::~Explanation()

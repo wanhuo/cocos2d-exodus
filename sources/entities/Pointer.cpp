@@ -75,7 +75,7 @@ void Pointer::onDestroy(bool action)
     {
       case SUCCESS:
       case COIN:
-      Barror* barror = (Barror*) Application->environment->barrors->_create();
+      Barror* barror = (Barror*) Application->barrors->_create();
 
       barror->setPosition(this->convertToWorldSpace(Vec2::ZERO));
       barror->animate(this->getCurrentFrameIndex());

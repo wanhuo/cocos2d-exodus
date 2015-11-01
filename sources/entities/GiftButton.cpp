@@ -95,7 +95,7 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
       }),
       Repeat::create(
         Sequence::create(
-          ScaleTo::create(0.05, 0.8),
+          ScaleTo::create(0.05, 0.9),
           ScaleTo::create(0.05, 1.1),
           nullptr
         ),

@@ -197,10 +197,14 @@ void Counter::onCoin(bool update)
   if(update)
   {
     this->updateTextData();
+
+    Sound->play("coins-collect");
   }
   else
   {
     this->values.coins++;
+
+    Sound->play("coins");
   }
 }
 
@@ -221,7 +225,7 @@ void Counter::onDeath()
  */
 void Counter::onSuccess()
 {
-  if(Application->character->getPositionY() >= 2000 && probably(30))
+  if(Application->character->getPositionY() >= 2000 && probably(5))
   {
     if(this->texts.decoration->getNumberOfRunningActions() < 1)
     {
@@ -245,7 +249,7 @@ void Counter::onSuccess()
     }
   }
 
-  Sound->play("");
+  Sound->play("success");
 }
 
 void Counter::onMistake()
@@ -270,7 +274,7 @@ void Counter::onMistake()
     )
   );
 
-  Sound->play("");
+  Sound->play("mistake");
 }
 
 void Counter::onFail()
@@ -295,7 +299,7 @@ void Counter::onFail()
     )
   );
 
-  Sound->play("");
+  Sound->play("fail");
 }
 
 /**
@@ -324,13 +328,14 @@ void Counter::onStart()
    * @Optional
    * Can be commented because of using animated hand texture.
    *
-  */
+   *
   this->texts.start->_create();
   this->texts.start->setPosition(Application->center.x, this->getPositionY() - 180);
   this->texts.start->setOpacity(0);
   this->texts.start->runAction(
     FadeIn::create(1.0)
   );
+   */
 }
 
 void Counter::onGame()
@@ -353,10 +358,30 @@ void Counter::onLose()
  *
  *
  */
-void Counter::save()
+bool Counter::save()
 {
+  bool ret = false;
+
+  if(this->values.score > this->values.best)
+  {
+    ret = true;
+  }
+
+  this->values.best = max(this->values.best, this->values.score);
+
+  Storage::set("values.scores.best", this->values.best);
+  Storage::set("values.currenct.coins", this->values.coins);
+  Storage::set("values.info.taps", this->values.taps);
+  Storage::set("values.info.deaths", this->values.deaths);
+
+  return ret;
 }
 
+/**
+ *
+ *
+ *
+ */
 void Counter::reset()
 {
   this->values.score = 0;

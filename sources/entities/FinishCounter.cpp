@@ -83,12 +83,6 @@ void FinishCounter::onEnter()
 void FinishCounter::onExit()
 {
   Entity::onExit();
-
-  /**
-   *
-   *
-   *
-   */
 }
 
 /**

@@ -46,6 +46,8 @@
 #include "Water.h"
 #include "Rocket.h"
 #include "Pointer.h"
+#include "Missile.h"
+#include "Handler.h"
 
 #include "Environment.h"
 
@@ -103,6 +105,14 @@ class Game : public Screen
    *
    *
    */
+  protected:
+  int environment_index = -1;
+
+  /**
+   *
+   *
+   *
+   */
   public:
   static Game* getInstance();
 
@@ -146,6 +156,9 @@ class Game : public Screen
   Background* g;
   Background* e;
   Background* c;
+  Background* v;
+
+  BackgroundColor* transfer;
 
   Background* game;
   Background* menu;
@@ -157,7 +170,24 @@ class Game : public Screen
 
   Environment* environment;
 
+  Pool* pointers;
+  Pool* barrors;
+
+  Motion* bonus;
+
+  AnimatedEntity* hand;
+
+  Creatures* creatures;
+
+  vector<Environment*> environments;
+
   const Positions* positions = new Positions;
+
+  virtual bool isNextEnvironment();
+
+  virtual void resetEnvironment();
+  virtual void nextEnvironment();
+  virtual void setEnvironment(int index);
 
   virtual void onTouchStart(cocos2d::Touch* touch, Event* event);
 
@@ -174,6 +204,7 @@ class Game : public Screen
   virtual void onStore();
   virtual void onCredits();
   virtual void onNoad();
+  virtual void onNoadAction();
   virtual void onTwitter();
   virtual void onFacebook();
   virtual void onMail();

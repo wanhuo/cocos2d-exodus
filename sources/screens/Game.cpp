@@ -77,8 +77,14 @@ Game::Game()
   this->g = new Background(this->s);
   this->e = new Background(this->b);
   this->c = new Background(this->game);
+  this->v = new Background(this->game);
 
-  this->environment = new Environment;
+  this->transfer = new BackgroundColor(this, Color4B(132, 209, 223, 0));
+
+  this->environments.push_back(new Environment1);
+  this->environments.push_back(new Environment2);
+
+  this->nextEnvironment();
 
   this->counter = new Counter;
   this->name = new Name;
@@ -92,6 +98,17 @@ Game::Game()
   this->buttons.credits = new Button("credits-button.png", 2, 2, this->b, std::bind(&Game::onCredits, this));
   this->buttons.noad = new Button("noad-button.png", 2, 1, this->b, std::bind(&Game::onNoad, this));
 
+  this->creatures = new Creatures;
+
+  this->hand = new AnimatedEntity("tutorial-hand.png", 2, 1, this->e);
+  this->hand->animate(0.2);
+  this->hand->setPosition(this->center.x / 0.75, this->center.y / 2 + (this->parameters.ad ? 100 : 0));
+
+  this->pointers = new Pool(new Pointer, this->game, true);
+  this->barrors = new Pool(new Barror, this->c, true);
+
+  this->bonus = new Motion("pointer-motion.png", this->game, 108);
+
   this->buttons.play->_create()->setPosition(
     this->center.x,
     this->center.y + 110
@@ -101,7 +118,6 @@ Game::Game()
     this->center.x + (this->parameters.ad ? 0 : 42),
     70 + (this->parameters.ad ? 0 : 100)
   );
-  this->buttons.credits->setGlobalZOrder(100);
 
   this->buttons.rate->_create()->setPosition(
     this->center.x - 210,
@@ -136,11 +152,19 @@ Game::Game()
     );
   }
 
+  this->buttons.store->addChild(new Handler);
+
+  this->buttons.noad->setGlobalZOrder(100);
+  this->buttons.credits->setGlobalZOrder(100);
+
+  this->hand->setGlobalZOrder(100);
+
   this->character = new Character;
 
   this->menu->setLocalZOrder(500);
   this->game->setLocalZOrder(200);
-
+  
+  this->v->setLocalZOrder(300);
   this->h->setLocalZOrder(200);
   this->s->setLocalZOrder(100);
   this->d->setLocalZOrder(200);
@@ -148,12 +172,16 @@ Game::Game()
   this->w->setLocalZOrder(400);
   this->c->setLocalZOrder(5);
 
+  this->transfer->setGlobalZOrder(9);
+  
   this->c->setAnchorPoint(Vec2(0, 0));
+  this->v->setAnchorPoint(Vec2(0, 0));
 
   this->b->retain();
   this->w->retain();
 
   this->b->setCascadeOpacityEnabled(true);
+  this->w->setCascadeOpacityEnabled(true);
   this->c->setCascadeOpacityEnabled(true);
 
   this->game->setScale(4.0);
@@ -179,7 +207,7 @@ void Game::onTouchStart(cocos2d::Touch* touch, Event* event)
     this->changeState(STATE_GAME);
     break;
     case STATE_PREPARE:
-    this->environment->creatures->onAction();
+    this->creatures->onAction();
     break;
   }
 
@@ -349,9 +377,25 @@ void Game::onNoad()
   Purchase::purchaseItem("com.ketchapp.exodus.remove.ads", [=] (bool status) {
     if(status)
     {
-      log("SEX!!!");
+      this->onNoadAction();
     }
   });
+}
+
+void Game::onNoadAction()
+{
+  Heyzap::hide(Config::AD_TYPE_BANNER);
+
+  this->buttons.noad->_destroy(true);
+  this->buttons.credits->runAction(
+    EaseSineInOut::create(
+      MoveBy::create(0.2, Vec2(-42, Credits::getInstance()->state->active ? 0 : -100))
+    )
+  );
+
+  this->parameters.ad = true;
+
+  Storage::set("state.ad.disabled", true);
 }
 
 void Game::onTwitter()
@@ -395,6 +439,8 @@ void Game::onMenu()
   this->counter->onMenu();
 
   this->character->changeState(Character::STATE_MENU);
+
+  Music->play("music-1", true);
 }
 
 void Game::onAnimation()
@@ -421,11 +467,10 @@ void Game::onAnimation()
 
 void Game::onPrepare()
 {
+  this->resetEnvironment();
+
   this->environment->onPrepare();
   this->counter->onPrepare();
-
-  //this.parameters.tutorial.enable = !Data.get(false, properties.tutorial);
-  //this.parameters.tutorial.running = false;
 
   this->character->changeState(Character::STATE_PREPARE);
 
@@ -437,7 +482,6 @@ void Game::onPrepare()
 
   this->game->setPosition(0, 0);
 
-  // TODO: It's should runs only once!
   this->w->removeFromParent();
   this->game->addChild(this->w);
 
@@ -451,11 +495,8 @@ void Game::onPrepare()
 
   this->d->setAnchorPoint(Vec2(0.5, 0));
 
-  //this.elements.coins.clear();
-  //this.elements.points.clear();
-  //this.elements.fishes.clear();
-  //this.elements.baloons.clear();
-  //this.elements.missiles.clear();
+  this->pointers->clear();
+  this->barrors->clear();
 
   this->updateCamera();
 
@@ -463,29 +504,24 @@ void Game::onPrepare()
     Sequence::create(
       CallFunc::create([=] () {
 
-        this->buttons.credits->runAction(
-          Sequence::create(
-            EaseSineInOut::create(
-              FadeIn::create(0.5)
-            ),
-            CallFunc::create([=] () { this->buttons.credits->bind(true); }),
-            nullptr
+        this->buttons.credits->_create()->runAction(
+          EaseSineInOut::create(
+            FadeIn::create(0.5)
           )
         );
-        this->buttons.noad->runAction(
-          Sequence::create(
+        if(!this->parameters.ad)
+        {
+          this->buttons.noad->_create()->runAction(
             EaseSineInOut::create(
               FadeIn::create(0.5)
-            ),
-            CallFunc::create([=] () { this->buttons.noad->bind(true); }),
-            nullptr
-          )
-        );
+            )
+          );
+        }
       }),
       CallFunc::create([=] () {
         if(this->parameters.creatures)
         {
-          this->environment->creatures->create();
+          this->creatures->create();
         }
         else
         {
@@ -504,6 +540,12 @@ void Game::onStart()
   this->environment->onStart();
   this->counter->onStart();
 
+  this->hand->_create();
+
+  this->w->runAction(
+    DelayTime::create(3.0)
+  );
+
   this->character->changeState(Character::STATE_START);
 }
 
@@ -512,21 +554,23 @@ void Game::onGame()
   this->environment->onGame();
   this->counter->onGame();
 
+  this->hand->_destroy(true);
+
   this->buttons.credits->runAction(
     Sequence::create(
-      CallFunc::create([=] () { this->buttons.credits->bind(false); }),
       EaseSineInOut::create(
         FadeOut::create(0.5)
       ),
+      CallFunc::create([=] () { this->buttons.credits->_destroy(); }),
       nullptr
     )
   );
   this->buttons.noad->runAction(
     Sequence::create(
-      CallFunc::create([=] () { this->buttons.noad->bind(false); }),
       EaseSineInOut::create(
         FadeOut::create(0.5)
       ),
+      CallFunc::create([=] () { this->buttons.noad->_destroy(); }),
       nullptr
     )
   );
@@ -554,6 +598,7 @@ void Game::onLose()
 
 void Game::onFinish()
 {
+  this->counter->save();
 }
 
 /**
@@ -592,6 +637,45 @@ void Game::changeState(int state)
       break;
     }
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+bool Game::isNextEnvironment()
+{
+  return this->environment_index < this->environments.size();
+}
+
+void Game::resetEnvironment()
+{
+  if(this->environment_index > 0)
+  {
+    this->environment->onDestroy();
+
+    this->environment_index = 0;
+    this->setEnvironment(this->environment_index);
+  }
+}
+
+void Game::setEnvironment(int index)
+{
+  auto environment = this->environments.at(index);
+
+  this->environment = environment;
+  this->environment->onCreate();
+}
+
+void Game::nextEnvironment()
+{
+  if(this->environment_index++ >= 0)
+  {
+    this->environment->onDestroy();
+  }
+
+  this->setEnvironment(this->environment_index);
 }
 
 /**
@@ -663,6 +747,9 @@ void Game::updateCamera(float time)
     this->character->getPositionX() - this->camera.width / 2 - this->h->getPositionX() / this->d->getScale(),
     this->camera.y - this->h->getPositionY() / this->d->getScale()
   );
+
+  this->v->setPosition(
+                       (this->character->getPositionX() - this->camera.width / 2 - this->h->getPositionX() / this->d->getScale())+this->camera.width, 0);
 
   this->c->setScale(1.0 / this->d->getScale());
 }

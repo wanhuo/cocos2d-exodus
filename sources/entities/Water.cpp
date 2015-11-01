@@ -29,7 +29,7 @@
  *
  */
 Water::Water(int type)
-: ParallaxPool(Application->w)
+: ParallaxPool()
 {
   this->type = type;
 
@@ -45,6 +45,8 @@ Water::Water(int type)
     this->initType3();
     break;
   }
+
+  this->retain();
 }
 
 Water::~Water()
@@ -60,6 +62,9 @@ void Water::initType1()
 {
   this->setPosition(0, 200 + (!Application->parameters.ad ? 100 : 0));
   this->setSpeed(50, 0);
+
+  this->setLocalZOrder(1);
+  this->setGlobalZOrder(1);
 
   this->addElement(new ParallaxEntity("water-1.png"));
 
@@ -83,6 +88,9 @@ void Water::initType2()
   this->setPosition(0, 150 + (!Application->parameters.ad ? 100 : 0));
   this->setSpeed(-100, 0);
 
+  this->setLocalZOrder(2);
+  this->setGlobalZOrder(2);
+
   this->addElement(new ParallaxEntity("water-2.png"));
 
   this->runAction(
@@ -105,7 +113,8 @@ void Water::initType3()
   this->setPosition(0, -50 + (!Application->parameters.ad ? 100 : 0));
   this->setSpeed(100, 0);
 
-  this->setLocalZOrder(10);
+  this->setLocalZOrder(11);
+  this->setGlobalZOrder(11);
 
   this->addElement(new ParallaxEntity("water-3.png"));
 

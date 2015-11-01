@@ -140,6 +140,8 @@
 		78C5AE8B1B134C7E00918D74 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE8A1B134C7E00918D74 /* SystemConfiguration.framework */; };
 		78C5AE8D1B134C8A00918D74 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE8C1B134C8A00918D74 /* StoreKit.framework */; };
 		78C5AE8F1B134C9100918D74 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C5AE8E1B134C9100918D74 /* Social.framework */; };
+		78D5869B1BD7B3CE0068FCA6 /* Missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D586991BD7B3CE0068FCA6 /* Missile.cpp */; settings = {ASSET_TAGS = (); }; };
+		78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D586991BD7B3CE0068FCA6 /* Missile.cpp */; settings = {ASSET_TAGS = (); }; };
 		78DEED691B1A911E0093CB64 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED531B1A911E0093CB64 /* Default-568h@2x.png */; };
 		78DEED6A1B1A911E0093CB64 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED541B1A911E0093CB64 /* Default.png */; };
 		78DEED6B1B1A911E0093CB64 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED551B1A911E0093CB64 /* Default@2x.png */; };
@@ -191,6 +193,8 @@
 		78EA01E11AEA5C4500057A05 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA01E01AEA5C4500057A05 /* CoreMedia.framework */; };
 		78EC8D6D1BBAF0B900CC5785 /* NSModal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78EC8D6C1BBAF0B900CC5785 /* NSModal.mm */; };
 		78EC8D6F1BBAF5F500CC5785 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EC8D6E1BBAF5F500CC5785 /* MessageUI.framework */; };
+		78FEA72B1BDE9AB000D253A3 /* Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FEA7291BDE9AB000D253A3 /* Handler.cpp */; settings = {ASSET_TAGS = (); }; };
+		78FEA72C1BDE9AB000D253A3 /* Handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78FEA7291BDE9AB000D253A3 /* Handler.cpp */; settings = {ASSET_TAGS = (); }; };
 		A92275421517C094001B78AA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
 		A92275481517C094001B78AA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92275471517C094001B78AA /* AudioToolbox.framework */; };
@@ -382,6 +386,8 @@
 		78C5AE8C1B134C8A00918D74 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		78C5AE8E1B134C9100918D74 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
 		78CA6DC21B56786D00F2525F /* Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Framework.xcodeproj; path = ../../../cocos2d/build/Framework.xcodeproj; sourceTree = "<group>"; };
+		78D586991BD7B3CE0068FCA6 /* Missile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Missile.cpp; sourceTree = "<group>"; };
+		78D5869A1BD7B3CE0068FCA6 /* Missile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Missile.h; sourceTree = "<group>"; };
 		78DEED531B1A911E0093CB64 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		78DEED541B1A911E0093CB64 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		78DEED551B1A911E0093CB64 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -438,6 +444,8 @@
 		78EC8D6B1BBAF0B900CC5785 /* NSModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSModal.h; sourceTree = "<group>"; };
 		78EC8D6C1BBAF0B900CC5785 /* NSModal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSModal.mm; sourceTree = "<group>"; };
 		78EC8D6E1BBAF5F500CC5785 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		78FEA7291BDE9AB000D253A3 /* Handler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Handler.cpp; sourceTree = "<group>"; };
+		78FEA72A1BDE9AB000D253A3 /* Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Handler.h; sourceTree = "<group>"; };
 		A922753D1517C094001B78AA /* application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A92275451517C094001B78AA /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -778,6 +786,8 @@
 			children = (
 				789908401BCE80310014A8F7 /* Environment.cpp */,
 				7899083E1BCE80310014A8F7 /* Environment.h */,
+				78D586991BD7B3CE0068FCA6 /* Missile.cpp */,
+				78D5869A1BD7B3CE0068FCA6 /* Missile.h */,
 				7899083F1BCE80310014A8F7 /* Creatures.cpp */,
 				7899083D1BCE80310014A8F7 /* Creatures.h */,
 				78E5CC071BCA6A5200CB036E /* Counter.cpp */,
@@ -799,6 +809,8 @@
 				7894C0921BC9E28B00363FC9 /* Fish.h */,
 				78E5CBFE1BCA595600CB036E /* Name.cpp */,
 				78E5CBFD1BCA595600CB036E /* Name.h */,
+				78FEA7291BDE9AB000D253A3 /* Handler.cpp */,
+				78FEA72A1BDE9AB000D253A3 /* Handler.h */,
 				7899083A1BCE60500014A8F7 /* Water.cpp */,
 				789908391BCE60500014A8F7 /* Water.h */,
 				789908291BCE3D4B0014A8F7 /* Creature.cpp */,
@@ -1342,6 +1354,7 @@
 				789908381BCE3D4B0014A8F7 /* VideoButton.cpp in Sources */,
 				78AEAC1B1BD142EC00FA8783 /* Decorations.cpp in Sources */,
 				78E5CC091BCA6A5200CB036E /* Counter.cpp in Sources */,
+				78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
 				789908421BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7899083C1BCE60500014A8F7 /* Water.cpp in Sources */,
 				782414AA1BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */,
@@ -1350,6 +1363,7 @@
 				782414A81BCCB6E9007D5847 /* TutorialAnimation.cpp in Sources */,
 				7828A0AF1A1F87BA0079492B /* main.cpp in Sources */,
 				7894C0451BC9468E00363FC9 /* Character.cpp in Sources */,
+				78FEA72C1BDE9AB000D253A3 /* Handler.cpp in Sources */,
 				78AEAC0A1BD0F7F700FA8783 /* FinishCounter.cpp in Sources */,
 				78AEAC1F1BD14B6D00FA8783 /* Rocket.cpp in Sources */,
 				7899082E1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */,
@@ -1363,6 +1377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				781B06F61BD3B7E60072FB24 /* Purchases.h in Sources */,
+				78FEA72B1BDE9AB000D253A3 /* Handler.cpp in Sources */,
 				78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */,
 				7824149D1BCC9153007D5847 /* Store.cpp in Sources */,
 				789908431BCE80310014A8F7 /* Environment.cpp in Sources */,
@@ -1390,6 +1405,7 @@
 				78809FAE1B11D3B4002397E7 /* HZAdMobBannerSupport.m in Sources */,
 				789908331BCE3D4B0014A8F7 /* GiftButton.cpp in Sources */,
 				78EC8D6D1BBAF0B900CC5785 /* NSModal.mm in Sources */,
+				78D5869B1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
 				789908351BCE3D4B0014A8F7 /* Human.cpp in Sources */,
 				782414A11BCC9184007D5847 /* Credits.cpp in Sources */,
 				78DF453F1BBAA54F004E4570 /* NSPurchase.mm in Sources */,

@@ -119,17 +119,9 @@ void AnimatedButton::onTouchStart(cocos2d::Touch* touch, Event* e)
 void AnimatedButton::onTouchFinish(cocos2d::Touch* touch, Event* e)
 {
   this->stopAllActions();
-  this->runAction(
-    Sequence::create(
-      EaseSineInOut::create(
-        ScaleTo::create(0.2, 1.0)
-      ),
-      CallFunc::create([=] () {
-      Node::onTouchFinish(touch, e);
-      }),
-      nullptr
-    )
-  );
+  this->setScale(0);
+
+  Node::onTouchFinish(touch, e);
 }
 
 void AnimatedButton::onTouchCancelled(cocos2d::Touch* touch, Event* e)

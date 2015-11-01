@@ -74,7 +74,7 @@ void Creature::onCreate()
   this->setPosition(x, Application->camera.center - 110);
   this->setAnimation(this->animations.animation);
 
-  Application->environment->creatures->onCreate();
+  Application->creatures->onCreate();
 }
 
 void Creature::onDestroy(bool action)
@@ -88,7 +88,7 @@ void Creature::onDestroy(bool action)
    */
   if(action)
   {
-    Application->environment->creatures->onDestroy();
+    Application->creatures->onDestroy();
   }
 }
 

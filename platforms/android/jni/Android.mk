@@ -60,6 +60,7 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/TutorialAnimation.cpp \
                    ../../../sources/entities/TutorialRepeat.cpp \
                    ../../../sources/entities/Parallax.cpp \
+                   ../../../sources/entities/Missile.cpp \
                    ../../../sources/popups/Decorations.cpp \
                    ../../../sources/popups/Credits.cpp \
                    ../../../sources/screens/Game.cpp \

@@ -133,7 +133,7 @@ void Barror::animate(int index)
               Vec2(random(0.0f, Application->width), Application->center.y)
             })
           ),
-          CallFunc::create(CC_CALLBACK_0(Counter::onScore, Application->counter, true)),
+          CallFunc::create(CC_CALLBACK_0(Counter::onCoin, Application->counter, true)),
           CallFunc::create(CC_CALLBACK_0(Node::_destroy, this, false)),
           nullptr
         )

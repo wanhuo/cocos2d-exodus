@@ -281,16 +281,46 @@ void Credits::onToogle()
  */
 void Credits::show()
 {
-  Application->buttons.credits->setCurrentFrameIndex(2);
-  Application->buttons.credits->runAction(
-    EaseSineInOut::create(
-      MoveBy::create(this->parameters.time, Vec2(0, this->parameters.height))
-    )
+  Application->hand->stopAllActions();
+  Application->hand->runAction(
+    FadeOut::create(0.2)
   );
 
+  Application->buttons.credits->setCurrentFrameIndex(2);
+
+  if(Application->parameters.ad)
+  {
+    Application->buttons.credits->runAction(
+      Sequence::create(
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time, Vec2(0, this->parameters.height))
+        ),
+        nullptr
+      )
+    );
+  }
+  else
+  {
+    Application->buttons.credits->runAction(
+      Sequence::create(
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time / 4, Vec2(0, -100))
+        ),
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time, Vec2(0, this->parameters.height))
+        ),
+        nullptr
+      )
+    );
+  }
+
   this->background->runAction(
-    EaseSineInOut::create(
-      MoveBy::create(this->parameters.time, Vec2(0, this->parameters.height))
+    Sequence::create(
+      DelayTime::create(Application->parameters.ad ? 0 : this->parameters.time / 4),
+      EaseSineInOut::create(
+        MoveBy::create(this->parameters.time, Vec2(0, this->parameters.height))
+      ),
+      nullptr
     )
   );
 
@@ -298,6 +328,7 @@ void Credits::show()
 
   this->runAction(
     Sequence::create(
+      DelayTime::create(Application->parameters.ad ? 0 : this->parameters.time / 4),
       FadeTo::create(this->parameters.time, this->parameters.opacity),
       CallFunc::create(CC_CALLBACK_0(Credits::onShow, this)),
       nullptr
@@ -307,12 +338,38 @@ void Credits::show()
 
 void Credits::hide()
 {
-  Application->buttons.credits->setCurrentFrameIndex(0);
-  Application->buttons.credits->runAction(
-    EaseSineInOut::create(
-      MoveBy::create(this->parameters.time, Vec2(0, -this->parameters.height))
-    )
+  Application->hand->stopAllActions();
+  Application->hand->runAction(
+    FadeIn::create(0.2)
   );
+
+  Application->buttons.credits->setCurrentFrameIndex(0);
+
+  if(Application->parameters.ad)
+  {
+    Application->buttons.credits->runAction(
+      Sequence::create(
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time, Vec2(0, -this->parameters.height))
+        ),
+        nullptr
+      )
+    );
+  }
+  else
+  {
+    Application->buttons.credits->runAction(
+      Sequence::create(
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time, Vec2(0, -this->parameters.height))
+        ),
+        EaseSineInOut::create(
+          MoveBy::create(this->parameters.time / 4, Vec2(0, 100))
+        ),
+        nullptr
+      )
+    );
+  }
 
   this->background->runAction(
     EaseSineInOut::create(
