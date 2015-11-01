@@ -42,9 +42,9 @@ Environment::~Environment()
  *
  *
  */
-void Environment::setup(const char* file)
+void Environment::setup(const char* texture, const char* data)
 {
-  this->parallaxes.fixed = new BatchEntity("parallaxes.png", true);
+  this->parallaxes.fixed = new BatchEntity(texture, true);
   this->parallaxes.dynamic = new ParallaxPool;
 
   this->parallaxes.fixed->retain();
@@ -53,7 +53,7 @@ void Environment::setup(const char* file)
   this->parallaxes.fixed->setLocalZOrder(-2);
   this->parallaxes.dynamic->setLocalZOrder(-1);
 
-  auto rootJsonData = Json_create(FileUtils::getInstance()->getStringFromFile(file).c_str());
+  auto rootJsonData = Json_create(FileUtils::getInstance()->getStringFromFile(data).c_str());
   auto elementsJsonData = Json_getItem(rootJsonData, "elements");
 
   for(auto elementJsonData = elementsJsonData->child; elementJsonData; elementJsonData = elementJsonData->next)
@@ -247,11 +247,7 @@ void Environment::update(float time)
 
 Environment1::Environment1()
 {
-  this->setup("environment-1.json");
-
-  this->water1 = new Water(Water::TYPE1);
-  this->water2 = new Water(Water::TYPE2);
-  this->water3 = new Water(Water::TYPE3);
+  this->setup("parallaxes.png", "environment-1.json");
 
   this->fishes = new Pool(
     new Fish(
@@ -272,15 +268,6 @@ Environment1::~Environment1()
 void Environment1::onCreate()
 {
   Environment::onCreate();
-
-  /**
-   *
-   *
-   *
-   */
-  Application->w->addChild(this->water1);
-  Application->w->addChild(this->water2);
-  Application->w->addChild(this->water3);
 }
 
 void Environment1::onDestroy()
@@ -292,10 +279,6 @@ void Environment1::onDestroy()
    *
    *
    */
-  this->water1->removeFromParent();
-  this->water2->removeFromParent();
-  this->water3->removeFromParent();
-
   this->fishes->clear();
 }
 
@@ -410,7 +393,7 @@ void Environment1::update(float time)
 
 Environment2::Environment2()
 {
-  this->setup("environment-2.json");
+  this->setup("environment-2.png", "environment-2.json");
 
   this->missiles = new Pool(new Missile, Application->v);
 }
@@ -457,7 +440,7 @@ void Environment2::updateMissiles(float time)
    */
   if(this->missiles->count < 3)
   {
-    if(true) // TODO: Min scale.
+    if(Application->d->getScale() <= Game::SCALE_MIN)
     {
       if(probably(1))
       {

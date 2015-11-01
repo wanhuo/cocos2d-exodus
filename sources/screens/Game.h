@@ -48,6 +48,7 @@
 #include "Pointer.h"
 #include "Missile.h"
 #include "Handler.h"
+#include "Water.h"
 
 #include "Environment.h"
 
@@ -162,6 +163,10 @@ class Game : public Screen
 
   Background* game;
   Background* menu;
+
+  ParallaxPool* water1;
+  ParallaxPool* water2;
+  ParallaxPool* water3;
 
   Name* name;
   Counter* counter;

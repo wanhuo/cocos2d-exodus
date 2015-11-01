@@ -28,8 +28,8 @@
  *
  *
  */
-Water::Water(int type)
-: ParallaxPool()
+Water::Water(int type, Node* parent)
+: ParallaxPool(parent)
 {
   this->type = type;
 

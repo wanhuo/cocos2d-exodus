@@ -37,7 +37,6 @@
 #include "Creatures.h"
 #include "Human.h"
 #include "Fish.h"
-#include "Water.h"
 #include "Pointer.h"
 #include "Barror.h"
 
@@ -71,7 +70,7 @@ class Environment : public Ref
   protected:
   Parallaxes parallaxes;
 
-  void setup(const char* file);
+  void setup(const char* texture, const char* data);
 
   /**
    *
@@ -128,10 +127,6 @@ class Environment1 : public Environment
   public:
   Environment1();
  ~Environment1();
-
-  ParallaxPool* water1;
-  ParallaxPool* water2;
-  ParallaxPool* water3;
 
   Pool* fishes;
   Pool* baloons;

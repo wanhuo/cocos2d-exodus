@@ -55,7 +55,7 @@ class Water : public ParallaxPool
   static const int TYPE2 = 2;
   static const int TYPE3 = 3;
 
-  Water(int type);
+  Water(int type, Node* parent);
  ~Water();
 
   virtual void reset();

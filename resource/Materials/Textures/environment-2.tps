@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.5.3</string>
         <key>fileName</key>
-        <string>/Users/igor/Development/cocos2d-exodus/resource/Materials/Textures/parallaxes.tps</string>
+        <string>/Users/igor/Development/cocos2d-exodus/resource/Materials/Textures/environment-2.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -38,7 +38,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../Graphics/parallaxes.png</filename>
+        <filename>../../Graphics/environment-2.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -145,7 +145,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../Graphics/parallaxes.plist</filename>
+                <filename>../../Graphics/environment-2.plist</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -188,29 +188,12 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../Graphics/parallaxes/1/background-1.png</filename>
-            <filename>../Graphics/parallaxes/1/background-2.png</filename>
-            <filename>../Graphics/parallaxes/1/background-3.png</filename>
-            <filename>../Graphics/parallaxes/1/background-4.png</filename>
-            <filename>../Graphics/parallaxes/1/brume-1.png</filename>
-            <filename>../Graphics/parallaxes/1/brume-2.png</filename>
-            <filename>../Graphics/parallaxes/1/cloud-1.png</filename>
-            <filename>../Graphics/parallaxes/1/cloud-2.png</filename>
-            <filename>../Graphics/parallaxes/1/ground.png</filename>
-            <filename>../Graphics/parallaxes/1/meteorit.png</filename>
-            <filename>../Graphics/parallaxes/1/moon.png</filename>
-            <filename>../Graphics/parallaxes/1/mountain.png</filename>
-            <filename>../Graphics/parallaxes/1/planet-1.png</filename>
-            <filename>../Graphics/parallaxes/1/planet-2.png</filename>
-            <filename>../Graphics/parallaxes/1/slide.png</filename>
-            <filename>../Graphics/parallaxes/1/star-1.png</filename>
-            <filename>../Graphics/parallaxes/1/star-2.png</filename>
-            <filename>../Graphics/parallaxes/1/tree-1.png</filename>
-            <filename>../Graphics/parallaxes/1/tree-2.png</filename>
-            <filename>../Graphics/parallaxes/1/tree-3.png</filename>
-            <filename>../Graphics/parallaxes/1/water-1.png</filename>
-            <filename>../Graphics/parallaxes/1/water-2.png</filename>
-            <filename>../Graphics/parallaxes/1/water-3.png</filename>
+            <filename>../Graphics/parallaxes/2/2-mountains.png</filename>
+            <filename>../Graphics/parallaxes/2/2-sun.png</filename>
+            <filename>../Graphics/parallaxes/2/2-moon.png</filename>
+            <filename>../Graphics/parallaxes/2/2-ground.png</filename>
+            <filename>../Graphics/parallaxes/2/2-background-2.png</filename>
+            <filename>../Graphics/parallaxes/2/2-background-1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

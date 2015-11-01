@@ -61,6 +61,7 @@ Game::Game()
 
   SpriteFrameCache::getInstance()->addSpriteFramesWithFile("ui.plist");
   SpriteFrameCache::getInstance()->addSpriteFramesWithFile("parallaxes.plist");
+  SpriteFrameCache::getInstance()->addSpriteFramesWithFile("environment-2.plist");
 
   this->camera.center += (this->parameters.ad ? 0 : 100);
 
@@ -83,6 +84,10 @@ Game::Game()
 
   this->environments.push_back(new Environment1);
   this->environments.push_back(new Environment2);
+
+  this->water1 = new Water(Water::TYPE1, this->w);
+  this->water2 = new Water(Water::TYPE2, this->w);
+  this->water3 = new Water(Water::TYPE3, this->w);
 
   this->nextEnvironment();
 
@@ -547,6 +552,7 @@ void Game::onStart()
   );
 
   this->character->changeState(Character::STATE_START);
+  this->nextEnvironment();
 }
 
 void Game::onGame()

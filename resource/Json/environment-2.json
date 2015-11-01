@@ -1,7 +1,7 @@
 {
 	"elements": [
 		{
-			"texture": "background-1.png",
+			"texture": "2-background-1.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -17,7 +17,7 @@
 			"z": 0
 		},
 		{
-			"texture": "background-2.png",
+			"texture": "2-background-2.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -33,7 +33,7 @@
 			"z": 1
 		},
 		{
-			"texture": "background-3.png",
+			"texture": "2-background-2.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -49,7 +49,7 @@
 			"z": 2
 		},
 		{
-			"texture": "background-4.png",
+			"texture": "2-background-2.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -65,7 +65,52 @@
 			"z": 3
 		},
 		{
-			"texture": "ground.png",
+			"texture": "2-ground.png",
+			"type": 1,
+			"anchor": {
+				"x": 0.5,
+				"y": 1.0
+			},
+			"position": {
+				"x": {
+					"min": 0.0,
+					"max": 0.0
+				},
+				"y": {
+					"min": 0.0,
+					"max": 0.0
+				}
+			},
+			"scale": {
+				"x": {
+					"min": 0.0,
+					"max": 0.0
+				},
+				"y": {
+					"min": 0.0,
+					"max": 0.0
+				}
+			},
+			"speed": {
+				"x": {
+					"min": 0.0,
+					"max": 0.0
+				},
+				"y": {
+					"min": 0.0,
+					"max": 0.0
+				}
+			},
+			"width": {
+				"min": 0.0,
+				"max": 0.0
+			},
+			"x": 0.0,
+			"y": 344.0,
+			"z": 10
+		},
+		{
+			"texture": "2-mountains.png",
 			"type": 1,
 			"anchor": {
 				"x": 0.5,
@@ -106,7 +151,37 @@
 				"max": 0.0
 			},
 			"x": 0.0,
-			"y": 160.0,
+			"y": 342.0,
+			"z": 10
+		},
+		{
+			"texture": "2-sun.png",
+			"type": 0,
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			},
+			"scale": {
+				"x": 1.0,
+				"y": 1.0
+			},
+			"x": 600.0,
+			"y": 1200.0,
+			"z": 10
+		},
+		{
+			"texture": "2-moon.png",
+			"type": 0,
+			"anchor": {
+				"x": 0.5,
+				"y": 0.5
+			},
+			"scale": {
+				"x": 1.0,
+				"y": 1.0
+			},
+			"x": 0.0,
+			"y": 1200.0,
 			"z": 10
 		}
 	]
