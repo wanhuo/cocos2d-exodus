@@ -194,6 +194,13 @@
             <filename>../Graphics/parallaxes/2/2-ground.png</filename>
             <filename>../Graphics/parallaxes/2/2-background-2.png</filename>
             <filename>../Graphics/parallaxes/2/2-background-1.png</filename>
+            <filename>../Graphics/parallaxes/2/2-building-1.png</filename>
+            <filename>../Graphics/parallaxes/2/2-building-2.png</filename>
+            <filename>../Graphics/parallaxes/2/2-building-3.png</filename>
+            <filename>../Graphics/parallaxes/2/2-building-4.png</filename>
+            <filename>../Graphics/parallaxes/2/2-building-5.png</filename>
+            <filename>../Graphics/parallaxes/2/2-cloud.png</filename>
+            <filename>../Graphics/parallaxes/2/2-tree-1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
