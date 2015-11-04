@@ -85,7 +85,7 @@ void Crown::onCreate()
            *
            *
            */
-          Sound->play("");
+          Sound->play("best");
         }),
         FadeIn::create(1.0),
         nullptr

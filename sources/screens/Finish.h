@@ -36,7 +36,6 @@
 #include "VideoButton.h"
 #include "GiftButton.h"
 #include "CharacterButton.h"
-#include "Crown.h"
 
 /**
  *
@@ -91,8 +90,6 @@ class Finish : public Screen
   BackgroundColor* background;
   Buttons buttons;
 
-  Crown* crown;
-
   FinishCounter* counter;
 
   Spine* decoration;
@@ -125,6 +122,8 @@ class Finish : public Screen
 
   virtual void onMoveUp();
   virtual void onMoveDown();
+
+  virtual void onBest();
 
   virtual void show();
   virtual void hide();
