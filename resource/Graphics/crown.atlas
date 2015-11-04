@@ -1,0 +1,76 @@
+
+crown.png
+size: 626,276
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+skins/1/crown
+  rotate: true
+  xy: 264, 114
+  size: 160, 104
+  orig: 160, 104
+  offset: 0, 0
+  index: -1
+skins/1/spark
+  rotate: true
+  xy: 2, 26
+  size: 27, 26
+  orig: 27, 26
+  offset: 0, 0
+  index: -1
+skins/2/crown
+  rotate: true
+  xy: 278, 8
+  size: 104, 100
+  orig: 104, 100
+  offset: 0, 0
+  index: -1
+skins/3/crown
+  rotate: false
+  xy: 477, 17
+  size: 133, 114
+  orig: 133, 114
+  offset: 0, 0
+  index: -1
+skins/4/crown
+  rotate: true
+  xy: 380, 2
+  size: 129, 95
+  orig: 129, 95
+  offset: 0, 0
+  index: -1
+skins/5/crown
+  rotate: false
+  xy: 149, 3
+  size: 127, 105
+  orig: 127, 105
+  offset: 0, 0
+  index: -1
+skins/6/crown
+  rotate: true
+  xy: 503, 133
+  size: 141, 121
+  orig: 141, 121
+  offset: 0, 0
+  index: -1
+skins/7/crown
+  rotate: true
+  xy: 149, 110
+  size: 164, 113
+  orig: 164, 113
+  offset: 0, 0
+  index: -1
+skins/8/crown
+  rotate: true
+  xy: 370, 133
+  size: 141, 131
+  orig: 141, 131
+  offset: 0, 0
+  index: -1
+skins/9/crown
+  rotate: true
+  xy: 2, 55
+  size: 219, 145
+  orig: 219, 145
+  offset: 0, 0
+  index: -1

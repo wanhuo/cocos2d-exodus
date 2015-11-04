@@ -36,6 +36,7 @@
 #include "VideoButton.h"
 #include "GiftButton.h"
 #include "CharacterButton.h"
+#include "Crown.h"
 
 /**
  *
@@ -89,6 +90,8 @@ class Finish : public Screen
   protected:
   BackgroundColor* background;
   Buttons buttons;
+
+  Crown* crown;
 
   FinishCounter* counter;
 

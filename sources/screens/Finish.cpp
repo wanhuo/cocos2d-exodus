@@ -62,6 +62,8 @@ Finish::Finish()
 
   this->counter = new FinishCounter;
 
+  this->crown = new Crown(this->counter);
+
   this->coins = new Pool(new Coin, this);
 
   this->buttons.play = new Button("finish-play-button.png", 1, 2, this->holder, std::bind(&Finish::hide, this));
@@ -106,6 +108,11 @@ void Finish::onEnter()
   Events::onScreenChanged("Finish");
 
   Screen::onEnter();
+
+  if(true)
+  {
+    this->crown->_create();
+  }
 }
 
 void Finish::onExit()
@@ -120,6 +127,8 @@ void Finish::onExit()
   this->buttons.video->_destroy();
   this->buttons.gift->_destroy();
   this->buttons.character->_destroy();
+
+  this->crown->_destroy();
 }
 
 /**
