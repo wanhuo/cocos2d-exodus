@@ -79,17 +79,17 @@ void VideoButton::onTouch(cocos2d::Touch* touch, Event* e)
         ScaleTo::create(0.2, 0)
       ),
       CallFunc::create([=] () {
-        Finish::getInstance()->parameters.elapsed.ad = 0;
-        Finish::getInstance()->onMoveDown();
-
         Heyzap::show(Config::AD_TYPE_VIDEO, [=] (bool state) {
+          Finish::getInstance()->parameters.elapsed.ad = 0;
+          Finish::getInstance()->onMoveDown();
+
+          this->_destroy(true);
+
           if(state)
           {
-            log("GIVE ME MONEY!!");
+            Finish::getInstance()->throwCoins(30);
           }
         });
-
-        this->_destroy(true);
       }),
       nullptr
     )

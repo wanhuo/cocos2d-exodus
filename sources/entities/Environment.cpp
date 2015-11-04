@@ -50,8 +50,8 @@ void Environment::setup(const char* texture, const char* data)
   this->parallaxes.fixed->retain();
   this->parallaxes.dynamic->retain();
 
-  this->parallaxes.fixed->setLocalZOrder(-2);
-  this->parallaxes.dynamic->setLocalZOrder(-1);
+  this->parallaxes.fixed->setLocalZOrder(-1);
+  this->parallaxes.dynamic->setLocalZOrder(-2);
 
   auto rootJsonData = Json_create(FileUtils::getInstance()->getStringFromFile(data).c_str());
   auto elementsJsonData = Json_getItem(rootJsonData, "elements");
@@ -218,8 +218,38 @@ void Environment::onLose()
  *
  *
  */
+void Environment::updateWater(float time)
+{
+  /**
+   *
+   * @Optional
+   * It can be disabled due to better world view.
+   * Disable it only if you are using more than 1 parallax world.
+   *
+   */
+  if(Application->w->getNumberOfRunningActions() < 1)
+  {
+    float x = Application->w->getPositionX();
+    float y = Application->w->getPositionY() + 100 * time;
+
+    Application->w->setPosition(x, y);
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
 void Environment::update(float time)
 {
+  if(Application->state == Game::STATE_GAME)
+  {
+    if(Application->character->state == Character::STATE_GAME)
+    {
+      this->updateWater(time);
+    }
+  }
 }
 
 /**
@@ -331,24 +361,6 @@ void Environment1::updateFishes(float time)
   }
 }
 
-void Environment1::updateWater(float time)
-{
-  /**
-   *
-   * @Optional
-   * It can be disabled due to better world view.
-   * Disable it only if you are using more than 1 parallax world.
-   *
-   */
-  if(Application->w->getNumberOfRunningActions() < 1)
-  {
-    float x = Application->w->getPositionX();
-    float y = Application->w->getPositionY() + 100 * time;
-
-    Application->w->setPosition(x, y);
-  }
-}
-
 /**
  *
  *
@@ -356,16 +368,15 @@ void Environment1::updateWater(float time)
  */
 void Environment1::update(float time)
 {
+  Environment::update(time);
+
+  /**
+   *
+   *
+   *
+   */
   this->updateBaloons(time);
   this->updateFishes(time);
-
-  if(Application->state == Game::STATE_GAME)
-  {
-    if(Application->character->state == Character::STATE_GAME)
-    {
-      this->updateWater(time);
-    }
-  }
 }
 
 /**
@@ -457,5 +468,12 @@ void Environment2::updateMissiles(float time)
  */
 void Environment2::update(float time)
 {
+  Environment::update(time);
+
+  /**
+   *
+   *
+   *
+   */
   this->updateMissiles(time);
 }

@@ -94,6 +94,8 @@ class Finish : public Screen
 
   Spine* decoration;
 
+  Pool* coins;
+
   /**
    *
    *
@@ -109,6 +111,9 @@ class Finish : public Screen
 
   Parameters parameters;
 
+  float time;
+  float elapsedCoins = 0;
+
   virtual void onEnter();
   virtual void onExit();
 
@@ -122,6 +127,8 @@ class Finish : public Screen
   virtual void hide();
 
   virtual void showButtons();
+
+  virtual void throwCoins(int count = 20);
 
   virtual void updateSoundState();
 

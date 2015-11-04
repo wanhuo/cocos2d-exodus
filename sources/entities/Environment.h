@@ -91,6 +91,8 @@ class Environment : public Ref
   virtual void onGame();
   virtual void onLose();
 
+  virtual void updateWater(float time);
+
   virtual void update(float time);
 };
 
@@ -144,7 +146,6 @@ class Environment1 : public Environment
 
   virtual void updateBaloons(float time);
   virtual void updateFishes(float time);
-  virtual void updateWater(float time);
 
   virtual void update(float time);
 };

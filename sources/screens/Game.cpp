@@ -112,7 +112,8 @@ Game::Game()
   this->pointers = new Pool(new Pointer, this->game, true);
   this->barrors = new Pool(new Barror, this->c, true);
 
-  this->bonus = new Motion("pointer-motion.png", this->game, 108);
+  this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
+  this->bonus->setLocalZOrder(-1);
 
   this->buttons.play->_create()->setPosition(
     this->center.x,
@@ -503,6 +504,8 @@ void Game::onPrepare()
   this->pointers->clear();
   this->barrors->clear();
 
+  this->bonus->_destroy();
+
   this->updateCamera();
 
   this->runAction(
@@ -552,7 +555,6 @@ void Game::onStart()
   );
 
   this->character->changeState(Character::STATE_START);
-  this->nextEnvironment();
 }
 
 void Game::onGame()

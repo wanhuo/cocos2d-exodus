@@ -37,7 +37,7 @@ struct WHATMax
   float y;
 
   Vec2 increase = Vec2(100, 0);
-  Vec2 setup = Vec2(1000, 500);
+  Vec2 setup = Vec2(1200, 500);
 };
 
 struct WHATincrease
@@ -54,6 +54,19 @@ struct WHATdecrease
   float y = 3.0;
 
   Vec2 max = Vec2(0.0, 10.0);
+};
+
+struct WHATexponesial
+{
+  bool state = false;
+
+  float x = 1.0;
+
+  float increase = 0.01;
+  float decrease = 0.01;
+
+  float max = 1.2;
+  float min = 0.8;
 };
 
 struct Parameters
@@ -74,6 +87,8 @@ struct Parameters
 
   WHATincrease increase;
   WHATdecrease decrease;
+
+  WHATexponesial exponesial;
 
   int sound;
 };

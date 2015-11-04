@@ -27,6 +27,7 @@
 #include "Entity.h"
 #include "TiledEntity.h"
 #include "AnimatedEntity.h"
+#include "Entity3D.h"
 #include "Button.h"
 #include "Background.h"
 #include "BackgroundColor.h"
@@ -49,6 +50,7 @@
 #include "Missile.h"
 #include "Handler.h"
 #include "Water.h"
+#include "Coin.h"
 
 #include "Environment.h"
 
