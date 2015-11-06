@@ -21,7 +21,7 @@
  *
  */
 
-#include "CharacterButton.h"
+#include "Finish.h"
 
 /**
  *
@@ -84,6 +84,12 @@ void CharacterButton::onTouch(cocos2d::Touch* touch, Event* e)
       CallFunc::create([=] ()
       {
         Modal::hide();
+
+        Finish::getInstance()->onUnlock();
+
+        this->_destroy(true);
+
+        Sound->play("unlock");
       }),
       nullptr
     )

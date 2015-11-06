@@ -37,7 +37,7 @@ FinishCounter::FinishCounter()
   this->coins = new Entity("counter-coins.png", Finish::getInstance(), true);
   this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50);
 
-  this->holders.congratulations = new Entity("test.png", this);
+  this->holders.congratulations = new Entity("text-holder-1.png", this);
 
   this->texts.value = new Text("counter", this, true);
   this->texts.best = new Text("best", this, true);
@@ -129,7 +129,6 @@ void FinishCounter::onBest()
   this->holders.congratulations->setScale(0);
   this->holders.congratulations->runAction(
     Sequence::create(
-      DelayTime::create(1.0),
       EaseSineInOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -138,7 +137,6 @@ void FinishCounter::onBest()
   );
   this->holders.congratulations->runAction(
     Sequence::create(
-      DelayTime::create(2.0),
       CallFunc::create([=] () {
         this->holders.congratulations->runAction(
           RepeatForever::create(
@@ -158,4 +156,6 @@ void FinishCounter::onBest()
       nullptr
     )
   );
+
+  Sound->play("best");
 }

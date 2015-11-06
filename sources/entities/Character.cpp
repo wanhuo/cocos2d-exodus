@@ -668,7 +668,7 @@ void Character::onUpdateTraectory()
       this->generate.x += position.x;
       this->generate.y += position.y;
 
-      if(counter >= this->generate.start)
+      if(counter >= (this->generate.start - 5))
       {
         if(this->generate.bonus)
         {
@@ -1057,37 +1057,44 @@ void Character::updateStatus(bool state)
  */
 void Character::updatePointers()
 {
-  auto pointer = this->getCollisionPointer();
-
-  if(pointer)
+  if(this->isOnBonusTraectory())
   {
-    switch(pointer->getCurrentFrameIndex())
-    {
-      default:
-      this->updateStatus(false);
-      break;
-      case Pointer::SUCCESS:
-      this->updateStatus(true);
-      break;
-      case Pointer::MISTAKE:
-      this->updateStatus(false);
-      break;
-      case Pointer::COIN:
-      this->updateStatus(false);
-
-      /**
-       *
-       * @Optional
-       * Comment this to allow manual coins collect.
-       *
-       */
-      this->onPointerCoin(pointer);
-      break;
-    }
+    this->updateStatus(true);
   }
   else
   {
-    this->updateStatus(false);
+    auto pointer = this->getCollisionPointer();
+
+    if(pointer)
+    {
+      switch(pointer->getCurrentFrameIndex())
+      {
+        default:
+        this->updateStatus(false);
+        break;
+        case Pointer::SUCCESS:
+        this->updateStatus(true);
+        break;
+        case Pointer::MISTAKE:
+        this->updateStatus(false);
+        break;
+        case Pointer::COIN:
+        this->updateStatus(false);
+
+        /**
+         *
+         * @Optional
+         * Comment this to allow manual coins collect.
+         *
+         */
+        this->onPointerCoin(pointer);
+        break;
+      }
+    }
+    else
+    {
+      this->updateStatus(false);
+    }
   }
 }
 

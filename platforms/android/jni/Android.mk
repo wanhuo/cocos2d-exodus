@@ -63,7 +63,9 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/Parallax.cpp \
                    ../../../sources/entities/Missile.cpp \
                    ../../../sources/entities/Handler.cpp \
+                   ../../../sources/entities/Crown.cpp \
                    ../../../sources/entities/Coin.cpp \
+                   ../../../sources/entities/Confetti.cpp \
                    ../../../sources/popups/Decorations.cpp \
                    ../../../sources/popups/Credits.cpp \
                    ../../../sources/screens/Game.cpp \

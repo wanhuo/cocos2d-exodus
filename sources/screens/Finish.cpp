@@ -55,6 +55,7 @@ Finish::Finish()
   this->addChild(this->framework::Screen::camera);
 
   this->background = new BackgroundColor(this, Color4B(132, 209, 200, 255));
+  this->splash = new BackgroundColor(this, Color4B(255, 255, 255, 0));
   this->holder = new Background(this);
 
   this->decoration = new Spine("character.json", "character.atlas", 1.0, this->holder);
@@ -62,7 +63,8 @@ Finish::Finish()
 
   this->counter = new FinishCounter;
 
-  this->coins = new Pool(new Coin, this);
+  this->coins = new Pool(new Coin, 30, this);
+  this->confetties = new Pool(new Confetti, 200, this);
 
   this->buttons.play = new Button("finish-play-button.png", 1, 2, this->holder, std::bind(&Finish::hide, this));
   this->buttons.like = new Button("like-button.png", 1, 2, this->holder, std::bind(&Game::onLike, Application));
@@ -80,6 +82,8 @@ Finish::Finish()
 
   this->background->setLocalZOrder(-1);
   this->decoration->setLocalZOrder(-1);
+
+  this->splash->setGlobalZOrder(1000);
 
   this->buttons.store->addChild(new Handler);
 }
@@ -120,6 +124,9 @@ void Finish::onExit()
   this->buttons.video->_destroy();
   this->buttons.gift->_destroy();
   this->buttons.character->_destroy();
+
+  this->coins->clear();
+  this->confetties->clear();
 }
 
 /**
@@ -180,6 +187,47 @@ void Finish::onMoveDown()
 void Finish::onBest()
 {
   this->counter->onBest();
+}
+
+void Finish::onUnlock()
+{
+  if(!Application->parameters.ad)
+  {
+    this->onMoveDown();
+  }
+
+  for(int i = 0; i < 200; i++)
+  {
+    this->confetties->_create();
+  }
+
+  this->splash->runAction(
+    Sequence::create(
+      FadeIn::create(0.2),
+      FadeOut::create(1.0),
+      nullptr
+    )
+  );
+
+  Application->character->setRandomSkin();
+
+  float x = Application->center.x - Application->positions->finish->at(Application->character->skinIndex)->x - 500;
+  float y = Application->center.y - Application->positions->finish->at(Application->character->skinIndex)->y - 500;
+
+  this->decoration->_destroy();
+  this->decoration->setSkin(Application->character->getSkin());
+  this->decoration->_create();this->decoration->setSlotsToSetupPose();this->decoration->setBonesToSetupPose();this->decoration->onCreateTextures(true);
+  this->decoration->setPosition(x, y);
+  this->decoration->setRotation(45);
+  this->decoration->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        MoveTo::create(0.2, Vec2(this->decoration->getPositionX() + 500, this->decoration->getPositionY() + 500))
+      ),
+      nullptr
+    )
+  );
+
 }
 
 /**

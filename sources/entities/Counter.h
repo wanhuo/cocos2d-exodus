@@ -54,6 +54,12 @@ class Counter : public Entity
     Text* decoration;
   };
 
+  struct Holders
+  {
+    Entity* status;
+    Entity* decoration;
+  };
+
   struct Values
   {
     int score = 0;
@@ -83,6 +89,7 @@ class Counter : public Entity
  ~Counter();
 
   Texts texts;
+  Holders holders;
   Values values;
 
   virtual void onEnter();

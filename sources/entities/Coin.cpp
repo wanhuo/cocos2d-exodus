@@ -34,6 +34,7 @@
 Coin::Coin()
 : Entity3D("coin.obj")
 {
+  this->setTextures();
   this->setScheduleUpdate(true);
 }
 

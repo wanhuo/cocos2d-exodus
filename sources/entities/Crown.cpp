@@ -70,23 +70,12 @@ void Crown::onCreate()
   this->runAction(
     Spawn::create(
       Sequence::create(
-        DelayTime::create(1.0),
         EaseBounceOut::create(
           RotateTo::create(1.5, 35)
         ),
         nullptr
       ),
       Sequence::create(
-        DelayTime::create(1.0),
-        CallFunc::create([=] () {
-
-          /**
-           *
-           *
-           *
-           */
-          Sound->play("best");
-        }),
         FadeIn::create(1.0),
         nullptr
       ),

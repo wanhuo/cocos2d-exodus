@@ -226,7 +226,9 @@
             <filename>../Graphics/ui/store-switcher-3-button.png</filename>
             <filename>../Graphics/ui/store-baloon.png</filename>
             <filename>../Graphics/ui/store-decoration.png</filename>
-            <filename>../Graphics/ui/test.png</filename>
+            <filename>../Graphics/ui/text-holder-1.png</filename>
+            <filename>../Graphics/ui/text-holder-2.png</filename>
+            <filename>../Graphics/ui/text-holder-3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

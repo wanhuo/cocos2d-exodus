@@ -88,6 +88,7 @@ class Finish : public Screen
    */
   protected:
   BackgroundColor* background;
+  BackgroundColor* splash;
   Buttons buttons;
 
   FinishCounter* counter;
@@ -95,6 +96,7 @@ class Finish : public Screen
   Spine* decoration;
 
   Pool* coins;
+  Pool* confetties;
 
   /**
    *
@@ -124,6 +126,7 @@ class Finish : public Screen
   virtual void onMoveDown();
 
   virtual void onBest();
+  virtual void onUnlock();
 
   virtual void show();
   virtual void hide();

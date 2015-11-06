@@ -36,25 +36,33 @@ Counter::Counter()
   this->coins = new Entity("counter-coins.png", Application->e, true);
   this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
 
+  this->holders.status = new Entity("text-holder-3.png", Application->b);
+  this->holders.decoration = new Entity("text-holder-2.png", Application->b);
+
   this->texts.value = new Text("counter", this, true);
   this->texts.best = new Text("best", Application->b);
   this->texts.taps = new Text("jumps", Application->b);
   this->texts.deaths = new Text("deaths", Application->b);
   this->texts.start = new Text("start", Application->b);
-  this->texts.status = new Text("fail", Application->b);
+  this->texts.status = new Text("fail", this->holders.status, true);
   this->texts.coins = new Text("coins", this->coins, true);
-  this->texts.decoration = new Text("decoration-0", Application->b);
+  this->texts.decoration = new Text("decoration-0", this->holders.decoration, true);
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
   this->texts.best->setPosition(Application->center.x, Application->height - 150 + 300);
   this->texts.taps->setPosition(Application->center.x, Application->height - 190 + 300);
   this->texts.deaths->setPosition(Application->center.x, Application->height - 230 + 300);
+  this->texts.status->setPosition(this->holders.status->getWidth() / 2, this->holders.status->getHeight() / 2);
+  this->texts.decoration->setPosition(this->holders.decoration->getWidth() / 2, this->holders.decoration->getHeight() / 2);
 
   this->circles->setLocalZOrder(-1);
 
-  this->texts.status->setLocalZOrder(-2);
-  this->texts.decoration->setLocalZOrder(-2);
+  this->holders.status->setLocalZOrder(-2);
+  this->holders.decoration->setLocalZOrder(-2);
+
+  this->holders.status->setCascadeOpacityEnabled(true);
+  this->holders.decoration->setCascadeOpacityEnabled(true);
 
   this->setScheduleUpdate(true);
 }
@@ -227,23 +235,42 @@ void Counter::onSuccess()
 {
   if(Application->character->getPositionY() >= 2000 && probably(5))
   {
-    if(this->texts.decoration->getNumberOfRunningActions() < 1)
+    if(this->holders.decoration->getNumberOfRunningActions() < 1)
     {
       this->texts.decoration->setText("decoration-" + patch::to_string(random(0, 1)));
 
-      this->texts.decoration->_create();
-      this->texts.decoration->setPosition(Application->center.x, this->getPositionY() - 190);
-      this->texts.decoration->setScale(0);
-      this->texts.decoration->setOpacity(255);
-      this->texts.decoration->runAction(
+      this->holders.decoration->_create();
+      this->holders.decoration->setPosition(Application->center.x, this->getPositionY() - 190);
+      this->holders.decoration->setScale(0);
+      this->holders.decoration->setOpacity(255);
+      this->holders.decoration->runAction(
         Sequence::create(
           EaseSineOut::create(
             ScaleTo::create(0.2, 1.0)
           ),
-          DelayTime::create(1.5),
+          DelayTime::create(2.5),
           FadeOut::create(0.2),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->texts.decoration, true)),
+          CallFunc::create([=] () {
+            if(this->holders.status->state->create)
+            {
+              this->holders.status->runAction(
+                EaseSineInOut::create(
+                  MoveBy::create(0.2, Vec2(0, 80))
+                )
+              );
+            }
+          }),
+          CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.decoration, true)),
           nullptr
+        )
+      );
+    }
+
+    if(this->holders.status->state->create)
+    {
+      this->holders.status->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -80))
         )
       );
     }
@@ -254,22 +281,22 @@ void Counter::onSuccess()
 
 void Counter::onMistake()
 {
-  this->texts.status->stopAllActions();
+  this->holders.status->stopAllActions();
 
   this->texts.status->setText("mistake");
 
-  this->texts.status->_create();
-  this->texts.status->setPosition(Application->center.x, this->getPositionY() - 250);
-  this->texts.status->setScale(0);
-  this->texts.status->setOpacity(255);
-  this->texts.status->runAction(
+  this->holders.status->_create();
+  this->holders.status->setPosition(Application->center.x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
+  this->holders.status->setScale(0);
+  this->holders.status->setOpacity(255);
+  this->holders.status->runAction(
     Sequence::create(
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
       DelayTime::create(1.5),
       FadeOut::create(0.2),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->texts.status, true)),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.status, true)),
       nullptr
     )
   );
@@ -279,22 +306,22 @@ void Counter::onMistake()
 
 void Counter::onFail()
 {
-  this->texts.status->stopAllActions();
+  this->holders.status->stopAllActions();
 
   this->texts.status->setText("fail");
 
-  this->texts.status->_create();
-  this->texts.status->setPosition(Application->center.x, this->getPositionY() - 250);
-  this->texts.status->setScale(0);
-  this->texts.status->setOpacity(255);
-  this->texts.status->runAction(
+  this->holders.status->_create();
+  this->holders.status->setPosition(Application->center.x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
+  this->holders.status->setScale(0);
+  this->holders.status->setOpacity(255);
+  this->holders.status->runAction(
     Sequence::create(
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
       DelayTime::create(1.5),
       FadeOut::create(0.2),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->texts.status, true)),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.status, true)),
       nullptr
     )
   );
@@ -387,8 +414,11 @@ void Counter::reset()
   this->values.score = 0;
   this->updateTextData();
 
-  this->texts.status->stopAllActions();
-  this->texts.status->_destroy(true);
+  this->holders.decoration->stopAllActions();
+  this->holders.status->stopAllActions();
+
+  this->holders.decoration->_destroy(true);
+  this->holders.status->_destroy(true);
 }
 
 /**
