@@ -15,6 +15,7 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/backgrounds/BackgroundColor.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Entity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/TiledEntity.cpp \
+                   ../../../../cocos2d-tooflya-sdk/entities/Entity3D.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/AnimatedEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/BatchEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Button.cpp \
@@ -61,6 +62,8 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/TutorialRepeat.cpp \
                    ../../../sources/entities/Parallax.cpp \
                    ../../../sources/entities/Missile.cpp \
+                   ../../../sources/entities/Handler.cpp \
+                   ../../../sources/entities/Coin.cpp \
                    ../../../sources/popups/Decorations.cpp \
                    ../../../sources/popups/Credits.cpp \
                    ../../../sources/screens/Game.cpp \

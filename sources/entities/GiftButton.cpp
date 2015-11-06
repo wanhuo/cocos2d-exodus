@@ -104,19 +104,25 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
       ScaleTo::create(0.05, 1.0),
       CallFunc::create([=] ()
       {
+        int count = 0;
         const int index = random(0, (int) (this->giftSkins.size() - 1));
 
         switch(index)
         {
           case 0:
+          count = 10;
           break;
           case 1:
+          count = 20;
           break;
           case 2:
+          count = 30;
           break;
         }
 
         this->setSkin(this->giftSkins[index]);
+
+        Finish::getInstance()->throwCoins(count);
       }),
       DelayTime::create(1.0),
       CallFunc::create([=] ()

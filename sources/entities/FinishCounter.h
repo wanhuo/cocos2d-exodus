@@ -27,6 +27,8 @@
 #include "Entity.h"
 #include "Text.h"
 
+#include "Crown.h"
+
 /**
  *
  *
@@ -47,6 +49,12 @@ class FinishCounter : public Entity
     Text* taps;
     Text* deaths;
     Text* coins;
+    Text* congratulations;
+  };
+
+  struct Holders
+  {
+    Entity* congratulations;
   };
 
   /**
@@ -56,6 +64,8 @@ class FinishCounter : public Entity
    */
   protected:
   Entity* coins;
+
+  Crown* crown;
 
   /**
    *
@@ -67,9 +77,12 @@ class FinishCounter : public Entity
  ~FinishCounter();
 
   Texts texts;
+  Holders holders;
 
   virtual void onEnter();
   virtual void onExit();
+
+  virtual void onBest();
 
   virtual void updateTextData();
 };

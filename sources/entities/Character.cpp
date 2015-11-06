@@ -292,7 +292,7 @@ void Character::onTransfer()
 
         Application->nextEnvironment();
 
-        this->setPositionY(0);
+        this->setPosition(0, 0);
         }),
         nullptr
       ),
@@ -408,11 +408,11 @@ void Character::onSave()
  */
 void Character::onPointerSuccess(Pointer* pointer)
 {
+  Application->counter->onScore();
+  Application->counter->onSuccess();
+
   if(pointer)
   {
-    Application->counter->onScore();
-    Application->counter->onSuccess();
-
     this->parameters.state = this->parameters.active = true;
 
     if(this->parameters.x < this->parameters.maximum.x)
@@ -431,7 +431,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
     auto position = this->convertToWorldSpace(Vec2::ZERO);
 
-    position.x -= 30;
+    position.x -= 30; // TODO: ?
     position.y -= 30;
 
     barror->setPosition(position);
@@ -655,46 +655,57 @@ void Character::onUpdateTraectoryFinish()
  */
 void Character::onUpdateTraectory()
 {
-  for(int i = 0; i < 15 + this->generate.start; i++)
+  int counter = 0;
+
+  while(this->generate.bonus || counter == 0)
   {
-    Vec2 position = this->updatePosition(this->generate.parameters);
+    counter++;
 
-    this->generate.x += position.x;
-    this->generate.y += position.y;
-
-    if(this->generate.bonus)
+    for(int i = 0; i < 15 + this->generate.start; i++)
     {
-      this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+      Vec2 position = this->updatePosition(this->generate.parameters);
 
-      if(this->generate.bonus_points.size() >= 200)
+      this->generate.x += position.x;
+      this->generate.y += position.y;
+
+      if(counter >= this->generate.start)
       {
-        this->onUpdateTraectoryBonusCreate();
+        if(this->generate.bonus)
+        {
+          this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+
+          if(this->generate.bonus_points.size() >= 91)
+          {
+            this->onUpdateTraectoryBonusCreate();
+          }
+        }
       }
     }
-  }
 
-  this->generate.start = 0;
+    this->generate.start = 0;
+  
+    float x = this->generate.x;
+    float y = this->generate.y;
 
-  float x = this->generate.x;
-  float y = this->generate.y;
-
-  if(Application->w->getPositionY() + 130 > 0)
-  {
-    if(!this->generate.bonus)
+    if(Application->w->getPositionY() + 130 > 0)
     {
       Pointer* element = (Pointer*) Application->pointers->_create();
 
       element->setPosition(x, y);
 
-      if(this->generate.coins-- > 0)
+      if(this->generate.bonus)
+      {
+        element->setCurrentFrameIndex(Pointer::SUCCESS);
+      }
+      else if(this->generate.coins-- > 0)
       {
         element->setCurrentFrameIndex(Pointer::COIN);
       }
     }
-  }
-  else
-  {
-    this->stopUpdateTraectory();
+    else
+    {
+      this->stopUpdateTraectory();
+    }
   }
 }
 
@@ -711,14 +722,16 @@ void Character::onUpdateTraectoryBonusCreate()
 
   for(int i = 0; i < this->generate.bonus_points.size() - 1; i++)
   {
-    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
   }
 
   for(int i = this->generate.bonus_points.size() - 2; i > 0; i--)
   {
-    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
   }
 
+  Application->bonus->_destroy();
+  Application->bonus->setPosition(this->generate.bonus_points.at(0));
   Application->bonus->_create();
   Application->bonus->runAction(
     RepeatForever::create(
@@ -731,10 +744,8 @@ void Character::onUpdateTraectoryBonusDestroy()
 {
   this->generate.bonus = probably(10);
   this->generate.bonus_points.clear();
-
-  Application->bonus->_destroy();
 }
-
+ 
 /**
  *
  *
@@ -742,6 +753,8 @@ void Character::onUpdateTraectoryBonusDestroy()
  */
 bool Character::isOnBonusTraectory(float x)
 {
+  float f = 5.0;
+
   if(x < 0)
   {
     x = this->getPositionX();
@@ -749,7 +762,7 @@ bool Character::isOnBonusTraectory(float x)
 
   if(this->generate.bonus_points.size() > 0)
   {
-    return x >= this->generate.bonus_points.at(0).x && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x;
+    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x + f;
   }
 
   return false;
@@ -880,7 +893,7 @@ void Character::updatePosition()
 
   if(this->state == STATE_GAME)
   {
-    if(y < Application->w->getPositionY() + 130)
+    if(y < Application->w->getPositionY() + 30 + (Application->parameters.ad ? 0 : 100))
     {
       this->changeState(STATE_LOSE_WATER);
     }
@@ -951,6 +964,34 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
    */
   float x = parameters.x * (1.0 / 60.0) * time;
   float y = parameters.y * (1.0 / 60.0) * time;
+
+  /**
+   *
+   * @Optional
+   * This feature is currently an experimental feature.
+   *
+   */
+  if(parameters.exponesial.state)
+  {
+    parameters.exponesial.x += parameters.exponesial.increase;
+
+    if(parameters.exponesial.x >= parameters.exponesial.max)
+    {
+      parameters.exponesial.state = !parameters.exponesial.state;
+    }
+  }
+  else
+  {
+    parameters.exponesial.x -= parameters.exponesial.decrease;
+
+    if(parameters.exponesial.x <= parameters.exponesial.min)
+    {
+      parameters.exponesial.state = !parameters.exponesial.state;
+    }
+  }
+
+  x /= parameters.exponesial.x;
+  y /= parameters.exponesial.x;
 
   /**
    *

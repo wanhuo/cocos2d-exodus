@@ -147,6 +147,48 @@
         ]
       }
     ],
+    "congratulations": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          188,
+          51,
+          71
+        ]
+      },
+      {
+        "title": "Новый рекорд!",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          254,
+          172,
+          28
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 28,
+        "color": [
+          188,
+          51,
+          71
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          188,
+          51,
+          71
+        ]
+      }
+    ],
     "best": [
       {
         "title": "BEST SCORE: $1",

@@ -29,7 +29,7 @@
  *
  */
 CharacterButton::CharacterButton(Node* parent)
-: AnimatedButton("video.json", "video.atlas", parent)
+: AnimatedButton("unlock.json", "unlock.atlas", parent)
 {
 }
 
@@ -51,3 +51,44 @@ void CharacterButton::onDestroy(bool action)
 {
   AnimatedButton::onDestroy(action);
 }
+
+/**
+ *
+ *
+ *
+ */
+void CharacterButton::onTouch(cocos2d::Touch* touch, Event* e)
+{
+  AnimatedButton::onTouch(touch, e);
+
+  /**
+   *
+   *
+   *
+   */
+  this->runAction(
+    Sequence::create(
+      CallFunc::create([=] ()
+      {
+        Modal::block();
+      }),
+      Repeat::create(
+        Sequence::create(
+          ScaleTo::create(0.05, 0.9),
+          ScaleTo::create(0.05, 1.1),
+          nullptr
+        ),
+        12
+      ),
+      ScaleTo::create(0.05, 1.0),
+      CallFunc::create([=] ()
+      {
+        Modal::hide();
+      }),
+      nullptr
+    )
+  );
+
+  Sound->play("gift");
+}
+

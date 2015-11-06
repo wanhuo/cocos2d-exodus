@@ -96,8 +96,8 @@ class Character : public Spine
   const static int STATE_LOSE_WATER = 10;
   const static int STATE_LOSE_MISTAKE = 11;
 
-  const static int COLLISION_SIZE_X = 75;
-  const static int COLLISION_SIZE_Y = 75;
+  const static int COLLISION_SIZE_X = 50;
+  const static int COLLISION_SIZE_Y = 50;
 
   Character();
  ~Character();

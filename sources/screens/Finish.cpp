@@ -50,6 +50,10 @@ Finish::Finish()
 {
   instance = this;
 
+  this->framework::Screen::camera = Camera::createPerspective(60, Director::getInstance()->getWinSize().width / Director::getInstance()->getWinSize().height, 1.0f, 10000.0f);
+  this->framework::Screen::camera->setCameraFlag(CameraFlag::USER1);
+  this->addChild(this->framework::Screen::camera);
+
   this->background = new BackgroundColor(this, Color4B(132, 209, 200, 255));
   this->holder = new Background(this);
 
@@ -57,6 +61,8 @@ Finish::Finish()
   this->decoration->setScheduleTextures(true);
 
   this->counter = new FinishCounter;
+
+  this->coins = new Pool(new Coin, this);
 
   this->buttons.play = new Button("finish-play-button.png", 1, 2, this->holder, std::bind(&Finish::hide, this));
   this->buttons.like = new Button("like-button.png", 1, 2, this->holder, std::bind(&Game::onLike, Application));
@@ -89,6 +95,9 @@ Finish::~Finish()
  */
 void Finish::onEnter()
 {
+  this->time = 1.0;
+  this->elapsedCoins = 0.0;
+
   this->updateSoundState();
   this->showButtons();
 
@@ -168,6 +177,16 @@ void Finish::onMoveDown()
  *
  *
  */
+void Finish::onBest()
+{
+  this->counter->onBest();
+}
+
+/**
+ *
+ *
+ *
+ */
 void Finish::show()
 {
   Director::getInstance()->pushScene(this);
@@ -175,6 +194,8 @@ void Finish::show()
 
 void Finish::hide()
 {
+  this->stopAllActions();
+
   this->buttons.play->_destroy();
 
   this->decoration->runAction(
@@ -184,6 +205,11 @@ void Finish::hide()
   );
 
   Director::getInstance()->popScene(TransitionFade::create(0.4, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
+
+  if(this->elapsedCoins > 0)
+  {
+    Application->counter->values.coins += this->elapsedCoins;
+  }
 
   Application->changeState(Game::STATE_PREPARE);
 }
@@ -388,6 +414,63 @@ void Finish::showButtons()
     )
   );
 }
+
+/**
+ *
+ *
+ *
+ */
+void Finish::throwCoins(int count)
+{
+  this->elapsedCoins = count;
+
+  this->runAction(
+    Sequence::create(
+      DelayTime::create(0.5),
+      CallFunc::create([=] () {
+
+        /**
+         *
+         *
+         *
+         */
+        this->time = 0.2;
+      }),
+      DelayTime::create(0.5),
+      CallFunc::create([=] () {
+        this->time = 1.0;
+
+        this->runAction(
+          Repeat::create(
+            Sequence::create(
+              CallFunc::create([=] () {
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                this->elapsedCoins--;
+                Application->counter->values.coins++;
+                this->counter->updateTextData();
+              }),
+              DelayTime::create(0.1),
+              nullptr
+            ),
+            count
+          )
+        );
+
+        Sound->play("coins-reward");
+      }),
+      nullptr
+    )
+  );
+
+  for(int i = 0; i < count; i++)
+  {
+    this->coins->_create();
+  }}
 
 /**
  *
