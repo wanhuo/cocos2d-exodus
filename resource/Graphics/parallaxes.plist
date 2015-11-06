@@ -108,6 +108,19 @@
                 <key>sourceSize</key>
                 <string>{208,79}</string>
             </dict>
+            <key>fish-decoration.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{736,1416},{12,12}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{12,12}}</string>
+                <key>sourceSize</key>
+                <string>{12,12}</string>
+            </dict>
             <key>ground.png</key>
             <dict>
                 <key>frame</key>
@@ -313,7 +326,7 @@
             <key>size</key>
             <string>{2041,1430}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:efa4d2e025f34fed10378dafe965cddf:0d3dbbb5baa5384d412c9fe2f0464008:bab53ef7f34df0cea0e37f42f488a1be$</string>
+            <string>$TexturePacker:SmartUpdate:e7398524494d37fdceb96111d3138c80:8ab9427bf7076a7a2a435a029bca8d03:bab53ef7f34df0cea0e37f42f488a1be$</string>
             <key>textureFileName</key>
             <string>parallaxes.png</string>
         </dict>

@@ -96,8 +96,8 @@ Game::Game()
 
   this->buttons.play = new Button("play-button.png", 1, 2, this->menu, std::bind(&Game::onPlay, this));
   this->buttons.rate = new Button("rate-button.png", 1, 2, this->b, std::bind(&Game::onRate, this));
-  this->buttons.leaderboards = new Button("leaderboards-button.png", 1, 2, this->b, std::bind(&Game::onScores, this));
-  this->buttons.achievements = new Button("achievements-button.png", 1, 2, this->b, std::bind(&Game::onAchievements, this));
+  this->buttons.leaderboards = new Button("leaderboards-button.png", 1, 3, this->b, std::bind(&Game::onScores, this));
+  this->buttons.achievements = new Button("achievements-button.png", 1, 3, this->b, std::bind(&Game::onAchievements, this));
   this->buttons.sound = new Button("sound-button.png", 2, 2, this->b, std::bind(&Game::onSound, this));
   this->buttons.store = new Button("store-button.png", 1, 2, this->b, std::bind(&Game::onStore, this));
   this->buttons.credits = new Button("credits-button.png", 2, 2, this->b, std::bind(&Game::onCredits, this));
@@ -159,6 +159,12 @@ Game::Game()
   }
 
   this->buttons.store->addChild(new Handler);
+
+  this->buttons.leaderboards->setCurrentFrameIndex(2);
+  this->buttons.achievements->setCurrentFrameIndex(2);
+
+  this->buttons.leaderboards->bind(false);
+  this->buttons.achievements->bind(false);
 
   this->buttons.noad->setGlobalZOrder(100);
   this->buttons.credits->setGlobalZOrder(100);

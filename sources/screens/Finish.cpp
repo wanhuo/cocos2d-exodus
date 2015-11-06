@@ -70,8 +70,8 @@ Finish::Finish()
   this->buttons.like = new Button("like-button.png", 1, 2, this->holder, std::bind(&Game::onLike, Application));
   this->buttons.rate = new Button("rate-button.png", 1, 2, this->holder, std::bind(&Game::onRate, Application));
   this->buttons.share = new Button("share-button.png", 1, 2, this->holder, std::bind(&Game::onShare, Application));
-  this->buttons.leaderboards = new Button("leaderboards-button.png", 1, 2, this->holder, std::bind(&Game::onScores, Application));
-  this->buttons.achievements = new Button("achievements-button.png", 1, 2, this->holder, std::bind(&Game::onAchievements, Application));
+  this->buttons.leaderboards = new Button("leaderboards-button.png", 1, 3, this->holder, std::bind(&Game::onScores, Application));
+  this->buttons.achievements = new Button("achievements-button.png", 1, 3, this->holder, std::bind(&Game::onAchievements, Application));
   this->buttons.sound = new Button("sound-button.png", 2, 2, this->holder, std::bind(&Finish::onSound, this));
   this->buttons.store = new Button("store-button.png", 1, 2, this->holder, std::bind(&Game::onStore, Application));
   this->buttons.noad = new Button("finish-noad-button.png", 2, 1, this->holder, std::bind(&Game::onNoad, Application));
@@ -79,6 +79,12 @@ Finish::Finish()
   this->buttons.video = new VideoButton(this);
   this->buttons.gift = new GiftButton(this);
   this->buttons.character = new CharacterButton(this);
+
+  this->buttons.leaderboards->setCurrentFrameIndex(2);
+  this->buttons.achievements->setCurrentFrameIndex(2);
+
+  this->buttons.leaderboards->bind(false);
+  this->buttons.achievements->bind(false);
 
   this->background->setLocalZOrder(-1);
   this->decoration->setLocalZOrder(-1);

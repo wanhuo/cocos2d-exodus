@@ -211,6 +211,7 @@
             <filename>../Graphics/parallaxes/1/water-1.png</filename>
             <filename>../Graphics/parallaxes/1/water-2.png</filename>
             <filename>../Graphics/parallaxes/1/water-3.png</filename>
+            <filename>../Graphics/parallaxes/1/fish-decoration.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
