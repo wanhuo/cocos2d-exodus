@@ -75,6 +75,8 @@ Finish::Finish()
   this->buttons.sound = new Button("sound-button.png", 2, 2, this->holder, std::bind(&Finish::onSound, this));
   this->buttons.store = new Button("store-button.png", 1, 2, this->holder, std::bind(&Game::onStore, Application));
   this->buttons.noad = new Button("finish-noad-button.png", 2, 1, this->holder, std::bind(&Game::onNoad, Application));
+  this->buttons.missions = new Button("missions-button.png", 1, 2, this->holder, std::bind(&Game::onMissions, Application));
+  this->buttons.tutorial = new Button("tutorial-button.png", 1, 2, this->holder, std::bind(&Game::onTutorial, Application));
 
   this->buttons.video = new VideoButton(this);
   this->buttons.gift = new GiftButton(this);
@@ -347,9 +349,11 @@ void Finish::showButtons()
   this->buttons.share->setPosition(Application->center.x, Application->center.y - 290);
   this->buttons.leaderboards->setPosition(Application->center.x + 110, Application->center.y - 270);
   this->buttons.achievements->setPosition(Application->center.x + 200, Application->center.y - 200);
-  this->buttons.sound->setPosition(Application->center.x - 240, Application->center.y - 90);
-  this->buttons.store->setPosition(Application->center.x + 240, Application->center.y - 90);
-  this->buttons.noad->setPosition(Application->center.x - 240, Application->center.y - 90);
+  this->buttons.sound->setPosition(Application->center.x - 240, Application->center.y + 20);
+  this->buttons.store->setPosition(Application->center.x + 240, Application->center.y + 20);
+  this->buttons.missions->setPosition(Application->center.x + 240, Application->center.y - 90);
+  this->buttons.tutorial->setPosition(Application->center.x - 240, Application->center.y - 90);
+  this->buttons.noad->setPosition(Application->center.x - 240, Application->center.y + 20);
 
   if(!Application->parameters.ad)
   {
@@ -384,11 +388,23 @@ void Finish::showButtons()
     );
   }
 
+  this->buttons.tutorial->_create();
+  this->buttons.tutorial->setScale(0);
+  this->buttons.tutorial->runAction(
+    Sequence::create(
+      DelayTime::create(0.1),
+      EaseSineOut::create(
+        ScaleTo::create(0.2, 1.0)
+      ),
+      nullptr
+    )
+  );
+
   this->buttons.like->_create();
   this->buttons.like->setScale(0);
   this->buttons.like->runAction(
     Sequence::create(
-      DelayTime::create(0.1),
+      DelayTime::create(0.15),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -400,7 +416,7 @@ void Finish::showButtons()
   this->buttons.rate->setScale(0);
   this->buttons.rate->runAction(
     Sequence::create(
-      DelayTime::create(0.15),
+      DelayTime::create(0.2),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -412,7 +428,7 @@ void Finish::showButtons()
   this->buttons.share->setScale(0);
   this->buttons.share->runAction(
     Sequence::create(
-      DelayTime::create(0.2),
+      DelayTime::create(0.25),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -424,7 +440,7 @@ void Finish::showButtons()
   this->buttons.leaderboards->setScale(0);
   this->buttons.leaderboards->runAction(
     Sequence::create(
-      DelayTime::create(0.25),
+      DelayTime::create(0.3),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -436,7 +452,19 @@ void Finish::showButtons()
   this->buttons.achievements->setScale(0);
   this->buttons.achievements->runAction(
     Sequence::create(
-      DelayTime::create(0.3),
+      DelayTime::create(0.35),
+      EaseSineOut::create(
+        ScaleTo::create(0.2, 1.0)
+      ),
+      nullptr
+    )
+  );
+
+  this->buttons.missions->_create();
+  this->buttons.missions->setScale(0);
+  this->buttons.missions->runAction(
+    Sequence::create(
+      DelayTime::create(0.4),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -448,7 +476,7 @@ void Finish::showButtons()
   this->buttons.store->setScale(0);
   this->buttons.store->runAction(
     Sequence::create(
-      DelayTime::create(0.3),
+      DelayTime::create(0.45),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),
@@ -460,7 +488,7 @@ void Finish::showButtons()
   this->buttons.play->setScale(0);
   this->buttons.play->runAction(
     Sequence::create(
-      DelayTime::create(0.35),
+      DelayTime::create(0.5),
       EaseSineOut::create(
         ScaleTo::create(0.2, 1.0)
       ),

@@ -26,6 +26,8 @@
 #include "Game.h"
 #include "Store.h"
 #include "Finish.h"
+#include "Missions.h"
+#include "Tutorial.h"
 
 #include "Credits.h"
 #include "Decorations.h"
@@ -40,6 +42,8 @@ void Events::onStart()
   new Game;
   new Store;
   new Finish;
+  new Missions;
+  new Tutorial;
 
   new Credits;
   new Decorations;
@@ -103,6 +107,26 @@ void Events::onAchievements()
 
   Modal::show();
   Services::showAchievements();
+}
+
+/**
+ *
+ *
+ *
+ */
+void Events::onServices()
+{
+  Modal::hide();
+  
+  Game::getInstance()->buttons.leaderboards->bind(true);
+  Game::getInstance()->buttons.achievements->bind(true);
+  Finish::getInstance()->buttons.leaderboards->bind(true);
+  Finish::getInstance()->buttons.achievements->bind(true);
+
+  Game::getInstance()->buttons.leaderboards->setCurrentFrameIndex(0);
+  Game::getInstance()->buttons.achievements->setCurrentFrameIndex(0);
+  Finish::getInstance()->buttons.leaderboards->setCurrentFrameIndex(0);
+  Finish::getInstance()->buttons.achievements->setCurrentFrameIndex(0);
 }
 
 /**

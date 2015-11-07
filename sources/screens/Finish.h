@@ -75,6 +75,8 @@ class Finish : public Screen
     Button* sound;
     Button* store;
     Button* noad;
+    Button* tutorial;
+    Button* missions;
 
     VideoButton* video;
     GiftButton* gift;
@@ -89,7 +91,6 @@ class Finish : public Screen
   protected:
   BackgroundColor* background;
   BackgroundColor* splash;
-  Buttons buttons;
 
   FinishCounter* counter;
 
@@ -111,6 +112,7 @@ class Finish : public Screen
 
   Background* holder;
 
+  Buttons buttons;
   Parameters parameters;
 
   float time;

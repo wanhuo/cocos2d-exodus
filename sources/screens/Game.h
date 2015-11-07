@@ -96,6 +96,8 @@ class Game : public Screen
     Button* store;
     Button* credits;
     Button* noad;
+    Button* missions;
+    Button* tutorial;
   };
 
   struct Parameters {
@@ -202,6 +204,8 @@ class Game : public Screen
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void onBack();
+
   virtual void onPlay();
   virtual void onRate();
   virtual void onLike();
@@ -210,6 +214,8 @@ class Game : public Screen
   virtual void onAchievements();
   virtual void onSound();
   virtual void onStore();
+  virtual void onMissions();
+  virtual void onTutorial();
   virtual void onCredits();
   virtual void onNoad();
   virtual void onNoadAction();

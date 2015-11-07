@@ -229,6 +229,8 @@
             <filename>../Graphics/ui/text-holder-1.png</filename>
             <filename>../Graphics/ui/text-holder-2.png</filename>
             <filename>../Graphics/ui/text-holder-3.png</filename>
+            <filename>../Graphics/ui/missions-button.png</filename>
+            <filename>../Graphics/ui/tutorial-button.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

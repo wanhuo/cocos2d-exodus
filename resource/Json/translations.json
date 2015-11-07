@@ -1995,11 +1995,11 @@
         ]
       }
     ],
-    "store-no-items-title": [
+    "missions-title": [
       {
-        "title": "No Items",
+        "title": "",
         "font": "Impact",
-        "size": 48,
+        "size": 52,
         "color": [
           255,
           255,
@@ -2007,9 +2007,9 @@
         ]
       },
       {
-        "title": "Нет позиций",
+        "title": "завершайте миссии для\nполучения новых\nперсонажей",
         "font": "Impact",
-        "size": 48,
+        "size": 42,
         "color": [
           255,
           255,
@@ -2017,71 +2017,7 @@
         ]
       },
       {
-        "title": "Sem items",
-        "font": "Impact",
-        "size": 48,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "Pas d'objets",
-        "font": "Impact",
-        "size": 48,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      }
-    ],
-    "store-no-items-description": [
-      {
-        "title": "There is no items.\nWe are working hard to add\nmore content for you.",
-        "font": "Impact",
-        "size": 36,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "В этом разделе нет позиций\nМы много работаем чтобы\nдобавить больше контента для вас.",
-        "font": "Impact",
-        "size": 36,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "Não existem items.\nEstamos a trabalhar para adicionar\nmais conteúdo para ti.",
-        "font": "Impact",
-        "size": 36,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "Il n'y a pas d'objets,\nrevenez bientôt.",
-        "font": "Impact",
-        "size": 36,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      }
-    ],
-    "store-refresh": [
-      {
-        "title": "Refresh to see is content were added.",
+        "title": "",
         "font": "Impact",
         "size": 24,
         "color": [
@@ -2091,27 +2027,7 @@
         ]
       },
       {
-        "title": "Обновить. Вдруг мы уже добавили много нового?",
-        "font": "Impact",
-        "size": 24,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "Recarrega para ver se há conteúdo novo.",
-        "font": "Impact",
-        "size": 24,
-        "color": [
-          255,
-          255,
-          255
-        ]
-      },
-      {
-        "title": "Rafraîchir la page pour voir le contenu ajouté.",
+        "title": "",
         "font": "Impact",
         "size": 24,
         "color": [

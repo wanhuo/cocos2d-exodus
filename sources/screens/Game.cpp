@@ -25,6 +25,8 @@
 
 #include "Finish.h"
 #include "Store.h"
+#include "Missions.h"
+#include "Tutorial.h"
 
 #include "Credits.h"
 
@@ -102,6 +104,8 @@ Game::Game()
   this->buttons.store = new Button("store-button.png", 1, 2, this->b, std::bind(&Game::onStore, this));
   this->buttons.credits = new Button("credits-button.png", 2, 2, this->b, std::bind(&Game::onCredits, this));
   this->buttons.noad = new Button("noad-button.png", 2, 1, this->b, std::bind(&Game::onNoad, this));
+  this->buttons.missions = new Button("missions-button.png", 1, 2, this->b, std::bind(&Game::onMissions, this));
+  this->buttons.tutorial = new Button("tutorial-button.png", 1, 2, this->b, std::bind(&Game::onTutorial, this));
 
   this->creatures = new Creatures;
 
@@ -125,14 +129,19 @@ Game::Game()
     70 + (this->parameters.ad ? 0 : 100)
   );
 
+  this->buttons.tutorial->_create()->setPosition(
+    this->center.x - 240,
+    this->center.y + 50
+  );
+
   this->buttons.rate->_create()->setPosition(
-    this->center.x - 210,
-    this->center.y - 135
+    this->center.x - 200,
+    this->center.y - 60
   );
 
   this->buttons.sound->_create()->setPosition(
-    this->center.x - 105,
-    this->center.y - 145
+    this->center.x - 110,
+    this->center.y - 130
   );
 
   this->buttons.leaderboards->_create()->setPosition(
@@ -141,13 +150,18 @@ Game::Game()
   );
 
   this->buttons.achievements->_create()->setPosition(
-    this->center.x + 105,
-    this->center.y - 145
+    this->center.x + 110,
+    this->center.y - 130
+  );
+
+  this->buttons.missions->_create()->setPosition(
+    this->center.x + 200,
+    this->center.y - 60
   );
 
   this->buttons.store->_create()->setPosition(
-    this->center.x + 210,
-    this->center.y - 135
+    this->center.x + 240,
+    this->center.y + 50
   );
 
   if(!this->parameters.ad)
@@ -260,6 +274,23 @@ void Game::onExit()
  *
  *
  */
+void Game::onBack()
+{
+  if(Credits::getInstance()->state->active)
+  {
+    Credits::getInstance()->toogle();
+  }
+  else
+  {
+    // TODO: Exit from application.
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
 void Game::onPlay()
 {
   this->buttons.play->bind(false);
@@ -274,7 +305,10 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create([=] () { this->buttons.rate->setPositionY(Application->height - 60); }),
+      CallFunc::create([=] () {
+        this->buttons.rate->setPositionX(Application->center.x - 275);
+        this->buttons.rate->setPositionY(Application->height - 60);
+      }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
       ),
@@ -287,7 +321,10 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create([=] () { this->buttons.sound->setPositionY(Application->height - 60); }),
+      CallFunc::create([=] () {
+        this->buttons.sound->setPositionX(Application->center.x - 165);
+        this->buttons.sound->setPositionY(Application->height - 60);
+      }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
       ),
@@ -300,7 +337,10 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create([=] () { this->buttons.leaderboards->setPositionY(Application->height - 60); }),
+      CallFunc::create([=] () {
+        this->buttons.leaderboards->setPositionX(Application->center.x - 55);
+        this->buttons.leaderboards->setPositionY(Application->height - 60);
+      }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
       ),
@@ -313,7 +353,26 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create([=] () { this->buttons.achievements->setPositionY(Application->height - 60); }),
+      CallFunc::create([=] () {
+        this->buttons.achievements->setPositionX(Application->center.x + 55);
+        this->buttons.achievements->setPositionY(Application->height - 60);
+      }),
+      EaseSineInOut::create(
+        ScaleTo::create(0.5, 1.0)
+      ),
+      nullptr
+    )
+  );
+
+  this->buttons.missions->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 0.0)
+      ),
+      CallFunc::create([=] () {
+        this->buttons.missions->setPositionX(Application->center.x + 165);
+        this->buttons.missions->setPositionY(Application->height - 60);
+      }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
       ),
@@ -326,10 +385,23 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create([=] () { this->buttons.store->setPositionY(Application->height - 60); }),
+      CallFunc::create([=] () {
+        this->buttons.store->setPositionX(Application->center.x + 275);
+        this->buttons.store->setPositionY(Application->height - 60);
+      }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
       ),
+      nullptr
+    )
+  );
+
+  this->buttons.tutorial->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 0.0)
+      ),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->buttons.tutorial, true)),
       nullptr
     )
   );
@@ -377,6 +449,16 @@ void Game::onSound()
 void Game::onStore()
 {
   Store::getInstance()->show();
+}
+
+void Game::onMissions()
+{
+  Missions::getInstance()->show();
+}
+
+void Game::onTutorial()
+{
+  Tutorial::getInstance()->show();
 }
 
 void Game::onCredits()
@@ -488,9 +570,13 @@ void Game::onPrepare()
 
   this->buttons.rate->bind(true);
   this->buttons.sound->bind(true);
-  this->buttons.leaderboards->bind(true);
-  this->buttons.achievements->bind(true);
   this->buttons.store->bind(true);
+
+  if(Services::isSigned())
+  {
+    this->buttons.leaderboards->bind(true);
+    this->buttons.achievements->bind(true);
+  }
 
   this->game->setPosition(0, 0);
 
