@@ -66,7 +66,7 @@ Store::Store()
   this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Store::hide, this), true);
   #endif
 
-  this->texts.title = new Text("missions-title", this->holder1, true);
+  this->texts.title = new Text("missions-title-1", this->holder1, true);
   this->texts.coins = new Text("coins", this->coins, true);
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS

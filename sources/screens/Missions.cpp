@@ -52,7 +52,7 @@ Missions::Missions()
 
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder1 = new BackgroundColor(this, Color4B(132, 209, 223, 255));
-  this->holder2 = new BackgroundColor(this, Color4B(228, 149, 81, 255));
+  this->holder2 = new Entity("holder-background-1.png", this, true);
 
   this->scroll = cocos2d::ui::ScrollView::create();
   this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
@@ -63,7 +63,6 @@ Missions::Missions()
   this->background->addChild(this->scroll);
 
   this->holder1->setContentSize(Size(Application->width, 400));
-  this->holder2->setContentSize(Size(Application->width - 200, 100));
 
   this->holder1->ignoreAnchorPointForPosition(false);
   this->holder2->ignoreAnchorPointForPosition(false);
@@ -80,7 +79,8 @@ Missions::Missions()
   this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Missions::hide, this), true);
   #endif
 
-  this->texts.title = new Text("missions-title", this->holder1, true);
+  this->texts.title1 = new Text("missions-title-1", this->holder1, true);
+  this->texts.title2 = new Text("missions-title-2", this->holder2, true);
   this->texts.coins = new Text("coins", this->coins, true);
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
@@ -89,7 +89,8 @@ Missions::Missions()
 
   this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50);
 
-  this->texts.title->setPosition(this->holder1->getContentSize().width / 2, this->holder1->getContentSize().height / 2);
+  this->texts.title1->setPosition(this->holder1->getContentSize().width / 2, this->holder1->getContentSize().height / 2);
+  this->texts.title2->setPosition(this->holder2->getContentSize().width / 2, this->holder2->getContentSize().height / 2);
   this->texts.coins->setPosition(this->coins->getContentSize().width / 2, this->coins->getContentSize().height / 2);
 
   int size = MissionsFactory::getInstance()->getMissions().size() - 1;
@@ -132,6 +133,21 @@ void Missions::onEnter()
    */
   this->updateTextData();
 
+  this->holder2->setScale(1.0);
+  this->holder2->runAction(
+    RepeatForever::create(
+      Sequence::create(
+        EaseSineInOut::create(
+          ScaleTo::create(3.0, 1.2)
+        ),
+        EaseSineInOut::create(
+          ScaleTo::create(3.0, 1.0)
+        ),
+        nullptr
+      )
+    )
+  );
+
   Events::onScreenChanged("Missions");
 }
 
@@ -173,4 +189,5 @@ void Missions::hide()
 void Missions::updateTextData()
 {
   this->texts.coins->data(Application->counter->values.coins);
+  this->texts.title2->data(MissionsFactory::getInstance()->getCompletedMissionsCount(), MissionsFactory::getInstance()->getMissionsCount());
 }

@@ -65,6 +65,11 @@ Counter::Counter()
   this->holders.decoration->setCascadeOpacityEnabled(true);
 
   this->setScheduleUpdate(true);
+
+  this->missionUpdateProgress.coins = Storage::get("values.missions.progress.coins");
+  this->missionUpdateProgress.points = Storage::get("values.missions.progress.points");
+  this->missionUpdateProgress.games = Storage::get("values.missions.progress.games");
+  this->missionUpdateProgress.gifts = Storage::get("values.missions.progress.gifts");
 }
 
 Counter::~Counter()
@@ -206,6 +211,14 @@ void Counter::onCoin(bool update)
   {
     this->updateTextData();
 
+    if(MissionsFactory::getInstance()->isListenen())
+    {
+      this->missionUpdateOnce.coins++;
+      this->missionUpdateProgress.coins++;
+
+      Events::updateMissions();
+    }
+
     Sound->play("coins-collect");
   }
   else
@@ -276,6 +289,14 @@ void Counter::onSuccess()
     }
   }
 
+  if(MissionsFactory::getInstance()->isListenen())
+  {
+    this->missionUpdateOnce.points++;
+    this->missionUpdateProgress.points++;
+
+    Events::updateMissions();
+  }
+
   Sound->play("success");
 }
 
@@ -302,6 +323,8 @@ void Counter::onMistake()
   );
 
   Sound->play("mistake");
+
+  Events::updateMissions();
 }
 
 void Counter::onFail()
@@ -327,6 +350,58 @@ void Counter::onFail()
   );
 
   Sound->play("fail");
+
+  Events::updateMissions();
+}
+
+/**
+ *
+ *
+ *
+ */
+void Counter::onMissionComplete()
+{
+  this->resetMissionsUpdate();
+
+  this->texts.decoration->setText("mission-complete");
+
+  this->holders.decoration->stopAllActions();
+  this->holders.decoration->_create();
+  this->holders.decoration->setPosition(Application->center.x, this->getPositionY() - 190);
+  this->holders.decoration->setScale(0);
+  this->holders.decoration->setOpacity(255);
+  this->holders.decoration->runAction(
+    Sequence::create(
+      EaseSineOut::create(
+        ScaleTo::create(0.2, 1.0)
+      ),
+      DelayTime::create(4.0),
+      FadeOut::create(0.2),
+      CallFunc::create([=] () {
+        if(this->holders.status->state->create)
+        {
+          this->holders.status->runAction(
+            EaseSineInOut::create(
+              MoveBy::create(0.2, Vec2(0, 80))
+            )
+          );
+        }
+      }),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.decoration, true)),
+      nullptr
+    )
+  );
+
+  if(this->holders.status->state->create)
+  {
+    this->holders.status->runAction(
+      EaseSineInOut::create(
+        MoveBy::create(0.2, Vec2(0, -80))
+      )
+    );
+  }
+
+  Sound->play("mission-complete");
 }
 
 /**
@@ -374,10 +449,18 @@ void Counter::onGame()
       nullptr
     )
   );
+
+  if(MissionsFactory::getInstance()->isListenen())
+  {
+    this->missionUpdateProgress.games++;
+
+    Events::updateMissions();
+  }
 }
 
 void Counter::onLose()
 {
+  Events::updateMissions();
 }
 
 /**
@@ -401,6 +484,11 @@ bool Counter::save()
   Storage::set("values.info.taps", this->values.taps);
   Storage::set("values.info.deaths", this->values.deaths);
 
+  Storage::set("values.missions.progress.coins", this->missionUpdateProgress.coins);
+  Storage::set("values.missions.progress.points", this->missionUpdateProgress.points);
+  Storage::set("values.missions.progress.games", this->missionUpdateProgress.games);
+  Storage::set("values.missions.progress.gifts", this->missionUpdateProgress.gifts);
+
   return ret;
 }
 
@@ -419,6 +507,10 @@ void Counter::reset()
 
   this->holders.decoration->_destroy(true);
   this->holders.status->_destroy(true);
+
+  this->resetOnceMissionsUpdate();
+
+  MissionsFactory::getInstance()->startListen();
 }
 
 /**
@@ -433,6 +525,41 @@ void Counter::updateTextData()
   this->texts.coins->data(this->values.coins);
   this->texts.taps->data(this->values.taps);
   this->texts.deaths->data(this->values.deaths);
+}
+
+/**
+ *
+ *
+ *
+ */
+MissionUpdate Counter::getMissionsUpdate()
+{
+  return {
+    this->missionUpdateOnce,
+    this->missionUpdateProgress
+  };
+}
+
+void Counter::resetMissionsUpdate()
+{
+  this->resetOnceMissionsUpdate();
+  this->resetProgressMissionsUpdate();
+}
+
+void Counter::resetOnceMissionsUpdate()
+{
+  this->missionUpdateOnce.coins = 0;
+  this->missionUpdateOnce.points = 0;
+  this->missionUpdateOnce.points_best = this->values.best;
+  this->missionUpdateOnce.special_once_1 = 0;
+}
+
+void Counter::resetProgressMissionsUpdate()
+{
+  this->missionUpdateProgress.coins = 0;
+  this->missionUpdateProgress.points = 0;
+  this->missionUpdateProgress.games = 0;
+  this->missionUpdateProgress.gifts = 0;
 }
 
 /**

@@ -441,6 +441,48 @@
         ]
       }
     ],
+    "mission-complete": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          42,
+          104,
+          93
+        ]
+      },
+      {
+        "title": "Миссия выполнена",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          42,
+          104,
+          93
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          42,
+          104,
+          93
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          42,
+          104,
+          93
+        ]
+      }
+    ],
     "decoration-0": [
       {
         "title": "TO THE MOON",
@@ -1995,11 +2037,11 @@
         ]
       }
     ],
-    "missions-title": [
+    "missions-title-1": [
       {
-        "title": "",
+        "title": "Complete a missions\nto get new characters",
         "font": "Impact",
-        "size": 52,
+        "size": 42,
         "color": [
           255,
           255,
@@ -2007,9 +2049,765 @@
         ]
       },
       {
-        "title": "завершайте миссии для\nполучения новых\nперсонажей",
+        "title": "Завершайте миссии для\nполучения новых\nперсонажей",
         "font": "Impact",
         "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "missions-title-2": [
+      {
+        "title": "Completed missions\n$1/$2",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Завершенные миссии\n$1/$2",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-additional-reward": [
+      {
+        "title": "Additional reward",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Дополнительная награда",
+        "font": "Impact",
+        "size": 26,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-progress": [
+      {
+        "title": "Progress:",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Прогресс выполнения:",
+        "font": "Impact",
+        "size": 26,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-1": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Заработайте 10 монет\nза одну игру",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-2": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 50 очков\nза несколько игр",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-3": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Сыграйте 15 раз",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-4": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 15 очков\nза одну игру",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-5": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Соберите 3 подарка",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-6": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Найдите 2 бонусные полоски\nза одну игру",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-7": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Установите новый рекорд",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-8": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 45 очков за\nодну игру",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-9": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Сыграйте 5 раз",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-10": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 15 очков, используя\nодну бонусную полоску",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-11": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Установите новый рекорд",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-12": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 200 очков\nза несколько игр",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-13": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Заработайте 40 монет\nза одну игру",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-14": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Сыграйте 5 раз",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 24,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "mission-15": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "Наберите 100 очков\nза одну игру",
+        "font": "Impact",
+        "size": 32,
         "color": [
           255,
           255,

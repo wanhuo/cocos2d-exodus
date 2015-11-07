@@ -22,6 +22,7 @@
  */
 
 #include "Finish.h"
+#include "Game.h"
 
 /**
  *
@@ -128,6 +129,11 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
       CallFunc::create([=] ()
       {
         Modal::hide();
+
+        if(MissionsFactory::getInstance()->isListenen())
+        {
+          Application->counter->missionUpdateProgress.gifts++;
+        }
       }),
       nullptr
     )

@@ -41,10 +41,31 @@ class Mission : public BackgroundColor
    *
    *
    */
+  private:
+  struct Texts
+  {
+    Text* mission;
+    Text* additional;
+    Text* coins;
+  };
+
+  /**
+   *
+   *
+   *
+   */
   protected:
   int id;
 
-  Text* text;
+  Texts texts;
+
+  BackgroundColor* progressBackground;
+  BackgroundColor* progressBar;
+
+  Entity* lock;
+  Entity* coins;
+
+  MissionStruct* mission;
 
   /**
    *

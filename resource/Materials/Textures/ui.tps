@@ -231,6 +231,8 @@
             <filename>../Graphics/ui/text-holder-3.png</filename>
             <filename>../Graphics/ui/missions-button.png</filename>
             <filename>../Graphics/ui/tutorial-button.png</filename>
+            <filename>../Graphics/ui/lock.png</filename>
+            <filename>../Graphics/ui/holder-background-1.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

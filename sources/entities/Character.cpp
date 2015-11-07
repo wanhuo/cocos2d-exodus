@@ -738,6 +738,14 @@ void Character::onUpdateTraectoryBonusCreate()
       Sequence::create(actions)
     )
   );
+
+  if(MissionsFactory::getInstance()->isListenen())
+  {
+    Application->counter->missionUpdateOnce.special_once_1++;
+    
+    Events::updateMissions();
+  }
+
 }
 
 void Character::onUpdateTraectoryBonusDestroy()

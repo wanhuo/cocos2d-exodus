@@ -69,6 +69,9 @@ class Counter : public Entity
     int deaths = Storage::get("values.info.deaths");
   };
 
+  void resetOnceMissionsUpdate();
+  void resetProgressMissionsUpdate();
+
   /**
    *
    *
@@ -87,6 +90,9 @@ class Counter : public Entity
   public:
   Counter();
  ~Counter();
+
+  MissionUpdateOnce missionUpdateOnce;
+  MissionUpdateProgress missionUpdateProgress;
 
   Texts texts;
   Holders holders;
@@ -114,9 +120,14 @@ class Counter : public Entity
   virtual void onGame();
   virtual void onLose();
 
+  virtual void onMissionComplete();
+
   virtual bool save();
 
   virtual void reset();
+
+  virtual MissionUpdate getMissionsUpdate();
+  virtual void resetMissionsUpdate();
 
   virtual void updateTextData();
 

@@ -272,3 +272,23 @@ void Events::onPurchaseFail()
 void Events::onPurchaseRestored(const char* id)
 {
 }
+
+/**
+ *
+ *
+ *
+ */
+void Events::updateMissions()
+{
+  if(MissionsFactory::getInstance()->updateCurrentMission(Application->counter->getMissionsUpdate()))
+  {
+    Events::onMissionComplete();
+  }
+}
+
+void Events::onMissionComplete()
+{
+  Analytics::sendEvent("Application", "application.events.onMissionComplete", "Mission has been completed");
+
+  Application->counter->onMissionComplete();
+}

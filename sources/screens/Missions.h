@@ -56,7 +56,8 @@ class Missions : public Screen
   };
 
   struct Texts {
-    Text* title;
+    Text* title1;
+    Text* title2;
     Text* coins;
   };
 
@@ -74,7 +75,7 @@ class Missions : public Screen
 
   BackgroundColor* background;
   BackgroundColor* holder1;
-  BackgroundColor* holder2;
+  Entity* holder2;
 
   Texts texts;
   Buttons buttons;
