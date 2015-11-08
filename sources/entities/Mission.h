@@ -65,8 +65,6 @@ class Mission : public BackgroundColor
   Entity* lock;
   Entity* coins;
 
-  MissionStruct* mission;
-
   /**
    *
    *
@@ -76,8 +74,16 @@ class Mission : public BackgroundColor
   Mission(int id);
  ~Mission();
 
+  MissionStruct* mission;
+
   virtual void onEnter();
   virtual void onExit();
+
+  virtual void onTouchStart(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchFinish(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchCancelled(cocos2d::Touch* touch, Event* e);
+
+  virtual void onTouch(cocos2d::Touch* touch, Event* e);
 };
 
 #endif

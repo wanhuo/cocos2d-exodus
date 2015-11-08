@@ -94,6 +94,7 @@ Finish::Finish()
   this->splash->setGlobalZOrder(1000);
 
   this->buttons.store->addChild(new Handler);
+  this->buttons.missions->addChild(new MissionsHandler);
 }
 
 Finish::~Finish()
@@ -135,6 +136,11 @@ void Finish::onExit()
 
   this->coins->clear();
   this->confetties->clear();
+
+  if(this->elapsedCoins > 0)
+  {
+    Application->counter->values.coins += this->elapsedCoins;
+  }
 }
 
 /**
@@ -261,11 +267,6 @@ void Finish::hide()
   );
 
   Director::getInstance()->popScene(TransitionFade::create(0.4, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
-
-  if(this->elapsedCoins > 0)
-  {
-    Application->counter->values.coins += this->elapsedCoins;
-  }
 
   Application->changeState(Game::STATE_PREPARE);
 }
@@ -552,7 +553,8 @@ void Finish::throwCoins(int count)
   for(int i = 0; i < count; i++)
   {
     this->coins->_create();
-  }}
+  }
+}
 
 /**
  *

@@ -5,7 +5,7 @@
 			"text": "mission-1",
 			"coins": 5,
 			"complete": {
-				"coins": 10
+				"coins": 1
 			},
 			"cancel": [
 			]
@@ -13,9 +13,8 @@
 		{
 			"type": 2,
 			"text": "mission-2",
-			"coins": 5,
 			"complete": {
-				"points": 50
+				"points": 20
 			},
 			"cancel": [
 			]
@@ -25,7 +24,7 @@
 			"text": "mission-3",
 			"coins": 5,
 			"complete": {
-				"games": 15
+				"games": 5
 			},
 			"cancel": [
 			]
@@ -45,7 +44,7 @@
 			"text": "mission-5",
 			"coins": 5,
 			"complete": {
-				"gifts": 3
+				"gifts": 2
 			},
 			"cancel": [
 			]

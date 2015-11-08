@@ -495,13 +495,13 @@ void Character::proceedPointer()
           return;
           /**
            *
-           * @Replaced
+           * @Optional
            * Replaced by automatic coins collect.
            *
+           */
           case Pointer::COIN:
           this->onPointerCoin(pointer);
           return;
-          */
         }
       }
 
@@ -1095,7 +1095,7 @@ void Character::updatePointers()
          * Comment this to allow manual coins collect.
          *
          */
-        this->onPointerCoin(pointer);
+        //this->onPointerCoin(pointer);
         break;
       }
     }

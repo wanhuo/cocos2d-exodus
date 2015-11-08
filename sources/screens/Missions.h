@@ -80,9 +80,9 @@ class Missions : public Screen
   Texts texts;
   Buttons buttons;
 
-  Entity* coins;
+  Pool* coins;
 
-  vector<Mission*> missions;
+  Entity* coinsBackground;
 
   /**
    *
@@ -99,6 +99,8 @@ class Missions : public Screen
 
   cocos2d::ui::ScrollView* scroll;
 
+  vector<Mission*> missions;
+
   virtual void onEnter();
   virtual void onExit();
 
@@ -107,6 +109,9 @@ class Missions : public Screen
   virtual void show();
   virtual void hide();
 
+  virtual void throwCoins(int count);
+
+  virtual void updateListHeight();
   virtual void updateTextData();
 };
 

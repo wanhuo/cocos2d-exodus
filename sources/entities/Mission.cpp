@@ -78,6 +78,8 @@ Mission::Mission(int id)
 
   this->progressBackground->_destroy();
   this->progressBar->_destroy();
+
+  this->bind(true, false);
 }
 
 Mission::~Mission()
@@ -98,6 +100,19 @@ void Mission::onEnter()
    *
    *
    */
+  this->state->create = true;
+
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_LOCKED:
+    case MissionStruct::STATE_CURRENT:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case MissionStruct::STATE_CLAIM:
+    this->setColor(Color3B(237, 115, 113));
+    break;
+  }
+
   switch(this->mission->state)
   {
     case MissionStruct::STATE_LOCKED:
@@ -140,8 +155,6 @@ void Mission::onEnter()
     }
     break;
     case MissionStruct::STATE_CLAIM:
-    this->bind(true);
-
     this->setScale(1.0);
     this->runAction(
       RepeatForever::create(
@@ -156,9 +169,16 @@ void Mission::onEnter()
         )
       )
     );
+
+    this->coins->_create();
+    this->texts.additional->_create();
+    this->texts.additional->setText("mission-claim-reward");
+
+    this->texts.additional->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 20);
+
+    this->texts.coins->data(this->mission->coins);
     break;
     case MissionStruct::STATE_FINISHED:
-    // WTF? O_o
     break;
   }
 }
@@ -172,13 +192,179 @@ void Mission::onExit()
    *
    *
    */
+  this->state->create = false;
+
   this->lock->_destroy();
+  this->coins->_destroy();
 
   this->texts.mission->_destroy();
   this->texts.additional->_destroy();
 
   this->progressBackground->_destroy();
   this->progressBar->_destroy();
+}
 
-  this->bind(false);
+/**
+ *
+ *
+ *
+ */
+void Mission::onTouchStart(cocos2d::Touch* touch, Event* e)
+{
+  Node::onTouchStart(touch, e);
+
+  /**
+   *
+   *
+   *
+   */
+  Color3B color;
+
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_LOCKED:
+    case MissionStruct::STATE_CURRENT:
+    color = Color3B(100, 204, 223);
+    break;
+    case MissionStruct::STATE_CLAIM:
+    color = Color3B(237, 101, 100);
+    break;
+  }
+
+  auto action = EaseSineInOut::create(
+    TintTo::create(0.2, color)
+  );
+  action->setTag(1);
+
+  this->runAction(action);
+}
+
+void Mission::onTouchFinish(cocos2d::Touch* touch, Event* e)
+{
+  this->stopActionByTag(1);
+
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_LOCKED:
+    case MissionStruct::STATE_CURRENT:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case MissionStruct::STATE_CLAIM:
+    this->setColor(Color3B(237, 115, 113));
+    break;
+  }
+
+  Node::onTouchFinish(touch, e);
+}
+
+void Mission::onTouchCancelled(cocos2d::Touch* touch, Event* e)
+{
+  Node::onTouchCancelled(touch, e);
+
+  /**
+   *
+   *
+   *
+   */
+  this->stopActionByTag(1);
+
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_LOCKED:
+    case MissionStruct::STATE_CURRENT:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case MissionStruct::STATE_CLAIM:
+    this->setColor(Color3B(237, 115, 113));
+    break;
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Mission::onTouch(cocos2d::Touch* touch, Event* e)
+{
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_CURRENT:
+    Director::getInstance()->popToRootScene();
+
+    switch(Application->state)
+    {
+      case Game::STATE_FINISH:
+      Application->changeState(Game::STATE_PREPARE);
+      break;
+    }
+    break;
+    case MissionStruct::STATE_CLAIM:
+    this->runAction(
+      Sequence::create(
+        CallFunc::create([=] () {
+          Modal::block();
+
+          Missions::getInstance()->throwCoins(this->mission->coins);
+
+          this->mission->setState(MissionStruct::STATE_FINISHED);
+
+          this->setLocalZOrder(1);
+          this->runAction(
+            Sequence::create(
+              EaseSineInOut::create(
+                MoveBy::create(0.5, Vec2(0, -20))
+              ),
+              EaseSineInOut::create(
+                MoveBy::create(0.5, Vec2(0, 520))
+              ),
+              CallFunc::create([=] () {
+                float y = this->getPositionY() - 500;
+                float t = 0;
+
+                for(auto m : Missions::getInstance()->missions)
+                {
+                  if(m->getPositionY() < y)
+                  {
+                    m->runAction(
+                      Sequence::create(
+                        DelayTime::create(t),
+                        MoveBy::create(0.2, Vec2(0, 220)),
+                        nullptr
+                      )
+                    );
+
+                    t += 0.1;
+                  }
+                }
+              }),
+              CallFunc::create(CC_CALLBACK_0(Node::_destroy, this, true)),
+              CallFunc::create([=] () {
+              Missions::getInstance()->updateListHeight();
+              }),
+              nullptr
+            )
+          );
+
+          Sound->play("unlock");
+        }),
+        CallFunc::create([=] () {
+          Modal::hide();
+        }),
+        nullptr
+      )
+    );
+    break;
+  }
+
+  switch(this->mission->state)
+  {
+    case MissionStruct::STATE_LOCKED:
+    Sound->play("fail");
+    break;
+    case MissionStruct::STATE_CURRENT:
+    case MissionStruct::STATE_CLAIM:
+    Sound->play("touch");
+    break;
+  }
 }

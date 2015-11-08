@@ -173,6 +173,7 @@ Game::Game()
   }
 
   this->buttons.store->addChild(new Handler);
+  this->buttons.missions->addChild(new MissionsHandler);
 
   this->buttons.leaderboards->setCurrentFrameIndex(2);
   this->buttons.achievements->setCurrentFrameIndex(2);

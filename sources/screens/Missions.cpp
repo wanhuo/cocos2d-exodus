@@ -22,7 +22,9 @@
  */
 
 #include "Missions.h"
+
 #include "Game.h"
+#include "Finish.h"
 
 /**
  *
@@ -50,6 +52,12 @@ Missions::Missions()
 {
   instance = this;
 
+  this->framework::Screen::camera = Camera::createPerspective(60, Director::getInstance()->getWinSize().width / Director::getInstance()->getWinSize().height, 1.0f, 10000.0f);
+  this->framework::Screen::camera->setCameraFlag(CameraFlag::USER1);
+  this->addChild(this->framework::Screen::camera);
+
+  this->coins = new Pool(new Coin, 30, this);
+
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder1 = new BackgroundColor(this, Color4B(132, 209, 223, 255));
   this->holder2 = new Entity("holder-background-1.png", this, true);
@@ -73,7 +81,7 @@ Missions::Missions()
   this->holder1->setPosition(Application->center.x, Application->height);
   this->holder2->setPosition(Application->center.x, Application->height - 400);
 
-  this->coins = new Entity("counter-coins.png", this, true);
+  this->coinsBackground = new Entity("counter-coins.png", this, true);
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Missions::hide, this), true);
@@ -81,19 +89,18 @@ Missions::Missions()
 
   this->texts.title1 = new Text("missions-title-1", this->holder1, true);
   this->texts.title2 = new Text("missions-title-2", this->holder2, true);
-  this->texts.coins = new Text("coins", this->coins, true);
+  this->texts.coins = new Text("coins", this->coinsBackground, true);
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   this->buttons.back->setPosition(65, Application->height - 65);
   #endif
 
-  this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50);
+  this->coinsBackground->setPosition(Application->width - this->coinsBackground->getWidth() / 2 - 15, Application->height - 50);
 
   this->texts.title1->setPosition(this->holder1->getContentSize().width / 2, this->holder1->getContentSize().height / 2);
   this->texts.title2->setPosition(this->holder2->getContentSize().width / 2, this->holder2->getContentSize().height / 2);
-  this->texts.coins->setPosition(this->coins->getContentSize().width / 2, this->coins->getContentSize().height / 2);
+  this->texts.coins->setPosition(this->coinsBackground->getContentSize().width / 2, this->coinsBackground->getContentSize().height / 2);
 
-  int size = MissionsFactory::getInstance()->getMissions().size() - 1;
   int counter = 0;
 
   for(auto m : MissionsFactory::getInstance()->getMissions())
@@ -103,14 +110,7 @@ Missions::Missions()
     counter++;
   }
 
-  this->size = this->parameters.padding * 2 + size * 220;
-
-  this->scroll->setInnerContainerSize(
-    Size(
-      Application->width,
-      this->size
-    )
-  );
+  this->updateListHeight();
 }
 
 Missions::~Missions()
@@ -148,6 +148,17 @@ void Missions::onEnter()
     )
   );
 
+  this->updateListHeight();
+
+  int i = 1;
+
+  for(auto mission : this->missions)
+  {
+    mission->setPositionY(this->parameters.padding + (this->missions.size() - i) * 220);
+
+    i++;
+  }
+
   Events::onScreenChanged("Missions");
 }
 
@@ -179,6 +190,134 @@ void Missions::show()
 void Missions::hide()
 {
   Director::getInstance()->popScene(TransitionFade::create(0.2, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
+}
+
+/**
+ *
+ *
+ *
+ */
+void Missions::throwCoins(int count)
+{
+  //this->elapsedCoins = count;
+
+  Finish::getInstance()->time = 1.0;
+
+  this->runAction(
+    Sequence::create(
+      DelayTime::create(0.5),
+      CallFunc::create([=] () {
+
+        /**
+         *
+         *
+         *
+         */
+        Finish::getInstance()->time = 0.2;
+      }),
+      DelayTime::create(0.5),
+      CallFunc::create([=] () {
+        Finish::getInstance()->time = 1.0;
+
+        this->runAction(
+          Repeat::create(
+            Sequence::create(
+              CallFunc::create([=] () {
+
+                /**
+                 *
+                 *
+                 *
+                 */
+                //this->elapsedCoins--;
+                Application->counter->values.coins++;
+                this->updateTextData();
+              }),
+              DelayTime::create(0.1),
+              nullptr
+            ),
+            count
+          )
+        );
+
+        Sound->play("coins-reward");
+      }),
+      nullptr
+    )
+  );
+
+  for(int i = 0; i < count; i++)
+  {
+    this->coins->_create();
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Missions::updateListHeight()
+{
+  int counter = 0;
+
+  for(auto m : this->missions)
+  {
+    switch(m->mission->state)
+    {
+      case MissionStruct::STATE_CURRENT:
+      this->scroll->setInnerContainerPosition(Vec2(0, max(-this->size + (Application->height - 400), -m->getPositionY() + (Application->height - 400) / 2)));
+      break;
+      case MissionStruct::STATE_FINISHED:
+      if(m->state->create)
+      {
+        m->removeFromParent();
+
+        this->missions.erase(this->missions.begin() + counter);
+
+        for(auto element : this->scroll->getChildren())
+        {
+          element->setPositionY(element->getPositionY() - 220);
+        }
+
+        int c = 0;
+        for(auto m : this->missions)
+        {
+          if(c >= counter)
+          {
+            m->setPositionY(m->getPositionY() + 220);
+          }
+
+          c++;
+        }
+      }
+      else
+      {
+        this->missions.erase(this->missions.begin() + counter);
+
+        m->release();
+
+        for(auto element : this->scroll->getChildren())
+        {
+          element->setPositionY(element->getPositionY() - 220);
+        }
+      }
+      break;
+    }
+
+    counter++;
+  }
+
+  int size = this->missions.size() - 1;
+
+  this->size = this->parameters.padding * 2 + size * 220;
+
+  this->scroll->setInnerContainerSize(
+    Size(
+      Application->width,
+      this->size
+    )
+  );
 }
 
 /**
