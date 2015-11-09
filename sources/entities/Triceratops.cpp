@@ -28,20 +28,17 @@
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+Triceratops::Triceratops()
+: Creature("triceratops.json", "triceratops.atlas")
 {
   this->skins = {
     "1",
-    "2",
-    "3",
-    "4"
   };
 
   this->setRandomSkin();
 }
 
-Human::~Human()
+Triceratops::~Triceratops()
 {
 }
 
@@ -50,7 +47,7 @@ Human::~Human()
  *
  *
  */
-Human* Human::deepCopy()
+Triceratops* Triceratops::deepCopy()
 {
-  return new Human;
+  return new Triceratops;
 }

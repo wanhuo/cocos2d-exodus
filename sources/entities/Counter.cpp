@@ -70,6 +70,12 @@ Counter::Counter()
   this->missionUpdateProgress.points = Storage::get("values.missions.progress.points");
   this->missionUpdateProgress.games = Storage::get("values.missions.progress.games");
   this->missionUpdateProgress.gifts = Storage::get("values.missions.progress.gifts");
+
+  this->missionUpdateProgress.special_progress_1 = Storage::get("values.missions.progress.special_progress_1");
+  this->missionUpdateProgress.special_progress_2 = Storage::get("values.missions.progress.special_progress_2");
+  this->missionUpdateProgress.special_progress_3 = Storage::get("values.missions.progress.special_progress_3");
+  this->missionUpdateProgress.special_progress_4 = Storage::get("values.missions.progress.special_progress_4");
+  this->missionUpdateProgress.special_progress_5 = Storage::get("values.missions.progress.special_progress_5");
 }
 
 Counter::~Counter()
@@ -488,6 +494,12 @@ bool Counter::save()
   Storage::set("values.missions.progress.points", this->missionUpdateProgress.points);
   Storage::set("values.missions.progress.games", this->missionUpdateProgress.games);
   Storage::set("values.missions.progress.gifts", this->missionUpdateProgress.gifts);
+
+  Storage::set("values.missions.progress.special_progress_1", this->missionUpdateProgress.special_progress_1);
+  Storage::set("values.missions.progress.special_progress_2", this->missionUpdateProgress.special_progress_2);
+  Storage::set("values.missions.progress.special_progress_3", this->missionUpdateProgress.special_progress_3);
+  Storage::set("values.missions.progress.special_progress_4", this->missionUpdateProgress.special_progress_4);
+  Storage::set("values.missions.progress.special_progress_5", this->missionUpdateProgress.special_progress_5);
 
   return ret;
 }

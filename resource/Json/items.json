@@ -2,83 +2,92 @@
 	"characters": [
 		{
 			"id": "items.characters.1",
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.2",
-			"missions": 10,
-			"coins": 10
+			"missions": 1,
+			"coins": 100
 		},
 		{
 			"id": "items.characters.3",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.4",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.5",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.6",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.7",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.8",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.9",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.10",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.11",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.12",
 			"missions": 10,
-			"coins": 10
+			"coins": 100
 		},
 		{
 			"id": "items.characters.13",
-			"coins": 10
+			"coins": 100
 		}
 	],
 	"creatures": [
 		{
+			"id": "items.creatures.human",
+			"coins": 50,
+			"capacity": 5,
+			"i": 1
+		},
+		{
 			"id": "items.creatures.apatosaurus",
 			"missions": 10,
-			"coins": 10
+			"coins": 50,
+			"i": 2
 		},
 		{
 			"id": "items.creatures.stegosaurus",
-			"missions": 10,
-			"coins": 10
+			"missions": 20,
+			"coins": 50,
+			"i": 3
 		},
 		{
 			"id": "items.creatures.triceratops",
-			"missions": 10,
-			"coins": 10
+			"missions": 30,
+			"coins": 50,
+			"i": 4
 		}
 	],
 	"environments": [

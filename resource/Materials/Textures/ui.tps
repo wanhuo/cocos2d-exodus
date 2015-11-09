@@ -196,7 +196,6 @@
             <filename>../Graphics/ui/credits-decoration-1.png</filename>
             <filename>../Graphics/ui/credits-decoration-2.png</filename>
             <filename>../Graphics/ui/credits-decoration-3.png</filename>
-            <filename>../Graphics/ui/empty-button.png</filename>
             <filename>../Graphics/ui/facebook-button.png</filename>
             <filename>../Graphics/ui/finish-noad-button.png</filename>
             <filename>../Graphics/ui/finish-play-button.png</filename>
@@ -221,11 +220,6 @@
             <filename>../Graphics/ui/rocket-decoration-large.png</filename>
             <filename>../Graphics/ui/rocket-decoration-small.png</filename>
             <filename>../Graphics/ui/rocket.png</filename>
-            <filename>../Graphics/ui/store-switcher-1-button.png</filename>
-            <filename>../Graphics/ui/store-switcher-2-button.png</filename>
-            <filename>../Graphics/ui/store-switcher-3-button.png</filename>
-            <filename>../Graphics/ui/store-baloon.png</filename>
-            <filename>../Graphics/ui/store-decoration.png</filename>
             <filename>../Graphics/ui/text-holder-1.png</filename>
             <filename>../Graphics/ui/text-holder-2.png</filename>
             <filename>../Graphics/ui/text-holder-3.png</filename>
@@ -233,6 +227,16 @@
             <filename>../Graphics/ui/tutorial-button.png</filename>
             <filename>../Graphics/ui/lock.png</filename>
             <filename>../Graphics/ui/holder-background-1.png</filename>
+            <filename>../Graphics/ui/store-button-1.png</filename>
+            <filename>../Graphics/ui/store-button-2.png</filename>
+            <filename>../Graphics/ui/store-button-3.png</filename>
+            <filename>../Graphics/ui/store-button-4.png</filename>
+            <filename>../Graphics/ui/store-coins-background-1.png</filename>
+            <filename>../Graphics/ui/store-coins-background-2.png</filename>
+            <filename>../Graphics/ui/store-coins-background-3.png</filename>
+            <filename>../Graphics/ui/holder-background-2.png</filename>
+            <filename>../Graphics/ui/holder-background-3.png</filename>
+            <filename>../Graphics/ui/holder-background-4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

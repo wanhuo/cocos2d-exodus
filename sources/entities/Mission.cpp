@@ -24,6 +24,7 @@
 #include "Mission.h"
 
 #include "Game.h"
+#include "Store.h"
 #include "Missions.h"
 
 /**
@@ -290,12 +291,29 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
   switch(this->mission->state)
   {
     case MissionStruct::STATE_CURRENT:
-    Director::getInstance()->popToRootScene();
-
-    switch(Application->state)
+    switch(this->mission->link)
     {
-      case Game::STATE_FINISH:
-      Application->changeState(Game::STATE_PREPARE);
+      case 0:
+      Director::getInstance()->popToRootScene();
+
+      switch(Application->state)
+      {
+        case Game::STATE_FINISH:
+        Application->changeState(Game::STATE_PREPARE);
+        break;
+      }
+      break;
+      case 1:
+      Store::getInstance()->show();
+      Store::getInstance()->list->runAction(
+        Sequence::create(
+          DelayTime::create(0.2),
+          CallFunc::create([=] () {
+          Store::getInstance()->list->scrollToPage(1);
+          }),
+          nullptr
+        )
+      );
       break;
     }
     break;
@@ -360,7 +378,7 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
   switch(this->mission->state)
   {
     case MissionStruct::STATE_LOCKED:
-    Sound->play("fail");
+    Sound->play("disable");
     break;
     case MissionStruct::STATE_CURRENT:
     case MissionStruct::STATE_CLAIM:

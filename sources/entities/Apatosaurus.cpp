@@ -28,20 +28,17 @@
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+Apatosaurus::Apatosaurus()
+: Creature("apatosaurus.json", "apatosaurus.atlas")
 {
   this->skins = {
     "1",
-    "2",
-    "3",
-    "4"
   };
 
   this->setRandomSkin();
 }
 
-Human::~Human()
+Apatosaurus::~Apatosaurus()
 {
 }
 
@@ -50,7 +47,7 @@ Human::~Human()
  *
  *
  */
-Human* Human::deepCopy()
+Apatosaurus* Apatosaurus::deepCopy()
 {
-  return new Human;
+  return new Apatosaurus;
 }

@@ -172,7 +172,7 @@ Game::Game()
     );
   }
 
-  this->buttons.store->addChild(new Handler);
+  this->buttons.store->addChild(new StoreHandler);
   this->buttons.missions->addChild(new MissionsHandler);
 
   this->buttons.leaderboards->setCurrentFrameIndex(2);

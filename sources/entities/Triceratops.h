@@ -21,36 +21,36 @@
  *
  */
 
-#include "Game.h"
+#ifndef _TRICERATOPS_H_
+#define _TRICERATOPS_H_
+
+#include "Creature.h"
 
 /**
  *
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+class Triceratops : public Creature
 {
-  this->skins = {
-    "1",
-    "2",
-    "3",
-    "4"
-  };
 
-  this->setRandomSkin();
-}
+  /**
+   *
+   *
+   *
+   */
+  protected:
 
-Human::~Human()
-{
-}
+  /**
+   *
+   *
+   *
+   */
+  public:
+  Triceratops();
+ ~Triceratops();
 
-/**
- *
- *
- *
- */
-Human* Human::deepCopy()
-{
-  return new Human;
-}
+  virtual Triceratops* deepCopy();
+};
+
+#endif

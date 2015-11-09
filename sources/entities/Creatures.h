@@ -58,6 +58,9 @@ class Creatures : public Ref
   virtual void create();
 
   Pool* humans;
+  Pool* apatosauruses;
+  Pool* stegosauruses;
+  Pool* triceratopses;
 };
 
 #endif

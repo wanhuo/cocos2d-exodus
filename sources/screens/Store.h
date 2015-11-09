@@ -65,6 +65,8 @@ class Store : public Screen
 
   struct Buttons {
     Button* back;
+
+    vector<Button*> root;
   };
 
   /**
@@ -83,7 +85,7 @@ class Store : public Screen
 
   Pool* coins;
 
-  Entity* coinsBackground;
+  Entity* coin;
 
   /**
    *
@@ -103,10 +105,14 @@ class Store : public Screen
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void onPageChanged();
+
   virtual void onBack();
 
   virtual void show();
   virtual void hide();
+
+  virtual void showPage(int index);
 
   virtual void updateTextData();
 };
@@ -145,6 +151,7 @@ class StoreLayout : public cocos2d::ui::Layout
   {
     Text* title1;
     Text* title2;
+    Text* description;
   };
 
   /**
@@ -153,7 +160,7 @@ class StoreLayout : public cocos2d::ui::Layout
    *
    */
   protected:
-  Entity* holder;
+  Entity* holder = nullptr;
 
   Texts texts;
 
@@ -167,6 +174,8 @@ class StoreLayout : public cocos2d::ui::Layout
   public:
   StoreLayout();
  ~StoreLayout();
+
+  virtual void onEnter();
 };
 
 /**
@@ -218,6 +227,8 @@ class StoreLayoutCharacters : public StoreLayout
   public:
   StoreLayoutCharacters();
  ~StoreLayoutCharacters();
+
+  virtual void onEnter();
 };
 
 /**
@@ -249,9 +260,28 @@ class StoreLayoutCreatures : public StoreLayout
    *
    *
    */
+  private:
+  void updateItems();
+  void updateListHeight();
+
+  /**
+   *
+   *
+   *
+   */
+  protected:
+  vector<ItemCreature*> items;
+
+  /**
+   *
+   *
+   *
+   */
   public:
   StoreLayoutCreatures();
  ~StoreLayoutCreatures();
+
+  virtual void onEnter();
 };
 
 /**
@@ -283,9 +313,28 @@ class StoreLayoutEnvironments : public StoreLayout
    *
    *
    */
+  private:
+  void updateItems();
+  void updateListHeight();
+
+  /**
+   *
+   *
+   *
+   */
+  protected:
+  vector<ItemEnvironment*> items;
+
+  /**
+   *
+   *
+   *
+   */
   public:
   StoreLayoutEnvironments();
  ~StoreLayoutEnvironments();
+
+  virtual void onEnter();
 };
 
 /**
@@ -312,6 +361,23 @@ class StoreLayoutEnvironments : public StoreLayout
  */
 class StoreLayoutCoins : public StoreLayout
 {
+  /**
+   *
+   *
+   *
+   */
+  private:
+  void updateItems();
+  void updateListHeight();
+
+  /**
+   *
+   *
+   *
+   */
+  protected:
+  vector<ItemCoins*> items;
+
   /**
    *
    *

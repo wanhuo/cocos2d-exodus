@@ -21,7 +21,9 @@
  *
  */
 
-#include "Handler.h"
+#include "Game.h"
+
+#include "Store.h"
 
 /**
  *
@@ -59,6 +61,27 @@ void Handler::onEnter()
 void Handler::onExit()
 {
   Entity::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void Handler::show(int count)
+{
+  this->setScale(0);
+
+  if(count > 0)
+  {
+    this->runAction(
+      EaseSineInOut::create(
+        ScaleTo::create(0.5, 1.0)
+      )
+    );
+
+    this->text->data(count);
+  }
 }
 
 /**
@@ -106,23 +129,378 @@ void MissionsHandler::onEnter()
    *
    *
    */
-  int count = MissionsFactory::getInstance()->getClaimedMissionsCount();
-
-  this->setScale(0);
-
-  if(count > 0)
-  {
-    this->runAction(
-      EaseSineInOut::create(
-        ScaleTo::create(0.5, 1.0)
-      )
-    );
-
-    this->text->data(count);
-  }
+  this->show(getValue());
 }
 
 void MissionsHandler::onExit()
 {
   Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int MissionsHandler::getValue()
+{
+  return MissionsFactory::getInstance()->getClaimedMissionsCount();
+}
+
+/**
+ * Tooflya Inc. Development
+ *
+ * @author Igor Mats from Tooflya Inc.
+ * @copyright (c) 2015 by Igor Mats
+ * http://www.tooflya.com/development/
+ *
+ *
+ * License: Tooflya Inc. Software License v1.
+ *
+ * Licensee may not use this software for commercial purposes. For the purpose of this license,
+ * commercial purposes means that a 3rd party has to pay in order to access Software or that
+ * the Website that runs Software is behind a paywall. In consideration of the License granted
+ * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
+ * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
+ * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
+ * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
+ * support or fixes to any bug, failure, mis-performance or other defect in The Software.
+ *
+ * @cocos2d
+ *
+ */
+StoreHandler::StoreHandler()
+: Handler()
+{
+}
+
+StoreHandler::~StoreHandler()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreHandler::onEnter()
+{
+  Handler::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  this->show(getValue());
+}
+
+void StoreHandler::onExit()
+{
+  Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int StoreHandler::getValue()
+{
+  return StoreCharactersHandler::getValue() + StoreCreaturesHandler::getValue() + StoreEnvironmentsHandler::getValue();
+}
+
+/**
+ * Tooflya Inc. Development
+ *
+ * @author Igor Mats from Tooflya Inc.
+ * @copyright (c) 2015 by Igor Mats
+ * http://www.tooflya.com/development/
+ *
+ *
+ * License: Tooflya Inc. Software License v1.
+ *
+ * Licensee may not use this software for commercial purposes. For the purpose of this license,
+ * commercial purposes means that a 3rd party has to pay in order to access Software or that
+ * the Website that runs Software is behind a paywall. In consideration of the License granted
+ * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
+ * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
+ * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
+ * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
+ * support or fixes to any bug, failure, mis-performance or other defect in The Software.
+ *
+ * @cocos2d
+ *
+ */
+StoreCharactersHandler::StoreCharactersHandler()
+: Handler()
+{
+}
+
+StoreCharactersHandler::~StoreCharactersHandler()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCharactersHandler::onEnter()
+{
+  Handler::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  this->show(getValue());
+}
+
+void StoreCharactersHandler::onExit()
+{
+  Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int StoreCharactersHandler::getValue()
+{
+  int count = 0;
+
+  for(auto item : Store::getInstance()->items.characters)
+  {
+    if(Application->counter->values.coins >= item->coins)
+    {
+      if(item->state == Item::STATE_LOCKED_COINS)
+      {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Tooflya Inc. Development
+ *
+ * @author Igor Mats from Tooflya Inc.
+ * @copyright (c) 2015 by Igor Mats
+ * http://www.tooflya.com/development/
+ *
+ *
+ * License: Tooflya Inc. Software License v1.
+ *
+ * Licensee may not use this software for commercial purposes. For the purpose of this license,
+ * commercial purposes means that a 3rd party has to pay in order to access Software or that
+ * the Website that runs Software is behind a paywall. In consideration of the License granted
+ * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
+ * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
+ * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
+ * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
+ * support or fixes to any bug, failure, mis-performance or other defect in The Software.
+ *
+ * @cocos2d
+ *
+ */
+StoreCreaturesHandler::StoreCreaturesHandler()
+: Handler()
+{
+}
+
+StoreCreaturesHandler::~StoreCreaturesHandler()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCreaturesHandler::onEnter()
+{
+  Handler::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  this->show(getValue());
+}
+
+void StoreCreaturesHandler::onExit()
+{
+  Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int StoreCreaturesHandler::getValue()
+{
+  int count = 0;
+
+  for(auto item : Store::getInstance()->items.creatures)
+  {
+    if(Application->counter->values.coins >= item->coins)
+    {
+      if(item->state == Item::STATE_LOCKED_COINS)
+      {
+        count++;
+      }
+      else if(item->state == Item::STATE_NORMAL && item->capacity > 0)
+      {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Tooflya Inc. Development
+ *
+ * @author Igor Mats from Tooflya Inc.
+ * @copyright (c) 2015 by Igor Mats
+ * http://www.tooflya.com/development/
+ *
+ *
+ * License: Tooflya Inc. Software License v1.
+ *
+ * Licensee may not use this software for commercial purposes. For the purpose of this license,
+ * commercial purposes means that a 3rd party has to pay in order to access Software or that
+ * the Website that runs Software is behind a paywall. In consideration of the License granted
+ * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
+ * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
+ * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
+ * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
+ * support or fixes to any bug, failure, mis-performance or other defect in The Software.
+ *
+ * @cocos2d
+ *
+ */
+StoreEnvironmentsHandler::StoreEnvironmentsHandler()
+: Handler()
+{
+}
+
+StoreEnvironmentsHandler::~StoreEnvironmentsHandler()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreEnvironmentsHandler::onEnter()
+{
+  Handler::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  this->show(getValue());
+}
+
+void StoreEnvironmentsHandler::onExit()
+{
+  Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int StoreEnvironmentsHandler::getValue()
+{
+  int count = 0;
+
+  for(auto item : Store::getInstance()->items.environments)
+  {
+    if(Application->counter->values.coins >= item->coins)
+    {
+      if(item->state == Item::STATE_LOCKED_COINS)
+      {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+/**
+ * Tooflya Inc. Development
+ *
+ * @author Igor Mats from Tooflya Inc.
+ * @copyright (c) 2015 by Igor Mats
+ * http://www.tooflya.com/development/
+ *
+ *
+ * License: Tooflya Inc. Software License v1.
+ *
+ * Licensee may not use this software for commercial purposes. For the purpose of this license,
+ * commercial purposes means that a 3rd party has to pay in order to access Software or that
+ * the Website that runs Software is behind a paywall. In consideration of the License granted
+ * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
+ * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
+ * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
+ * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
+ * support or fixes to any bug, failure, mis-performance or other defect in The Software.
+ *
+ * @cocos2d
+ *
+ */
+StoreCoinsHandler::StoreCoinsHandler()
+: Handler()
+{
+}
+
+StoreCoinsHandler::~StoreCoinsHandler()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCoinsHandler::onEnter()
+{
+  Handler::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  this->show(getValue());
+}
+
+void StoreCoinsHandler::onExit()
+{
+  Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+int StoreCoinsHandler::getValue()
+{
+  return 3;
 }

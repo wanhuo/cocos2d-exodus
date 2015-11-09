@@ -100,6 +100,12 @@
 		7894FA311BEDEF2400A69ED6 /* Mission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */; settings = {ASSET_TAGS = (); }; };
 		7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA381BEFE6E100A69ED6 /* Item.cpp */; settings = {ASSET_TAGS = (); }; };
 		7894FA3B1BEFE6E100A69ED6 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA381BEFE6E100A69ED6 /* Item.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA4C1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA481BF1651200A69ED6 /* Stegosaurus.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA4D1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA481BF1651200A69ED6 /* Stegosaurus.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA4E1BF1651200A69ED6 /* Triceratops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA4A1BF1651200A69ED6 /* Triceratops.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA4F1BF1651200A69ED6 /* Triceratops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA4A1BF1651200A69ED6 /* Triceratops.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA521BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA501BF1652F00A69ED6 /* Apatosaurus.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA531BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA501BF1652F00A69ED6 /* Apatosaurus.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082D1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908271BCE3D4B0014A8F7 /* AnimatedButton.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082E1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908271BCE3D4B0014A8F7 /* AnimatedButton.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082F1BCE3D4B0014A8F7 /* CharacterButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908281BCE3D4B0014A8F7 /* CharacterButton.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -345,6 +351,12 @@
 		7894FA2F1BEDEF2400A69ED6 /* Mission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mission.h; sourceTree = "<group>"; };
 		7894FA381BEFE6E100A69ED6 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		7894FA391BEFE6E100A69ED6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		7894FA481BF1651200A69ED6 /* Stegosaurus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stegosaurus.cpp; sourceTree = "<group>"; };
+		7894FA491BF1651200A69ED6 /* Stegosaurus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stegosaurus.h; sourceTree = "<group>"; };
+		7894FA4A1BF1651200A69ED6 /* Triceratops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triceratops.cpp; sourceTree = "<group>"; };
+		7894FA4B1BF1651200A69ED6 /* Triceratops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triceratops.h; sourceTree = "<group>"; };
+		7894FA501BF1652F00A69ED6 /* Apatosaurus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Apatosaurus.cpp; sourceTree = "<group>"; };
+		7894FA511BF1652F00A69ED6 /* Apatosaurus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Apatosaurus.h; sourceTree = "<group>"; };
 		789908211BCE3D4B0014A8F7 /* AnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedButton.h; sourceTree = "<group>"; };
 		789908221BCE3D4B0014A8F7 /* CharacterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterButton.h; sourceTree = "<group>"; };
 		789908231BCE3D4B0014A8F7 /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
@@ -855,6 +867,12 @@
 				789908231BCE3D4B0014A8F7 /* Creature.h */,
 				7899082B1BCE3D4B0014A8F7 /* Human.cpp */,
 				789908251BCE3D4B0014A8F7 /* Human.h */,
+				7894FA501BF1652F00A69ED6 /* Apatosaurus.cpp */,
+				7894FA511BF1652F00A69ED6 /* Apatosaurus.h */,
+				7894FA481BF1651200A69ED6 /* Stegosaurus.cpp */,
+				7894FA491BF1651200A69ED6 /* Stegosaurus.h */,
+				7894FA4A1BF1651200A69ED6 /* Triceratops.cpp */,
+				7894FA4B1BF1651200A69ED6 /* Triceratops.h */,
 				789908271BCE3D4B0014A8F7 /* AnimatedButton.cpp */,
 				789908211BCE3D4B0014A8F7 /* AnimatedButton.h */,
 				7899082C1BCE3D4B0014A8F7 /* VideoButton.cpp */,
@@ -1379,6 +1397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7894FA4F1BF1651200A69ED6 /* Triceratops.cpp in Sources */,
 				78E5CC001BCA595600CB036E /* Name.cpp in Sources */,
 				789908341BCE3D4B0014A8F7 /* GiftButton.cpp in Sources */,
 				781B06F71BD3B7E60072FB24 /* Purchases.h in Sources */,
@@ -1388,6 +1407,7 @@
 				7894FA311BEDEF2400A69ED6 /* Mission.cpp in Sources */,
 				789908441BCE80310014A8F7 /* Environment.cpp in Sources */,
 				7824149E1BCC9153007D5847 /* Store.cpp in Sources */,
+				7894FA531BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */,
 				785C58701BD4F03B00B71D89 /* Barror.cpp in Sources */,
 				7824149A1BCC8FC9007D5847 /* Finish.cpp in Sources */,
 				78FEA7311BEA47D200D253A3 /* Coin.cpp in Sources */,
@@ -1400,6 +1420,7 @@
 				789908381BCE3D4B0014A8F7 /* VideoButton.cpp in Sources */,
 				78AEAC1B1BD142EC00FA8783 /* Decorations.cpp in Sources */,
 				78E5CC091BCA6A5200CB036E /* Counter.cpp in Sources */,
+				7894FA4D1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */,
 				78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
 				789908421BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7899083C1BCE60500014A8F7 /* Water.cpp in Sources */,
@@ -1425,7 +1446,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7894FA4E1BF1651200A69ED6 /* Triceratops.cpp in Sources */,
+				7894FA521BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */,
 				7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */,
+				7894FA4C1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */,
 				781B06F61BD3B7E60072FB24 /* Purchases.h in Sources */,
 				78FEA72B1BDE9AB000D253A3 /* Handler.cpp in Sources */,
 				78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */,

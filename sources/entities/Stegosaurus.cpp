@@ -28,20 +28,17 @@
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+Stegosaurus::Stegosaurus()
+: Creature("stegosaurus.json", "stegosaurus.atlas")
 {
   this->skins = {
     "1",
-    "2",
-    "3",
-    "4"
   };
 
   this->setRandomSkin();
 }
 
-Human::~Human()
+Stegosaurus::~Stegosaurus()
 {
 }
 
@@ -50,7 +47,7 @@ Human::~Human()
  *
  *
  */
-Human* Human::deepCopy()
+Stegosaurus* Stegosaurus::deepCopy()
 {
-  return new Human;
+  return new Stegosaurus;
 }

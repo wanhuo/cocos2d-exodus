@@ -72,10 +72,15 @@ Store::Store()
   for(auto characterJsonData = charactersJsonData->child; characterJsonData; characterJsonData = characterJsonData->next)
   {
     auto item = new ItemCharacter;
+
     item->id = Json_getString(characterJsonData, "id", "");
     item->missions = Json_getInt(characterJsonData, "missions", 0);
     item->coins = Json_getInt(characterJsonData, "coins", 0);
+    item->capacity = Json_getInt(characterJsonData, "capacity", 0);
+    item->i = Json_getInt(characterJsonData, "i", 0);
     item->state = Storage::get(item->id);
+
+    item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
 
     if(!item->state)
     {
@@ -99,7 +104,30 @@ Store::Store()
    */
   for(auto creatureJsonData = creaturesJsonData->child; creatureJsonData; creatureJsonData = creatureJsonData->next)
   {
-    this->items.creatures.push_back(new ItemCreature);
+    auto item = new ItemCreature;
+
+    item->id = Json_getString(creatureJsonData, "id", "");
+    item->missions = Json_getInt(creatureJsonData, "missions", 0);
+    item->coins = Json_getInt(creatureJsonData, "coins", 0);
+    item->capacity = Json_getInt(creatureJsonData, "capacity", 0);
+    item->i = Json_getInt(creatureJsonData, "i", 0);
+    item->state = Storage::get(item->id);
+
+    item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
+
+    if(!item->state)
+    {
+      if(item->missions)
+      {
+        item->setState(Item::STATE_LOCKED_MISSIONS);
+      }
+      else if(item->coins)
+      {
+        item->setState(Item::STATE_LOCKED_COINS);
+      }
+    }
+
+    this->items.creatures.push_back(item);
   }
 
   /**
@@ -109,7 +137,26 @@ Store::Store()
    */
   for(auto environmentJsonData = environmentsJsonData->child; environmentJsonData; environmentJsonData = environmentJsonData->next)
   {
-    this->items.environments.push_back(new ItemEnvironment);
+    auto item = new ItemEnvironment;
+
+    item->id = Json_getString(environmentJsonData, "id", "");
+    item->missions = Json_getInt(environmentJsonData, "missions", 0);
+    item->coins = Json_getInt(environmentJsonData, "coins", 0);
+    item->state = Storage::get(item->id);
+
+    if(!item->state)
+    {
+      if(item->missions)
+      {
+        item->setState(Item::STATE_LOCKED_MISSIONS);
+      }
+      else if(item->coins)
+      {
+        item->setState(Item::STATE_LOCKED_COINS);
+      }
+    }
+
+    this->items.environments.push_back(item);
   }
 
   /**
@@ -122,32 +169,53 @@ Store::Store()
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder = new BackgroundColor(this, Color4B(132, 209, 223, 255));
 
-  this->holder->setContentSize(Size(Application->width, 400));
+  this->holder->setContentSize(Size(this->width, 400));
 
   this->holder->ignoreAnchorPointForPosition(false);
   this->holder->setAnchorPoint(Vec2(0.5, 1.0));
-  this->holder->setPosition(Application->center.x, Application->height);
+  this->holder->setPosition(this->center.x, Application->height);
 
-  this->coinsBackground = new Entity("counter-coins.png", this, true);
+  this->coin = new Entity("counter-coins.png", this, true);
   
   this->list = new BackgroundPages(this);
   this->list->setDirection(cocos2d::ui::PageView::Direction::HORIZONTAL);
-  this->list->setContentSize(Size(Application->width, Application->height));
+  this->list->setContentSize(Size(this->width, this->height));
   this->list->setTouchEnabled(true);
+  this->list->addEventListener([=] (Ref *pSender, cocos2d::ui::PageView::EventType type) {
+    switch(type)
+    {
+      case cocos2d::ui::PageView::EventType::TURNING:
+      this->onPageChanged();
+      break;
+    }
+  });
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Store::hide, this), true);
   #endif
+  this->buttons.root.push_back(new Button("store-button-1.png", 1, 3, this, std::bind(&Store::showPage, this, 0), true));
+  this->buttons.root.push_back(new Button("store-button-2.png", 1, 3, this, std::bind(&Store::showPage, this, 1), true));
+  this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Store::showPage, this, 2), true));
+  this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::showPage, this, 3), true));
 
-  this->texts.coins = new Text("coins", this->coinsBackground, true);
+  this->texts.coins = new Text("coins", this->coin, true);
 
   #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-  this->buttons.back->setPosition(65, Application->height - 65);
+  this->buttons.back->setPosition(65, this->height - 65);
   #endif
+  this->buttons.root.at(0)->setPosition(this->center.x - 192, this->height - 270);
+  this->buttons.root.at(1)->setPosition(this->center.x - 64, this->height - 270);
+  this->buttons.root.at(2)->setPosition(this->center.x + 64, this->height - 270);
+  this->buttons.root.at(3)->setPosition(this->center.x + 192, this->height - 270);
 
-  this->coinsBackground->setPosition(Application->width - this->coinsBackground->getWidth() / 2 - 15, Application->height - 50);
+  this->coin->setPosition(this->width - this->coin->getWidth() / 2 - 15, this->height - 50);
 
-  this->texts.coins->setPosition(this->coinsBackground->getContentSize().width / 2, this->coinsBackground->getContentSize().height / 2);
+  this->texts.coins->setPosition(this->coin->getContentSize().width / 2, this->coin->getContentSize().height / 2);
+
+  this->buttons.root.at(0)->addChild(new StoreCharactersHandler);
+  this->buttons.root.at(1)->addChild(new StoreCreaturesHandler);
+  this->buttons.root.at(2)->addChild(new StoreEnvironmentsHandler);
+  this->buttons.root.at(3)->addChild(new StoreCoinsHandler);
 
   this->list->insertPage(new StoreLayoutCharacters, 0);
   this->list->insertPage(new StoreLayoutCreatures, 1);
@@ -157,6 +225,23 @@ Store::Store()
 
 Store::~Store()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void Store::onPageChanged()
+{
+  for(auto button : this->buttons.root)
+  {
+    button->setCurrentFrameIndex(0);
+    button->bind(true);
+  }
+
+  this->buttons.root.at(this->list->getCurPageIndex())->setCurrentFrameIndex(2);
+  this->buttons.root.at(this->list->getCurPageIndex())->bind(false);
 }
 
 /**
@@ -174,6 +259,9 @@ void Store::onEnter()
    *
    */
   this->updateTextData();
+
+  this->list->setCurPageIndex(0);
+  this->onPageChanged();
 
   Events::onScreenChanged("Store");
 }
@@ -206,6 +294,16 @@ void Store::show()
 void Store::hide()
 {
   Director::getInstance()->popScene(TransitionFade::create(0.2, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
+}
+
+/**
+ *
+ *
+ *
+ */
+void Store::showPage(int index)
+{
+  this->list->scrollToPage(index);
 }
 
 /**
@@ -258,6 +356,39 @@ StoreLayout::~StoreLayout()
 }
 
 /**
+ *
+ *
+ *
+ */
+void StoreLayout::onEnter()
+{
+  cocos2d::ui::Layout::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  if(this->holder)
+  {
+    this->holder->setScale(1.0);
+    this->holder->runAction(
+      RepeatForever::create(
+        Sequence::create(
+          EaseSineInOut::create(
+            ScaleTo::create(3.0, 1.2)
+          ),
+          EaseSineInOut::create(
+            ScaleTo::create(3.0, 1.0)
+          ),
+          nullptr
+        )
+      )
+    );
+  }
+}
+
+/**
  * Tooflya Inc. Development
  *
  * @author Igor Mats from Tooflya Inc.
@@ -283,15 +414,17 @@ StoreLayoutCharacters::StoreLayoutCharacters()
 {
   this->items = Store::getInstance()->items.characters;
 
-  this->holder = new Entity("holder-background-1.png", this, true);
+  this->holder = new Entity("holder-background-2.png", this, true);
 
   this->texts.title1 = new Text("store-title-1", this, true);
-  this->texts.title2 = new Text("missions-title-2", this->holder, true);
+  this->texts.title2 = new Text("store-action-1", this, true);
+  this->texts.description = new Text("store-description-1", this->holder, true);
 
   this->holder->setPosition(Application->center.x, Application->height - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 200);
-  this->texts.title2->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
+  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
 
   this->updateItems();
 }
@@ -300,6 +433,35 @@ StoreLayoutCharacters::~StoreLayoutCharacters()
 {
 }
 
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutCharacters::onEnter()
+{
+  StoreLayout::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  int counter = 0;
+
+  for(auto item : this->items)
+  {
+    switch(item->state)
+    {
+      case Item::STATE_NORMAL:
+      case Item::STATE_SELECTED:
+      counter++;
+      break;
+    }
+  }
+
+  this->texts.description->data(counter, this->items.size());
+}
 /**
  *
  *
@@ -331,7 +493,7 @@ void StoreLayoutCharacters::updateItems()
 
 void StoreLayoutCharacters::updateListHeight()
 {
-  int size = 400 + (this->items.size() - 1) / 2 * 220;
+  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
 
   this->scroll->setInnerContainerSize(
     Size(
@@ -370,19 +532,100 @@ void StoreLayoutCharacters::updateListHeight()
  */
 StoreLayoutCreatures::StoreLayoutCreatures()
 {
-  this->holder = new Entity("holder-background-1.png", this, true);
+  this->items = Store::getInstance()->items.creatures;
+
+  this->holder = new Entity("holder-background-3.png", this, true);
 
   this->texts.title1 = new Text("store-title-2", this, true);
-  this->texts.title2 = new Text("missions-title-2", this->holder, true);
+  this->texts.title2 = new Text("store-action-2", this, true);
+  this->texts.description = new Text("store-description-2", this->holder, true);
 
   this->holder->setPosition(Application->center.x, Application->height - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 200);
-  this->texts.title2->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
+  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+
+  this->updateItems();
 }
 
 StoreLayoutCreatures::~StoreLayoutCreatures()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutCreatures::onEnter()
+{
+  StoreLayout::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  int counter = 0;
+
+  for(auto item : this->items)
+  {
+    switch(item->state)
+    {
+      case Item::STATE_NORMAL:
+      case Item::STATE_SELECTED:
+      counter++;
+      break;
+    }
+  }
+
+  this->texts.description->data(counter, this->items.size());
+}
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutCreatures::updateItems()
+{
+  bool position = false;
+
+  float x = 0;
+  float y = 0;
+
+  for(auto element : this->items)
+  {
+    element->setPosition(Application->center.x + (160) * (position ? 1 : -1), y);
+
+    this->scroll->addChild(element);
+
+    position = !position;
+
+    if(!position)
+    {
+      y -= 320;
+    }
+  }
+
+  this->updateListHeight();
+}
+
+void StoreLayoutCreatures::updateListHeight()
+{
+  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+
+  this->scroll->setInnerContainerSize(
+    Size(
+      Application->width,
+      size
+    )
+  );
+
+  for(auto element : this->scroll->getChildren())
+  {
+    element->setPositionY(element->getPositionY() + size - 250);
+  }
 }
 
 /**
@@ -409,19 +652,94 @@ StoreLayoutCreatures::~StoreLayoutCreatures()
  */
 StoreLayoutEnvironments::StoreLayoutEnvironments()
 {
-  this->holder = new Entity("holder-background-1.png", this, true);
+  this->items = Store::getInstance()->items.environments;
+
+  this->holder = new Entity("holder-background-4.png", this, true);
 
   this->texts.title1 = new Text("store-title-3", this, true);
-  this->texts.title2 = new Text("missions-title-2", this->holder, true);
+  this->texts.title2 = new Text("store-action-3", this, true);
+  this->texts.description = new Text("store-description-3", this->holder, true);
 
   this->holder->setPosition(Application->center.x, Application->height - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 200);
-  this->texts.title2->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
+  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+
+  this->updateItems();
 }
 
 StoreLayoutEnvironments::~StoreLayoutEnvironments()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutEnvironments::onEnter()
+{
+  StoreLayout::onEnter();
+
+  /**
+   *
+   *
+   *
+   */
+  int counter = 0;
+
+  for(auto item : this->items)
+  {
+    switch(item->state)
+    {
+      case Item::STATE_NORMAL:
+      case Item::STATE_SELECTED:
+      counter++;
+      break;
+    }
+  }
+
+  this->texts.description->data(counter, this->items.size());
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutEnvironments::updateItems()
+{
+  float x = 0;
+  float y = 0;
+
+  for(auto element : this->items)
+  {
+    element->setPosition(Application->center.x, y);
+
+    this->scroll->addChild(element);
+
+    y -= 220;
+  }
+
+  this->updateListHeight();
+}
+
+void StoreLayoutEnvironments::updateListHeight()
+{
+  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+
+  this->scroll->setInnerContainerSize(
+    Size(
+      Application->width,
+      size
+    )
+  );
+
+  for(auto element : this->scroll->getChildren())
+  {
+    element->setPositionY(element->getPositionY() + size - 200);
+  }
 }
 
 /**
@@ -449,10 +767,73 @@ StoreLayoutEnvironments::~StoreLayoutEnvironments()
 StoreLayoutCoins::StoreLayoutCoins()
 {
   this->texts.title1 = new Text("store-title-4", this, true);
+  this->texts.title2 = new Text("store-action-4", this, true);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 200);
+  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
+  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+
+  auto item1 = new ItemCoins;
+  auto item2 = new ItemCoins;
+  auto item3 = new ItemCoins;
+
+  item1->id = "com.ketchapp.exodus.coins.500";
+  item2->id = "com.ketchapp.exodus.coins.1000";
+  item3->id = "com.ketchapp.exodus.coins.5000";
+
+  item1->setState(Item::STATE_NORMAL);
+  item2->setState(Item::STATE_NORMAL);
+  item3->setState(Item::STATE_NORMAL);
+
+  item1->picture = new Entity("store-coins-background-1.png", item1);
+  item2->picture = new Entity("store-coins-background-2.png", item2);
+  item3->picture = new Entity("store-coins-background-3.png", item3);
+
+  this->items.push_back(item1);
+  this->items.push_back(item2);
+  this->items.push_back(item3);
+
+  this->updateItems();
 }
 
 StoreLayoutCoins::~StoreLayoutCoins()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutCoins::updateItems()
+{
+  float x = 0;
+  float y = 0;
+
+  for(auto element : this->items)
+  {
+    element->setPosition(Application->center.x, y);
+
+    this->scroll->addChild(element);
+
+    y -= 220;
+  }
+
+  this->updateListHeight();
+}
+
+void StoreLayoutCoins::updateListHeight()
+{
+  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+
+  this->scroll->setInnerContainerSize(
+    Size(
+      Application->width,
+      size
+    )
+  );
+
+  for(auto element : this->scroll->getChildren())
+  {
+    element->setPositionY(element->getPositionY() + size - 200);
+  }
 }

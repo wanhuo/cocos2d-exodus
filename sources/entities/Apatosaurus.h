@@ -21,36 +21,36 @@
  *
  */
 
-#include "Game.h"
+#ifndef _APATOSAURUS_H_
+#define _APATOSAURUS_H_
+
+#include "Creature.h"
 
 /**
  *
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+class Apatosaurus : public Creature
 {
-  this->skins = {
-    "1",
-    "2",
-    "3",
-    "4"
-  };
 
-  this->setRandomSkin();
-}
+  /**
+   *
+   *
+   *
+   */
+  protected:
 
-Human::~Human()
-{
-}
+  /**
+   *
+   *
+   *
+   */
+  public:
+  Apatosaurus();
+ ~Apatosaurus();
 
-/**
- *
- *
- *
- */
-Human* Human::deepCopy()
-{
-  return new Human;
-}
+  virtual Apatosaurus* deepCopy();
+};
+
+#endif

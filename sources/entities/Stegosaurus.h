@@ -21,36 +21,36 @@
  *
  */
 
-#include "Game.h"
+#ifndef _STEGOSAURUS_H_
+#define _STEGOSAURUS_H_
+
+#include "Creature.h"
 
 /**
  *
  *
  *
  */
-Human::Human()
-: Creature("human.json", "human.atlas")
+class Stegosaurus : public Creature
 {
-  this->skins = {
-    "1",
-    "2",
-    "3",
-    "4"
-  };
 
-  this->setRandomSkin();
-}
+  /**
+   *
+   *
+   *
+   */
+  protected:
 
-Human::~Human()
-{
-}
+  /**
+   *
+   *
+   *
+   */
+  public:
+  Stegosaurus();
+ ~Stegosaurus();
 
-/**
- *
- *
- *
- */
-Human* Human::deepCopy()
-{
-  return new Human;
-}
+  virtual Stegosaurus* deepCopy();
+};
+
+#endif

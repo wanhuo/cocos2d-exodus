@@ -31,6 +31,9 @@
 Creatures::Creatures()
 {
   this->humans = new Pool(new Human, Application->game);
+  this->apatosauruses = new Pool(new Apatosaurus, Application->game);
+  this->stegosauruses = new Pool(new Stegosaurus, Application->game);
+  this->triceratopses = new Pool(new Triceratops, Application->game);
 }
 
 Creatures::~Creatures()
@@ -72,6 +75,27 @@ void Creatures::onAction()
 
     element->onAction();
   }
+
+  for(int i = 0; i < this->apatosauruses->count; i++)
+  {
+    Creature* element = (Creature*) this->apatosauruses->element(i);
+
+    element->onAction();
+  }
+
+  for(int i = 0; i < this->stegosauruses->count; i++)
+  {
+    Creature* element = (Creature*) this->stegosauruses->element(i);
+
+    element->onAction();
+  }
+
+  for(int i = 0; i < this->triceratopses->count; i++)
+  {
+    Creature* element = (Creature*) this->triceratopses->element(i);
+
+    element->onAction();
+  }
 }
 
 /**
@@ -81,8 +105,23 @@ void Creatures::onAction()
  */
 void Creatures::create()
 {
-  for(int i = 0; i < 10; i++)
+  for(int i = 0; i < Storage::get("items.creatures.human.count"); i++)
   {
     this->humans->_create();
+  }
+
+  for(int i = 0; i < Storage::get("items.creatures.apatosaurus.count"); i++)
+  {
+    this->apatosauruses->_create();
+  }
+
+  for(int i = 0; i < Storage::get("items.creatures.stegosaurus.count"); i++)
+  {
+    this->stegosauruses->_create();
+  }
+
+  for(int i = 0; i < Storage::get("items.creatures.triceratops.count"); i++)
+  {
+    this->triceratopses->_create();
   }
 }

@@ -3,151 +3,278 @@
 		{
 			"type": 1,
 			"text": "mission-1",
-			"coins": 5,
+			"coins": 2,
 			"complete": {
 				"coins": 1
-			},
-			"cancel": [
-			]
+			}
 		},
 		{
 			"type": 2,
 			"text": "mission-2",
+			"coins": 5,
 			"complete": {
-				"points": 20
-			},
-			"cancel": [
-			]
+				"points": 10
+			}
 		},
 		{
 			"type": 2,
 			"text": "mission-3",
-			"coins": 5,
+			"coins": 10,
 			"complete": {
 				"games": 5
-			},
-			"cancel": [
-			]
-		},
-		{
-			"type": 1,
-			"text": "mission-4",
-			"coins": 5,
-			"complete": {
-				"points": 15
-			},
-			"cancel": [
-			]
+			}
 		},
 		{
 			"type": 2,
-			"text": "mission-5",
-			"coins": 5,
+			"text": "mission-4",
+			"coins": 10,
+			"link": 1,
 			"complete": {
-				"gifts": 2
-			},
-			"cancel": [
-			]
+				"special_progress_1": 3
+			}
 		},
 		{
 			"type": 1,
+			"text": "mission-5",
+			"coins": 20,
+			"complete": {
+				"points": 10
+			}
+		},
+		{
+			"type": 2,
 			"text": "mission-6",
 			"coins": 5,
 			"complete": {
-				"special_once_1": 2
-			},
-			"cancel": [
-			]
+				"gifts": 2
+			}
 		},
 		{
 			"type": 1,
 			"text": "mission-7",
-			"coins": 5,
+			"coins": 10,
 			"complete": {
-				"best": 1
-			},
-			"cancel": [
-			]
+				"special_once_1": 2
+			}
 		},
 		{
 			"type": 1,
 			"text": "mission-8",
-			"coins": 5,
-			"complete": {
-				"points": 45
-			},
-			"cancel": [
-			]
-		},
-		{
-			"type": 2,
-			"text": "mission-9",
-			"coins": 5,
-			"complete": {
-				"games": 5
-			},
-			"cancel": [
-			]
-		},
-		{
-			"type": 1,
-			"text": "mission-10",
-			"coins": 5,
-			"complete": {
-				"bonus_line_points": 15
-			},
-			"cancel": [
-			]
-		},
-		{
-			"type": 1,
-			"text": "mission-11",
-			"coins": 5,
+			"coins": 20,
 			"complete": {
 				"best": 1
-			},
-			"cancel": [
-			]
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-9",
+			"coins": 30,
+			"complete": {
+				"points": 20
+			}
 		},
 		{
 			"type": 2,
-			"text": "mission-12",
-			"coins": 5,
+			"text": "mission-10",
+			"coins": 10,
 			"complete": {
-				"points": 200
-			},
-			"cancel": [
-			]
+				"games": 5
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-11",
+			"coins": 10,
+			"link": 1,
+			"complete": {
+				"special_progress_2": 2
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-12",
+			"coins": 10,
+			"complete": {
+				"coins": 5
+			}
 		},
 		{
 			"type": 1,
 			"text": "mission-13",
-			"coins": 5,
+			"coins": 20,
 			"complete": {
-				"coins": 40
-			},
-			"cancel": [
-			]
+				"best": 1
+			}
 		},
 		{
 			"type": 2,
 			"text": "mission-14",
-			"coins": 5,
+			"coins": 30,
 			"complete": {
-				"games": 5
-			},
-			"cancel": [
-			]
+				"points": 20
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-15",
+			"coins": 40,
+			"complete": {
+				"coins": 40
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-16",
+			"coins": 10,
+			"complete": {
+				"games": 10
+			}
 		},
 		{
 			"type": 1,
-			"text": "mission-15",
+			"text": "mission-17",
 			"coins": 5,
 			"complete": {
-				"points": 100
-			},
-			"cancel": [
-			]
+				"special_once_1": 2
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-18",
+			"coins": 10,
+			"complete": {
+				"best": 1
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-19",
+			"coins": 10,
+			"complete": {
+				"gifts": 3
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-20",
+			"coins": 10,
+			"complete": {
+				"coins": 10
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-21",
+			"coins": 50,
+			"link": 1,
+			"complete": {
+				"special_progress_3": 2
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-22",
+			"coins": 5,
+			"complete": {
+				"games": 2
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-23",
+			"coins": 20,
+			"complete": {
+				"points": 20
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-24",
+			"coins": 20,
+			"complete": {
+				"coins": 20
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-25",
+			"coins": 10,
+			"complete": {
+				"special_once_1": 3
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-26",
+			"coins": 20,
+			"complete": {
+				"best": 1
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-27",
+			"coins": 10,
+			"complete": {
+				"games": 20
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-28",
+			"coins": 15,
+			"complete": {
+				"coins": 15
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-29",
+			"coins": 5,
+			"complete": {
+				"points": 30
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-30",
+			"coins": 5,
+			"complete": {
+				"gifts": 2
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-31",
+			"coins": 10,
+			"link": 1,
+			"complete": {
+				"special_progress_4": 5
+			}
+		},
+		{
+			"type": 1,
+			"text": "mission-32",
+			"coins": 20,
+			"complete": {
+				"best": 1
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-33",
+			"coins": 30,
+			"complete": {
+				"coins": 30
+			}
+		},
+		{
+			"type": 2,
+			"text": "mission-34",
+			"coins": 5,
+			"complete": {
+				"games": 5
+			}
 		}
 	]
 }
