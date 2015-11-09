@@ -1827,7 +1827,7 @@
         ]
       }
     ],
-    "store-title-0": [
+    "store-title-1": [
       {
         "title": "Rockets",
         "font": "Impact",
@@ -1869,7 +1869,7 @@
         ]
       }
     ],
-    "store-title-1": [
+    "store-title-2": [
       {
         "title": "Creatures",
         "font": "Impact",
@@ -1911,51 +1911,9 @@
         ]
       }
     ],
-    "store-title-2": [
-      {
-        "title": "Bonuses",
-        "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
-      },
-      {
-        "title": "Бонусы",
-        "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
-      },
-      {
-        "title": "Bonus",
-        "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
-      },
-      {
-        "title": "Bonus",
-        "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
-      }
-    ],
     "store-title-3": [
       {
-        "title": "Points",
+        "title": "",
         "font": "Impact",
         "size": 42,
         "color": [
@@ -1965,7 +1923,7 @@
         ]
       },
       {
-        "title": "Точки",
+        "title": "Миры",
         "font": "Impact",
         "size": 42,
         "color": [
@@ -1975,7 +1933,7 @@
         ]
       },
       {
-        "title": "Pontos",
+        "title": "",
         "font": "Impact",
         "size": 42,
         "color": [
@@ -1985,7 +1943,7 @@
         ]
       },
       {
-        "title": "Points",
+        "title": "",
         "font": "Impact",
         "size": 42,
         "color": [
@@ -2033,6 +1991,48 @@
         "color": [
           21,
           176,
+          191
+        ]
+      }
+    ],
+    "store-state-missions": [
+      {
+        "title": "$1 missions",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "$1 миссий",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          21,
+          157,
           191
         ]
       }

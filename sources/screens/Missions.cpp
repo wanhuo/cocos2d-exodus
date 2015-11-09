@@ -52,9 +52,9 @@ Missions::Missions()
 {
   instance = this;
 
-  this->framework::Screen::camera = Camera::createPerspective(60, Director::getInstance()->getWinSize().width / Director::getInstance()->getWinSize().height, 1.0f, 10000.0f);
-  this->framework::Screen::camera->setCameraFlag(CameraFlag::USER1);
-  this->addChild(this->framework::Screen::camera);
+  this->camera = Camera::createPerspective(60, this->width / this->height, 1.0f, 10000.0f);
+  this->camera->setCameraFlag(CameraFlag::USER1);
+  this->addChild(this->camera);
 
   this->coins = new Pool(new Coin, 30, this);
 
@@ -62,21 +62,17 @@ Missions::Missions()
   this->holder1 = new BackgroundColor(this, Color4B(132, 209, 223, 255));
   this->holder2 = new Entity("holder-background-1.png", this, true);
 
-  this->scroll = cocos2d::ui::ScrollView::create();
+  this->scroll = new BackgroundScroll(this->background);
   this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
   this->scroll->setBounceEnabled(true);
   this->scroll->setContentSize(Size(Application->width, Application->height - 400));
   this->scroll->setPositionY(0);
 
-  this->background->addChild(this->scroll);
-
   this->holder1->setContentSize(Size(Application->width, 400));
 
   this->holder1->ignoreAnchorPointForPosition(false);
-  this->holder2->ignoreAnchorPointForPosition(false);
 
   this->holder1->setAnchorPoint(Vec2(0.5, 1.0));
-  this->holder2->setAnchorPoint(Vec2(0.5, 0.5));
 
   this->holder1->setPosition(Application->center.x, Application->height);
   this->holder2->setPosition(Application->center.x, Application->height - 400);

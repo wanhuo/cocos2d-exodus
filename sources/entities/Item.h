@@ -21,119 +21,20 @@
  *
  */
 
-#ifndef _STORE_H_
-#define _STORE_H_
+#ifndef _ITEM_H_
+#define _ITEM_H_
 
-#include "Screen.h"
-
-#include "Entity.h"
-#include "Text.h"
-#include "Button.h"
 #include "Background.h"
 #include "BackgroundColor.h"
-#include "BackgroundScroll.h"
-#include "BackgroundPages.h"
-
-#include "Item.h"
+#include "Entity.h"
+#include "Text.h"
 
 /**
  *
  *
  *
  */
-class Store : public Screen
-{
-  /**
-   *
-   *
-   *
-   */
-  private:
-  static Store* instance;
-
-  struct Items
-  {
-    vector<ItemCharacter*> characters;
-    vector<ItemCreature*> creatures;
-    vector<ItemEnvironment*> environments;
-  };
-
-
-  struct Texts {
-    Text* coins;
-  };
-
-  struct Buttons {
-    Button* back;
-  };
-
-  /**
-   *
-   *
-   *
-   */
-  protected:
-  float size;
-
-  BackgroundColor* background;
-  BackgroundColor* holder;
-
-  Texts texts;
-  Buttons buttons;
-
-  Pool* coins;
-
-  Entity* coinsBackground;
-
-  /**
-   *
-   *
-   *
-   */
-  public:
-  static Store* getInstance();
-
-  Store();
- ~Store();
-
-  Items items;
-
-  BackgroundPages* list;
-
-  virtual void onEnter();
-  virtual void onExit();
-
-  virtual void onBack();
-
-  virtual void show();
-  virtual void hide();
-
-  virtual void updateTextData();
-};
-
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-class StoreLayout : public cocos2d::ui::Layout
+class Item : public BackgroundColor
 {
   /**
    *
@@ -143,8 +44,8 @@ class StoreLayout : public cocos2d::ui::Layout
   private:
   struct Texts
   {
-    Text* title1;
-    Text* title2;
+    Text* coins;
+    Text* missions;
   };
 
   /**
@@ -153,11 +54,10 @@ class StoreLayout : public cocos2d::ui::Layout
    *
    */
   protected:
-  Entity* holder;
-
   Texts texts;
 
-  BackgroundScroll* scroll;
+  Entity* coin;
+  Entity* lock;
 
   /**
    *
@@ -165,8 +65,33 @@ class StoreLayout : public cocos2d::ui::Layout
    *
    */
   public:
-  StoreLayout();
- ~StoreLayout();
+  static const int STATE_LOCKED = 0;
+  static const int STATE_LOCKED_MISSIONS = 1;
+  static const int STATE_LOCKED_COINS = 2;
+  static const int STATE_NORMAL = 3;
+
+  Item(const char* id);
+ ~Item();
+
+  int state = 0;
+  int missions = 0;
+  int coins = 0;
+
+  const char* id;
+
+  virtual void onEnter();
+  virtual void onExit();
+
+  virtual void onTouchStart(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchFinish(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchCancelled(cocos2d::Touch* touch, Event* e);
+
+  virtual void onTouch(cocos2d::Touch* touch, Event* e);
+
+  virtual void setState(int state);
+
+  virtual void resetState();
+  virtual void updateState();
 };
 
 /**
@@ -191,33 +116,17 @@ class StoreLayout : public cocos2d::ui::Layout
  * @cocos2d
  *
  */
-class StoreLayoutCharacters : public StoreLayout
+
+class ItemCharacter : public Item
 {
   /**
    *
    *
    *
    */
-  private:
-  void updateItems();
-  void updateListHeight();
-
-  /**
-   *
-   *
-   *
-   */
-  protected:
-  vector<ItemCharacter*> items;
-
-  /**
-   *
-   *
-   *
-   */
   public:
-  StoreLayoutCharacters();
- ~StoreLayoutCharacters();
+  ItemCharacter();
+ ~ItemCharacter();
 };
 
 /**
@@ -242,7 +151,8 @@ class StoreLayoutCharacters : public StoreLayout
  * @cocos2d
  *
  */
-class StoreLayoutCreatures : public StoreLayout
+
+class ItemCreature : public Item
 {
   /**
    *
@@ -250,8 +160,8 @@ class StoreLayoutCreatures : public StoreLayout
    *
    */
   public:
-  StoreLayoutCreatures();
- ~StoreLayoutCreatures();
+  ItemCreature();
+ ~ItemCreature();
 };
 
 /**
@@ -276,41 +186,8 @@ class StoreLayoutCreatures : public StoreLayout
  * @cocos2d
  *
  */
-class StoreLayoutEnvironments : public StoreLayout
-{
-  /**
-   *
-   *
-   *
-   */
-  public:
-  StoreLayoutEnvironments();
- ~StoreLayoutEnvironments();
-};
 
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-class StoreLayoutCoins : public StoreLayout
+class ItemEnvironment : public Item
 {
   /**
    *
@@ -318,8 +195,8 @@ class StoreLayoutCoins : public StoreLayout
    *
    */
   public:
-  StoreLayoutCoins();
- ~StoreLayoutCoins();
+  ItemEnvironment();
+ ~ItemEnvironment();
 };
 
 #endif

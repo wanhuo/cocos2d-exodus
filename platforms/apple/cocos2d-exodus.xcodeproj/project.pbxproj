@@ -98,6 +98,8 @@
 		7894FA231BECDC5F00A69ED6 /* Tutorial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA1E1BECDC5F00A69ED6 /* Tutorial.cpp */; settings = {ASSET_TAGS = (); }; };
 		7894FA301BEDEF2400A69ED6 /* Mission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */; settings = {ASSET_TAGS = (); }; };
 		7894FA311BEDEF2400A69ED6 /* Mission.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA381BEFE6E100A69ED6 /* Item.cpp */; settings = {ASSET_TAGS = (); }; };
+		7894FA3B1BEFE6E100A69ED6 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7894FA381BEFE6E100A69ED6 /* Item.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082D1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908271BCE3D4B0014A8F7 /* AnimatedButton.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082E1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908271BCE3D4B0014A8F7 /* AnimatedButton.cpp */; settings = {ASSET_TAGS = (); }; };
 		7899082F1BCE3D4B0014A8F7 /* CharacterButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908281BCE3D4B0014A8F7 /* CharacterButton.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -341,6 +343,8 @@
 		7894FA1F1BECDC5F00A69ED6 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
 		7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mission.cpp; sourceTree = "<group>"; };
 		7894FA2F1BEDEF2400A69ED6 /* Mission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mission.h; sourceTree = "<group>"; };
+		7894FA381BEFE6E100A69ED6 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		7894FA391BEFE6E100A69ED6 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		789908211BCE3D4B0014A8F7 /* AnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedButton.h; sourceTree = "<group>"; };
 		789908221BCE3D4B0014A8F7 /* CharacterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterButton.h; sourceTree = "<group>"; };
 		789908231BCE3D4B0014A8F7 /* Creature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Creature.h; sourceTree = "<group>"; };
@@ -808,6 +812,8 @@
 		7894C02E1BC9282F00363FC9 /* entities */ = {
 			isa = PBXGroup;
 			children = (
+				7894FA381BEFE6E100A69ED6 /* Item.cpp */,
+				7894FA391BEFE6E100A69ED6 /* Item.h */,
 				7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */,
 				7894FA2F1BEDEF2400A69ED6 /* Mission.h */,
 				78FEA7341BEA8E5000D253A3 /* Crown.cpp */,
@@ -1397,6 +1403,7 @@
 				78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
 				789908421BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7899083C1BCE60500014A8F7 /* Water.cpp in Sources */,
+				7894FA3B1BEFE6E100A69ED6 /* Item.cpp in Sources */,
 				782414AA1BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */,
 				785C588A1BD63E1C00B71D89 /* Parallax.cpp in Sources */,
 				782414A21BCC9184007D5847 /* Credits.cpp in Sources */,
@@ -1418,6 +1425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */,
 				781B06F61BD3B7E60072FB24 /* Purchases.h in Sources */,
 				78FEA72B1BDE9AB000D253A3 /* Handler.cpp in Sources */,
 				78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */,

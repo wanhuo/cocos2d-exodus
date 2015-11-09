@@ -31,10 +31,9 @@
 #include "Button.h"
 #include "Background.h"
 #include "BackgroundColor.h"
+#include "BackgroundScroll.h"
 
 #include "Mission.h"
-
-#include "ui/CocosGUI.h"
 
 /**
  *
@@ -97,7 +96,7 @@ class Missions : public Screen
 
   Parameters parameters;
 
-  cocos2d::ui::ScrollView* scroll;
+  BackgroundScroll* scroll;
 
   vector<Mission*> missions;
 
