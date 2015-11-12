@@ -79,6 +79,11 @@ Store::Store()
     item->coins = Json_getInt(characterJsonData, "coins", 0);
     item->i = Json_getInt(characterJsonData, "i", 0);
 
+    if(strlen(Json_getString(characterJsonData, "picture", "")) > 0)
+    {
+      item->picture = new Entity(Json_getString(characterJsonData, "picture", ""), item);
+    }
+
     item->state = Storage::get(item->id);
 
     if(!item->state)
@@ -125,6 +130,12 @@ Store::Store()
     item->coins = Json_getInt(creatureJsonData, "coins", 0);
     item->capacity = Json_getInt(creatureJsonData, "capacity", 0);
     item->i = Json_getInt(creatureJsonData, "i", 0);
+
+    if(strlen(Json_getString(creatureJsonData, "picture", "")) > 0)
+    {
+      item->picture = new Entity(Json_getString(creatureJsonData, "picture", ""), item);
+    }
+
     item->state = Storage::get(item->id);
 
     item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
@@ -162,6 +173,12 @@ Store::Store()
     item->name = Json_getString(environmentJsonData, "name", "");
     item->missions = Json_getInt(environmentJsonData, "missions", 0);
     item->coins = Json_getInt(environmentJsonData, "coins", 0);
+
+    if(strlen(Json_getString(environmentJsonData, "picture", "")) > 0)
+    {
+      item->picture = new Entity(Json_getString(environmentJsonData, "picture", ""), item);
+    }
+
     item->state = Storage::get(item->id);
 
     if(!item->state)

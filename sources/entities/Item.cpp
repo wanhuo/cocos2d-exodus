@@ -65,6 +65,7 @@ void Item::onParametersCreated()
   if(strlen(this->name) > 0)
   {
     this->texts.name = new Text(this->name, this);
+    this->texts.name->setLocalZOrder(2);
   }
 }
 
@@ -343,6 +344,7 @@ void Item::updateState()
     if(this->picture)
     {
       this->picture->_create()->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
+      this->picture->setLocalZOrder(1);
     }
 
     if(this->capacity > 0)
