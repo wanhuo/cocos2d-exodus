@@ -47,6 +47,7 @@ class Item : public BackgroundColor
     Text* coins;
     Text* missions;
     Text* count;
+    Text* name;
   };
 
   /**
@@ -81,16 +82,18 @@ class Item : public BackgroundColor
   int capacity = 0;
   int i = 0;
 
-  BackgroundColor* count = nullptr;
-
   Entity* picture = nullptr;
 
   const char* id;
+  const char* name = "";
+
+  virtual void onParametersCreated();
 
   virtual void onEnter();
   virtual void onExit();
 
-  virtual void onBuy();
+  virtual void onPurchase();
+  virtual void onSelect();
 
   virtual void onTouchStart(cocos2d::Touch* touch, Event* e);
   virtual void onTouchFinish(cocos2d::Touch* touch, Event* e);
@@ -137,6 +140,11 @@ class ItemCharacter : public Item
   public:
   ItemCharacter();
  ~ItemCharacter();
+
+  virtual void onPurchase();
+  virtual void onSelect();
+
+  virtual void updateState();
 };
 
 /**
@@ -173,7 +181,7 @@ class ItemCreature : public Item
   ItemCreature();
  ~ItemCreature();
 
-  virtual void onBuy();
+  virtual void onPurchase();
 
   virtual void updateState();
 };
@@ -211,6 +219,9 @@ class ItemEnvironment : public Item
   public:
   ItemEnvironment();
  ~ItemEnvironment();
+
+  virtual void onPurchase();
+  virtual void onSelect();
 };
 
 /**
@@ -246,6 +257,12 @@ class ItemCoins : public Item
   public:
   ItemCoins();
  ~ItemCoins();
+
+  virtual void onTouchStart(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchFinish(cocos2d::Touch* touch, Event* e);
+  virtual void onTouchCancelled(cocos2d::Touch* touch, Event* e);
+
+  virtual void onTouch(cocos2d::Touch* touch, Event* e);
 };
 
 #endif

@@ -93,7 +93,7 @@ void Events::onScores()
   Analytics::sendEvent("Application", "application.events.onScores", "Application onScores event");
 
   Modal::show();
-  Services::showScores();
+  Services::showLeaderboards();
 }
 
 /**
@@ -257,13 +257,6 @@ void Events::onPurchaseSuccess(const char* id, const char* name, float revenue)
   Analytics::sendTransaction(id, name, revenue);
 }
 
-void Events::onPurchaseFail()
-{
-  Modal::hide();
-
-  Analytics::sendEvent("Application", "application.events.onPurchaseFail", "Application onPurchaseFail event");
-}
-
 /**
  *
  *
@@ -271,9 +264,13 @@ void Events::onPurchaseFail()
  */
 void Events::onPurchaseRestored(const char* id)
 {
+  if(strncmp(id, "com.ketchapp.exodus.remove.ads", 100) == 0)
+  {
+    Application->onNoadAction();
+  }
 }
 
-/**
+/*
  *
  *
  *
@@ -282,13 +279,13 @@ void Events::updateMissions()
 {
   if(MissionsFactory::getInstance()->updateCurrentMission(Application->counter->getMissionsUpdate()))
   {
-    Events::onMissionComplete();
+    Events::onMissionComplete(MissionsFactory::getInstance()->getCurrentMission()->id);
   }
 }
 
-void Events::onMissionComplete()
+void Events::onMissionComplete(int id)
 {
-  Analytics::sendEvent("Application", "application.events.onMissionComplete", "Mission has been completed");
+  Analytics::sendEvent("Missions", "missions.events.onMissionComplete", "Mission has been completed", id);
 
   Application->counter->onMissionComplete();
 }

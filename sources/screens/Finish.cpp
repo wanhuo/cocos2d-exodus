@@ -22,7 +22,9 @@
  */
 
 #include "Finish.h"
+
 #include "Game.h"
+#include "Store.h"
 
 /**
  *
@@ -50,10 +52,6 @@ Finish::Finish()
 {
   instance = this;
 
-  this->framework::Screen::camera = Camera::createPerspective(60, Director::getInstance()->getWinSize().width / Director::getInstance()->getWinSize().height, 1.0f, 10000.0f);
-  this->framework::Screen::camera->setCameraFlag(CameraFlag::USER1);
-  this->addChild(this->framework::Screen::camera);
-
   this->background = new BackgroundColor(this, Color4B(132, 209, 200, 255));
   this->splash = new BackgroundColor(this, Color4B(255, 255, 255, 0));
   this->holder = new Background(this);
@@ -63,7 +61,6 @@ Finish::Finish()
 
   this->counter = new FinishCounter;
 
-  this->coins = new Pool(new Coin, 30, this);
   this->confetties = new Pool(new Confetti, 200, this);
 
   this->buttons.play = new Button("finish-play-button.png", 1, 2, this->holder, std::bind(&Finish::hide, this));
@@ -108,9 +105,6 @@ Finish::~Finish()
  */
 void Finish::onEnter()
 {
-  this->time = 1.0;
-  this->elapsedCoins = 0.0;
-
   this->updateSoundState();
   this->showButtons();
 
@@ -118,12 +112,12 @@ void Finish::onEnter()
 
   Events::onScreenChanged("Finish");
 
-  Screen::onEnter();
+  Coins::onEnter();
 }
 
 void Finish::onExit()
 {
-  Screen::onExit();
+  Coins::onExit();
 
   /**
    *
@@ -134,13 +128,7 @@ void Finish::onExit()
   this->buttons.gift->_destroy();
   this->buttons.character->_destroy();
 
-  this->coins->clear();
   this->confetties->clear();
-
-  if(this->elapsedCoins > 0)
-  {
-    Application->counter->values.coins += this->elapsedCoins;
-  }
 }
 
 /**
@@ -165,16 +153,6 @@ void Finish::onSound()
  *
  *
  */
-void Finish::onBack()
-{
-  this->hide();
-}
-
-/**
- *
- *
- *
- */
 void Finish::onMoveUp()
 {
   this->holder->runAction(
@@ -191,6 +169,33 @@ void Finish::onMoveDown()
       MoveTo::create(0.2, Vec2(0, 0))
     )
   );
+
+  if(this->buttons.character->state->create)
+  {
+    this->buttons.character->runAction(
+      EaseSineInOut::create(
+        MoveBy::create(0.2, Vec2(0, -100))
+      )
+    );
+  }
+
+  if(this->buttons.gift->state->create)
+  {
+    this->buttons.gift->runAction(
+      EaseSineInOut::create(
+        MoveBy::create(0.2, Vec2(0, -100))
+      )
+    );
+  }
+
+  if(this->buttons.video->state->create)
+  {
+    this->buttons.video->runAction(
+      EaseSineInOut::create(
+        MoveBy::create(0.2, Vec2(0, -100))
+      )
+    );
+  }
 }
 
 /**
@@ -205,6 +210,18 @@ void Finish::onBest()
 
 void Finish::onUnlock()
 {
+  vector<Item*> items;
+
+  for(auto item : Store::getInstance()->items.characters)
+  {
+    if(item->state == Item::STATE_LOCKED_COINS)
+    {
+      items.push_back(item);
+    }
+  }
+
+  items[random(0, (int) (items.size() - 1))]->setState(Item::STATE_SELECTED);
+
   if(!Application->parameters.ad)
   {
     this->onMoveDown();
@@ -223,14 +240,16 @@ void Finish::onUnlock()
     )
   );
 
-  Application->character->setRandomSkin();
-
   float x = Application->center.x - Application->positions->finish->at(Application->character->skinIndex)->x - 500;
   float y = Application->center.y - Application->positions->finish->at(Application->character->skinIndex)->y - 500;
 
   this->decoration->_destroy();
   this->decoration->setSkin(Application->character->getSkin());
-  this->decoration->_create();this->decoration->setSlotsToSetupPose();this->decoration->setBonesToSetupPose();this->decoration->onCreateTextures(true);
+  this->decoration->_create();
+  this->decoration->setSlotsToSetupPose();
+  this->decoration->setBonesToSetupPose();
+  this->decoration->onCreateTextures(true);
+  this->decoration->setAnimation({0, "menu", false});
   this->decoration->setPosition(x, y);
   this->decoration->setRotation(45);
   this->decoration->runAction(
@@ -241,7 +260,6 @@ void Finish::onUnlock()
       nullptr
     )
   );
-
 }
 
 /**
@@ -300,7 +318,20 @@ void Finish::showButtons()
       {
         if(Application->counter->values.coins >= 100)
         {
-          special = this->buttons.character->_create();
+          int count = 0;
+
+          for(auto item : Store::getInstance()->items.characters)
+          {
+            if(item->state == Item::STATE_LOCKED_COINS)
+            {
+              count++;
+            }
+          }
+
+          if(count)
+          {
+            special = this->buttons.character->_create();
+          }
         }
 
         if(this->parameters.elapsed.ad >= this->parameters.ad)
@@ -332,6 +363,10 @@ void Finish::showButtons()
 
   this->decoration->setSkin(Application->character->getSkin());
   this->decoration->_create();
+  this->decoration->setSlotsToSetupPose();
+  this->decoration->setBonesToSetupPose();
+  this->decoration->onCreateTextures(true);
+  this->decoration->setAnimation({0, "menu", false});
   this->decoration->setPosition(x, y);
   this->decoration->setRotation(45);
   this->decoration->runAction(
@@ -503,64 +538,6 @@ void Finish::showButtons()
  *
  *
  */
-void Finish::throwCoins(int count)
-{
-  this->elapsedCoins = count;
-
-  this->runAction(
-    Sequence::create(
-      DelayTime::create(0.5),
-      CallFunc::create([=] () {
-
-        /**
-         *
-         *
-         *
-         */
-        this->time = 0.2;
-      }),
-      DelayTime::create(0.5),
-      CallFunc::create([=] () {
-        this->time = 1.0;
-
-        this->runAction(
-          Repeat::create(
-            Sequence::create(
-              CallFunc::create([=] () {
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                this->elapsedCoins--;
-                Application->counter->values.coins++;
-                this->counter->updateTextData();
-              }),
-              DelayTime::create(0.1),
-              nullptr
-            ),
-            count
-          )
-        );
-
-        Sound->play("coins-reward");
-      }),
-      nullptr
-    )
-  );
-
-  for(int i = 0; i < count; i++)
-  {
-    this->coins->_create();
-  }
-}
-
-/**
- *
- *
- *
- */
 void Finish::updateSoundState()
 {
   if(!Music->enabled || !Sound->enabled)
@@ -584,6 +561,7 @@ void Finish::updateSoundState()
  *
  *
  */
-void Finish::update(float time)
+void Finish::updateTextData()
 {
+  this->counter->updateTextData();
 }

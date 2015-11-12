@@ -2,6 +2,14 @@
 	"missions": [
 		{
 			"type": 1,
+			"text": "mission-0",
+			"coins": 5,
+			"complete": {
+				"special_once_2": 1
+			}
+		},
+		{
+			"type": 1,
 			"text": "mission-1",
 			"coins": 2,
 			"complete": {
@@ -30,7 +38,7 @@
 			"coins": 10,
 			"link": 1,
 			"complete": {
-				"special_progress_1": 3
+				"special_progress_1": 2
 			}
 		},
 		{

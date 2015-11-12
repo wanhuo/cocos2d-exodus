@@ -60,10 +60,7 @@ class Credits : public BackgroundColor
 
   struct Texts
   {
-    Text* titles[4];
-    Text* numbers[3];
-
-    Text* tutorial[23];
+    Text* title[23];
   };
 
   /**
@@ -89,12 +86,6 @@ class Credits : public BackgroundColor
   Button* facebook;
   Button* mail;
   Button* restore;
-
-  TutorialAnimation* tutorialAnimation1;
-  TutorialAnimation* tutorialAnimation2;
-  TutorialAnimation* tutorialAnimation3;
-
-  TutorialRepeat* tutorialRepeat;
 
   /**
    *

@@ -21,29 +21,58 @@
  *
  */
 
-#ifndef _COIN_H_
-#define _COIN_H_
+#ifndef _COINS_H_
+#define _COINS_H_
 
-#include "Entity3D.h"
+#include "ExtendScreen.h"
+
+#include "Entity.h"
+#include "Button.h"
+#include "Text.h"
+#include "Pool.h"
+
+#include "Coin.h"
 
 /**
  *
  *
  *
  */
-class Coin : public Entity3D
+class Coins : public ExtendScreen
 {
   /**
    *
    *
    *
    */
-  protected:
-  Vec3 vector;
+  private:
+  struct Buttons {
+    Button* back;
+  };
 
-  float speed;
-  float power;
-  float weight = 0.05;
+  struct Texts {
+    Text* coins = nullptr;
+  };
+
+  struct Counter {
+    int add = 0;
+    int remove = 0;
+  };
+
+  /**
+   *
+   *
+   *
+   */
+  private:
+  Pool* coins;
+
+  Texts texts;
+  Buttons buttons;
+
+  Counter counter;
+
+  Entity* holder;
 
   /**
    *
@@ -51,17 +80,22 @@ class Coin : public Entity3D
    *
    */
   public:
-  static float TIME;
+  Coins(bool environment = false);
+  ~Coins();
 
-  Coin();
- ~Coin();
+  void onEnter();
+  void onExit();
 
-  virtual void onCreate();
-  virtual void onDestroy(bool action = false);
+  void onEnterTransitionDidFinish();
+  void onExitTransitionDidStart();
 
-  virtual void update(float time);
+  virtual void createCoins(int count, int coins = 0);
+  virtual void clearCoins();
 
-  Coin* deepCopy();
+  virtual void addCoins(int count);
+  virtual void removeCoins(int count);
+
+  virtual void updateTextData();
 };
 
 #endif

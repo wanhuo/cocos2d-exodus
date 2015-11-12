@@ -123,7 +123,7 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
 
         this->setSkin(this->giftSkins[index]);
 
-        Finish::getInstance()->throwCoins(count);
+        Finish::getInstance()->createCoins(count);
       }),
       DelayTime::create(1.0),
       CallFunc::create([=] ()
@@ -140,4 +140,6 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
   );
 
   Sound->play("gift");
+
+  Analytics::sendEvent("Application", "application.events.onGiftButtonPressed", "Application onGiftButtonPressed event");
 }

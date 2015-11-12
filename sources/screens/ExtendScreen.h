@@ -21,47 +21,31 @@
  *
  */
 
-#ifndef _COIN_H_
-#define _COIN_H_
+#ifndef _EXTENDSCREEN_H_
+#define _EXTENDSCREEN_H_
 
-#include "Entity3D.h"
+#include "Screen.h"
 
 /**
  *
  *
  *
  */
-class Coin : public Entity3D
+class ExtendScreen : public Screen
 {
   /**
    *
    *
    *
    */
-  protected:
-  Vec3 vector;
-
-  float speed;
-  float power;
-  float weight = 0.05;
-
-  /**
-   *
-   *
-   *
-   */
   public:
-  static float TIME;
+  ExtendScreen();
+ ~ExtendScreen();
 
-  Coin();
- ~Coin();
+  virtual void show();
+  virtual void hide();
 
-  virtual void onCreate();
-  virtual void onDestroy(bool action = false);
-
-  virtual void update(float time);
-
-  Coin* deepCopy();
+  virtual void onBack();
 };
 
 #endif

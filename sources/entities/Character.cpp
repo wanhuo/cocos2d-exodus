@@ -31,6 +31,7 @@
 Character::Character()
 : Spine("character.json", "character.atlas", 1.0, Application->game)
 {
+  this->animations.menu = {0, "menu", false};
   this->animations.animation = {1, "animation", false};
   this->animations.save = {2, "save", false};
   this->animations.engine_start = {3, "engine-start", false};
@@ -50,25 +51,25 @@ Character::Character()
     "8",
     "9",
     "10",
+    "11",
+    "12",
+    "13",
     "14",
+    "15",
     "16",
     "17",
     "18",
     "19",
     "20",
+    "21",
+    "22",
+    "23",
     "24",
     "25",
     "26",
     "27",
     "28",
-    "29",
-    "30",
-    "31",
-    "32",
-    "33",
-    "34",
-    "35",
-    "36"
+    "29"
   };
 
   this->explanation = new Explanation(this);
@@ -99,6 +100,8 @@ Character::~Character()
  */
 void Character::reset()
 {
+  this->updateSkin();
+
   this->_create();
 
   this->parameters.state = true;
@@ -108,6 +111,8 @@ void Character::reset()
   this->parameters.max.x = this->parameters.max.setup.x;
   this->parameters.max.y = this->parameters.max.setup.y;
   this->parameters.increase.x = 0;
+
+  this->parameters.time = 1.0;
 
   this->generate.start = -1;
   this->generate.count = 0;
@@ -121,6 +126,14 @@ void Character::reset()
   this->shadow->setPosition(Application->center.x, Application->camera.center - 110);
 
   this->setGlobalZOrder(0);
+
+  switch(this->state)
+  {
+    case STATE_MENU:
+    this->setAnimation(this->animations.menu);
+    this->onMenu();
+    break;
+  }
 }
 
 /**
@@ -130,6 +143,13 @@ void Character::reset()
  */
 void Character::onEnter()
 {
+  this->reset();
+
+  /**
+   *
+   *
+   *
+   */
   Spine::onEnter();
 }
 
@@ -146,7 +166,7 @@ void Character::onExit()
 void Character::onCreate()
 {
   this->shadow->_create();
-  this->setSkin("1");
+  this->reset();
 
   Spine::onCreate();
 }
@@ -209,6 +229,7 @@ void Character::onAnimationEvent(int index, spEvent* event)
 void Character::onMenu()
 {
   this->_create();
+
   this->setScale(0.25);
   
   auto position = Application->positions->menu->at(this->skinIndex);
@@ -437,6 +458,18 @@ void Character::onPointerSuccess(Pointer* pointer)
     barror->setPosition(position);
     barror->animate(0);
   }
+
+  if(!Application->parameters.tutorial)
+  {
+    if(Application->counter->values.score >= 5)
+    {
+      Application->parameters.tutorial = true;
+
+      Application->counter->missionUpdateOnce.special_once_2++;
+
+      Storage::set("state.tutorial.disabled", 1);
+    }
+  }
 }
 
 void Character::onPointerMistake(Pointer* pointer)
@@ -517,8 +550,15 @@ void Character::proceedPointer()
  */
 Pointer* Character::getCollisionPointer()
 {
-  float x = this->getPositionX();
-  float y = this->getPositionY();
+  auto s = Application->positions->anchor->at(this->skinIndex);
+
+  float angle = -this->getRotation() * M_PI / 180.0;
+
+  float dx = this->getPositionX() + s->x;
+  float dy = this->getPositionY() + s->y;
+
+  float x = (cos(angle) * (dx - this->getPositionX()) - sin(angle) * (dy - this->getPositionY()) + this->getPositionX());
+  float y = (sin(angle) * (dx - this->getPositionX()) + cos(angle) * (dy - this->getPositionY()) + this->getPositionY());
 
   for(int i = 0; i < Application->pointers->count; i++)
   {
@@ -663,7 +703,7 @@ void Character::onUpdateTraectory()
 
     for(int i = 0; i < 15 + this->generate.start; i++)
     {
-      Vec2 position = this->updatePosition(this->generate.parameters);
+      Vec2 position = this->updatePosition(this->generate.parameters, 1.0);
 
       this->generate.x += position.x;
       this->generate.y += position.y;
@@ -752,6 +792,18 @@ void Character::onUpdateTraectoryBonusDestroy()
 {
   this->generate.bonus = probably(10);
   this->generate.bonus_points.clear();
+
+  if(!Application->parameters.tutorial)
+  {
+    if(Application->counter->values.score >= 3)
+    {
+      this->generate.bonus = true;
+    }
+    else
+    {
+      this->generate.bonus = false;
+    }
+  }
 }
  
 /**
@@ -761,7 +813,7 @@ void Character::onUpdateTraectoryBonusDestroy()
  */
 bool Character::isOnBonusTraectory(float x)
 {
-  float f = 5.0;
+  float f = 100.0;
 
   if(x < 0)
   {
@@ -845,7 +897,7 @@ void Character::updatePrepare(float time)
 
 void Character::updateStart(float time)
 {
-  this->updateShadow();
+  this->updateShadow(time);
 }
 
 void Character::updateSend(float time)
@@ -858,15 +910,17 @@ void Character::updateRestore(float time)
 
 void Character::updateGame(float time)
 {
-  this->updateShadow();
-  this->updateSmoke();
+  this->updateShadow(time);
+  this->updateSmoke(time);
+
   this->updatePosition();
   this->updatePointers();
 }
 
 void Character::updateTransfer(float time)
 {
-  this->updateSmoke();
+  this->updateSmoke(time);
+
   this->updatePosition();
 }
 
@@ -998,8 +1052,11 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
     }
   }
 
-  x /= parameters.exponesial.x;
-  y /= parameters.exponesial.x;
+  if(Application->parameters.tutorial)
+  {
+    x /= parameters.exponesial.x;
+    y /= parameters.exponesial.x;
+  }
 
   /**
    *
@@ -1014,7 +1071,7 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
  *
  *
  */
-void Character::updateShadow()
+void Character::updateShadow(float time)
 {
   auto camera = Application->camera;
 
@@ -1041,9 +1098,16 @@ void Character::updateShadow()
   }
 }
 
-void Character::updateSmoke()
+void Character::updateSmoke(float time)
 {
-  this->smoke->_create();
+  this->smokeTimeElapsed += time * this->parameters.time;
+
+  if(this->smokeTimeElapsed >= this->smokeTime)
+  {
+    this->smokeTimeElapsed = 0;
+
+    this->smoke->_create();
+  }
 }
 
 void Character::updateStatus(bool state)
@@ -1051,10 +1115,40 @@ void Character::updateStatus(bool state)
   if(state)
   {
     this->setAnimation(this->animations.status_start);
+
+    if(!Application->parameters.tutorial)
+    {
+      if(this->isOnBonusTraectory())
+      {
+        this->parameters.time = 1.0;
+
+        if(!Application->hand->state->create)
+        {
+          Application->hand->_create();
+          Application->hand->animate(0.1);
+        }
+      }
+      else
+      {
+        this->smoke->pauseSchedulerAndActions();
+
+        this->parameters.time = 0.1;
+
+        if(!Application->hand->state->create)
+        {
+          Application->hand->_create();
+          Application->hand->animate(0.2);
+        }
+      }
+    }
   }
   else
   {
     this->setAnimation(this->animations.status_finish);
+
+    this->parameters.time = 1.0;
+
+    Application->hand->_destroy();
   }
 }
 
@@ -1104,6 +1198,16 @@ void Character::updatePointers()
       this->updateStatus(false);
     }
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Character::updateSkin()
+{
+  this->setSkin(this->skins.at(Storage::get("items.character.current")));
 }
 
 /**

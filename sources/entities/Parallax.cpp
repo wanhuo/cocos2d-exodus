@@ -127,8 +127,8 @@ void Parallax::setParallaxPosition()
  */
 void Parallax::update(float time)
 {
-  float x = this->getPositionX() + min(-1.0f, Application->character->parameters.x * this->speed.x * time);
-  float y = this->getPositionY() + min(-1.0f, Application->character->parameters.y * this->speed.y * time);
+  float x = this->getPositionX() + min(-1.0f, Application->character->parameters.x * this->speed.x * time * Application->character->parameters.time);
+  float y = this->getPositionY() + min(-1.0f, Application->character->parameters.y * this->speed.y * time * Application->character->parameters.time);
 
   if(this->speed.x != 0) this->setPositionX(x);
   if(this->speed.y != 0) this->setPositionY(y);

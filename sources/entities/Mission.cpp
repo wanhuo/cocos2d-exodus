@@ -45,7 +45,7 @@ Mission::Mission(int id)
 
   this->ignoreAnchorPointForPosition(false);
   this->setAnchorPoint(Vec2(0.5, 0.5));
-  this->setContentSize(Size(Application->width - 100, 200));
+  this->setContentSize(Size(620, 200));
   this->setPosition(x, y);
 
   this->progressBackground = new BackgroundColor(this, Color4B(255, 255, 255, 255));
@@ -294,7 +294,7 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
     switch(this->mission->link)
     {
       case 0:
-      Director::getInstance()->popToRootScene();
+      Director::getInstance()->popToRootScene(TransitionFade::create(0.2, Director::getInstance()->getRootScene(), Color3B::WHITE));
 
       switch(Application->state)
       {
@@ -323,9 +323,10 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
         CallFunc::create([=] () {
           Modal::block();
 
-          Missions::getInstance()->throwCoins(this->mission->coins);
+          Missions::getInstance()->createCoins(this->mission->coins);
 
           this->mission->setState(MissionStruct::STATE_FINISHED);
+          this->bind(false);
 
           this->setLocalZOrder(1);
           this->runAction(

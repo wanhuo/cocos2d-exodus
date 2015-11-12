@@ -57,6 +57,7 @@ class Character : public Spine
 
   struct Animations
   {
+    SpineAnimation menu;
     SpineAnimation animation;
     SpineAnimation save;
     SpineAnimation engine_start;
@@ -74,8 +75,10 @@ class Character : public Spine
    *
    */
   protected:
-  Entity* shadow;
   Explanation* explanation;
+
+  float smokeTime = 0.02;
+  float smokeTimeElapsed = 0;
 
   /**
    *
@@ -99,13 +102,15 @@ class Character : public Spine
   const static int COLLISION_SIZE_X = 50;
   const static int COLLISION_SIZE_Y = 50;
 
-  Character();
- ~Character();
+  Entity* shadow;
 
   Parameters parameters;
   Generate generate;
 
   Pool* smoke;
+
+  Character();
+ ~Character();
 
   int state = 0;
 
@@ -181,11 +186,13 @@ class Character : public Spine
   virtual Vec2 updatePosition(Parameters &parameters, float time);
   virtual Vec2 updatePosition(Parameters &parameters);
 
-  virtual void updateShadow();
-  virtual void updateSmoke();
+  virtual void updateShadow(float time);
+  virtual void updateSmoke(float time);
   virtual void updateStatus(bool state);
 
   virtual void updatePointers();
+
+  virtual void updateSkin();
 
   virtual void updateStates(float time);
   virtual void update(float time);

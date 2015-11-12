@@ -110,7 +110,6 @@ Game::Game()
   this->creatures = new Creatures;
 
   this->hand = new AnimatedEntity("tutorial-hand.png", 2, 1, this->e);
-  this->hand->animate(0.2);
   this->hand->setPosition(this->center.x / 0.75, this->center.y / 2 + (this->parameters.ad ? 100 : 0));
 
   this->pointers = new Pool(new Pointer, this->game, true);
@@ -479,18 +478,76 @@ void Game::onNoad()
 
 void Game::onNoadAction()
 {
-  Heyzap::hide(Config::AD_TYPE_BANNER);
+  if(!this->parameters.ad)
+  {
 
-  this->buttons.noad->_destroy(true);
-  this->buttons.credits->runAction(
-    EaseSineInOut::create(
-      MoveBy::create(0.2, Vec2(-42, Credits::getInstance()->state->active ? 0 : -100))
-    )
-  );
+    if(Finish::getInstance()->state->active)
+    {
+      Finish::getInstance()->onMoveDown();
 
-  this->parameters.ad = true;
+      Finish::getInstance()->buttons.noad->_destroy();
+      Finish::getInstance()->buttons.sound->_create();
 
-  Storage::set("state.ad.disabled", true);
+      this->environment->parallaxes.dynamic->setPosition(0, 0);
+
+      this->water1->setPositionY(this->water1->getPositionY() - 100);
+      this->water2->setPositionY(this->water2->getPositionY() - 100);
+      this->water3->setPositionY(this->water3->getPositionY() - 100);
+
+      this->buttons.credits->setPosition(this->buttons.credits->getPosition() - Vec2(42, 100));
+    }
+    else
+    {
+      this->buttons.credits->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(-42, Credits::getInstance()->state->active ? 0 : -100))
+        )
+      );
+
+      this->water1->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+      this->water2->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+      this->water3->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+
+      this->environment->parallaxes.dynamic->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+
+      this->character->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+      this->character->shadow->runAction(
+        EaseSineInOut::create(
+          MoveBy::create(0.2, Vec2(0, -100))
+        )
+      );
+    }
+
+    this->buttons.noad->_destroy(true);
+
+    Heyzap::hide(Config::AD_TYPE_BANNER);
+
+    this->camera.center -= 100;
+
+    this->parameters.ad = true;
+
+    Storage::set("state.ad.disabled", true);
+  }
 }
 
 void Game::onTwitter()
@@ -644,6 +701,7 @@ void Game::onStart()
   this->counter->onStart();
 
   this->hand->_create();
+  this->hand->animate(0.2);
 
   this->w->runAction(
     DelayTime::create(3.0)

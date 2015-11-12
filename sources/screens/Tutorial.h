@@ -24,7 +24,7 @@
 #ifndef _TUTORIAL_H_
 #define _TUTORIAL_H_
 
-#include "Screen.h"
+#include "Coins.h"
 
 #include "Entity.h"
 #include "Button.h"
@@ -36,7 +36,7 @@
  *
  *
  */
-class Tutorial : public Screen
+class Tutorial : public Coins
 {
   /**
    *
@@ -73,13 +73,6 @@ class Tutorial : public Screen
 
   virtual void onEnter();
   virtual void onExit();
-
-  virtual void onBack();
-
-  virtual void show();
-  virtual void hide();
-
-  virtual void updateTextData();
 };
 
 #endif

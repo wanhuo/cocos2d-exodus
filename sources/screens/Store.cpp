@@ -22,7 +22,9 @@
  */
 
 #include "Store.h"
+
 #include "Game.h"
+#include "Finish.h"
 
 /**
  *
@@ -47,12 +49,9 @@ Store* Store::getInstance()
  *
  */
 Store::Store()
+: Coins(true)
 {
   instance = this;
-
-  this->camera = Camera::createPerspective(60, this->width / this->height, 1.0f, 10000.0f);
-  this->camera->setCameraFlag(CameraFlag::USER1);
-  this->addChild(this->camera);
 
   /**
    *
@@ -69,18 +68,18 @@ Store::Store()
    *
    *
    */
+  bool selected = false;
   for(auto characterJsonData = charactersJsonData->child; characterJsonData; characterJsonData = characterJsonData->next)
   {
     auto item = new ItemCharacter;
 
     item->id = Json_getString(characterJsonData, "id", "");
+    item->name = Json_getString(characterJsonData, "name", "");
     item->missions = Json_getInt(characterJsonData, "missions", 0);
     item->coins = Json_getInt(characterJsonData, "coins", 0);
-    item->capacity = Json_getInt(characterJsonData, "capacity", 0);
     item->i = Json_getInt(characterJsonData, "i", 0);
-    item->state = Storage::get(item->id);
 
-    item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
+    item->state = Storage::get(item->id);
 
     if(!item->state)
     {
@@ -93,8 +92,22 @@ Store::Store()
         item->setState(Item::STATE_LOCKED_COINS);
       }
     }
+    else
+    {
+      if(item->state == Item::STATE_SELECTED)
+      {
+        selected = true;
+      }
+    }
 
     this->items.characters.push_back(item);
+
+    item->onParametersCreated();
+  }
+
+  if(!selected)
+  {
+    this->items.characters.at(0)->setState(Item::STATE_SELECTED);
   }
 
   /**
@@ -107,6 +120,7 @@ Store::Store()
     auto item = new ItemCreature;
 
     item->id = Json_getString(creatureJsonData, "id", "");
+    item->name = Json_getString(creatureJsonData, "name", "");
     item->missions = Json_getInt(creatureJsonData, "missions", 0);
     item->coins = Json_getInt(creatureJsonData, "coins", 0);
     item->capacity = Json_getInt(creatureJsonData, "capacity", 0);
@@ -114,6 +128,8 @@ Store::Store()
     item->state = Storage::get(item->id);
 
     item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
+
+    Storage::set(string(item->id) + ".count", item->capacity);
 
     if(!item->state)
     {
@@ -128,6 +144,8 @@ Store::Store()
     }
 
     this->items.creatures.push_back(item);
+
+    item->onParametersCreated();
   }
 
   /**
@@ -135,11 +153,13 @@ Store::Store()
    *
    *
    */
+  selected = false;
   for(auto environmentJsonData = environmentsJsonData->child; environmentJsonData; environmentJsonData = environmentJsonData->next)
   {
     auto item = new ItemEnvironment;
 
     item->id = Json_getString(environmentJsonData, "id", "");
+    item->name = Json_getString(environmentJsonData, "name", "");
     item->missions = Json_getInt(environmentJsonData, "missions", 0);
     item->coins = Json_getInt(environmentJsonData, "coins", 0);
     item->state = Storage::get(item->id);
@@ -155,8 +175,22 @@ Store::Store()
         item->setState(Item::STATE_LOCKED_COINS);
       }
     }
+    else
+    {
+      if(item->state == Item::STATE_SELECTED)
+      {
+        selected = true;
+      }
+    }
 
     this->items.environments.push_back(item);
+
+    item->onParametersCreated();
+  }
+
+  if(!selected)
+  {
+    this->items.environments.at(0)->setState(Item::STATE_SELECTED);
   }
 
   /**
@@ -164,8 +198,6 @@ Store::Store()
    *
    *
    */
-  this->coins = new Pool(new Coin, 30, this);
-
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder = new BackgroundColor(this, Color4B(132, 209, 223, 255));
 
@@ -174,8 +206,6 @@ Store::Store()
   this->holder->ignoreAnchorPointForPosition(false);
   this->holder->setAnchorPoint(Vec2(0.5, 1.0));
   this->holder->setPosition(this->center.x, Application->height);
-
-  this->coin = new Entity("counter-coins.png", this, true);
   
   this->list = new BackgroundPages(this);
   this->list->setDirection(cocos2d::ui::PageView::Direction::HORIZONTAL);
@@ -190,27 +220,15 @@ Store::Store()
     }
   });
 
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-  this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Store::hide, this), true);
-  #endif
-  this->buttons.root.push_back(new Button("store-button-1.png", 1, 3, this, std::bind(&Store::showPage, this, 0), true));
-  this->buttons.root.push_back(new Button("store-button-2.png", 1, 3, this, std::bind(&Store::showPage, this, 1), true));
-  this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Store::showPage, this, 2), true));
-  this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::showPage, this, 3), true));
+  this->buttons.root.push_back(new Button("store-button-1.png", 1, 3, this, std::bind(&Store::changePage, this, 0), true));
+  this->buttons.root.push_back(new Button("store-button-2.png", 1, 3, this, std::bind(&Store::changePage, this, 1), true));
+  this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Store::changePage, this, 2), true));
+  this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::changePage, this, 3), true));
 
-  this->texts.coins = new Text("coins", this->coin, true);
-
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-  this->buttons.back->setPosition(65, this->height - 65);
-  #endif
   this->buttons.root.at(0)->setPosition(this->center.x - 192, this->height - 270);
   this->buttons.root.at(1)->setPosition(this->center.x - 64, this->height - 270);
   this->buttons.root.at(2)->setPosition(this->center.x + 64, this->height - 270);
   this->buttons.root.at(3)->setPosition(this->center.x + 192, this->height - 270);
-
-  this->coin->setPosition(this->width - this->coin->getWidth() / 2 - 15, this->height - 50);
-
-  this->texts.coins->setPosition(this->coin->getContentSize().width / 2, this->coin->getContentSize().height / 2);
 
   this->buttons.root.at(0)->addChild(new StoreCharactersHandler);
   this->buttons.root.at(1)->addChild(new StoreCreaturesHandler);
@@ -251,15 +269,13 @@ void Store::onPageChanged()
  */
 void Store::onEnter()
 {
-  Screen::onEnter();
+  Coins::onEnter();
 
   /**
    *
    *
    *
    */
-  this->updateTextData();
-
   this->list->setCurPageIndex(0);
   this->onPageChanged();
 
@@ -268,7 +284,7 @@ void Store::onEnter()
 
 void Store::onExit()
 {
-  Screen::onExit();
+  Coins::onExit();
 }
 
 /**
@@ -276,44 +292,9 @@ void Store::onExit()
  *
  *
  */
-void Store::onBack()
-{
-  this->hide();
-}
-
-/**
- *
- *
- *
- */
-void Store::show()
-{
-  Director::getInstance()->pushScene(TransitionFade::create(0.2, this, Color3B::WHITE));
-}
-
-void Store::hide()
-{
-  Director::getInstance()->popScene(TransitionFade::create(0.2, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
-}
-
-/**
- *
- *
- *
- */
-void Store::showPage(int index)
+void Store::changePage(int index)
 {
   this->list->scrollToPage(index);
-}
-
-/**
- *
- *
- *
- */
-void Store::updateTextData()
-{
-  this->texts.coins->data(Application->counter->values.coins);
 }
 
 /**
@@ -386,6 +367,36 @@ void StoreLayout::onEnter()
       )
     );
   }
+
+  this->updateTextData();
+}
+
+void StoreLayout::onExit()
+{
+  cocos2d::ui::Layout::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayout::updateTextData()
+{
+  int counter = 0;
+
+  for(auto item : this->items)
+  {
+    switch(item->state)
+    {
+      case Item::STATE_NORMAL:
+      case Item::STATE_SELECTED:
+      counter++;
+      break;
+    }
+  }
+
+  this->texts.description->data(counter, this->items.size());
 }
 
 /**
@@ -441,27 +452,13 @@ StoreLayoutCharacters::~StoreLayoutCharacters()
 void StoreLayoutCharacters::onEnter()
 {
   StoreLayout::onEnter();
-
-  /**
-   *
-   *
-   *
-   */
-  int counter = 0;
-
-  for(auto item : this->items)
-  {
-    switch(item->state)
-    {
-      case Item::STATE_NORMAL:
-      case Item::STATE_SELECTED:
-      counter++;
-      break;
-    }
-  }
-
-  this->texts.description->data(counter, this->items.size());
 }
+
+void StoreLayoutCharacters::onExit()
+{
+  StoreLayout::onExit();
+}
+
 /**
  *
  *
@@ -561,27 +558,13 @@ StoreLayoutCreatures::~StoreLayoutCreatures()
 void StoreLayoutCreatures::onEnter()
 {
   StoreLayout::onEnter();
-
-  /**
-   *
-   *
-   *
-   */
-  int counter = 0;
-
-  for(auto item : this->items)
-  {
-    switch(item->state)
-    {
-      case Item::STATE_NORMAL:
-      case Item::STATE_SELECTED:
-      counter++;
-      break;
-    }
-  }
-
-  this->texts.description->data(counter, this->items.size());
 }
+
+void StoreLayoutCreatures::onExit()
+{
+  StoreLayout::onExit();
+}
+
 /**
  *
  *
@@ -681,26 +664,11 @@ StoreLayoutEnvironments::~StoreLayoutEnvironments()
 void StoreLayoutEnvironments::onEnter()
 {
   StoreLayout::onEnter();
+}
 
-  /**
-   *
-   *
-   *
-   */
-  int counter = 0;
-
-  for(auto item : this->items)
-  {
-    switch(item->state)
-    {
-      case Item::STATE_NORMAL:
-      case Item::STATE_SELECTED:
-      counter++;
-      break;
-    }
-  }
-
-  this->texts.description->data(counter, this->items.size());
+void StoreLayoutEnvironments::onExit()
+{
+  StoreLayout::onExit();
 }
 
 /**
@@ -776,9 +744,13 @@ StoreLayoutCoins::StoreLayoutCoins()
   auto item2 = new ItemCoins;
   auto item3 = new ItemCoins;
 
-  item1->id = "com.ketchapp.exodus.coins.500";
-  item2->id = "com.ketchapp.exodus.coins.1000";
-  item3->id = "com.ketchapp.exodus.coins.5000";
+  item1->id = "com.ketchapp.exodus.coins.200";
+  item2->id = "com.ketchapp.exodus.coins.500";
+  item3->id = "com.ketchapp.exodus.coins.1000";
+
+  item1->i = 1;
+  item2->i = 2;
+  item3->i = 3;
 
   item1->setState(Item::STATE_NORMAL);
   item2->setState(Item::STATE_NORMAL);
@@ -836,4 +808,13 @@ void StoreLayoutCoins::updateListHeight()
   {
     element->setPositionY(element->getPositionY() + size - 200);
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayoutCoins::updateTextData()
+{
 }

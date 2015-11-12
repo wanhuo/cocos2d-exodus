@@ -123,6 +123,10 @@ void FinishCounter::updateTextData()
  */
 void FinishCounter::onBest()
 {
+  Services::leaderboards->update(SERVICES_LEADERBOARD_BEST_SCORE, Application->counter->values.best);
+  Services::leaderboards->update(SERVICES_LEADERBOARD_TAPS_COUNT, Application->counter->values.taps);
+  Services::leaderboards->update(SERVICES_LEADERBOARD_GAMES_PLAYED, Application->counter->values.deaths);
+
   this->crown->_create();
 
   this->holders.congratulations->_create();

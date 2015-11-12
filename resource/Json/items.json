@@ -2,89 +2,227 @@
 	"characters": [
 		{
 			"id": "items.characters.1",
-			"coins": 100
+			"name": "store-item-title-1-1",
+			"coins": 100,
+			"i": 1
 		},
 		{
 			"id": "items.characters.2",
-			"missions": 1,
-			"coins": 100
+			"name": "store-item-title-1-2",
+			"coins": 100,
+			"i": 2
 		},
 		{
 			"id": "items.characters.3",
-			"missions": 10,
-			"coins": 100
+			"name": "store-item-title-1-3",
+			"coins": 100,
+			"i": 3
 		},
 		{
 			"id": "items.characters.4",
-			"missions": 10,
-			"coins": 100
+			"name": "store-item-title-1-4",
+			"coins": 100,
+			"i": 4
 		},
 		{
 			"id": "items.characters.5",
-			"missions": 10,
-			"coins": 100
+			"name": "store-item-title-1-5",
+			"coins": 100,
+			"i": 5
 		},
 		{
 			"id": "items.characters.6",
-			"missions": 10,
-			"coins": 100
+			"name": "store-item-title-1-6",
+			"coins": 100,
+			"i": 6
 		},
 		{
 			"id": "items.characters.7",
+			"name": "store-item-title-1-7",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 7
 		},
 		{
 			"id": "items.characters.8",
+			"name": "store-item-title-1-8",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 8
 		},
 		{
 			"id": "items.characters.9",
+			"name": "store-item-title-1-9",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 9
 		},
 		{
 			"id": "items.characters.10",
+			"name": "store-item-title-1-10",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 10
 		},
 		{
 			"id": "items.characters.11",
+			"name": "store-item-title-1-11",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 11
 		},
 		{
 			"id": "items.characters.12",
+			"name": "store-item-title-1-12",
 			"missions": 10,
-			"coins": 100
+			"coins": 100,
+			"i": 12
 		},
 		{
 			"id": "items.characters.13",
-			"coins": 100
+			"name": "store-item-title-1-13",
+			"missions": 10,
+			"coins": 100,
+			"i": 13
+		},
+		{
+			"id": "items.characters.14",
+			"name": "store-item-title-1-14",
+			"missions": 10,
+			"coins": 100,
+			"i": 14
+		},
+		{
+			"id": "items.characters.15",
+			"name": "store-item-title-1-15",
+			"missions": 10,
+			"coins": 100,
+			"i": 15
+		},
+		{
+			"id": "items.characters.16",
+			"name": "store-item-title-1-16",
+			"missions": 10,
+			"coins": 100,
+			"i": 16
+		},
+		{
+			"id": "items.characters.17",
+			"name": "store-item-title-1-17",
+			"missions": 20,
+			"coins": 100,
+			"i": 17
+		},
+		{
+			"id": "items.characters.18",
+			"name": "store-item-title-1-18",
+			"missions": 20,
+			"coins": 100,
+			"i": 18
+		},
+		{
+			"id": "items.characters.19",
+			"name": "store-item-title-1-19",
+			"missions": 20,
+			"coins": 100,
+			"i": 19
+		},
+		{
+			"id": "items.characters.20",
+			"name": "store-item-title-1-20",
+			"missions": 20,
+			"coins": 100,
+			"i": 20
+		},
+		{
+			"id": "items.characters.21",
+			"name": "store-item-title-1-21",
+			"missions": 20,
+			"coins": 100,
+			"i": 21
+		},
+		{
+			"id": "items.characters.22",
+			"name": "store-item-title-1-22",
+			"missions": 20,
+			"coins": 100,
+			"i": 22
+		},
+		{
+			"id": "items.characters.23",
+			"name": "store-item-title-1-23",
+			"missions": 20,
+			"coins": 100,
+			"i": 23
+		},
+		{
+			"id": "items.characters.24",
+			"name": "store-item-title-1-24",
+			"missions": 20,
+			"coins": 100,
+			"i": 24
+		},
+		{
+			"id": "items.characters.25",
+			"name": "store-item-title-1-25",
+			"missions": 20,
+			"coins": 100,
+			"i": 25
+		},
+		{
+			"id": "items.characters.26",
+			"name": "store-item-title-1-26",
+			"missions": 20,
+			"coins": 100,
+			"i": 26
+		},
+		{
+			"id": "items.characters.27",
+			"name": "store-item-title-1-27",
+			"missions": 30,
+			"coins": 100,
+			"i": 27
+		},
+		{
+			"id": "items.characters.28",
+			"name": "store-item-title-1-28",
+			"missions": 30,
+			"coins": 100,
+			"i": 28
+		},
+		{
+			"id": "items.characters.29",
+			"name": "store-item-title-1-29",
+			"missions": 30,
+			"coins": 100,
+			"i": 29
 		}
 	],
 	"creatures": [
 		{
 			"id": "items.creatures.human",
+			"name": "store-item-title-2-1",
 			"coins": 50,
 			"capacity": 5,
 			"i": 1
 		},
 		{
 			"id": "items.creatures.apatosaurus",
+			"name": "store-item-title-2-2",
 			"missions": 10,
 			"coins": 50,
 			"i": 2
 		},
 		{
 			"id": "items.creatures.stegosaurus",
+			"name": "store-item-title-2-3",
 			"missions": 20,
 			"coins": 50,
 			"i": 3
 		},
 		{
 			"id": "items.creatures.triceratops",
+			"name": "store-item-title-2-4",
 			"missions": 30,
 			"coins": 50,
 			"i": 4
@@ -92,14 +230,23 @@
 	],
 	"environments": [
 		{
+			"id": "items.environments.1",
+			"name": "store-item-title-3-1",
+			"i": 1
+		},
+		{
 			"id": "items.environments.2",
+			"name": "store-item-title-3-2",
 			"missions": 10,
-			"coins": 10
+			"coins": 10,
+			"i": 2
 		},
 		{
 			"id": "items.environments.3",
+			"name": "store-item-title-3-3",
 			"missions": 10,
-			"coins": 10
+			"coins": 10,
+			"i": 3
 		}
 	]
 }

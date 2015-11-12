@@ -24,8 +24,6 @@
 #include "Decorations.h"
 
 #include "Credits.h"
-#include "Store.h"
-#include "Finish.h"
 
 /**
  *
@@ -56,7 +54,7 @@ Decorations::~Decorations()
  */
 void Decorations::update(float time)
 {
-  if(Credits::getInstance()->state->active || Finish::getInstance()->state->active || Store::getInstance()->state->active)
+  if(Credits::getInstance()->state->active || Director::getInstance()->getScenesStackCount() > 1)
   {
     if(this->rockets.elements->count < this->rockets.elements->capacity)
     {

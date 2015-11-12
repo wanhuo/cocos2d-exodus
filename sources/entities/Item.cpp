@@ -46,11 +46,26 @@ Item::Item()
   this->ignoreAnchorPointForPosition(false);
   this->setAnchorPoint(Vec2(0.5, 0.5));
 
+  this->coin->setLocalZOrder(1);
+
   this->bind(true, false);
 }
 
 Item::~Item()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void Item::onParametersCreated()
+{
+  if(strlen(this->name) > 0)
+  {
+    this->texts.name = new Text(this->name, this);
+  }
 }
 
 /**
@@ -69,7 +84,7 @@ void Item::onEnter()
    */
   this->Node::state->create = true;
 
-  this->state = Storage::get(this->id);
+  //this->state = Storage::get(this->id);
   this->updateState();
 }
 
@@ -92,12 +107,15 @@ void Item::onExit()
  *
  *
  */
-void Item::onBuy()
+void Item::onPurchase()
 {
-  Application->counter->values.coins -= this->coins;
+  Store::getInstance()->removeCoins(this->coins);
 
-  Application->counter->save();
   Application->parameters.creatures = true;
+}
+
+void Item::onSelect()
+{
 }
 
 /**
@@ -114,8 +132,20 @@ void Item::onTouchStart(cocos2d::Touch* touch, Event* e)
    *
    *
    */
+  Color3B color;
+
+  switch(this->state)
+  {
+    default:
+    color = Color3B(100, 204, 223);
+    break;
+    case STATE_SELECTED:
+    color = Color3B(237, 101, 100);
+    break;
+  }
+
   auto action = EaseSineInOut::create(
-    TintTo::create(0.2, Color3B(100, 204, 223))
+    TintTo::create(0.2, color)
   );
   action->setTag(1);
 
@@ -125,7 +155,16 @@ void Item::onTouchStart(cocos2d::Touch* touch, Event* e)
 void Item::onTouchFinish(cocos2d::Touch* touch, Event* e)
 {
   this->stopActionByTag(1);
-  this->setColor(Color3B(132, 209, 223));
+
+  switch(this->state)
+  {
+    default:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case STATE_SELECTED:
+    this->setColor(Color3B(237, 115, 113));
+    break;
+  }
 
   Node::onTouchFinish(touch, e);
 }
@@ -140,7 +179,16 @@ void Item::onTouchCancelled(cocos2d::Touch* touch, Event* e)
    *
    */
   this->stopActionByTag(1);
-  this->setColor(Color3B(132, 209, 223));
+
+  switch(this->state)
+  {
+    default:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case STATE_SELECTED:
+    this->setColor(Color3B(237, 115, 113));
+    break;
+  }
 }
 
 /**
@@ -160,7 +208,7 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     case STATE_LOCKED_COINS:
     if(Application->counter->values.coins >= this->coins)
     {
-      this->onBuy();
+      this->onPurchase();
     }
     else
     {
@@ -172,12 +220,16 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     {
       if(Application->counter->values.coins >= this->coins)
       {
-        this->onBuy();
+        this->onPurchase();
       }
       else
       {
         Store::getInstance()->list->scrollToPage(3);
       }
+    }
+    else
+    {
+      this->setState(STATE_SELECTED);
     }
     break;
   }
@@ -205,6 +257,15 @@ void Item::setState(int state)
 {
   this->state = state;
 
+  this->updateState();
+
+  switch(this->state)
+  {
+    case STATE_SELECTED:
+    this->onSelect();
+    break;
+  }
+
   Storage::set(this->id, this->state);
 }
 
@@ -219,6 +280,16 @@ void Item::resetState()
   this->lock->_destroy();
 
   this->texts.missions->_destroy();
+
+  if(strlen(this->name) > 0)
+  {
+    this->texts.name->_destroy();
+  }
+
+  if(this->capacity > 0)
+  {
+    this->texts.count->_destroy();
+  }
 }
 
 /**
@@ -240,7 +311,6 @@ void Item::updateState()
       if(this->coins)
       {
         this->setState(STATE_LOCKED_COINS);
-        this->updateState();
       }
       else
       {
@@ -281,15 +351,32 @@ void Item::updateState()
       this->coin->setScale(0.75);
       this->coin->setPosition(this->getContentSize().width / 2, 35);
 
+      this->texts.count->_create();
+
       this->texts.coins->data(this->coins);
-    }
-
-    if(this->count)
-    {
-      this->count->_create();
-
       this->texts.count->data(this->capacity);
     }
+    break;
+  }
+
+  switch(this->state)
+  {
+    case STATE_NORMAL:
+    case STATE_SELECTED:
+    if(strlen(this->name) > 0)
+    {
+      this->texts.name->_create();
+    }
+    break;
+  }
+
+  switch(this->state)
+  {
+    default:
+    this->setColor(Color3B(132, 209, 223));
+    break;
+    case STATE_SELECTED:
+    this->setColor(Color3B(237, 115, 113));
     break;
   }
 }
@@ -326,6 +413,155 @@ ItemCharacter::~ItemCharacter()
 }
 
 /**
+ *
+ *
+ *
+ */
+void ItemCharacter::onPurchase()
+{
+  this->runAction(
+    Sequence::create(
+      CallFunc::create([=] ()
+      {
+        Modal::block();
+      }),
+      Repeat::create(
+        Sequence::create(
+          ScaleTo::create(0.05, 0.9),
+          ScaleTo::create(0.05, 1.1),
+          nullptr
+        ),
+        12
+      ),
+      ScaleTo::create(0.05, 1.0),
+      CallFunc::create([=] ()
+      {
+        Item::onPurchase();
+
+        /**
+         *
+         *
+         *
+         */
+        this->setState(STATE_SELECTED);
+      }),
+      CallFunc::create([=] ()
+      {
+        static_cast<StoreLayoutCharacters*>(Store::getInstance()->list->getPage(0))->updateTextData();
+      }),
+      DelayTime::create(1.0),
+      CallFunc::create([=] ()
+      {
+        Modal::hide();
+      }),
+      nullptr
+    )
+  );
+
+  int count = 1;
+
+  for(auto item : Store::getInstance()->items.characters)
+  {
+    switch(item->state)
+    {
+      case Item::STATE_SELECTED:
+      case Item::STATE_NORMAL:
+      count++;
+      break;
+    }
+  }
+
+  /**
+   *
+   * @Services
+   * Update achievements.
+   *
+   */
+  if(count >= 5)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_5);
+  }
+  if(count >= 10)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_10);
+  }
+  if(count >= 15)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_15);
+  }
+  if(count >= 20)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_20);
+  }
+  if(count >= 25)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_25);
+  }
+
+  Sound->play("gift");
+
+  Analytics::sendEvent("Store", "store.events.onPurchase", "Character purchased", this->i);
+}
+
+void ItemCharacter::onSelect()
+{
+  for(auto item : Store::getInstance()->items.characters)
+  {
+    if(item->state == STATE_SELECTED)
+    {
+      if(this->i != item->i)
+      {
+        item->setState(STATE_NORMAL);
+      }
+    }
+  }
+
+  this->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 0.9)
+      ),
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 1.1)
+      ),
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 1.0)
+      ),
+      nullptr
+    )
+  );
+
+  Sound->play("touch");
+
+  Storage::set("items.character.current", this->i - 1);
+
+  Application->character->updateSkin();
+
+  Analytics::sendEvent("Store", "store.events.onSelect", "Character selected", this->i);
+}
+
+/**
+ *
+ *
+ *
+ */
+void ItemCharacter::updateState()
+{
+  Item::updateState();
+
+  switch(this->state)
+  {
+    case STATE_NORMAL:
+    case STATE_SELECTED:
+    if(strlen(this->name) > 0)
+    {
+      this->texts.name->setPosition(this->getContentSize().width / 2, 32);
+    }
+    break;
+  }
+}
+
+/**
  * Tooflya Inc. Development
  *
  * @author Igor Mats from Tooflya Inc.
@@ -351,15 +587,8 @@ ItemCreature::ItemCreature()
 {
   this->setContentSize(Size(300, 300));
 
-  this->count = new BackgroundColor(this, Color4B(128, 186, 117, 255));
-  this->count->ignoreAnchorPointForPosition(false);
-  this->count->setAnchorPoint(Vec2(0.0, 1.0));
-  this->count->setContentSize(Size(300, 60));
-  this->count->setPosition(0, 300);
-  this->count->_destroy();
-
-  this->texts.count = new Text("store-items-count", this->count, true);
-  this->texts.count->setPosition(this->count->getContentSize().width / 2, this->count->getContentSize().height / 2);
+  this->texts.count = new Text("store-items-count", this);
+  this->texts.count->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
 }
 
 ItemCreature::~ItemCreature()
@@ -371,34 +600,64 @@ ItemCreature::~ItemCreature()
  *
  *
  */
-void ItemCreature::onBuy()
+void ItemCreature::onPurchase()
 {
-  Item::onBuy();
+  this->runAction(
+    Sequence::create(
+      CallFunc::create([=] ()
+      {
+        Modal::block();
+      }),
+      Repeat::create(
+        Sequence::create(
+          ScaleTo::create(0.05, 0.9),
+          ScaleTo::create(0.05, 1.1),
+          nullptr
+        ),
+        12
+      ),
+      ScaleTo::create(0.05, 1.0),
+      CallFunc::create([=] ()
+      {
+        Item::onPurchase();
 
-  /**
-   *
-   *
-   *
-   */
-  switch(this->i)
-  {
-    case 1:
-    Application->counter->missionUpdateProgress.special_progress_1++;
-    break;
-    case 2:
-    Application->counter->missionUpdateProgress.special_progress_2++;
-    break;
-    case 3:
-    Application->counter->missionUpdateProgress.special_progress_3++;
-    break;
-    case 4:
-    Application->counter->missionUpdateProgress.special_progress_4++;
-    break;
-  }
+        /**
+         *
+         *
+         *
+         */
+        switch(this->i)
+        {
+          case 1:
+          Application->counter->missionUpdateProgress.special_progress_1++;
+          break;
+          case 2:
+          Application->counter->missionUpdateProgress.special_progress_2++;
+          break;
+          case 3:
+          Application->counter->missionUpdateProgress.special_progress_3++;
+          break;
+          case 4:
+          Application->counter->missionUpdateProgress.special_progress_4++;
+          break;
+        }
 
-  Storage::set(string(this->id) + ".count", ++this->capacity);
+        Storage::set(string(this->id) + ".count", ++this->capacity);
 
-  this->updateState();
+        this->updateState();
+      }),
+      DelayTime::create(1.0),
+      CallFunc::create([=] ()
+      {
+        Modal::hide();
+      }),
+      nullptr
+    )
+  );
+
+  Sound->play("gift");
+
+  Analytics::sendEvent("Store", "store.events.onPurchase", "Creature purchased", this->i);
 }
 
 /**
@@ -421,10 +680,20 @@ void ItemCreature::updateState()
     if(this->capacity > 0)
     {
       this->setState(STATE_NORMAL);
-      this->updateState();
     }
     break;
     case STATE_NORMAL:
+    break;
+  }
+
+  switch(this->state)
+  {
+    case STATE_NORMAL:
+    case STATE_SELECTED:
+    if(strlen(this->name) > 0)
+    {
+      this->texts.name->setPosition(this->getContentSize().width / 2, 86);
+    }
     break;
   }
 }
@@ -461,6 +730,25 @@ ItemEnvironment::~ItemEnvironment()
 }
 
 /**
+ *
+ *
+ *
+ */
+void ItemEnvironment::onPurchase()
+{
+  Item::onPurchase();
+
+  Analytics::sendEvent("Store", "store.events.onPurchase", "Environment purchased", this->i);
+}
+
+void ItemEnvironment::onSelect()
+{
+  Item::onSelect();
+
+  Analytics::sendEvent("Store", "store.events.onPurchase", "Environment selected", this->i);
+}
+
+/**
  * Tooflya Inc. Development
  *
  * @author Igor Mats from Tooflya Inc.
@@ -489,4 +777,77 @@ ItemCoins::ItemCoins()
 
 ItemCoins::~ItemCoins()
 {
+}
+
+/**
+ *
+ *
+ *
+ */
+void ItemCoins::onTouchStart(cocos2d::Touch* touch, Event* e)
+{
+  Node::onTouchStart(touch, e);
+
+  /**
+   *
+   *
+   *
+   */
+  auto action = EaseSineInOut::create(
+    ScaleTo::create(0.2, 0.95)
+  );
+  action->setTag(1);
+
+  this->runAction(action);
+}
+
+void ItemCoins::onTouchFinish(cocos2d::Touch* touch, Event* e)
+{
+  this->stopActionByTag(1);
+  this->setScale(1);
+
+  Node::onTouchFinish(touch, e);
+}
+
+void ItemCoins::onTouchCancelled(cocos2d::Touch* touch, Event* e)
+{
+  Node::onTouchCancelled(touch, e);
+
+  this->stopActionByTag(1);
+  this->setScale(1.0);
+}
+
+/**
+ *
+ *
+ *
+ */
+void ItemCoins::onTouch(cocos2d::Touch* touch, Event* e)
+{
+  Purchase::purchaseItem(this->id, [=] (bool status) {
+    if(status)
+    {
+      int particles = 0;
+      int coins = 0;
+
+      switch(this->i)
+      {
+        case 1:
+        particles = 20;
+        coins = 200;
+        break;
+        case 2:
+        particles = 50;
+        coins = 500;
+        break;
+        case 3:
+        particles = 100;
+        coins = 1000;
+        break;
+      }
+
+      Game::getInstance()->onNoadAction();
+      Store::getInstance()->createCoins(particles, coins);
+    }
+  });
 }

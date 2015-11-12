@@ -70,11 +70,6 @@ void Environment::setup(const char* texture, const char* data)
       break;
     }
   }
-
-  if(!Application->parameters.ad)
-  {
-    this->parallaxes.dynamic->setPosition(0, 100);
-  }
 }
 
 /**
@@ -86,6 +81,15 @@ void Environment::onCreate()
 {
   Application->g->addChild(this->parallaxes.fixed);
   Application->game->addChild(this->parallaxes.dynamic);
+
+  if(!Application->parameters.ad)
+  {
+    this->parallaxes.dynamic->setPosition(0, 100);
+  }
+  else
+  {
+    this->parallaxes.dynamic->setPosition(0, 0);
+  }
 }
 
 void Environment::onDestroy()
@@ -230,7 +234,7 @@ void Environment::updateWater(float time)
   if(Application->w->getNumberOfRunningActions() < 1)
   {
     float x = Application->w->getPositionX();
-    float y = Application->w->getPositionY() + 100 * time;
+    float y = Application->w->getPositionY() + 100 * time * Application->character->parameters.time;
 
     Application->w->setPosition(x, y);
   }

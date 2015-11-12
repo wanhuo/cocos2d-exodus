@@ -96,5 +96,7 @@ void CharacterButton::onTouch(cocos2d::Touch* touch, Event* e)
   );
 
   Sound->play("gift");
+
+  Analytics::sendEvent("Application", "application.events.onCharacterButtonPressed", "Application onCharacterButtonPressed event");
 }
 

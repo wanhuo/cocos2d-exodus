@@ -79,62 +79,47 @@ Credits::Credits()
   this->powered1 = new Entity("cocos2dx.png", this->holder, true);
   this->powered2 = new Entity("freepick.png", this->holder, true);
 
-  this->tutorialAnimation1 = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this->holder);
-  this->tutorialAnimation2 = new TutorialAnimation("tutorial-animation-2.json", "tutorial-animation-2.atlas", this->holder);
-  this->tutorialAnimation3 = new TutorialAnimation("tutorial-animation-3.json", "tutorial-animation-3.atlas", this->holder);
+  this->texts.title[0] = new Text("credits-title-1", this->holder, true);
+  this->texts.title[1] = new Text("credits-title-2", this->holder, TextHAlignment::RIGHT, true);
+  this->texts.title[2] = new Text("credits-title-3", this->holder, TextHAlignment::RIGHT, true);
+  this->texts.title[3] = new Text("credits-title-4", this->holder, TextHAlignment::RIGHT, true);
+  this->texts.title[4] = new Text("credits-title-5", this->holder, true);
+  this->texts.title[5] = new Text("credits-title-6", this->holder, true);
+  this->texts.title[6] = new Text("credits-title-7", this->holder, TextHAlignment::RIGHT, true);
+  this->texts.title[7] = new Text("credits-title-8", this->holder, true);
+  this->texts.title[8] = new Text("credits-title-9", this->holder, true);
+  this->texts.title[9] = new Text("credits-title-10", this->holder, true);
+  this->texts.title[10] = new Text("credits-title-11", this->holder, true);
+  this->texts.title[11] = new Text("credits-title-12", this->holder, true);
+  this->texts.title[12] = new Text("credits-title-13", this->holder, true);
+  this->texts.title[13] = new Text("credits-title-14", this->holder, true);
+  this->texts.title[14] = new Text("credits-title-15", this->holder, true);
+  this->texts.title[15] = new Text("credits-title-16", this->holder, true);
+  this->texts.title[16] = new Text("credits-title-17", this->holder, true);
+  this->texts.title[17] = new Text("credits-title-18", this->holder, true);
+  this->texts.title[18] = new Text("credits-title-19", this->holder, TextHAlignment::LEFT, true);
+  this->texts.title[19] = new Text("credits-title-20", this->holder, TextHAlignment::LEFT, true);
+  this->texts.title[20] = new Text("credits-title-21", this->holder, TextHAlignment::LEFT, true);
+  this->texts.title[21] = new Text("credits-title-22", this->holder, TextHAlignment::LEFT, true);
+  this->texts.title[22] = new Text("credits-title-23", this->holder, true);
 
-  this->tutorialRepeat = new TutorialRepeat(this->holder);
+  this->texts.title[19]->data(Internal::getVersionCode());
+  this->texts.title[20]->data(Internal::getBuildNumber());
+  this->texts.title[21]->data(Internal::getSupportCode());
 
-  this->texts.titles[0] = new Text("tutorial-title-1", this->holder, true);
-  this->texts.titles[1] = new Text("tutorial-title-2", this->holder, true);
-  this->texts.titles[2] = new Text("tutorial-title-3", this->holder, true);
-  this->texts.titles[3] = new Text("tutorial-title-4", this->holder, true);
-
-  this->texts.numbers[0] = new Text("tutorial-number-1", this->holder, true);
-  this->texts.numbers[1] = new Text("tutorial-number-2", this->holder, true);
-  this->texts.numbers[2] = new Text("tutorial-number-3", this->holder, true);
-
-  this->texts.tutorial[0] = new Text("credits-title-1", this->holder, true);
-  this->texts.tutorial[1] = new Text("credits-title-2", this->holder, TextHAlignment::RIGHT, true);
-  this->texts.tutorial[2] = new Text("credits-title-3", this->holder, TextHAlignment::RIGHT, true);
-  this->texts.tutorial[3] = new Text("credits-title-4", this->holder, TextHAlignment::RIGHT, true);
-  this->texts.tutorial[4] = new Text("credits-title-5", this->holder, true);
-  this->texts.tutorial[5] = new Text("credits-title-6", this->holder, true);
-  this->texts.tutorial[6] = new Text("credits-title-7", this->holder, TextHAlignment::RIGHT, true);
-  this->texts.tutorial[7] = new Text("credits-title-8", this->holder, true);
-  this->texts.tutorial[8] = new Text("credits-title-9", this->holder, true);
-  this->texts.tutorial[9] = new Text("credits-title-10", this->holder, true);
-  this->texts.tutorial[10] = new Text("credits-title-11", this->holder, true);
-  this->texts.tutorial[11] = new Text("credits-title-12", this->holder, true);
-  this->texts.tutorial[12] = new Text("credits-title-13", this->holder, true);
-  this->texts.tutorial[13] = new Text("credits-title-14", this->holder, true);
-  this->texts.tutorial[14] = new Text("credits-title-15", this->holder, true);
-  this->texts.tutorial[15] = new Text("credits-title-16", this->holder, true);
-  this->texts.tutorial[16] = new Text("credits-title-17", this->holder, true);
-  this->texts.tutorial[17] = new Text("credits-title-18", this->holder, true);
-  this->texts.tutorial[18] = new Text("credits-title-19", this->holder, TextHAlignment::LEFT, true);
-  this->texts.tutorial[19] = new Text("credits-title-20", this->holder, TextHAlignment::LEFT, true);
-  this->texts.tutorial[20] = new Text("credits-title-21", this->holder, TextHAlignment::LEFT, true);
-  this->texts.tutorial[21] = new Text("credits-title-22", this->holder, TextHAlignment::LEFT, true);
-  this->texts.tutorial[22] = new Text("credits-title-23", this->holder, true);
-
-  this->texts.tutorial[19]->data(Internal::getVersionCode());
-  this->texts.tutorial[20]->data(Internal::getBuildNumber());
-  this->texts.tutorial[21]->data(Internal::getSupportCode());
-
-  int t = 1600;
+  int t = 0;
 
   this->decoration1->setPosition(
     210,
-    Application->height - 700
+    Application->height - 100
   );
   this->decoration2->setPosition(
     Application->width - 150,
-    Application->height - 800
+    Application->height - 200
   );
   this->decoration3->setPosition(
     210,
-    Application->height - 1200
+    Application->height - 600
   );
 
   this->twitter->setPosition(-75, -650 - t);
@@ -145,44 +130,29 @@ Credits::Credits()
   this->powered1->setPosition(0, -1980 - t);
   this->powered2->setPosition(0, -2180 - t);
 
-  this->tutorialAnimation1->setPosition(0, -300);
-  this->tutorialAnimation2->setPosition(0, -700);
-  this->tutorialAnimation3->setPosition(0, -1100);
-
-  this->tutorialRepeat->setPosition(0, -1530);
-
-  this->texts.titles[0]->setPosition(0, -100);
-  this->texts.titles[1]->setPosition(0, -180);
-  this->texts.titles[2]->setPosition(0, -580);
-  this->texts.titles[3]->setPosition(0, -960);
-
-  this->texts.numbers[0]->setPosition(-this->texts.titles[1]->getWidth() / 2 - 25, -150);
-  this->texts.numbers[1]->setPosition(-this->texts.titles[2]->getWidth() / 2 - 25, -550);
-  this->texts.numbers[2]->setPosition(-this->texts.titles[3]->getWidth() / 2 - 25, -950);
-
-  this->texts.tutorial[0]->setPosition(0, -100 - t);
-  this->texts.tutorial[1]->setPosition(0, -160 - t);
-  this->texts.tutorial[2]->setPosition(0, -200 - t);
-  this->texts.tutorial[3]->setPosition(0, -240 - t);
-  this->texts.tutorial[4]->setPosition(0, -440 - t);
-  this->texts.tutorial[5]->setPosition(0, -520 - t);
-  this->texts.tutorial[6]->setPosition(0, -580 - t);
-  this->texts.tutorial[7]->setPosition(0, -980 - t);
-  this->texts.tutorial[8]->setPosition(0, -1040 - t);
-  this->texts.tutorial[9]->setPosition(0, -1080 - t);
-  this->texts.tutorial[10]->setPosition(0, -1140 - t);
-  this->texts.tutorial[11]->setPosition(0, -1180 - t);
-  this->texts.tutorial[12]->setPosition(0, -1240 - t);
-  this->texts.tutorial[13]->setPosition(0, -1280 - t);
-  this->texts.tutorial[14]->setPosition(0, -1480 - t);
-  this->texts.tutorial[15]->setPosition(0, -1540 - t);
-  this->texts.tutorial[16]->setPosition(0, -1580 - t);
-  this->texts.tutorial[17]->setPosition(0, -1780 - t);
-  this->texts.tutorial[18]->setPosition(5, this->texts.tutorial[1]->getPositionY());
-  this->texts.tutorial[19]->setPosition(5, this->texts.tutorial[2]->getPositionY());
-  this->texts.tutorial[20]->setPosition(5, this->texts.tutorial[3]->getPositionY());
-  this->texts.tutorial[21]->setPosition(5, this->texts.tutorial[6]->getPositionY());
-  this->texts.tutorial[22]->setPosition(0, -780 - t);
+  this->texts.title[0]->setPosition(0, -100 - t);
+  this->texts.title[1]->setPosition(0, -160 - t);
+  this->texts.title[2]->setPosition(0, -200 - t);
+  this->texts.title[3]->setPosition(0, -240 - t);
+  this->texts.title[4]->setPosition(0, -440 - t);
+  this->texts.title[5]->setPosition(0, -520 - t);
+  this->texts.title[6]->setPosition(0, -580 - t);
+  this->texts.title[7]->setPosition(0, -980 - t);
+  this->texts.title[8]->setPosition(0, -1040 - t);
+  this->texts.title[9]->setPosition(0, -1080 - t);
+  this->texts.title[10]->setPosition(0, -1140 - t);
+  this->texts.title[11]->setPosition(0, -1180 - t);
+  this->texts.title[12]->setPosition(0, -1240 - t);
+  this->texts.title[13]->setPosition(0, -1280 - t);
+  this->texts.title[14]->setPosition(0, -1480 - t);
+  this->texts.title[15]->setPosition(0, -1540 - t);
+  this->texts.title[16]->setPosition(0, -1580 - t);
+  this->texts.title[17]->setPosition(0, -1780 - t);
+  this->texts.title[18]->setPosition(5, this->texts.title[1]->getPositionY() - 2);
+  this->texts.title[19]->setPosition(5, this->texts.title[2]->getPositionY() - 2);
+  this->texts.title[20]->setPosition(5, this->texts.title[3]->getPositionY() - 2);
+  this->texts.title[21]->setPosition(5, this->texts.title[6]->getPositionY() - 2);
+  this->texts.title[22]->setPosition(0, -780 - t);
 
   this->size = -this->powered2->getPositionY() + this->parameters.padding;
 

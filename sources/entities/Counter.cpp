@@ -208,6 +208,33 @@ void Counter::onScore(bool update)
   else
   {
     this->values.score++;
+
+    /**
+     *
+     * @Services
+     * Update achievements.
+     *
+     */
+    if(this->values.score >= 1)
+    {
+      Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_1);
+    }
+    if(this->values.score >= 10)
+    {
+      Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_10);
+    }
+    if(this->values.score >= 50)
+    {
+      Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_50);
+    }
+    if(this->values.score >= 100)
+    {
+      Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_100);
+    }
+    if(this->values.score >= 500)
+    {
+      Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_500);
+    }
   }
 }
 
@@ -436,14 +463,16 @@ void Counter::onStart()
    * @Optional
    * Can be commented because of using animated hand texture.
    *
-   *
-  this->texts.start->_create();
-  this->texts.start->setPosition(Application->center.x, this->getPositionY() - 180);
-  this->texts.start->setOpacity(0);
-  this->texts.start->runAction(
-    FadeIn::create(1.0)
-  );
    */
+  if(!Application->parameters.tutorial)
+  {
+    this->texts.start->_create();
+    this->texts.start->setPosition(Application->center.x, this->getPositionY() - 180);
+    this->texts.start->setOpacity(0);
+    this->texts.start->runAction(
+      FadeIn::create(1.0)
+    );
+  }
 }
 
 void Counter::onGame()
@@ -461,6 +490,33 @@ void Counter::onGame()
     this->missionUpdateProgress.games++;
 
     Events::updateMissions();
+  }
+
+  /**
+   *
+   * @Services
+   * Update achievements.
+   *
+   */
+  if(this->values.deaths >= 1)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_GAMES_PLAYED_1);
+  }
+  if(this->values.deaths >= 10)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_GAMES_PLAYED_10);
+  }
+  if(this->values.deaths >= 20)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_GAMES_PLAYED_20);
+  }
+  if(this->values.deaths >= 50)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_GAMES_PLAYED_50);
+  }
+  if(this->values.deaths >= 100)
+  {
+    Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_100);
   }
 }
 
@@ -563,7 +619,9 @@ void Counter::resetOnceMissionsUpdate()
   this->missionUpdateOnce.coins = 0;
   this->missionUpdateOnce.points = 0;
   this->missionUpdateOnce.points_best = this->values.best;
+
   this->missionUpdateOnce.special_once_1 = 0;
+  this->missionUpdateOnce.special_once_2 = 0;
 }
 
 void Counter::resetProgressMissionsUpdate()

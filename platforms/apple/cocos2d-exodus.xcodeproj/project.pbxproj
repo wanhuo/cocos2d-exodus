@@ -124,6 +124,12 @@
 		789908421BCE80310014A8F7 /* Creatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7899083F1BCE80310014A8F7 /* Creatures.cpp */; settings = {ASSET_TAGS = (); }; };
 		789908431BCE80310014A8F7 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908401BCE80310014A8F7 /* Environment.cpp */; settings = {ASSET_TAGS = (); }; };
 		789908441BCE80310014A8F7 /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 789908401BCE80310014A8F7 /* Environment.cpp */; settings = {ASSET_TAGS = (); }; };
+		7899D4441BF2A3F7008080B5 /* Coins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7899D4421BF2A3F7008080B5 /* Coins.cpp */; settings = {ASSET_TAGS = (); }; };
+		7899D4451BF2A3F7008080B5 /* Coins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7899D4421BF2A3F7008080B5 /* Coins.cpp */; settings = {ASSET_TAGS = (); }; };
+		7899D4481BF2AD8E008080B5 /* ExtendScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7899D4461BF2AD8E008080B5 /* ExtendScreen.cpp */; settings = {ASSET_TAGS = (); }; };
+		7899D4491BF2AD8E008080B5 /* ExtendScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7899D4461BF2AD8E008080B5 /* ExtendScreen.cpp */; settings = {ASSET_TAGS = (); }; };
+		7899D44E1BF48194008080B5 /* services.json in Resources */ = {isa = PBXBuildFile; fileRef = 7899D44D1BF48194008080B5 /* services.json */; settings = {ASSET_TAGS = (); }; };
+		7899D44F1BF48194008080B5 /* services.json in Resources */ = {isa = PBXBuildFile; fileRef = 7899D44D1BF48194008080B5 /* services.json */; settings = {ASSET_TAGS = (); }; };
 		78AEAC091BD0F7F700FA8783 /* FinishCounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC081BD0F7F700FA8783 /* FinishCounter.cpp */; settings = {ASSET_TAGS = (); }; };
 		78AEAC0A1BD0F7F700FA8783 /* FinishCounter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC081BD0F7F700FA8783 /* FinishCounter.cpp */; settings = {ASSET_TAGS = (); }; };
 		78AEAC1A1BD142EC00FA8783 /* Decorations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC191BD142EC00FA8783 /* Decorations.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -375,6 +381,11 @@
 		7899083E1BCE80310014A8F7 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		7899083F1BCE80310014A8F7 /* Creatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Creatures.cpp; sourceTree = "<group>"; };
 		789908401BCE80310014A8F7 /* Environment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
+		7899D4421BF2A3F7008080B5 /* Coins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Coins.cpp; sourceTree = "<group>"; };
+		7899D4431BF2A3F7008080B5 /* Coins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coins.h; sourceTree = "<group>"; };
+		7899D4461BF2AD8E008080B5 /* ExtendScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ExtendScreen.cpp; sourceTree = "<group>"; };
+		7899D4471BF2AD8E008080B5 /* ExtendScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendScreen.h; sourceTree = "<group>"; };
+		7899D44D1BF48194008080B5 /* services.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = services.json; path = apple/services.json; sourceTree = "<group>"; };
 		78AEAC071BD0F7F700FA8783 /* FinishCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishCounter.h; sourceTree = "<group>"; };
 		78AEAC081BD0F7F700FA8783 /* FinishCounter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FinishCounter.cpp; sourceTree = "<group>"; };
 		78AEAC181BD142EC00FA8783 /* Decorations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decorations.h; sourceTree = "<group>"; };
@@ -582,6 +593,7 @@
 			children = (
 				7894C0741BC98A6D00363FC9 /* Images.xcassets */,
 				781B067E1BD26F9E0072FB24 /* Config */,
+				7899D44A1BF48194008080B5 /* Services */,
 				7894C02B1BC925FA00363FC9 /* Json */,
 				7894C01C1BC9258B00363FC9 /* Fonts */,
 				7894C01D1BC9258B00363FC9 /* Graphics */,
@@ -917,6 +929,10 @@
 				7894FA1D1BECDC5F00A69ED6 /* Missions.h */,
 				7894FA1E1BECDC5F00A69ED6 /* Tutorial.cpp */,
 				7894FA1F1BECDC5F00A69ED6 /* Tutorial.h */,
+				7899D4421BF2A3F7008080B5 /* Coins.cpp */,
+				7899D4431BF2A3F7008080B5 /* Coins.h */,
+				7899D4461BF2AD8E008080B5 /* ExtendScreen.cpp */,
+				7899D4471BF2AD8E008080B5 /* ExtendScreen.h */,
 			);
 			name = screens;
 			path = ../../sources/screens;
@@ -928,6 +944,15 @@
 				78DF45291BBA4D1C004E4570 /* VungleSDK.embeddedframework */,
 			);
 			path = Vungle;
+			sourceTree = "<group>";
+		};
+		7899D44A1BF48194008080B5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7899D44D1BF48194008080B5 /* services.json */,
+			);
+			name = Services;
+			path = ../../resource/Services;
 			sourceTree = "<group>";
 		};
 		78B0CFE41A9289E200E72640 /* Libraries */ = {
@@ -1301,6 +1326,7 @@
 				781B06811BD26FC70072FB24 /* config.json in Resources */,
 				7894C02A1BC9258B00363FC9 /* Sound in Resources */,
 				7894C0241BC9258B00363FC9 /* Graphics in Resources */,
+				7899D44F1BF48194008080B5 /* services.json in Resources */,
 				7894C0281BC9258B00363FC9 /* Music in Resources */,
 				78DEED801B1A912F0093CB64 /* Icon.icns in Resources */,
 				7894C0221BC9258B00363FC9 /* Fonts in Resources */,
@@ -1341,6 +1367,7 @@
 				78DEED6B1B1A911E0093CB64 /* Default@2x.png in Resources */,
 				78DEED691B1A911E0093CB64 /* Default-568h@2x.png in Resources */,
 				78DEEE061B1D035B0093CB64 /* validate.png in Resources */,
+				7899D44E1BF48194008080B5 /* services.json in Resources */,
 				78DEEE051B1D035B0093CB64 /* up.png in Resources */,
 				7823FBB51ABDB57400447F0A /* Batch.bundle in Resources */,
 				78DEED791B1A911E0093CB64 /* Icon-57.png in Resources */,
@@ -1402,6 +1429,7 @@
 				789908341BCE3D4B0014A8F7 /* GiftButton.cpp in Sources */,
 				781B06F71BD3B7E60072FB24 /* Purchases.h in Sources */,
 				78E5CC051BCA5FD800CB036E /* Positions.cpp in Sources */,
+				7899D4491BF2AD8E008080B5 /* ExtendScreen.cpp in Sources */,
 				78FEA73C1BEB8FF000D253A3 /* Confetti.cpp in Sources */,
 				785C586C1BD4CCCB00B71D89 /* Pointer.cpp in Sources */,
 				7894FA311BEDEF2400A69ED6 /* Mission.cpp in Sources */,
@@ -1422,6 +1450,7 @@
 				78E5CC091BCA6A5200CB036E /* Counter.cpp in Sources */,
 				7894FA4D1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */,
 				78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
+				7899D4451BF2A3F7008080B5 /* Coins.cpp in Sources */,
 				789908421BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7899083C1BCE60500014A8F7 /* Water.cpp in Sources */,
 				7894FA3B1BEFE6E100A69ED6 /* Item.cpp in Sources */,
@@ -1450,6 +1479,7 @@
 				7894FA521BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */,
 				7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */,
 				7894FA4C1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */,
+				7899D4441BF2A3F7008080B5 /* Coins.cpp in Sources */,
 				781B06F61BD3B7E60072FB24 /* Purchases.h in Sources */,
 				78FEA72B1BDE9AB000D253A3 /* Handler.cpp in Sources */,
 				78DEEE031B1D035B0093CB64 /* Interstitiel.m in Sources */,
@@ -1459,6 +1489,7 @@
 				782C44961BD2495E00A7DD46 /* NSInternal.mm in Sources */,
 				7847CDF91AB184820014E3F3 /* RootViewController.mm in Sources */,
 				785C58791BD5342A00B71D89 /* Explanation.cpp in Sources */,
+				7899D4481BF2AD8E008080B5 /* ExtendScreen.cpp in Sources */,
 				7894FA221BECDC5F00A69ED6 /* Tutorial.cpp in Sources */,
 				7894C0441BC9468E00363FC9 /* Character.cpp in Sources */,
 				782414991BCC8FC9007D5847 /* Finish.cpp in Sources */,

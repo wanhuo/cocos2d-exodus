@@ -24,7 +24,7 @@
 #ifndef _FINISH_H_
 #define _FINISH_H_
 
-#include "Screen.h"
+#include "Coins.h"
 
 #include "Background.h"
 #include "BackgroundColor.h"
@@ -42,7 +42,7 @@
  *
  *
  */
-class Finish : public Screen
+class Finish : public Coins
 {
   /**
    *
@@ -96,7 +96,6 @@ class Finish : public Screen
 
   Spine* decoration;
 
-  Pool* coins;
   Pool* confetties;
 
   /**
@@ -107,22 +106,18 @@ class Finish : public Screen
   public:
   static Finish* getInstance();
 
-  Finish();
- ~Finish();
-
   Background* holder;
 
   Buttons buttons;
   Parameters parameters;
 
-  float time;
-  float elapsedCoins = 0;
+  Finish();
+ ~Finish();
 
   virtual void onEnter();
   virtual void onExit();
 
   virtual void onSound();
-  virtual void onBack();
 
   virtual void onMoveUp();
   virtual void onMoveDown();
@@ -134,12 +129,9 @@ class Finish : public Screen
   virtual void hide();
 
   virtual void showButtons();
-
-  virtual void throwCoins(int count = 20);
-
+  
   virtual void updateSoundState();
-
-  virtual void update(float time);
+  virtual void updateTextData();
 };
 
 #endif

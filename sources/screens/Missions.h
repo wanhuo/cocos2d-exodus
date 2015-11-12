@@ -24,7 +24,7 @@
 #ifndef _MISSIONS_H_
 #define _MISSIONS_H_
 
-#include "Screen.h"
+#include "Coins.h"
 
 #include "Entity.h"
 #include "Text.h"
@@ -40,7 +40,7 @@
  *
  *
  */
-class Missions : public Screen
+class Missions : public Coins
 {
   /**
    *
@@ -57,11 +57,6 @@ class Missions : public Screen
   struct Texts {
     Text* title1;
     Text* title2;
-    Text* coins;
-  };
-
-  struct Buttons {
-    Button* back;
   };
 
   /**
@@ -77,9 +72,6 @@ class Missions : public Screen
   Entity* holder2;
 
   Texts texts;
-  Buttons buttons;
-
-  Pool* coins;
 
   Entity* coinsBackground;
 
@@ -102,13 +94,6 @@ class Missions : public Screen
 
   virtual void onEnter();
   virtual void onExit();
-
-  virtual void onBack();
-
-  virtual void show();
-  virtual void hide();
-
-  virtual void throwCoins(int count);
 
   virtual void updateListHeight();
   virtual void updateTextData();

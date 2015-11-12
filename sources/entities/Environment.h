@@ -68,8 +68,6 @@ class Environment : public Ref
    *
    */
   protected:
-  Parallaxes parallaxes;
-
   void setup(const char* texture, const char* data);
 
   /**
@@ -78,6 +76,8 @@ class Environment : public Ref
    *
    */
   public:
+  Parallaxes parallaxes;
+
   Environment();
  ~Environment();
 

@@ -105,23 +105,53 @@ void Creatures::onAction()
  */
 void Creatures::create()
 {
-  for(int i = 0; i < Storage::get("items.creatures.human.count"); i++)
+  int humans = this->getHumansCouns();
+  int apatosauruses = this->getApatosaurusesCouns();
+  int stegosauruses = this->getStegosaurusesCouns();
+  int triceratopses = this->getTriceratopsesCouns();
+
+  for(int i = 0; i < humans; i++)
   {
     this->humans->_create();
   }
 
-  for(int i = 0; i < Storage::get("items.creatures.apatosaurus.count"); i++)
+  for(int i = 0; i < apatosauruses; i++)
   {
     this->apatosauruses->_create();
   }
 
-  for(int i = 0; i < Storage::get("items.creatures.stegosaurus.count"); i++)
+  for(int i = 0; i < stegosauruses; i++)
   {
     this->stegosauruses->_create();
   }
 
-  for(int i = 0; i < Storage::get("items.creatures.triceratops.count"); i++)
+  for(int i = 0; i < triceratopses; i++)
   {
     this->triceratopses->_create();
   }
+}
+
+/**
+ *
+ *
+ *
+ */
+int Creatures::getHumansCouns()
+{
+  return Storage::get("items.creatures.human.count");
+}
+
+int Creatures::getApatosaurusesCouns()
+{
+  return Storage::get("items.creatures.apatosaurus.count");
+}
+
+int Creatures::getStegosaurusesCouns()
+{
+  return Storage::get("items.creatures.stegosaurus.count");
+}
+
+int Creatures::getTriceratopsesCouns()
+{
+  return Storage::get("items.creatures.triceratops.count");
 }

@@ -49,14 +49,9 @@ Missions* Missions::getInstance()
  *
  */
 Missions::Missions()
+: Coins(true)
 {
   instance = this;
-
-  this->camera = Camera::createPerspective(60, this->width / this->height, 1.0f, 10000.0f);
-  this->camera->setCameraFlag(CameraFlag::USER1);
-  this->addChild(this->camera);
-
-  this->coins = new Pool(new Coin, 30, this);
 
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder1 = new BackgroundColor(this, Color4B(132, 209, 223, 255));
@@ -77,25 +72,11 @@ Missions::Missions()
   this->holder1->setPosition(Application->center.x, Application->height);
   this->holder2->setPosition(Application->center.x, Application->height - 400);
 
-  this->coinsBackground = new Entity("counter-coins.png", this, true);
-
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-  this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Missions::hide, this), true);
-  #endif
-
   this->texts.title1 = new Text("missions-title-1", this->holder1, true);
   this->texts.title2 = new Text("missions-title-2", this->holder2, true);
-  this->texts.coins = new Text("coins", this->coinsBackground, true);
-
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-  this->buttons.back->setPosition(65, Application->height - 65);
-  #endif
-
-  this->coinsBackground->setPosition(Application->width - this->coinsBackground->getWidth() / 2 - 15, Application->height - 50);
 
   this->texts.title1->setPosition(this->holder1->getContentSize().width / 2, this->holder1->getContentSize().height / 2);
   this->texts.title2->setPosition(this->holder2->getContentSize().width / 2, this->holder2->getContentSize().height / 2);
-  this->texts.coins->setPosition(this->coinsBackground->getContentSize().width / 2, this->coinsBackground->getContentSize().height / 2);
 
   int counter = 0;
 
@@ -120,7 +101,7 @@ Missions::~Missions()
  */
 void Missions::onEnter()
 {
-  Screen::onEnter();
+  Coins::onEnter();
 
   /**
    *
@@ -160,92 +141,7 @@ void Missions::onEnter()
 
 void Missions::onExit()
 {
-  Screen::onExit();
-}
-
-/**
- *
- *
- *
- */
-void Missions::onBack()
-{
-  this->hide();
-}
-
-/**
- *
- *
- *
- */
-void Missions::show()
-{
-  Director::getInstance()->pushScene(TransitionFade::create(0.2, this, Color3B::WHITE));
-}
-
-void Missions::hide()
-{
-  Director::getInstance()->popScene(TransitionFade::create(0.2, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
-}
-
-/**
- *
- *
- *
- */
-void Missions::throwCoins(int count)
-{
-  //this->elapsedCoins = count;
-
-  Finish::getInstance()->time = 1.0;
-
-  this->runAction(
-    Sequence::create(
-      DelayTime::create(0.5),
-      CallFunc::create([=] () {
-
-        /**
-         *
-         *
-         *
-         */
-        Finish::getInstance()->time = 0.2;
-      }),
-      DelayTime::create(0.5),
-      CallFunc::create([=] () {
-        Finish::getInstance()->time = 1.0;
-
-        this->runAction(
-          Repeat::create(
-            Sequence::create(
-              CallFunc::create([=] () {
-
-                /**
-                 *
-                 *
-                 *
-                 */
-                //this->elapsedCoins--;
-                Application->counter->values.coins++;
-                this->updateTextData();
-              }),
-              DelayTime::create(0.1),
-              nullptr
-            ),
-            count
-          )
-        );
-
-        Sound->play("coins-reward");
-      }),
-      nullptr
-    )
-  );
-
-  for(int i = 0; i < count; i++)
-  {
-    this->coins->_create();
-  }
+  Coins::onExit();
 }
 
 /**
@@ -323,6 +219,12 @@ void Missions::updateListHeight()
  */
 void Missions::updateTextData()
 {
-  this->texts.coins->data(Application->counter->values.coins);
+  Coins::updateTextData();
+
+  /**
+   *
+   *
+   *
+   */
   this->texts.title2->data(MissionsFactory::getInstance()->getCompletedMissionsCount(), MissionsFactory::getInstance()->getMissionsCount());
 }

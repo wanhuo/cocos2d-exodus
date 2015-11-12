@@ -31,6 +31,13 @@
  *
  *
  */
+float Coin::TIME;
+
+/**
+ *
+ *
+ *
+ */
 Coin::Coin()
 : Entity3D("coin.obj")
 {
@@ -98,11 +105,11 @@ void Coin::update(float time)
    *
    *
    */
-  float x = this->getPositionX() + this->vector.x * this->speed * Finish::getInstance()->time;
-  float y = this->getPositionY() + this->vector.y * this->speed * this->power * Finish::getInstance()->time;
-  float z = this->getPositionZ() + this->vector.z * this->speed * Finish::getInstance()->time;
+  float x = this->getPositionX() + this->vector.x * this->speed * TIME;
+  float y = this->getPositionY() + this->vector.y * this->speed * this->power * TIME;
+  float z = this->getPositionZ() + this->vector.z * this->speed * TIME;
 
-  this->power -= this->weight * Finish::getInstance()->time;
+  this->power -= this->weight * TIME;
 
   this->setPosition3D(Vec3(x, y, z));
 

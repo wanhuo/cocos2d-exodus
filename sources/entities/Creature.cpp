@@ -72,7 +72,15 @@ void Creature::onCreate()
   }
 
   this->setPosition(x, Application->camera.center - 110);
-  this->setAnimation(this->animations.animation);
+  this->runAction(
+    Sequence::create(
+      DelayTime::create(random(0.0, 1.0)),
+      CallFunc::create([=] () {
+        this->setAnimation(this->animations.animation);
+      }),
+      nullptr
+    )
+  );
 
   Application->creatures->onCreate();
 }

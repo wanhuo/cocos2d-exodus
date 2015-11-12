@@ -47,6 +47,11 @@ class Creatures : public Ref
    *
    */
   public:
+  Pool* humans;
+  Pool* apatosauruses;
+  Pool* stegosauruses;
+  Pool* triceratopses;
+
   Creatures();
  ~Creatures();
 
@@ -57,10 +62,10 @@ class Creatures : public Ref
 
   virtual void create();
 
-  Pool* humans;
-  Pool* apatosauruses;
-  Pool* stegosauruses;
-  Pool* triceratopses;
+  virtual int getHumansCouns();
+  virtual int getApatosaurusesCouns();
+  virtual int getStegosaurusesCouns();
+  virtual int getTriceratopsesCouns();
 };
 
 #endif

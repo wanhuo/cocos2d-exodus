@@ -21,47 +21,46 @@
  *
  */
 
-#ifndef _COIN_H_
-#define _COIN_H_
-
-#include "Entity3D.h"
+#include "ExtendScreen.h"
 
 /**
  *
  *
  *
  */
-class Coin : public Entity3D
+ExtendScreen::ExtendScreen()
 {
-  /**
-   *
-   *
-   *
-   */
-  protected:
-  Vec3 vector;
+  this->camera = Camera::createPerspective(60, this->width / this->height, 1.0f, 100.0f);
+  this->camera->setCameraFlag(CameraFlag::USER1);
 
-  float speed;
-  float power;
-  float weight = 0.05;
+  this->addChild(this->camera);
+}
 
-  /**
-   *
-   *
-   *
-   */
-  public:
-  static float TIME;
+ExtendScreen::~ExtendScreen()
+{
+}
 
-  Coin();
- ~Coin();
+/**
+ *
+ *
+ *
+ */
+void ExtendScreen::show()
+{
+  Director::getInstance()->pushScene(TransitionFade::create(0.2, this, Color3B::WHITE));
+}
 
-  virtual void onCreate();
-  virtual void onDestroy(bool action = false);
+void ExtendScreen::hide()
+{
+  Director::getInstance()->popScene(TransitionFade::create(0.2, Director::getInstance()->getPreviousScene(), Color3B::WHITE));
+}
 
-  virtual void update(float time);
-
-  Coin* deepCopy();
-};
-
-#endif
+/**
+ *
+ *
+ *
+ */
+void ExtendScreen::onBack()
+{
+  this->hide();
+}

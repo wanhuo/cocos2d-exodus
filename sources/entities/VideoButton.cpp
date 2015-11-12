@@ -80,7 +80,9 @@ void VideoButton::onTouch(cocos2d::Touch* touch, Event* e)
 
     if(state)
     {
-      Finish::getInstance()->throwCoins(30);
+      Finish::getInstance()->createCoins(30);
     }
   });
+
+  Analytics::sendEvent("Application", "application.events.onVideoButtonPressed", "Application onVideoButtonPressed event");
 }

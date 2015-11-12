@@ -24,7 +24,7 @@
 #ifndef _STORE_H_
 #define _STORE_H_
 
-#include "Screen.h"
+#include "Coins.h"
 
 #include "Entity.h"
 #include "Text.h"
@@ -41,7 +41,7 @@
  *
  *
  */
-class Store : public Screen
+class Store : public Coins
 {
   /**
    *
@@ -53,14 +53,9 @@ class Store : public Screen
 
   struct Items
   {
-    vector<ItemCharacter*> characters;
-    vector<ItemCreature*> creatures;
-    vector<ItemEnvironment*> environments;
-  };
-
-
-  struct Texts {
-    Text* coins;
+    vector<Item*> characters;
+    vector<Item*> creatures;
+    vector<Item*> environments;
   };
 
   struct Buttons {
@@ -80,12 +75,7 @@ class Store : public Screen
   BackgroundColor* background;
   BackgroundColor* holder;
 
-  Texts texts;
   Buttons buttons;
-
-  Pool* coins;
-
-  Entity* coin;
 
   /**
    *
@@ -95,26 +85,19 @@ class Store : public Screen
   public:
   static Store* getInstance();
 
-  Store();
- ~Store();
-
   Items items;
 
   BackgroundPages* list;
+
+  Store();
+ ~Store();
 
   virtual void onEnter();
   virtual void onExit();
 
   virtual void onPageChanged();
 
-  virtual void onBack();
-
-  virtual void show();
-  virtual void hide();
-
-  virtual void showPage(int index);
-
-  virtual void updateTextData();
+  virtual void changePage(int index);
 };
 
 /**
@@ -175,7 +158,12 @@ class StoreLayout : public cocos2d::ui::Layout
   StoreLayout();
  ~StoreLayout();
 
+  vector<Item*> items;
+
   virtual void onEnter();
+  virtual void onExit();
+
+  virtual void updateTextData();
 };
 
 /**
@@ -216,19 +204,12 @@ class StoreLayoutCharacters : public StoreLayout
    *
    *
    */
-  protected:
-  vector<ItemCharacter*> items;
-
-  /**
-   *
-   *
-   *
-   */
   public:
   StoreLayoutCharacters();
  ~StoreLayoutCharacters();
 
   virtual void onEnter();
+  virtual void onExit();
 };
 
 /**
@@ -269,19 +250,12 @@ class StoreLayoutCreatures : public StoreLayout
    *
    *
    */
-  protected:
-  vector<ItemCreature*> items;
-
-  /**
-   *
-   *
-   *
-   */
   public:
   StoreLayoutCreatures();
  ~StoreLayoutCreatures();
 
   virtual void onEnter();
+  virtual void onExit();
 };
 
 /**
@@ -322,19 +296,12 @@ class StoreLayoutEnvironments : public StoreLayout
    *
    *
    */
-  protected:
-  vector<ItemEnvironment*> items;
-
-  /**
-   *
-   *
-   *
-   */
   public:
   StoreLayoutEnvironments();
  ~StoreLayoutEnvironments();
 
   virtual void onEnter();
+  virtual void onExit();
 };
 
 /**
@@ -375,17 +342,11 @@ class StoreLayoutCoins : public StoreLayout
    *
    *
    */
-  protected:
-  vector<ItemCoins*> items;
-
-  /**
-   *
-   *
-   *
-   */
   public:
   StoreLayoutCoins();
  ~StoreLayoutCoins();
+
+  virtual void updateTextData();
 };
 
 #endif
