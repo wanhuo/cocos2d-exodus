@@ -109,13 +109,13 @@
     ],
     "congratulations": [
       {
-        "title": "",
+        "title": "New Best!",
         "font": "Impact",
-        "size": 36,
+        "size": 32,
         "color": [
-          188,
-          51,
-          71
+          254,
+          172,
+          28
         ]
       },
       {
@@ -129,23 +129,23 @@
         ]
       },
       {
-        "title": "NEW BEST",
+        "title": "",
         "font": "Impact",
-        "size": 28,
+        "size": 32,
         "color": [
-          188,
-          51,
-          71
+          254,
+          172,
+          28
         ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 36,
+        "size": 32,
         "color": [
-          188,
-          51,
-          71
+          254,
+          172,
+          28
         ]
       }
     ],
@@ -403,7 +403,7 @@
     ],
     "mission-complete": [
       {
-        "title": "",
+        "title": "Mission Complete",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -1451,12 +1451,7 @@
       {
         "title": "Characters",
         "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
+        "size": 42
       },
       {
         "title": "Персонажи",
@@ -1464,24 +1459,14 @@
         "size": 42
       },
       {
-        "title": "Foguetes",
+        "title": "",
         "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
+        "size": 42
       },
       {
-        "title": "Fusées",
+        "title": "",
         "font": "Impact",
-        "size": 42,
-        "color": [
-          21,
-          176,
-          191
-        ]
+        "size": 42
       }
     ],
     "store-title-2": [
@@ -1508,7 +1493,7 @@
     ],
     "store-title-3": [
       {
-        "title": "",
+        "title": "Environments",
         "font": "Impact",
         "size": 42
       },
@@ -1552,9 +1537,9 @@
     ],
     "store-action-1": [
       {
-        "title": "",
+        "title": "Unlock all the characters\nby collecting coins and complete the mission",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Откройте всех персонажей\nсобирая монеты и завершая миссии",
@@ -1564,19 +1549,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       }
     ],
     "store-action-2": [
       {
-        "title": "",
+        "title": "Complete the mission\nand save all beings from the flood",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Завершайте миссии\nи спасите всех существ от потопа",
@@ -1586,19 +1571,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       }
     ],
     "store-action-3": [
       {
-        "title": "",
+        "title": "Discover other amazing\nworlds",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Откройте для себя\nдругие удивительные миры",
@@ -1608,19 +1593,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       }
     ],
     "store-action-4": [
       {
-        "title": "",
+        "title": "Get the coins easily\nAny purchase will remove the ads",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Получите монеты легко\nЛюбая покупка отключит рекламу",
@@ -1630,19 +1615,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 42
+        "size": 32
       }
     ],
     "store-description-1": [
       {
         "title": "Unlocked characters\n$1/$2",
         "font": "Impact",
-        "size": 42
+        "size": 36
       },
       {
         "title": "Открытые персонажи\n$1/$2",
@@ -1652,19 +1637,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       }
     ],
     "store-description-2": [
       {
         "title": "Unlocked creatures\n$1/$2",
         "font": "Impact",
-        "size": 42
+        "size": 36
       },
       {
         "title": "Открытые существа\n$1/$2",
@@ -1674,19 +1659,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       }
     ],
     "store-description-3": [
       {
         "title": "Unlocked environments\n$1/$2",
         "font": "Impact",
-        "size": 42
+        "size": 36
       },
       {
         "title": "Открытые миры\n$1/$2",
@@ -1696,12 +1681,12 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       }
     ],
     "store-state-missions": [
@@ -1748,7 +1733,7 @@
     ],
     "missions-title-1": [
       {
-        "title": "Complete a missions\nto get new characters",
+        "title": "Complete missions\nto get a new characters\nand creatures",
         "font": "Impact",
         "size": 42
       },
@@ -1760,19 +1745,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 42
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 42
       }
     ],
     "missions-title-2": [
       {
         "title": "Completed missions\n$1/$2",
         "font": "Impact",
-        "size": 42
+        "size": 36
       },
       {
         "title": "Завершенные миссии\n$1/$2",
@@ -1782,19 +1767,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 36
       }
     ],
     "mission-additional-reward": [
       {
         "title": "Additional reward",
         "font": "Impact",
-        "size": 42
+        "size": 26
       },
       {
         "title": "Дополнительная награда",
@@ -1804,41 +1789,41 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 26
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 26
       }
     ],
     "mission-claim-reward": [
       {
-        "title": "",
+        "title": "Tap here to get\nyour reward",
         "font": "Impact",
         "size": 42
       },
       {
         "title": "Нажмите чтобы получить\nвашу награду",
         "font": "Impact",
-        "size": 48
+        "size": 42
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 42
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 42
       }
     ],
     "mission-progress": [
       {
-        "title": "Progress:",
+        "title": "Mission progress:",
         "font": "Impact",
-        "size": 42
+        "size": 26
       },
       {
         "title": "Прогресс выполнения:",
@@ -1848,19 +1833,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 26
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 26
       }
     ],
     "mission-0": [
       {
-        "title": "",
+        "title": "Complete tutorial",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Завершите обучение",
@@ -1870,19 +1855,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-1": [
       {
-        "title": "",
+        "title": "Try to get your\nfirst coin",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте свою первую\nмонету",
@@ -1892,19 +1877,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-2": [
       {
-        "title": "",
+        "title": "Try to acore 10 points\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 10 очков\nза несколько игр",
@@ -1914,19 +1899,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-3": [
       {
-        "title": "",
+        "title": "Play 5 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 5 раз",
@@ -1936,19 +1921,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-4": [
       {
-        "title": "",
+        "title": "Save 2 people",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Спасите 2 человека",
@@ -1958,19 +1943,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-5": [
       {
-        "title": "",
+        "title": "Try to score 10 points\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 10 очков\nза одну игру",
@@ -1980,19 +1965,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-6": [
       {
-        "title": "",
+        "title": "Collect 2 gifts",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Соберите 2 подарка",
@@ -2002,19 +1987,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-7": [
       {
-        "title": "",
+        "title": "Try to find 2 bonus lines\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Найдите 2 бонусные полоски\nза одну игру",
@@ -2024,19 +2009,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-8": [
       {
-        "title": "",
+        "title": "Try to beat your\nbest score",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Установите новый\nрекорд",
@@ -2046,19 +2031,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-9": [
       {
-        "title": "",
+        "title": "Try to score 20 points\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 20 очков\nза одну игру",
@@ -2068,19 +2053,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-10": [
       {
-        "title": "",
+        "title": "Play 5 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 5 раз",
@@ -2090,19 +2075,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-11": [
       {
-        "title": "",
+        "title": "Save two\nApatosaurus",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Спасите двух\nапатозавров",
@@ -2112,19 +2097,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-12": [
       {
-        "title": "",
+        "title": "Try to earn 5 coins\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 5 монет\nза одну игру",
@@ -2134,19 +2119,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-13": [
       {
-        "title": "",
+        "title": "Try to beat your\nbest score",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Установите новый рекорд",
@@ -2156,19 +2141,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-14": [
       {
-        "title": "",
+        "title": "Try to score 20 points\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 20 очков\nза несколько игр",
@@ -2178,19 +2163,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-15": [
       {
-        "title": "",
+        "title": "Try to earn 40 coins\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 40 монет\nза несколько игр",
@@ -2200,19 +2185,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-16": [
       {
-        "title": "",
+        "title": "Play 10 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 10 раз",
@@ -2222,19 +2207,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-17": [
       {
-        "title": "",
+        "title": "Try to find 2 bonus lines\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Найдите 2 бонусные полоски\nза одну игру",
@@ -2244,19 +2229,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-18": [
       {
-        "title": "",
+        "title": "Try to beat your\nbest score",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Установите новый рекорд",
@@ -2266,19 +2251,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-19": [
       {
-        "title": "",
+        "title": "Collect 3 gifts",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Соберите 3 подарка",
@@ -2288,19 +2273,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-20": [
       {
-        "title": "",
+        "title": "Try to earn 10 coins\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 10 монет\nза одну игру",
@@ -2310,19 +2295,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-21": [
       {
-        "title": "",
+        "title": "Save two Stegosaurus",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Спасите двух\nстегозавров",
@@ -2332,19 +2317,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-22": [
       {
-        "title": "",
+        "title": "Play 2 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 2 раза",
@@ -2354,19 +2339,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-23": [
       {
-        "title": "",
+        "title": "Try to score 20 points\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 20 очков\nза одну игру",
@@ -2376,19 +2361,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-24": [
       {
-        "title": "",
+        "title": "Try to earn 20 coins\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 20 монет\nза несколько игр",
@@ -2398,19 +2383,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-25": [
       {
-        "title": "",
+        "title": "Try to find 3 bonus lines\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Найдите 3 бонусные полоски\nза одну игру",
@@ -2420,19 +2405,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-26": [
       {
-        "title": "",
+        "title": "Try to beat your\nbest score",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Установите новый рекорд",
@@ -2442,19 +2427,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-27": [
       {
-        "title": "",
+        "title": "Play 20 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 20 раз",
@@ -2464,19 +2449,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-28": [
       {
-        "title": "",
+        "title": "Try to earn 15 coins\nin a one game",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 15 монет\nза одну игру",
@@ -2486,19 +2471,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-29": [
       {
-        "title": "",
+        "title": "Try to score 30 points\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Наберите 30 очков\nза несколько игр",
@@ -2508,19 +2493,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-30": [
       {
-        "title": "",
+        "title": "Collect 2 gifts",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Соберите 2 подарка",
@@ -2530,41 +2515,41 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-31": [
       {
-        "title": "",
+        "title": "Save five\nTriceratopses",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
-        "title": "Спасите 5\nтрицерапторов",
+        "title": "Спасите пять\nтрицерапторов",
         "font": "Impact",
         "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-32": [
       {
-        "title": "",
+        "title": "Try to beat your\nbest score",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Установите новый рекорд",
@@ -2574,19 +2559,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-33": [
       {
-        "title": "",
+        "title": "Try to earn 15 coins\nin a few games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Заработайте 30 монет\nа несколько игр",
@@ -2596,19 +2581,19 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "mission-34": [
       {
-        "title": "",
+        "title": "Play 5 games",
         "font": "Impact",
-        "size": 42
+        "size": 32
       },
       {
         "title": "Сыграйте 5 раз",
@@ -2618,12 +2603,12 @@
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 24
+        "size": 32
       }
     ],
     "store-item-title-1-1": [
@@ -2756,572 +2741,1092 @@
       {
         "title": "Tornado",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Tornado",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Tornado",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Tornado",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-5": [
       {
         "title": "Redsoker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Redsoker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Redsoker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Redsoker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-6": [
       {
         "title": "Foggy",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Foggy",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Foggy",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Foggy",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-7": [
       {
         "title": "Gravitsapa",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Gravitsapa",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Gravitsapa",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Gravitsapa",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-8": [
       {
         "title": "Spacewalker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spacewalker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spacewalker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spacewalker",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-9": [
       {
         "title": "Punisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Punisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Punisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Punisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-10": [
       {
         "title": "Violent",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Violent",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Violent",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Violent",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-11": [
       {
         "title": "Rony",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rony",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rony",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rony",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-12": [
       {
         "title": "Grapster",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Grapster",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Grapster",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Grapster",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-13": [
       {
         "title": "Ringo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Ringo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Ringo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Ringo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-14": [
       {
         "title": "Strangers",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Strangers",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Strangers",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Strangers",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-15": [
       {
         "title": "Mistery",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Mistery",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Mistery",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Mistery",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-16": [
       {
         "title": "Diablo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Diablo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Diablo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Diablo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-17": [
       {
         "title": "Spenser",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spenser",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spenser",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Spenser",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-18": [
       {
         "title": "Fisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Fisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Fisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Fisher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-19": [
       {
         "title": "Turtile",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Turtile",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Turtile",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Turtile",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-20": [
       {
         "title": "Musher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Musher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Musher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Musher",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-21": [
       {
         "title": "Bluree",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Bluree",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Bluree",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Bluree",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-22": [
       {
         "title": "Indigo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Indigo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Indigo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Indigo",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-23": [
       {
         "title": "Dexter",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Dexter",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Dexter",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Dexter",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-24": [
       {
         "title": "Sender",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Sender",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Sender",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Sender",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-25": [
       {
         "title": "Zeta",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Zeta",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Zeta",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Zeta",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-26": [
       {
         "title": "Kidner",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Kidner",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Kidner",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Kidner",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-27": [
       {
         "title": "Stiller",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stiller",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stiller",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stiller",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-28": [
       {
         "title": "Stinger",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stinger",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stinger",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stinger",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-29": [
       {
         "title": "Robotics",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Robotics",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Robotics",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Robotics",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-2-1": [
