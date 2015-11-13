@@ -1704,48 +1704,6 @@
         "size": 24
       }
     ],
-    "store-items-count": [
-      {
-        "title": "$1",
-        "font": "Impact",
-        "size": 280,
-        "color": [
-          115,
-          183,
-          195
-        ]
-      },
-      {
-        "title": "$1",
-        "font": "Impact",
-        "size": 280,
-        "color": [
-          115,
-          183,
-          195
-        ]
-      },
-      {
-        "title": "$1",
-        "font": "Impact",
-        "size": 280,
-        "color": [
-          115,
-          183,
-          195
-        ]
-      },
-      {
-        "title": "$1",
-        "font": "Impact",
-        "size": 280,
-        "color": [
-          115,
-          183,
-          195
-        ]
-      }
-    ],
     "store-state-missions": [
       {
         "title": "$1 missions",
@@ -2672,66 +2630,126 @@
       {
         "title": "Rise",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rise",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rise",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Rise",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-2": [
       {
         "title": "Phantom",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Phantom",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Phantom",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Phantom",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-3": [
       {
         "title": "Missyfier",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Missyfier",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Missyfier",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Missyfier",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-1-4": [
@@ -3310,88 +3328,168 @@
       {
         "title": "Human",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Человек",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Humano",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Humain",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-2-2": [
       {
         "title": "Stegosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Стегозавр",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stegosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Stegosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-2-3": [
       {
         "title": "Apatosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Апатозавр",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Apatosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Apatosaurus",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-2-4": [
       {
         "title": "Triceratops",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Трицераптор",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Triceratops",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "Triceratops",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-3-1": [

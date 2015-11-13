@@ -238,6 +238,13 @@
             <filename>../Graphics/ui/holder-background-3.png</filename>
             <filename>../Graphics/ui/holder-background-4.png</filename>
             <filename>../Graphics/ui/store-item-2-2.png</filename>
+            <filename>../Graphics/ui/store-item-1-1.png</filename>
+            <filename>../Graphics/ui/store-item-1-2.png</filename>
+            <filename>../Graphics/ui/store-item-1-3.png</filename>
+            <filename>../Graphics/ui/store-item-2-1.png</filename>
+            <filename>../Graphics/ui/store-item-2-3.png</filename>
+            <filename>../Graphics/ui/store-item-2-4.png</filename>
+            <filename>../Graphics/ui/store-name.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

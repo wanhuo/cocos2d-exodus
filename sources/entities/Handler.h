@@ -40,6 +40,8 @@ class Handler : public Entity
    *
    */
   protected:
+  int count = 0;
+
   Text* text;
 
   /**
@@ -93,6 +95,8 @@ class MissionsHandler : public Handler
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void update(float time);
+
   static int getValue();
 };
 
@@ -131,6 +135,8 @@ class StoreHandler : public Handler
 
   virtual void onEnter();
   virtual void onExit();
+
+  virtual void update(float time);
 
   static int getValue();
 };
@@ -171,6 +177,8 @@ class StoreCharactersHandler : public Handler
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void update(float time);
+
   static int getValue();
 };
 
@@ -209,6 +217,8 @@ class StoreCreaturesHandler : public Handler
 
   virtual void onEnter();
   virtual void onExit();
+
+  virtual void update(float time);
 
   static int getValue();
 };
@@ -249,6 +259,8 @@ class StoreEnvironmentsHandler : public Handler
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void update(float time);
+
   static int getValue();
 };
 
@@ -287,6 +299,8 @@ class StoreCoinsHandler : public Handler
 
   virtual void onEnter();
   virtual void onExit();
+
+  virtual void update(float time);
 
   static int getValue();
 };

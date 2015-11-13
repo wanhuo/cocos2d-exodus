@@ -480,8 +480,7 @@ void Game::onNoadAction()
 {
   if(!this->parameters.ad)
   {
-
-    if(Finish::getInstance()->state->active)
+    if(Director::getInstance()->getScenesStackCount() > 1)
     {
       Finish::getInstance()->onMoveDown();
 

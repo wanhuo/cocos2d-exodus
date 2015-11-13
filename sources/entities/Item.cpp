@@ -36,6 +36,7 @@ Item::Item()
 : BackgroundColor(Color4B(132, 209, 223, 255))
 {
   this->coin = new Entity("counter-coins.png", this);
+  this->nams = new Entity("store-name.png", this);
   this->lock = new Entity("lock.png", this);
 
   this->texts.missions = new Text("store-state-missions", this);
@@ -45,8 +46,13 @@ Item::Item()
 
   this->ignoreAnchorPointForPosition(false);
   this->setAnchorPoint(Vec2(0.5, 0.5));
+  
+  this->coin->setScale(0.75);
+  this->nams->setScale(0.75);
+  this->lock->setScale(0.75);
 
   this->coin->setLocalZOrder(1);
+  this->nams->setLocalZOrder(2);
 
   this->bind(true, false);
 }
@@ -64,8 +70,8 @@ void Item::onParametersCreated()
 {
   if(strlen(this->name) > 0)
   {
-    this->texts.name = new Text(this->name, this);
-    this->texts.name->setLocalZOrder(2);
+    this->texts.name = new Text(this->name, this->nams, true);
+    this->texts.name->setPosition(this->nams->getWidth() / 2, this->nams->getHeight() / 2);
   }
 }
 
@@ -214,6 +220,10 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     else
     {
       Store::getInstance()->list->scrollToPage(3);
+
+      Sound->play("disable");
+
+      return;
     }
     break;
     case STATE_NORMAL:
@@ -226,6 +236,10 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
       else
       {
         Store::getInstance()->list->scrollToPage(3);
+
+        Sound->play("disable");
+
+        return;
       }
     }
     else
@@ -278,18 +292,14 @@ void Item::setState(int state)
 void Item::resetState()
 {
   this->coin->_destroy();
+  this->nams->_destroy();
   this->lock->_destroy();
 
   this->texts.missions->_destroy();
 
-  if(strlen(this->name) > 0)
+  if(this->note)
   {
-    this->texts.name->_destroy();
-  }
-
-  if(this->capacity > 0)
-  {
-    this->texts.count->_destroy();
+    this->note->_destroy();
   }
 }
 
@@ -321,7 +331,6 @@ void Item::updateState()
     else
     {
       this->lock->_create();
-      this->lock->setScale(0.75);
       this->lock->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 20);
 
       this->texts.missions->_create();
@@ -331,16 +340,15 @@ void Item::updateState()
     break;
     case STATE_LOCKED_COINS:
     this->lock->_create();
-    this->lock->setScale(0.75);
     this->lock->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 20);
 
     this->coin->_create();
-    this->coin->setScale(0.75);
     this->coin->setPosition(this->getContentSize().width / 2, 35);
 
     this->texts.coins->data(this->coins);
     break;
     case STATE_NORMAL:
+    case STATE_SELECTED:
     if(this->picture)
     {
       this->picture->_create()->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
@@ -350,10 +358,9 @@ void Item::updateState()
     if(this->capacity > 0)
     {
       this->coin->_create();
-      this->coin->setScale(0.75);
       this->coin->setPosition(this->getContentSize().width / 2, 35);
 
-      this->texts.count->_create();
+      this->note->_create();
 
       this->texts.coins->data(this->coins);
       this->texts.count->data(this->capacity);
@@ -367,7 +374,7 @@ void Item::updateState()
     case STATE_SELECTED:
     if(strlen(this->name) > 0)
     {
-      this->texts.name->_create();
+      this->nams->_create();
     }
     break;
   }
@@ -555,10 +562,7 @@ void ItemCharacter::updateState()
   {
     case STATE_NORMAL:
     case STATE_SELECTED:
-    if(strlen(this->name) > 0)
-    {
-      this->texts.name->setPosition(this->getContentSize().width / 2, 32);
-    }
+    this->nams->setPosition(this->getContentSize().width / 2, 35);
     break;
   }
 }
@@ -589,8 +593,13 @@ ItemCreature::ItemCreature()
 {
   this->setContentSize(Size(300, 300));
 
-  this->texts.count = new Text("store-items-count", this);
-  this->texts.count->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2);
+  this->note = new Entity("notification.png", this->nams);
+
+  this->note->setPosition(this->nams->getWidth() - 10, this->nams->getHeight() - 10);
+  this->note->setScale(1.25);
+
+  this->texts.count = new Text("items-count", this->note, true);
+  this->texts.count->setPosition(this->note->getContentSize().width / 2, this->note->getContentSize().height / 2);
 }
 
 ItemCreature::~ItemCreature()
@@ -604,60 +613,108 @@ ItemCreature::~ItemCreature()
  */
 void ItemCreature::onPurchase()
 {
-  this->runAction(
-    Sequence::create(
-      CallFunc::create([=] ()
-      {
-        Modal::block();
-      }),
-      Repeat::create(
-        Sequence::create(
-          ScaleTo::create(0.05, 0.9),
-          ScaleTo::create(0.05, 1.1),
-          nullptr
+  if(this->capacity > 0)
+  {
+    Item::onPurchase();
+
+    /**
+     *
+     *
+     *
+     */
+    switch(this->i)
+    {
+      case 1:
+      Application->counter->missionUpdateProgress.special_progress_1++;
+      break;
+      case 2:
+      Application->counter->missionUpdateProgress.special_progress_2++;
+      break;
+      case 3:
+      Application->counter->missionUpdateProgress.special_progress_3++;
+      break;
+      case 4:
+      Application->counter->missionUpdateProgress.special_progress_4++;
+      break;
+    }
+
+    Storage::set(string(this->id) + ".count", ++this->capacity);
+
+    this->updateState();
+
+    this->runAction(
+      Sequence::create(
+        EaseSineInOut::create(
+          ScaleTo::create(0.2, 0.9)
         ),
-        12
-      ),
-      ScaleTo::create(0.05, 1.0),
-      CallFunc::create([=] ()
-      {
-        Item::onPurchase();
-
-        /**
-         *
-         *
-         *
-         */
-        switch(this->i)
+        EaseSineInOut::create(
+          ScaleTo::create(0.2, 1.1)
+        ),
+        EaseSineInOut::create(
+          ScaleTo::create(0.2, 1.0)
+        ),
+        nullptr
+      )
+    );
+    Sound->play("instant-purchase");
+  }
+  else
+  {
+    this->runAction(
+      Sequence::create(
+        CallFunc::create([=] ()
         {
-          case 1:
-          Application->counter->missionUpdateProgress.special_progress_1++;
-          break;
-          case 2:
-          Application->counter->missionUpdateProgress.special_progress_2++;
-          break;
-          case 3:
-          Application->counter->missionUpdateProgress.special_progress_3++;
-          break;
-          case 4:
-          Application->counter->missionUpdateProgress.special_progress_4++;
-          break;
-        }
+          Modal::block();
+        }),
+        Repeat::create(
+          Sequence::create(
+            ScaleTo::create(0.05, 0.9),
+            ScaleTo::create(0.05, 1.1),
+            nullptr
+          ),
+          12
+        ),
+        ScaleTo::create(0.05, 1.0),
+        CallFunc::create([=] ()
+        {
+          Item::onPurchase();
 
-        Storage::set(string(this->id) + ".count", ++this->capacity);
+          /**
+           *
+           *
+           *
+           */
+          switch(this->i)
+          {
+            case 1:
+            Application->counter->missionUpdateProgress.special_progress_1++;
+            break;
+            case 2:
+            Application->counter->missionUpdateProgress.special_progress_2++;
+            break;
+            case 3:
+            Application->counter->missionUpdateProgress.special_progress_3++;
+            break;
+            case 4:
+            Application->counter->missionUpdateProgress.special_progress_4++;
+            break;
+          }
 
-        this->updateState();
-      }),
-      DelayTime::create(1.0),
-      CallFunc::create([=] ()
-      {
-        Modal::hide();
-      }),
-      nullptr
-    )
-  );
+          Storage::set(string(this->id) + ".count", ++this->capacity);
 
-  Sound->play("gift");
+          this->updateState();
+        }),
+        DelayTime::create(1.0),
+        CallFunc::create([=] ()
+        {
+          Modal::hide();
+        }),
+        nullptr
+      )
+    );
+
+    Sound->play("gift");
+  }
 
   Analytics::sendEvent("Store", "store.events.onPurchase", "Creature purchased", this->i);
 }
@@ -692,9 +749,11 @@ void ItemCreature::updateState()
   {
     case STATE_NORMAL:
     case STATE_SELECTED:
-    if(strlen(this->name) > 0)
+    this->nams->setPosition(this->getContentSize().width / 2, 86);
+
+    if(this->picture)
     {
-      this->texts.name->setPosition(this->getContentSize().width / 2, 86);
+      this->picture->_create()->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 50);
     }
     break;
   }

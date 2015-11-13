@@ -82,6 +82,7 @@ Store::Store()
     if(strlen(Json_getString(characterJsonData, "picture", "")) > 0)
     {
       item->picture = new Entity(Json_getString(characterJsonData, "picture", ""), item);
+      item->picture->setRotation(random(10, 60));
     }
 
     item->state = Storage::get(item->id);

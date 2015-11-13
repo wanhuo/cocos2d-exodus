@@ -59,7 +59,9 @@ class Item : public BackgroundColor
   Texts texts;
 
   Entity* coin;
+  Entity* nams;
   Entity* lock;
+  Entity* note = nullptr;
 
   /**
    *

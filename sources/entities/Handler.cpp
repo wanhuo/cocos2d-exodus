@@ -35,6 +35,10 @@ Handler::Handler()
 {
   this->text = new Text("items-count", this, true);
   this->text->setPosition(this->getWidth() / 2, this->getHeight() / 2);
+
+  this->setCascadeOpacityEnabled(true);
+
+  this->setScheduleUpdate(true);
 }
 
 Handler::~Handler()
@@ -55,7 +59,8 @@ void Handler::onEnter()
    *
    *
    */
-  this->setPosition(this->getParent()->getContentSize().width - 20, this->getParent()->getContentSize().height - 20);
+  this->setOpacity(0.0);
+  this->setPosition(this->getParent()->getContentSize().width - 20, this->getParent()->getContentSize().height - 20 + 20);
 }
 
 void Handler::onExit()
@@ -70,17 +75,68 @@ void Handler::onExit()
  */
 void Handler::show(int count)
 {
-  this->setScale(0);
+  this->count = count;
 
-  if(count > 0)
+  if(this->getOpacity() < 255)
   {
-    this->runAction(
-      EaseSineInOut::create(
-        ScaleTo::create(0.5, 1.0)
-      )
-    );
+    if(count > 0)
+    {
+      this->setScale(1.0);
 
-    this->text->data(count);
+      this->runAction(
+        Spawn::create(
+          EaseSineInOut::create(
+            FadeIn::create(0.5)
+          ),
+          EaseSineInOut::create(
+            MoveBy::create(0.5, Vec2(0, -20.0))
+          ),
+          nullptr
+        )
+      );
+
+      this->text->data(count);
+    }
+  }
+  else
+  {
+    if(count > 0)
+    {
+      auto d = random(0.0, 1.0);
+
+      this->runAction(
+        DelayTime::create(d + 0.5)
+      );
+
+      this->text->runAction(
+        Spawn::create(
+          Sequence::create(
+            DelayTime::create(d),
+            ScaleTo::create(0.2, 0.0),
+            ScaleTo::create(0.2, 1.0),
+            nullptr
+          ),
+          Sequence::create(
+            DelayTime::create(d),
+            RotateTo::create(0.2, 720 * (probably(50) ? 1 : -1)),
+            CallFunc::create([=] () {
+            this->text->data(this->count);
+            }),
+            RotateTo::create(0.2, 720 * (probably(50) ? 1 : -1)),
+            nullptr
+          ),
+          nullptr
+        )
+      );
+    }
+    else
+    {
+      this->runAction(
+        EaseSineInOut::create(
+          ScaleTo::create(0.2, 0.0)
+        )
+      );
+    }
   }
 }
 
@@ -135,6 +191,22 @@ void MissionsHandler::onEnter()
 void MissionsHandler::onExit()
 {
   Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void MissionsHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
 }
 
 /**
@@ -205,6 +277,22 @@ void StoreHandler::onExit()
  *
  *
  */
+void StoreHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
 int StoreHandler::getValue()
 {
   return StoreCharactersHandler::getValue() + StoreCreaturesHandler::getValue() + StoreEnvironmentsHandler::getValue();
@@ -261,6 +349,22 @@ void StoreCharactersHandler::onEnter()
 void StoreCharactersHandler::onExit()
 {
   Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCharactersHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
 }
 
 /**
@@ -337,6 +441,22 @@ void StoreCreaturesHandler::onEnter()
 void StoreCreaturesHandler::onExit()
 {
   Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCreaturesHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
 }
 
 /**
@@ -424,6 +544,23 @@ void StoreEnvironmentsHandler::onExit()
  *
  *
  */
+void StoreEnvironmentsHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
+}
+
+
+/**
+ *
+ *
+ *
+ */
 int StoreEnvironmentsHandler::getValue()
 {
   int count = 0;
@@ -493,6 +630,22 @@ void StoreCoinsHandler::onEnter()
 void StoreCoinsHandler::onExit()
 {
   Handler::onExit();
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreCoinsHandler::update(float time)
+{
+  if(!this->getNumberOfRunningActions())
+  {
+    if(this->count != getValue())
+    {
+      this->show(getValue());
+    }
+  }
 }
 
 /**
