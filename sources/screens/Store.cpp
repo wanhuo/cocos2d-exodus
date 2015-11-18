@@ -23,6 +23,11 @@
 
 #include "Store.h"
 
+#include "ItemCharacter.h"
+#include "ItemCreature.h"
+#include "ItemEnvironment.h"
+#include "ItemCoins.h"
+
 #include "Game.h"
 #include "Finish.h"
 
@@ -68,52 +73,9 @@ Store::Store()
    *
    *
    */
-  bool selected = false;
   for(auto characterJsonData = charactersJsonData->child; characterJsonData; characterJsonData = characterJsonData->next)
   {
-    auto item = new ItemCharacter;
-
-    item->id = Json_getString(characterJsonData, "id", "");
-    item->name = Json_getString(characterJsonData, "name", "");
-    item->missions = Json_getInt(characterJsonData, "missions", 0);
-    item->coins = Json_getInt(characterJsonData, "coins", 0);
-    item->i = Json_getInt(characterJsonData, "i", 0);
-
-    if(strlen(Json_getString(characterJsonData, "picture", "")) > 0)
-    {
-      item->picture = new Entity(Json_getString(characterJsonData, "picture", ""), item);
-      item->picture->setRotation(random(10, 60));
-    }
-
-    item->state = Storage::get(item->id);
-
-    if(!item->state)
-    {
-      if(item->missions)
-      {
-        item->setState(Item::STATE_LOCKED_MISSIONS);
-      }
-      else if(item->coins)
-      {
-        item->setState(Item::STATE_LOCKED_COINS);
-      }
-    }
-    else
-    {
-      if(item->state == Item::STATE_SELECTED)
-      {
-        selected = true;
-      }
-    }
-
-    this->items.characters.push_back(item);
-
-    item->onParametersCreated();
-  }
-
-  if(!selected)
-  {
-    this->items.characters.at(0)->setState(Item::STATE_SELECTED);
+    this->items.characters.push_back(new ItemCharacter(characterJsonData));
   }
 
   /**
@@ -123,41 +85,7 @@ Store::Store()
    */
   for(auto creatureJsonData = creaturesJsonData->child; creatureJsonData; creatureJsonData = creatureJsonData->next)
   {
-    auto item = new ItemCreature;
-
-    item->id = Json_getString(creatureJsonData, "id", "");
-    item->name = Json_getString(creatureJsonData, "name", "");
-    item->missions = Json_getInt(creatureJsonData, "missions", 0);
-    item->coins = Json_getInt(creatureJsonData, "coins", 0);
-    item->capacity = Json_getInt(creatureJsonData, "capacity", 0);
-    item->i = Json_getInt(creatureJsonData, "i", 0);
-
-    if(strlen(Json_getString(creatureJsonData, "picture", "")) > 0)
-    {
-      item->picture = new Entity(Json_getString(creatureJsonData, "picture", ""), item);
-    }
-
-    item->state = Storage::get(item->id);
-
-    item->capacity = max(item->capacity, Storage::get(string(item->id) + ".count"));
-
-    Storage::set(string(item->id) + ".count", item->capacity);
-
-    if(!item->state)
-    {
-      if(item->missions)
-      {
-        item->setState(Item::STATE_LOCKED_MISSIONS);
-      }
-      else if(item->coins)
-      {
-        item->setState(Item::STATE_LOCKED_COINS);
-      }
-    }
-
-    this->items.creatures.push_back(item);
-
-    item->onParametersCreated();
+    this->items.creatures.push_back(new ItemCreature(creatureJsonData));
   }
 
   /**
@@ -165,48 +93,41 @@ Store::Store()
    *
    *
    */
-  selected = false;
   for(auto environmentJsonData = environmentsJsonData->child; environmentJsonData; environmentJsonData = environmentJsonData->next)
   {
-    auto item = new ItemEnvironment;
-
-    item->id = Json_getString(environmentJsonData, "id", "");
-    item->name = Json_getString(environmentJsonData, "name", "");
-    item->missions = Json_getInt(environmentJsonData, "missions", 0);
-    item->coins = Json_getInt(environmentJsonData, "coins", 0);
-
-    if(strlen(Json_getString(environmentJsonData, "picture", "")) > 0)
-    {
-      item->picture = new Entity(Json_getString(environmentJsonData, "picture", ""), item);
-    }
-
-    item->state = Storage::get(item->id);
-
-    if(!item->state)
-    {
-      if(item->missions)
-      {
-        item->setState(Item::STATE_LOCKED_MISSIONS);
-      }
-      else if(item->coins)
-      {
-        item->setState(Item::STATE_LOCKED_COINS);
-      }
-    }
-    else
-    {
-      if(item->state == Item::STATE_SELECTED)
-      {
-        selected = true;
-      }
-    }
-
-    this->items.environments.push_back(item);
-
-    item->onParametersCreated();
+    this->items.environments.push_back(new ItemEnvironment(environmentJsonData));
   }
 
-  if(!selected)
+  /**
+   *
+   *
+   *
+   */
+  bool someCharacterSelected = false;
+  bool someEnvironmentSelected = false;
+
+  for(auto selectedCharacter : this->items.characters)
+  {
+    if(selectedCharacter->state == Item::STATE_SELECTED)
+    {
+      someCharacterSelected = true;
+    }
+  }
+
+  for(auto selectedEnvironment : this->items.environments)
+  {
+    if(selectedEnvironment->state == Item::STATE_SELECTED)
+    {
+      someEnvironmentSelected = true;
+    }
+  }
+
+  if(!someCharacterSelected)
+  {
+    this->items.characters.at(0)->setState(Item::STATE_SELECTED);
+  }
+
+  if(!someEnvironmentSelected)
   {
     this->items.environments.at(0)->setState(Item::STATE_SELECTED);
   }
@@ -230,12 +151,7 @@ Store::Store()
   this->list->setContentSize(Size(this->width, this->height));
   this->list->setTouchEnabled(true);
   this->list->addEventListener([=] (Ref *pSender, cocos2d::ui::PageView::EventType type) {
-    switch(type)
-    {
-      case cocos2d::ui::PageView::EventType::TURNING:
-      this->onPageChanged();
-      break;
-    }
+  this->onPageChanged();
   });
 
   this->buttons.root.push_back(new Button("store-button-1.png", 1, 3, this, std::bind(&Store::changePage, this, 0), true));
@@ -774,9 +690,9 @@ StoreLayoutCoins::StoreLayoutCoins()
   item2->setState(Item::STATE_NORMAL);
   item3->setState(Item::STATE_NORMAL);
 
-  item1->picture = new Entity("store-coins-background-1.png", item1);
-  item2->picture = new Entity("store-coins-background-2.png", item2);
-  item3->picture = new Entity("store-coins-background-3.png", item3);
+  item1->setPicture(new Entity("store-coins-background-1.png", item1));
+  item2->setPicture(new Entity("store-coins-background-2.png", item2));
+  item3->setPicture(new Entity("store-coins-background-3.png", item3));
 
   this->items.push_back(item1);
   this->items.push_back(item2);

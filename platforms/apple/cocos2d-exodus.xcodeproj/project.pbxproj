@@ -53,6 +53,14 @@
 		784CA6A91A1A49FF001145DC /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6A81A1A49FF001145DC /* GameController.framework */; };
 		784CA6C11A1A5117001145DC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6C01A1A5117001145DC /* OpenGLES.framework */; };
 		784CA6C31A1A5120001145DC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784CA6C21A1A5120001145DC /* CoreMotion.framework */; };
+		785348B81BF9C11200556C07 /* ItemCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B01BF9C11200556C07 /* ItemCharacter.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348B91BF9C11200556C07 /* ItemCharacter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B01BF9C11200556C07 /* ItemCharacter.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BA1BF9C11200556C07 /* ItemCoins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B21BF9C11200556C07 /* ItemCoins.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BB1BF9C11200556C07 /* ItemCoins.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B21BF9C11200556C07 /* ItemCoins.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BC1BF9C11200556C07 /* ItemCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B41BF9C11200556C07 /* ItemCreature.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BD1BF9C11200556C07 /* ItemCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B41BF9C11200556C07 /* ItemCreature.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BE1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B61BF9C11200556C07 /* ItemEnvironment.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348BF1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B61BF9C11200556C07 /* ItemEnvironment.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586B1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586C1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586F1BD4F03B00B71D89 /* Barror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C586D1BD4F03B00B71D89 /* Barror.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -319,6 +327,14 @@
 		784CA6A81A1A49FF001145DC /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		784CA6C01A1A5117001145DC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		784CA6C21A1A5120001145DC /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		785348B01BF9C11200556C07 /* ItemCharacter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCharacter.cpp; sourceTree = "<group>"; };
+		785348B11BF9C11200556C07 /* ItemCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCharacter.h; sourceTree = "<group>"; };
+		785348B21BF9C11200556C07 /* ItemCoins.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCoins.cpp; sourceTree = "<group>"; };
+		785348B31BF9C11200556C07 /* ItemCoins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCoins.h; sourceTree = "<group>"; };
+		785348B41BF9C11200556C07 /* ItemCreature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemCreature.cpp; sourceTree = "<group>"; };
+		785348B51BF9C11200556C07 /* ItemCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCreature.h; sourceTree = "<group>"; };
+		785348B61BF9C11200556C07 /* ItemEnvironment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemEnvironment.cpp; sourceTree = "<group>"; };
+		785348B71BF9C11200556C07 /* ItemEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEnvironment.h; sourceTree = "<group>"; };
 		785C58681BD4C71900B71D89 /* CharacterTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTypes.h; sourceTree = "<group>"; };
 		785C58691BD4CCCB00B71D89 /* Pointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pointer.cpp; sourceTree = "<group>"; };
 		785C586A1BD4CCCB00B71D89 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
@@ -838,6 +854,14 @@
 			children = (
 				7894FA381BEFE6E100A69ED6 /* Item.cpp */,
 				7894FA391BEFE6E100A69ED6 /* Item.h */,
+				785348B01BF9C11200556C07 /* ItemCharacter.cpp */,
+				785348B11BF9C11200556C07 /* ItemCharacter.h */,
+				785348B21BF9C11200556C07 /* ItemCoins.cpp */,
+				785348B31BF9C11200556C07 /* ItemCoins.h */,
+				785348B41BF9C11200556C07 /* ItemCreature.cpp */,
+				785348B51BF9C11200556C07 /* ItemCreature.h */,
+				785348B61BF9C11200556C07 /* ItemEnvironment.cpp */,
+				785348B71BF9C11200556C07 /* ItemEnvironment.h */,
 				7894FA2E1BEDEF2400A69ED6 /* Mission.cpp */,
 				7894FA2F1BEDEF2400A69ED6 /* Mission.h */,
 				78FEA7341BEA8E5000D253A3 /* Crown.cpp */,
@@ -1439,14 +1463,18 @@
 				785C58701BD4F03B00B71D89 /* Barror.cpp in Sources */,
 				7824149A1BCC8FC9007D5847 /* Finish.cpp in Sources */,
 				78FEA7311BEA47D200D253A3 /* Coin.cpp in Sources */,
+				785348BB1BF9C11200556C07 /* ItemCoins.cpp in Sources */,
 				789908361BCE3D4B0014A8F7 /* Human.cpp in Sources */,
 				785C587A1BD5342A00B71D89 /* Explanation.cpp in Sources */,
+				785348BD1BF9C11200556C07 /* ItemCreature.cpp in Sources */,
 				7894C0341BC9282F00363FC9 /* Game.cpp in Sources */,
 				78FEA7371BEA8E5000D253A3 /* Crown.cpp in Sources */,
 				789908321BCE3D4B0014A8F7 /* Creature.cpp in Sources */,
 				7894C01B1BC9245800363FC9 /* Events.cpp in Sources */,
 				789908381BCE3D4B0014A8F7 /* VideoButton.cpp in Sources */,
+				785348BF1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */,
 				78AEAC1B1BD142EC00FA8783 /* Decorations.cpp in Sources */,
+				785348B91BF9C11200556C07 /* ItemCharacter.cpp in Sources */,
 				78E5CC091BCA6A5200CB036E /* Counter.cpp in Sources */,
 				7894FA4D1BF1651200A69ED6 /* Stegosaurus.cpp in Sources */,
 				78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
@@ -1486,6 +1514,7 @@
 				7824149D1BCC9153007D5847 /* Store.cpp in Sources */,
 				789908431BCE80310014A8F7 /* Environment.cpp in Sources */,
 				7899082D1BCE3D4B0014A8F7 /* AnimatedButton.cpp in Sources */,
+				785348BC1BF9C11200556C07 /* ItemCreature.cpp in Sources */,
 				782C44961BD2495E00A7DD46 /* NSInternal.mm in Sources */,
 				7847CDF91AB184820014E3F3 /* RootViewController.mm in Sources */,
 				785C58791BD5342A00B71D89 /* Explanation.cpp in Sources */,
@@ -1513,6 +1542,7 @@
 				78809FAE1B11D3B4002397E7 /* HZAdMobBannerSupport.m in Sources */,
 				789908331BCE3D4B0014A8F7 /* GiftButton.cpp in Sources */,
 				78FEA73B1BEB8FF000D253A3 /* Confetti.cpp in Sources */,
+				785348B81BF9C11200556C07 /* ItemCharacter.cpp in Sources */,
 				78EC8D6D1BBAF0B900CC5785 /* NSModal.mm in Sources */,
 				78D5869B1BD7B3CE0068FCA6 /* Missile.cpp in Sources */,
 				789908351BCE3D4B0014A8F7 /* Human.cpp in Sources */,
@@ -1526,6 +1556,8 @@
 				78809FA71B11D36B002397E7 /* NSHeyzap.mm in Sources */,
 				78FEA7361BEA8E5000D253A3 /* Crown.cpp in Sources */,
 				7894FA301BEDEF2400A69ED6 /* Mission.cpp in Sources */,
+				785348BA1BF9C11200556C07 /* ItemCoins.cpp in Sources */,
+				785348BE1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */,
 				7847CDFA1AB184820014E3F3 /* NSServices.mm in Sources */,
 				7847CDFB1AB184820014E3F3 /* NSSocial.mm in Sources */,
 				789908311BCE3D4B0014A8F7 /* Creature.cpp in Sources */,

@@ -1537,7 +1537,7 @@
     ],
     "store-action-1": [
       {
-        "title": "Unlock all the characters\nby collecting coins and complete the mission",
+        "title": "Unlock all the characters\nby collecting coins and complete a missions",
         "font": "Impact",
         "size": 32
       },
@@ -1887,7 +1887,7 @@
     ],
     "mission-2": [
       {
-        "title": "Try to acore 10 points\nin a few games",
+        "title": "Try to score 10 points\nin a few games",
         "font": "Impact",
         "size": 32
       },

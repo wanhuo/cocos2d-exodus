@@ -21,93 +21,32 @@
  *
  */
 
-#ifndef _ITEM_H_
-#define _ITEM_H_
+#ifndef _ITEMCOINS_H_
+#define _ITEMCOINS_H_
 
-#include "Background.h"
-#include "BackgroundColor.h"
-#include "Entity.h"
-#include "Text.h"
+#include "Item.h"
 
 /**
  *
  *
  *
  */
-class Item : public BackgroundColor
+class ItemCoins : public Item
 {
   /**
    *
    *
    *
    */
-  private:
-  struct Texts
-  {
-    Text* coins;
-    Text* missions;
-    Text* count;
-    Text* name;
-  };
-
-  /**
-   *
-   *
-   *
-   */
-  protected:
-  Texts texts;
-
-  Entity* coin;
-  Entity* nams;
-  Entity* lock;
-  Entity* note = nullptr;
-  Entity* picture = nullptr;
-
-  Item(Json* document);
-  Item();
- ~Item();
-
-  /**
-   *
-   *
-   *
-   */
   public:
-  static const int STATE_LOCKED = 0;
-  static const int STATE_LOCKED_MISSIONS = 1;
-  static const int STATE_LOCKED_COINS = 2;
-  static const int STATE_NORMAL = 3;
-  static const int STATE_SELECTED = 4;
-
-  int state;
-  int missions;
-  int coins;
-  int capacity;
-  int i;
-
-  const char* id;
-  const char* name = "";
-
-  virtual void onEnter();
-  virtual void onExit();
-
-  virtual void onPurchase();
-  virtual void onSelect();
+  ItemCoins();
+ ~ItemCoins();
 
   virtual void onTouchStart(cocos2d::Touch* touch, Event* e);
   virtual void onTouchFinish(cocos2d::Touch* touch, Event* e);
   virtual void onTouchCancelled(cocos2d::Touch* touch, Event* e);
 
   virtual void onTouch(cocos2d::Touch* touch, Event* e);
-
-  virtual void setPicture(Entity* picture);
-
-  virtual void setState(int state);
-
-  virtual void saveState();
-  virtual void resetState();
-  virtual void updateState();
 };
 
 #endif

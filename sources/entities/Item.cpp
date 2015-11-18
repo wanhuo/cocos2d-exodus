@@ -32,6 +32,43 @@
  *
  *
  */
+Item::Item(Json* document)
+: Item()
+{
+  this->id = Json_getString(document, "id", "");
+  this->name = Json_getString(document, "name", "");
+  this->missions = Json_getInt(document, "missions", 0);
+  this->coins = Json_getInt(document, "coins", 0);
+  this->i = Json_getInt(document, "i", 0);
+  this->capacity = max(Json_getInt(document, "capacity", 0), Storage::get(string(this->id) + ".count"));
+
+  if(strlen(Json_getString(document, "picture", "")) > 0)
+  {
+    this->picture = new Entity(Json_getString(document, "picture", ""), this);
+  }
+  if(strlen(this->name) > 0)
+  {
+    this->texts.name = new Text(this->name, this->nams, true);
+    this->texts.name->setPosition(this->nams->getWidth() / 2, this->nams->getHeight() / 2);
+  }
+
+  this->state = Storage::get(this->id);
+
+  if(!this->state)
+  {
+    if(this->missions)
+    {
+      this->setState(Item::STATE_LOCKED_MISSIONS);
+    }
+    else if(this->coins)
+    {
+      this->setState(Item::STATE_LOCKED_COINS);
+    }
+  }
+
+  this->saveState();
+}
+
 Item::Item()
 : BackgroundColor(Color4B(132, 209, 223, 255))
 {
@@ -66,20 +103,6 @@ Item::~Item()
  *
  *
  */
-void Item::onParametersCreated()
-{
-  if(strlen(this->name) > 0)
-  {
-    this->texts.name = new Text(this->name, this->nams, true);
-    this->texts.name->setPosition(this->nams->getWidth() / 2, this->nams->getHeight() / 2);
-  }
-}
-
-/**
- *
- *
- *
- */
 void Item::onEnter()
 {
   BackgroundColor::onEnter();
@@ -91,7 +114,6 @@ void Item::onEnter()
    */
   this->Node::state->create = true;
 
-  //this->state = Storage::get(this->id);
   this->updateState();
 }
 
@@ -268,6 +290,16 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
  *
  *
  */
+void Item::setPicture(Entity* picture)
+{
+  this->picture = picture;
+}
+
+/**
+ *
+ *
+ *
+ */
 void Item::setState(int state)
 {
   this->state = state;
@@ -281,7 +313,7 @@ void Item::setState(int state)
     break;
   }
 
-  Storage::set(this->id, this->state);
+  this->saveState();
 }
 
 /**
@@ -289,6 +321,12 @@ void Item::setState(int state)
  *
  *
  */
+void Item::saveState()
+{
+  Storage::set(this->id, this->state);
+  Storage::set(string(this->id) + ".count", this->capacity);
+}
+
 void Item::resetState()
 {
   this->coin->_destroy();
@@ -303,11 +341,6 @@ void Item::resetState()
   }
 }
 
-/**
- *
- *
- *
- */
 void Item::updateState()
 {
   this->resetState();
@@ -388,527 +421,4 @@ void Item::updateState()
     this->setColor(Color3B(237, 115, 113));
     break;
   }
-}
-
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-ItemCharacter::ItemCharacter()
-{
-  this->setContentSize(Size(300, 200));
-}
-
-ItemCharacter::~ItemCharacter()
-{
-}
-
-/**
- *
- *
- *
- */
-void ItemCharacter::onPurchase()
-{
-  this->runAction(
-    Sequence::create(
-      CallFunc::create([=] ()
-      {
-        Modal::block();
-      }),
-      Repeat::create(
-        Sequence::create(
-          ScaleTo::create(0.05, 0.9),
-          ScaleTo::create(0.05, 1.1),
-          nullptr
-        ),
-        12
-      ),
-      ScaleTo::create(0.05, 1.0),
-      CallFunc::create([=] ()
-      {
-        Item::onPurchase();
-
-        /**
-         *
-         *
-         *
-         */
-        this->setState(STATE_SELECTED);
-      }),
-      CallFunc::create([=] ()
-      {
-        static_cast<StoreLayoutCharacters*>(Store::getInstance()->list->getPage(0))->updateTextData();
-      }),
-      DelayTime::create(1.0),
-      CallFunc::create([=] ()
-      {
-        Modal::hide();
-      }),
-      nullptr
-    )
-  );
-
-  int count = 1;
-
-  for(auto item : Store::getInstance()->items.characters)
-  {
-    switch(item->state)
-    {
-      case Item::STATE_SELECTED:
-      case Item::STATE_NORMAL:
-      count++;
-      break;
-    }
-  }
-
-  /**
-   *
-   * @Services
-   * Update achievements.
-   *
-   */
-  if(count >= 5)
-  {
-    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_5);
-  }
-  if(count >= 10)
-  {
-    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_10);
-  }
-  if(count >= 15)
-  {
-    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_15);
-  }
-  if(count >= 20)
-  {
-    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_20);
-  }
-  if(count >= 25)
-  {
-    Services::achievements->update(SERVICES_ACHIEVEMENTS_UNLOCK_CHARACTERS_25);
-  }
-
-  Sound->play("gift");
-
-  Analytics::sendEvent("Store", "store.events.onPurchase", "Character purchased", this->i);
-}
-
-void ItemCharacter::onSelect()
-{
-  for(auto item : Store::getInstance()->items.characters)
-  {
-    if(item->state == STATE_SELECTED)
-    {
-      if(this->i != item->i)
-      {
-        item->setState(STATE_NORMAL);
-      }
-    }
-  }
-
-  this->runAction(
-    Sequence::create(
-      EaseSineInOut::create(
-        ScaleTo::create(0.2, 0.9)
-      ),
-      EaseSineInOut::create(
-        ScaleTo::create(0.2, 1.1)
-      ),
-      EaseSineInOut::create(
-        ScaleTo::create(0.2, 1.0)
-      ),
-      nullptr
-    )
-  );
-
-  Sound->play("touch");
-
-  Storage::set("items.character.current", this->i - 1);
-
-  Application->character->updateSkin();
-
-  Analytics::sendEvent("Store", "store.events.onSelect", "Character selected", this->i);
-}
-
-/**
- *
- *
- *
- */
-void ItemCharacter::updateState()
-{
-  Item::updateState();
-
-  switch(this->state)
-  {
-    case STATE_NORMAL:
-    case STATE_SELECTED:
-    this->nams->setPosition(this->getContentSize().width / 2, 35);
-    break;
-  }
-}
-
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-ItemCreature::ItemCreature()
-{
-  this->setContentSize(Size(300, 300));
-
-  this->note = new Entity("notification.png", this->nams);
-
-  this->note->setPosition(this->nams->getWidth() - 10, this->nams->getHeight() - 10);
-  this->note->setScale(1.25);
-
-  this->texts.count = new Text("items-count", this->note, true);
-  this->texts.count->setPosition(this->note->getContentSize().width / 2, this->note->getContentSize().height / 2);
-}
-
-ItemCreature::~ItemCreature()
-{
-}
-
-/**
- *
- *
- *
- */
-void ItemCreature::onPurchase()
-{
-  if(this->capacity > 0)
-  {
-    Item::onPurchase();
-
-    /**
-     *
-     *
-     *
-     */
-    switch(this->i)
-    {
-      case 1:
-      Application->counter->missionUpdateProgress.special_progress_1++;
-      break;
-      case 2:
-      Application->counter->missionUpdateProgress.special_progress_2++;
-      break;
-      case 3:
-      Application->counter->missionUpdateProgress.special_progress_3++;
-      break;
-      case 4:
-      Application->counter->missionUpdateProgress.special_progress_4++;
-      break;
-    }
-
-    Storage::set(string(this->id) + ".count", ++this->capacity);
-
-    this->updateState();
-
-    this->runAction(
-      Sequence::create(
-        EaseSineInOut::create(
-          ScaleTo::create(0.2, 0.9)
-        ),
-        EaseSineInOut::create(
-          ScaleTo::create(0.2, 1.1)
-        ),
-        EaseSineInOut::create(
-          ScaleTo::create(0.2, 1.0)
-        ),
-        nullptr
-      )
-    );
-    Sound->play("instant-purchase");
-  }
-  else
-  {
-    this->runAction(
-      Sequence::create(
-        CallFunc::create([=] ()
-        {
-          Modal::block();
-        }),
-        Repeat::create(
-          Sequence::create(
-            ScaleTo::create(0.05, 0.9),
-            ScaleTo::create(0.05, 1.1),
-            nullptr
-          ),
-          12
-        ),
-        ScaleTo::create(0.05, 1.0),
-        CallFunc::create([=] ()
-        {
-          Item::onPurchase();
-
-          /**
-           *
-           *
-           *
-           */
-          switch(this->i)
-          {
-            case 1:
-            Application->counter->missionUpdateProgress.special_progress_1++;
-            break;
-            case 2:
-            Application->counter->missionUpdateProgress.special_progress_2++;
-            break;
-            case 3:
-            Application->counter->missionUpdateProgress.special_progress_3++;
-            break;
-            case 4:
-            Application->counter->missionUpdateProgress.special_progress_4++;
-            break;
-          }
-
-          Storage::set(string(this->id) + ".count", ++this->capacity);
-
-          this->updateState();
-        }),
-        DelayTime::create(1.0),
-        CallFunc::create([=] ()
-        {
-          Modal::hide();
-        }),
-        nullptr
-      )
-    );
-
-    Sound->play("gift");
-  }
-
-  Analytics::sendEvent("Store", "store.events.onPurchase", "Creature purchased", this->i);
-}
-
-/**
- *
- *
- *
- */
-void ItemCreature::updateState()
-{
-  Item::updateState();
-
-  /**
-   *
-   *
-   *
-   */
-  switch(this->state)
-  {
-    case STATE_LOCKED_COINS:
-    if(this->capacity > 0)
-    {
-      this->setState(STATE_NORMAL);
-    }
-    break;
-    case STATE_NORMAL:
-    break;
-  }
-
-  switch(this->state)
-  {
-    case STATE_NORMAL:
-    case STATE_SELECTED:
-    this->nams->setPosition(this->getContentSize().width / 2, 86);
-
-    if(this->picture)
-    {
-      this->picture->_create()->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 50);
-    }
-    break;
-  }
-}
-
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-ItemEnvironment::ItemEnvironment()
-{
-  this->setContentSize(Size(620, 200));
-}
-
-ItemEnvironment::~ItemEnvironment()
-{
-}
-
-/**
- *
- *
- *
- */
-void ItemEnvironment::onPurchase()
-{
-  Item::onPurchase();
-
-  Analytics::sendEvent("Store", "store.events.onPurchase", "Environment purchased", this->i);
-}
-
-void ItemEnvironment::onSelect()
-{
-  Item::onSelect();
-
-  Analytics::sendEvent("Store", "store.events.onPurchase", "Environment selected", this->i);
-}
-
-/**
- * Tooflya Inc. Development
- *
- * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2015 by Igor Mats
- * http://www.tooflya.com/development/
- *
- *
- * License: Tooflya Inc. Software License v1.
- *
- * Licensee may not use this software for commercial purposes. For the purpose of this license,
- * commercial purposes means that a 3rd party has to pay in order to access Software or that
- * the Website that runs Software is behind a paywall. In consideration of the License granted
- * under clause 2, Licensee shall pay Licensor a fee, via Credit-Card, PayPal or any other
- * mean which Licensor may deem adequate. Failure to perform payment shall construe as material
- * breach of this Agreement. This software is provided under an AS-IS basis and without any support,
- * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
- * support or fixes to any bug, failure, mis-performance or other defect in The Software.
- *
- * @cocos2d
- *
- */
-ItemCoins::ItemCoins()
-{
-  this->setContentSize(Size(620, 200));
-}
-
-ItemCoins::~ItemCoins()
-{
-}
-
-/**
- *
- *
- *
- */
-void ItemCoins::onTouchStart(cocos2d::Touch* touch, Event* e)
-{
-  Node::onTouchStart(touch, e);
-
-  /**
-   *
-   *
-   *
-   */
-  auto action = EaseSineInOut::create(
-    ScaleTo::create(0.2, 0.95)
-  );
-  action->setTag(1);
-
-  this->runAction(action);
-}
-
-void ItemCoins::onTouchFinish(cocos2d::Touch* touch, Event* e)
-{
-  this->stopActionByTag(1);
-  this->setScale(1);
-
-  Node::onTouchFinish(touch, e);
-}
-
-void ItemCoins::onTouchCancelled(cocos2d::Touch* touch, Event* e)
-{
-  Node::onTouchCancelled(touch, e);
-
-  this->stopActionByTag(1);
-  this->setScale(1.0);
-}
-
-/**
- *
- *
- *
- */
-void ItemCoins::onTouch(cocos2d::Touch* touch, Event* e)
-{
-  Purchase::purchaseItem(this->id, [=] (bool status) {
-    if(status)
-    {
-      int particles = 0;
-      int coins = 0;
-
-      switch(this->i)
-      {
-        case 1:
-        particles = 20;
-        coins = 200;
-        break;
-        case 2:
-        particles = 50;
-        coins = 500;
-        break;
-        case 3:
-        particles = 100;
-        coins = 1000;
-        break;
-      }
-
-      Game::getInstance()->onNoadAction();
-      Store::getInstance()->createCoins(particles, coins);
-    }
-  });
 }
