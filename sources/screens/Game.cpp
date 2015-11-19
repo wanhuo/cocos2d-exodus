@@ -611,6 +611,12 @@ void Game::onAnimation()
       Sequence::create(
         MoveTo::create(0.5, Vec2(0, 0)),
         CallFunc::create([=] () { this->changeState(STATE_PREPARE); }),
+        CallFunc::create([=] () {     
+        if(true)
+        {
+          Tutorial::getInstance()->show();
+        }
+        }),
         nullptr
       ),
       nullptr

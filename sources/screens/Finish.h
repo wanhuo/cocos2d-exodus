@@ -96,8 +96,6 @@ class Finish : public Coins
 
   Spine* decoration;
 
-  Pool* confetties;
-
   /**
    *
    *

@@ -131,7 +131,7 @@ void Missions::onEnter()
 
   for(auto mission : this->missions)
   {
-    mission->setPositionY(this->parameters.padding + (this->missions.size() - i) * 220);
+    mission->setPositionY(200 + (this->missions.size() - i) * 220);
 
     i++;
   }
@@ -202,7 +202,7 @@ void Missions::updateListHeight()
 
   int size = this->missions.size() - 1;
 
-  this->size = this->parameters.padding * 2 + size * 220;
+  this->size = 200 * 2 + size * 220;
 
   this->scroll->setInnerContainerSize(
     Size(

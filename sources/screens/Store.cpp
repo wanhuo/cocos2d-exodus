@@ -210,9 +210,6 @@ void Store::onEnter()
    *
    *
    */
-  this->list->setCurPageIndex(0);
-  this->onPageChanged();
-
   Events::onScreenChanged("Store");
 }
 

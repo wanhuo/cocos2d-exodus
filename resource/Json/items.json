@@ -26,21 +26,21 @@
 			"name": "store-item-title-1-4",
 			"coins": 100,
 			"i": 4,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-4.png"
 		},
 		{
 			"id": "items.characters.5",
 			"name": "store-item-title-1-5",
 			"coins": 100,
 			"i": 5,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-5.png"
 		},
 		{
 			"id": "items.characters.6",
 			"name": "store-item-title-1-6",
 			"coins": 100,
 			"i": 6,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-6.png"
 		},
 		{
 			"id": "items.characters.7",
@@ -48,7 +48,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 7,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-7.png"
 		},
 		{
 			"id": "items.characters.8",
@@ -56,7 +56,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 8,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-8.png"
 		},
 		{
 			"id": "items.characters.9",
@@ -64,7 +64,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 9,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-9.png"
 		},
 		{
 			"id": "items.characters.10",
@@ -72,7 +72,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 10,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-10.png"
 		},
 		{
 			"id": "items.characters.11",
@@ -80,7 +80,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 11,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-11.png"
 		},
 		{
 			"id": "items.characters.12",
@@ -88,7 +88,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 12,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-12.png"
 		},
 		{
 			"id": "items.characters.13",
@@ -96,7 +96,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 13,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-13.png"
 		},
 		{
 			"id": "items.characters.14",
@@ -104,7 +104,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 14,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-14.png"
 		},
 		{
 			"id": "items.characters.15",
@@ -112,7 +112,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 15,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-15.png"
 		},
 		{
 			"id": "items.characters.16",
@@ -120,7 +120,7 @@
 			"missions": 10,
 			"coins": 100,
 			"i": 16,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-16.png"
 		},
 		{
 			"id": "items.characters.17",
@@ -128,7 +128,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 17,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-17.png"
 		},
 		{
 			"id": "items.characters.18",
@@ -136,7 +136,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 18,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-18.png"
 		},
 		{
 			"id": "items.characters.19",
@@ -144,7 +144,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 19,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-19.png"
 		},
 		{
 			"id": "items.characters.20",
@@ -152,7 +152,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 20,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-20.png"
 		},
 		{
 			"id": "items.characters.21",
@@ -160,7 +160,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 21,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-21.png"
 		},
 		{
 			"id": "items.characters.22",
@@ -168,7 +168,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 22,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-22.png"
 		},
 		{
 			"id": "items.characters.23",
@@ -176,7 +176,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 23,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-23.png"
 		},
 		{
 			"id": "items.characters.24",
@@ -184,7 +184,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 24,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-24.png"
 		},
 		{
 			"id": "items.characters.25",
@@ -192,7 +192,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 25,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-25.png"
 		},
 		{
 			"id": "items.characters.26",
@@ -200,7 +200,7 @@
 			"missions": 20,
 			"coins": 100,
 			"i": 26,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-26.png"
 		},
 		{
 			"id": "items.characters.27",
@@ -208,7 +208,7 @@
 			"missions": 30,
 			"coins": 100,
 			"i": 27,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-27.png"
 		},
 		{
 			"id": "items.characters.28",
@@ -216,7 +216,7 @@
 			"missions": 30,
 			"coins": 100,
 			"i": 28,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-28.png"
 		},
 		{
 			"id": "items.characters.29",
@@ -224,7 +224,7 @@
 			"missions": 30,
 			"coins": 100,
 			"i": 29,
-			"picture": "store-item-2-2.png"
+			"picture": "store-item-1-29.png"
 		}
 	],
 	"creatures": [

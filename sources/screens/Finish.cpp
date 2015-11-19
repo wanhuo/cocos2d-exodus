@@ -61,8 +61,6 @@ Finish::Finish()
 
   this->counter = new FinishCounter;
 
-  this->confetties = new Pool(new Confetti, 200, this);
-
   this->buttons.play = new Button("finish-play-button.png", 1, 2, this->holder, std::bind(&Finish::hide, this));
   this->buttons.like = new Button("like-button.png", 1, 2, this->holder, std::bind(&Game::onLike, Application));
   this->buttons.rate = new Button("rate-button.png", 1, 2, this->holder, std::bind(&Game::onRate, Application));
@@ -127,8 +125,6 @@ void Finish::onExit()
   this->buttons.video->_destroy();
   this->buttons.gift->_destroy();
   this->buttons.character->_destroy();
-
-  this->confetties->clear();
 }
 
 /**
@@ -227,11 +223,6 @@ void Finish::onUnlock()
     this->onMoveDown();
   }
 
-  for(int i = 0; i < 200; i++)
-  {
-    this->confetties->_create();
-  }
-
   this->splash->runAction(
     Sequence::create(
       FadeIn::create(0.2),
@@ -260,6 +251,8 @@ void Finish::onUnlock()
       nullptr
     )
   );
+
+  this->removeCoins(100);
 }
 
 /**

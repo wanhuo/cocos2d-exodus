@@ -50,10 +50,6 @@ class Missions : public Coins
   private:
   static Missions* instance;
 
-  struct Parameters {
-    float padding = 200;
-  };
-
   struct Texts {
     Text* title1;
     Text* title2;
@@ -85,8 +81,6 @@ class Missions : public Coins
 
   Missions();
  ~Missions();
-
-  Parameters parameters;
 
   BackgroundScroll* scroll;
 

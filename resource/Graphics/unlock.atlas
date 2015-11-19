@@ -1,33 +1,33 @@
 
 unlock.png
-size: 874,255
-format: RGBA8888
+size: 674,255
+format: RGBA4444
 filter: Linear,Linear
 repeat: none
-bg
+background
   rotate: false
   xy: 2, 2
   size: 250, 251
   orig: 250, 251
   offset: 0, 0
   index: -1
-click-bg
+coins
   rotate: false
-  xy: 254, 3
-  size: 250, 250
-  orig: 250, 250
+  xy: 492, 56
+  size: 180, 67
+  orig: 180, 67
   offset: 0, 0
   index: -1
-rocket
-  rotate: true
-  xy: 744, 85
+icon
+  rotate: false
+  xy: 492, 125
   size: 168, 128
   orig: 168, 128
   offset: 0, 0
   index: -1
 star
   rotate: false
-  xy: 506, 17
+  xy: 254, 17
   size: 236, 236
   orig: 236, 236
   offset: 0, 0

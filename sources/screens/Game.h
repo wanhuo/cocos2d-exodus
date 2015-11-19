@@ -54,7 +54,6 @@
 #include "Handler.h"
 #include "Water.h"
 #include "Coin.h"
-#include "Confetti.h"
 
 #include "Environment.h"
 

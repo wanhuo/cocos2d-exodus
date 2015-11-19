@@ -41,7 +41,7 @@ Mission::Mission(int id)
   int size = MissionsFactory::getInstance()->getMissions().size() - 1;
 
   float x = Application->center.x;
-  float y = Missions::getInstance()->parameters.padding + (size - this->id) * 220;
+  float y = 200 + (size - this->id) * 220;
 
   this->ignoreAnchorPointForPosition(false);
   this->setAnchorPoint(Vec2(0.5, 0.5));
