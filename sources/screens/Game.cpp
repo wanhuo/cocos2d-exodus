@@ -255,6 +255,7 @@ void Game::onEnter()
    *
    */
   this->updateSoundState();
+  this->updateState();
 
   /**
    *
@@ -612,7 +613,7 @@ void Game::onAnimation()
         MoveTo::create(0.5, Vec2(0, 0)),
         CallFunc::create([=] () { this->changeState(STATE_PREPARE); }),
         CallFunc::create([=] () {     
-        if(true)
+        if(true)//!this->parameters.tutorial)
         {
           Tutorial::getInstance()->show();
         }
@@ -707,6 +708,11 @@ void Game::onStart()
 
   this->hand->_create();
   this->hand->animate(0.2);
+  this->hand->runAction(
+    EaseSineInOut::create(
+      FadeIn::create(0.2)
+    )
+  );
 
   this->w->runAction(
     DelayTime::create(3.0)
@@ -867,6 +873,36 @@ void Game::updateSoundState()
     Sound->changeState(true);
 
     this->buttons.sound->setCurrentFrameIndex(2);
+  }
+}
+
+/**
+ *
+ *
+ *
+ */
+void Game::updateState()
+{
+  switch(this->state)
+  {
+    case STATE_START:
+    if(this->parameters.creatures)
+    {
+      this->state = STATE_PREPARE;
+      this->character->state = Character::STATE_PREPARE;
+
+      this->creatures->create();
+
+      this->hand->runAction(
+        Sequence::create(
+          EaseSineInOut::create(
+            FadeOut::create(0.2)
+          ),
+          nullptr
+        )
+      );
+    }
+    break;
   }
 }
 

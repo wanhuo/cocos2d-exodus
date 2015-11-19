@@ -68,7 +68,7 @@ Tutorial::Tutorial()
 
   this->holder->setPosition(this->center.x, this->height);
 
-  this->texts.title = new Text("missions-title-1", this->holder, true);
+  this->texts.title = new Text("tutorial-title-1", this->holder, true);
 
   this->texts.title->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
 

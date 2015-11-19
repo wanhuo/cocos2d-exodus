@@ -138,13 +138,14 @@ void Item::onExit()
  */
 void Item::onPurchase()
 {
-  Store::getInstance()->removeCoins(this->coins);
-
   Application->parameters.creatures = true;
+
+  Store::getInstance()->removeCoins(this->coins);
 }
 
 void Item::onSelect()
 {
+  Application->parameters.creatures = true;
 }
 
 /**

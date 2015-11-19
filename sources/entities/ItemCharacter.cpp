@@ -35,7 +35,7 @@
 ItemCharacter::ItemCharacter(Json* document)
 : Item(document)
 {
-  this->setContentSize(Size(300, 200));
+  this->setContentSize(Size(300, 200));this->picture->setRotation(random(0.0, 45.0));
 }
 
 ItemCharacter::~ItemCharacter()
@@ -135,6 +135,8 @@ void ItemCharacter::onPurchase()
 
 void ItemCharacter::onSelect()
 {
+  Item::onSelect();
+
   for(auto item : Store::getInstance()->items.characters)
   {
     if(item->state == STATE_SELECTED)

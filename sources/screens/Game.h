@@ -264,6 +264,7 @@ class Game : public Screen
   virtual void changeState(int state);
 
   virtual void updateSoundState();
+  virtual void updateState();
 
   virtual void updateCamera(float time = 0);
 
