@@ -245,6 +245,32 @@
             <filename>../Graphics/ui/store-item-2-3.png</filename>
             <filename>../Graphics/ui/store-item-2-4.png</filename>
             <filename>../Graphics/ui/store-name.png</filename>
+            <filename>../Graphics/ui/store-item-1-4.png</filename>
+            <filename>../Graphics/ui/store-item-1-5.png</filename>
+            <filename>../Graphics/ui/store-item-1-6.png</filename>
+            <filename>../Graphics/ui/store-item-1-7.png</filename>
+            <filename>../Graphics/ui/store-item-1-8.png</filename>
+            <filename>../Graphics/ui/store-item-1-9.png</filename>
+            <filename>../Graphics/ui/store-item-1-10.png</filename>
+            <filename>../Graphics/ui/store-item-1-11.png</filename>
+            <filename>../Graphics/ui/store-item-1-12.png</filename>
+            <filename>../Graphics/ui/store-item-1-13.png</filename>
+            <filename>../Graphics/ui/store-item-1-14.png</filename>
+            <filename>../Graphics/ui/store-item-1-15.png</filename>
+            <filename>../Graphics/ui/store-item-1-16.png</filename>
+            <filename>../Graphics/ui/store-item-1-17.png</filename>
+            <filename>../Graphics/ui/store-item-1-18.png</filename>
+            <filename>../Graphics/ui/store-item-1-19.png</filename>
+            <filename>../Graphics/ui/store-item-1-20.png</filename>
+            <filename>../Graphics/ui/store-item-1-21.png</filename>
+            <filename>../Graphics/ui/store-item-1-22.png</filename>
+            <filename>../Graphics/ui/store-item-1-23.png</filename>
+            <filename>../Graphics/ui/store-item-1-24.png</filename>
+            <filename>../Graphics/ui/store-item-1-25.png</filename>
+            <filename>../Graphics/ui/store-item-1-26.png</filename>
+            <filename>../Graphics/ui/store-item-1-27.png</filename>
+            <filename>../Graphics/ui/store-item-1-28.png</filename>
+            <filename>../Graphics/ui/store-item-1-29.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
