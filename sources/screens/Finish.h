@@ -121,6 +121,7 @@ class Finish : public Coins
   virtual void onMoveDown();
 
   virtual void onBest();
+  virtual void onRegular();
   virtual void onUnlock();
 
   virtual void show();

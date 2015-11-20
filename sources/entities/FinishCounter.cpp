@@ -33,6 +33,7 @@ FinishCounter::FinishCounter()
 : Entity("counter.png", Finish::getInstance(), true)
 {
   this->crown = new Crown(this);
+  this->hat = new Hat(this);
 
   this->coins = new Entity("counter-coins.png", Finish::getInstance(), true);
   this->best = new Entity("counter-best.png", this, true);
@@ -48,10 +49,10 @@ FinishCounter::FinishCounter()
   this->texts.coins = new Text("coins", this->coins, true);
   this->texts.congratulations = new Text("congratulations", this->holders.congratulations, true);
 
-  this->holders.congratulations->setPosition(this->getWidth() / 2, 0);
+  this->holders.congratulations->setPosition(this->getWidth() / 2, -50.0);
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
-  this->texts.best->setPosition(this->best->getWidth() / 2, this->best->getHeight() / 2);
+  this->texts.best->setPosition(this->best->getWidth() / 2 + 24, this->best->getHeight() / 2 - 2);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
   this->texts.congratulations->setPosition(this->holders.congratulations->getWidth() / 2, this->holders.congratulations->getHeight() / 2);
 }
@@ -100,6 +101,7 @@ void FinishCounter::onExit()
   this->holders.congratulations->_destroy();
 
   this->crown->_destroy();
+  this->hat->_destroy();
 }
 
 /**
@@ -160,4 +162,9 @@ void FinishCounter::onBest()
   );
 
   Sound->play("best");
+}
+
+void FinishCounter::onRegular()
+{
+  this->hat->_create();
 }

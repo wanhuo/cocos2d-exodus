@@ -153,7 +153,7 @@
       {
         "title": "$1",
         "font": "Impact",
-        "size": 48,
+        "size": 42,
         "color": [
           228,
           149,
@@ -163,7 +163,7 @@
       {
         "title": "$1",
         "font": "Impact",
-        "size": 48,
+        "size": 42,
         "color": [
           228,
           149,
@@ -4131,12 +4131,22 @@
       {
         "title": "Tap when the rocket will fly\nthrough a green point:",
         "font": "Impact",
-        "size": 32
+        "size": 52,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
         "title": "Нажимайте когда ракета пролетает\nчерез зеленую точку:",
         "font": "Impact",
-        "size": 32
+        "size": 52,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
         "title": "Toque no ecrã quando o foguete passar\npor cima dos pontos verdes:",

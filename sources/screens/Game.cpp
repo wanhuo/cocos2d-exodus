@@ -775,6 +775,10 @@ void Game::onFinish()
   {
     Finish::getInstance()->onBest();
   }
+  else
+  {
+    Finish::getInstance()->onRegular();
+  }
 }
 
 /**

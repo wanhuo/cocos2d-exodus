@@ -21,13 +21,6 @@
  *
  */
 
-#ifndef _FINISHCOUNTER_H_
-#define _FINISHCOUNTER_H_
-
-#include "Entity.h"
-#include "Text.h"
-
-#include "Crown.h"
 #include "Hat.h"
 
 /**
@@ -35,58 +28,79 @@
  *
  *
  */
-class FinishCounter : public Entity
+Hat::Hat(Node* parent)
+: Spine("hat.json", "hat.atlas", 1.0, parent)
 {
-  /**
-   *
-   *
-   *
-   */
-  private:
-  struct Texts
-  {
-    Text* value;
-    Text* best;
-    Text* coins;
-    Text* congratulations;
+  this->skins = {
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18"
   };
 
-  struct Holders
-  {
-    Entity* congratulations;
-  };
+  this->setPositionX(parent->getContentSize().width / 2);
+  this->setPositionY(parent->getContentSize().height / 2);
+
+  this->setContentSize(Size(0, 150));
+
+  this->setAnchorPoint(Vec2(0.5, -1.0));
+}
+
+Hat::~Hat()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
+void Hat::onCreate()
+{
+  this->setRotation(0);
+  this->setOpacity(0);
+
+  this->runAction(
+    Spawn::create(
+      Sequence::create(
+        EaseBounceOut::create(
+          RotateTo::create(1.5, 35)
+        ),
+        nullptr
+      ),
+      Sequence::create(
+        FadeIn::create(1.0),
+        nullptr
+      ),
+      nullptr
+    )
+  );
+
+  this->setRandomSkin();
 
   /**
    *
    *
    *
    */
-  protected:
-  Entity* coins;
-  Entity* best;
+  Spine::onCreate();
+}
 
-  Crown* crown;
-  Hat* hat;
-
-  /**
-   *
-   *
-   *
-   */
-  public:
-  FinishCounter();
- ~FinishCounter();
-
-  Texts texts;
-  Holders holders;
-
-  virtual void onEnter();
-  virtual void onExit();
-
-  virtual void onBest();
-  virtual void onRegular();
-
-  virtual void updateTextData();
-};
-
-#endif
+void Hat::onDestroy(bool action)
+{
+  Spine::onDestroy(action);
+}

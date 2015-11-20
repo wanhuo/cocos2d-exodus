@@ -61,6 +61,8 @@
 		785348BD1BF9C11200556C07 /* ItemCreature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B41BF9C11200556C07 /* ItemCreature.cpp */; settings = {ASSET_TAGS = (); }; };
 		785348BE1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B61BF9C11200556C07 /* ItemEnvironment.cpp */; settings = {ASSET_TAGS = (); }; };
 		785348BF1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B61BF9C11200556C07 /* ItemEnvironment.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348C31BFEA92D00556C07 /* Hat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348C11BFEA92D00556C07 /* Hat.cpp */; settings = {ASSET_TAGS = (); }; };
+		785348C41BFEA92D00556C07 /* Hat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348C11BFEA92D00556C07 /* Hat.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586B1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586C1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; settings = {ASSET_TAGS = (); }; };
 		785C586F1BD4F03B00B71D89 /* Barror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C586D1BD4F03B00B71D89 /* Barror.cpp */; settings = {ASSET_TAGS = (); }; };
@@ -333,6 +335,8 @@
 		785348B51BF9C11200556C07 /* ItemCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCreature.h; sourceTree = "<group>"; };
 		785348B61BF9C11200556C07 /* ItemEnvironment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ItemEnvironment.cpp; sourceTree = "<group>"; };
 		785348B71BF9C11200556C07 /* ItemEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemEnvironment.h; sourceTree = "<group>"; };
+		785348C11BFEA92D00556C07 /* Hat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hat.cpp; sourceTree = "<group>"; };
+		785348C21BFEA92D00556C07 /* Hat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hat.h; sourceTree = "<group>"; };
 		785C58681BD4C71900B71D89 /* CharacterTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTypes.h; sourceTree = "<group>"; };
 		785C58691BD4CCCB00B71D89 /* Pointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pointer.cpp; sourceTree = "<group>"; };
 		785C586A1BD4CCCB00B71D89 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
@@ -862,6 +866,8 @@
 				7894FA2F1BEDEF2400A69ED6 /* Mission.h */,
 				78FEA7341BEA8E5000D253A3 /* Crown.cpp */,
 				78FEA7351BEA8E5000D253A3 /* Crown.h */,
+				785348C11BFEA92D00556C07 /* Hat.cpp */,
+				785348C21BFEA92D00556C07 /* Hat.h */,
 				789908401BCE80310014A8F7 /* Environment.cpp */,
 				7899083E1BCE80310014A8F7 /* Environment.h */,
 				78D586991BD7B3CE0068FCA6 /* Missile.cpp */,
@@ -1463,6 +1469,7 @@
 				7894C0341BC9282F00363FC9 /* Game.cpp in Sources */,
 				78FEA7371BEA8E5000D253A3 /* Crown.cpp in Sources */,
 				789908321BCE3D4B0014A8F7 /* Creature.cpp in Sources */,
+				785348C41BFEA92D00556C07 /* Hat.cpp in Sources */,
 				7894C01B1BC9245800363FC9 /* Events.cpp in Sources */,
 				789908381BCE3D4B0014A8F7 /* VideoButton.cpp in Sources */,
 				785348BF1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */,
@@ -1496,6 +1503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785348C31BFEA92D00556C07 /* Hat.cpp in Sources */,
 				7894FA4E1BF1651200A69ED6 /* Triceratops.cpp in Sources */,
 				7894FA521BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */,
 				7894FA3A1BEFE6E100A69ED6 /* Item.cpp in Sources */,

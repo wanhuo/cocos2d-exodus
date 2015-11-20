@@ -21,72 +21,29 @@
  *
  */
 
-#ifndef _FINISHCOUNTER_H_
-#define _FINISHCOUNTER_H_
+#ifndef _HAT_H_
+#define _HAT_H_
 
-#include "Entity.h"
-#include "Text.h"
-
-#include "Crown.h"
-#include "Hat.h"
+#include "Spine.h"
 
 /**
  *
  *
  *
  */
-class FinishCounter : public Entity
+class Hat : public Spine
 {
   /**
    *
    *
    *
    */
-  private:
-  struct Texts
-  {
-    Text* value;
-    Text* best;
-    Text* coins;
-    Text* congratulations;
-  };
-
-  struct Holders
-  {
-    Entity* congratulations;
-  };
-
-  /**
-   *
-   *
-   *
-   */
-  protected:
-  Entity* coins;
-  Entity* best;
-
-  Crown* crown;
-  Hat* hat;
-
-  /**
-   *
-   *
-   *
-   */
   public:
-  FinishCounter();
- ~FinishCounter();
+  Hat(Node* parent);
+ ~Hat();
 
-  Texts texts;
-  Holders holders;
-
-  virtual void onEnter();
-  virtual void onExit();
-
-  virtual void onBest();
-  virtual void onRegular();
-
-  virtual void updateTextData();
+  virtual void onCreate();
+  virtual void onDestroy(bool action = false);
 };
 
 #endif

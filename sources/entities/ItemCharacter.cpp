@@ -35,7 +35,7 @@
 ItemCharacter::ItemCharacter(Json* document)
 : Item(document)
 {
-  this->setContentSize(Size(300, 200));this->picture->setRotation(random(0.0, 45.0));
+  this->setContentSize(Size(300, 200));
 }
 
 ItemCharacter::~ItemCharacter()

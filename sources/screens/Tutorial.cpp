@@ -184,6 +184,11 @@ TutorialLayout::~TutorialLayout()
  */
 TutorialLayout1::TutorialLayout1()
 {
+  this->text = new Text("tutorial-title-2", this->scroll, true);
+  this->text->setPosition(Application->center.x, Application->height - 500);
+
+  this->animation = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this->scroll);
+  this->animation->setPosition(Application->center.x, Application->height - 700);
 }
 
 TutorialLayout1::~TutorialLayout1()
