@@ -52,7 +52,7 @@ Counter::Counter()
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
-  this->texts.best->setPosition(this->best->getWidth() / 2, this->best->getHeight() / 2);
+  this->texts.best->setPosition(this->best->getWidth() / 2 + 24, this->best->getHeight() / 2 - 2);
   this->texts.status->setPosition(this->holders.status->getWidth() / 2, this->holders.status->getHeight() / 2);
   this->texts.decoration->setPosition(this->holders.decoration->getWidth() / 2, this->holders.decoration->getHeight() / 2);
 

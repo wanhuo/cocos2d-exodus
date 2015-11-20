@@ -1,0 +1,132 @@
+
+hat.png
+size: 1479,353
+format: RGBA4444
+filter: Linear,Linear
+repeat: none
+skins/1/body
+  rotate: false
+  xy: 726, 160
+  size: 163, 191
+  orig: 163, 191
+  offset: 0, 0
+  index: -1
+skins/10/body
+  rotate: true
+  xy: 2, 121
+  size: 230, 128
+  orig: 230, 128
+  offset: 0, 0
+  index: -1
+skins/11/body
+  rotate: true
+  xy: 132, 125
+  size: 226, 130
+  orig: 226, 130
+  offset: 0, 0
+  index: -1
+skins/12/body
+  rotate: true
+  xy: 405, 139
+  size: 212, 171
+  orig: 212, 171
+  offset: 0, 0
+  index: -1
+skins/13/body
+  rotate: true
+  xy: 1004, 162
+  size: 189, 168
+  orig: 189, 168
+  offset: 0, 0
+  index: -1
+skins/14/body
+  rotate: true
+  xy: 578, 157
+  size: 194, 146
+  orig: 194, 146
+  offset: 0, 0
+  index: -1
+skins/15/body
+  rotate: true
+  xy: 891, 160
+  size: 191, 111
+  orig: 191, 111
+  offset: 0, 0
+  index: -1
+skins/16/body
+  rotate: false
+  xy: 198, 4
+  size: 208, 119
+  orig: 208, 119
+  offset: 0, 0
+  index: -1
+skins/17/body
+  rotate: false
+  xy: 408, 3
+  size: 193, 134
+  orig: 193, 134
+  offset: 0, 0
+  index: -1
+skins/18/body
+  rotate: true
+  xy: 264, 136
+  size: 215, 139
+  orig: 215, 139
+  offset: 0, 0
+  index: -1
+skins/2/body
+  rotate: false
+  xy: 773, 2
+  size: 141, 156
+  orig: 141, 156
+  offset: 0, 0
+  index: -1
+skins/3/body
+  rotate: true
+  xy: 603, 9
+  size: 146, 168
+  orig: 146, 168
+  offset: 0, 0
+  index: -1
+skins/4/body
+  rotate: false
+  xy: 1078, 15
+  size: 143, 145
+  orig: 143, 145
+  offset: 0, 0
+  index: -1
+skins/5/body
+  rotate: true
+  xy: 1337, 212
+  size: 139, 140
+  orig: 139, 140
+  offset: 0, 0
+  index: -1
+skins/6/body
+  rotate: false
+  xy: 2, 6
+  size: 194, 113
+  orig: 194, 113
+  offset: 0, 0
+  index: -1
+skins/7/body
+  rotate: true
+  xy: 916, 12
+  size: 146, 160
+  orig: 146, 160
+  offset: 0, 0
+  index: -1
+skins/8/body
+  rotate: false
+  xy: 1223, 12
+  size: 128, 160
+  orig: 128, 160
+  offset: 0, 0
+  index: -1
+skins/9/body
+  rotate: false
+  xy: 1174, 174
+  size: 161, 177
+  orig: 161, 177
+  offset: 0, 0
+  index: -1

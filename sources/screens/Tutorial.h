@@ -33,6 +33,8 @@
 #include "BackgroundScroll.h"
 #include "BackgroundPages.h"
 
+#include "TutorialAnimation.h"
+
 /**
  *
  *
@@ -114,6 +116,9 @@ class TutorialLayout : public cocos2d::ui::Layout
    *
    */
   protected:
+  Text* text;
+  TutorialAnimation* animation;
+
   BackgroundScroll* scroll;
 
   /**

@@ -204,6 +204,11 @@ void Finish::onBest()
   this->counter->onBest();
 }
 
+void Finish::onRegular()
+{
+  this->counter->onRegular();
+}
+
 void Finish::onUnlock()
 {
   vector<Item*> items;
