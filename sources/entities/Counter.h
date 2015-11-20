@@ -46,8 +46,6 @@ class Counter : public Entity
   {
     Text* value;
     Text* best;
-    Text* taps;
-    Text* deaths;
     Text* start;
     Text* status;
     Text* coins;
@@ -81,6 +79,7 @@ class Counter : public Entity
   Pool* circles;
 
   Entity* coins;
+  Entity* best;
 
   /**
    *
@@ -130,8 +129,6 @@ class Counter : public Entity
   virtual void resetMissionsUpdate();
 
   virtual void updateTextData();
-
-  virtual void update(float time);
 };
 
 #endif

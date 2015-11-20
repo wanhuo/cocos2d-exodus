@@ -34,15 +34,17 @@ Counter::Counter()
   this->circles = new Pool(new Entity("counter.png"), this, true);
 
   this->coins = new Entity("counter-coins.png", Application->e, true);
+  this->best = new Entity("counter-best.png", this, true);
+
   this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
+  this->best->setPosition(this->getWidth() / 2, 20);
+  this->best->setScale(0.75);
 
   this->holders.status = new Entity("text-holder-3.png", Application->b);
   this->holders.decoration = new Entity("text-holder-2.png", Application->b);
 
   this->texts.value = new Text("counter", this, true);
-  this->texts.best = new Text("best", Application->b);
-  this->texts.taps = new Text("jumps", Application->b);
-  this->texts.deaths = new Text("deaths", Application->b);
+  this->texts.best = new Text("best", this->best, true);
   this->texts.start = new Text("start", Application->b);
   this->texts.status = new Text("fail", this->holders.status, true);
   this->texts.coins = new Text("coins", this->coins, true);
@@ -50,9 +52,7 @@ Counter::Counter()
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
-  this->texts.best->setPosition(Application->center.x, Application->height - 150 + 300);
-  this->texts.taps->setPosition(Application->center.x, Application->height - 190 + 300);
-  this->texts.deaths->setPosition(Application->center.x, Application->height - 230 + 300);
+  this->texts.best->setPosition(this->best->getWidth() / 2, this->best->getHeight() / 2);
   this->texts.status->setPosition(this->holders.status->getWidth() / 2, this->holders.status->getHeight() / 2);
   this->texts.decoration->setPosition(this->holders.decoration->getWidth() / 2, this->holders.decoration->getHeight() / 2);
 
@@ -63,8 +63,6 @@ Counter::Counter()
 
   this->holders.status->setCascadeOpacityEnabled(true);
   this->holders.decoration->setCascadeOpacityEnabled(true);
-
-  this->setScheduleUpdate(true);
 
   this->missionUpdateProgress.coins = Storage::get("values.missions.progress.coins");
   this->missionUpdateProgress.points = Storage::get("values.missions.progress.points");
@@ -121,48 +119,11 @@ void Counter::onCreate()
   this->circles->clear();
 
   this->setScale(0);
-  this->setPosition(Application->center.x, Application->height - 410);
+  this->setPosition(Application->center.x, Application->height - 254);
 
   this->runAction(
     EaseSineInOut::create(
       ScaleTo::create(0.5, 1.0)
-    )
-  );
-
-  this->texts.best->_create()->runAction(
-    Sequence::create(
-      DelayTime::create(0),
-      EaseSineInOut::create(
-        MoveTo::create(0.2, Vec2(
-          this->texts.best->getPositionX(),
-          this->texts.best->getPositionY() - 300
-        ))
-      ),
-      nullptr
-    )
-  );
-  this->texts.taps->_create()->runAction(
-    Sequence::create(
-      DelayTime::create(0.2),
-      EaseSineInOut::create(
-        MoveTo::create(0.2, Vec2(
-          this->texts.taps->getPositionX(),
-          this->texts.taps->getPositionY() - 300
-        ))
-      ),
-      nullptr
-    )
-  );
-  this->texts.deaths->_create()->runAction(
-    Sequence::create(
-      DelayTime::create(0.4),
-      EaseSineInOut::create(
-        MoveTo::create(0.2, Vec2(
-          this->texts.deaths->getPositionX(),
-          this->texts.deaths->getPositionY() - 300
-        ))
-      ),
-      nullptr
     )
   );
 
@@ -485,6 +446,12 @@ void Counter::onGame()
     )
   );
 
+  this->coins->runAction(
+    EaseBounceOut::create(
+      MoveTo::create(1.0, Vec2(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50))
+    )
+  );
+
   if(MissionsFactory::getInstance()->isListenen())
   {
     this->missionUpdateProgress.games++;
@@ -567,6 +534,8 @@ bool Counter::save()
  */
 void Counter::reset()
 {
+  this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
+
   this->values.score = 0;
   this->updateTextData();
 
@@ -591,8 +560,6 @@ void Counter::updateTextData()
   this->texts.value->data(this->values.score);
   this->texts.best->data(this->values.best);
   this->texts.coins->data(this->values.coins);
-  this->texts.taps->data(this->values.taps);
-  this->texts.deaths->data(this->values.deaths);
 }
 
 /**
@@ -630,15 +597,4 @@ void Counter::resetProgressMissionsUpdate()
   this->missionUpdateProgress.points = 0;
   this->missionUpdateProgress.games = 0;
   this->missionUpdateProgress.gifts = 0;
-}
-
-/**
- *
- *
- *
- */
-void Counter::update(float time)
-{
-  Application->e->setPositionY(-Application->b->getPositionY());
-  this->coins->setPositionX(Application->width - (Application->b->getPositionY() - this->coins->getWidth() / 2) + 30);
 }

@@ -46,8 +46,6 @@ class FinishCounter : public Entity
   {
     Text* value;
     Text* best;
-    Text* taps;
-    Text* deaths;
     Text* coins;
     Text* congratulations;
   };
@@ -64,6 +62,7 @@ class FinishCounter : public Entity
    */
   protected:
   Entity* coins;
+  Entity* best;
 
   Crown* crown;
 

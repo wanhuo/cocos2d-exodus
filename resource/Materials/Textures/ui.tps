@@ -271,6 +271,10 @@
             <filename>../Graphics/ui/store-item-1-27.png</filename>
             <filename>../Graphics/ui/store-item-1-28.png</filename>
             <filename>../Graphics/ui/store-item-1-29.png</filename>
+            <filename>../Graphics/ui/store-item-3-1.png</filename>
+            <filename>../Graphics/ui/store-item-3-2.png</filename>
+            <filename>../Graphics/ui/store-item-3-3.png</filename>
+            <filename>../Graphics/ui/counter-best.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -49,7 +49,42 @@ ItemEnvironment::~ItemEnvironment()
  */
 void ItemEnvironment::onPurchase()
 {
-  Item::onPurchase();
+  this->runAction(
+    Sequence::create(
+      CallFunc::create([=] ()
+      {
+        Modal::block();
+      }),
+      Repeat::create(
+        Sequence::create(
+          ScaleTo::create(0.05, 0.9),
+          ScaleTo::create(0.05, 1.1),
+          nullptr
+        ),
+        12
+      ),
+      ScaleTo::create(0.05, 1.0),
+      CallFunc::create([=] ()
+      {
+        Item::onPurchase();
+
+        /**
+         *
+         *
+         *
+         */
+        this->setState(STATE_SELECTED);
+      }),
+      DelayTime::create(1.0),
+      CallFunc::create([=] ()
+      {
+        Modal::hide();
+      }),
+      nullptr
+    )
+  );
+
+  Sound->play("gift");
 
   Analytics::sendEvent("Store", "store.events.onPurchase", "Environment purchased", this->i);
 }
@@ -57,6 +92,36 @@ void ItemEnvironment::onPurchase()
 void ItemEnvironment::onSelect()
 {
   Item::onSelect();
+
+  for(auto item : Store::getInstance()->items.environments)
+  {
+    if(item->state == STATE_SELECTED)
+    {
+      if(this->i != item->i)
+      {
+        item->setState(STATE_NORMAL);
+      }
+    }
+  }
+
+  this->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 0.9)
+      ),
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 1.1)
+      ),
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 1.0)
+      ),
+      nullptr
+    )
+  );
+
+  Sound->play("touch");
+
+  Storage::set("items.environment.current", this->i - 1);
 
   Analytics::sendEvent("Store", "store.events.onPurchase", "Environment selected", this->i);
 }
@@ -79,12 +144,7 @@ void ItemEnvironment::updateState()
   {
     case STATE_NORMAL:
     case STATE_SELECTED:
-    this->nams->setPosition(this->getContentSize().width / 2, 86);
-
-    if(this->picture)
-    {
-      this->picture->_create()->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 + 50);
-    }
+    this->nams->setPosition(this->getContentSize().width / 2, 35);
     break;
   }
 }

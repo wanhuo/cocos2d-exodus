@@ -35,23 +35,23 @@ FinishCounter::FinishCounter()
   this->crown = new Crown(this);
 
   this->coins = new Entity("counter-coins.png", Finish::getInstance(), true);
+  this->best = new Entity("counter-best.png", this, true);
+
   this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50);
+  this->best->setPosition(this->getWidth() / 2, 20);
+  this->best->setScale(0.75);
 
   this->holders.congratulations = new Entity("text-holder-1.png", this);
 
   this->texts.value = new Text("counter", this, true);
-  this->texts.best = new Text("best", this, true);
-  this->texts.taps = new Text("jumps", this, true);
-  this->texts.deaths = new Text("deaths", this, true);
+  this->texts.best = new Text("best", this->best, true);
   this->texts.coins = new Text("coins", this->coins, true);
   this->texts.congratulations = new Text("congratulations", this->holders.congratulations, true);
 
   this->holders.congratulations->setPosition(this->getWidth() / 2, 0);
 
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
-  this->texts.best->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 260);
-  this->texts.taps->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 220);
-  this->texts.deaths->setPosition(this->getWidth() / 2, this->getHeight() / 2 + 180);
+  this->texts.best->setPosition(this->best->getWidth() / 2, this->best->getHeight() / 2);
   this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
   this->texts.congratulations->setPosition(this->holders.congratulations->getWidth() / 2, this->holders.congratulations->getHeight() / 2);
 }
@@ -78,7 +78,7 @@ void FinishCounter::onEnter()
   this->runAction(
     Sequence::create(
       EaseBounceOut::create(
-        MoveTo::create(1.0, Vec2(Application->center.x, Application->height - 310)
+        MoveBy::create(1.0, Vec2(0.0, -100.0)
         )
       ),
       nullptr
@@ -112,8 +112,6 @@ void FinishCounter::updateTextData()
   this->texts.value->data(Application->counter->values.score);
   this->texts.best->data(Application->counter->values.best);
   this->texts.coins->data(Application->counter->values.coins);
-  this->texts.taps->data(Application->counter->values.taps);
-  this->texts.deaths->data(Application->counter->values.deaths);
 }
 
 /**

@@ -265,21 +265,24 @@
 		{
 			"id": "items.environments.1",
 			"name": "store-item-title-3-1",
-			"i": 1
+			"i": 1,
+			"picture": "store-item-3-1.png"
 		},
 		{
 			"id": "items.environments.2",
 			"name": "store-item-title-3-2",
-			"missions": 10,
-			"coins": 10,
-			"i": 2
+			"missions": 20,
+			"coins": 1,
+			"i": 2,
+			"picture": "store-item-3-2.png"
 		},
 		{
 			"id": "items.environments.3",
 			"name": "store-item-title-3-3",
-			"missions": 10,
-			"coins": 10,
-			"i": 3
+			"missions": 30,
+			"coins": 1000,
+			"i": 3,
+			"picture": "store-item-3-3.png"
 		}
 	]
 }

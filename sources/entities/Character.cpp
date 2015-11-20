@@ -893,6 +893,7 @@ void Character::updateAnimation(float time)
 
 void Character::updatePrepare(float time)
 {
+  this->updateShadow(time);
 }
 
 void Character::updateStart(float time)

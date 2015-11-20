@@ -151,127 +151,43 @@
     ],
     "best": [
       {
-        "title": "BEST SCORE: $1",
+        "title": "$1",
         "font": "Impact",
-        "size": 36,
+        "size": 48,
         "color": [
-          42,
-          104,
-          93
+          228,
+          149,
+          81
         ]
       },
       {
-        "title": "Рекорд: $1",
+        "title": "$1",
         "font": "Impact",
-        "size": 36,
+        "size": 48,
         "color": [
-          42,
-          104,
-          93
+          228,
+          149,
+          81
         ]
       },
       {
-        "title": "MELHOR SCORE: $1",
+        "title": "$1",
         "font": "Impact",
-        "size": 28,
+        "size": 48,
         "color": [
-          42,
-          104,
-          93
+          228,
+          149,
+          81
         ]
       },
       {
-        "title": "MEILLEUR: $1",
+        "title": "$1",
         "font": "Impact",
-        "size": 36,
+        "size": 48,
         "color": [
-          42,
-          104,
-          93
-        ]
-      }
-    ],
-    "jumps": [
-      {
-        "title": "TAPS: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "Нажатий: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "TOQUES: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "TAPS: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      }
-    ],
-    "deaths": [
-      {
-        "title": "DEATHS: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "Проигрышей: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "MORTES: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
-        ]
-      },
-      {
-        "title": "MORTS: $1",
-        "font": "Impact",
-        "size": 32,
-        "color": [
-          42,
-          104,
-          93
+          228,
+          149,
+          81
         ]
       }
     ],
@@ -3999,68 +3915,128 @@
     ],
     "store-item-title-3-1": [
       {
-        "title": "",
+        "title": "Forest",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "Лес",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
-      },
-      {
-        "title": "",
-        "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-3-2": [
       {
-        "title": "",
+        "title": "City",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "Город",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
-      },
-      {
-        "title": "",
-        "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "store-item-title-3-3": [
       {
-        "title": "",
+        "title": "Egypt",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "Египет",
+        "font": "Impact",
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       },
       {
         "title": "",
         "font": "Impact",
-        "size": 32
-      },
-      {
-        "title": "",
-        "font": "Impact",
-        "size": 32
+        "size": 36,
+        "color": [
+          228,
+          149,
+          81
+        ]
       }
     ],
     "tutorial-number-1": [

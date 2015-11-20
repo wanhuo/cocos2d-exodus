@@ -86,6 +86,7 @@ Game::Game()
 
   this->environments.push_back(new Environment1);
   this->environments.push_back(new Environment2);
+  this->environments.push_back(new Environment2);
 
   this->water1 = new Water(Water::TYPE1, this->w);
   this->water2 = new Water(Water::TYPE2, this->w);
@@ -693,8 +694,6 @@ void Game::onPrepare()
         {
           this->changeState(STATE_START);
         }
-
-        this->parameters.creatures = false;
       }),
       nullptr
     )
@@ -703,6 +702,8 @@ void Game::onPrepare()
 
 void Game::onStart()
 {
+  this->parameters.creatures = false;
+
   this->environment->onStart();
   this->counter->onStart();
 
@@ -750,7 +751,7 @@ void Game::onGame()
   this->b->runAction(
     Sequence::create(
       EaseBounceOut::create(
-        MoveTo::create(1.0, Vec2(0, 270)
+        MoveTo::create(1.0, Vec2(0, 114)
         )
       ),
       nullptr
@@ -826,13 +827,10 @@ bool Game::isNextEnvironment()
 
 void Game::resetEnvironment()
 {
-  if(this->environment_index > 0)
-  {
-    this->environment->onDestroy();
+  this->environment->onDestroy();
 
-    this->environment_index = 0;
-    this->setEnvironment(this->environment_index);
-  }
+  this->environment_index = Storage::get("items.environment.current");
+  this->setEnvironment(this->environment_index);
 }
 
 void Game::setEnvironment(int index)
@@ -883,6 +881,8 @@ void Game::updateSoundState()
  */
 void Game::updateState()
 {
+  this->resetEnvironment();
+
   switch(this->state)
   {
     case STATE_START:
@@ -957,6 +957,8 @@ void Game::updateCamera(float time)
                        (this->character->getPositionX() - this->camera.width / 2 - this->h->getPositionX() / this->d->getScale())+this->camera.width, 0);
 
   this->c->setScale(1.0 / this->d->getScale());
+
+  this->e->setPositionY(-this->b->getPositionY());
 }
 
 /**

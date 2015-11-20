@@ -81,10 +81,10 @@ class Item : public BackgroundColor
   static const int STATE_SELECTED = 4;
 
   int state;
-  int missions;
-  int coins;
-  int capacity;
-  int i;
+  int missions = 0;
+  int coins = 0;
+  int capacity = 0;
+  int i = 0;
 
   const char* id;
   const char* name = "";
