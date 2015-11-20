@@ -614,7 +614,7 @@ void Game::onAnimation()
         MoveTo::create(0.5, Vec2(0, 0)),
         CallFunc::create([=] () { this->changeState(STATE_PREPARE); }),
         CallFunc::create([=] () {     
-        if(true)//!this->parameters.tutorial)
+        if(!this->parameters.tutorial)
         {
           Tutorial::getInstance()->show();
         }

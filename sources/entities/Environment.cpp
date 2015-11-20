@@ -479,5 +479,5 @@ void Environment2::update(float time)
    *
    *
    */
-  this->updateMissiles(time);
+  //this->updateMissiles(time);
 }
