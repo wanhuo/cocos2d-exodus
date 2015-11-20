@@ -4109,12 +4109,12 @@
       {
         "title": "How to play?",
         "font": "Impact",
-        "size": 42
+        "size": 68
       },
       {
         "title": "Как играть?",
         "font": "Impact",
-        "size": 42
+        "size": 68
       },
       {
         "title": "Como jogar?",
@@ -4129,9 +4129,9 @@
     ],
     "tutorial-title-2": [
       {
-        "title": "Tap when the rocket will fly\nthrough a green point:",
+        "title": "Tap when the rocket will fly\nthrough a green point",
         "font": "Impact",
-        "size": 52,
+        "size": 46,
         "color": [
           132,
           209,
@@ -4139,9 +4139,9 @@
         ]
       },
       {
-        "title": "Нажимайте когда ракета пролетает\nчерез зеленую точку:",
+        "title": "Нажимайте когда ракета\nпролетает через зеленую точку",
         "font": "Impact",
-        "size": 52,
+        "size": 46,
         "color": [
           132,
           209,
@@ -4149,36 +4149,66 @@
         ]
       },
       {
-        "title": "Toque no ecrã quando o foguete passar\npor cima dos pontos verdes:",
+        "title": "Toque no ecrã quando o foguete passar\npor cima dos pontos verdes",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
-        "title": "APPUYER QUAND LA FUSÉE\nSURVOLE LE ROND VERT:",
+        "title": "APPUYER QUAND LA FUSÉE\nSURVOLE LE ROND VERT",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       }
     ],
     "tutorial-title-3": [
       {
-        "title": "Tap faster when you are\non bonus line:",
+        "title": "Tap faster when you are\non bonus line",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
-        "title": "Нажимайте быстрее когда ракета\nнаходится на бонусной линии:",
+        "title": "Нажимайте быстрее когда ракета\nнаходится на бонусной линии",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
-        "title": "Toque muitas vezes quando o foguete\npassar por cima da linha de bónus:",
+        "title": "Toque muitas vezes quando o foguete\npassar por cima da linha de bónus",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       },
       {
-        "title": "Poussez plus rapide lorsque la fusée\nest sur la ligne de bonus:",
+        "title": "Poussez plus rapide lorsque la fusée\nest sur la ligne de bonus",
         "font": "Impact",
-        "size": 32
+        "size": 46,
+        "color": [
+          132,
+          209,
+          223
+        ]
       }
     ],
     "tutorial-title-4": [

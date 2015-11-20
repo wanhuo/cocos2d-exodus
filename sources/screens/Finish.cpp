@@ -108,6 +108,15 @@ void Finish::onEnter()
 
   Application->changeState(Game::STATE_FINISH);
 
+  if(Application->counter->save())
+  {
+    this->onBest();
+  }
+  else
+  {
+    this->onRegular();
+  }
+
   Events::onScreenChanged("Finish");
 
   Coins::onEnter();

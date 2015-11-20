@@ -36,8 +36,6 @@
 		782414A21BCC9184007D5847 /* Credits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782414A01BCC9184007D5847 /* Credits.cpp */; settings = {ASSET_TAGS = (); }; };
 		782414A71BCCB6E9007D5847 /* TutorialAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782414A51BCCB6E9007D5847 /* TutorialAnimation.cpp */; settings = {ASSET_TAGS = (); }; };
 		782414A81BCCB6E9007D5847 /* TutorialAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782414A51BCCB6E9007D5847 /* TutorialAnimation.cpp */; settings = {ASSET_TAGS = (); }; };
-		782414A91BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782414A61BCCB6E9007D5847 /* TutorialRepeat.cpp */; settings = {ASSET_TAGS = (); }; };
-		782414AA1BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 782414A61BCCB6E9007D5847 /* TutorialRepeat.cpp */; settings = {ASSET_TAGS = (); }; };
 		7828A0AF1A1F87BA0079492B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7828A0A71A1F87BA0079492B /* main.cpp */; };
 		782C44961BD2495E00A7DD46 /* NSInternal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 782C44951BD2495E00A7DD46 /* NSInternal.mm */; settings = {ASSET_TAGS = (); }; };
 		78454D261AE9B22100C9E0FB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78454D251AE9B22100C9E0FB /* Security.framework */; };
@@ -301,9 +299,7 @@
 		7824149F1BCC9184007D5847 /* Credits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credits.h; sourceTree = "<group>"; };
 		782414A01BCC9184007D5847 /* Credits.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Credits.cpp; sourceTree = "<group>"; };
 		782414A31BCCB6E9007D5847 /* TutorialAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialAnimation.h; sourceTree = "<group>"; };
-		782414A41BCCB6E9007D5847 /* TutorialRepeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialRepeat.h; sourceTree = "<group>"; };
 		782414A51BCCB6E9007D5847 /* TutorialAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialAnimation.cpp; sourceTree = "<group>"; };
-		782414A61BCCB6E9007D5847 /* TutorialRepeat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TutorialRepeat.cpp; sourceTree = "<group>"; };
 		7828A0491A1F86C80079492B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7828A04C1A1F86C80079492B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7828A0881A1F86F40079492B /* prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = prefix.pch; path = "../../../../../cocos2d-apple-library/Platforms/ios/prefix.pch"; sourceTree = "<group>"; };
@@ -919,8 +915,6 @@
 				789908221BCE3D4B0014A8F7 /* CharacterButton.h */,
 				782414A51BCCB6E9007D5847 /* TutorialAnimation.cpp */,
 				782414A31BCCB6E9007D5847 /* TutorialAnimation.h */,
-				782414A61BCCB6E9007D5847 /* TutorialRepeat.cpp */,
-				782414A41BCCB6E9007D5847 /* TutorialRepeat.h */,
 				78AEAC1D1BD14B6D00FA8783 /* Rocket.cpp */,
 				78AEAC1C1BD14B6D00FA8783 /* Rocket.h */,
 			);
@@ -1482,7 +1476,6 @@
 				789908421BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7899083C1BCE60500014A8F7 /* Water.cpp in Sources */,
 				7894FA3B1BEFE6E100A69ED6 /* Item.cpp in Sources */,
-				782414AA1BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */,
 				785C588A1BD63E1C00B71D89 /* Parallax.cpp in Sources */,
 				782414A21BCC9184007D5847 /* Credits.cpp in Sources */,
 				7894FA211BECDC5F00A69ED6 /* Missions.cpp in Sources */,
@@ -1528,7 +1521,6 @@
 				78DEEDFE1B1D035B0093CB64 /* AdWebViewController.m in Sources */,
 				7894C0331BC9282F00363FC9 /* Game.cpp in Sources */,
 				78AEAC1E1BD14B6D00FA8783 /* Rocket.cpp in Sources */,
-				782414A91BCCB6E9007D5847 /* TutorialRepeat.cpp in Sources */,
 				7823FBC61ABDC0F900447F0A /* NSBatch.mm in Sources */,
 				789908411BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				78FEA7301BEA47D200D253A3 /* Coin.cpp in Sources */,

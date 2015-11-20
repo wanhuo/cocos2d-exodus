@@ -771,14 +771,6 @@ void Game::onLose()
 
 void Game::onFinish()
 {
-  if(this->counter->save())
-  {
-    Finish::getInstance()->onBest();
-  }
-  else
-  {
-    Finish::getInstance()->onRegular();
-  }
 }
 
 /**
