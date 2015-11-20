@@ -30,9 +30,6 @@
 #include "Background.h"
 #include "BackgroundColor.h"
 
-#include "TutorialAnimation.h"
-#include "TutorialRepeat.h"
-
 #include "ui/CocosGUI.h"
 
 /**

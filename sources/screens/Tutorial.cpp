@@ -152,7 +152,7 @@ TutorialLayout::TutorialLayout()
   this->scroll->setContentSize(Size(Application->width, Application->height - 400));
   this->scroll->setBounceEnabled(true);
   this->scroll->setTouchEnabled(true);
-  this->scroll->setSwallowTouches(true);
+  this->scroll->setSwallowTouches(false);
   this->scroll->setPositionY(0);
 }
 
@@ -185,7 +185,7 @@ TutorialLayout::~TutorialLayout()
 TutorialLayout1::TutorialLayout1()
 {
   this->text = new Text("tutorial-title-2", this->scroll, true);
-  this->text->setPosition(Application->center.x, Application->height - 500);
+  this->text->setPosition(Application->center.x, Application->height - 550);
 
   this->animation = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this->scroll);
   this->animation->setPosition(Application->center.x, Application->height - 700);
@@ -219,6 +219,11 @@ TutorialLayout1::~TutorialLayout1()
  */
 TutorialLayout2::TutorialLayout2()
 {
+  this->text = new Text("tutorial-title-3", this->scroll, true);
+  this->text->setPosition(Application->center.x, Application->height - 550);
+
+  this->animation = new TutorialAnimation("tutorial-animation-2.json", "tutorial-animation-2.atlas", this->scroll);
+  this->animation->setPosition(Application->center.x, Application->height - 700);
 }
 
 TutorialLayout2::~TutorialLayout2()
