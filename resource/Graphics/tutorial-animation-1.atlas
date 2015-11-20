@@ -1,26 +1,40 @@
 
 tutorial-animation-1.png
-size: 244,75
+size: 824,115
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
+skins/1/hand-1
+  rotate: true
+  xy: 2, 2
+  size: 111, 316
+  orig: 111, 316
+  offset: 0, 0
+  index: -1
+skins/1/hand-2
+  rotate: true
+  xy: 320, 2
+  size: 111, 316
+  orig: 111, 316
+  offset: 0, 0
+  index: -1
 skins/1/point-1
   rotate: false
-  xy: 188, 19
+  xy: 768, 2
   size: 54, 54
   orig: 54, 54
   offset: 0, 0
   index: -1
 skins/1/point-2
   rotate: false
-  xy: 132, 18
+  xy: 768, 58
   size: 54, 55
   orig: 54, 55
   offset: 0, 0
   index: -1
 skins/1/rocket
   rotate: false
-  xy: 2, 2
+  xy: 638, 42
   size: 128, 71
   orig: 128, 71
   offset: 0, 0

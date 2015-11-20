@@ -62,6 +62,14 @@ Tutorial::Tutorial()
   this->onPageChanged();
   });
 
+  this->buttons.root.push_back(new Button("tutorial-button-1.png", 1, 3, this, std::bind(&Tutorial::changePage, this, 0), true));
+  this->buttons.root.push_back(new Button("tutorial-button-2.png", 1, 3, this, std::bind(&Tutorial::changePage, this, 1), true));
+  this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Tutorial::hide, this), true));
+
+  this->buttons.root.at(0)->setPosition(this->center.x - 128, this->height - 300);
+  this->buttons.root.at(1)->setPosition(this->center.x, this->height - 300);
+  this->buttons.root.at(2)->setPosition(this->center.x + 128, this->height - 300);
+
   this->holder->setContentSize(Size(this->width, 400));
   this->holder->ignoreAnchorPointForPosition(false);
   this->holder->setAnchorPoint(Vec2(0.5, 1.0));
@@ -94,6 +102,22 @@ void Tutorial::onEnter()
    *
    *
    */
+  this->runAction(
+    RepeatForever::create(
+      Sequence::create(
+        DelayTime::create(5.0),
+        CallFunc::create([=] () {
+        this->changePage(1);
+        }),
+        DelayTime::create(5.0),
+        CallFunc::create([=] () {
+        this->changePage(0);
+        }),
+        nullptr
+      )
+    )
+  );
+
   Events::onScreenChanged("Tutorial");
 }
 
@@ -109,6 +133,14 @@ void Tutorial::onExit()
  */
 void Tutorial::onPageChanged()
 {
+  for(auto button : this->buttons.root)
+  {
+    button->setCurrentFrameIndex(0);
+    button->bind(true);
+  }
+  
+  this->buttons.root.at(this->list->getCurPageIndex())->setCurrentFrameIndex(2);
+  this->buttons.root.at(this->list->getCurPageIndex())->bind(false);
 }
 
 /**

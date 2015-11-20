@@ -54,6 +54,10 @@ class Tutorial : public Coins
     Text* title;
   };
 
+  struct Buttons {
+    vector<Button*> root;
+  };
+
   /**
    *
    *
@@ -63,6 +67,7 @@ class Tutorial : public Coins
   BackgroundColor* background;
   BackgroundColor* holder;
 
+  Buttons buttons;
   Texts texts;
 
   /**
