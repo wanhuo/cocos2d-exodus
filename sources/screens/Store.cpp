@@ -191,7 +191,7 @@ void Store::onPageChanged()
     button->setCurrentFrameIndex(0);
     button->bind(true);
   }
-
+  
   this->buttons.root.at(this->list->getCurPageIndex())->setCurrentFrameIndex(2);
   this->buttons.root.at(this->list->getCurPageIndex())->bind(false);
 }
@@ -226,6 +226,17 @@ void Store::onExit()
 void Store::changePage(int index)
 {
   this->list->scrollToPage(index);
+
+  for(auto button : this->buttons.root)
+  {
+    button->setCurrentFrameIndex(0);
+    button->bind(true);
+  }
+
+  this->buttons.root.at(index)->setCurrentFrameIndex(2);
+  this->buttons.root.at(index)->bind(false);
+
+  ((StoreLayout*) this->list->getPage(index))->onPageEnter();
 }
 
 /**
@@ -299,7 +310,19 @@ void StoreLayout::onEnter()
     );
   }
 
+  this->onPageEnter();
+
   this->updateTextData();
+}
+
+/**
+ *
+ *
+ *
+ */
+void StoreLayout::onPageEnter()
+{
+  this->scroll->jumpToTop();
 }
 
 void StoreLayout::onExit()

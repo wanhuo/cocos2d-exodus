@@ -119,7 +119,6 @@ void Character::reset()
 
   this->setRotation(0);
   this->setPosition(Application->center.x, Application->camera.center);
-  this->setAnimation(this->animations.engine_finish);
 
   this->smoke->clear();
 
@@ -129,6 +128,9 @@ void Character::reset()
 
   switch(this->state)
   {
+    default:
+    this->setAnimation(this->animations.engine_finish);
+    break;
     case STATE_MENU:
     this->setAnimation(this->animations.menu);
     this->onMenu();
@@ -231,11 +233,10 @@ void Character::onMenu()
   this->_create();
 
   this->setScale(0.25);
-  
-  auto position = Application->positions->menu->at(this->skinIndex);
+  this->setAnimation({0, "menu", false});
 
-  float x = Application->center.x + position->x;
-  float y = position->y;
+  float x = Application->center.x;
+  float y = Application->center.y - 190;
 
   this->setPosition(x, y);
 }
@@ -550,12 +551,10 @@ void Character::proceedPointer()
  */
 Pointer* Character::getCollisionPointer()
 {
-  auto s = Application->positions->anchor->at(this->skinIndex);
-
   float angle = -this->getRotation() * M_PI / 180.0;
 
-  float dx = this->getPositionX() + s->x;
-  float dy = this->getPositionY() + s->y;
+  float dx = this->getPositionX();
+  float dy = this->getPositionY();
 
   float x = (cos(angle) * (dx - this->getPositionX()) - sin(angle) * (dy - this->getPositionY()) + this->getPositionX());
   float y = (sin(angle) * (dx - this->getPositionX()) + cos(angle) * (dy - this->getPositionY()) + this->getPositionY());
@@ -1033,7 +1032,7 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
    * @Optional
    * This feature is currently an experimental feature.
    *
-   */
+   *
   if(parameters.exponesial.state)
   {
     parameters.exponesial.x += parameters.exponesial.increase;
@@ -1058,6 +1057,7 @@ Vec2 Character::updatePosition(Parameters &parameters, float time)
     x /= parameters.exponesial.x;
     y /= parameters.exponesial.x;
   }
+  */
 
   /**
    *

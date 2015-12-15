@@ -71,11 +71,11 @@ Mission::Mission(int id)
   this->progressBackground->setAnchorPoint(Vec2(0.5, 0.5));
   this->progressBar->setAnchorPoint(Vec2(0.0, 0.5));
 
-  this->progressBackground->setContentSize(Size(Application->width - 300, 30));
-  this->progressBar->setContentSize(Size(Application->width - 300 - 10, 20));
+  this->progressBackground->setContentSize(Size(550, 30));
+  this->progressBar->setContentSize(Size(550 - 10, 20));
 
   this->progressBackground->setPosition(this->getContentSize().width / 2, this->getContentSize().height / 2 - 70);
-  this->progressBar->setPosition(this->getContentSize().width / 2 - (Application->width - 300) / 2 + 5, this->getContentSize().height / 2 - 70);
+  this->progressBar->setPosition(this->getContentSize().width / 2 - 550 / 2 + 5, this->getContentSize().height / 2 - 70);
 
   this->progressBackground->_destroy();
   this->progressBar->_destroy();

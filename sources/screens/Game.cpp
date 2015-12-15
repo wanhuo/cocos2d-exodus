@@ -521,22 +521,29 @@ void Game::onNoadAction()
         )
       );
 
-      this->environment->parallaxes.dynamic->runAction(
-        EaseSineInOut::create(
-          MoveBy::create(0.2, Vec2(0, -100))
-        )
-      );
+      switch(this->state)
+      {
+        default:
+        this->environment->parallaxes.dynamic->runAction(
+          EaseSineInOut::create(
+            MoveBy::create(0.2, Vec2(0, -100))
+          )
+        );
 
-      this->character->runAction(
-        EaseSineInOut::create(
-          MoveBy::create(0.2, Vec2(0, -100))
-        )
-      );
-      this->character->shadow->runAction(
-        EaseSineInOut::create(
-          MoveBy::create(0.2, Vec2(0, -100))
-        )
-      );
+        this->character->runAction(
+          EaseSineInOut::create(
+            MoveBy::create(0.2, Vec2(0, -100))
+          )
+        );
+        this->character->shadow->runAction(
+          EaseSineInOut::create(
+            MoveBy::create(0.2, Vec2(0, -100))
+          )
+        );
+        break;
+        case STATE_MENU:
+        break;
+      }
     }
 
     this->buttons.noad->_destroy(true);
@@ -628,8 +635,6 @@ void Game::onAnimation()
 
 void Game::onPrepare()
 {
-  this->resetEnvironment();
-
   this->environment->onPrepare();
   this->counter->onPrepare();
 

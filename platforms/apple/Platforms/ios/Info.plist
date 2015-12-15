@@ -58,7 +58,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3098</string>
+	<string>3153</string>
 	<key>FacebookAppID</key>
 	<string>747864001998896</string>
 	<key>FacebookDisplayName</key>
@@ -84,6 +84,8 @@
 		<key>opengles-1</key>
 		<true/>
 	</dict>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>

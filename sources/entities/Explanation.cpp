@@ -98,9 +98,7 @@ void Explanation::onCreate()
    *
    *
    */
-  auto position = Application->positions->anchor->at(Application->character->skinIndex);
-
-  this->setPosition(position->x, position->y);
+  this->setPosition(0, 23);
   this->runAction(
     RepeatForever::create(
       RotateBy::create(10.0, 360.0)

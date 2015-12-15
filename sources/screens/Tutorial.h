@@ -50,25 +50,18 @@ class Tutorial : public Coins
   private:
   static Tutorial* instance;
 
-  struct Texts {
-    Text* title;
-  };
-
-  struct Buttons {
-    vector<Button*> root;
-  };
-
   /**
    *
    *
    *
    */
   protected:
+  int index;
+
   BackgroundColor* background;
   BackgroundColor* holder;
 
-  Buttons buttons;
-  Texts texts;
+  Button* next;
 
   /**
    *
@@ -123,8 +116,6 @@ class TutorialLayout : public cocos2d::ui::Layout
   protected:
   Text* text;
   TutorialAnimation* animation;
-
-  BackgroundScroll* scroll;
 
   /**
    *

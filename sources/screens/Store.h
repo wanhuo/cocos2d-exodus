@@ -163,6 +163,8 @@ class StoreLayout : public cocos2d::ui::Layout
   virtual void onEnter();
   virtual void onExit();
 
+  virtual void onPageEnter();
+
   virtual void updateTextData();
 };
 

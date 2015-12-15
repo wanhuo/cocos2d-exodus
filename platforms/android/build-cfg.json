@@ -28,6 +28,10 @@
     {
       "from": "../../resource/Config/android",
       "to": "Config"
+    },
+    {
+      "from": "../../resource/Services/android",
+      "to": "Services"
     }
   ]
 }

@@ -28,7 +28,6 @@
 #include "Text.h"
 
 #include "Crown.h"
-#include "Hat.h"
 
 /**
  *
@@ -66,7 +65,6 @@ class FinishCounter : public Entity
   Entity* best;
 
   Crown* crown;
-  Hat* hat;
 
   /**
    *

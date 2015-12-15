@@ -1,259 +1,35 @@
 
 character.png
-size: 2035,2048
+size: 2008,1927
 format: RGBA4444
 filter: Linear,Linear
 repeat: none
-skins/1/flame.1
-  rotate: true
-  xy: 70, 157
-  size: 14, 17
-  orig: 14, 17
-  offset: 0, 0
-  index: -1
-skins/1/flame.2
-  rotate: true
-  xy: 953, 195
-  size: 28, 35
-  orig: 28, 35
-  offset: 0, 0
-  index: -1
-skins/1/flame.3
-  rotate: true
-  xy: 222, 182
-  size: 41, 51
-  orig: 41, 51
+skins/1/flame
+  rotate: false
+  xy: 2, 2
+  size: 40, 100
+  orig: 40, 100
   offset: 0, 0
   index: -1
 skins/1/root.1
   rotate: false
-  xy: 2, 225
+  xy: 2, 104
   size: 1001, 1821
   orig: 1001, 1821
   offset: 0, 0
   index: -1
 skins/2/root.1
   rotate: false
-  xy: 1005, 225
+  xy: 1005, 104
   size: 1001, 1821
   orig: 1001, 1821
   offset: 0, 0
   index: -1
-skins/3/flame.2
-  rotate: false
-  xy: 2, 2
-  size: 32, 69
-  orig: 32, 69
-  offset: 0, 0
-  index: -1
-skins/3/flame.3
-  rotate: false
-  xy: 2, 73
-  size: 44, 82
-  orig: 44, 82
-  offset: 0, 0
-  index: -1
 skins/green dots/1
   rotate: false
-  xy: 275, 177
+  xy: 44, 56
   size: 46, 46
   orig: 46, 46
-  offset: 0, 0
-  index: -1
-skins/green dots/3
-  rotate: false
-  xy: 275, 177
-  size: 46, 46
-  orig: 46, 46
-  offset: 0, 0
-  index: -1
-skins/green dots/10
-  rotate: false
-  xy: 173, 176
-  size: 47, 47
-  orig: 47, 47
-  offset: 0, 0
-  index: -1
-skins/green dots/14
-  rotate: false
-  xy: 122, 174
-  size: 49, 49
-  orig: 49, 49
-  offset: 0, 0
-  index: -1
-skins/green dots/16
-  rotate: false
-  xy: 545, 184
-  size: 39, 39
-  orig: 39, 39
-  offset: 0, 0
-  index: -1
-skins/green dots/17
-  rotate: false
-  xy: 885, 191
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-skins/green dots/18
-  rotate: false
-  xy: 666, 187
-  size: 36, 36
-  orig: 36, 36
-  offset: 0, 0
-  index: -1
-skins/green dots/19
-  rotate: false
-  xy: 371, 180
-  size: 43, 43
-  orig: 43, 43
-  offset: 0, 0
-  index: -1
-skins/green dots/2
-  rotate: false
-  xy: 323, 177
-  size: 46, 46
-  orig: 46, 46
-  offset: 0, 0
-  index: -1
-skins/green dots/20
-  rotate: false
-  xy: 919, 191
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-skins/green dots/21
-  rotate: false
-  xy: 627, 186
-  size: 37, 37
-  orig: 37, 37
-  offset: 0, 0
-  index: -1
-skins/green dots/25
-  rotate: false
-  xy: 990, 192
-  size: 31, 31
-  orig: 31, 31
-  offset: 0, 0
-  index: -1
-skins/green dots/26
-  rotate: false
-  xy: 704, 187
-  size: 36, 36
-  orig: 36, 36
-  offset: 0, 0
-  index: -1
-skins/green dots/27
-  rotate: false
-  xy: 416, 180
-  size: 43, 43
-  orig: 43, 43
-  offset: 0, 0
-  index: -1
-skins/green dots/28
-  rotate: false
-  xy: 1023, 192
-  size: 31, 31
-  orig: 31, 31
-  offset: 0, 0
-  index: -1
-skins/green dots/29
-  rotate: false
-  xy: 815, 189
-  size: 34, 34
-  orig: 34, 34
-  offset: 0, 0
-  index: -1
-skins/green dots/30
-  rotate: false
-  xy: 461, 183
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-skins/green dots/31
-  rotate: false
-  xy: 742, 188
-  size: 35, 35
-  orig: 35, 35
-  offset: 0, 0
-  index: -1
-skins/green dots/32
-  rotate: false
-  xy: 503, 183
-  size: 40, 40
-  orig: 40, 40
-  offset: 0, 0
-  index: -1
-skins/green dots/33
-  rotate: false
-  xy: 586, 184
-  size: 39, 39
-  orig: 39, 39
-  offset: 0, 0
-  index: -1
-skins/green dots/34
-  rotate: false
-  xy: 70, 173
-  size: 50, 50
-  orig: 50, 50
-  offset: 0, 0
-  index: -1
-skins/green dots/35
-  rotate: false
-  xy: 1056, 193
-  size: 30, 30
-  orig: 30, 30
-  offset: 0, 0
-  index: -1
-skins/green dots/36
-  rotate: false
-  xy: 1088, 198
-  size: 25, 25
-  orig: 25, 25
-  offset: 0, 0
-  index: -1
-skins/green dots/4
-  rotate: false
-  xy: 851, 191
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
-skins/green dots/5
-  rotate: false
-  xy: 779, 189
-  size: 34, 34
-  orig: 34, 34
-  offset: 0, 0
-  index: -1
-skins/green dots/6
-  rotate: false
-  xy: 2008, 1992
-  size: 25, 54
-  orig: 25, 54
-  offset: 0, 0
-  index: -1
-skins/green dots/7
-  rotate: false
-  xy: 2, 157
-  size: 66, 66
-  orig: 66, 66
-  offset: 0, 0
-  index: -1
-skins/green dots/8
-  rotate: false
-  xy: 48, 136
-  size: 19, 19
-  orig: 19, 19
-  offset: 0, 0
-  index: -1
-skins/green dots/9
-  rotate: false
-  xy: 2008, 1965
-  size: 25, 25
-  orig: 25, 25
   offset: 0, 0
   index: -1
 

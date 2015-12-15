@@ -47,7 +47,7 @@ Tutorial* Tutorial::getInstance()
  *
  */
 Tutorial::Tutorial()
-: Coins(true)
+: Coins(false)
 {
   instance = this;
 
@@ -57,19 +57,9 @@ Tutorial::Tutorial()
   this->list = new BackgroundPages(this);
   this->list->setDirection(cocos2d::ui::PageView::Direction::HORIZONTAL);
   this->list->setContentSize(Size(this->width, this->height));
-  this->list->setTouchEnabled(true);
-  this->list->addEventListener([=] (Ref *pSender, cocos2d::ui::PageView::EventType type) {
-  this->onPageChanged();
-  });
+  this->list->setTouchEnabled(false);
 
-  this->buttons.root.push_back(new Button("tutorial-button-1.png", 1, 3, this, std::bind(&Tutorial::changePage, this, 0), true));
-  this->buttons.root.push_back(new Button("tutorial-button-2.png", 1, 3, this, std::bind(&Tutorial::changePage, this, 1), true));
-
-  this->buttons.root.at(0)->setPosition(this->center.x - 48, this->height - 320);
-  this->buttons.root.at(1)->setPosition(this->center.x + 48, this->height - 320);
-
-  this->buttons.root.at(0)->setScale(0.75);
-  this->buttons.root.at(1)->setScale(0.75);
+  this->next = new Button("finish-play-button.png", 1, 2, this, std::bind(&Tutorial::onPageChanged, this), true);
 
   this->holder->setContentSize(Size(this->width, 400));
   this->holder->ignoreAnchorPointForPosition(false);
@@ -77,9 +67,8 @@ Tutorial::Tutorial()
 
   this->holder->setPosition(this->center.x, this->height);
 
-  this->texts.title = new Text("tutorial-title-1", this->holder, true);
-
-  this->texts.title->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
+  this->next->setPosition(Application->center.x, 200);
+  this->next->setScale(0.5);
 
   this->list->insertPage(new TutorialLayout1, 0);
   this->list->insertPage(new TutorialLayout2, 1);
@@ -103,21 +92,21 @@ void Tutorial::onEnter()
    *
    *
    */
-  /*this->runAction(
+  this->index = 0;
+
+  this->next->runAction(
     RepeatForever::create(
       Sequence::create(
-        DelayTime::create(5.0),
-        CallFunc::create([=] () {
-        this->changePage(1);
-        }),
-        DelayTime::create(5.0),
-        CallFunc::create([=] () {
-        this->changePage(0);
-        }),
+        EaseSineInOut::create(
+          ScaleTo::create(0.75, 0.6)
+        ),
+        EaseSineInOut::create(
+          ScaleTo::create(0.75, 0.4)
+        ),
         nullptr
       )
     )
-  );*/
+  );
 
   Events::onScreenChanged("Tutorial");
 }
@@ -134,14 +123,15 @@ void Tutorial::onExit()
  */
 void Tutorial::onPageChanged()
 {
-  for(auto button : this->buttons.root)
+  switch(this->index++)
   {
-    button->setCurrentFrameIndex(0);
-    button->bind(true);
+    case 0:
+    this->changePage(1);
+    break;
+    case 1:
+    this->hide();
+    break;
   }
-  
-  this->buttons.root.at(this->list->getCurPageIndex())->setCurrentFrameIndex(2);
-  this->buttons.root.at(this->list->getCurPageIndex())->bind(false);
 }
 
 /**
@@ -179,14 +169,6 @@ void Tutorial::changePage(int index)
 TutorialLayout::TutorialLayout()
 {
   this->setContentSize(Size(Application->width, Application->height));
-
-  this->scroll = new BackgroundScroll(this);
-  this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
-  this->scroll->setContentSize(Size(Application->width, Application->height - 400));
-  this->scroll->setBounceEnabled(true);
-  this->scroll->setTouchEnabled(true);
-  this->scroll->setSwallowTouches(false);
-  this->scroll->setPositionY(0);
 }
 
 TutorialLayout::~TutorialLayout()
@@ -217,11 +199,11 @@ TutorialLayout::~TutorialLayout()
  */
 TutorialLayout1::TutorialLayout1()
 {
-  this->text = new Text("tutorial-title-2", this->scroll, true);
-  this->text->setPosition(Application->center.x, Application->height - 550);
+  this->text = new Text("tutorial-title-2", this, true);
+  this->text->setPosition(Application->center.x, Application->height - 200);
 
-  this->animation = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this->scroll);
-  this->animation->setPosition(Application->center.x, Application->height - 700);
+  this->animation = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this);
+  this->animation->setPosition(Application->center.x, Application->height - 500);
 }
 
 TutorialLayout1::~TutorialLayout1()
@@ -252,11 +234,11 @@ TutorialLayout1::~TutorialLayout1()
  */
 TutorialLayout2::TutorialLayout2()
 {
-  this->text = new Text("tutorial-title-3", this->scroll, true);
-  this->text->setPosition(Application->center.x, Application->height - 550);
+  this->text = new Text("tutorial-title-3", this, true);
+  this->text->setPosition(Application->center.x, Application->height - 200);
 
-  this->animation = new TutorialAnimation("tutorial-animation-2.json", "tutorial-animation-2.atlas", this->scroll);
-  this->animation->setPosition(Application->center.x, Application->height - 700);
+  this->animation = new TutorialAnimation("tutorial-animation-2.json", "tutorial-animation-2.atlas", this);
+  this->animation->setPosition(Application->center.x, Application->height - 500);
 }
 
 TutorialLayout2::~TutorialLayout2()

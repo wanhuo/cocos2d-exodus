@@ -245,8 +245,8 @@ void Finish::onUnlock()
     )
   );
 
-  float x = Application->center.x - Application->positions->finish->at(Application->character->skinIndex)->x - 500;
-  float y = Application->center.y - Application->positions->finish->at(Application->character->skinIndex)->y - 500;
+  float x = Application->center.x - 500;
+  float y = Application->center.y - 500;
 
   this->decoration->_destroy();
   this->decoration->setSkin(Application->character->getSkin());
@@ -365,8 +365,8 @@ void Finish::showButtons()
     this->holder->setPosition(0, 0);
   }
 
-  float x = Application->center.x - Application->positions->finish->at(Application->character->skinIndex)->x - 500;
-  float y = Application->center.y - Application->positions->finish->at(Application->character->skinIndex)->y - 500;
+  float x = Application->center.x - 627;
+  float y = Application->center.y - 656;
 
   this->decoration->setSkin(Application->character->getSkin());
   this->decoration->_create();

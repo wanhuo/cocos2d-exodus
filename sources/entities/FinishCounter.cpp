@@ -33,7 +33,6 @@ FinishCounter::FinishCounter()
 : Entity("counter.png", Finish::getInstance(), true)
 {
   this->crown = new Crown(this);
-  this->hat = new Hat(this);
 
   this->coins = new Entity("counter-coins.png", Finish::getInstance(), true);
   this->best = new Entity("counter-best.png", this, true);
@@ -101,7 +100,6 @@ void FinishCounter::onExit()
   this->holders.congratulations->_destroy();
 
   this->crown->_destroy();
-  this->hat->_destroy();
 }
 
 /**
@@ -166,5 +164,4 @@ void FinishCounter::onBest()
 
 void FinishCounter::onRegular()
 {
-  this->hat->_create();
 }

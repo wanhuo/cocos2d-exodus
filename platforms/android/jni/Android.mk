@@ -13,6 +13,8 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/audio/Sound.cpp \
                    ../../../../cocos2d-tooflya-sdk/backgrounds/Background.cpp \
                    ../../../../cocos2d-tooflya-sdk/backgrounds/BackgroundColor.cpp \
+                   ../../../../cocos2d-tooflya-sdk/backgrounds/BackgroundScroll.cpp \
+                   ../../../../cocos2d-tooflya-sdk/backgrounds/BackgroundPages.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Entity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/TiledEntity.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Entity3D.cpp \
@@ -23,6 +25,7 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Text.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/Spine.cpp \
                    ../../../../cocos2d-tooflya-sdk/entities/ParallaxEntity.cpp \
+                   ../../../../cocos2d-tooflya-sdk/missions/Missions.cpp \
                    ../../../../cocos2d-tooflya-sdk/parallax/ParallaxPool.cpp \
                    ../../../../cocos2d-tooflya-sdk/pools/Pool.cpp \
                    ../../../../cocos2d-tooflya-sdk/screens/Screen.cpp \
@@ -38,6 +41,7 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/purchase/Purchase.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/screenshot/Screenshot.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/services/Services.cpp \
+                   ../../../../cocos2d-tooflya-sdk/platform/include/services/Services.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/social/Social.cpp \
                    ../../../sources/data/Positions.cpp \
                    ../../../sources/entities/Environment.cpp \
@@ -50,7 +54,6 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/Name.cpp \
                    ../../../sources/entities/Water.cpp \
                    ../../../sources/entities/Creature.cpp \
-                   ../../../sources/entities/Human.cpp \
                    ../../../sources/entities/Pointer.cpp \
                    ../../../sources/entities/Barror.cpp \
                    ../../../sources/entities/Explanation.cpp \
@@ -59,18 +62,30 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/GiftButton.cpp \
                    ../../../sources/entities/CharacterButton.cpp \
                    ../../../sources/entities/TutorialAnimation.cpp \
-                   ../../../sources/entities/TutorialRepeat.cpp \
                    ../../../sources/entities/Parallax.cpp \
                    ../../../sources/entities/Missile.cpp \
                    ../../../sources/entities/Handler.cpp \
                    ../../../sources/entities/Crown.cpp \
                    ../../../sources/entities/Coin.cpp \
-                   ../../../sources/entities/Confetti.cpp \
+                   ../../../sources/entities/Apatosaurus.cpp \
+                   ../../../sources/entities/Stegosaurus.cpp \
+                   ../../../sources/entities/Triceratops.cpp \
+                   ../../../sources/entities/Human.cpp \
+                   ../../../sources/entities/Item.cpp \
+                   ../../../sources/entities/ItemCharacter.cpp \
+                   ../../../sources/entities/ItemCoins.cpp \
+                   ../../../sources/entities/ItemCreature.cpp \
+                   ../../../sources/entities/ItemEnvironment.cpp \
+                   ../../../sources/entities/Mission.cpp \
                    ../../../sources/popups/Decorations.cpp \
                    ../../../sources/popups/Credits.cpp \
+                   ../../../sources/screens/ExtendScreen.cpp \
+                   ../../../sources/screens/Coins.cpp \
                    ../../../sources/screens/Game.cpp \
+                   ../../../sources/screens/Missions.cpp \
                    ../../../sources/screens/Store.cpp \
                    ../../../sources/screens/Finish.cpp \
+                   ../../../sources/screens/Tutorial.cpp \
                    ../../../sources/support/Events.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../../cocos2d/cocos/audio/include \

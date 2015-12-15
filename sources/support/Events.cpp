@@ -167,8 +167,9 @@ void Events::onShare()
   Screenshot::save([&] (bool a, string b)
   {
     auto text = new Text("share-message");
+    auto size = Director::getInstance()->getOpenGLView()->getFrameSize();
 
-    Social::share(Application->width, Application->width, 0, 0, text->data(Application->counter->values.best), Config::link);
+    Social::share(size.width, size.width, 0, 0, text->data(Application->counter->values.score), Config::link);
     Modal::hide();
   });
 }

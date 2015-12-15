@@ -2,7 +2,7 @@
   "support": [
     1,
     0,
-    4,
+    0,
     0,
     0,
     0,
@@ -11,7 +11,7 @@
     0,
     0,
     0,
-    3,
+    0,
     0,
     0,
     0,
@@ -193,7 +193,7 @@
     ],
     "start": [
       {
-        "title": "Tap screen to launch a rocket",
+        "title": "Tap the screen to launch a rocket",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -319,7 +319,7 @@
     ],
     "mission-complete": [
       {
-        "title": "Mission Complete",
+        "title": "Mission complete",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -403,7 +403,7 @@
     ],
     "decoration-1": [
       {
-        "title": "I CAN SEE MY HOUSE FROM HERE",
+        "title": "I can see my house from here",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -447,7 +447,7 @@
       {
         "title": "Ouch",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           255,
           221,
@@ -457,7 +457,7 @@
       {
         "title": "Ой",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           255,
           221,
@@ -467,7 +467,7 @@
       {
         "title": "Ouch",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           255,
           221,
@@ -477,7 +477,7 @@
       {
         "title": "Ouch",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           255,
           221,
@@ -489,7 +489,7 @@
       {
         "title": "Miss",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           237,
           58,
@@ -499,7 +499,7 @@
       {
         "title": "Долетался",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           237,
           58,
@@ -509,7 +509,7 @@
       {
         "title": "Falhaste",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           237,
           58,
@@ -519,7 +519,7 @@
       {
         "title": "Raté",
         "font": "Impact",
-        "size": 46,
+        "size": 36,
         "color": [
           237,
           58,
@@ -809,7 +809,7 @@
     ],
     "credits-title-6": [
       {
-        "title": "You can get support in social\nnetworks or send us an email.",
+        "title": "You can get support on social\nnetworks or send us an email.",
         "font": "Impact",
         "size": 32
       },
@@ -1453,7 +1453,7 @@
     ],
     "store-action-1": [
       {
-        "title": "Unlock all the characters\nby collecting coins and complete a missions",
+        "title": "Unlock all the characters\nby collecting coins and completing missions",
         "font": "Impact",
         "size": 32
       },
@@ -1475,7 +1475,7 @@
     ],
     "store-action-2": [
       {
-        "title": "Complete the mission\nand save all beings from the flood",
+        "title": "Complete missions\nand save all beings from the flood",
         "font": "Impact",
         "size": 32
       },
@@ -1649,7 +1649,7 @@
     ],
     "missions-title-1": [
       {
-        "title": "Complete missions\nto get a new characters\nand creatures",
+        "title": "Complete missions\nto get new characters",
         "font": "Impact",
         "size": 42
       },
@@ -1781,7 +1781,7 @@
     ],
     "mission-1": [
       {
-        "title": "Try to get your\nfirst coin",
+        "title": "Get your first coin",
         "font": "Impact",
         "size": 32
       },
@@ -1803,7 +1803,7 @@
     ],
     "mission-2": [
       {
-        "title": "Try to score 10 points\nin a few games",
+        "title": "Score 10 points total",
         "font": "Impact",
         "size": 32
       },
@@ -1869,7 +1869,7 @@
     ],
     "mission-5": [
       {
-        "title": "Try to score 10 points\nin a one game",
+        "title": "Score 10 points\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -1913,7 +1913,7 @@
     ],
     "mission-7": [
       {
-        "title": "Try to find 2 bonus lines\nin a one game",
+        "title": "Find 2 bonus lines\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -1935,7 +1935,7 @@
     ],
     "mission-8": [
       {
-        "title": "Try to beat your\nbest score",
+        "title": "Beat your best score",
         "font": "Impact",
         "size": 32
       },
@@ -1957,7 +1957,7 @@
     ],
     "mission-9": [
       {
-        "title": "Try to score 20 points\nin a one game",
+        "title": "Score 20 points\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2023,7 +2023,7 @@
     ],
     "mission-12": [
       {
-        "title": "Try to earn 5 coins\nin a one game",
+        "title": "Earn 5 coins\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2045,7 +2045,7 @@
     ],
     "mission-13": [
       {
-        "title": "Try to beat your\nbest score",
+        "title": "Beat your best score",
         "font": "Impact",
         "size": 32
       },
@@ -2067,7 +2067,7 @@
     ],
     "mission-14": [
       {
-        "title": "Try to score 20 points\nin a few games",
+        "title": "Score 20 points total",
         "font": "Impact",
         "size": 32
       },
@@ -2089,7 +2089,7 @@
     ],
     "mission-15": [
       {
-        "title": "Try to earn 40 coins\nin a few games",
+        "title": "Earn 40 coins total",
         "font": "Impact",
         "size": 32
       },
@@ -2133,7 +2133,7 @@
     ],
     "mission-17": [
       {
-        "title": "Try to find 2 bonus lines\nin a one game",
+        "title": "Find 2 bonus lines\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2155,7 +2155,7 @@
     ],
     "mission-18": [
       {
-        "title": "Try to beat your\nbest score",
+        "title": "Beat your best score",
         "font": "Impact",
         "size": 32
       },
@@ -2199,7 +2199,7 @@
     ],
     "mission-20": [
       {
-        "title": "Try to earn 10 coins\nin a one game",
+        "title": "Earn 10 coins\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2265,7 +2265,7 @@
     ],
     "mission-23": [
       {
-        "title": "Try to score 20 points\nin a one game",
+        "title": "Score 20 points\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2287,7 +2287,7 @@
     ],
     "mission-24": [
       {
-        "title": "Try to earn 20 coins\nin a few games",
+        "title": "Earn 20 coins total",
         "font": "Impact",
         "size": 32
       },
@@ -2309,7 +2309,7 @@
     ],
     "mission-25": [
       {
-        "title": "Try to find 3 bonus lines\nin a one game",
+        "title": "Find 3 bonus lines\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2331,7 +2331,7 @@
     ],
     "mission-26": [
       {
-        "title": "Try to beat your\nbest score",
+        "title": "Beat your best score",
         "font": "Impact",
         "size": 32
       },
@@ -2375,7 +2375,7 @@
     ],
     "mission-28": [
       {
-        "title": "Try to earn 15 coins\nin a one game",
+        "title": "Earn 15 coins\nin one game",
         "font": "Impact",
         "size": 32
       },
@@ -2397,7 +2397,7 @@
     ],
     "mission-29": [
       {
-        "title": "Try to score 30 points\nin a few games",
+        "title": "Score 30 points total",
         "font": "Impact",
         "size": 32
       },
@@ -2463,7 +2463,7 @@
     ],
     "mission-32": [
       {
-        "title": "Try to beat your\nbest score",
+        "title": "Beat your best score",
         "font": "Impact",
         "size": 32
       },
@@ -2485,7 +2485,7 @@
     ],
     "mission-33": [
       {
-        "title": "Try to earn 15 coins\nin a few games",
+        "title": "Earn 15 coins total",
         "font": "Impact",
         "size": 32
       },
@@ -4129,86 +4129,46 @@
     ],
     "tutorial-title-2": [
       {
-        "title": "Tap when the rocket will fly\nthrough a green point",
+        "title": "Tap when the rocket is flying\nthrough green dots",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "Нажимайте когда ракета\nпролетает через зеленую точку",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "Toque no ecrã quando o foguete passar\npor cima dos pontos verdes",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "APPUYER QUAND LA FUSÉE\nSURVOLE LE ROND VERT",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       }
     ],
     "tutorial-title-3": [
       {
-        "title": "Tap faster when you are\non bonus line",
+        "title": "Tap faster when you are\non a bonus line",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "Нажимайте быстрее когда ракета\nнаходится на бонусной линии",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "Toque muitas vezes quando o foguete\npassar por cima da linha de bónus",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       },
       {
         "title": "Poussez plus rapide lorsque la fusée\nest sur la ligne de bonus",
         "font": "Impact",
-        "size": 46,
-        "color": [
-          132,
-          209,
-          223
-        ]
+        "size": 46
       }
     ],
     "tutorial-title-4": [
@@ -4231,6 +4191,116 @@
         "title": "Collecter des pièces:",
         "font": "Impact",
         "size": 32
+      }
+    ],
+    "vote-title": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      }
+    ],
+    "vote-description": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      }
+    ],
+    "vote-1": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      }
+    ],
+    "vote-2": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      }
+    ],
+    "vote-3": [
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 0
       }
     ],
     "purchases-error-title": [
@@ -4257,7 +4327,7 @@
     ],
     "purchases-error-message": [
       {
-        "title": "Sorry, but now in-app purchases available now. Please try again later.",
+        "title": "Sorry, but no in-app purchases available now. Please try again later.",
         "font": "Impact",
         "size": 0
       },

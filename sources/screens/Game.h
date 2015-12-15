@@ -57,8 +57,6 @@
 
 #include "Environment.h"
 
-#include "Positions.h"
-
 /**
  *
  *
@@ -219,8 +217,6 @@ class Game : public Screen
   Creatures* creatures;
 
   vector<Environment*> environments;
-
-  const Positions* positions = new Positions;
 
   virtual bool isNextEnvironment();
 

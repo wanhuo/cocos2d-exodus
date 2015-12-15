@@ -199,6 +199,9 @@ void Environment::onMenu()
 
 void Environment::onAnimation()
 {
+  this->parallaxes.dynamic->runAction(
+    MoveTo::create(0.5, Vec2(0, Application->parameters.ad ? 0 : 100))
+  );
 }
 
 void Environment::onPrepare()
@@ -327,6 +330,7 @@ void Environment1::onMenu()
 
 void Environment1::onAnimation()
 {
+  Environment::onAnimation();
 }
 
 void Environment1::onPrepare()

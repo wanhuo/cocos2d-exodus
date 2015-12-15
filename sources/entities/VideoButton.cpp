@@ -80,7 +80,7 @@ void VideoButton::onTouch(cocos2d::Touch* touch, Event* e)
 
     if(state)
     {
-      Finish::getInstance()->createCoins(30);
+      Finish::getInstance()->createCoins(20);
     }
   });
 
