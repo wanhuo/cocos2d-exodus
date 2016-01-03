@@ -113,7 +113,9 @@ void Barror::animate(int index)
             })
           ),
           CallFunc::create(CC_CALLBACK_0(Counter::onScore, Application->counter, true)),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, this, false)),
+          CallFunc::create([=] () {
+            this->_destroy();
+          }),
           nullptr
         )
       );
@@ -134,7 +136,9 @@ void Barror::animate(int index)
             })
           ),
           CallFunc::create(CC_CALLBACK_0(Counter::onCoin, Application->counter, true)),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, this, false)),
+          CallFunc::create([=] () {
+            this->_destroy();
+          }),
           nullptr
         )
       );

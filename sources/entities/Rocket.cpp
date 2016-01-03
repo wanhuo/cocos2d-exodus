@@ -178,7 +178,9 @@ void Rocket::DecorationSmall::onCreate()
     Sequence::create(
       DelayTime::create(1.0),
       FadeOut::create(1.0),
-      CallFunc::create(CC_CALLBACK_0(Entity::_destroy, this, true)),
+      CallFunc::create([=] () {
+        this->_destroy(true);
+      }),
       nullptr
     )
   );
@@ -254,7 +256,9 @@ void Rocket::DecorationLarge::onCreate()
         EaseSineInOut::create(
           ScaleTo::create(0.2, 5.0)
         ),
-        CallFunc::create(CC_CALLBACK_0(Entity::_destroy, this, true)),
+        CallFunc::create([=] () {
+          this->_destroy(true);
+        }),
         nullptr
       ),
       Sequence::create(

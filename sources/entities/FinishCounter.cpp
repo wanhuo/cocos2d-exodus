@@ -74,13 +74,18 @@ void FinishCounter::onEnter()
    *
    *
    */
+  this->setScale(0.75);
   this->setPosition(Application->center.x, Application->height - 140);
   this->runAction(
-    Sequence::create(
-      EaseBounceOut::create(
-        MoveBy::create(1.0, Vec2(0.0, -100.0)
-        )
+    Spawn::create(
+      Sequence::create(
+        EaseBounceOut::create(
+          MoveBy::create(1.0, Vec2(0.0, -100.0)
+          )
+        ),
+        nullptr
       ),
+      ScaleTo::create(1.0, 1.0),
       nullptr
     )
   );

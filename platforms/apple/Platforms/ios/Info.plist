@@ -58,11 +58,16 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3153</string>
+	<string>3193</string>
 	<key>FacebookAppID</key>
 	<string>747864001998896</string>
 	<key>FacebookDisplayName</key>
 	<string>facebook</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>twitter</string>
+		<string>fb</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

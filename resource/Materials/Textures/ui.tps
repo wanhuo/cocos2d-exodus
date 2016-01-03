@@ -275,6 +275,7 @@
             <filename>../Graphics/ui/store-item-3-2.png</filename>
             <filename>../Graphics/ui/store-item-3-3.png</filename>
             <filename>../Graphics/ui/counter-best.png</filename>
+            <filename>../Graphics/ui/counter-coins-free.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

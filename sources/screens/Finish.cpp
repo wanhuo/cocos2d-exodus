@@ -245,8 +245,8 @@ void Finish::onUnlock()
     )
   );
 
-  float x = Application->center.x - 500;
-  float y = Application->center.y - 500;
+  float x = Application->center.x - 627;
+  float y = Application->center.y - 656;
 
   this->decoration->_destroy();
   this->decoration->setSkin(Application->character->getSkin());
@@ -381,6 +381,16 @@ void Finish::showButtons()
       EaseSineInOut::create(
         MoveTo::create(0.2, Vec2(this->decoration->getPositionX() + 500, this->decoration->getPositionY() + 500))
       ),
+      DelayTime::create(0.5),
+      CallFunc::create([=] () {
+
+        /**
+         *
+         *
+         *
+         */
+        Vote::update();
+      }),
       nullptr
     )
   );

@@ -1329,7 +1329,9 @@ void Character::Smoke::onCreate()
       EaseSineInOut::create(
         FadeOut::create(1.0 / Application->character->parameters.time)
       ),
-      CallFunc::create(CC_CALLBACK_0(Character::Smoke::_destroy, this, true)),
+      CallFunc::create([=] () {
+        this->_destroy(true);
+      }),
       nullptr
     )
   );

@@ -129,6 +129,7 @@ class Counter : public Entity
   virtual void resetMissionsUpdate();
 
   virtual void updateTextData();
+  virtual void updateTextPosition();
 };
 
 #endif

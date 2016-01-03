@@ -403,7 +403,9 @@ void Game::onPlay()
       EaseSineInOut::create(
         ScaleTo::create(0.2, 0.0)
       ),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->buttons.tutorial, true)),
+      CallFunc::create([=] () {
+        this->buttons.tutorial->_destroy(true);
+      }),
       nullptr
     )
   );

@@ -210,6 +210,8 @@ void Store::onEnter()
    *
    *
    */
+  this->onPageChanged();
+
   Events::onScreenChanged("Store");
 }
 

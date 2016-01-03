@@ -275,6 +275,48 @@
         ]
       }
     ],
+    "coins-yellow": [
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          252,
+          214,
+          130
+        ]
+      },
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 42,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      }
+    ],
     "video-coins": [
       {
         "title": "$1 FREE",
@@ -4195,12 +4237,12 @@
     ],
     "vote-title": [
       {
-        "title": "",
+        "title": "Please rate us",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Пожалуйста проголосуйте за нас",
         "font": "Impact",
         "size": 0
       },
@@ -4217,12 +4259,12 @@
     ],
     "vote-description": [
       {
-        "title": "",
+        "title": "If you enjoy this game, would you mind taking a moment to rate it? It won't take more than a minute.\nThanks for your support!",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Если вам понравилась эта игра, пожалуйста проголосуйте за нас! Это не займет больше минуты.\nБольшое спасибо за поддержку!",
         "font": "Impact",
         "size": 0
       },
@@ -4239,12 +4281,12 @@
     ],
     "vote-1": [
       {
-        "title": "",
+        "title": "Rate It Now",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Проголосвать сейчас",
         "font": "Impact",
         "size": 0
       },
@@ -4261,12 +4303,12 @@
     ],
     "vote-2": [
       {
-        "title": "",
+        "title": "Remind Me Later",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Напомнить позже",
         "font": "Impact",
         "size": 0
       },
@@ -4283,12 +4325,12 @@
     ],
     "vote-3": [
       {
-        "title": "",
+        "title": "No, Thanks",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Нет, спасибо",
         "font": "Impact",
         "size": 0
       },

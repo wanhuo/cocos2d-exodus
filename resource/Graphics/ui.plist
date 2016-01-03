@@ -56,6 +56,19 @@
                 <key>sourceSize</key>
                 <string>{154,58}</string>
             </dict>
+            <key>counter-coins-free.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1943,1459},{50,49}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,49}}</string>
+                <key>sourceSize</key>
+                <string>{50,49}</string>
+            </dict>
             <key>counter-coins.png</key>
             <dict>
                 <key>frame</key>
@@ -1145,7 +1158,7 @@
             <key>size</key>
             <string>{2038,1864}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4d614d89d6a39411e1ff18fd06228482:cf4157c8e86380e79b104db9646472d3:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
+            <string>$TexturePacker:SmartUpdate:5a6238ac13e92fead31de9eb4e09798c:2fe716ad800b43d1d71ad1a65b18eac9:e489eb72a1dac3e9a97caaf8aad1ac42$</string>
             <key>textureFileName</key>
             <string>ui.png</string>
         </dict>

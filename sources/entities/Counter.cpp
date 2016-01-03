@@ -33,12 +33,13 @@ Counter::Counter()
 {
   this->circles = new Pool(new Entity("counter.png"), this, true);
 
-  this->coins = new Entity("counter-coins.png", Application->e, true);
+  this->coins = new Entity("counter-coins-free.png", Application->e, true);
   this->best = new Entity("counter-best.png", this, true);
 
   this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
   this->best->setPosition(this->getWidth() / 2, 20);
   this->best->setScale(0.75);
+  this->best->setVisible(false);
 
   this->holders.status = new Entity("text-holder-3.png", Application->b);
   this->holders.decoration = new Entity("text-holder-2.png", Application->b);
@@ -47,11 +48,11 @@ Counter::Counter()
   this->texts.best = new Text("best", this->best, true);
   this->texts.start = new Text("start", Application->b);
   this->texts.status = new Text("fail", this->holders.status, true);
-  this->texts.coins = new Text("coins", this->coins, true);
+  this->texts.coins = new Text("coins-yellow", this->coins, TextHAlignment::LEFT, true);
   this->texts.decoration = new Text("decoration-0", this->holders.decoration, true);
 
+  this->texts.coins->setPosition(56, this->coins->getHeight() / 2);
   this->texts.value->setPosition(this->getWidth() / 2, this->getHeight() / 2);
-  this->texts.coins->setPosition(this->coins->getWidth() / 2, this->coins->getHeight() / 2);
   this->texts.best->setPosition(this->best->getWidth() / 2 + 24, this->best->getHeight() / 2 - 2);
   this->texts.status->setPosition(this->holders.status->getWidth() / 2, this->holders.status->getHeight() / 2);
   this->texts.decoration->setPosition(this->holders.decoration->getWidth() / 2, this->holders.decoration->getHeight() / 2);
@@ -123,7 +124,7 @@ void Counter::onCreate()
 
   this->runAction(
     EaseSineInOut::create(
-      ScaleTo::create(0.5, 1.0)
+      ScaleTo::create(0.5, 0.75)
     )
   );
 
@@ -157,14 +158,42 @@ void Counter::onScore(bool update)
         FadeOut::create(0.3),
         Sequence::create(
           ScaleTo::create(0.3, 1.7),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, element, true)),
+          CallFunc::create([=] () {
+            element->_destroy(true);
+          }),
           nullptr
         ),
         nullptr
       )
     );
 
-    this->updateTextData();
+    /**
+     *
+     * @Careful
+     *
+     */
+    int count = -1;
+
+    for(int i = 0; i < Application->barrors->count; i++)
+    {
+      Barror* barror = static_cast<Barror*>(Application->barrors->element(i));
+
+      if(barror->getCurrentFrameIndex() == Pointer::SUCCESS)
+      {
+        count++;
+      }
+    }
+
+    if(count > 0)
+    {
+      this->values.score -= count;
+      this->updateTextData();
+      this->values.score += count;
+    }
+    else
+    {
+      this->updateTextData();
+    }
   }
   else
   {
@@ -196,6 +225,14 @@ void Counter::onScore(bool update)
     {
       Services::achievements->update(SERVICES_ACHIEVEMENTS_REACH_POINTS_500);
     }
+
+    /**
+     *
+     * @Optional
+     * You can remove this instant update.
+     *
+     */
+    //this->updateTextData();
   }
 }
 
@@ -267,7 +304,9 @@ void Counter::onSuccess()
               );
             }
           }),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.decoration, true)),
+          CallFunc::create([=] () {
+            this->holders.decoration->_destroy(true);
+          }),
           nullptr
         )
       );
@@ -311,7 +350,9 @@ void Counter::onMistake()
       ),
       DelayTime::create(1.5),
       FadeOut::create(0.2),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.status, true)),
+      CallFunc::create([=] () {
+        this->holders.status->_destroy(true);
+      }),
       nullptr
     )
   );
@@ -338,7 +379,9 @@ void Counter::onFail()
       ),
       DelayTime::create(1.5),
       FadeOut::create(0.2),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.status, true)),
+      CallFunc::create([=] () {
+        this->holders.status->_destroy(true);
+      }),
       nullptr
     )
   );
@@ -381,7 +424,9 @@ void Counter::onMissionComplete()
           );
         }
       }),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, this->holders.decoration, true)),
+      CallFunc::create([=] () {
+        this->holders.decoration->_destroy(true);
+      }),
       nullptr
     )
   );
@@ -441,14 +486,16 @@ void Counter::onGame()
   this->texts.start->runAction(
     Sequence::create(
       FadeOut::create(0.2),
-      CallFunc::create(CC_CALLBACK_0(Text::_destroy, this->texts.start, true)),
+      CallFunc::create([=] () {
+        this->texts.start->_destroy(true);
+      }),
       nullptr
     )
   );
 
   this->coins->runAction(
     EaseBounceOut::create(
-      MoveTo::create(1.0, Vec2(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50))
+      MoveTo::create(1.0, Vec2(Application->width - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->height - 50))
     )
   );
 
@@ -560,6 +607,19 @@ void Counter::updateTextData()
   this->texts.value->data(this->values.score);
   this->texts.best->data(this->values.best);
   this->texts.coins->data(this->values.coins);
+
+  switch(Application->state)
+  {
+    case Game::STATE_GAME:
+    this->updateTextPosition();
+    break;
+  }
+}
+
+void Counter::updateTextPosition()
+{
+  this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->height - 50);
+  this->texts.coins->setPosition(56, this->coins->getHeight() / 2);
 }
 
 /**

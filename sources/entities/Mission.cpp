@@ -357,9 +357,11 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
                   }
                 }
               }),
-              CallFunc::create(CC_CALLBACK_0(Node::_destroy, this, true)),
               CallFunc::create([=] () {
-              Missions::getInstance()->updateListHeight();
+              	this->_destroy(true);
+              }),
+              CallFunc::create([=] () {
+              	Missions::getInstance()->updateListHeight();
               }),
               nullptr
             )
