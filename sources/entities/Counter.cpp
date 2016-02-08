@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -36,7 +37,7 @@ Counter::Counter()
   this->coins = new Entity("counter-coins-free.png", Application->e, true);
   this->best = new Entity("counter-best.png", this, true);
 
-  this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
+  this->coins->setPosition(Application->getWidth() + this->coins->getWidth() / 2, Application->getHeight() - 50);
   this->best->setPosition(this->getWidth() / 2, 20);
   this->best->setScale(0.75);
   this->best->setVisible(false);
@@ -120,7 +121,7 @@ void Counter::onCreate()
   this->circles->clear();
 
   this->setScale(0);
-  this->setPosition(Application->center.x, Application->height - 254);
+  this->setPosition(Application->getCenter().x, Application->getHeight() - 254);
 
   this->runAction(
     EaseSineInOut::create(
@@ -254,7 +255,7 @@ void Counter::onCoin(bool update)
   }
   else
   {
-    this->values.coins++;
+    this->values.coins += 5;
 
     Sound->play("coins");
   }
@@ -284,7 +285,7 @@ void Counter::onSuccess()
       this->texts.decoration->setText("decoration-" + patch::to_string(random(0, 1)));
 
       this->holders.decoration->_create();
-      this->holders.decoration->setPosition(Application->center.x, this->getPositionY() - 190);
+      this->holders.decoration->setPosition(Application->getCenter().x, this->getPositionY() - 190);
       this->holders.decoration->setScale(0);
       this->holders.decoration->setOpacity(255);
       this->holders.decoration->runAction(
@@ -340,7 +341,7 @@ void Counter::onMistake()
   this->texts.status->setText("mistake");
 
   this->holders.status->_create();
-  this->holders.status->setPosition(Application->center.x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
+  this->holders.status->setPosition(Application->getCenter().x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
   this->holders.status->setScale(0);
   this->holders.status->setOpacity(255);
   this->holders.status->runAction(
@@ -369,7 +370,7 @@ void Counter::onFail()
   this->texts.status->setText("fail");
 
   this->holders.status->_create();
-  this->holders.status->setPosition(Application->center.x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
+  this->holders.status->setPosition(Application->getCenter().x, this->getPositionY() - (190 + (this->holders.decoration->state->create ? 80 : 0)));
   this->holders.status->setScale(0);
   this->holders.status->setOpacity(255);
   this->holders.status->runAction(
@@ -404,7 +405,7 @@ void Counter::onMissionComplete()
 
   this->holders.decoration->stopAllActions();
   this->holders.decoration->_create();
-  this->holders.decoration->setPosition(Application->center.x, this->getPositionY() - 190);
+  this->holders.decoration->setPosition(Application->getCenter().x, this->getPositionY() - 190);
   this->holders.decoration->setScale(0);
   this->holders.decoration->setOpacity(255);
   this->holders.decoration->runAction(
@@ -473,7 +474,7 @@ void Counter::onStart()
   if(!Application->parameters.tutorial)
   {
     this->texts.start->_create();
-    this->texts.start->setPosition(Application->center.x, this->getPositionY() - 180);
+    this->texts.start->setPosition(Application->getCenter().x, this->getPositionY() - 180);
     this->texts.start->setOpacity(0);
     this->texts.start->runAction(
       FadeIn::create(1.0)
@@ -483,6 +484,8 @@ void Counter::onStart()
 
 void Counter::onGame()
 {
+  Events::onPlay();
+
   this->texts.start->runAction(
     Sequence::create(
       FadeOut::create(0.2),
@@ -495,7 +498,7 @@ void Counter::onGame()
 
   this->coins->runAction(
     EaseBounceOut::create(
-      MoveTo::create(1.0, Vec2(Application->width - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->height - 50))
+      MoveTo::create(1.0, Vec2(Application->getWidth() - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->getHeight() - 50))
     )
   );
 
@@ -536,6 +539,14 @@ void Counter::onGame()
 
 void Counter::onLose()
 {
+  Events::onLose(this->values.score);
+
+  /**
+   *
+   * @Optional
+   *
+   *
+   */
   Events::updateMissions();
 }
 
@@ -581,7 +592,7 @@ bool Counter::save()
  */
 void Counter::reset()
 {
-  this->coins->setPosition(Application->width + this->coins->getWidth() / 2, Application->height - 50);
+  this->coins->setPosition(Application->getWidth() + this->coins->getWidth() / 2, Application->getHeight() - 50);
 
   this->values.score = 0;
   this->updateTextData();
@@ -618,7 +629,7 @@ void Counter::updateTextData()
 
 void Counter::updateTextPosition()
 {
-  this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->height - 50);
+  this->coins->setPosition(Application->getWidth() - this->coins->getWidth() / 2 - this->texts.coins->getWidth() - 25, Application->getHeight() - 50);
   this->texts.coins->setPosition(56, this->coins->getHeight() / 2);
 }
 

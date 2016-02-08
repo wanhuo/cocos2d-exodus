@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -41,7 +42,7 @@ float Coin::TIME;
 Coin::Coin()
 : Entity3D("coin.obj")
 {
-  this->setTextures();
+  this->setTexture("coin.png");
   this->setScheduleUpdate(true);
 }
 

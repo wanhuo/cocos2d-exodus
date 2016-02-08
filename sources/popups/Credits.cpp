@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -52,18 +53,18 @@ Credits::Credits()
   instance = this;
 
   this->background = new BackgroundColor(this, Color4B(21, 176, 191, 255));
-  this->background->setPositionY(-Application->height);
+  this->background->setPositionY(-Application->getHeight());
 
   this->scroll = cocos2d::ui::ScrollView::create();
   this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
   this->scroll->setBounceEnabled(true);
-  this->scroll->setContentSize(Size(Application->width, this->parameters.height));
-  this->scroll->setPositionY(Application->height - this->parameters.height);
+  this->scroll->setContentSize(Size(Application->getWidth(), this->parameters.height));
+  this->scroll->setPositionY(Application->getHeight() - this->parameters.height);
 
   this->holder = new Background(this->scroll);
   this->decorations = new Background(this->holder);
 
-  this->holder->setPositionX(Application->center.x);
+  this->holder->setPositionX(Application->getCenter().x);
 
   this->background->addChild(this->scroll);
 
@@ -111,15 +112,15 @@ Credits::Credits()
 
   this->decoration1->setPosition(
     210,
-    Application->height - 100
+    Application->getHeight() - 100
   );
   this->decoration2->setPosition(
-    Application->width - 150,
-    Application->height - 200
+    Application->getWidth() - 150,
+    Application->getHeight() - 200
   );
   this->decoration3->setPosition(
     210,
-    Application->height - 600
+    Application->getHeight() - 600
   );
 
   this->twitter->setPosition(-75, -650 - t);
@@ -158,7 +159,7 @@ Credits::Credits()
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       this->size
     )
   );
@@ -172,6 +173,17 @@ Credits::Credits()
 
   this->setLocalZOrder(1000);
   this->retain();
+
+  /**
+   *
+   * @Optional
+   * Hide restore purchases title and button from Android users.
+   *
+   */
+  #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+  this->restore->setVisible(false);
+  this->texts.title[22]->setVisible(false);
+  #endif
 }
 
 Credits::~Credits()

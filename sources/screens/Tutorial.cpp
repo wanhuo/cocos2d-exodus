@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -56,18 +57,18 @@ Tutorial::Tutorial()
 
   this->list = new BackgroundPages(this);
   this->list->setDirection(cocos2d::ui::PageView::Direction::HORIZONTAL);
-  this->list->setContentSize(Size(this->width, this->height));
+  this->list->setContentSize(Size(this->getWidth(), this->getHeight()));
   this->list->setTouchEnabled(false);
 
   this->next = new Button("finish-play-button.png", 1, 2, this, std::bind(&Tutorial::onPageChanged, this), true);
 
-  this->holder->setContentSize(Size(this->width, 400));
+  this->holder->setContentSize(Size(this->getWidth(), 400));
   this->holder->ignoreAnchorPointForPosition(false);
   this->holder->setAnchorPoint(Vec2(0.5, 1.0));
 
-  this->holder->setPosition(this->center.x, this->height);
+  this->holder->setPosition(this->getCenter().x, this->getHeight());
 
-  this->next->setPosition(Application->center.x, 200);
+  this->next->setPosition(Application->getCenter().x, 200);
   this->next->setScale(0.5);
 
   this->list->insertPage(new TutorialLayout1, 0);
@@ -168,7 +169,7 @@ void Tutorial::changePage(int index)
  */
 TutorialLayout::TutorialLayout()
 {
-  this->setContentSize(Size(Application->width, Application->height));
+  this->setContentSize(Size(Application->getWidth(), Application->getHeight()));
 }
 
 TutorialLayout::~TutorialLayout()
@@ -200,10 +201,10 @@ TutorialLayout::~TutorialLayout()
 TutorialLayout1::TutorialLayout1()
 {
   this->text = new Text("tutorial-title-2", this, true);
-  this->text->setPosition(Application->center.x, Application->height - 200);
+  this->text->setPosition(Application->getCenter().x, Application->getHeight() - 200);
 
   this->animation = new TutorialAnimation("tutorial-animation-1.json", "tutorial-animation-1.atlas", this);
-  this->animation->setPosition(Application->center.x, Application->height - 500);
+  this->animation->setPosition(Application->getCenter().x, Application->getHeight() - 500);
 }
 
 TutorialLayout1::~TutorialLayout1()
@@ -235,10 +236,10 @@ TutorialLayout1::~TutorialLayout1()
 TutorialLayout2::TutorialLayout2()
 {
   this->text = new Text("tutorial-title-3", this, true);
-  this->text->setPosition(Application->center.x, Application->height - 200);
+  this->text->setPosition(Application->getCenter().x, Application->getHeight() - 200);
 
   this->animation = new TutorialAnimation("tutorial-animation-2.json", "tutorial-animation-2.atlas", this);
-  this->animation->setPosition(Application->center.x, Application->height - 500);
+  this->animation->setPosition(Application->getCenter().x, Application->getHeight() - 500);
 }
 
 TutorialLayout2::~TutorialLayout2()

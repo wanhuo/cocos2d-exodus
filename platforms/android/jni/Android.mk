@@ -36,6 +36,7 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/batch/Batch.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/heyzap/Heyzap.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/internal/Internal.cpp \
+                   ../../../../cocos2d-tooflya-sdk/platform/include/internal/Internal.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/media/Media.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/modal/Modal.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/purchase/Purchase.cpp \
@@ -43,7 +44,8 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/services/Services.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/include/services/Services.cpp \
                    ../../../../cocos2d-tooflya-sdk/platform/android/social/Social.cpp \
-                   ../../../sources/data/Positions.cpp \
+                   ../../../../cocos2d-tooflya-sdk/platform/include/vote/Vote.cpp \
+                   ../../../../cocos2d-tooflya-sdk/platform/android/vote/Vote.cpp \
                    ../../../sources/entities/Environment.cpp \
                    ../../../sources/entities/Creatures.cpp \
                    ../../../sources/entities/FinishCounter.cpp \
@@ -87,6 +89,9 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/screens/Finish.cpp \
                    ../../../sources/screens/Tutorial.cpp \
                    ../../../sources/support/Events.cpp \
+                   ../../../../cocos2d-android-library/native/vote/Vote.cpp \
+                   ../../../../cocos2d-android-library/native/heyzap/Heyzap.cpp \
+                   ../../../../cocos2d-android-library/native/purchase/Purchase.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../../cocos2d/cocos/audio/include \
                     $(LOCAL_PATH)/../../../../cocos2d-tooflya-sdk \
@@ -113,6 +118,7 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../../cocos2d/cocos/audio/include \
                     $(LOCAL_PATH)/../../../../cocos2d-tooflya-sdk/platform/include/screenshot \
                     $(LOCAL_PATH)/../../../../cocos2d-tooflya-sdk/platform/include/services \
                     $(LOCAL_PATH)/../../../../cocos2d-tooflya-sdk/platform/include/social \
+                    $(LOCAL_PATH)/../../../../cocos2d-tooflya-sdk/platform/include/vote \
                     $(LOCAL_PATH)/../../../sources/data \
                     $(LOCAL_PATH)/../../../sources/entities \
                     $(LOCAL_PATH)/../../../sources/popups \

@@ -40,7 +40,6 @@
 		7843AD2A1C22525D0011F47C /* Batch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7843ACF81C22525D0011F47C /* Batch.bundle */; };
 		7843AD2B1C22525D0011F47C /* Batch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843ACF91C22525D0011F47C /* Batch.framework */; };
 		7843AD2C1C22525D0011F47C /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843ACFB1C22525D0011F47C /* Chartboost.framework */; };
-		7843AD2D1C22525D0011F47C /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843ACFD1C22525D0011F47C /* FBAudienceNetwork.framework */; };
 		7843AD2E1C22525D0011F47C /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843ACFF1C22525D0011F47C /* GoogleMobileAds.framework */; };
 		7843AD2F1C22525D0011F47C /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD0B1C22525D0011F47C /* libGoogleAnalyticsServices.a */; };
 		7843AD301C22525D0011F47C /* HeyzapAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD0D1C22525D0011F47C /* HeyzapAds.framework */; };
@@ -67,14 +66,10 @@
 		7843AD481C22531F0011F47C /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD471C22531F0011F47C /* libxml2.2.dylib */; };
 		7843AD4A1C22532B0011F47C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD491C22532B0011F47C /* libsqlite3.dylib */; };
 		7843AD4C1C22533D0011F47C /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD4B1C22533D0011F47C /* libiconv.2.dylib */; };
-		7843AD501C2253550011F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD4F1C2253550011F47C /* WebKit.framework */; };
-		7843AD521C22535F0011F47C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD511C22535F0011F47C /* AudioToolbox.framework */; };
 		7843AD541C22536C0011F47C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD531C22536C0011F47C /* OpenAL.framework */; };
 		7843AD561C2253740011F47C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD551C2253740011F47C /* StoreKit.framework */; };
 		7843AD581C22537E0011F47C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD571C22537E0011F47C /* SystemConfiguration.framework */; };
 		7843AD5A1C2253860011F47C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD591C2253860011F47C /* CoreData.framework */; };
-		7843AD5C1C22538B0011F47C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD5B1C22538B0011F47C /* AVFoundation.framework */; };
-		7843AD5E1C2253A30011F47C /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD5D1C2253A30011F47C /* MediaPlayer.framework */; };
 		7843AD601C2253B70011F47C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD5F1C2253B70011F47C /* GameKit.framework */; };
 		7843AD621C2253BB0011F47C /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD611C2253BB0011F47C /* CoreMotion.framework */; };
 		7843AD641C2253C40011F47C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7843AD631C2253C40011F47C /* MessageUI.framework */; };
@@ -177,8 +172,17 @@
 		78AEAC1B1BD142EC00FA8783 /* Decorations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC191BD142EC00FA8783 /* Decorations.cpp */; };
 		78AEAC1E1BD14B6D00FA8783 /* Rocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC1D1BD14B6D00FA8783 /* Rocket.cpp */; };
 		78AEAC1F1BD14B6D00FA8783 /* Rocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78AEAC1D1BD14B6D00FA8783 /* Rocket.cpp */; };
+		78C2F1791C39B8BD00B3A9F8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2F1781C39B8BD00B3A9F8 /* WebKit.framework */; };
+		78C2F17B1C39B8CD00B3A9F8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2F17A1C39B8CD00B3A9F8 /* AudioToolbox.framework */; };
+		78C2F17D1C39B8F500B3A9F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2F17C1C39B8F500B3A9F8 /* Foundation.framework */; };
+		78C2F17F1C39B91700B3A9F8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2F17E1C39B91600B3A9F8 /* AVFoundation.framework */; };
+		78C2F1821C39C5D100B3A9F8 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2F1801C39C5B200B3A9F8 /* FBAudienceNetwork.framework */; };
 		78D5869B1BD7B3CE0068FCA6 /* Missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D586991BD7B3CE0068FCA6 /* Missile.cpp */; };
 		78D5869C1BD7B3CE0068FCA6 /* Missile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D586991BD7B3CE0068FCA6 /* Missile.cpp */; };
+		78D5ABE41C639321009CCB4D /* Icon-87.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D5ABE31C639321009CCB4D /* Icon-87.png */; };
+		78D5ABE61C6393E1009CCB4D /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D5ABE51C6393E1009CCB4D /* Icon-180.png */; };
+		78D5ABE81C639500009CCB4D /* Icon-167.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D5ABE71C639500009CCB4D /* Icon-167.png */; };
+		78D5ABEA1C639801009CCB4D /* Default-960.png in Resources */ = {isa = PBXBuildFile; fileRef = 78D5ABE91C639801009CCB4D /* Default-960.png */; };
 		78DEED691B1A911E0093CB64 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED531B1A911E0093CB64 /* Default-568h@2x.png */; };
 		78DEED6A1B1A911E0093CB64 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED541B1A911E0093CB64 /* Default.png */; };
 		78DEED6B1B1A911E0093CB64 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 78DEED551B1A911E0093CB64 /* Default@2x.png */; };
@@ -290,7 +294,6 @@
 		7843ACF81C22525D0011F47C /* Batch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Batch.bundle; sourceTree = "<group>"; };
 		7843ACF91C22525D0011F47C /* Batch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Batch.framework; sourceTree = "<group>"; };
 		7843ACFB1C22525D0011F47C /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Chartboost.framework; sourceTree = "<group>"; };
-		7843ACFD1C22525D0011F47C /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		7843ACFF1C22525D0011F47C /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		7843AD011C22525D0011F47C /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
 		7843AD021C22525D0011F47C /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
@@ -331,13 +334,10 @@
 		7843AD471C22531F0011F47C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../../../../../../usr/lib/libxml2.2.dylib; sourceTree = "<group>"; };
 		7843AD491C22532B0011F47C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		7843AD4B1C22533D0011F47C /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = ../../../../../../usr/lib/libiconv.2.dylib; sourceTree = "<group>"; };
-		7843AD4F1C2253550011F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		7843AD511C22535F0011F47C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD531C22536C0011F47C /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/OpenAL.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD551C2253740011F47C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD571C22537E0011F47C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD591C2253860011F47C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		7843AD5B1C22538B0011F47C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD5D1C2253A30011F47C /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD5F1C2253B70011F47C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		7843AD611C2253BB0011F47C /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
@@ -436,9 +436,18 @@
 		78AEAC191BD142EC00FA8783 /* Decorations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Decorations.cpp; sourceTree = "<group>"; };
 		78AEAC1C1BD14B6D00FA8783 /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rocket.h; sourceTree = "<group>"; };
 		78AEAC1D1BD14B6D00FA8783 /* Rocket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rocket.cpp; sourceTree = "<group>"; };
+		78C2F1781C39B8BD00B3A9F8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		78C2F17A1C39B8CD00B3A9F8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		78C2F17C1C39B8F500B3A9F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		78C2F17E1C39B91600B3A9F8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		78C2F1801C39C5B200B3A9F8 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		78CA6DC21B56786D00F2525F /* Framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Framework.xcodeproj; path = ../../../cocos2d/build/Framework.xcodeproj; sourceTree = "<group>"; };
 		78D586991BD7B3CE0068FCA6 /* Missile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Missile.cpp; sourceTree = "<group>"; };
 		78D5869A1BD7B3CE0068FCA6 /* Missile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Missile.h; sourceTree = "<group>"; };
+		78D5ABE31C639321009CCB4D /* Icon-87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-87.png"; sourceTree = "<group>"; };
+		78D5ABE51C6393E1009CCB4D /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
+		78D5ABE71C639500009CCB4D /* Icon-167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-167.png"; sourceTree = "<group>"; };
+		78D5ABE91C639801009CCB4D /* Default-960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-960.png"; sourceTree = "<group>"; };
 		78DEED531B1A911E0093CB64 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		78DEED541B1A911E0093CB64 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		78DEED551B1A911E0093CB64 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -503,9 +512,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				780CDECB1C3965BE00ED60B1 /* GameController.framework in Frameworks */,
+				78C2F1821C39C5D100B3A9F8 /* FBAudienceNetwork.framework in Frameworks */,
+				78C2F17F1C39B91700B3A9F8 /* AVFoundation.framework in Frameworks */,
 				780CDEC91C3965B600ED60B1 /* MediaPlayer.framework in Frameworks */,
 				7894C0731BC97EE500363FC9 /* libcocos2d iOS.a in Frameworks */,
+				78C2F17D1C39B8F500B3A9F8 /* Foundation.framework in Frameworks */,
+				780CDECB1C3965BE00ED60B1 /* GameController.framework in Frameworks */,
 				7843AD2F1C22525D0011F47C /* libGoogleAnalyticsServices.a in Frameworks */,
 				7843AD701C2253EF0011F47C /* AdSupport.framework in Frameworks */,
 				7843AD6E1C2253EB0011F47C /* iAd.framework in Frameworks */,
@@ -519,19 +531,16 @@
 				7843AD601C2253B70011F47C /* GameKit.framework in Frameworks */,
 				7843AD3C1C22525D0011F47C /* UnityAds.framework in Frameworks */,
 				7843AD2C1C22525D0011F47C /* Chartboost.framework in Frameworks */,
-				7843AD5E1C2253A30011F47C /* MediaPlayer.framework in Frameworks */,
 				7843AD291C22525D0011F47C /* AdColony.framework in Frameworks */,
 				7843AD431C22525D0011F47C /* VungleSDK.framework in Frameworks */,
 				7843AD301C22525D0011F47C /* HeyzapAds.framework in Frameworks */,
-				7843AD5C1C22538B0011F47C /* AVFoundation.framework in Frameworks */,
 				7843AD5A1C2253860011F47C /* CoreData.framework in Frameworks */,
 				7843AD581C22537E0011F47C /* SystemConfiguration.framework in Frameworks */,
 				7843AD561C2253740011F47C /* StoreKit.framework in Frameworks */,
 				7843AD541C22536C0011F47C /* OpenAL.framework in Frameworks */,
 				7843AD2B1C22525D0011F47C /* Batch.framework in Frameworks */,
-				7843AD2D1C22525D0011F47C /* FBAudienceNetwork.framework in Frameworks */,
-				7843AD521C22535F0011F47C /* AudioToolbox.framework in Frameworks */,
-				7843AD501C2253550011F47C /* WebKit.framework in Frameworks */,
+				78C2F17B1C39B8CD00B3A9F8 /* AudioToolbox.framework in Frameworks */,
+				78C2F1791C39B8BD00B3A9F8 /* WebKit.framework in Frameworks */,
 				7843AD4C1C22533D0011F47C /* libiconv.2.dylib in Frameworks */,
 				7843AD4A1C22532B0011F47C /* libsqlite3.dylib in Frameworks */,
 				7843AD481C22531F0011F47C /* libxml2.2.dylib in Frameworks */,
@@ -649,6 +658,10 @@
 		7843ACF31C2252350011F47C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78C2F17E1C39B91600B3A9F8 /* AVFoundation.framework */,
+				78C2F17C1C39B8F500B3A9F8 /* Foundation.framework */,
+				78C2F17A1C39B8CD00B3A9F8 /* AudioToolbox.framework */,
+				78C2F1781C39B8BD00B3A9F8 /* WebKit.framework */,
 				780CDEE51C396D6100ED60B1 /* libz.1.dylib */,
 				780CDEE31C396D5A00ED60B1 /* libiconv.2.dylib */,
 				780CDEE11C396D5000ED60B1 /* libsqlite3.dylib */,
@@ -675,13 +688,10 @@
 				7843AD611C2253BB0011F47C /* CoreMotion.framework */,
 				7843AD5F1C2253B70011F47C /* GameKit.framework */,
 				7843AD5D1C2253A30011F47C /* MediaPlayer.framework */,
-				7843AD5B1C22538B0011F47C /* AVFoundation.framework */,
 				7843AD591C2253860011F47C /* CoreData.framework */,
 				7843AD571C22537E0011F47C /* SystemConfiguration.framework */,
 				7843AD551C2253740011F47C /* StoreKit.framework */,
 				7843AD531C22536C0011F47C /* OpenAL.framework */,
-				7843AD511C22535F0011F47C /* AudioToolbox.framework */,
-				7843AD4F1C2253550011F47C /* WebKit.framework */,
 				7843AD4B1C22533D0011F47C /* libiconv.2.dylib */,
 				7843AD491C22532B0011F47C /* libsqlite3.dylib */,
 				7843AD471C22531F0011F47C /* libxml2.2.dylib */,
@@ -736,7 +746,7 @@
 		7843ACFC1C22525D0011F47C /* FacebookAudienceNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				7843ACFD1C22525D0011F47C /* FBAudienceNetwork.framework */,
+				78C2F1801C39C5B200B3A9F8 /* FBAudienceNetwork.framework */,
 			);
 			path = FacebookAudienceNetwork;
 			sourceTree = "<group>";
@@ -1070,19 +1080,13 @@
 			isa = PBXGroup;
 			children = (
 				78DEED531B1A911E0093CB64 /* Default-568h@2x.png */,
+				78D5ABE91C639801009CCB4D /* Default-960.png */,
 				78DEED541B1A911E0093CB64 /* Default.png */,
 				78DEED551B1A911E0093CB64 /* Default@2x.png */,
 				78DEED561B1A911E0093CB64 /* Default@2x~ipad.png */,
 				78DEED571B1A911E0093CB64 /* Default_iphone6.png */,
 				78DEED581B1A911E0093CB64 /* Default_iphone6plus.png */,
 				78DEED591B1A911E0093CB64 /* Default~ipad.png */,
-				78817A751BBDAFD3008BA961 /* Icon-512.png */,
-				78DEED5B1B1A911E0093CB64 /* Icon-114.png */,
-				78DEED5C1B1A911E0093CB64 /* Icon-120.png */,
-				78DEED5D1B1A911E0093CB64 /* Icon-128.png */,
-				78DEED5E1B1A911E0093CB64 /* Icon-144.png */,
-				78DEED5F1B1A911E0093CB64 /* Icon-152.png */,
-				78DEED5A1B1A911E0093CB64 /* Icon-100.png */,
 				78DEED601B1A911E0093CB64 /* Icon-29.png */,
 				78DEED611B1A911E0093CB64 /* Icon-40.png */,
 				78DEED621B1A911E0093CB64 /* Icon-50.png */,
@@ -1091,6 +1095,16 @@
 				78DEED651B1A911E0093CB64 /* Icon-72.png */,
 				78DEED661B1A911E0093CB64 /* Icon-76.png */,
 				78DEED671B1A911E0093CB64 /* Icon-80.png */,
+				78D5ABE31C639321009CCB4D /* Icon-87.png */,
+				78DEED5A1B1A911E0093CB64 /* Icon-100.png */,
+				78DEED5B1B1A911E0093CB64 /* Icon-114.png */,
+				78DEED5C1B1A911E0093CB64 /* Icon-120.png */,
+				78DEED5D1B1A911E0093CB64 /* Icon-128.png */,
+				78DEED5E1B1A911E0093CB64 /* Icon-144.png */,
+				78DEED5F1B1A911E0093CB64 /* Icon-152.png */,
+				78D5ABE71C639500009CCB4D /* Icon-167.png */,
+				78D5ABE51C6393E1009CCB4D /* Icon-180.png */,
+				78817A751BBDAFD3008BA961 /* Icon-512.png */,
 				78DEED7F1B1A912F0093CB64 /* Icon.icns */,
 			);
 			path = Resource;
@@ -1265,12 +1279,14 @@
 				7843AD391C22525D0011F47C /* validate.png in Resources */,
 				7843AD3D1C22525D0011F47C /* __vungle.db in Resources */,
 				78DEED7C1B1A911E0093CB64 /* Icon-76.png in Resources */,
+				78D5ABE81C639500009CCB4D /* Icon-167.png in Resources */,
 				781B06801BD26FC70072FB24 /* config.json in Resources */,
 				78DEED761B1A911E0093CB64 /* Icon-29.png in Resources */,
 				78DEED6F1B1A911E0093CB64 /* Default~ipad.png in Resources */,
 				7843AD3E1C22525D0011F47C /* vg_close.png in Resources */,
 				7894C0291BC9258B00363FC9 /* Sound in Resources */,
 				7843AD421C22525D0011F47C /* vg_privacy.png in Resources */,
+				78D5ABE41C639321009CCB4D /* Icon-87.png in Resources */,
 				7894C02C1BC925FA00363FC9 /* Json in Resources */,
 				7894C0231BC9258B00363FC9 /* Graphics in Resources */,
 				7843AD411C22525D0011F47C /* vg_mute_on.png in Resources */,
@@ -1284,6 +1300,7 @@
 				78DEED6A1B1A911E0093CB64 /* Default.png in Resources */,
 				78817A761BBDAFD3008BA961 /* Icon-512.png in Resources */,
 				7894C0211BC9258B00363FC9 /* Fonts in Resources */,
+				78D5ABEA1C639801009CCB4D /* Default-960.png in Resources */,
 				78DEED711B1A911E0093CB64 /* Icon-114.png in Resources */,
 				7843AD341C22525D0011F47C /* down.png in Resources */,
 				7894C0251BC9258B00363FC9 /* Manifests in Resources */,
@@ -1306,6 +1323,7 @@
 				78DEED731B1A911E0093CB64 /* Icon-128.png in Resources */,
 				78DEED721B1A911E0093CB64 /* Icon-120.png in Resources */,
 				78DEED6D1B1A911E0093CB64 /* Default_iphone6.png in Resources */,
+				78D5ABE61C6393E1009CCB4D /* Icon-180.png in Resources */,
 				7843AD401C22525D0011F47C /* vg_mute_off.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1552,7 +1570,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/base $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/physics $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/2d $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/gui $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/network $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/audio/include $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/editor-support $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/extensions $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/bindings/auto $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/bindings/manual";
@@ -1575,7 +1593,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/base $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/physics $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/math/kazmath $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/2d $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/gui $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/network $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/audio/include $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/cocos/editor-support $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/extensions $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/cocos2d-x/external/chipmunk/include/chipmunk $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/bindings/auto $(SRCROOT)/../../../cocos2d/frameworks/js-bindings/bindings/manual";
@@ -1587,11 +1605,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icons";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Images";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1604,6 +1625,7 @@
 					"$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/UnityAds",
 					"$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/Vungle/VungleSDK.embeddedframework",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/FacebookAudienceNetwork",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -1616,8 +1638,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tooflya.rocketescape;
@@ -1625,6 +1648,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d $(SRCROOT)/../../../cocos2d/cocos $(SRCROOT)/../../../cocos2d/cocos/base $(SRCROOT)/../../../cocos2d/cocos/audio $(SRCROOT)/../../../cocos2d/cocos/audio/include $(SRCROOT)/../../../cocos2d/cocos/editor-support $(SRCROOT)/../../../cocos2d/extensions $(SRCROOT)/../../../cocos2d-tooflya-sdk $(SRCROOT)/../../../cocos2d-tooflya-sdk/actions $(SRCROOT)/../../../cocos2d-tooflya-sdk/audio $(SRCROOT)/../../../cocos2d-tooflya-sdk/backgrounds $(SRCROOT)/../../../cocos2d-tooflya-sdk/entities $(SRCROOT)/../../../cocos2d-tooflya-sdk/screens $(SRCROOT)/../../../cocos2d-tooflya-sdk/parallax $(SRCROOT)/../../../cocos2d-tooflya-sdk/pools $(SRCROOT)/../../../cocos2d-tooflya-sdk/translate $(SRCROOT)/../../../cocos2d-tooflya-sdk/support $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/analytics $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/batch $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/heyzap $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/internal $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/media $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/modal $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/purchase $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/services $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/social $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/screenshot $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/vote $(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/Ketchapp $(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
 				VALID_ARCHS = "armv7 arm64";
@@ -1635,11 +1659,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icons";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Images";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COMPRESS_PNG_FILES = NO;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1652,6 +1679,7 @@
 					"$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/UnityAds",
 					"$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/Vungle/VungleSDK.embeddedframework",
 					"$(SDKROOT)$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+					"/Users/igor/Development/cocos2d-apple-library/Sources/Libraries/FacebookAudienceNetwork",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1663,8 +1691,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Platforms/ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-O0";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tooflya.rocketescape;
@@ -1672,6 +1701,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../cocos2d $(SRCROOT)/../../../cocos2d/cocos $(SRCROOT)/../../../cocos2d/cocos/base $(SRCROOT)/../../../cocos2d/cocos/audio $(SRCROOT)/../../../cocos2d/cocos/audio/include $(SRCROOT)/../../../cocos2d/cocos/editor-support $(SRCROOT)/../../../cocos2d/extensions $(SRCROOT)/../../../cocos2d-tooflya-sdk $(SRCROOT)/../../../cocos2d-tooflya-sdk/actions $(SRCROOT)/../../../cocos2d-tooflya-sdk/audio $(SRCROOT)/../../../cocos2d-tooflya-sdk/backgrounds $(SRCROOT)/../../../cocos2d-tooflya-sdk/entities $(SRCROOT)/../../../cocos2d-tooflya-sdk/screens $(SRCROOT)/../../../cocos2d-tooflya-sdk/parallax $(SRCROOT)/../../../cocos2d-tooflya-sdk/pools $(SRCROOT)/../../../cocos2d-tooflya-sdk/translate $(SRCROOT)/../../../cocos2d-tooflya-sdk/support $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/analytics $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/batch $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/heyzap $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/internal $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/media $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/modal $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/purchase $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/services $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/social $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/screenshot $(SRCROOT)/../../../cocos2d-tooflya-sdk/platform/include/vote $(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/Ketchapp $(SRCROOT)/../../../cocos2d-apple-library/Sources/Libraries/GoogleAnalytics";
 				VALID_ARCHS = "armv7 arm64";

@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -109,7 +110,7 @@ void Barror::animate(int index)
             BezierTo::create(1.0, {
               Vec2(x, y),
               this->getPosition(),
-              Vec2(random(0.0f, Application->width), Application->center.y)
+              Vec2(random(0.0f, Application->getWidth()), Application->getCenter().y)
             })
           ),
           CallFunc::create(CC_CALLBACK_0(Counter::onScore, Application->counter, true)),
@@ -123,8 +124,8 @@ void Barror::animate(int index)
     break;
     case Pointer::COIN:
     {
-      float x = Application->counter->getPositionX() + Application->center.x - 150;
-      float y = Application->height - 40;
+      float x = Application->counter->getPositionX() + Application->getCenter().x - 150;
+      float y = Application->getHeight() - 40;
 
       this->runAction(
         Sequence::create(
@@ -132,7 +133,7 @@ void Barror::animate(int index)
             BezierTo::create(1.0, {
               Vec2(x, y),
               this->getPosition(),
-              Vec2(random(0.0f, Application->width), Application->center.y)
+              Vec2(random(0.0f, Application->getWidth()), Application->getCenter().y)
             })
           ),
           CallFunc::create(CC_CALLBACK_0(Counter::onCoin, Application->counter, true)),

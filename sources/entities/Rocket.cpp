@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -49,7 +50,7 @@ void Rocket::onCreate()
 {
   TiledEntity::onCreate();
 
-  float x = random(0.0f, Application->width);
+  float x = random(0.0f, Application->getWidth());
   float y = -this->getHeight() / 2;
 
   this->vector = Vec2(0, 1);
@@ -58,7 +59,7 @@ void Rocket::onCreate()
     random(2.0, 5.0)
   );
 
-  this->position = x < Application->center.x;
+  this->position = x < Application->getCenter().x;
 
   this->setPosition(x, y);
 
@@ -97,7 +98,7 @@ void Rocket::update(float time)
   this->setPosition(x, y);
   this->setRotation(r);
 
-  if(x < -this->getWidth() / 2 || x > Application->width + this->getWidth() / 2 || y < -this->getHeight() / 2 || y > Application->height)
+  if(x < -this->getWidth() / 2 || x > Application->getWidth() + this->getWidth() / 2 || y < -this->getHeight() / 2 || y > Application->getHeight())
   {
     this->_destroy(true);
   }

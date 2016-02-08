@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -88,9 +89,9 @@ void Events::onResume()
  *
  *
  */
-void Events::onScores()
+void Events::onLeaderboards()
 {
-  Analytics::sendEvent("Application", "application.events.onScores", "Application onScores event");
+  Analytics::sendEvent("Application", "application.events.onLeaderboards", "Application onLeaderboards event");
 
   Modal::show();
   Services::showLeaderboards();
@@ -117,7 +118,7 @@ void Events::onAchievements()
 void Events::onServices()
 {
   Modal::hide();
-  
+
   Game::getInstance()->buttons.leaderboards->bind(true);
   Game::getInstance()->buttons.achievements->bind(true);
   Finish::getInstance()->buttons.leaderboards->bind(true);
@@ -127,6 +128,8 @@ void Events::onServices()
   Game::getInstance()->buttons.achievements->setCurrentFrameIndex(0);
   Finish::getInstance()->buttons.leaderboards->setCurrentFrameIndex(0);
   Finish::getInstance()->buttons.achievements->setCurrentFrameIndex(0);
+
+  Analytics::sendEvent("Application", "application.events.onServices", "Application onServices event");
 }
 
 /**
@@ -265,7 +268,9 @@ void Events::onPurchaseSuccess(const char* id, const char* name, float revenue)
  */
 void Events::onPurchaseRestored(const char* id)
 {
-  if(strncmp(id, "com.ketchapp.exodus.remove.ads", 100) == 0)
+  Analytics::sendEvent("Application", "application.events.onPurchaseRestored", "Application onPurchaseRestored event");
+
+  if(strncmp(id, "com.ketchapp.exodusgame.remove.ads", 100) == 0)
   {
     Application->onNoadAction();
   }
@@ -289,4 +294,20 @@ void Events::onMissionComplete(int id)
   Analytics::sendEvent("Missions", "missions.events.onMissionComplete", "Mission has been completed", id);
 
   Application->counter->onMissionComplete();
+}
+
+/**
+ *
+ *
+ *
+ */
+void Events::onPlay()
+{
+  Analytics::sendEvent("Application", "application.events.onPlay", "Application onPlay event");
+}
+
+void Events::onLose(int score)
+{
+  Analytics::sendEvent("Application", "application.events.onLose", "Application onLose event");
+  Analytics::sendEvent("Data", ("Finished with score: " + patch::to_string(score)).c_str(), "Application finish score");
 }

@@ -1,24 +1,22 @@
 {
 	"leaderboards": [
-		"CgkI88CN0aIVEAIQBg",
-		"CgkI66CN0aIVEAIQBg",
-		"CgkI11CN0aIVEAIQBg"
+		"com.ketchapp.exodus.leaderboards.score"
 	],
 	"achievements": [
-		"5h4aTO874O",
-		"RT129bNv88",
-		"G1LtY2BAQx",
-		"85GN3e7785",
-		"PAL233Ram5",
-		"WYP4TiB9gB",
-		"5nJS6d7U7s",
-		"HtiM9GQzah",
-		"Zdim7SxsrZ",
-		"20PyRG525U",
-		"saN3y632ZK",
-		"Cy39chaqGG",
-		"Bek0TNk0ez",
-		"950yV01zA9",
-		"4Z11fzxV63"
+		"com.ketchapp.exodus.achievements.points.1",
+		"com.ketchapp.exodus.achievements.points.10",
+		"com.ketchapp.exodus.achievements.points.50",
+		"com.ketchapp.exodus.achievements.points.100",
+		"com.ketchapp.exodus.achievements.points.500",
+		"com.ketchapp.exodus.achievements.characters.5",
+		"com.ketchapp.exodus.achievements.characters.10",
+		"com.ketchapp.exodus.achievements.characters.15",
+		"com.ketchapp.exodus.achievements.characters.20",
+		"com.ketchapp.exodus.achievements.characters.25",
+		"com.ketchapp.exodus.achievements.games.1",
+		"com.ketchapp.exodus.achievements.games.10",
+		"com.ketchapp.exodus.achievements.games.20",
+		"com.ketchapp.exodus.achievements.games.50",
+		"com.ketchapp.exodus.achievements.games.100"
 	]
 }

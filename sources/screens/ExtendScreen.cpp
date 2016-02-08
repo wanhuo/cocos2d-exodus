@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -30,7 +31,7 @@
  */
 ExtendScreen::ExtendScreen()
 {
-  this->camera = Camera::createPerspective(60, this->width / this->height, 1.0f, 100.0f);
+  this->camera = Camera::createPerspective(60, this->getWidth() / this->getHeight(), 1.0f, 100.0f);
   this->camera->setCameraFlag(CameraFlag::USER1);
 
   this->addChild(this->camera);

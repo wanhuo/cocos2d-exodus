@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -64,11 +65,11 @@ void Creature::onCreate()
 
   if(this->position)
   {
-    x = random(0.0, Application->center.x / 2.0);
+    x = random(0.0, Application->getCenter().x / 2.0);
   }
   else
   {
-    x = random(Application->width * 0.75, Application->width / 1.0);
+    x = random(Application->getWidth() * 0.75, Application->getWidth() / 1.0);
   }
 
   this->setPosition(x, Application->camera.center - 110);
@@ -130,14 +131,14 @@ void Creature::update(float time)
 
   if(this->position)
   {
-    if(x > Application->center.x)
+    if(x > Application->getCenter().x)
     {
       this->_destroy(true);
     }
   }
   else
   {
-    if(x < Application->center.x)
+    if(x < Application->getCenter().x)
     {
       this->_destroy(true);
     }

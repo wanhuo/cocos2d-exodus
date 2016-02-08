@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -140,15 +141,15 @@ Store::Store()
   this->background = new BackgroundColor(this, Color4B(235, 255, 255, 255));
   this->holder = new BackgroundColor(this, Color4B(132, 209, 223, 255));
 
-  this->holder->setContentSize(Size(this->width, 400));
+  this->holder->setContentSize(Size(this->getWidth(), 400));
 
   this->holder->ignoreAnchorPointForPosition(false);
   this->holder->setAnchorPoint(Vec2(0.5, 1.0));
-  this->holder->setPosition(this->center.x, Application->height);
+  this->holder->setPosition(this->getCenter().x, Application->getHeight());
   
   this->list = new BackgroundPages(this);
   this->list->setDirection(cocos2d::ui::PageView::Direction::HORIZONTAL);
-  this->list->setContentSize(Size(this->width, this->height));
+  this->list->setContentSize(Size(this->getWidth(), this->getHeight()));
   this->list->setTouchEnabled(true);
   this->list->addEventListener([=] (Ref *pSender, cocos2d::ui::PageView::EventType type) {
   this->onPageChanged();
@@ -159,10 +160,10 @@ Store::Store()
   this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Store::changePage, this, 2), true));
   this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::changePage, this, 3), true));
 
-  this->buttons.root.at(0)->setPosition(this->center.x - 192, this->height - 270);
-  this->buttons.root.at(1)->setPosition(this->center.x - 64, this->height - 270);
-  this->buttons.root.at(2)->setPosition(this->center.x + 64, this->height - 270);
-  this->buttons.root.at(3)->setPosition(this->center.x + 192, this->height - 270);
+  this->buttons.root.at(0)->setPosition(this->getCenter().x - 192, this->getHeight() - 270);
+  this->buttons.root.at(1)->setPosition(this->getCenter().x - 64, this->getHeight() - 270);
+  this->buttons.root.at(2)->setPosition(this->getCenter().x + 64, this->getHeight() - 270);
+  this->buttons.root.at(3)->setPosition(this->getCenter().x + 192, this->getHeight() - 270);
 
   this->buttons.root.at(0)->addChild(new StoreCharactersHandler);
   this->buttons.root.at(1)->addChild(new StoreCreaturesHandler);
@@ -265,11 +266,11 @@ void Store::changePage(int index)
  */
 StoreLayout::StoreLayout()
 {
-  this->setContentSize(Size(Application->width, Application->height));
+  this->setContentSize(Size(Application->getWidth(), Application->getHeight()));
 
   this->scroll = new BackgroundScroll(this);
   this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
-  this->scroll->setContentSize(Size(Application->width, Application->height - 400));
+  this->scroll->setContentSize(Size(Application->getWidth(), Application->getHeight() - 400));
   this->scroll->setBounceEnabled(true);
   this->scroll->setTouchEnabled(true);
   this->scroll->setSwallowTouches(true);
@@ -387,10 +388,10 @@ StoreLayoutCharacters::StoreLayoutCharacters()
   this->texts.title2 = new Text("store-action-1", this, true);
   this->texts.description = new Text("store-description-1", this->holder, true);
 
-  this->holder->setPosition(Application->center.x, Application->height - 400);
+  this->holder->setPosition(Application->getCenter().x, Application->getHeight() - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
-  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.title1->setPosition(Application->getCenter().x, Application->getHeight() - 100);
+  this->texts.title2->setPosition(Application->getCenter().x, Application->getHeight() - 170);
   this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
 
   this->updateItems();
@@ -429,7 +430,7 @@ void StoreLayoutCharacters::updateItems()
 
   for(auto element : this->items)
   {
-    element->setPosition(Application->center.x + (160) * (position ? 1 : -1), y);
+    element->setPosition(Application->getCenter().x + (160) * (position ? 1 : -1), y);
 
     this->scroll->addChild(element);
 
@@ -446,11 +447,11 @@ void StoreLayoutCharacters::updateItems()
 
 void StoreLayoutCharacters::updateListHeight()
 {
-  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+  int size = max(Application->getHeight() - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       size
     )
   );
@@ -493,10 +494,10 @@ StoreLayoutCreatures::StoreLayoutCreatures()
   this->texts.title2 = new Text("store-action-2", this, true);
   this->texts.description = new Text("store-description-2", this->holder, true);
 
-  this->holder->setPosition(Application->center.x, Application->height - 400);
+  this->holder->setPosition(Application->getCenter().x, Application->getHeight() - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
-  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.title1->setPosition(Application->getCenter().x, Application->getHeight() - 100);
+  this->texts.title2->setPosition(Application->getCenter().x, Application->getHeight() - 170);
   this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
 
   this->updateItems();
@@ -535,7 +536,7 @@ void StoreLayoutCreatures::updateItems()
 
   for(auto element : this->items)
   {
-    element->setPosition(Application->center.x + (160) * (position ? 1 : -1), y);
+    element->setPosition(Application->getCenter().x + (160) * (position ? 1 : -1), y);
 
     this->scroll->addChild(element);
 
@@ -552,11 +553,11 @@ void StoreLayoutCreatures::updateItems()
 
 void StoreLayoutCreatures::updateListHeight()
 {
-  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+  int size = max(Application->getHeight() - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       size
     )
   );
@@ -599,10 +600,10 @@ StoreLayoutEnvironments::StoreLayoutEnvironments()
   this->texts.title2 = new Text("store-action-3", this, true);
   this->texts.description = new Text("store-description-3", this->holder, true);
 
-  this->holder->setPosition(Application->center.x, Application->height - 400);
+  this->holder->setPosition(Application->getCenter().x, Application->getHeight() - 400);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
-  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.title1->setPosition(Application->getCenter().x, Application->getHeight() - 100);
+  this->texts.title2->setPosition(Application->getCenter().x, Application->getHeight() - 170);
   this->texts.description->setPosition(this->holder->getContentSize().width / 2, this->holder->getContentSize().height / 2);
 
   this->updateItems();
@@ -639,7 +640,7 @@ void StoreLayoutEnvironments::updateItems()
 
   for(auto element : this->items)
   {
-    element->setPosition(Application->center.x, y);
+    element->setPosition(Application->getCenter().x, y);
 
     this->scroll->addChild(element);
 
@@ -651,11 +652,11 @@ void StoreLayoutEnvironments::updateItems()
 
 void StoreLayoutEnvironments::updateListHeight()
 {
-  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+  int size = max(Application->getHeight() - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       size
     )
   );
@@ -693,16 +694,16 @@ StoreLayoutCoins::StoreLayoutCoins()
   this->texts.title1 = new Text("store-title-4", this, true);
   this->texts.title2 = new Text("store-action-4", this, true);
 
-  this->texts.title1->setPosition(Application->center.x, Application->height - 100);
-  this->texts.title2->setPosition(Application->center.x, Application->height - 170);
+  this->texts.title1->setPosition(Application->getCenter().x, Application->getHeight() - 100);
+  this->texts.title2->setPosition(Application->getCenter().x, Application->getHeight() - 170);
 
   auto item1 = new ItemCoins;
   auto item2 = new ItemCoins;
   auto item3 = new ItemCoins;
 
-  item1->id = "com.ketchapp.exodus.coins.200";
-  item2->id = "com.ketchapp.exodus.coins.500";
-  item3->id = "com.ketchapp.exodus.coins.1000";
+  item1->id = "com.ketchapp.exodusgame.coins.200";
+  item2->id = "com.ketchapp.exodusgame.coins.500";
+  item3->id = "com.ketchapp.exodusgame.coins.1000";
 
   item1->i = 1;
   item2->i = 2;
@@ -739,7 +740,7 @@ void StoreLayoutCoins::updateItems()
 
   for(auto element : this->items)
   {
-    element->setPosition(Application->center.x, y);
+    element->setPosition(Application->getCenter().x, y);
 
     this->scroll->addChild(element);
 
@@ -751,11 +752,11 @@ void StoreLayoutCoins::updateItems()
 
 void StoreLayoutCoins::updateListHeight()
 {
-  int size = max(Application->height - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
+  int size = max(Application->getHeight() - 400.0f, 400.0f + (this->items.size() - 1) / 2.0f * 220.0f);
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       size
     )
   );

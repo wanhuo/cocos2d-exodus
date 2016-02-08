@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -70,7 +71,7 @@ void AnimatedButton::onCreate()
    *
    *
    */
-  this->setPosition(Application->center.x, 150 + (Application->parameters.ad ? 0 : 100));
+  this->setPosition(Application->getCenter().x, 150 + (Application->parameters.ad ? 0 : 100));
   this->setScale(0);
   this->runAction(
     EaseSineInOut::create(

@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -118,11 +119,11 @@ void Character::reset()
   this->generate.count = 0;
 
   this->setRotation(0);
-  this->setPosition(Application->center.x, Application->camera.center);
+  this->setPosition(Application->getCenter().x, Application->camera.center);
 
   this->smoke->clear();
 
-  this->shadow->setPosition(Application->center.x, Application->camera.center - 110);
+  this->shadow->setPosition(Application->getCenter().x, Application->camera.center - 110);
 
   this->setGlobalZOrder(0);
 
@@ -235,8 +236,8 @@ void Character::onMenu()
   this->setScale(0.25);
   this->setAnimation({0, "menu", false});
 
-  float x = Application->center.x;
-  float y = Application->center.y - 190;
+  float x = Application->getCenter().x;
+  float y = Application->getCenter().y - 190;
 
   this->setPosition(x, y);
 }
@@ -248,7 +249,7 @@ void Character::onAnimation()
   this->runAction(
     Spawn::create(
       ScaleTo::create(0.5, 1.0),
-      MoveTo::create(0.5, Vec2(Application->center.x, Application->camera.center)),
+      MoveTo::create(0.5, Vec2(Application->getCenter().x, Application->camera.center)),
       nullptr
     )
   );

@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -106,7 +107,7 @@ void GiftButton::onTouch(cocos2d::Touch* touch, Event* e)
       CallFunc::create([=] ()
       {
         int count = 0;
-        const int index = random(0, (int) (this->giftSkins.size() - 1));
+        const int index = random(0, (int) (this->giftSkins.size() - 2));
 
         switch(index)
         {

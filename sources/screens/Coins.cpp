@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -37,12 +38,12 @@ Coins::Coins(bool environment)
     this->holder = new Entity("counter-coins.png", this, true);
     this->texts.coins = new Text("coins", this->holder, true);
 
-    this->holder->setPosition(this->width - this->holder->getWidth() / 2 - 15, this->height - 50);
+    this->holder->setPosition(this->getWidth() - this->holder->getWidth() / 2 - 15, this->getHeight() - 50);
     this->texts.coins->setPosition(this->holder->getWidth() / 2, this->holder->getHeight() / 2);
 
     #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     this->buttons.back = new Button("back-button.png", 1, 2, this, std::bind(&Coins::hide, this), true);
-    this->buttons.back->setPosition(65, this->height - 65);
+    this->buttons.back->setPosition(65, this->getHeight() - 65);
     this->buttons.back->setLocalZOrder(10);
     #endif
 

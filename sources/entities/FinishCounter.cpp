@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -37,7 +38,7 @@ FinishCounter::FinishCounter()
   this->coins = new Entity("counter-coins.png", Finish::getInstance(), true);
   this->best = new Entity("counter-best.png", this, true);
 
-  this->coins->setPosition(Application->width - this->coins->getWidth() / 2 - 15, Application->height - 50);
+  this->coins->setPosition(Application->getWidth() - this->coins->getWidth() / 2 - 15, Application->getHeight() - 50);
   this->best->setPosition(this->getWidth() / 2, 20);
   this->best->setScale(0.75);
 
@@ -75,7 +76,7 @@ void FinishCounter::onEnter()
    *
    */
   this->setScale(0.75);
-  this->setPosition(Application->center.x, Application->height - 140);
+  this->setPosition(Application->getCenter().x, Application->getHeight() - 140);
   this->runAction(
     Spawn::create(
       Sequence::create(
@@ -127,8 +128,8 @@ void FinishCounter::updateTextData()
 void FinishCounter::onBest()
 {
   Services::leaderboards->update(SERVICES_LEADERBOARD_BEST_SCORE, Application->counter->values.best);
-  Services::leaderboards->update(SERVICES_LEADERBOARD_TAPS_COUNT, Application->counter->values.taps);
-  Services::leaderboards->update(SERVICES_LEADERBOARD_GAMES_PLAYED, Application->counter->values.deaths);
+  /*Services::leaderboards->update(SERVICES_LEADERBOARD_TAPS_COUNT, Application->counter->values.taps);
+  Services::leaderboards->update(SERVICES_LEADERBOARD_GAMES_PLAYED, Application->counter->values.deaths);*/
 
   this->crown->_create();
 

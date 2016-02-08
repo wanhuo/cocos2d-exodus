@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -35,11 +36,11 @@ Explanation::Explanation(Node* parent)
   this->elements = new Pool(new Entity("explanation.png"), this);
 
   float x = 0;
-  float y = Application->center.y + 20;
+  float y = Application->getCenter().y + 20;
 
   bool f = false;
 
-  while(y > -Application->center.y)
+  while(y > -Application->getCenter().y)
   {
     Entity* element = (Entity*) this->elements->_create();
 
@@ -55,12 +56,12 @@ Explanation::Explanation(Node* parent)
     }
   }
 
-  x = Application->center.y + 20;
+  x = Application->getCenter().y + 20;
   y = 0;
 
   f = false;
 
-  while(x > -Application->center.y)
+  while(x > -Application->getCenter().y)
   {
     Entity* element = (Entity*) this->elements->_create();
 

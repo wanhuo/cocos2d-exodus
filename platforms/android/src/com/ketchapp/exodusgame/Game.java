@@ -2,7 +2,8 @@
  * Tooflya Inc. Development
  *
  * @author Igor Mats from Tooflya Inc.
- * @copyright (c) 2014 by Igor Mats
+ * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -17,19 +18,22 @@
  * updates or maintenance. Nothing in this Agreement shall require Licensor to provide Licensee with
  * support or fixes to any bug, failure, mis-performance or other defect in The Software.
  *
- * @version of cocos2d is 3.4
+ * @cocos2d
  *
  */
 
-package com.ketchapp.exodus;
+package com.ketchapp.exodusgame;
 
-import android.content.Intent;
-import android.os.Bundle;
+import java.util.ArrayList;
 
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
 
 import com.tooflya.android.cocos2d.library.Application;
+import com.tooflya.android.cocos2d.library.purchase.Product;
+
+import android.content.Intent;
+import android.os.Bundle;
 
 /**
  *
@@ -37,6 +41,25 @@ import com.tooflya.android.cocos2d.library.Application;
  *
  */
 public class Game extends Application {
+
+  /**
+   *
+   *
+   *
+   */
+  public Game() {
+    super();
+
+    /**
+     *
+     *
+     *
+     */
+    this.products.add(new Product("com.tooflya.exodus.coins.200"));
+    this.products.add(new Product("com.tooflya.exodus.coins.500"));
+    this.products.add(new Product("com.tooflya.exodus.coins.1000"));
+    this.products.add(new Product("com.tooflya.exodus.coins.remove.ads"));
+  }
 
   /**
    *
@@ -68,6 +91,16 @@ public class Game extends Application {
   @Override
   public void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
+  }
+
+  /**
+   *
+   *
+   *
+   */
+  @Override
+  public ArrayList<Product> getProducts() {
+    return this.products;
   }
 
   /**

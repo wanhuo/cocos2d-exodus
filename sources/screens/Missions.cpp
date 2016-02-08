@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -60,17 +61,17 @@ Missions::Missions()
   this->scroll = new BackgroundScroll(this->background);
   this->scroll->setDirection(cocos2d::ui::ScrollView::Direction::VERTICAL);
   this->scroll->setBounceEnabled(true);
-  this->scroll->setContentSize(Size(Application->width, Application->height - 400));
+  this->scroll->setContentSize(Size(Application->getWidth(), Application->getHeight() - 400));
   this->scroll->setPositionY(0);
 
-  this->holder1->setContentSize(Size(Application->width, 400));
+  this->holder1->setContentSize(Size(Application->getWidth(), 400));
 
   this->holder1->ignoreAnchorPointForPosition(false);
 
   this->holder1->setAnchorPoint(Vec2(0.5, 1.0));
 
-  this->holder1->setPosition(Application->center.x, Application->height);
-  this->holder2->setPosition(Application->center.x, Application->height - 400);
+  this->holder1->setPosition(Application->getCenter().x, Application->getHeight());
+  this->holder2->setPosition(Application->getCenter().x, Application->getHeight() - 400);
 
   this->texts.title1 = new Text("missions-title-1", this->holder1, true);
   this->texts.title2 = new Text("missions-title-2", this->holder2, true);
@@ -158,7 +159,7 @@ void Missions::updateListHeight()
     switch(m->mission->state)
     {
       case MissionStruct::STATE_CURRENT:
-      this->scroll->setInnerContainerPosition(Vec2(0, max(-this->size + (Application->height - 400), -m->getPositionY() + (Application->height - 400) / 2)));
+      this->scroll->setInnerContainerPosition(Vec2(0, max(-this->size + (Application->getHeight() - 400), -m->getPositionY() + (Application->getHeight() - 400) / 2)));
       break;
       case MissionStruct::STATE_FINISHED:
       if(m->state->create)
@@ -206,7 +207,7 @@ void Missions::updateListHeight()
 
   this->scroll->setInnerContainerSize(
     Size(
-      Application->width,
+      Application->getWidth(),
       this->size
     )
   );

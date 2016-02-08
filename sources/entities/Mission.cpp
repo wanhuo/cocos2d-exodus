@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -40,7 +41,7 @@ Mission::Mission(int id)
 
   int size = MissionsFactory::getInstance()->getMissions().size() - 1;
 
-  float x = Application->center.x;
+  float x = Application->getCenter().x;
   float y = 200 + (size - this->id) * 220;
 
   this->ignoreAnchorPointForPosition(false);
@@ -151,7 +152,7 @@ void Mission::onEnter()
       this->progressBackground->_create();
       this->progressBar->_create();
 
-      this->progressBar->setContentSize(Size((Application->width - 300 - 10) * this->mission->progress / 100.0, 20));
+      this->progressBar->setContentSize(Size((Application->getWidth() - 300 - 10) * this->mission->progress / 100.0, 20));
       break;
     }
     break;

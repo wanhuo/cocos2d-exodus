@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -111,7 +112,7 @@ Game::Game()
   this->creatures = new Creatures;
 
   this->hand = new AnimatedEntity("tutorial-hand.png", 2, 1, this->e);
-  this->hand->setPosition(this->center.x / 0.75, this->center.y / 2 + (this->parameters.ad ? 100 : 0));
+  this->hand->setPosition(this->getCenter().x / 0.75, this->getCenter().y / 2 + (this->parameters.ad ? 100 : 0));
 
   this->pointers = new Pool(new Pointer, this->game, true);
   this->barrors = new Pool(new Barror, this->c, true);
@@ -120,54 +121,54 @@ Game::Game()
   this->bonus->setLocalZOrder(-1);
 
   this->buttons.play->_create()->setPosition(
-    this->center.x,
-    this->center.y + 110
+    this->getCenter().x,
+    this->getCenter().y + 110
   );
 
   this->buttons.credits->_create()->setPosition(
-    this->center.x + (this->parameters.ad ? 0 : 42),
+    this->getCenter().x + (this->parameters.ad ? 0 : 42),
     70 + (this->parameters.ad ? 0 : 100)
   );
 
   this->buttons.tutorial->_create()->setPosition(
-    this->center.x - 240,
-    this->center.y + 50
+    this->getCenter().x - 240,
+    this->getCenter().y + 50
   );
 
   this->buttons.rate->_create()->setPosition(
-    this->center.x - 200,
-    this->center.y - 60
+    this->getCenter().x - 200,
+    this->getCenter().y - 60
   );
 
   this->buttons.sound->_create()->setPosition(
-    this->center.x - 110,
-    this->center.y - 130
+    this->getCenter().x - 110,
+    this->getCenter().y - 130
   );
 
   this->buttons.leaderboards->_create()->setPosition(
-    this->center.x,
-    this->center.y - 150
+    this->getCenter().x,
+    this->getCenter().y - 150
   );
 
   this->buttons.achievements->_create()->setPosition(
-    this->center.x + 110,
-    this->center.y - 130
+    this->getCenter().x + 110,
+    this->getCenter().y - 130
   );
 
   this->buttons.missions->_create()->setPosition(
-    this->center.x + 200,
-    this->center.y - 60
+    this->getCenter().x + 200,
+    this->getCenter().y - 60
   );
 
   this->buttons.store->_create()->setPosition(
-    this->center.x + 240,
-    this->center.y + 50
+    this->getCenter().x + 240,
+    this->getCenter().y + 50
   );
 
   if(!this->parameters.ad)
   {
     this->buttons.noad->_create()->setPosition(
-      this->center.x - 42,
+      this->getCenter().x - 42,
       170
     );
   }
@@ -175,11 +176,13 @@ Game::Game()
   this->buttons.store->addChild(new StoreHandler);
   this->buttons.missions->addChild(new MissionsHandler);
 
+  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   this->buttons.leaderboards->setCurrentFrameIndex(2);
   this->buttons.achievements->setCurrentFrameIndex(2);
 
   this->buttons.leaderboards->bind(false);
   this->buttons.achievements->bind(false);
+  #endif
 
   this->buttons.noad->setGlobalZOrder(100);
   this->buttons.credits->setGlobalZOrder(100);
@@ -255,6 +258,13 @@ void Game::onEnter()
    *
    *
    */
+  Internal::onStart();
+
+  /**
+   *
+   *
+   *
+   */
   this->updateSoundState();
   this->updateState();
 
@@ -308,8 +318,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.rate->setPositionX(Application->center.x - 275);
-        this->buttons.rate->setPositionY(Application->height - 60);
+        this->buttons.rate->setPositionX(Application->getCenter().x - 275);
+        this->buttons.rate->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -324,8 +334,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.sound->setPositionX(Application->center.x - 165);
-        this->buttons.sound->setPositionY(Application->height - 60);
+        this->buttons.sound->setPositionX(Application->getCenter().x - 165);
+        this->buttons.sound->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -340,8 +350,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.leaderboards->setPositionX(Application->center.x - 55);
-        this->buttons.leaderboards->setPositionY(Application->height - 60);
+        this->buttons.leaderboards->setPositionX(Application->getCenter().x - 55);
+        this->buttons.leaderboards->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -356,8 +366,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.achievements->setPositionX(Application->center.x + 55);
-        this->buttons.achievements->setPositionY(Application->height - 60);
+        this->buttons.achievements->setPositionX(Application->getCenter().x + 55);
+        this->buttons.achievements->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -372,8 +382,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.missions->setPositionX(Application->center.x + 165);
-        this->buttons.missions->setPositionY(Application->height - 60);
+        this->buttons.missions->setPositionX(Application->getCenter().x + 165);
+        this->buttons.missions->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -388,8 +398,8 @@ void Game::onPlay()
         ScaleTo::create(0.2, 0.0)
       ),
       CallFunc::create([=] () {
-        this->buttons.store->setPositionX(Application->center.x + 275);
-        this->buttons.store->setPositionY(Application->height - 60);
+        this->buttons.store->setPositionX(Application->getCenter().x + 275);
+        this->buttons.store->setPositionY(Application->getHeight() - 60);
       }),
       EaseSineInOut::create(
         ScaleTo::create(0.5, 1.0)
@@ -430,7 +440,7 @@ void Game::onShare()
 
 void Game::onScores()
 {
-  Events::onScores();
+  Events::onLeaderboards();
 }
 
 void Game::onAchievements()
@@ -472,7 +482,7 @@ void Game::onCredits()
 
 void Game::onNoad()
 {
-  Purchase::purchaseItem("com.ketchapp.exodus.remove.ads", [=] (bool status) {
+  Purchase::purchaseItem("com.ketchapp.exodusgame.remove.ads", [=] (bool status) {
     if(status)
     {
       this->onNoadAction();
@@ -587,16 +597,6 @@ void Game::onRestorePurchases()
  */
 void Game::onMenu()
 {
-  Internal::onStart();
-
-  this->runAction(
-    Sequence::create(
-      DelayTime::create(1.0),
-      CallFunc::create([&] () { Modal::hide(); }),
-      nullptr
-    )
-  );
-
   this->environment->onMenu();
   this->counter->onMenu();
 
@@ -646,11 +646,16 @@ void Game::onPrepare()
   this->buttons.sound->bind(true);
   this->buttons.store->bind(true);
 
-  if(Services::isSigned())
+  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+  if(Services::status())
   {
     this->buttons.leaderboards->bind(true);
     this->buttons.achievements->bind(true);
   }
+  #else
+  this->buttons.leaderboards->bind(true);
+  this->buttons.achievements->bind(true);
+  #endif
 
   this->game->setPosition(0, 0);
 
@@ -917,10 +922,10 @@ void Game::updateState()
 void Game::updateCamera(float time)
 {
   this->game->setPosition(
-    -this->character->getPositionX() + this->center.x,
+    -this->character->getPositionX() + this->getCenter().x,
     min(
       -this->w->getPositionY(),
-      -this->character->getPositionY() + this->center.y / this->d->getScale()
+      -this->character->getPositionY() + this->getCenter().y / this->d->getScale()
     )
   );
 
@@ -929,7 +934,7 @@ void Game::updateCamera(float time)
       0,
       max<float>(
         DECORATIONS_POSITION_MIN,
-        -(this->character->getPositionY() - (this->center.y / SCALE_MIN)) / DECORATIONS_POSITION_RATIO
+        -(this->character->getPositionY() - (this->getCenter().y / SCALE_MIN)) / DECORATIONS_POSITION_RATIO
       )
     )
   );
@@ -942,14 +947,14 @@ void Game::updateCamera(float time)
   );
 
   this->h->setPositionX(
-    max<float>(-(this->width / MAX_OFFSET_X), (this->width / MAX_OFFSET_X) / (1000 / this->game->getPositionX())) * (this->state == STATE_GAME ? (1.0 + (1.0 - this->d->getScale())) : 1.0)
+    max<float>(-(this->getWidth() / MAX_OFFSET_X), (this->getWidth() / MAX_OFFSET_X) / (1000 / this->game->getPositionX())) * (this->state == STATE_GAME ? (1.0 + (1.0 - this->d->getScale())) : 1.0)
   );
 
   this->camera.x = abs(this->game->getPositionX());
   this->camera.y = abs(this->game->getPositionY());
 
-  this->camera.width = this->width / this->d->getScale();
-  this->camera.height = this->height / this->d->getScale();
+  this->camera.width = this->getWidth() / this->d->getScale();
+  this->camera.height = this->getHeight() / this->d->getScale();
 
   this->c->setPosition(
     this->character->getPositionX() - this->camera.width / 2 - this->h->getPositionX() / this->d->getScale(),

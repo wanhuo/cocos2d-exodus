@@ -129,7 +129,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Novo Recorde!",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -139,7 +139,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Meilleur et nouveau!",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -381,7 +381,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Missão Completa",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -391,7 +391,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Mission accomplie",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -1400,7 +1400,7 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Restaurer les achats",
         "font": "Impact",
         "size": 32
       }
@@ -1417,12 +1417,12 @@
         "size": 42
       },
       {
-        "title": "",
+        "title": "Personagens",
         "font": "Impact",
         "size": 42
       },
       {
-        "title": "",
+        "title": "Personnages",
         "font": "Impact",
         "size": 42
       }
@@ -1461,12 +1461,12 @@
         "size": 42
       },
       {
-        "title": "",
+        "title": "Cenários",
         "font": "Impact",
         "size": 42
       },
       {
-        "title": "",
+        "title": "Environnements",
         "font": "Impact",
         "size": 42
       }
@@ -1505,12 +1505,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Desbloqueia todos os personagens\nganhando moedas e completando missões",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Débloquer tous les personnages en récupérant\ndes pièces et en complétant des missions",
         "font": "Impact",
         "size": 32
       }
@@ -1527,12 +1527,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Completa mossões e resgata\ntodas as criaturas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Compléter les missions et sauver\ntous les êtres de l'inondation",
         "font": "Impact",
         "size": 32
       }
@@ -1549,12 +1549,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Descobre novos mundos\nfantásticos",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Découvrir d'autres mondes\nétonnants",
         "font": "Impact",
         "size": 32
       }
@@ -1571,12 +1571,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Obtém moedas facilmente\nQualquer compra irá remover os ads",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Obtenir des pièces facilement\nTout achat supprimers la pub",
         "font": "Impact",
         "size": 32
       }
@@ -1593,12 +1593,12 @@
         "size": 36
       },
       {
-        "title": "",
+        "title": "Personagens desbloqueados\n$1/$2",
         "font": "Impact",
         "size": 36
       },
       {
-        "title": "",
+        "title": "Personnages débloqués\n$1/$2",
         "font": "Impact",
         "size": 36
       }
@@ -1615,12 +1615,12 @@
         "size": 36
       },
       {
-        "title": "",
+        "title": "Criaturas desbloqueadas\n$1/$2",
         "font": "Impact",
         "size": 36
       },
       {
-        "title": "",
+        "title": "Créatures déverrouillées\n$1/$2",
         "font": "Impact",
         "size": 36
       }
@@ -1637,12 +1637,12 @@
         "size": 36
       },
       {
-        "title": "",
+        "title": "Cenários desbloqueados\n$1/$2",
         "font": "Impact",
         "size": 36
       },
       {
-        "title": "",
+        "title": "Environnements déverrouillés\n$1/$2",
         "font": "Impact",
         "size": 36
       }
@@ -1669,7 +1669,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "$1 missões",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -1679,7 +1679,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "$1 missions",
         "font": "Impact",
         "size": 32,
         "color": [
@@ -1701,12 +1701,12 @@
         "size": 42
       },
       {
-        "title": "",
+        "title": "Completa missões para desbloquear\nnovos personagens",
         "font": "Impact",
         "size": 42
       },
       {
-        "title": "",
+        "title": "Terminer les missions pour obtenir\nde nouveaux personnages",
         "font": "Impact",
         "size": 42
       }
@@ -1723,12 +1723,12 @@
         "size": 36
       },
       {
-        "title": "",
+        "title": "Missões completas\n$1/$2",
         "font": "Impact",
         "size": 36
       },
       {
-        "title": "",
+        "title": "Missions accomplies\n$1/$2",
         "font": "Impact",
         "size": 36
       }
@@ -1745,12 +1745,12 @@
         "size": 26
       },
       {
-        "title": "",
+        "title": "Recompensa adicional",
         "font": "Impact",
         "size": 26
       },
       {
-        "title": "",
+        "title": "Récompense supplémentaire",
         "font": "Impact",
         "size": 26
       }
@@ -1767,12 +1767,12 @@
         "size": 42
       },
       {
-        "title": "",
+        "title": "Toca aqui para obter\na recompensa",
         "font": "Impact",
         "size": 42
       },
       {
-        "title": "",
+        "title": "Appuyer ici pour obtenir\nvotre récompense",
         "font": "Impact",
         "size": 42
       }
@@ -1789,12 +1789,12 @@
         "size": 26
       },
       {
-        "title": "",
+        "title": "Progresso da missão:",
         "font": "Impact",
         "size": 26
       },
       {
-        "title": "",
+        "title": "Les progrès de la mission:",
         "font": "Impact",
         "size": 26
       }
@@ -1811,12 +1811,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Completa o tutorial",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Tutoriel complet",
         "font": "Impact",
         "size": 32
       }
@@ -1833,12 +1833,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Obtém a tua primeira moeda",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Obtenez votre première pièce",
         "font": "Impact",
         "size": 32
       }
@@ -1855,12 +1855,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 10 pontos no total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 10 points au total",
         "font": "Impact",
         "size": 32
       }
@@ -1877,12 +1877,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 6 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 5 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -1899,12 +1899,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Resgata 2 pessoas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Sauer 2 personnes",
         "font": "Impact",
         "size": 32
       }
@@ -1921,12 +1921,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 10 pontos\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 10 points\nlors d'un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -1943,12 +1943,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Colecciona 2 prendas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Recueillir 2 cadeaux",
         "font": "Impact",
         "size": 32
       }
@@ -1965,12 +1965,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Encontra 2 linhas de bónus\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Trouver 2 lignes de bonus\ndans un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -1987,12 +1987,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Supera o teu\nmelhor recorde",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Battez votre meilleur\nscore",
         "font": "Impact",
         "size": 32
       }
@@ -2009,12 +2009,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 20 pontos\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 20 points\nen un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2031,12 +2031,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 5 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 5 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -2053,12 +2053,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Resgata 2\nStegosaurus",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Sauver deux\nStegosaurus",
         "font": "Impact",
         "size": 32
       }
@@ -2075,12 +2075,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 5 moedas\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagnez 5 pièces\ndans un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2097,12 +2097,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Supera o teu melhor recorde",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Battre votre meilleur score",
         "font": "Impact",
         "size": 32
       }
@@ -2119,12 +2119,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 20 pontos\nno total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 20 points\nau total",
         "font": "Impact",
         "size": 32
       }
@@ -2141,12 +2141,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 40 moedas\nno total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagner 40 pièces\nau total",
         "font": "Impact",
         "size": 32
       }
@@ -2163,12 +2163,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 10 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 10 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -2185,12 +2185,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Encontra 2 linhas de bónus\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Trouver 2 lignes de bonus\ndans un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2207,12 +2207,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Supera o teu melhor\nrecorde",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Battre votre meilleur\nscore",
         "font": "Impact",
         "size": 32
       }
@@ -2229,12 +2229,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Colecciona 3 prendas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Recueillir 3 cadeaux",
         "font": "Impact",
         "size": 32
       }
@@ -2251,12 +2251,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 10 moedas\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagner 10 pièces\nen un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2273,12 +2273,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Resgata 2 Apatosaurus",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Sauver deux\nApatosaurus",
         "font": "Impact",
         "size": 32
       }
@@ -2295,12 +2295,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 2 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 2 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -2317,12 +2317,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 20 pontos\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 20 points\nen un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2339,12 +2339,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 20 pontos\nno total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagner 20 pièces\nau total",
         "font": "Impact",
         "size": 32
       }
@@ -2361,12 +2361,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Encontra 3 linhas de bónus\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Trouver 3 lignes de bonus\nen un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2383,12 +2383,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Supera o teu melhor recorde",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Battre votre meilleur score",
         "font": "Impact",
         "size": 32
       }
@@ -2405,12 +2405,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 20 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 20 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -2427,12 +2427,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 15 moedas\nnum só jogo",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagnez 15 pièces\nen un jeu",
         "font": "Impact",
         "size": 32
       }
@@ -2449,12 +2449,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Faz 30 pontos\nno total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Marquer 30 points\nau total",
         "font": "Impact",
         "size": 32
       }
@@ -2471,12 +2471,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Colecciona 2 prendas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Recueillir 2 cadeaux",
         "font": "Impact",
         "size": 32
       }
@@ -2493,12 +2493,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Resgata 5 Triceratops",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Sauver cinq\nTriceratopses",
         "font": "Impact",
         "size": 32
       }
@@ -2515,12 +2515,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Supera o teu melhor recorde",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Battre votre meilleur score",
         "font": "Impact",
         "size": 32
       }
@@ -2537,12 +2537,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Ganha 15 moedas\nno total",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Gagner 15 pièces\nau total",
         "font": "Impact",
         "size": 32
       }
@@ -2559,12 +2559,12 @@
         "size": 32
       },
       {
-        "title": "",
+        "title": "Joga 5 rondas",
         "font": "Impact",
         "size": 32
       },
       {
-        "title": "",
+        "title": "Jouer à 5 jeux",
         "font": "Impact",
         "size": 32
       }
@@ -3977,7 +3977,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Floresta",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -3987,7 +3987,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Forêt",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -4019,7 +4019,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Cidade",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -4029,7 +4029,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Ville",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -4061,7 +4061,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Egipto",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -4071,7 +4071,7 @@
         ]
       },
       {
-        "title": "",
+        "title": "Egypte",
         "font": "Impact",
         "size": 36,
         "color": [
@@ -4247,12 +4247,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Avalia-nos",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Veuillez nous noter",
         "font": "Impact",
         "size": 0
       }
@@ -4269,12 +4269,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Se gostas deste jogo, avalia-o já! Não demora mais do que 1 minuto! Agradecemos o teu apoio!",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Si vous aimez ce jeu, pourriez-vous prendre un moment pour le noter? Cela ne prendra pas plus d'une minute. Merci de votre aide!",
         "font": "Impact",
         "size": 0
       }
@@ -4291,12 +4291,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Avalia já",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Notez-le maintenant",
         "font": "Impact",
         "size": 0
       }
@@ -4313,12 +4313,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Lembra-me mais tarde",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Me le rappeler plus tard",
         "font": "Impact",
         "size": 0
       }
@@ -4335,12 +4335,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Não, obrigado",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Non merci",
         "font": "Impact",
         "size": 0
       }
@@ -4357,12 +4357,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Compras de In-App",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Achats intégrés dans l'appli",
         "font": "Impact",
         "size": 0
       }
@@ -4379,12 +4379,12 @@
         "size": 0
       },
       {
-        "title": "",
+        "title": "Pedimos desculpa, mas não existem comrpas de In-App disponíveis de momento. Tente mais tarde.",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "",
+        "title": "Désolé, mais il n'y a pas d'achats intégrés dans l'appli disponibles maintenant. Veuillez réessayer plus tard.",
         "font": "Impact",
         "size": 0
       }
@@ -4401,12 +4401,12 @@
         "size": 0
       },
       {
-        "title": "Your previous purchases was successful restored!",
+        "title": "As suas compras foram recuperadas com sucesso!",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "Your previous purchases was successful restored!",
+        "title": "Vos achats précédents ont été restaurés avec succès!",
         "font": "Impact",
         "size": 0
       }
@@ -4423,12 +4423,12 @@
         "size": 0
       },
       {
-        "title": "Sorry, no previous purchases could be restored.",
+        "title": "Pedimos desculpa, não foi possível recuperar as compras.",
         "font": "Impact",
         "size": 0
       },
       {
-        "title": "Sorry, no previous purchases could be restored.",
+        "title": "Désolé, les achats précédents n'ont pas pu être restaurés.",
         "font": "Impact",
         "size": 0
       }

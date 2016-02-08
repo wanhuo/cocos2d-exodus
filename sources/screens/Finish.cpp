@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -77,11 +78,13 @@ Finish::Finish()
   this->buttons.gift = new GiftButton(this);
   this->buttons.character = new CharacterButton(this);
 
+  #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
   this->buttons.leaderboards->setCurrentFrameIndex(2);
   this->buttons.achievements->setCurrentFrameIndex(2);
 
   this->buttons.leaderboards->bind(false);
   this->buttons.achievements->bind(false);
+  #endif
 
   this->background->setLocalZOrder(-1);
   this->decoration->setLocalZOrder(-1);
@@ -245,8 +248,8 @@ void Finish::onUnlock()
     )
   );
 
-  float x = Application->center.x - 627;
-  float y = Application->center.y - 656;
+  float x = Application->getCenter().x - 627;
+  float y = Application->getCenter().y - 656;
 
   this->decoration->_destroy();
   this->decoration->setSkin(Application->character->getSkin());
@@ -365,8 +368,8 @@ void Finish::showButtons()
     this->holder->setPosition(0, 0);
   }
 
-  float x = Application->center.x - 627;
-  float y = Application->center.y - 656;
+  float x = Application->getCenter().x - 627;
+  float y = Application->getCenter().y - 656;
 
   this->decoration->setSkin(Application->character->getSkin());
   this->decoration->_create();
@@ -396,17 +399,17 @@ void Finish::showButtons()
   );
 
   this->buttons.play->_create();
-  this->buttons.play->setPosition(Application->center.x, Application->center.y - 30);
-  this->buttons.like->setPosition(Application->center.x - 200, Application->center.y - 200);
-  this->buttons.rate->setPosition(Application->center.x - 110, Application->center.y - 270);
-  this->buttons.share->setPosition(Application->center.x, Application->center.y - 290);
-  this->buttons.leaderboards->setPosition(Application->center.x + 110, Application->center.y - 270);
-  this->buttons.achievements->setPosition(Application->center.x + 200, Application->center.y - 200);
-  this->buttons.sound->setPosition(Application->center.x - 240, Application->center.y + 20);
-  this->buttons.store->setPosition(Application->center.x + 240, Application->center.y + 20);
-  this->buttons.missions->setPosition(Application->center.x + 240, Application->center.y - 90);
-  this->buttons.tutorial->setPosition(Application->center.x - 240, Application->center.y - 90);
-  this->buttons.noad->setPosition(Application->center.x - 240, Application->center.y + 20);
+  this->buttons.play->setPosition(Application->getCenter().x, Application->getCenter().y - 30);
+  this->buttons.like->setPosition(Application->getCenter().x - 200, Application->getCenter().y - 200);
+  this->buttons.rate->setPosition(Application->getCenter().x - 110, Application->getCenter().y - 270);
+  this->buttons.share->setPosition(Application->getCenter().x, Application->getCenter().y - 290);
+  this->buttons.leaderboards->setPosition(Application->getCenter().x + 110, Application->getCenter().y - 270);
+  this->buttons.achievements->setPosition(Application->getCenter().x + 200, Application->getCenter().y - 200);
+  this->buttons.sound->setPosition(Application->getCenter().x - 240, Application->getCenter().y + 20);
+  this->buttons.store->setPosition(Application->getCenter().x + 240, Application->getCenter().y + 20);
+  this->buttons.missions->setPosition(Application->getCenter().x + 240, Application->getCenter().y - 90);
+  this->buttons.tutorial->setPosition(Application->getCenter().x - 240, Application->getCenter().y - 90);
+  this->buttons.noad->setPosition(Application->getCenter().x - 240, Application->getCenter().y + 20);
 
   if(!Application->parameters.ad)
   {

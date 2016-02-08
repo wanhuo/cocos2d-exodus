@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -132,7 +133,7 @@ void Environment::addStaticParallax(Json* elementJsonData)
 
   if(scaleA)
   {
-    element->setScaleX(Application->width / element->getWidth());
+    element->setScaleX(Application->getWidth() / element->getWidth());
   }
 }
 

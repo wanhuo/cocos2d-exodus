@@ -3,6 +3,7 @@
  *
  * @author Igor Mats from Tooflya Inc.
  * @copyright (c) 2015 by Igor Mats
+ * @copyright (c) 2016 by Igor Mats
  * http://www.tooflya.com/development/
  *
  *
@@ -27,7 +28,7 @@
 
 @implementation Purchases
 
-+ (NSSet<NSString *> *) getIdentifiers {
-  return [NSSet setWithObjects: @"com.ketchapp.exodus.remove.ads", @"com.ketchapp.exodus.coins.200", @"com.ketchapp.exodus.coins.500", @"com.ketchapp.exodus.coins.1000", nil];
++ (NSSet*) getIdentifiers {
+  return [NSSet setWithObjects: @"com.ketchapp.exodusgame.remove.ads", @"com.ketchapp.exodusgame.coins.200", @"com.ketchapp.exodusgame.coins.500", @"com.ketchapp.exodusgame.coins.1000", nil];
 }
 @end

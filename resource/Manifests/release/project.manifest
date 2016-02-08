@@ -1,12 +1,8 @@
 {
-  "packageUrl": "http://www.tooflya.com/games/exodus/updates/release/",
-  "remoteManifestUrl": "http://www.tooflya.com/games/exodus/updates/release/project.manifest",
-  "remoteVersionUrl": "http://www.tooflya.com/games/exodus/updates/release/version.manifest",
+  "packageUrl": "http://development.tooflya.com/app/exodus/updates/release/",
+  "remoteManifestUrl": "http://development.tooflya.com/app/exodus/updates/release/project.manifest",
+  "remoteVersionUrl": "http://development.tooflya.com/app/exodus/updates/release/version.manifest",
   "version": "1.0.0",
-  "engineVersion": "3.4",
   "assets": {
-  },
-
-  "searchPaths": [
-  ]
+  }
 }
