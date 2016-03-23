@@ -34,6 +34,8 @@ ExtendScreen::ExtendScreen()
   this->camera = Camera::createPerspective(60, this->getWidth() / this->getHeight(), 1.0f, 100.0f);
   this->camera->setCameraFlag(CameraFlag::USER1);
 
+  this->camera->setDepth(2);
+
   this->addChild(this->camera);
 }
 

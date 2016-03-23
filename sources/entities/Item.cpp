@@ -243,7 +243,7 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     }
     else
     {
-      Store::getInstance()->list->scrollToPage(3);
+      //Store::getInstance()->list->scrollToPage(3);
 
       Sound->play("disable");
 

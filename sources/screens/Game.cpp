@@ -126,7 +126,7 @@ Game::Game()
   );
 
   this->buttons.credits->_create()->setPosition(
-    this->getCenter().x + (this->parameters.ad ? 0 : 42),
+    this->getCenter().x + (this->parameters.ad||true ? 0 : 42),
     70 + (this->parameters.ad ? 0 : 100)
   );
 
@@ -165,7 +165,7 @@ Game::Game()
     this->getCenter().y + 50
   );
 
-  if(!this->parameters.ad)
+  if(!this->parameters.ad&&false)
   {
     this->buttons.noad->_create()->setPosition(
       this->getCenter().x - 42,
@@ -688,7 +688,7 @@ void Game::onPrepare()
             FadeIn::create(0.5)
           )
         );
-        if(!this->parameters.ad)
+        if(!this->parameters.ad&&false)
         {
           this->buttons.noad->_create()->runAction(
             EaseSineInOut::create(

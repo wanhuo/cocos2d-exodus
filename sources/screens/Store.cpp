@@ -158,22 +158,22 @@ Store::Store()
   this->buttons.root.push_back(new Button("store-button-1.png", 1, 3, this, std::bind(&Store::changePage, this, 0), true));
   this->buttons.root.push_back(new Button("store-button-2.png", 1, 3, this, std::bind(&Store::changePage, this, 1), true));
   this->buttons.root.push_back(new Button("store-button-3.png", 1, 3, this, std::bind(&Store::changePage, this, 2), true));
-  this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::changePage, this, 3), true));
+  //this->buttons.root.push_back(new Button("store-button-4.png", 1, 3, this, std::bind(&Store::changePage, this, 3), true));
 
-  this->buttons.root.at(0)->setPosition(this->getCenter().x - 192, this->getHeight() - 270);
-  this->buttons.root.at(1)->setPosition(this->getCenter().x - 64, this->getHeight() - 270);
-  this->buttons.root.at(2)->setPosition(this->getCenter().x + 64, this->getHeight() - 270);
-  this->buttons.root.at(3)->setPosition(this->getCenter().x + 192, this->getHeight() - 270);
+  this->buttons.root.at(0)->setPosition(this->getCenter().x - 160, this->getHeight() - 270);
+  this->buttons.root.at(1)->setPosition(this->getCenter().x - 0, this->getHeight() - 270);
+  this->buttons.root.at(2)->setPosition(this->getCenter().x + 160, this->getHeight() - 270);
+  //this->buttons.root.at(3)->setPosition(this->getCenter().x + 192, this->getHeight() - 270);
 
   this->buttons.root.at(0)->addChild(new StoreCharactersHandler);
   this->buttons.root.at(1)->addChild(new StoreCreaturesHandler);
   this->buttons.root.at(2)->addChild(new StoreEnvironmentsHandler);
-  this->buttons.root.at(3)->addChild(new StoreCoinsHandler);
+  //this->buttons.root.at(3)->addChild(new StoreCoinsHandler);
 
   this->list->insertPage(new StoreLayoutCharacters, 0);
   this->list->insertPage(new StoreLayoutCreatures, 1);
   this->list->insertPage(new StoreLayoutEnvironments, 2);
-  this->list->insertPage(new StoreLayoutCoins, 3);
+  //this->list->insertPage(new StoreLayoutCoins, 3);
 }
 
 Store::~Store()

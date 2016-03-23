@@ -411,7 +411,7 @@ void Finish::showButtons()
   this->buttons.tutorial->setPosition(Application->getCenter().x - 240, Application->getCenter().y - 90);
   this->buttons.noad->setPosition(Application->getCenter().x - 240, Application->getCenter().y + 20);
 
-  if(!Application->parameters.ad)
+  if(!Application->parameters.ad&&false)
   {
     this->buttons.sound->_destroy();
 

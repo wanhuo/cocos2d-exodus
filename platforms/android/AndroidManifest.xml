@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.ketchapp.exodusgame"
+  package="com.ketchapp.exodus"
   android:installLocation="auto"
   android:versionCode="426"
   android:versionName="1.0.0">
@@ -27,8 +27,8 @@
   <uses-permission android:name="android.permission.READ_PHONE_STATE" />
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
   <uses-permission android:name="com.android.vending.BILLING" />
-  <uses-permission android:name="com.ketchapp.exodusgame.permission.C2D_MESSAGE" />
-  <permission android:name="com.ketchapp.exodusgame.permission.C2D_MESSAGE" android:protectionLevel="signature"/> 
+  <uses-permission android:name="com.ketchapp.exodus.permission.C2D_MESSAGE" />
+  <permission android:name="com.ketchapp.exodus.permission.C2D_MESSAGE" android:protectionLevel="signature"/> 
 
   <application android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/name" android:allowClearUserData="false" android:hardwareAccelerated="true">
     <meta-data android:name="android.app.lib_name" android:value="core" />
@@ -36,7 +36,7 @@
     <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/google" />
 
     <activity
-      android:name="com.ketchapp.exodusgame.Game"
+      android:name="com.ketchapp.exodus.Game"
       android:configChanges="orientation|screenLayout|screenSize"
       android:label="@string/name"
       android:screenOrientation="portrait"
@@ -77,7 +77,7 @@
     <receiver android:name="com.batch.android.BatchPushReceiver" android:permission="com.google.android.c2dm.permission.SEND"> 
       <intent-filter> 
         <action android:name="com.google.android.c2dm.intent.RECEIVE" /> 
-        <category android:name="com.ketchapp.exodusgame" /> 
+        <category android:name="com.ketchapp.exodus" /> 
       </intent-filter>  
     </receiver>
   </application>
