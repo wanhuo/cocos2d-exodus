@@ -40,7 +40,7 @@ float Coin::TIME;
  *
  */
 Coin::Coin()
-: Entity3D("coin.obj")
+: Entity3D("coin.obj", false)
 {
   this->setTexture("coin.png");
   this->setScheduleUpdate(true);
