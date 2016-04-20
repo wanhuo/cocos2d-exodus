@@ -215,7 +215,7 @@ void Coins::addCoins(int count)
 
           this->updateTextData();
         }),
-        DelayTime::create(0.02),
+        DelayTime::create(0.01),
         nullptr
       ),
       count
@@ -236,7 +236,7 @@ void Coins::removeCoins(int count)
 
           this->updateTextData();
         }),
-        DelayTime::create(0.02),
+        DelayTime::create(0.01),
         nullptr
       ),
       count

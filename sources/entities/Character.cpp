@@ -288,6 +288,8 @@ void Character::onGame()
 
 void Character::onTransfer()
 {
+  Application->counter->values.score_b = 0;
+
   Application->transfer->runAction(
     Spawn::create(
       Sequence::create(
@@ -782,7 +784,7 @@ void Character::onUpdateTraectoryBonusCreate()
   if(MissionsFactory::getInstance()->isListenen())
   {
     Application->counter->missionUpdateOnce.special_once_1++;
-    
+
     Events::updateMissions();
   }
 
@@ -795,11 +797,18 @@ void Character::onUpdateTraectoryBonusDestroy()
 
   if(!Application->parameters.tutorial)
   {
-    if(Application->counter->values.score >= 3)
+    if(Application->counter->values.score_b >= 3)
     {
       this->generate.bonus = true;
     }
     else
+    {
+      this->generate.bonus = false;
+    }
+  }
+  else
+  {
+    if(Application->counter->values.score_b < 5)
     {
       this->generate.bonus = false;
     }

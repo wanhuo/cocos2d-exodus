@@ -188,8 +188,10 @@ void Counter::onScore(bool update)
     if(count > 0)
     {
       this->values.score -= count;
+      this->values.score_b -= count;
       this->updateTextData();
       this->values.score += count;
+      this->values.score_b += count;
     }
     else
     {
@@ -199,6 +201,7 @@ void Counter::onScore(bool update)
   else
   {
     this->values.score++;
+    this->values.score_b++;
 
     /**
      *
@@ -595,6 +598,7 @@ void Counter::reset()
   this->coins->setPosition(Application->getWidth() + this->coins->getWidth() / 2, Application->getHeight() - 50);
 
   this->values.score = 0;
+  this->values.score_b = 0;
   this->updateTextData();
 
   this->holders.decoration->stopAllActions();

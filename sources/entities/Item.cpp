@@ -237,7 +237,7 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     Missions::getInstance()->show();
     break;
     case STATE_LOCKED_COINS:
-    if(Application->counter->values.coins >= this->coins)
+    if(Store::getInstance()->numberOfRunningActions() < 1 && Application->counter->values.coins >= this->coins)
     {
       this->onPurchase();
     }
@@ -253,7 +253,7 @@ void Item::onTouch(cocos2d::Touch* touch, Event* e)
     case STATE_NORMAL:
     if(this->capacity)
     {
-      if(Application->counter->values.coins >= this->coins)
+      if(Store::getInstance()->numberOfRunningActions() < 1 && Application->counter->values.coins >= this->coins)
       {
         this->onPurchase();
       }

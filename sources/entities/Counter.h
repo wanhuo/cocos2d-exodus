@@ -62,6 +62,7 @@ class Counter : public Entity
   struct Values
   {
     int score = 0;
+    int score_b = 0;
     int best = Storage::get("values.scores.best");
     int coins = Storage::get("values.currenct.coins");
     int taps = Storage::get("values.info.taps");
