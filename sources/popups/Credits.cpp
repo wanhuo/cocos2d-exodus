@@ -180,10 +180,10 @@ Credits::Credits()
    * Hide restore purchases title and button from Android users.
    *
    */
-  #if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
+  //#if CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
   this->restore->setVisible(false);
   this->texts.title[22]->setVisible(false);
-  #endif
+  //#endif
 }
 
 Credits::~Credits()

@@ -830,7 +830,7 @@ void Game::changeState(int state)
  */
 bool Game::isNextEnvironment()
 {
-  return this->environment_index < this->environments.size();
+  return this->environment_index < this->environments.size() - 1;
 }
 
 void Game::resetEnvironment()
