@@ -683,7 +683,7 @@ void Character::onUpdateTraectoryStart()
   this->generate.y = this->getPositionY();
 
   this->generate.count++;
-  this->generate.coins = this->generate.count % 5 == 0 ? 5 : 0;
+  this->generate.coins = this->generate.count % 5 == 0 && Application->counter->values.score_b >= 5 ? 5 : 0;
 }
 
 void Character::onUpdateTraectoryFinish()

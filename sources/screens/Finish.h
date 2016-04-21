@@ -60,9 +60,9 @@ class Finish : public Coins
   };
 
   struct Parameters {
-    int video = 5;
+    int video = 4;
     int gift = 15;
-    int ad = 5;
+    int ad = 4;
     Elapsed elapsed;
   };
 

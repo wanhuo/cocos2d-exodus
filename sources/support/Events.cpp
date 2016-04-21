@@ -283,7 +283,12 @@ void Events::onPurchaseRestored(const char* id)
  */
 void Events::updateMissions()
 {
-  if(MissionsFactory::getInstance()->updateCurrentMission(Application->counter->getMissionsUpdate()))
+  MissionUpdate update;
+
+  update.o = Application->counter->missionUpdateOnce;
+  update.p = Application->counter->missionUpdateProgress;
+
+  if(MissionsFactory::getInstance()->updateCurrentMission(update))
   {
     Events::onMissionComplete(MissionsFactory::getInstance()->getCurrentMission()->id);
   }

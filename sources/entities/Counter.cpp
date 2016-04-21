@@ -330,6 +330,7 @@ void Counter::onSuccess()
   {
     this->missionUpdateOnce.points++;
     this->missionUpdateProgress.points++;
+    log("f: %f", this->missionUpdateProgress.points);
 
     Events::updateMissions();
   }
@@ -642,12 +643,14 @@ void Counter::updateTextPosition()
  *
  *
  */
-MissionUpdate Counter::getMissionsUpdate()
+MissionUpdate Counter::getMissionsUpdate() const
 {
-  return {
-    this->missionUpdateOnce,
-    this->missionUpdateProgress
-  };
+  MissionUpdate update;
+
+  update.o = this->missionUpdateOnce;
+  update.p = this->missionUpdateProgress;
+
+  return update;
 }
 
 void Counter::resetMissionsUpdate()

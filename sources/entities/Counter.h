@@ -127,7 +127,7 @@ class Counter : public Entity
 
   virtual void reset();
 
-  virtual MissionUpdate getMissionsUpdate();
+  virtual MissionUpdate getMissionsUpdate() const;
   virtual void resetMissionsUpdate();
 
   virtual void updateTextData();
