@@ -258,7 +258,7 @@ void Counter::onCoin(bool update)
   }
   else
   {
-    this->values.coins += 5;
+    this->values.coins++;
 
     Sound->play("coins");
   }

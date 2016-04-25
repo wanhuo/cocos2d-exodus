@@ -472,7 +472,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
     if(f)
     {
-      this->index += this->index > 6 ? 0 : 1;
+      this->index += this->index > 5 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
     }
     else
