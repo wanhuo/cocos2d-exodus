@@ -638,7 +638,17 @@ void Character::onPointerMistake(Pointer* pointer)
     this->startUpdateTraectory();
   this->generate.x = pointer->getPositionX();
   this->generate.y = pointer->getPositionY();
-  this->generate.rest = Application->pointers->count;
+
+  this->generate.rest = 0;
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
+
+      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
+      {
+       this->generate.rest++;
+      }
+    }
 
   this->runAction(
     MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
@@ -915,7 +925,7 @@ void Character::onUpdateTraectory()
       element->setCurrentFrameIndex(Pointer::UNDEFINIED);
       element->setScale(0.2);
 
-        if(this->generate.rest < 0 && this->generate.red <= -2 && this->generate.x > Application->camera.x + Application->camera.width)
+        if(this->generate.rest < 0 && this->generate.red <= -3 && this->generate.x > Application->camera.x + Application->camera.width)
         {
           if(this->generate.bonus)
           {
