@@ -921,7 +921,7 @@ void Character::onUpdateTraectory()
         }
       }
 
-      if(true
+      if(true)
       {
         Pointer* element = (Pointer*) Application->pointers2->_create();
 
