@@ -30,7 +30,7 @@
  *
  */
 Barror::Barror()
-: TiledEntity("pointers.png", 1, 3)
+: TiledEntity("pointers.png", 1, 4)
 {
   this->motion = new Motion("barror-motion.png", Application->c, this->getWidth());
   this->motion->setTarget(this);

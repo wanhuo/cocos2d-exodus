@@ -201,6 +201,8 @@
             <filename>../Graphics/parallaxes/2/2-building-5.png</filename>
             <filename>../Graphics/parallaxes/2/2-cloud.png</filename>
             <filename>../Graphics/parallaxes/2/2-tree-1.png</filename>
+            <filename>../Graphics/parallaxes/2/2-background-3.png</filename>
+            <filename>../Graphics/parallaxes/2/2-background-4.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

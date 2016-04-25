@@ -30,7 +30,7 @@
  *
  */
 Pointer::Pointer()
-: TiledEntity("pointers.png", 1, 3)
+: TiledEntity("pointers.png", 1, 4)
 {
 }
 
@@ -53,12 +53,14 @@ void Pointer::onCreate()
    *
    */
   this->setCurrentFrameIndex(random(0, 1));
-  this->setScale(0);
-  this->runAction(
+  this->setScale(2.0);
+  /*this->runAction(
     EaseSineInOut::create(
       ScaleTo::create(0.5, 2.0)
     )
-  );
+  );*/
+
+  this->index = 0;
 }
 
 void Pointer::onDestroy(bool action)

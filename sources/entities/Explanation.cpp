@@ -32,11 +32,11 @@
 Explanation::Explanation(Node* parent)
 : BatchEntity("ui.png", parent)
 {
-  this->root = new Entity("explanation-root.png", this, true);
+  //this->root = new Entity("explanation-root.png", this, true);
   this->elements = new Pool(new Entity("explanation.png"), this);
 
   float x = 0;
-  float y = Application->getCenter().y + 20;
+  float y = Application->getCenter().y + 25;
 
   bool f = false;
 
@@ -56,7 +56,7 @@ Explanation::Explanation(Node* parent)
     }
   }
 
-  x = Application->getCenter().y + 20;
+  x = Application->getCenter().y + 25;
   y = 0;
 
   f = false;

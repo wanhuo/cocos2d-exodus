@@ -100,8 +100,8 @@ class Character : public Spine
   const static int STATE_LOSE_WATER = 10;
   const static int STATE_LOSE_MISTAKE = 11;
 
-  const static int COLLISION_SIZE_X = 53;
-  const static int COLLISION_SIZE_Y = 53;
+  const static int COLLISION_SIZE_X = 99;
+  const static int COLLISION_SIZE_Y = 99;
 
   Entity* shadow;
 
@@ -114,6 +114,8 @@ class Character : public Spine
  ~Character();
 
   int state = 0;
+  int index = 0;
+  int index_generated = 0;
 
   virtual void reset();
 

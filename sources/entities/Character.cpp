@@ -113,10 +113,16 @@ void Character::reset()
   this->parameters.max.y = this->parameters.max.setup.y;
   this->parameters.increase.x = 0;
 
+  this->parameters.predictions.clear();
+
+  this->index = 0;
+
   this->parameters.time = 1.0;
 
   this->generate.start = -1;
   this->generate.count = 0;
+  this->generate.rest = 0;
+  this->generate.red = 0;
 
   this->setRotation(0);
   this->setPosition(Application->getCenter().x, Application->camera.center);
@@ -137,6 +143,8 @@ void Character::reset()
     this->onMenu();
     break;
   }
+
+  Application->bonus->setPositionX(-1000);
 }
 
 /**
@@ -290,6 +298,12 @@ void Character::onTransfer()
 {
   Application->counter->values.score_b = 0;
 
+  this->parameters.x /= 2;
+  this->parameters.y /= 2;
+  this->parameters.max.x = this->parameters.max.setup.x;
+  this->parameters.max.y = this->parameters.max.setup.y;
+  this->parameters.increase.x = 0;
+
   Application->transfer->runAction(
     Spawn::create(
       Sequence::create(
@@ -298,6 +312,8 @@ void Character::onTransfer()
         CallFunc::create([=] () {
         Application->w->setVisible(true);
         }),
+        FadeOut::create(0.2),
+        CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
         FadeOut::create(0.2),
         CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
         nullptr
@@ -438,20 +454,120 @@ void Character::onPointerSuccess(Pointer* pointer)
 
   if(pointer)
   {
-    this->parameters.state = this->parameters.active = true;
+    bool f = true;
 
-    if(this->parameters.x < this->parameters.maximum.x)
+    
+    for(int i = 0; i < Application->pointers->count; i++)
     {
-      this->parameters.max.x += this->parameters.max.increase.x;
-      this->parameters.max.y += this->parameters.max.increase.y;
+      TiledEntity* pointer = static_cast<TiledEntity*>(Application->pointers->element(i));
+
+      if(pointer->getPositionX() < this->getPositionX())
+      {
+        if(!pointer->getCurrentFrameIndex())
+        {
+          f = false;
+        }
+      }
+    }
+
+    if(f)
+    {
+      this->index += this->index > 6 ? 0 : 1;
+      Sound->play(("success-" + patch::to_string(this->index)).c_str());
+    }
+    else
+    {
+      this->index = 1;
+      Sound->play("success-1");
     }
 
     pointer->_destroy(true);
 
+    bool ftx = false;
+    float tx = 1000000000000;
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
+
+      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
+      {
+        if(pointer->getPositionX() >= Application->camera.x + Application->camera.width)
+        {
+            ftx = true;
+            tx = min(tx, pointer->getPositionX());
+        }
+      }
+    }
+
+
+    for(int j = 0; j < 100; j++)
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
+
+      {
+        if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
+        {
+            pointer->_destroy();
+        }
+      }
+    }
+
+    this->generate.red = random(1, 3);
+
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<TiledEntity*>(Application->pointers->element(i));
+
+      if(pointer->getCurrentFrameIndex() == 1)
+      {
+          this->generate.red--;
+      }
+    }
+
+    if(ftx)
+    {
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
+
+      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
+      {
+        tx = max(tx, pointer->getPositionX());
+      }
+    }
+
+      Prediction prediction;
+      prediction.action = true;
+      prediction.x = tx;
+
+      this->parameters.predictions.push_back(prediction);
+    }
+
     this->startUpdateTraectory();
+  this->generate.x = pointer->getPositionX();
+  this->generate.y = pointer->getPositionY();
+
+  this->generate.rest = 0;
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
+
+      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
+      {
+       this->generate.rest++;
+      }
+    }
+
+  this->runAction(
+    MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
+  );
   }
   else
   {
+      this->index += this->index > 6 ? 0 : 1;
+      Sound->play(("success-" + patch::to_string(this->index)).c_str());
+
     Barror* barror = (Barror*) Application->barrors->_create();
 
     auto position = this->convertToWorldSpace(Vec2::ZERO);
@@ -478,13 +594,55 @@ void Character::onPointerSuccess(Pointer* pointer)
 
 void Character::onPointerMistake(Pointer* pointer)
 {
-  Application->counter->onMistake();
+  this->index = 0;
 
-  this->parameters.state = this->parameters.active = false;
+  Application->counter->onMistake();
 
   pointer->_destroy(true);
 
-  this->startUpdateTraectory();
+    bool ftx = false;
+    float tx = 1000000000000;
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = Application->pointers->element(i);
+
+      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width)
+      {
+          ftx = true;
+          tx = min(tx, pointer->getPositionX());
+      }
+    }
+
+    if(ftx)
+    {
+      Prediction prediction;
+      prediction.action = false;
+      prediction.x = tx;
+
+      this->parameters.predictions.push_back(prediction);
+    }
+
+
+
+    for(int j = 0; j < 100; j++)
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = Application->pointers->element(i);
+
+      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX())
+      {
+          pointer->_destroy();
+      }
+    }
+
+    this->startUpdateTraectory();
+  this->generate.x = pointer->getPositionX();
+  this->generate.y = pointer->getPositionY();
+  this->generate.rest = Application->pointers->count;
+
+  this->runAction(
+    MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
+  );
 }
 
 void Character::onPointerCoin(Pointer* pointer)
@@ -564,11 +722,14 @@ Pointer* Character::getCollisionPointer()
 
   for(int i = 0; i < Application->pointers->count; i++)
   {
-    auto pointer = Application->pointers->element(i);
+    auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-    if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+    if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
     {
-      return (Pointer*) pointer;
+      if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+      {
+        return (Pointer*) pointer;
+      }
     }
   }
 
@@ -671,9 +832,11 @@ void Character::stopUpdateTraectory()
  */
 void Character::onUpdateTraectoryStart()
 {
+  this->index_generated = 0;
+
   this->stopUpdateTraectory();
 
-  Application->pointers->clear();
+  //Application->pointers->clear();
 
   this->generate.parameters = this->parameters;
 
@@ -697,11 +860,17 @@ void Character::onUpdateTraectoryFinish()
  */
 void Character::onUpdateTraectory()
 {
+  bool bonus = true;
   int counter = 0;
 
-  while(this->generate.bonus || counter == 0)
+  while((this->generate.bonus && bonus) || counter == 0)
   {
     counter++;
+
+    bool a = false;
+
+    float x = this->generate.x;
+    float y = this->generate.y;
 
     for(int i = 0; i < 15 + this->generate.start; i++)
     {
@@ -710,24 +879,66 @@ void Character::onUpdateTraectory()
       this->generate.x += position.x;
       this->generate.y += position.y;
 
-      if(counter >= (this->generate.start - 5))
+      if(!a && i >= this->generate.start)
       {
-        if(this->generate.bonus)
-        {
-          this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+        a = true;
 
-          if(this->generate.bonus_points.size() >= 91)
+        x = this->generate.x;
+        y = this->generate.y;
+      }
+
+      for(auto &prediction : this->generate.parameters.predictions)
+      {
+        if(this->generate.x >= prediction.x && !prediction.done)
+        {
+          prediction.done = true;
+
+          if(prediction.action)
           {
-            this->onUpdateTraectoryBonusCreate();
+            this->generate.parameters.state = this->generate.parameters.active = true;
+
+            if(this->generate.parameters.x < this->generate.parameters.maximum.x)
+            {
+              this->generate.parameters.max.x += this->generate.parameters.max.increase.x;
+              this->generate.parameters.max.y += this->generate.parameters.max.increase.y;
+            }
+          }
+          else
+          {
+            //this->generate.parameters.state = this->generate.parameters.active = false;
           }
         }
       }
+      Pointer* element = (Pointer*) Application->pointers->_create();
+
+      element->setPosition(this->generate.x, this->generate.y);
+      element->setCurrentFrameIndex(Pointer::UNDEFINIED);
+      element->setScale(0.2);
+
+        if(this->generate.rest < 0 && this->generate.red <= -2 && this->generate.x > Application->camera.x + Application->camera.width)
+        {
+          if(this->generate.bonus)
+          {
+            this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+
+            if(this->generate.bonus_points.size() >= 15*5 + 2)
+            {
+              this->onUpdateTraectoryBonusCreate();
+            }
+          }
+        }
+        else
+        {
+          bonus = false;
+        }
     }
 
     this->generate.start = 0;
-  
-    float x = this->generate.x;
-    float y = this->generate.y;
+
+      if(--this->generate.rest > 0)
+      {
+        return;
+      }
 
     if(Application->w->getPositionY() + 130 > 0)
     {
@@ -735,13 +946,25 @@ void Character::onUpdateTraectory()
 
       element->setPosition(x, y);
 
-      if(this->generate.bonus)
+      this->generate.red--;
+
+      if(this->isOnBonusTraectory(x))
       {
         element->setCurrentFrameIndex(Pointer::SUCCESS);
+      }
+      else if(this->generate.red >= 0)
+      {
+        element->setCurrentFrameIndex(Pointer::MISTAKE);
       }
       else if(this->generate.coins-- > 0)
       {
         element->setCurrentFrameIndex(Pointer::COIN);
+      }
+      else
+      {
+        this->generate.red = random(1, 3);
+
+        element->setCurrentFrameIndex(Pointer::SUCCESS);
       }
     }
     else
@@ -792,8 +1015,12 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = probably(10);
-  this->generate.bonus_points.clear();
+  this->generate.bonus = Application->bonus->getPositionX() < Application->camera.x && probably(100);
+
+  if(this->generate.bonus)
+  {
+    this->generate.bonus_points.clear();
+  }
 
   if(!Application->parameters.tutorial)
   {
@@ -962,6 +1189,29 @@ void Character::updatePosition()
 
   this->setPosition(x, y);
   this->setRotation(r);
+
+  for(auto &prediction : this->parameters.predictions)
+  {
+    if(x >= prediction.x && !prediction.done)
+    {
+      prediction.done = true;
+
+      if(prediction.action)
+      {
+        this->parameters.state = this->parameters.active = true;
+
+        if(this->parameters.x < this->parameters.maximum.x)
+        {
+          this->parameters.max.x += this->parameters.max.increase.x;
+          this->parameters.max.y += this->parameters.max.increase.y;
+        }
+      }
+      else
+      {
+        //this->parameters.state = this->parameters.active = false;
+      }
+    }
+  }
 
   if(this->state == STATE_GAME)
   {
@@ -1200,7 +1450,7 @@ void Character::updatePointers()
          * Comment this to allow manual coins collect.
          *
          */
-        //this->onPointerCoin(pointer);
+        this->onPointerCoin(pointer);
         break;
       }
     }

@@ -70,6 +70,14 @@ struct WHATexponesial
   float min = 0.8;
 };
 
+struct Prediction
+{
+  float x;
+  bool action;
+  bool active = true;
+  bool done = false;
+};
+
 struct Parameters
 {
   bool state;
@@ -79,12 +87,14 @@ struct Parameters
   float y;
   float time = 1;
 
+  vector<Prediction> predictions;
+
   Vec2 setup = Vec2(0, 0);
 
   WHATMax max;
   Vec2 min = Vec2(0, -2000);
 
-  Vec2 maximum = Vec2(1500, 0);
+  Vec2 maximum = Vec2(2000, 0);
 
   WHATincrease increase;
   WHATdecrease decrease;
@@ -97,11 +107,13 @@ struct Parameters
 struct Generate
 {
   int start;
+  int rest;
 
   float x;
   float y;
 
   float coins;
+  int red;
 
   int count = 0;
 

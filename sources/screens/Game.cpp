@@ -32,7 +32,7 @@
 #include "Credits.h"
 
 float Game::SCALE_MAX = 1.0;
-float Game::SCALE_MIN = 0.35;
+float Game::SCALE_MIN = 0.4;
 
 /**
  *
@@ -86,7 +86,6 @@ Game::Game()
   this->transfer = new BackgroundColor(this, Color4B(132, 209, 223, 0));
 
   this->environments.push_back(new Environment1);
-  this->environments.push_back(new Environment2);
   this->environments.push_back(new Environment2);
 
   this->water1 = new Water(Water::TYPE1, this->w);
@@ -420,6 +419,18 @@ void Game::onPlay()
     )
   );
 
+  this->buttons.credits->runAction(
+    Sequence::create(
+      EaseSineInOut::create(
+        ScaleTo::create(0.2, 0.0)
+      ),
+      CallFunc::create([=] () {
+        this->buttons.credits->_destroy(true);
+      }),
+      nullptr
+    )
+  );
+
   this->changeState(STATE_ANIMATION);
 }
 
@@ -507,15 +518,15 @@ void Game::onNoadAction()
       this->water2->setPositionY(this->water2->getPositionY() - 100);
       this->water3->setPositionY(this->water3->getPositionY() - 100);
 
-      this->buttons.credits->setPosition(this->buttons.credits->getPosition() - Vec2(42, 100));
+      //this->buttons.credits->setPosition(this->buttons.credits->getPosition() - Vec2(42, 100));
     }
     else
     {
-      this->buttons.credits->runAction(
+      /*this->buttons.credits->runAction(
         EaseSineInOut::create(
           MoveBy::create(0.2, Vec2(-42, Credits::getInstance()->state->active ? 0 : -100))
         )
-      );
+      );*/
 
       this->water1->runAction(
         EaseSineInOut::create(
@@ -683,11 +694,11 @@ void Game::onPrepare()
     Sequence::create(
       CallFunc::create([=] () {
 
-        this->buttons.credits->_create()->runAction(
+        /*this->buttons.credits->_create()->runAction(
           EaseSineInOut::create(
             FadeIn::create(0.5)
           )
-        );
+        );*/
         if(!this->parameters.ad&&false)
         {
           this->buttons.noad->_create()->runAction(
@@ -741,7 +752,7 @@ void Game::onGame()
 
   this->hand->_destroy(true);
 
-  this->buttons.credits->runAction(
+  /*this->buttons.credits->runAction(
     Sequence::create(
       EaseSineInOut::create(
         FadeOut::create(0.5)
@@ -749,7 +760,8 @@ void Game::onGame()
       CallFunc::create([=] () { this->buttons.credits->_destroy(); }),
       nullptr
     )
-  );
+  );*/
+
   this->buttons.noad->runAction(
     Sequence::create(
       EaseSineInOut::create(

@@ -33,7 +33,7 @@
 			"z": 1
 		},
 		{
-			"texture": "2-background-2.png",
+			"texture": "2-background-3.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -49,7 +49,7 @@
 			"z": 2
 		},
 		{
-			"texture": "2-background-2.png",
+			"texture": "2-background-4.png",
 			"type": 0,
 			"anchor": {
 				"x": 0.0,
@@ -462,8 +462,8 @@
 				}
 			},
 			"width": {
-				"min": 100.0,
-				"max": 500.0
+				"min": 200.0,
+				"max": 1000.0
 			},
 			"x": 0.0,
 			"y": 0.0,

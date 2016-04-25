@@ -330,12 +330,9 @@ void Counter::onSuccess()
   {
     this->missionUpdateOnce.points++;
     this->missionUpdateProgress.points++;
-    log("f: %f", this->missionUpdateProgress.points);
 
     Events::updateMissions();
   }
-
-  Sound->play("success");
 }
 
 void Counter::onMistake()
