@@ -253,14 +253,12 @@ void Counter::onCoin(bool update)
 
       Events::updateMissions();
     }
-
-    Sound->play("coins-collect");
   }
   else
   {
     this->values.coins++;
 
-    Sound->play("coins");
+    Sound->play("coins-collect");
   }
 }
 

@@ -298,6 +298,8 @@ void Character::onTransfer()
 {
   Application->counter->values.score_b = 0;
 
+  this->parameters.predictions.clear();
+
   this->parameters.x /= 2;
   this->parameters.y /= 2;
   this->parameters.max.x = this->parameters.max.setup.x;
@@ -307,14 +309,30 @@ void Character::onTransfer()
   Application->transfer->runAction(
     Spawn::create(
       Sequence::create(
+        CallFunc::create([=] () {
+          this->parameters.state = this->parameters.active = true;
+
+          if(this->parameters.x < this->parameters.maximum.x)
+          {
+            this->parameters.max.x += this->parameters.max.increase.x;
+            this->parameters.max.y += this->parameters.max.increase.y;
+          }
+        }),
         FadeIn::create(0.2),
         DelayTime::create(2.6),
         CallFunc::create([=] () {
         Application->w->setVisible(true);
         }),
         FadeOut::create(0.2),
-        CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
-        FadeOut::create(0.2),
+        CallFunc::create([=] () {
+          this->parameters.state = this->parameters.active = true;
+
+          if(this->parameters.x < this->parameters.maximum.x)
+          {
+            this->parameters.max.x += this->parameters.max.increase.x;
+            this->parameters.max.y += this->parameters.max.increase.y;
+          }
+        }),
         CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
         nullptr
       ),
@@ -454,16 +472,17 @@ void Character::onPointerSuccess(Pointer* pointer)
 
   if(pointer)
   {
+    pointer->_destroy(true);
+
     bool f = true;
 
-    
     for(int i = 0; i < Application->pointers->count; i++)
     {
       TiledEntity* pointer = static_cast<TiledEntity*>(Application->pointers->element(i));
 
       if(pointer->getPositionX() < this->getPositionX())
       {
-        if(!pointer->getCurrentFrameIndex())
+        if(pointer->getCurrentFrameIndex() == 0)
         {
           f = false;
         }
@@ -480,8 +499,6 @@ void Character::onPointerSuccess(Pointer* pointer)
       this->index = 1;
       Sound->play("success-1");
     }
-
-    pointer->_destroy(true);
 
     bool ftx = false;
     float tx = 1000000000000;
@@ -565,7 +582,7 @@ void Character::onPointerSuccess(Pointer* pointer)
   }
   else
   {
-      this->index += this->index > 6 ? 0 : 1;
+      this->index += this->index > 5 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
 
     Barror* barror = (Barror*) Application->barrors->_create();
@@ -621,8 +638,6 @@ void Character::onPointerMistake(Pointer* pointer)
 
       this->parameters.predictions.push_back(prediction);
     }
-
-
 
     for(int j = 0; j < 100; j++)
     for(int i = 0; i < Application->pointers->count; i++)
@@ -816,7 +831,15 @@ void Character::startUpdateTraectory()
 
     auto action = RepeatForever::create(
       Sequence::create(
-        CallFunc::create(CC_CALLBACK_0(Character::onUpdateTraectory, this)),
+        CallFunc::create([=] () {
+          int counter = 1;
+          while(this->generate.rest > 0 || counter >= 1)
+          {
+            counter--;
+
+            this->onUpdateTraectory();
+          }
+        }),
         DelayTime::create(0.1),
         nullptr
       )
@@ -925,13 +948,13 @@ void Character::onUpdateTraectory()
       element->setCurrentFrameIndex(Pointer::UNDEFINIED);
       element->setScale(0.2);
 
-        if(this->generate.rest < 0 && this->generate.red <= -3 && this->generate.x > Application->camera.x + Application->camera.width)
+        if(this->generate.rest < 0 && this->generate.red <= 0)
         {
           if(this->generate.bonus)
           {
-            this->generate.bonus_points.push_back(Vec2(this->generate.x, this->generate.y));
+            this->generate.bonus_points.push_back(Vec2(this->generate.x - 25, this->generate.y));
 
-            if(this->generate.bonus_points.size() >= 15*5 + 2)
+            if(this->generate.bonus_points.size() >= 15*random(2, 8) + 54)
             {
               this->onUpdateTraectoryBonusCreate();
             }
@@ -997,12 +1020,12 @@ void Character::onUpdateTraectoryBonusCreate()
 
   for(int i = 0; i < this->generate.bonus_points.size() - 1; i++)
   {
-    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
   }
 
   for(int i = this->generate.bonus_points.size() - 2; i > 0; i--)
   {
-    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
   }
 
   Application->bonus->_destroy();
@@ -1025,12 +1048,15 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = Application->bonus->getPositionX() < Application->camera.x && probably(100);
+  this->generate.bonus = probably(100);
 
   if(this->generate.bonus)
   {
-    this->generate.bonus_points.clear();
+    this->generate.red = 10;
   }
+
+    this->generate.bonus_points.clear();
+    Application->bonus->_destroy();
 
   if(!Application->parameters.tutorial)
   {

@@ -37,7 +37,7 @@ struct WHATMax
   float x;
   float y;
 
-  Vec2 increase = Vec2(100, 0);
+  Vec2 increase = Vec2(10, 0);
   Vec2 setup = Vec2(1200, 500);
 };
 
