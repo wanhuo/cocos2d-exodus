@@ -209,6 +209,7 @@ class Game : public Screen
   Environment* environment;
 
   Pool* pointers;
+  Pool* pointers2;
   Pool* barrors;
 
   Motion* bonus;

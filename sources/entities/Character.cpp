@@ -473,6 +473,7 @@ void Character::onPointerSuccess(Pointer* pointer)
   if(pointer)
   {
     pointer->_destroy(true);
+    Application->pointers2->clear();
 
     bool f = true;
 
@@ -491,7 +492,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
     if(f)
     {
-      this->index += this->index > 5 ? 0 : 1;
+      this->index += this->index > 11 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
     }
     else
@@ -506,14 +507,13 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
-      {
+
         if(pointer->getPositionX() >= Application->camera.x + Application->camera.width)
         {
             ftx = true;
             tx = min(tx, pointer->getPositionX());
         }
-      }
+
     }
 
 
@@ -548,10 +548,9 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
-      {
+
         tx = max(tx, pointer->getPositionX());
-      }
+
     }
 
       Prediction prediction;
@@ -565,16 +564,7 @@ void Character::onPointerSuccess(Pointer* pointer)
   this->generate.x = pointer->getPositionX();
   this->generate.y = pointer->getPositionY();
 
-  this->generate.rest = 0;
-    for(int i = 0; i < Application->pointers->count; i++)
-    {
-      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
-
-      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
-      {
-       this->generate.rest++;
-      }
-    }
+  this->generate.rest = Application->pointers->count;
 
   this->runAction(
     MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
@@ -582,7 +572,7 @@ void Character::onPointerSuccess(Pointer* pointer)
   }
   else
   {
-      this->index += this->index > 5 ? 0 : 1;
+      this->index += this->index > 11 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
 
     Barror* barror = (Barror*) Application->barrors->_create();
@@ -654,16 +644,7 @@ void Character::onPointerMistake(Pointer* pointer)
   this->generate.x = pointer->getPositionX();
   this->generate.y = pointer->getPositionY();
 
-  this->generate.rest = 0;
-    for(int i = 0; i < Application->pointers->count; i++)
-    {
-      auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
-
-      if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
-      {
-       this->generate.rest++;
-      }
-    }
+  this->generate.rest = Application->pointers->count;
 
   this->runAction(
     MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
@@ -749,13 +730,10 @@ Pointer* Character::getCollisionPointer()
   {
     auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-    if(pointer->getCurrentFrameIndex() != Pointer::UNDEFINIED)
-    {
       if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
       {
         return (Pointer*) pointer;
       }
-    }
   }
 
   return nullptr;
@@ -942,11 +920,15 @@ void Character::onUpdateTraectory()
           }
         }
       }
-      Pointer* element = (Pointer*) Application->pointers->_create();
 
-      element->setPosition(this->generate.x, this->generate.y);
-      element->setCurrentFrameIndex(Pointer::UNDEFINIED);
-      element->setScale(0.2);
+      if(true
+      {
+        Pointer* element = (Pointer*) Application->pointers2->_create();
+
+        element->setPosition(this->generate.x, this->generate.y);
+        element->setCurrentFrameIndex(Pointer::UNDEFINIED);
+        element->setScale(0.2);
+      }
 
         if(this->generate.rest < 0 && this->generate.red <= 0)
         {
@@ -954,9 +936,11 @@ void Character::onUpdateTraectory()
           {
             this->generate.bonus_points.push_back(Vec2(this->generate.x - 25, this->generate.y));
 
-            if(this->generate.bonus_points.size() >= 15*random(2, 8) + 54)
+            if(this->generate.bonus_points.size() >= 11.8*8)
             {
               this->onUpdateTraectoryBonusCreate();
+
+              this->generate.red = random(1, 3);
             }
           }
         }
@@ -1020,12 +1004,12 @@ void Character::onUpdateTraectoryBonusCreate()
 
   for(int i = 0; i < this->generate.bonus_points.size() - 1; i++)
   {
-    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
   }
 
   for(int i = this->generate.bonus_points.size() - 2; i > 0; i--)
   {
-    actions.pushBack(MoveTo::create(0.001, this->generate.bonus_points.at(i)));
+    actions.pushBack(MoveTo::create(0.004, this->generate.bonus_points.at(i)));
   }
 
   Application->bonus->_destroy();
@@ -1048,12 +1032,7 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = probably(100);
-
-  if(this->generate.bonus)
-  {
-    this->generate.red = 10;
-  }
+  this->generate.bonus = probably(10);
 
     this->generate.bonus_points.clear();
     Application->bonus->_destroy();
@@ -1076,6 +1055,11 @@ void Character::onUpdateTraectoryBonusDestroy()
       this->generate.bonus = false;
     }
   }
+
+  if(this->generate.bonus)
+  {
+    this->generate.red = random(5, 8);
+  }
 }
  
 /**
@@ -1094,7 +1078,7 @@ bool Character::isOnBonusTraectory(float x)
 
   if(this->generate.bonus_points.size() > 0)
   {
-    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x + f;
+    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x;
   }
 
   return false;

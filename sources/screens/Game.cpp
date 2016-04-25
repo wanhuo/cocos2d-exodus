@@ -114,10 +114,15 @@ Game::Game()
   this->hand->setPosition(this->getCenter().x / 0.75, this->getCenter().y / 2 + (this->parameters.ad ? 100 : 0));
 
   this->pointers = new Pool(new Pointer, this->game, true);
+  this->pointers2 = new Pool(new Pointer, this->game, true);
+
   this->barrors = new Pool(new Barror, this->c, true);
 
+  this->pointers->setLocalZOrder(3);
+  this->pointers2->setLocalZOrder(1);
+
   this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
-  this->bonus->setLocalZOrder(-1);
+  this->bonus->setLocalZOrder(2);
 
   this->buttons.play->_create()->setPosition(
     this->getCenter().x,
@@ -684,6 +689,7 @@ void Game::onPrepare()
   this->d->setAnchorPoint(Vec2(0.5, 0));
 
   this->pointers->clear();
+  this->pointers2->clear();
   this->barrors->clear();
 
   this->bonus->_destroy();
