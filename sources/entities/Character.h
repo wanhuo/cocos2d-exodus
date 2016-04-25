@@ -78,6 +78,8 @@ class Character : public Spine
   protected:
   Explanation* explanation;
 
+  bool allowSwipe;
+
   float smokeTime = 0.02;
   float smokeTimeElapsed = 0;
 
@@ -141,6 +143,13 @@ class Character : public Spine
   virtual void onLose();
   virtual void onLoseWater();
   virtual void onLoseMistake();
+
+  virtual bool onSwipe();
+
+  virtual void onSwipeUp();
+  virtual void onSwipeDown();
+  virtual void onSwipeLeft();
+  virtual void onSwipeRight();
 
   virtual void onTouch();
   virtual void onSave();

@@ -30,7 +30,7 @@
  *
  */
 Pointer::Pointer()
-: TiledEntity("pointers.png", 1, 4)
+: TiledEntity("pointers.png", 1, 5)
 {
 }
 

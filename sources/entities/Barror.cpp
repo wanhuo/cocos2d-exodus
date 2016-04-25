@@ -30,9 +30,9 @@
  *
  */
 Barror::Barror()
-: TiledEntity("pointers.png", 1, 4)
+: TiledEntity("pointers.png", 1, 5)
 {
-  this->motion = new Motion("barror-motion.png", Application->c, this->getWidth());
+  this->motion = new Motion("barror-motion.png", 0.4, 3.0, Application->c, this->getWidth());
   this->motion->setTarget(this);
   this->motion->setLocalZOrder(-1);
 }
@@ -92,10 +92,12 @@ void Barror::animate(int index)
 {
   this->setCurrentFrameIndex(index);
 
-  this->setScale(2 * Application->d->getScale());
+  this->setScale(2.0 * Application->d->getScale());
 
   this->setPositionX(this->getPositionX() + this->getWidthScaled() / 2);
   this->setPositionY(this->getPositionY() + this->getHeightScaled() / 2);
+
+  this->runAction(ScaleTo::create(1.0, 1.0 * Application->d->getScale()));
 
   switch(index)
   {

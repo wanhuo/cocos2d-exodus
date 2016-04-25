@@ -233,7 +233,7 @@ Game::~Game()
  *
  *
  */
-void Game::onTouchStart(cocos2d::Touch* touch, Event* event)
+void Game::onTouchFinish(cocos2d::Touch* touch, Event* event)
 {
   switch(this->state)
   {
@@ -246,6 +246,45 @@ void Game::onTouchStart(cocos2d::Touch* touch, Event* event)
   }
 
   this->character->onTouch();
+}
+
+/**
+ *
+ *
+ *
+ *
+ */
+bool Game::onSwipe()
+{
+  switch(this->state)
+  {
+    case STATE_START:
+    case STATE_PREPARE:
+    return false;
+    break;
+  }
+
+  return this->character->onSwipe();
+}
+
+void Game::onSwipeUp()
+{
+  this->character->onSwipeUp();
+}
+
+void Game::onSwipeDown()
+{
+  this->character->onSwipeDown();
+}
+
+void Game::onSwipeLeft()
+{
+  this->character->onSwipeLeft();
+}
+
+void Game::onSwipeRight()
+{
+  this->character->onSwipeRight();
 }
 
 /**

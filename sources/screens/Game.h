@@ -226,7 +226,14 @@ class Game : public Screen
   virtual void nextEnvironment();
   virtual void setEnvironment(int index);
 
-  virtual void onTouchStart(cocos2d::Touch* touch, Event* event);
+  virtual void onTouchFinish(cocos2d::Touch* touch, Event* event);
+
+  virtual bool onSwipe();
+
+  virtual void onSwipeUp();
+  virtual void onSwipeDown();
+  virtual void onSwipeLeft();
+  virtual void onSwipeRight();
 
   virtual void onEnter();
   virtual void onExit();

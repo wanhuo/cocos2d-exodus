@@ -116,6 +116,7 @@ void Character::reset()
   this->parameters.predictions.clear();
 
   this->index = 0;
+  this->allowSwipe = true;
 
   this->parameters.time = 1.0;
 
@@ -438,6 +439,46 @@ void Character::onLoseMistake()
  *
  *
  */
+bool Character::onSwipe()
+{
+  switch(this->state)
+  {
+    case STATE_GAME:
+    return this->allowSwipe;
+    break;
+  }
+
+  return false;
+}
+
+void Character::onSwipeUp()
+{
+  this->runAction(
+    Sequence::create(
+      MoveBy::create(0.5, Vec2(0, 300)),
+      MoveBy::create(0.5, Vec2(0, -300)),
+      nullptr
+    )
+  );
+}
+
+void Character::onSwipeDown()
+{
+}
+
+void Character::onSwipeLeft()
+{
+}
+
+void Character::onSwipeRight()
+{
+}
+
+/**
+ *
+ *
+ *
+ */
 void Character::onTouch()
 {
   Application->counter->onTap();
@@ -472,8 +513,36 @@ void Character::onPointerSuccess(Pointer* pointer)
 
   if(pointer)
   {
+  ///////
+  
+
+    vector<Node*> remove;
+
+    for(int i = 0; i < Application->pointers2->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers2->element(i));
+
+      if((pointer->getPositionX() >= Application->camera.x + Application->camera.width))
+      {
+          remove.push_back(pointer);
+      }
+    }
+
+    remove.erase(
+      std::remove_if(
+          remove.begin(),
+          remove.end(),
+          [](Node* pointer) -> bool {
+            pointer->_destroy();
+
+            return true;
+          }
+      ),
+      remove.end()
+    );
+    remove.clear();
+  ///////
     pointer->_destroy(true);
-    Application->pointers2->clear();
 
     bool f = true;
 
@@ -492,7 +561,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
     if(f)
     {
-      this->index += this->index > 11 ? 0 : 1;
+      this->index += this->index > 9 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
     }
     else
@@ -507,28 +576,36 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-
-        if(pointer->getPositionX() >= Application->camera.x + Application->camera.width)
-        {
-            ftx = true;
-            tx = min(tx, pointer->getPositionX());
-        }
-
+      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width + 50)
+      {
+          ftx = true;
+          tx = min(tx, pointer->getPositionX());
+      }
     }
 
 
-    for(int j = 0; j < 100; j++)
     for(int i = 0; i < Application->pointers->count; i++)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
+      if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
       {
-        if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
-        {
-            pointer->_destroy();
-        }
+          remove.push_back(pointer);
       }
     }
+
+    remove.erase(
+      std::remove_if(
+          remove.begin(),
+          remove.end(),
+          [](Node* pointer) -> bool {
+            pointer->_destroy();
+
+            return true;
+          }
+      ),
+      remove.end()
+    );
 
     this->generate.red = random(1, 3);
 
@@ -572,7 +649,7 @@ void Character::onPointerSuccess(Pointer* pointer)
   }
   else
   {
-      this->index += this->index > 11 ? 0 : 1;
+      this->index += this->index > 9 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
 
     Barror* barror = (Barror*) Application->barrors->_create();
@@ -604,51 +681,6 @@ void Character::onPointerMistake(Pointer* pointer)
   this->index = 0;
 
   Application->counter->onMistake();
-
-  pointer->_destroy(true);
-
-    bool ftx = false;
-    float tx = 1000000000000;
-    for(int i = 0; i < Application->pointers->count; i++)
-    {
-      auto pointer = Application->pointers->element(i);
-
-      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width)
-      {
-          ftx = true;
-          tx = min(tx, pointer->getPositionX());
-      }
-    }
-
-    if(ftx)
-    {
-      Prediction prediction;
-      prediction.action = false;
-      prediction.x = tx;
-
-      this->parameters.predictions.push_back(prediction);
-    }
-
-    for(int j = 0; j < 100; j++)
-    for(int i = 0; i < Application->pointers->count; i++)
-    {
-      auto pointer = Application->pointers->element(i);
-
-      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX())
-      {
-          pointer->_destroy();
-      }
-    }
-
-    this->startUpdateTraectory();
-  this->generate.x = pointer->getPositionX();
-  this->generate.y = pointer->getPositionY();
-
-  this->generate.rest = Application->pointers->count;
-
-  this->runAction(
-    MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
-  );
 }
 
 void Character::onPointerCoin(Pointer* pointer)
@@ -818,7 +850,7 @@ void Character::startUpdateTraectory()
             this->onUpdateTraectory();
           }
         }),
-        DelayTime::create(0.1),
+        DelayTime::create(0.2),
         nullptr
       )
     );
@@ -874,6 +906,35 @@ void Character::onUpdateTraectory()
   bool bonus = true;
   int counter = 0;
 
+  /////
+  
+
+    vector<Node*> remove;
+
+    for(int i = 0; i < Application->pointers2->count; i++)
+    {
+      auto pointer = static_cast<Pointer*>(Application->pointers2->element(i));
+
+      if((pointer->getPositionX() <= this->getPositionX()))
+      {
+          remove.push_back(pointer);
+      }
+    }
+
+    remove.erase(
+      std::remove_if(
+          remove.begin(),
+          remove.end(),
+          [](Node* pointer) -> bool {
+            pointer->_destroy();
+
+            return true;
+          }
+      ),
+      remove.end()
+    );
+  /////
+
   while((this->generate.bonus && bonus) || counter == 0)
   {
     counter++;
@@ -921,7 +982,7 @@ void Character::onUpdateTraectory()
         }
       }
 
-      if(true)
+      if(this->generate.rest <= 2)
       {
         Pointer* element = (Pointer*) Application->pointers2->_create();
 
