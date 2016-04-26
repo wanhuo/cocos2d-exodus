@@ -116,8 +116,12 @@ Game::Game()
   this->pointers = new Pool(new Pointer, this->game, true);
   this->pointers2 = new Pool(new Pointer, this->game, true);
 
+  this->pickups = new Pool(new TiledEntity("pointers.png", 1, 5), this->game, true);
+
   this->pointers->setLocalZOrder(3);
   this->pointers2->setLocalZOrder(1);
+
+  this->pickups->setLocalZOrder(1);
 
   this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
   this->bonus->setLocalZOrder(2);
@@ -126,7 +130,7 @@ Game::Game()
     this->getCenter().x,
     this->getCenter().y + 110
   );
-  this->buttons.play->setScale(1.1);
+  this->buttons.play->setScale(1.2);
 
   this->buttons.credits->_create()->setPosition(
     this->getCenter().x + (this->parameters.ad||true ? 0 : 42),

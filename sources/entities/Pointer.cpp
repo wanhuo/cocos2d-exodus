@@ -45,24 +45,35 @@ Pointer::~Pointer()
  */
 void Pointer::onCreate()
 {
-  TiledEntity::onCreate();
+  TiledEntity::onCreate();this->setScale(2);
 }
 
 void Pointer::onDestroy(bool action)
 {
+  TiledEntity::onDestroy(action);
+
+  /**
+   *
+   *
+   *
+   */
   if(action)
   {
-    this->setScale(0);
-    this->runAction(
+    auto pickup = static_cast<TiledEntity*>(Application->pickups->_create());
+
+    pickup->setPosition(this->getPosition());
+
+    pickup->setCurrentFrameIndex(PICKUP);
+
+    pickup->setScale(0);
+    pickup->runAction(
       Sequence::create(
-        ScaleTo::create(0.2, 2.0)
+        ScaleTo::create(0.2, 4.0),
+        CallFunc::create(CC_CALLBACK_0(Node::_destroy, pickup, true)),
         nullptr
       )
     );
   }
-  else
-  {
-  TiledEntity::onDestroy(action);
 }
 
 /**
