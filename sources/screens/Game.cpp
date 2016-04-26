@@ -116,12 +116,8 @@ Game::Game()
   this->pointers = new Pool(new Pointer, this->game, true);
   this->pointers2 = new Pool(new Pointer, this->game, true);
 
-  this->pickups = new Pool(new TiledEntity("pointers.png", 1, 5), this->game, true);
-
   this->pointers->setLocalZOrder(3);
   this->pointers2->setLocalZOrder(1);
-
-  this->pickups->setLocalZOrder(1);
 
   this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
   this->bonus->setLocalZOrder(2);

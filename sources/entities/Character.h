@@ -68,6 +68,13 @@ class Character : public Spine
     SpineAnimation status_finish;
   };
 
+  struct Value
+  {
+    bool v;
+
+    int value;
+  };
+
   Animations animations;
 
   /**
@@ -80,6 +87,10 @@ class Character : public Spine
 
   float smokeTime = 0.02;
   float smokeTimeElapsed = 0;
+
+  BackgroundColor* holder;
+
+  Pool* text;
 
   /**
    *
@@ -110,6 +121,8 @@ class Character : public Spine
 
   Swipe swipe;
 
+  Value value;
+
   Pool* smoke;
 
   Character();
@@ -118,6 +131,7 @@ class Character : public Spine
   int state = 0;
 
   int index = 0;
+  int accelerationIndex = 0;
 
   virtual void reset();
 
@@ -154,10 +168,13 @@ class Character : public Spine
   virtual void onTouch();
   virtual void onSave();
 
+  virtual void onCreateText(bool value);
+
   virtual void onPointerSuccess(Pointer* pointer);
   virtual void onPointerMistake(Pointer* pointer);
   virtual void onPointerCoin(Pointer* pointer);
   virtual void onPointerFail();
+  virtual void onPointerAcceleration(Pointer* pointer);
 
   virtual void proceedPointer();
 

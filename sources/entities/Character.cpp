@@ -80,6 +80,11 @@ Character::Character()
 
   this->smoke = new Pool(new Smoke, Application->game);
 
+  this->holder = new BackgroundColor(this, Color4B(0, 0, 0, 0));
+  this->holder->setContentSize(Size(10, 10));
+
+  this->text = new Pool(new Text("character"), this->holder);
+
   /**
    *
    *
@@ -125,6 +130,7 @@ void Character::reset()
   this->parameters.predictions.clear();
 
   this->index = 0;
+  this->accelerationIndex = 0;
 
   this->parameters.time = 1.0;
 
@@ -293,7 +299,15 @@ void Character::onStart()
 void Character::onGame()
 {
   this->setGlobalZOrder(11);
-  this->startUpdateTraectory();
+
+  auto action = Sequence::create(
+    DelayTime::create(0.5),
+    CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
+    nullptr
+  );
+  action->setTag(1);
+
+  this->runAction(action);
 }
 
 void Character::onTransfer()
@@ -492,10 +506,87 @@ void Character::onSave()
  *
  *
  */
+void Character::onCreateText(bool value)
+{
+  if(this->text->count > 0 && value == this->value.v)
+  {
+    this->value.value++;
+
+    auto text = static_cast<Text*>(this->text->last());
+
+    text->data(this->value.value);
+
+    text->stopAllActions();
+    text->runAction(
+      Spawn::create(
+        Sequence::create(
+          DelayTime::create(0.4),
+          FadeOut::create(0.2),
+          CallFunc::create(CC_CALLBACK_0(Text::_destroy, text, true)),
+          nullptr
+        ),
+        Sequence::create(
+          EaseSineOut::create(
+            MoveTo::create(0.4, Vec2(0, 150))
+          ),
+          nullptr
+        ),
+        FadeIn::create(0.1),
+        nullptr
+      )
+    );
+  }
+  else
+  {
+    if(this->text->count > 0)
+    {
+      this->text->last()->runAction(
+        Sequence::create(
+          FadeOut::create(0.1),
+          nullptr
+        )
+      );
+    }
+
+    this->value.value = 1;
+
+    auto text = static_cast<Text*>(this->text->_create());
+
+    text->data(this->value.value);
+
+    text->setPosition(0, 100);
+    text->setOpacity(255);
+
+    text->runAction(
+      Spawn::create(
+        Sequence::create(
+          DelayTime::create(0.2),
+          FadeOut::create(0.2),
+          CallFunc::create(CC_CALLBACK_0(Text::_destroy, text, true)),
+          nullptr
+        ),
+        EaseSineOut::create(
+          MoveTo::create(0.4, Vec2(0, 150))
+        ),
+        nullptr
+      )
+    );
+  }
+
+  this->value.v = value;
+}
+
+/**
+ *
+ *
+ *
+ */
 void Character::onPointerSuccess(Pointer* pointer)
 {
   Application->counter->onScore();
   Application->counter->onSuccess();
+
+  this->onCreateText(true);
 
   if(pointer)
   {
@@ -528,7 +619,13 @@ void Character::onPointerSuccess(Pointer* pointer)
     );
     remove.clear();
   ///////
-    pointer->_destroy(true);
+    pointer->runAction(
+      Sequence::create(
+        ScaleTo::create(0.1, 0.0),
+        CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+        nullptr
+      )
+    );
 
     bool f = true;
 
@@ -536,23 +633,29 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       TiledEntity* pointer = static_cast<TiledEntity*>(Application->pointers->element(i));
 
-      if(pointer->getPositionX() < this->getPositionX())
+      if(pointer->numberOfRunningActions() < 1)
       {
-        if(pointer->getCurrentFrameIndex() == 0)
+        if(pointer->getPositionX() < this->getPositionX())
         {
-          f = false;
+          if(pointer->getCurrentFrameIndex() == Pointer::SUCCESS || pointer->getCurrentFrameIndex() == Pointer::ACCELERATION)
+          {
+            f = false;
+          }
         }
       }
     }
 
     if(f)
     {
-      this->index += this->index > 9 ? 0 : 1;
+      this->accelerationIndex += this->index > 6 ? 0 : 1;
+      this->index += this->index > 6 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
     }
     else
     {
       this->index = 1;
+      this->accelerationIndex = 1;
+
       Sound->play("success-1");
     }
 
@@ -574,9 +677,12 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-      if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
+      if(pointer->numberOfRunningActions() < 1)
       {
-          remove.push_back(pointer);
+        if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
+        {
+            remove.push_back(pointer);
+        }
       }
     }
 
@@ -628,7 +734,7 @@ void Character::onPointerSuccess(Pointer* pointer)
     this->generate.x = pointer->getPositionX();
     this->generate.y = pointer->getPositionY();
 
-    this->generate.rest = Application->pointers->count;
+    this->generate.rest = Application->pointers->count - 1;
 
     this->runAction(
       MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
@@ -636,7 +742,8 @@ void Character::onPointerSuccess(Pointer* pointer)
   }
   else
   {
-      this->index += this->index > 9 ? 0 : 1;
+      this->accelerationIndex += this->index > 6 ? 0 : 1;
+      this->index += this->index > 6 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
 
       Application->counter->onScore();
@@ -666,7 +773,15 @@ void Character::onPointerCoin(Pointer* pointer)
 {
   Application->counter->onCoin();
 
-  pointer->_destroy(true);
+  this->onCreateText(false);
+
+  pointer->runAction(
+    Sequence::create(
+      ScaleTo::create(0.1, 0.0),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+      nullptr
+    )
+  );
 }
 
 void Character::onPointerFail()
@@ -674,6 +789,17 @@ void Character::onPointerFail()
   Application->counter->onFail();
 
   this->changeState(STATE_LOSE_MISTAKE);
+}
+
+void Character::onPointerAcceleration(Pointer* pointer)
+{
+  pointer->runAction(
+    Sequence::create(
+      ScaleTo::create(0.1, 0.0),
+      CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+      nullptr
+    )
+  );
 }
 
 /**
@@ -699,6 +825,9 @@ void Character::proceedPointer()
 
         switch(index)
         {
+          case Pointer::ACCELERATION:
+          this->onPointerAcceleration(pointer);
+          return;
           case Pointer::SUCCESS:
           this->onPointerSuccess(pointer);
           return;
@@ -741,10 +870,13 @@ Pointer* Character::getCollisionPointer()
   {
     auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
+    if(pointer->numberOfRunningActions() < 1)
+    {
       if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
       {
         return (Pointer*) pointer;
       }
+    }
   }
 
   return nullptr;
@@ -1008,6 +1140,16 @@ void Character::onUpdateTraectory()
       {
         element->setCurrentFrameIndex(Pointer::SUCCESS);
       }
+      else if(this->accelerationIndex >= 6)
+      {
+        this->accelerationIndex = 1;
+
+        element->setCurrentFrameIndex(Pointer::ACCELERATION);
+         Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
+
+          float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
+          element->setRotation(r);
+      }
       else if(this->generate.red >= 0)
       {
         element->setCurrentFrameIndex(Pointer::MISTAKE);
@@ -1241,84 +1383,15 @@ void Character::updatePosition()
 {
   Vec2 position = this->updatePosition(this->parameters);
 
-  if(this->swipe.update)
-  {
-    if(this->swipe.direction)
-    {
-      if(!this->swipe.reverse)
-      {
-        this->swipe.y += this->swipe.increase.y;
-
-        if(this->swipe.y >= this->swipe.max.y)
-        {
-          this->swipe.reverse = true;
-        }
-      }
-      else
-      {
-        this->swipe.y -= this->swipe.decrease.y;
-
-        if(this->swipe.y <= -this->swipe.max.y * 3.8 * this->swipe.decrease.y)
-        {
-          this->swipe.update = false;
-
-          this->swipe.y = 0;
-        }
-      }
-    }
-    else
-    {
-      if(!this->swipe.reverse)
-      {
-        this->swipe.y -= this->swipe.increase.y;
-
-        if(this->swipe.y <= -this->swipe.max.y)
-        {
-          this->swipe.reverse = true;
-        }
-      }
-      else
-      {
-        this->swipe.y += this->swipe.decrease.y;
-
-        if(this->swipe.y >= this->swipe.max.y * 3.8 * this->swipe.decrease.y)
-        {
-          this->swipe.update = false;
-
-          this->swipe.y = 0;
-        }
-      }
-    }
-
-    position.x += this->swipe.x;
-    position.y += this->swipe.y;
-  }
-
   float x = this->getPositionX() + position.x;
   float y = this->getPositionY() + position.y;
 
   float r = atan2(x - (this->getPositionX() - this->swipe.x), y - (this->getPositionY() - this->swipe.y)) * 180 / M_PI;
 
-  if(this->swipe.update && this->swipe.reverse && this->swipe.y <= (-this->swipe.max.y * 3.8 * this->swipe.decrease.y) / 5)
-  {
-    auto max = Vec2(0, 0);
-
-    for(int i = 0; i < Application->pointers->count; i++)
-    {
-      auto pointer = Application->pointers->element(i);
-
-      if(max.x < pointer->getPositionX())
-      {
-        max.x = pointer->getPositionX();
-        max.y = pointer->getPositionY();
-      }
-    }
-
-    r =  atan2(max.x - this->getPositionX(), max.y - this->getPositionY()) * 180 / M_PI;
-  }
-
   this->setPosition(x, y);
   this->setRotation(r);
+
+  this->holder->setRotation(-r);
 
   for(auto &prediction : this->parameters.predictions)
   {
@@ -1564,6 +1637,9 @@ void Character::updatePointers()
       {
         default:
         this->updateStatus(false);
+        break;
+        case Pointer::ACCELERATION:
+        this->updateStatus(true);
         break;
         case Pointer::SUCCESS:
         this->updateStatus(true);

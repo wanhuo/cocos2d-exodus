@@ -30,7 +30,7 @@
  *
  */
 Pointer::Pointer()
-: TiledEntity("pointers.png", 1, 5)
+: TiledEntity("pointers.png", 1, 11)
 {
 }
 
@@ -45,35 +45,19 @@ Pointer::~Pointer()
  */
 void Pointer::onCreate()
 {
-  TiledEntity::onCreate();this->setScale(2);
-}
-
-void Pointer::onDestroy(bool action)
-{
-  TiledEntity::onDestroy(action);
+  TiledEntity::onCreate();
 
   /**
    *
    *
    *
    */
-  if(action)
-  {
-    auto pickup = static_cast<TiledEntity*>(Application->pickups->_create());
+  this->setScale(1.0);
+}
 
-    pickup->setPosition(this->getPosition());
-
-    pickup->setCurrentFrameIndex(PICKUP);
-
-    pickup->setScale(0);
-    pickup->runAction(
-      Sequence::create(
-        ScaleTo::create(0.2, 4.0),
-        CallFunc::create(CC_CALLBACK_0(Node::_destroy, pickup, true)),
-        nullptr
-      )
-    );
-  }
+void Pointer::onDestroy(bool action)
+{
+  TiledEntity::onDestroy(action);
 }
 
 /**

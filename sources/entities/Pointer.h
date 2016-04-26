@@ -59,6 +59,7 @@ class Pointer : public TiledEntity
   constexpr static const int COIN = 2;
   constexpr static const int MARK = 3;
   constexpr static const int PICKUP = 4;
+  constexpr static const int ACCELERATION = 5;
 
   Pointer();
  ~Pointer();

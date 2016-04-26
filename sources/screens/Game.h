@@ -212,8 +212,6 @@ class Game : public Screen
   Pool* pointers;
   Pool* pointers2;
 
-  Pool* pickups;
-
   Motion* bonus;
 
   AnimatedEntity* hand;
