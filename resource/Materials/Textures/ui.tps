@@ -276,6 +276,8 @@
             <filename>../Graphics/ui/store-item-3-3.png</filename>
             <filename>../Graphics/ui/counter-best.png</filename>
             <filename>../Graphics/ui/counter-coins-free.png</filename>
+            <filename>../Graphics/elements/pointer-boost-arrows.png</filename>
+            <filename>../Graphics/elements/pointers.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

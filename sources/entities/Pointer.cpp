@@ -30,8 +30,10 @@
  *
  */
 Pointer::Pointer()
-: TiledEntity("pointers.png", 1, 11)
+: TiledEntity("pointers.png", 1, 6)
 {
+  this->pointerBoostArrows = new AnimatedEntity("pointer-boost-arrows.png", 1, 6, this);
+  this->pointerBoostArrows->setPosition(this->getWidth() / 2, this->getHeight() / 2);
 }
 
 Pointer::~Pointer()
@@ -58,6 +60,36 @@ void Pointer::onCreate()
 void Pointer::onDestroy(bool action)
 {
   TiledEntity::onDestroy(action);
+
+  /**
+   *
+   *
+   *
+   */
+  this->pointerBoostArrows->_destroy(action);
+}
+
+/**
+ *
+ *
+ *
+ */
+void Pointer::setCurrentFrameIndex(int index)
+{
+  TiledEntity::setCurrentFrameIndex(index);
+
+  /**
+   *
+   *
+   *
+   */
+  switch(this->getCurrentFrameIndex())
+  {
+    case ACCELERATION:
+    this->pointerBoostArrows->_create();
+    this->pointerBoostArrows->animate(0.1);
+    break;
+  }
 }
 
 /**

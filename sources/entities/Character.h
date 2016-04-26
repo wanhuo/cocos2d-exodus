@@ -111,8 +111,8 @@ class Character : public Spine
   const static int STATE_LOSE_WATER = 10;
   const static int STATE_LOSE_MISTAKE = 11;
 
-  const static int COLLISION_SIZE_X = 99;
-  const static int COLLISION_SIZE_Y = 99;
+  const static int COLLISION_SIZE_X = 85;
+  const static int COLLISION_SIZE_Y = 85;
 
   Entity* shadow;
 
