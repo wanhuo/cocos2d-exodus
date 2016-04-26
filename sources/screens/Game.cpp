@@ -69,6 +69,7 @@ Game::Game()
   this->camera.center += (this->parameters.ad ? 0 : 100);
 
   this->h = new Background(this);
+  this->h->setContentSize(Size(this->getWidth(), this->getHeight()));
 
   this->d = new Background(this->h);
   this->s = new Background(this);
@@ -658,7 +659,7 @@ void Game::onMenu()
 
   Events::updateMissions();
 
-  Music->play("music-3", true);
+  Music->play("music-1", true);
 }
 
 void Game::onAnimation()
@@ -764,6 +765,8 @@ void Game::onPrepare()
       nullptr
     )
   );
+
+  Music->play("music-2", true);
 }
 
 void Game::onStart()
@@ -824,6 +827,8 @@ void Game::onLose()
   this->counter->onLose();
 
   Finish::getInstance()->show();
+
+  Music->play("music-1", true);
 }
 
 void Game::onFinish()
@@ -998,7 +1003,7 @@ void Game::updateCamera(float time)
   this->camera.x = abs(this->game->getPositionX());
   this->camera.y = abs(this->game->getPositionY());
 
-  this->camera.width = this->getWidth() / this->d->getScale();
+  this->camera.width = this->getWidth() / this->d->getScale() + (this->getWidth() - this->h->getContentSize().width * this->h->getScale());
   this->camera.height = this->getHeight() / this->d->getScale();
 
   this->c->setPosition(

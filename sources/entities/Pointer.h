@@ -47,7 +47,6 @@ class Pointer : public TiledEntity
    *
    */
   protected:
-  AnimatedEntity* pointerBoostArrows;
 
   /**
    *

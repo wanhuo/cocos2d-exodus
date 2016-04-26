@@ -230,6 +230,7 @@ void Character::onAnimationComplete(int index, int count)
     case STATE_START:
     case STATE_SEND:
     case STATE_GAME:
+    case STATE_BOOST:
     case STATE_TRANSFER:
     if(index == this->animations.engine_repeat.index)
     {
@@ -302,7 +303,12 @@ void Character::onGame()
 
   auto action = Sequence::create(
     DelayTime::create(0.5),
-    CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
+    CallFunc::create([=] () {
+      this->generate.x = this->getPositionX();
+      this->generate.y = this->getPositionY();
+
+      this->startUpdateTraectory();
+    }),
     nullptr
   );
   action->setTag(1);
@@ -312,6 +318,8 @@ void Character::onGame()
 
 void Character::onBoost()
 {
+  //this->generate.create = 10;
+
   Application->h->runAction(
     Sequence::create(
       CallFunc::create([=] () {
@@ -638,13 +646,22 @@ void Character::onPointerSuccess(Pointer* pointer)
     );
     remove.clear();
   ///////
-    pointer->runAction(
-      Sequence::create(
-        ScaleTo::create(0.1, 0.0),
-        CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
-        nullptr
-      )
-    );
+
+
+    if(this->state == STATE_BOOST)
+    {
+      pointer->_destroy(true);
+    }
+    else
+    {
+      pointer->runAction(
+        Sequence::create(
+          ScaleTo::create(0.1, 0.0),
+          CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+          nullptr
+        )
+      );
+    }
 
     bool f = true;
 
@@ -748,15 +765,15 @@ void Character::onPointerSuccess(Pointer* pointer)
       this->parameters.predictions.push_back(prediction);
     }
 
-    this->startUpdateTraectory();
-
     this->generate.x = pointer->getPositionX();
     this->generate.y = pointer->getPositionY();
 
-    this->generate.rest = Application->pointers->count - 1;
+    this->startUpdateTraectory();
+
+    this->generate.rest = Application->pointers->count - (this->state == STATE_BOOST ? 0 : 1);
 
     this->runAction(
-      MoveBy::create(0.2, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
+      MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
     );
   }
   else
@@ -965,11 +982,17 @@ void Character::startUpdateTraectory()
 
   if(this->getPositionY() >= 14000 && Application->isNextEnvironment())
   {
-    this->changeState(STATE_TRANSFER);
+    if(this->state != STATE_BOOST)
+    {
+      this->changeState(STATE_TRANSFER);
+    }
   }
   else
   {
-    this->state = STATE_GAME;
+    if(this->state != STATE_BOOST)
+    {
+      this->state = STATE_GAME;
+    }
 
     auto action = RepeatForever::create(
       Sequence::create(
@@ -1012,9 +1035,6 @@ void Character::onUpdateTraectoryStart()
   this->generate.parameters = this->parameters;
 
   this->generate.start = 30;
-
-  this->generate.x = this->getPositionX();
-  this->generate.y = this->getPositionY();
 
   this->generate.count++;
   this->generate.coins = this->generate.count % 5 == 0 && Application->counter->values.score_b >= 5 ? 5 : 0;
@@ -1169,7 +1189,7 @@ void Character::onUpdateTraectory()
          Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
 
           float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
-          element->setRotation(r);
+          element->setRotation(r - 90);
       }
       else if(this->generate.red >= 0)
       {
@@ -1412,10 +1432,13 @@ void Character::updatePosition()
 
   float r = atan2(x - (this->getPositionX() - this->swipe.x), y - (this->getPositionY() - this->swipe.y)) * 180 / M_PI;
 
-  this->setPosition(x, y);
-  this->setRotation(r);
+  if(this->parameters.time)
+  {
+    this->setPosition(x, y);
+    this->setRotation(r);
 
-  this->holder->setRotation(-r);
+    this->holder->setRotation(-r);
+  }
 
   for(auto &prediction : this->parameters.predictions)
   {
@@ -1440,7 +1463,7 @@ void Character::updatePosition()
     }
   }
 
-  if(this->state == STATE_GAME)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST)
   {
     if(y < Application->w->getPositionY() + 30 + (Application->parameters.ad ? 0 : 100))
     {
@@ -1456,7 +1479,7 @@ Vec2 Character::updatePosition(Parameters &parameters)
 
 Vec2 Character::updatePosition(Parameters &parameters, float time)
 {
-  if(this->state == STATE_GAME)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST)
   {
     if(parameters.x < parameters.max.x)
     {
@@ -1602,7 +1625,7 @@ void Character::updateSmoke(float time)
       smoke->setColor(Color3B(255, 255, 255));
       break;
       case STATE_BOOST:
-      smoke->setColor(Color3B(255, 0, 0));
+      smoke->setColor(Color3B(255, 150, 0));
       break;
     }
   }
@@ -1618,7 +1641,7 @@ void Character::updateStatus(bool state)
     {
       if(this->isOnBonusTraectory())
       {
-        this->parameters.time = 1.0;
+        this->parameters.time = 0.0;
 
         if(!Application->hand->state->create)
         {
@@ -1630,7 +1653,7 @@ void Character::updateStatus(bool state)
       {
         this->smoke->pauseSchedulerAndActions();
 
-        this->parameters.time = 0.1;
+        this->parameters.time = 0.0;
 
         if(!Application->hand->state->create)
         {
