@@ -54,6 +54,7 @@ class Missions : public Coins
   struct Texts {
     Text* title1;
     Text* title2;
+    Text* soon;
   };
 
   /**

@@ -318,7 +318,7 @@ void Character::onGame()
 
 void Character::onBoost()
 {
-  //this->generate.create = 10;
+  this->generate.create = 3;
 
   Application->h->runAction(
     Sequence::create(
@@ -368,6 +368,9 @@ void Character::onTransfer()
         }),
         FadeOut::create(0.2),
         CallFunc::create([=] () {
+          this->generate.x = this->getPositionX();
+          this->generate.y = this->getPositionY();
+
           this->parameters.state = this->parameters.active = true;
 
           if(this->parameters.x < this->parameters.maximum.x)
@@ -615,6 +618,8 @@ void Character::onPointerSuccess(Pointer* pointer)
 
   this->onCreateText(true);
 
+  float FF = Application->camera.x + Application->camera.width * (this->state == STATE_BOOST ? 2 : 1);
+
   if(pointer)
   {
   ///////
@@ -701,7 +706,7 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width + 50)
+      if(pointer->getPositionX() >= FF)
       {
           ftx = true;
           tx = min(tx, pointer->getPositionX());
@@ -715,7 +720,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
       if(pointer->numberOfRunningActions() < 1)
       {
-        if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
+        if((pointer->getPositionX() >= FF || pointer->getPositionX() < this->getPositionX()))
         {
             remove.push_back(pointer);
         }
@@ -1197,7 +1202,7 @@ void Character::onUpdateTraectory()
       return;
     }
 
-    if(Application->w->getPositionY() + 130 > 0)
+    if(Application->w->getPositionY() < y)
     {
       Pointer* element = (Pointer*) Application->pointers->_create();
 
@@ -1282,7 +1287,7 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = probably(10);
+  this->generate.bonus = probably(5) && this->parameters.active;
 
     this->generate.bonus_points.clear();
     Application->bonus->_destroy();
@@ -1664,6 +1669,19 @@ void Character::updateStatus(bool state)
   if(state)
   {
     this->setAnimation(this->animations.status_start);
+
+    /**
+     *
+     * @Optional
+     * @Testing
+     *
+     * Can be enabled for testing.
+     *
+     *
+    if(this->state == STATE_GAME)
+    {
+      this->proceedPointer();
+    }*/
 
     /**
      *

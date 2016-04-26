@@ -362,16 +362,16 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
               	this->_destroy(true);
               }),
               CallFunc::create([=] () {
-              	Missions::getInstance()->updateListHeight();
+              	//Missions::getInstance()->updateListHeight();
+              }),
+              CallFunc::create([=] () {
+                Modal::hide();
               }),
               nullptr
             )
           );
 
           Sound->play("unlock");
-        }),
-        CallFunc::create([=] () {
-          Modal::hide();
         }),
         nullptr
       )

@@ -272,7 +272,7 @@
 			"id": "items.environments.2",
 			"name": "store-item-title-3-2",
 			"missions": 20,
-			"coins": 1,
+			"coins": 200,
 			"i": 2,
 			"picture": "store-item-3-2.png"
 		}
