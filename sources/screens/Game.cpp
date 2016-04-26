@@ -128,6 +128,7 @@ Game::Game()
     this->getCenter().x,
     this->getCenter().y + 110
   );
+  this->buttons.play->setScale(1.1);
 
   this->buttons.credits->_create()->setPosition(
     this->getCenter().x + (this->parameters.ad||true ? 0 : 42),
@@ -233,7 +234,7 @@ Game::~Game()
  *
  *
  */
-void Game::onTouchFinish(cocos2d::Touch* touch, Event* event)
+void Game::onTouchStart(cocos2d::Touch* touch, Event* event)
 {
   switch(this->state)
   {
@@ -659,7 +660,7 @@ void Game::onMenu()
 
   Events::updateMissions();
 
-  Music->play("music-1", true);
+  Music->play("music-2", true);
 }
 
 void Game::onAnimation()

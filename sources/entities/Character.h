@@ -110,6 +110,8 @@ class Character : public Spine
   Parameters parameters;
   Generate generate;
 
+  Swipe swipe;
+
   Pool* smoke;
 
   Character();

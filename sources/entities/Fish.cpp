@@ -94,7 +94,7 @@ void Fish::onDestroy(bool action)
    */
   if(action)
   {
-    if(Application->character->getPositionY() - Application->w->getPositionY() < Application->camera.center * 3)
+    if(Application->character->getPositionY() - Application->w->getPositionY() < Application->camera.center * 2)
     {
       for(int i = 0; i < 20; i++)
       {

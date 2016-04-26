@@ -105,6 +105,15 @@ void Character::reset()
 
   this->_create();
 
+  this->swipe.update= false;
+  this->swipe.x = 0;
+  this->swipe.y = 0;
+
+  this->swipe.increase = Vec2(0, 1);
+  this->swipe.decrease = Vec2(0, 0.3);
+  this->swipe.max = Vec2(0, 7);
+  this->swipe.min = Vec2(0, 0);
+
   this->parameters.state = true;
   this->parameters.active = true;
   this->parameters.x = this->parameters.setup.x;
@@ -444,7 +453,7 @@ bool Character::onSwipe()
   switch(this->state)
   {
     case STATE_GAME:
-    return this->allowSwipe;
+    return false;
     break;
   }
 
@@ -453,17 +462,24 @@ bool Character::onSwipe()
 
 void Character::onSwipeUp()
 {
-  this->runAction(
-    Sequence::create(
-      MoveBy::create(0.5, Vec2(0, 300)),
-      MoveBy::create(0.5, Vec2(0, -300)),
-      nullptr
-    )
-  );
+  if(!this->swipe.update)
+  {
+    this->swipe.update = true;
+    this->swipe.direction = true;
+
+    this->swipe.reverse = false;
+  }
 }
 
 void Character::onSwipeDown()
 {
+  if(!this->swipe.update)
+  {
+    this->swipe.update = true;
+    this->swipe.direction = false;
+
+    this->swipe.reverse = false;
+  }
 }
 
 void Character::onSwipeLeft()
@@ -915,7 +931,7 @@ void Character::onUpdateTraectory()
     {
       auto pointer = static_cast<Pointer*>(Application->pointers2->element(i));
 
-      if((pointer->getPositionX() <= this->getPositionX()))
+      if((pointer->getPositionX() < Application->camera.x))
       {
           remove.push_back(pointer);
       }
@@ -1263,10 +1279,81 @@ void Character::updatePosition()
 {
   Vec2 position = this->updatePosition(this->parameters);
 
+  if(this->swipe.update)
+  {
+    if(this->swipe.direction)
+    {
+      if(!this->swipe.reverse)
+      {
+        this->swipe.y += this->swipe.increase.y;
+
+        if(this->swipe.y >= this->swipe.max.y)
+        {
+          this->swipe.reverse = true;
+        }
+      }
+      else
+      {
+        this->swipe.y -= this->swipe.decrease.y;
+
+        if(this->swipe.y <= -this->swipe.max.y * 3.8 * this->swipe.decrease.y)
+        {
+          this->swipe.update = false;
+
+          this->swipe.y = 0;
+        }
+      }
+    }
+    else
+    {
+      if(!this->swipe.reverse)
+      {
+        this->swipe.y -= this->swipe.increase.y;
+
+        if(this->swipe.y <= -this->swipe.max.y)
+        {
+          this->swipe.reverse = true;
+        }
+      }
+      else
+      {
+        this->swipe.y += this->swipe.decrease.y;
+
+        if(this->swipe.y >= this->swipe.max.y * 3.8 * this->swipe.decrease.y)
+        {
+          this->swipe.update = false;
+
+          this->swipe.y = 0;
+        }
+      }
+    }
+
+    position.x += this->swipe.x;
+    position.y += this->swipe.y;
+  }
+
   float x = this->getPositionX() + position.x;
   float y = this->getPositionY() + position.y;
 
-  float r = atan2(this->parameters.x, this->parameters.y) * 180 / M_PI;
+  float r = atan2(x - (this->getPositionX() - this->swipe.x), y - (this->getPositionY() - this->swipe.y)) * 180 / M_PI;
+
+  if(this->swipe.update && this->swipe.reverse && this->swipe.y <= (-this->swipe.max.y * 3.8 * this->swipe.decrease.y) / 5)
+  {
+    auto max = Vec2(0, 0);
+
+    for(int i = 0; i < Application->pointers->count; i++)
+    {
+      auto pointer = Application->pointers->element(i);
+
+      if(max.x < pointer->getPositionX())
+      {
+        max.x = pointer->getPositionX();
+        max.y = pointer->getPositionY();
+      }
+    }
+
+    r =  atan2(max.x - this->getPositionX(), max.y - this->getPositionY()) * 180 / M_PI;
+  }
 
   this->setPosition(x, y);
   this->setRotation(r);
