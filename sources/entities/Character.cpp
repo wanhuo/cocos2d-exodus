@@ -781,13 +781,25 @@ void Character::onPointerSuccess(Pointer* pointer)
       this->accelerationIndex += this->index > 6 ? 0 : 1;
       this->index += this->index > 6 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
-
-      Application->counter->onScore();
   }
 
   if(!Application->parameters.tutorial)
   {
-    if(Application->counter->values.score >= 5)
+    auto action = Sequence::create(
+      CallFunc::create([=] () {
+        if(!this->isOnBonusTraectory())
+        {
+          this->parameters.time = 1.0;
+        }
+      }),
+      DelayTime::create(0.2),
+      nullptr
+    );
+    action->setTag(100);
+
+    this->runAction(action);
+
+    if(Application->counter->values.score >= 15)
     {
       Application->parameters.tutorial = true;
 
@@ -838,6 +850,9 @@ void Character::onPointerAcceleration(Pointer* pointer)
   );
 
   this->changeState(STATE_BOOST);
+
+  this->index = 1;
+  this->accelerationIndex = 1;
 }
 
 /**
@@ -847,8 +862,6 @@ void Character::onPointerAcceleration(Pointer* pointer)
  */
 void Character::proceedPointer()
 {
-  this->parameters.time = 1.0;
-
   if(this->generate.start >= 0)
   {
     if(this->isOnBonusTraectory())
@@ -886,7 +899,10 @@ void Character::proceedPointer()
         }
       }
 
-      this->onPointerFail();
+      if(Application->parameters.tutorial)
+      {
+        this->onPointerFail();
+      }
     }
   }
 }
@@ -912,9 +928,19 @@ Pointer* Character::getCollisionPointer()
 
     if(pointer->numberOfRunningActions() < 1)
     {
-      if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+      if(!Application->parameters.tutorial)
       {
-        return (Pointer*) pointer;
+        if(abs(x - pointer->getPositionX()) <= 40 && abs(y - pointer->getPositionY()) <= 40)
+        {
+          return (Pointer*) pointer;
+        }
+      }
+      else
+      {
+        if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+        {
+          return (Pointer*) pointer;
+        }
       }
     }
   }
@@ -1302,7 +1328,7 @@ bool Character::isOnBonusTraectory(float x)
 
   if(this->generate.bonus_points.size() > 0)
   {
-    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x;
+    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x + f;
   }
 
   return false;
@@ -1639,29 +1665,45 @@ void Character::updateStatus(bool state)
   {
     this->setAnimation(this->animations.status_start);
 
+    /**
+     *
+     *
+     *
+     */
     if(!Application->parameters.tutorial)
     {
-      if(this->isOnBonusTraectory())
+      if(this->parameters.time > 0.5 && !this->getActionByTag(100))
       {
-        this->parameters.time = 0.0;
+        auto action = Sequence::create(
+          CallFunc::create([=] () {
+            if(this->isOnBonusTraectory())
+            {
+              this->parameters.time = 0.6;
 
-        if(!Application->hand->state->create)
-        {
-          Application->hand->_create();
-          Application->hand->animate(0.1);
-        }
-      }
-      else
-      {
-        this->smoke->pauseSchedulerAndActions();
+              if(!Application->hand->state->create)
+              {
+                Application->hand->_create();
+                Application->hand->animate(0.1);
+              }
+            }
+            else
+            {
+              this->smoke->pauseSchedulerAndActions();
 
-        this->parameters.time = 0.0;
+              this->parameters.time = 0.0;
 
-        if(!Application->hand->state->create)
-        {
-          Application->hand->_create();
-          Application->hand->animate(0.2);
-        }
+              if(!Application->hand->state->create)
+              {
+                Application->hand->_create();
+                Application->hand->animate(0.2);
+              }
+            }
+          }),
+          nullptr
+        );
+        action->setTag(100);
+
+        this->runAction(action);
       }
     }
   }

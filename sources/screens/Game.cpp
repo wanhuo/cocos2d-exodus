@@ -120,7 +120,7 @@ Game::Game()
   this->pointers->setLocalZOrder(3);
   this->pointers2->setLocalZOrder(1);
 
-  this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
+  this->bonus = new Motion("pointer-motion.png", 2.0, 50.0, this->game, 75);
   this->bonus->setLocalZOrder(2);
 
   this->buttons.play->_create()->setPosition(
