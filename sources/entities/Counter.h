@@ -105,8 +105,8 @@ class Counter : public Entity
   virtual void onCreate();
   virtual void onDestroy(bool action = false);
 
-  virtual void onScore(bool update = false);
-  virtual void onCoin(bool update = false);
+  virtual void onScore();
+  virtual void onCoin();
   virtual void onTap();
   virtual void onDeath();
 

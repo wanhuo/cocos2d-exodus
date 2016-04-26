@@ -39,7 +39,6 @@
 #include "Human.h"
 #include "Fish.h"
 #include "Pointer.h"
-#include "Barror.h"
 
 /**
  *

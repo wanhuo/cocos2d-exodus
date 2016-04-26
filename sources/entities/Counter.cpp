@@ -142,63 +142,30 @@ void Counter::onDestroy(bool action)
  *
  *
  */
-void Counter::onScore(bool update)
+void Counter::onScore()
 {
-  if(update)
-  {
-    auto element = this->circles->_create();
+  auto element = this->circles->_create();
 
-    element->setPositionX(this->getWidth() / 2);
-    element->setPositionY(this->getHeight() / 2);
+  element->setPositionX(this->getWidth() / 2);
+  element->setPositionY(this->getHeight() / 2);
 
-    element->setOpacity(255);
-    element->setScale(1.0);
+  element->setOpacity(255);
+  element->setScale(1.0);
 
-    element->runAction(
-      Spawn::create(
-        FadeOut::create(0.3),
-        Sequence::create(
-          ScaleTo::create(0.3, 1.7),
-          CallFunc::create([=] () {
-            element->_destroy(true);
-          }),
-          nullptr
-        ),
+  element->runAction(
+    Spawn::create(
+      FadeOut::create(0.3),
+      Sequence::create(
+        ScaleTo::create(0.3, 1.7),
+        CallFunc::create([=] () {
+          element->_destroy(true);
+        }),
         nullptr
-      )
-    );
+      ),
+      nullptr
+    )
+  );
 
-    /**
-     *
-     * @Careful
-     *
-     */
-    int count = -1;
-
-    for(int i = 0; i < Application->barrors->count; i++)
-    {
-      Barror* barror = static_cast<Barror*>(Application->barrors->element(i));
-
-      if(barror->getCurrentFrameIndex() == Pointer::SUCCESS)
-      {
-        count++;
-      }
-    }
-
-    if(count > 0)
-    {
-      this->values.score -= count;
-      this->values.score_b -= count;
-      this->updateTextData();
-      this->values.score += count;
-      this->values.score_b += count;
-    }
-    else
-    {
-      this->updateTextData();
-    }
-  }
-  else
   {
     this->values.score++;
     this->values.score_b++;
@@ -232,34 +199,28 @@ void Counter::onScore(bool update)
 
     /**
      *
-     * @Optional
-     * You can remove this instant update.
+     *
      *
      */
-    //this->updateTextData();
+    this->updateTextData();
   }
 }
 
-void Counter::onCoin(bool update)
+void Counter::onCoin()
 {
-  if(update)
+  this->values.coins++;
+
+  this->updateTextData();
+
+  if(MissionsFactory::getInstance()->isListenen())
   {
-    this->updateTextData();
+    this->missionUpdateOnce.coins++;
+    this->missionUpdateProgress.coins++;
 
-    if(MissionsFactory::getInstance()->isListenen())
-    {
-      this->missionUpdateOnce.coins++;
-      this->missionUpdateProgress.coins++;
-
-      Events::updateMissions();
-    }
+    Events::updateMissions();
   }
-  else
-  {
-    this->values.coins++;
 
-    Sound->play("coins-collect");
-  }
+  Sound->play("coins-collect");
 }
 
 void Counter::onTap()

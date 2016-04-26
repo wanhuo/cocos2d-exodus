@@ -125,14 +125,14 @@ void Character::reset()
   this->parameters.predictions.clear();
 
   this->index = 0;
-  this->allowSwipe = true;
 
   this->parameters.time = 1.0;
 
   this->generate.start = -1;
   this->generate.count = 0;
-  this->generate.rest = 0;
   this->generate.red = 0;
+  this->generate.rest = 10;
+  this->generate.create = 5;
 
   this->setRotation(0);
   this->setPosition(Application->getCenter().x, Application->camera.center);
@@ -293,15 +293,7 @@ void Character::onStart()
 void Character::onGame()
 {
   this->setGlobalZOrder(11);
-
-  auto action = Sequence::create(
-    DelayTime::create(2.5),
-    CallFunc::create(CC_CALLBACK_0(Character::startUpdateTraectory, this)),
-    nullptr
-  );
-  action->setTag(1);
-
-  this->runAction(action);
+  this->startUpdateTraectory();
 }
 
 void Character::onTransfer()
@@ -423,7 +415,6 @@ void Character::onLoseMistake()
   this->explanation->_create();
   this->smoke->pauseSchedulerAndActions();
 
-  Application->barrors->clear(true);
   Application->h->runAction(
     Sequence::create(
       EaseSineInOut::create(
@@ -450,36 +441,15 @@ void Character::onLoseMistake()
  */
 bool Character::onSwipe()
 {
-  switch(this->state)
-  {
-    case STATE_GAME:
-    return false;
-    break;
-  }
-
   return false;
 }
 
 void Character::onSwipeUp()
 {
-  if(!this->swipe.update)
-  {
-    this->swipe.update = true;
-    this->swipe.direction = true;
-
-    this->swipe.reverse = false;
-  }
 }
 
 void Character::onSwipeDown()
 {
-  if(!this->swipe.update)
-  {
-    this->swipe.update = true;
-    this->swipe.direction = false;
-
-    this->swipe.reverse = false;
-  }
 }
 
 void Character::onSwipeLeft()
@@ -538,7 +508,7 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers2->element(i));
 
-      if((pointer->getPositionX() >= Application->camera.x + Application->camera.width))
+      if((pointer->getPositionX() >= this->getPositionX()))
       {
           remove.push_back(pointer);
       }
@@ -654,29 +624,22 @@ void Character::onPointerSuccess(Pointer* pointer)
     }
 
     this->startUpdateTraectory();
-  this->generate.x = pointer->getPositionX();
-  this->generate.y = pointer->getPositionY();
 
-  this->generate.rest = Application->pointers->count;
+    this->generate.x = pointer->getPositionX();
+    this->generate.y = pointer->getPositionY();
 
-  this->runAction(
-    MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
-  );
+    this->generate.rest = Application->pointers->count;
+
+    this->runAction(
+      MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
+    );
   }
   else
   {
       this->index += this->index > 9 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
 
-    Barror* barror = (Barror*) Application->barrors->_create();
-
-    auto position = this->convertToWorldSpace(Vec2::ZERO);
-
-    position.x -= 30; // TODO: ?
-    position.y -= 30;
-
-    barror->setPosition(position);
-    barror->animate(0);
+      Application->counter->onScore();
   }
 
   if(!Application->parameters.tutorial)
@@ -859,7 +822,7 @@ void Character::startUpdateTraectory()
       Sequence::create(
         CallFunc::create([=] () {
           int counter = 1;
-          while(this->generate.rest > 0 || counter >= 1)
+          while(this->generate.rest > 0 || this->generate.create > 0 || counter >= 1)
           {
             counter--;
 
@@ -891,11 +854,7 @@ void Character::stopUpdateTraectory()
  */
 void Character::onUpdateTraectoryStart()
 {
-  this->index_generated = 0;
-
   this->stopUpdateTraectory();
-
-  //Application->pointers->clear();
 
   this->generate.parameters = this->parameters;
 
@@ -998,12 +957,12 @@ void Character::onUpdateTraectory()
         }
       }
 
-      if(this->generate.rest <= 2)
+      if(true)
       {
         Pointer* element = (Pointer*) Application->pointers2->_create();
 
         element->setPosition(this->generate.x, this->generate.y);
-        element->setCurrentFrameIndex(Pointer::UNDEFINIED);
+        element->setCurrentFrameIndex(Pointer::MARK);
         element->setScale(0.2);
       }
 
@@ -1013,7 +972,7 @@ void Character::onUpdateTraectory()
           {
             this->generate.bonus_points.push_back(Vec2(this->generate.x - 25, this->generate.y));
 
-            if(this->generate.bonus_points.size() >= 11.8*8)
+            if(this->generate.bonus_points.size() >= 11.7*8)
             {
               this->onUpdateTraectoryBonusCreate();
 
@@ -1029,10 +988,13 @@ void Character::onUpdateTraectory()
 
     this->generate.start = 0;
 
-      if(--this->generate.rest > 0)
-      {
-        return;
-      }
+    this->generate.rest--;
+    this->generate.create--;
+
+    if(this->generate.rest > 0)
+    {
+      return;
+    }
 
     if(Application->w->getPositionY() + 130 > 0)
     {

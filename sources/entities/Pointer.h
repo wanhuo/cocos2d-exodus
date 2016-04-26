@@ -57,12 +57,11 @@ class Pointer : public TiledEntity
   constexpr static const int SUCCESS = 0;
   constexpr static const int MISTAKE = 1;
   constexpr static const int COIN = 2;
-  constexpr static const int UNDEFINIED = 3;
+  constexpr static const int MARK = 3;
+  constexpr static const int PICKUP = 4;
 
   Pointer();
  ~Pointer();
-
-  int index;
 
   virtual void onCreate();
   virtual void onDestroy(bool action = false);

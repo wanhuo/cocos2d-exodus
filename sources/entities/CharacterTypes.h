@@ -108,6 +108,7 @@ struct Generate
 {
   int start;
   int rest;
+  int create;
 
   float x;
   float y;

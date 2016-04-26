@@ -35,6 +35,7 @@
 #include "Screen.h"
 #include "ParallaxPool.h"
 #include "Shake.h"
+#include "Motion.h"
 
 #include "AnimatedButton.h"
 #include "Creatures.h"
@@ -210,7 +211,6 @@ class Game : public Screen
 
   Pool* pointers;
   Pool* pointers2;
-  Pool* barrors;
 
   Motion* bonus;
 

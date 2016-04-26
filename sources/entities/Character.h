@@ -78,8 +78,6 @@ class Character : public Spine
   protected:
   Explanation* explanation;
 
-  bool allowSwipe;
-
   float smokeTime = 0.02;
   float smokeTimeElapsed = 0;
 
@@ -118,8 +116,8 @@ class Character : public Spine
  ~Character();
 
   int state = 0;
+
   int index = 0;
-  int index_generated = 0;
 
   virtual void reset();
 

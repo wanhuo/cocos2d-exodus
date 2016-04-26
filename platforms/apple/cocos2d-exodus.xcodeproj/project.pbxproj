@@ -96,8 +96,6 @@
 		785348BF1BF9C11200556C07 /* ItemEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785348B61BF9C11200556C07 /* ItemEnvironment.cpp */; };
 		785C586B1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; };
 		785C586C1BD4CCCB00B71D89 /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58691BD4CCCB00B71D89 /* Pointer.cpp */; };
-		785C586F1BD4F03B00B71D89 /* Barror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C586D1BD4F03B00B71D89 /* Barror.cpp */; };
-		785C58701BD4F03B00B71D89 /* Barror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C586D1BD4F03B00B71D89 /* Barror.cpp */; };
 		785C58791BD5342A00B71D89 /* Explanation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58771BD5342A00B71D89 /* Explanation.cpp */; };
 		785C587A1BD5342A00B71D89 /* Explanation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58771BD5342A00B71D89 /* Explanation.cpp */; };
 		785C58891BD63E1C00B71D89 /* Parallax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 785C58871BD63E1C00B71D89 /* Parallax.cpp */; };
@@ -368,8 +366,6 @@
 		785C58681BD4C71900B71D89 /* CharacterTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTypes.h; sourceTree = "<group>"; };
 		785C58691BD4CCCB00B71D89 /* Pointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pointer.cpp; sourceTree = "<group>"; };
 		785C586A1BD4CCCB00B71D89 /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
-		785C586D1BD4F03B00B71D89 /* Barror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Barror.cpp; sourceTree = "<group>"; };
-		785C586E1BD4F03B00B71D89 /* Barror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barror.h; sourceTree = "<group>"; };
 		785C58771BD5342A00B71D89 /* Explanation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Explanation.cpp; sourceTree = "<group>"; };
 		785C58781BD5342A00B71D89 /* Explanation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Explanation.h; sourceTree = "<group>"; };
 		785C58871BD63E1C00B71D89 /* Parallax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parallax.cpp; sourceTree = "<group>"; };
@@ -994,8 +990,6 @@
 				785C58781BD5342A00B71D89 /* Explanation.h */,
 				785C58691BD4CCCB00B71D89 /* Pointer.cpp */,
 				785C586A1BD4CCCB00B71D89 /* Pointer.h */,
-				785C586D1BD4F03B00B71D89 /* Barror.cpp */,
-				785C586E1BD4F03B00B71D89 /* Barror.h */,
 				785C58871BD63E1C00B71D89 /* Parallax.cpp */,
 				785C58881BD63E1C00B71D89 /* Parallax.h */,
 				7894C0931BC9E28B00363FC9 /* Fish.cpp */,
@@ -1375,7 +1369,6 @@
 				789908441BCE80310014A8F7 /* Environment.cpp in Sources */,
 				7824149E1BCC9153007D5847 /* Store.cpp in Sources */,
 				7894FA531BF1652F00A69ED6 /* Apatosaurus.cpp in Sources */,
-				785C58701BD4F03B00B71D89 /* Barror.cpp in Sources */,
 				7824149A1BCC8FC9007D5847 /* Finish.cpp in Sources */,
 				78FEA7311BEA47D200D253A3 /* Coin.cpp in Sources */,
 				785348BB1BF9C11200556C07 /* ItemCoins.cpp in Sources */,
@@ -1443,7 +1436,6 @@
 				789908411BCE80310014A8F7 /* Creatures.cpp in Sources */,
 				7843AD371C22525D0011F47C /* Reachability.m in Sources */,
 				78FEA7301BEA47D200D253A3 /* Coin.cpp in Sources */,
-				785C586F1BD4F03B00B71D89 /* Barror.cpp in Sources */,
 				78AEAC1A1BD142EC00FA8783 /* Decorations.cpp in Sources */,
 				7843AD311C22525D0011F47C /* AdWebViewController.m in Sources */,
 				785C586B1BD4CCCB00B71D89 /* Pointer.cpp in Sources */,

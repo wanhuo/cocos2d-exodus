@@ -116,8 +116,6 @@ Game::Game()
   this->pointers = new Pool(new Pointer, this->game, true);
   this->pointers2 = new Pool(new Pointer, this->game, true);
 
-  this->barrors = new Pool(new Barror, this->c, true);
-
   this->pointers->setLocalZOrder(3);
   this->pointers2->setLocalZOrder(1);
 
@@ -660,7 +658,7 @@ void Game::onMenu()
 
   Events::updateMissions();
 
-  Music->play("music-2", true);
+  Music->play("music-3", true);
 }
 
 void Game::onAnimation()
@@ -730,7 +728,6 @@ void Game::onPrepare()
 
   this->pointers->clear();
   this->pointers2->clear();
-  this->barrors->clear();
 
   this->bonus->_destroy();
 
