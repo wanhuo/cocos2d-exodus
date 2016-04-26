@@ -106,13 +106,14 @@ class Character : public Spine
   const static int STATE_START = 5;
   const static int STATE_RESTORE = 6;
   const static int STATE_GAME = 7;
-  const static int STATE_TRANSFER = 8;
-  const static int STATE_LOSE = 9;
-  const static int STATE_LOSE_WATER = 10;
-  const static int STATE_LOSE_MISTAKE = 11;
+  const static int STATE_BOOST = 8;
+  const static int STATE_TRANSFER = 9;
+  const static int STATE_LOSE = 10;
+  const static int STATE_LOSE_WATER = 11;
+  const static int STATE_LOSE_MISTAKE = 12;
 
-  const static int COLLISION_SIZE_X = 85;
-  const static int COLLISION_SIZE_Y = 85;
+  const static int COLLISION_SIZE_X = 93;
+  const static int COLLISION_SIZE_Y = 93;
 
   Entity* shadow;
 
@@ -153,6 +154,7 @@ class Character : public Spine
   virtual void onStart();
   virtual void onRestore();
   virtual void onGame();
+  virtual void onBoost();
   virtual void onTransfer();
   virtual void onLose();
   virtual void onLoseWater();

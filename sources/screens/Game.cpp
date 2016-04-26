@@ -32,7 +32,7 @@
 #include "Credits.h"
 
 float Game::SCALE_MAX = 1.0;
-float Game::SCALE_MIN = 0.4;
+float Game::SCALE_MIN = 0.5;
 
 /**
  *
@@ -794,16 +794,6 @@ void Game::onGame()
   this->counter->onGame();
 
   this->hand->_destroy(true);
-
-  /*this->buttons.credits->runAction(
-    Sequence::create(
-      EaseSineInOut::create(
-        FadeOut::create(0.5)
-      ),
-      CallFunc::create([=] () { this->buttons.credits->_destroy(); }),
-      nullptr
-    )
-  );*/
 
   this->buttons.noad->runAction(
     Sequence::create(

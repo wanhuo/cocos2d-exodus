@@ -310,6 +310,25 @@ void Character::onGame()
   this->runAction(action);
 }
 
+void Character::onBoost()
+{
+  Application->h->runAction(
+    Sequence::create(
+      CallFunc::create([=] () {
+      }),
+      ScaleTo::create(0.3, 0.6),
+      DelayTime::create(1.0),
+      ScaleTo::create(0.3, 1.0),
+      CallFunc::create([=] () {
+        this->state = STATE_GAME;
+      }),
+      nullptr
+    )
+  );
+
+  Sound->play("boost");
+}
+
 void Character::onTransfer()
 {
   Application->counter->values.score_b = 0;
@@ -737,7 +756,7 @@ void Character::onPointerSuccess(Pointer* pointer)
     this->generate.rest = Application->pointers->count - 1;
 
     this->runAction(
-      MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
+      MoveBy::create(0.2, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
     );
   }
   else
@@ -800,6 +819,8 @@ void Character::onPointerAcceleration(Pointer* pointer)
       nullptr
     )
   );
+
+  this->changeState(STATE_BOOST);
 }
 
 /**
@@ -1299,6 +1320,9 @@ void Character::changeState(int state)
       case STATE_GAME:
       this->onGame();
       break;
+      case STATE_BOOST:
+      this->onBoost();
+      break;
       case STATE_TRANSFER:
       this->onTransfer();
       break;
@@ -1570,7 +1594,17 @@ void Character::updateSmoke(float time)
   {
     this->smokeTimeElapsed = 0;
 
-    this->smoke->_create();
+    auto smoke = this->smoke->_create();
+
+    switch(this->state)
+    {
+      default:
+      smoke->setColor(Color3B(255, 255, 255));
+      break;
+      case STATE_BOOST:
+      smoke->setColor(Color3B(255, 0, 0));
+      break;
+    }
   }
 }
 
@@ -1643,6 +1677,11 @@ void Character::updatePointers()
         break;
         case Pointer::SUCCESS:
         this->updateStatus(true);
+
+        if(this->state == STATE_BOOST)
+        {
+          this->onPointerSuccess(pointer);
+        }
         break;
         case Pointer::MISTAKE:
         this->updateStatus(false);
@@ -1705,6 +1744,7 @@ void Character::updateStates(float time)
     this->updateRestore(time);
     break;
     case STATE_GAME:
+    case STATE_BOOST:
     this->updateGame(time);
     break;
     case STATE_TRANSFER:
