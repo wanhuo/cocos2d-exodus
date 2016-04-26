@@ -30,7 +30,7 @@
  *
  */
 Pointer::Pointer()
-: TiledEntity("pointers.png", 1, 5)
+: TiledEntity("pointers.png", 1, 6)
 {
 }
 
@@ -46,23 +46,28 @@ Pointer::~Pointer()
 void Pointer::onCreate()
 {
   TiledEntity::onCreate();
+
+  /**
+   *
+   *
+   *
+   */
+  this->setScale(1.0);
 }
 
 void Pointer::onDestroy(bool action)
 {
-  if(action)
-  {
-    this->setScale(0);
-    this->runAction(
-      Sequence::create(
-        ScaleTo::create(0.2, 2.0)
-        nullptr
-      )
-    );
-  }
-  else
-  {
   TiledEntity::onDestroy(action);
+}
+
+/**
+ *
+ *
+ *
+ */
+void Pointer::setCurrentFrameIndex(int index)
+{
+  TiledEntity::setCurrentFrameIndex(index);
 }
 
 /**

@@ -68,6 +68,13 @@ class Character : public Spine
     SpineAnimation status_finish;
   };
 
+  struct Value
+  {
+    bool v;
+
+    int value;
+  };
+
   Animations animations;
 
   /**
@@ -80,6 +87,10 @@ class Character : public Spine
 
   float smokeTime = 0.02;
   float smokeTimeElapsed = 0;
+
+  BackgroundColor* holder;
+
+  Pool* text;
 
   /**
    *
@@ -95,13 +106,14 @@ class Character : public Spine
   const static int STATE_START = 5;
   const static int STATE_RESTORE = 6;
   const static int STATE_GAME = 7;
-  const static int STATE_TRANSFER = 8;
-  const static int STATE_LOSE = 9;
-  const static int STATE_LOSE_WATER = 10;
-  const static int STATE_LOSE_MISTAKE = 11;
+  const static int STATE_BOOST = 8;
+  const static int STATE_TRANSFER = 9;
+  const static int STATE_LOSE = 10;
+  const static int STATE_LOSE_WATER = 11;
+  const static int STATE_LOSE_MISTAKE = 12;
 
-  const static int COLLISION_SIZE_X = 99;
-  const static int COLLISION_SIZE_Y = 99;
+  const static int COLLISION_SIZE_X = 93;
+  const static int COLLISION_SIZE_Y = 93;
 
   Entity* shadow;
 
@@ -109,6 +121,8 @@ class Character : public Spine
   Generate generate;
 
   Swipe swipe;
+
+  Value value;
 
   Pool* smoke;
 
@@ -118,6 +132,7 @@ class Character : public Spine
   int state = 0;
 
   int index = 0;
+  int accelerationIndex = 0;
 
   virtual void reset();
 
@@ -139,6 +154,7 @@ class Character : public Spine
   virtual void onStart();
   virtual void onRestore();
   virtual void onGame();
+  virtual void onBoost();
   virtual void onTransfer();
   virtual void onLose();
   virtual void onLoseWater();
@@ -154,10 +170,13 @@ class Character : public Spine
   virtual void onTouch();
   virtual void onSave();
 
+  virtual void onCreateText(bool value);
+
   virtual void onPointerSuccess(Pointer* pointer);
   virtual void onPointerMistake(Pointer* pointer);
   virtual void onPointerCoin(Pointer* pointer);
   virtual void onPointerFail();
+  virtual void onPointerAcceleration(Pointer* pointer);
 
   virtual void proceedPointer();
 

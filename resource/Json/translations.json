@@ -21,6 +21,48 @@
     0
   ],
   "languages": {
+    "character": [
+      {
+        "title": "+$1",
+        "font": "Impact",
+        "size": 72,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "+$1",
+        "font": "Impact",
+        "size": 72,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "+$1",
+        "font": "Impact",
+        "size": 72,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "title": "+$1",
+        "font": "Impact",
+        "size": 72,
+        "color": [
+          255,
+          255,
+          255
+        ]
+      }
+    ],
     "counter": [
       {
         "title": "$1",

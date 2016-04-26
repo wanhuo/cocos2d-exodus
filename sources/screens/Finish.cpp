@@ -546,7 +546,7 @@ void Finish::showButtons()
     Sequence::create(
       DelayTime::create(0.5),
       EaseSineOut::create(
-        ScaleTo::create(0.2, 1.1)
+        ScaleTo::create(0.2, 1.2)
       ),
       nullptr
     )

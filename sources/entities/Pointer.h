@@ -58,13 +58,15 @@ class Pointer : public TiledEntity
   constexpr static const int MISTAKE = 1;
   constexpr static const int COIN = 2;
   constexpr static const int MARK = 3;
-  constexpr static const int PICKUP = 4;
+  constexpr static const int ACCELERATION = 4;
 
   Pointer();
  ~Pointer();
 
   virtual void onCreate();
   virtual void onDestroy(bool action = false);
+
+  virtual void setCurrentFrameIndex(int index);
 
   Pointer* deepCopy();
 };

@@ -231,9 +231,6 @@
             <filename>../Graphics/ui/store-button-2.png</filename>
             <filename>../Graphics/ui/store-button-3.png</filename>
             <filename>../Graphics/ui/store-button-4.png</filename>
-            <filename>../Graphics/ui/store-coins-background-1.png</filename>
-            <filename>../Graphics/ui/store-coins-background-2.png</filename>
-            <filename>../Graphics/ui/store-coins-background-3.png</filename>
             <filename>../Graphics/ui/holder-background-2.png</filename>
             <filename>../Graphics/ui/holder-background-3.png</filename>
             <filename>../Graphics/ui/holder-background-4.png</filename>
@@ -273,9 +270,10 @@
             <filename>../Graphics/ui/store-item-1-29.png</filename>
             <filename>../Graphics/ui/store-item-3-1.png</filename>
             <filename>../Graphics/ui/store-item-3-2.png</filename>
-            <filename>../Graphics/ui/store-item-3-3.png</filename>
             <filename>../Graphics/ui/counter-best.png</filename>
             <filename>../Graphics/ui/counter-coins-free.png</filename>
+            <filename>../Graphics/elements/pointers.png</filename>
+            <filename>../Graphics/ui/tutorial.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
