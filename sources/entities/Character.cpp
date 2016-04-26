@@ -847,6 +847,8 @@ void Character::onPointerAcceleration(Pointer* pointer)
  */
 void Character::proceedPointer()
 {
+  this->parameters.time = 1.0;
+
   if(this->generate.start >= 0)
   {
     if(this->isOnBonusTraectory())
