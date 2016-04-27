@@ -291,6 +291,18 @@ void Character::onSend()
 void Character::onPrepare()
 {
   this->reset();
+
+  this->generate.x = this->getPositionX();
+  this->generate.y = this->getPositionY();
+
+  /**
+   *
+   * @Optional
+   *
+   * Enable traectory generation immedeatly.
+   *
+  this->startUpdateTraectory();
+  */
 }
 
 void Character::onStart()
@@ -304,6 +316,11 @@ void Character::onGame()
   auto action = Sequence::create(
     DelayTime::create(0.5),
     CallFunc::create([=] () {
+      Application->pointers->clear();
+      Application->pointers2->clear();
+
+      this->stopUpdateTraectory();
+
       this->generate.x = this->getPositionX();
       this->generate.y = this->getPositionY();
 
@@ -327,6 +344,7 @@ void Character::onBoost()
       ScaleTo::create(0.3, 0.6),
       DelayTime::create(1.0),
       ScaleTo::create(0.3, 1.0),
+      DelayTime::create(1.0),
       CallFunc::create([=] () {
         this->state = STATE_GAME;
       }),
@@ -450,7 +468,6 @@ void Character::onLoseWater()
 
 void Character::onLoseMistake()
 {
-  this->stopUpdateTraectory();
   this->stopSound();
   this->stopAllActions();
 
@@ -1022,7 +1039,7 @@ void Character::startUpdateTraectory()
   }
   else
   {
-    if(this->state != STATE_BOOST)
+    if(this->state != STATE_BOOST && this->state != STATE_PREPARE)
     {
       this->state = STATE_GAME;
     }
@@ -1202,46 +1219,49 @@ void Character::onUpdateTraectory()
       return;
     }
 
-    if(Application->w->getPositionY() < y)
+    if(this->state != STATE_PREPARE)
     {
-      Pointer* element = (Pointer*) Application->pointers->_create();
-
-      element->setPosition(x, y);
-
-      this->generate.red--;
-
-      if(this->isOnBonusTraectory(x))
+      if(Application->w->getPositionY() < y)
       {
-        element->setCurrentFrameIndex(Pointer::SUCCESS);
-      }
-      else if(this->accelerationIndex >= 6)
-      {
-        this->accelerationIndex = 1;
+        Pointer* element = (Pointer*) Application->pointers->_create();
 
-        element->setCurrentFrameIndex(Pointer::ACCELERATION);
-         Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
+        element->setPosition(x, y);
 
-          float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
-          element->setRotation(r - 90);
-      }
-      else if(this->generate.red >= 0)
-      {
-        element->setCurrentFrameIndex(Pointer::MISTAKE);
-      }
-      else if(this->generate.coins-- > 0)
-      {
-        element->setCurrentFrameIndex(Pointer::COIN);
+        this->generate.red--;
+
+        if(this->isOnBonusTraectory(x))
+        {
+          element->setCurrentFrameIndex(Pointer::SUCCESS);
+        }
+        else if(this->accelerationIndex >= 6)
+        {
+          this->accelerationIndex = 1;
+
+          element->setCurrentFrameIndex(Pointer::ACCELERATION);
+           Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
+
+            float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
+            element->setRotation(r - 90);
+        }
+        else if(this->generate.red >= 0)
+        {
+          element->setCurrentFrameIndex(Pointer::MISTAKE);
+        }
+        else if(this->generate.coins-- > 0)
+        {
+          element->setCurrentFrameIndex(Pointer::COIN);
+        }
+        else
+        {
+          this->generate.red = random(1, 3);
+
+          element->setCurrentFrameIndex(Pointer::SUCCESS);
+        }
       }
       else
       {
-        this->generate.red = random(1, 3);
-
-        element->setCurrentFrameIndex(Pointer::SUCCESS);
+        this->stopUpdateTraectory();
       }
-    }
-    else
-    {
-      this->stopUpdateTraectory();
     }
   }
 }
@@ -1287,7 +1307,7 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = probably(5) && this->parameters.active;
+  this->generate.bonus = this->parameters.active && this->state == STATE_GAME && probably(15);
 
     this->generate.bonus_points.clear();
     Application->bonus->_destroy();
@@ -1496,7 +1516,7 @@ void Character::updatePosition()
     }
   }
 
-  if(this->state == STATE_GAME || this->state == STATE_BOOST)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST || this->state == STATE_PREPARE)
   {
     if(y < Application->w->getPositionY() + 30 + (Application->parameters.ad ? 0 : 100))
     {
@@ -1512,7 +1532,7 @@ Vec2 Character::updatePosition(Parameters &parameters)
 
 Vec2 Character::updatePosition(Parameters &parameters, float time)
 {
-  if(this->state == STATE_GAME || this->state == STATE_BOOST)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST || this->state == STATE_PREPARE)
   {
     if(parameters.x < parameters.max.x)
     {

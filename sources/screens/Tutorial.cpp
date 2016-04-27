@@ -56,6 +56,9 @@ Tutorial::Tutorial()
   this->picture = new Entity("tutorial.png", this->background, true);
   this->picture->setPosition(Application->getWidth() / 2, Application->getHeight() - this->picture->getHeight() / 2 + 100);
 
+  this->counter = new Text("tutorial-counter", this);
+  this->counter->setPosition(Application->getWidth() / 2, 200);
+
   this->next = new Button("finish-play-button.png", 1, 2, this, std::bind(&Tutorial::hide, this), true);
   this->next->setPosition(Application->getWidth() / 2, 200);
 }
@@ -78,6 +81,39 @@ void Tutorial::onEnter()
    *
    *
    */
+  if(!Application->parameters.tutorial)
+  {
+    this->value = 0;
+
+    this->counter->_create()->runAction(
+      Repeat::create(
+        Sequence::create(
+          DelayTime::create(0.1),
+          CallFunc::create([=] () {
+          this->counter->data(this->value++);
+          }),
+          nullptr
+        ), 100
+      )
+    );
+
+    this->next->setScale(0);
+    this->next->runAction(
+      Sequence::create(
+        DelayTime::create(10.0),
+        CallFunc::create([=] () {
+        this->counter->_destroy();
+        }),
+        ScaleTo::create(0.2, 0.5),
+        nullptr
+      )
+    );
+  }
+  else
+  {
+    this->next->setScale(0.5);
+  }
+
   this->picture->runAction(
     RepeatForever::create(
       Sequence::create(
@@ -85,15 +121,6 @@ void Tutorial::onEnter()
         ScaleTo::create(10.0, 1.0),
         nullptr
       )
-    )
-  );
-
-  this->next->setScale(0);
-  this->next->runAction(
-    Sequence::create(
-      DelayTime::create(5.0),
-      ScaleTo::create(0.2, 0.5),
-      nullptr
     )
   );
 

@@ -171,7 +171,7 @@ class Game : public Screen
 
   const static int DECORATIONS_POSITION_MAX = 0;
   const static int DECORATIONS_POSITION_MIN = -1280 * (4 - 1);
-  const static int DECORATIONS_POSITION_RATIO = 3;
+  const static int DECORATIONS_POSITION_RATIO = 5;
 
   const static int MAX_OFFSET_X = 8;
   const static int MAX_OFFSET_Y = 0;

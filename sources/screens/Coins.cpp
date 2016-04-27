@@ -221,6 +221,16 @@ void Coins::addCoins(int count)
       count
     )
   );
+
+  this->runAction(
+    Sequence::create(
+      DelayTime::create(count * 0.01),
+      CallFunc::create([=] () {
+      Storage::set("values.currenct.coins", Application->counter->values.coins);
+      }),
+      nullptr
+    )
+  );
 }
 
 void Coins::removeCoins(int count)
@@ -240,6 +250,16 @@ void Coins::removeCoins(int count)
         nullptr
       ),
       count
+    )
+  );
+
+  this->runAction(
+    Sequence::create(
+      DelayTime::create(count * 0.01),
+      CallFunc::create([=] () {
+      Storage::set("values.currenct.coins", Application->counter->values.coins);
+      }),
+      nullptr
     )
   );
 }

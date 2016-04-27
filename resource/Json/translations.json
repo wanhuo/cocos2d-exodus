@@ -4319,6 +4319,48 @@
         "size": 32
       }
     ],
+    "tutorial-counter": [
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "Загрузка... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "Loading... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "$1",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      }
+    ],
     "vote-title": [
       {
         "title": "Please rate us",
