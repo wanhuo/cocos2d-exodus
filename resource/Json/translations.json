@@ -4321,7 +4321,7 @@
     ],
     "tutorial-counter": [
       {
-        "title": "$1",
+        "title": "Loading... $1%",
         "font": "Impact",
         "size": 48,
         "color": [
@@ -4351,7 +4351,7 @@
         ]
       },
       {
-        "title": "$1",
+        "title": "Loading... $1%",
         "font": "Impact",
         "size": 48,
         "color": [

@@ -57,7 +57,6 @@ LOCAL_SRC_FILES := application.cpp \
                    ../../../sources/entities/Water.cpp \
                    ../../../sources/entities/Creature.cpp \
                    ../../../sources/entities/Pointer.cpp \
-                   ../../../sources/entities/Barror.cpp \
                    ../../../sources/entities/Explanation.cpp \
                    ../../../sources/entities/AnimatedButton.cpp \
                    ../../../sources/entities/VideoButton.cpp \
