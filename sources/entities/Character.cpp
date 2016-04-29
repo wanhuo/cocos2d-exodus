@@ -291,6 +291,18 @@ void Character::onSend()
 void Character::onPrepare()
 {
   this->reset();
+
+  this->generate.x = this->getPositionX();
+  this->generate.y = this->getPositionY();
+
+  /**
+   *
+   * @Optional
+   *
+   * Enable traectory generation immedeatly.
+   *
+  this->startUpdateTraectory();
+  */
 }
 
 void Character::onStart()
@@ -304,6 +316,11 @@ void Character::onGame()
   auto action = Sequence::create(
     DelayTime::create(0.5),
     CallFunc::create([=] () {
+      Application->pointers->clear();
+      Application->pointers2->clear();
+
+      this->stopUpdateTraectory();
+
       this->generate.x = this->getPositionX();
       this->generate.y = this->getPositionY();
 
@@ -318,7 +335,7 @@ void Character::onGame()
 
 void Character::onBoost()
 {
-  //this->generate.create = 10;
+  this->generate.create = 3;
 
   Application->h->runAction(
     Sequence::create(
@@ -327,6 +344,7 @@ void Character::onBoost()
       ScaleTo::create(0.3, 0.6),
       DelayTime::create(1.0),
       ScaleTo::create(0.3, 1.0),
+      DelayTime::create(1.0),
       CallFunc::create([=] () {
         this->state = STATE_GAME;
       }),
@@ -368,6 +386,9 @@ void Character::onTransfer()
         }),
         FadeOut::create(0.2),
         CallFunc::create([=] () {
+          this->generate.x = this->getPositionX();
+          this->generate.y = this->getPositionY();
+
           this->parameters.state = this->parameters.active = true;
 
           if(this->parameters.x < this->parameters.maximum.x)
@@ -447,7 +468,6 @@ void Character::onLoseWater()
 
 void Character::onLoseMistake()
 {
-  this->stopUpdateTraectory();
   this->stopSound();
   this->stopAllActions();
 
@@ -615,6 +635,8 @@ void Character::onPointerSuccess(Pointer* pointer)
 
   this->onCreateText(true);
 
+  float FF = Application->camera.x + Application->camera.width * (this->state == STATE_BOOST ? 2 : 1);
+
   if(pointer)
   {
   ///////
@@ -701,7 +723,7 @@ void Character::onPointerSuccess(Pointer* pointer)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
-      if(pointer->getPositionX() >= Application->camera.x + Application->camera.width + 50)
+      if(pointer->getPositionX() >= FF)
       {
           ftx = true;
           tx = min(tx, pointer->getPositionX());
@@ -715,7 +737,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
       if(pointer->numberOfRunningActions() < 1)
       {
-        if((pointer->getPositionX() >= Application->camera.x + Application->camera.width || pointer->getPositionX() < this->getPositionX()))
+        if((pointer->getPositionX() >= FF || pointer->getPositionX() < this->getPositionX()))
         {
             remove.push_back(pointer);
         }
@@ -781,13 +803,25 @@ void Character::onPointerSuccess(Pointer* pointer)
       this->accelerationIndex += this->index > 6 ? 0 : 1;
       this->index += this->index > 6 ? 0 : 1;
       Sound->play(("success-" + patch::to_string(this->index)).c_str());
-
-      Application->counter->onScore();
   }
 
   if(!Application->parameters.tutorial)
   {
-    if(Application->counter->values.score >= 5)
+    auto action = Sequence::create(
+      CallFunc::create([=] () {
+        if(!this->isOnBonusTraectory())
+        {
+          this->parameters.time = 1.0;
+        }
+      }),
+      DelayTime::create(0.2),
+      nullptr
+    );
+    action->setTag(100);
+
+    this->runAction(action);
+
+    if(Application->counter->values.score >= 15)
     {
       Application->parameters.tutorial = true;
 
@@ -838,6 +872,9 @@ void Character::onPointerAcceleration(Pointer* pointer)
   );
 
   this->changeState(STATE_BOOST);
+
+  this->index = 1;
+  this->accelerationIndex = 1;
 }
 
 /**
@@ -847,8 +884,6 @@ void Character::onPointerAcceleration(Pointer* pointer)
  */
 void Character::proceedPointer()
 {
-  this->parameters.time = 1.0;
-
   if(this->generate.start >= 0)
   {
     if(this->isOnBonusTraectory())
@@ -886,7 +921,10 @@ void Character::proceedPointer()
         }
       }
 
-      this->onPointerFail();
+      if(Application->parameters.tutorial)
+      {
+        this->onPointerFail();
+      }
     }
   }
 }
@@ -912,9 +950,19 @@ Pointer* Character::getCollisionPointer()
 
     if(pointer->numberOfRunningActions() < 1)
     {
-      if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+      if(!Application->parameters.tutorial)
       {
-        return (Pointer*) pointer;
+        if(abs(x - pointer->getPositionX()) <= 40 && abs(y - pointer->getPositionY()) <= 40)
+        {
+          return (Pointer*) pointer;
+        }
+      }
+      else
+      {
+        if(abs(x - pointer->getPositionX()) <= COLLISION_SIZE_X && abs(y - pointer->getPositionY()) <= COLLISION_SIZE_Y)
+        {
+          return (Pointer*) pointer;
+        }
       }
     }
   }
@@ -991,7 +1039,7 @@ void Character::startUpdateTraectory()
   }
   else
   {
-    if(this->state != STATE_BOOST)
+    if(this->state != STATE_BOOST && this->state != STATE_PREPARE)
     {
       this->state = STATE_GAME;
     }
@@ -1171,46 +1219,49 @@ void Character::onUpdateTraectory()
       return;
     }
 
-    if(Application->w->getPositionY() + 130 > 0)
+    if(this->state != STATE_PREPARE)
     {
-      Pointer* element = (Pointer*) Application->pointers->_create();
-
-      element->setPosition(x, y);
-
-      this->generate.red--;
-
-      if(this->isOnBonusTraectory(x))
+      if(Application->w->getPositionY() < y)
       {
-        element->setCurrentFrameIndex(Pointer::SUCCESS);
-      }
-      else if(this->accelerationIndex >= 6)
-      {
-        this->accelerationIndex = 1;
+        Pointer* element = (Pointer*) Application->pointers->_create();
 
-        element->setCurrentFrameIndex(Pointer::ACCELERATION);
-         Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
+        element->setPosition(x, y);
 
-          float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
-          element->setRotation(r - 90);
-      }
-      else if(this->generate.red >= 0)
-      {
-        element->setCurrentFrameIndex(Pointer::MISTAKE);
-      }
-      else if(this->generate.coins-- > 0)
-      {
-        element->setCurrentFrameIndex(Pointer::COIN);
+        this->generate.red--;
+
+        if(this->isOnBonusTraectory(x))
+        {
+          element->setCurrentFrameIndex(Pointer::SUCCESS);
+        }
+        else if(this->accelerationIndex >= 6)
+        {
+          this->accelerationIndex = 1;
+
+          element->setCurrentFrameIndex(Pointer::ACCELERATION);
+           Vec2 p = this->updatePosition(this->generate.parameters, 1.0);
+
+            float r = atan2(x - p.x, y - p.y) * 180 / M_PI;
+            element->setRotation(r - 90);
+        }
+        else if(this->generate.red >= 0)
+        {
+          element->setCurrentFrameIndex(Pointer::MISTAKE);
+        }
+        else if(this->generate.coins-- > 0)
+        {
+          element->setCurrentFrameIndex(Pointer::COIN);
+        }
+        else
+        {
+          this->generate.red = random(1, 3);
+
+          element->setCurrentFrameIndex(Pointer::SUCCESS);
+        }
       }
       else
       {
-        this->generate.red = random(1, 3);
-
-        element->setCurrentFrameIndex(Pointer::SUCCESS);
+        this->stopUpdateTraectory();
       }
-    }
-    else
-    {
-      this->stopUpdateTraectory();
     }
   }
 }
@@ -1256,7 +1307,7 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = probably(10);
+  this->generate.bonus = this->parameters.active && this->state == STATE_GAME && probably(15);
 
     this->generate.bonus_points.clear();
     Application->bonus->_destroy();
@@ -1302,7 +1353,7 @@ bool Character::isOnBonusTraectory(float x)
 
   if(this->generate.bonus_points.size() > 0)
   {
-    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x;
+    return x >= this->generate.bonus_points.at(0).x - f && x <= this->generate.bonus_points.at(this->generate.bonus_points.size() - 1).x + f;
   }
 
   return false;
@@ -1465,7 +1516,7 @@ void Character::updatePosition()
     }
   }
 
-  if(this->state == STATE_GAME || this->state == STATE_BOOST)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST || this->state == STATE_PREPARE)
   {
     if(y < Application->w->getPositionY() + 30 + (Application->parameters.ad ? 0 : 100))
     {
@@ -1481,7 +1532,7 @@ Vec2 Character::updatePosition(Parameters &parameters)
 
 Vec2 Character::updatePosition(Parameters &parameters, float time)
 {
-  if(this->state == STATE_GAME || this->state == STATE_BOOST)
+  if(this->state == STATE_GAME || this->state == STATE_BOOST || this->state == STATE_PREPARE)
   {
     if(parameters.x < parameters.max.x)
     {
@@ -1639,29 +1690,58 @@ void Character::updateStatus(bool state)
   {
     this->setAnimation(this->animations.status_start);
 
+    /**
+     *
+     * @Optional
+     * @Testing
+     *
+     * Can be enabled for testing.
+     *
+     *
+    if(this->state == STATE_GAME)
+    {
+      this->proceedPointer();
+    }*/
+
+    /**
+     *
+     *
+     *
+     */
     if(!Application->parameters.tutorial)
     {
-      if(this->isOnBonusTraectory())
+      if(this->parameters.time > 0.5 && !this->getActionByTag(100))
       {
-        this->parameters.time = 0.0;
+        auto action = Sequence::create(
+          CallFunc::create([=] () {
+            if(this->isOnBonusTraectory())
+            {
+              this->parameters.time = 0.6;
 
-        if(!Application->hand->state->create)
-        {
-          Application->hand->_create();
-          Application->hand->animate(0.1);
-        }
-      }
-      else
-      {
-        this->smoke->pauseSchedulerAndActions();
+              if(!Application->hand->state->create)
+              {
+                Application->hand->_create();
+                Application->hand->animate(0.1);
+              }
+            }
+            else
+            {
+              this->smoke->pauseSchedulerAndActions();
 
-        this->parameters.time = 0.0;
+              this->parameters.time = 0.0;
 
-        if(!Application->hand->state->create)
-        {
-          Application->hand->_create();
-          Application->hand->animate(0.2);
-        }
+              if(!Application->hand->state->create)
+              {
+                Application->hand->_create();
+                Application->hand->animate(0.2);
+              }
+            }
+          }),
+          nullptr
+        );
+        action->setTag(100);
+
+        this->runAction(action);
       }
     }
   }

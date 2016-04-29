@@ -1731,6 +1731,48 @@
         ]
       }
     ],
+    "missions-soon": [
+      {
+        "title": "New missions is coming soon",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "Новые миссии добавятся совсем скоро",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      },
+      {
+        "title": "",
+        "font": "Impact",
+        "size": 32,
+        "color": [
+          228,
+          149,
+          81
+        ]
+      }
+    ],
     "missions-title-1": [
       {
         "title": "Complete missions\nto get new characters",
@@ -2574,7 +2616,7 @@
         "size": 32
       },
       {
-        "title": "Заработайте 30 монет\nа несколько игр",
+        "title": "Заработайте 30 монет\nза несколько игр",
         "font": "Impact",
         "size": 32
       },
@@ -4275,6 +4317,48 @@
         "title": "Collecter des pièces:",
         "font": "Impact",
         "size": 32
+      }
+    ],
+    "tutorial-counter": [
+      {
+        "title": "Loading... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "Загрузка... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "Loading... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
+      },
+      {
+        "title": "Loading... $1%",
+        "font": "Impact",
+        "size": 48,
+        "color": [
+          21,
+          157,
+          191
+        ]
       }
     ],
     "vote-title": [

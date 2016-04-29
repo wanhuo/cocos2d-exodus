@@ -120,7 +120,7 @@ Game::Game()
   this->pointers->setLocalZOrder(3);
   this->pointers2->setLocalZOrder(1);
 
-  this->bonus = new Motion("pointer-motion.png", 1.5, 50.0, this->game, 75);
+  this->bonus = new Motion("pointer-motion.png", 2.0, 50.0, this->game, 75);
   this->bonus->setLocalZOrder(2);
 
   this->buttons.play->_create()->setPosition(
@@ -765,8 +765,6 @@ void Game::onPrepare()
       nullptr
     )
   );
-
-  Music->play("music-2", true);
 }
 
 void Game::onStart()
@@ -827,8 +825,6 @@ void Game::onLose()
   this->counter->onLose();
 
   Finish::getInstance()->show();
-
-  Music->play("music-1", true);
 }
 
 void Game::onFinish()
@@ -1003,7 +999,7 @@ void Game::updateCamera(float time)
   this->camera.x = abs(this->game->getPositionX());
   this->camera.y = abs(this->game->getPositionY());
 
-  this->camera.width = this->getWidth() / this->d->getScale() + (this->getWidth() - this->h->getContentSize().width * this->h->getScale());
+  this->camera.width = this->getWidth() / this->d->getScale();
   this->camera.height = this->getHeight() / this->d->getScale();
 
   this->c->setPosition(

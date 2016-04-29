@@ -62,6 +62,10 @@ class Tutorial : public Coins
 
   Button* next;
 
+  Text* counter;
+
+  int value;
+
   /**
    *
    *

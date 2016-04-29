@@ -75,6 +75,7 @@ Missions::Missions()
 
   this->texts.title1 = new Text("missions-title-1", this->holder1, true);
   this->texts.title2 = new Text("missions-title-2", this->holder2, true);
+  this->texts.soon = new Text("missions-soon", this->scroll, true);
 
   this->texts.title1->setPosition(this->holder1->getContentSize().width / 2, this->holder1->getContentSize().height / 2);
   this->texts.title2->setPosition(this->holder2->getContentSize().width / 2, this->holder2->getContentSize().height / 2);
@@ -128,15 +129,6 @@ void Missions::onEnter()
 
   this->updateListHeight();
 
-  int i = 1;
-
-  for(auto mission : this->missions)
-  {
-    mission->setPositionY(200 + (this->missions.size() - i) * 220);
-
-    i++;
-  }
-
   Events::onScreenChanged("Missions");
 }
 
@@ -152,58 +144,27 @@ void Missions::onExit()
  */
 void Missions::updateListHeight()
 {
-  int counter = 0;
+  this->missions.erase(
+    std::remove_if(
+        this->missions.begin(),
+        this->missions.end(),
+        [](Mission* m) -> bool {
+            if(m->mission->state == MissionStruct::STATE_FINISHED)
+            {
+              m->removeFromParent();
 
-  for(auto m : this->missions)
-  {
-    switch(m->mission->state)
-    {
-      case MissionStruct::STATE_CURRENT:
-      this->scroll->setInnerContainerPosition(Vec2(0, max(-this->size + (Application->getHeight() - 400), -m->getPositionY() + (Application->getHeight() - 400) / 2)));
-      break;
-      case MissionStruct::STATE_FINISHED:
-      if(m->state->create)
-      {
-        m->removeFromParent();
+              return true;
+            }
 
-        this->missions.erase(this->missions.begin() + counter);
-
-        for(auto element : this->scroll->getChildren())
-        {
-          element->setPositionY(element->getPositionY() - 220);
+            return false;
         }
-
-        int c = 0;
-        for(auto m : this->missions)
-        {
-          if(c >= counter)
-          {
-            m->setPositionY(m->getPositionY() + 220);
-          }
-
-          c++;
-        }
-      }
-      else
-      {
-        this->missions.erase(this->missions.begin() + counter);
-
-        m->release();
-
-        for(auto element : this->scroll->getChildren())
-        {
-          element->setPositionY(element->getPositionY() - 220);
-        }
-      }
-      break;
-    }
-
-    counter++;
-  }
+    ),
+    this->missions.end()
+  );
 
   int size = this->missions.size() - 1;
 
-  this->size = 200 * 2 + size * 220;
+  this->size = max<float>(200 * 2  + size * 220, this->scroll->getContentSize().height);
 
   this->scroll->setInnerContainerSize(
     Size(
@@ -211,6 +172,25 @@ void Missions::updateListHeight()
       this->size
     )
   );
+
+  int i = 1;
+
+  for(auto mission : this->missions)
+  {
+    mission->setPositionY(this->size - 220 * i);
+
+    i++;
+  }
+
+  if(this->missions.size())
+  {
+    this->texts.soon->setVisible(false);
+  }
+  else
+  {
+    this->texts.soon->setVisible(true);
+    this->texts.soon->setPosition(Application->getWidth() / 2, this->size / 2);
+  }
 }
 
 /**
