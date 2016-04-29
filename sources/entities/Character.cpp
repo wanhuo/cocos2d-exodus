@@ -536,6 +536,7 @@ void Character::onTouch()
     this->changeState(STATE_SEND);
     break;
     case STATE_GAME:
+    case STATE_BOOST:
     this->proceedPointer();
     break;
   }
@@ -769,6 +770,7 @@ void Character::onPointerSuccess(Pointer* pointer)
       }
     }
 
+    bool add = true;
     if(ftx)
     {
     for(int i = 0; i < Application->pointers->count; i++)
@@ -784,19 +786,31 @@ void Character::onPointerSuccess(Pointer* pointer)
       prediction.action = true;
       prediction.x = tx;
 
+      for(Prediction p : this->parameters.predictions)
+      {
+        if(p.x == tx) add = false;
+      }
+
+      if(add)
+      {
       this->parameters.predictions.push_back(prediction);
-    }
 
     this->generate.x = pointer->getPositionX();
     this->generate.y = pointer->getPositionY();
+
+
 
     this->startUpdateTraectory();
 
     this->generate.rest = Application->pointers->count - (this->state == STATE_BOOST ? 0 : 1);
 
-    this->runAction(
-      MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()))
-    );
+    auto action = MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()));
+    action->setTag(701);
+
+    this->stopActionByTag(701);
+    this->runAction(action);
+    }
+    }
   }
   else
   {
@@ -921,7 +935,7 @@ void Character::proceedPointer()
         }
       }
 
-      if(Application->parameters.tutorial)
+      if(Application->parameters.tutorial && this->state != STATE_BOOST)
       {
         this->onPointerFail();
       }
@@ -1164,7 +1178,7 @@ void Character::onUpdateTraectory()
           prediction.done = true;
 
           if(prediction.action)
-          {
+          {log("1 - %f", this->generate.x);
             this->generate.parameters.state = this->generate.parameters.active = true;
 
             if(this->generate.parameters.x < this->generate.parameters.maximum.x)
@@ -1500,7 +1514,7 @@ void Character::updatePosition()
       prediction.done = true;
 
       if(prediction.action)
-      {
+      {log("2 - %f", x);
         this->parameters.state = this->parameters.active = true;
 
         if(this->parameters.x < this->parameters.maximum.x)
