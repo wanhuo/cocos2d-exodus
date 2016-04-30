@@ -641,7 +641,21 @@ void Character::onPointerSuccess(Pointer* pointer)
   if(pointer)
   {
   ///////
-  
+        pointer->runAction(
+        Sequence::create(
+          ScaleTo::create(0.1, 0.0),
+          CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+          nullptr
+        )
+      );
+
+  if(this->state == STATE_BOOST)
+  {
+      this->accelerationIndex += this->index > 6 ? 0 : 1;
+      this->index += this->index > 6 ? 0 : 1;
+      Sound->play(("success-" + patch::to_string(this->index)).c_str());
+    return;
+  }
 
     vector<Node*> remove;
 
@@ -668,23 +682,9 @@ void Character::onPointerSuccess(Pointer* pointer)
       remove.end()
     );
     remove.clear();
+
   ///////
 
-
-    if(this->state == STATE_BOOST)
-    {
-      pointer->_destroy(true);
-    }
-    else
-    {
-      pointer->runAction(
-        Sequence::create(
-          ScaleTo::create(0.1, 0.0),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
-          nullptr
-        )
-      );
-    }
 
     bool f = true;
 
@@ -802,7 +802,7 @@ void Character::onPointerSuccess(Pointer* pointer)
 
     this->startUpdateTraectory();
 
-    this->generate.rest = Application->pointers->count - (this->state == STATE_BOOST ? 0 : 1);
+    this->generate.rest = Application->pointers->count - 1;
 
     auto action = MoveBy::create(0.5, Vec2(pointer->getPositionX() - this->getPositionX(), pointer->getPositionY() - this->getPositionY()));
     action->setTag(701);
@@ -859,13 +859,7 @@ void Character::onPointerCoin(Pointer* pointer)
 
   this->onCreateText(false);
 
-  pointer->runAction(
-    Sequence::create(
-      ScaleTo::create(0.1, 0.0),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
-      nullptr
-    )
-  );
+  pointer->counted = true;
 }
 
 void Character::onPointerFail()
@@ -910,6 +904,10 @@ void Character::proceedPointer()
 
       if(pointer)
       {
+        if(pointer->counted)
+        {
+          return;
+        }
         auto index = pointer->getCurrentFrameIndex();
 
         switch(index)
@@ -1178,7 +1176,7 @@ void Character::onUpdateTraectory()
           prediction.done = true;
 
           if(prediction.action)
-          {log("1 - %f", this->generate.x);
+          {
             this->generate.parameters.state = this->generate.parameters.active = true;
 
             if(this->generate.parameters.x < this->generate.parameters.maximum.x)
@@ -1514,7 +1512,7 @@ void Character::updatePosition()
       prediction.done = true;
 
       if(prediction.action)
-      {log("2 - %f", x);
+      {
         this->parameters.state = this->parameters.active = true;
 
         if(this->parameters.x < this->parameters.maximum.x)
@@ -1786,6 +1784,11 @@ void Character::updatePointers()
 
     if(pointer)
     {
+      if(pointer->counted)
+      {
+        return;
+      }
+
       switch(pointer->getCurrentFrameIndex())
       {
         default:

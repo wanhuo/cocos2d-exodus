@@ -63,6 +63,8 @@ class Pointer : public TiledEntity
   Pointer();
  ~Pointer();
 
+  bool counted;
+
   virtual void onCreate();
   virtual void onDestroy(bool action = false);
 

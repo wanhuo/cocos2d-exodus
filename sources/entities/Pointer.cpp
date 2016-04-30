@@ -52,6 +52,8 @@ void Pointer::onCreate()
    *
    *
    */
+  this->counted = false;
+
   this->setScale(1.0);
 }
 
