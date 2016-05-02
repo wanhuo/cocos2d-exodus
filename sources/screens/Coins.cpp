@@ -85,11 +85,13 @@ void Coins::onExit()
   if(this->counter.add)
   {
     Application->counter->values.coins += this->counter.add;
+    this->counter.add = 0;
   }
 
   if(this->counter.remove)
   {
     Application->counter->values.coins -= this->counter.remove;
+    this->counter.remove = 0;
   }
 
   Application->counter->save();
@@ -122,11 +124,13 @@ void Coins::onExitTransitionDidStart()
   if(this->counter.add)
   {
     Application->counter->values.coins += this->counter.add;
+    this->counter.add = 0;
   }
 
   if(this->counter.remove)
   {
     Application->counter->values.coins -= this->counter.remove;
+    this->counter.remove = 0;
   }
 
   Application->counter->save();

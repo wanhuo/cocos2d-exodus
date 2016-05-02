@@ -136,6 +136,7 @@ void Character::reset()
 
   this->generate.start = -1;
   this->generate.count = 0;
+  this->generate.coins = 0;
   this->generate.red = 0;
   this->generate.rest = 10;
   this->generate.create = 5;
@@ -367,6 +368,9 @@ void Character::onTransfer()
   this->parameters.max.y = this->parameters.max.setup.y;
   this->parameters.increase.x = 0;
 
+  this->index = 1;
+  this->accelerationIndex = 1;
+
   Application->transfer->runAction(
     Spawn::create(
       Sequence::create(
@@ -570,7 +574,9 @@ void Character::onCreateText(bool value)
         Sequence::create(
           DelayTime::create(0.4),
           FadeOut::create(0.2),
-          CallFunc::create(CC_CALLBACK_0(Text::_destroy, text, true)),
+          CallFunc::create([=] () {
+          text->_destroy(true);
+          }),
           nullptr
         ),
         Sequence::create(
@@ -610,7 +616,9 @@ void Character::onCreateText(bool value)
         Sequence::create(
           DelayTime::create(0.2),
           FadeOut::create(0.2),
-          CallFunc::create(CC_CALLBACK_0(Text::_destroy, text, true)),
+          CallFunc::create([=] () {
+          text->_destroy(true);
+          }),
           nullptr
         ),
         EaseSineOut::create(
@@ -644,7 +652,9 @@ void Character::onPointerSuccess(Pointer* pointer)
         pointer->runAction(
         Sequence::create(
           ScaleTo::create(0.1, 0.0),
-          CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+          CallFunc::create([=] () {
+          pointer->_destroy(true);
+          }),
           nullptr
         )
       );
@@ -731,19 +741,28 @@ void Character::onPointerSuccess(Pointer* pointer)
       }
     }
 
-
+    int c = 0;
     for(int i = 0; i < Application->pointers->count; i++)
     {
       auto pointer = static_cast<Pointer*>(Application->pointers->element(i));
 
       if(pointer->numberOfRunningActions() < 1)
       {
+        if(pointer->getCurrentFrameIndex() == Pointer::COIN)
+        {
+          if(!pointer->counted)
+          {
+            c++;
+          }
+        }
+
         if((pointer->getPositionX() >= FF || pointer->getPositionX() < this->getPositionX()))
         {
             remove.push_back(pointer);
         }
       }
     }
+    this->generate.coins += c;
 
     remove.erase(
       std::remove_if(
@@ -874,7 +893,9 @@ void Character::onPointerAcceleration(Pointer* pointer)
   pointer->runAction(
     Sequence::create(
       ScaleTo::create(0.1, 0.0),
-      CallFunc::create(CC_CALLBACK_0(Node::_destroy, pointer, true)),
+      CallFunc::create([=] () {
+      pointer->_destroy(true);
+      }),
       nullptr
     )
   );
@@ -1099,7 +1120,7 @@ void Character::onUpdateTraectoryStart()
   this->generate.start = 30;
 
   this->generate.count++;
-  this->generate.coins = this->generate.count % 5 == 0 && Application->counter->values.score_b >= 5 ? 5 : 0;
+  if(this->generate.coins <= 0) this->generate.coins = this->generate.count % 5 == 0 && Application->counter->values.score_b >= 5 ? 5 : 0;
 }
 
 void Character::onUpdateTraectoryFinish()
@@ -1245,6 +1266,10 @@ void Character::onUpdateTraectory()
         {
           element->setCurrentFrameIndex(Pointer::SUCCESS);
         }
+        else if(this->generate.coins-- > 0)
+        {
+          element->setCurrentFrameIndex(Pointer::COIN);
+        }
         else if(this->accelerationIndex >= 6)
         {
           this->accelerationIndex = 1;
@@ -1258,10 +1283,6 @@ void Character::onUpdateTraectory()
         else if(this->generate.red >= 0)
         {
           element->setCurrentFrameIndex(Pointer::MISTAKE);
-        }
-        else if(this->generate.coins-- > 0)
-        {
-          element->setCurrentFrameIndex(Pointer::COIN);
         }
         else
         {
@@ -1319,7 +1340,7 @@ void Character::onUpdateTraectoryBonusCreate()
 
 void Character::onUpdateTraectoryBonusDestroy()
 {
-  this->generate.bonus = this->parameters.active && this->state == STATE_GAME && probably(15);
+  this->generate.bonus = this->parameters.active && this->state == STATE_GAME && probably(15) && this->generate.coins < 0;
 
     this->generate.bonus_points.clear();
     Application->bonus->_destroy();
