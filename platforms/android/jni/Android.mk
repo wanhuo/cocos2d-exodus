@@ -2,6 +2,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+$(call import-add-path,$(LOCAL_PATH)/../../../../cocos2d/prebuilt/android)
+
 LOCAL_MODULE := core_shared
 
 LOCAL_MODULE_FILENAME := libcore
