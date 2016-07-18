@@ -186,7 +186,7 @@ void MissionsHandler::onEnter()
    *
    *
    */
-  this->show(getValue());
+  //this->show(getValue());
 }
 
 void MissionsHandler::onExit()
@@ -201,13 +201,6 @@ void MissionsHandler::onExit()
  */
 void MissionsHandler::update(float time)
 {
-  if(!this->getNumberOfRunningActions())
-  {
-    if(this->count != getValue())
-    {
-      this->show(getValue());
-    }
-  }
 }
 
 /**

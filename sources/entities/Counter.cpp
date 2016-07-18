@@ -566,7 +566,7 @@ void Counter::reset()
 
   this->resetOnceMissionsUpdate();
 
-  MissionsFactory::getInstance()->startListen();
+  //MissionsFactory::getInstance()->startListen();
 }
 
 /**

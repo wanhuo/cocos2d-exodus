@@ -657,7 +657,7 @@ void Game::onMenu()
 
   this->character->changeState(Character::STATE_MENU);
 
-  Events::updateMissions();
+  //Events::updateMissions();
 
   Music->play("music-1", true);
 }

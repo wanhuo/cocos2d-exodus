@@ -22,6 +22,8 @@
  *
  */
 
+#define CC_USE_DEFAULT_CAMERA 1
+
 #include "Events.h"
 
 #include "Game.h"
@@ -43,7 +45,7 @@ void Events::onStart()
   new Game;
   new Store;
   new Finish;
-  new Missions;
+  //new Missions;
   new Tutorial;
 
   new Credits;

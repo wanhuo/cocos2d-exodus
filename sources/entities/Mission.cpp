@@ -292,7 +292,7 @@ void Mission::onTouch(cocos2d::Touch* touch, Event* e)
   switch(this->mission->state)
   {
     case MissionStruct::STATE_CURRENT:
-    switch(this->mission->link)
+    switch(0)//this->mission->link)
     {
       case 0:
       Director::getInstance()->popToRootScene(TransitionFade::create(0.2, Director::getInstance()->getRootScene(), Color3B::WHITE));
